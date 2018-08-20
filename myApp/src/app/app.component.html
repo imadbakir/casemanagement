@@ -1,0 +1,35 @@
+<ion-app>
+
+  <ion-split-pane>
+    <!--  our side menu  -->
+    <ion-menu [hidden]="!auth.user">
+
+      <ion-content>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button color="dark" clear class="toolbar-round" (click)="presentPopover($event)">
+              <ion-icon name="settings"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-list>
+          <div class="profile-container">
+            <div class="photo-container"></div>
+            <h6 padding>{{auth.user?.data.name}}</h6>
+          </div>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" color="secondary" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <!-- the main content -->
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
