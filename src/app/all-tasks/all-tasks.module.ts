@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AllTasksPage } from './all-tasks.page';
 import { TasksComponent } from '../tasks/tasks.component';
-
+import { OnCreateDirective } from '../on-create.directive';
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [AllTasksPage, TasksComponent]
+  declarations: [AllTasksPage, TasksComponent, OnCreateDirective]
 })
 export class AllTasksPageModule { }

@@ -12,7 +12,7 @@ import { EventsService } from './events.service';
 })
 export class AppComponent implements CanActivate {
   public appPages = [
-    { title: 'Customers', url: '/customer', icon: 'people' },
+    { title: 'Tasks', url: '/all-tasks', icon: 'list' },
   ];
 
   constructor(public eventService: EventsService,

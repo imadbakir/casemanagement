@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, PopoverController } from '@ionic/angular';
+import { ItemSliding, PopoverController, MenuController } from '@ionic/angular';
 import { RemoteServiceProvider } from '../remote.service';
 import { TaskOptionsComponent } from '../task-options/task-options.component';
+import { CamundaRestService } from '../camunda-rest.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-all-tasks',
   templateUrl: './all-tasks.page.html',
@@ -22,9 +24,17 @@ export class AllTasksPage implements OnInit {
     sortingDirection: -1,
     textSearch: '',
   };
+  filters = [];
   tasksOrigin: any = [];
-
-  constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider) {
+  panesToggle = {
+    start: true,
+    middle: true,
+    end: true,
+    toggleHack: false
+  };
+  chosenTask;
+  constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider,
+    private camundaService: CamundaRestService, private router: Router, private menu: MenuController) {
 
   }
   /*performSearch(ev) {
@@ -59,12 +69,63 @@ export class AllTasksPage implements OnInit {
   search() {
     this.performSearch(this.filter.textSearch);
   }
+  chooseTask(task) {
+    this.chosenTask = task;
+  }
+  toggleMenu(item) {
+    // this.menu.toggle();
+    this.panesToggle[item] = !this.panesToggle[item];
+
+    if (!this.panesToggle['end'] && !this.panesToggle['middle']) {
+      if (item === 'middle') {
+        this.panesToggle['middle'] = true;
+        this.panesToggle['end'] = true;
+
+      } else {
+        this.panesToggle['middle'] = true;
+
+      }
+    }
+
+  }
+  toggleExpand() {
+    if (this.panesToggle['end'] && !this.panesToggle['middle'] && !this.panesToggle['start']) {
+      this.panesToggle['start'] = true;
+      this.panesToggle['middle'] = true;
+      this.panesToggle['end'] = true;
+    } else {
+      this.panesToggle['start'] = false;
+      this.panesToggle['middle'] = false;
+      this.panesToggle['end'] = true;
+    }
+
+
+  }
+  toggleHack(event) {
+    console.log(event);
+    if (event.detail.visible === true) {
+      this.panesToggle['start'] = true;
+      this.panesToggle['toggleHack'] = true;
+    } else {
+      this.panesToggle['start'] = false;
+      this.panesToggle['toggleHack'] = false;
+    }
+
+  }
+  isStartOpen() {
+    return 1;
+    /*
+    this.menu.isOpen('start').then(function (data) {
+     return data;
+   });
+   */
+  }
   performSearch(value) {
     this.tsks = this.tasksOrigin.filter(function (item) {
-      return item['name'].toLowerCase().includes(value.toLowerCase()) ||
-        item['assignee'].toLowerCase().includes(value.toLowerCase()) ||
-        item['description'].toLowerCase().includes(value.toLowerCase()) ||
-        item['due'].toLowerCase().includes(value.toLowerCase());
+      return (item['name'] ? item['name'].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
+        (item['assignee'] ? item['assignee'].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
+        (item['description'] ? item['description'].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
+        (item['due'] ? item['due'].toString().toLowerCase().includes(value.toLowerCase()) : false);
     });
   }
   setSortingDirection() {
@@ -169,7 +230,7 @@ export class AllTasksPage implements OnInit {
        itemSlide.close();
        itemSlide.moveSliding(-380);
        itemSlide.moveSliding(-380);
- 
+
        itemSlide.setElementClass('active-options-left', true);
        itemSlide.setElementClass('active-swipe-left', true);
      }
@@ -178,8 +239,48 @@ export class AllTasksPage implements OnInit {
      }
      */
   }
+  getFilterCount(filter) {
+    this.camundaService.getFilterCount(filter.id).subscribe(data => {
+      console.log(data);
+      filter.count = data.count;
+    });
+  }
+  listFilter(id) {
+    this.camundaService.listFilter(id).subscribe(data => {
+      this.tsks = data;
+      this.tasksOrigin = data;
+      this.filtered = data;
+      this.dataLoaded = true;
+      this.sortArray(this.filter.sortingDirection);
+      console.log(this.tsks);
+    });
+  }
   ngOnInit() {
-    this.remoteService.getJson('assets/tasks.json')
+    this.camundaService.getTasks().subscribe(data => { console.log(data); });
+    /*
+      this.camundaService.postUserLogin({ username: 'ahmad', password: 'ahmad' }).subscribe(data => {
+        console.log(data);
+        if (data.status !== 200) {
+          if (data.hasOwnProperty('message')) {
+            alert(data.message);
+          } else {
+            alert('Username or password error');
+          }
+        }
+      });
+      */
+    this.camundaService.getTasks().subscribe(data => {
+      this.tsks = data;
+      this.tasksOrigin = data;
+      this.filtered = data;
+      this.dataLoaded = true;
+      this.sortArray(this.filter.sortingDirection);
+      console.log(this.tsks);
+    });
+    this.camundaService.getFilters().subscribe(data => {
+      this.filters = data;
+    });
+    /*this.remoteService.getJson('assets/tasks.json')
       .subscribe(data => {
         this.tsks = data;
         this.tasksOrigin = data;
@@ -187,7 +288,7 @@ export class AllTasksPage implements OnInit {
         this.dataLoaded = true;
         this.sortArray(this.filter.sortingDirection);
         console.log(this.tsks);
-      });
+      });*/
   }
 
 }

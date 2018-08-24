@@ -15,10 +15,12 @@
   max-width: none;
   background: transparent;
 }
+
 .toolbar-round {
-  padding: 10px;
+  padding: 0px;
   border-radius: 20px;
 }
+
 .split-pane-ios.split-pane-visible>.split-pane-side {
   max-width: 275px !important;
   border-right: 1px solid var(--list-ios-border-color);
@@ -27,6 +29,7 @@
 .split-pane-md.split-pane-visible>.split-pane-side {
   max-width: 275px !important;
   border-right: 1px solid var(--list-ios-border-color);
+  transition: 0.5s;
 }
 
 .split-pane-wp.split-pane-visible>.split-pane-side {
