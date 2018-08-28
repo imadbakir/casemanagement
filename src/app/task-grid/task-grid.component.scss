@@ -1,0 +1,32 @@
+.flex-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 10px;
+}
+
+.flex-item {}
+
+ion-card.card {
+  margin: 5px;
+  border-radius: 8px;
+  width: calc(100% - 10px);
+  p {
+    padding: 10px 0px;
+  }
+}
+
+.date-picker-badge {
+  font-weight: 100;
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+
+
+[contentEditable=true]:empty:not(:focus):before {
+  content: attr(data-ph);
+  color: grey;
+  font-style: italic;
+}

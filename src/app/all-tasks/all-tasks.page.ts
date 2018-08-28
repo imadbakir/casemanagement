@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ItemSliding, PopoverController, MenuController } from '@ionic/angular';
 import { RemoteServiceProvider } from '../remote.service';
 import { TaskOptionsComponent } from '../task-options/task-options.component';
 import { CamundaRestService } from '../camunda-rest.service';
 import { Router } from '@angular/router';
+import { GridsterConfig, GridsterItem, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
+import { EventsService } from '../events.service';
+import { FilterService } from '../filter.service';
+
 @Component({
   selector: 'app-all-tasks',
   templateUrl: './all-tasks.page.html',
@@ -33,8 +37,9 @@ export class AllTasksPage implements OnInit {
     toggleHack: false
   };
   chosenTask;
-  constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider,
-    private camundaService: CamundaRestService, private router: Router, private menu: MenuController) {
+  filterClicked: EventEmitter<String> = new EventEmitter();
+  constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider, public event: EventsService,
+    private camundaService: CamundaRestService, private router: Router, private menu: MenuController, public filterStorage: FilterService) {
 
   }
   /*performSearch(ev) {
@@ -245,15 +250,8 @@ export class AllTasksPage implements OnInit {
       filter.count = data.count;
     });
   }
-  listFilter(id) {
-    this.camundaService.listFilter(id).subscribe(data => {
-      this.tsks = data;
-      this.tasksOrigin = data;
-      this.filtered = data;
-      this.dataLoaded = true;
-      this.sortArray(this.filter.sortingDirection);
-      console.log(this.tsks);
-    });
+  toggleFilter(id, bool) {
+    this.event.announceFilter({ id: id, bool: bool });
   }
   ngOnInit() {
     this.camundaService.getTasks().subscribe(data => { console.log(data); });

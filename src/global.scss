@@ -16,6 +16,28 @@
   background: transparent;
 }
 
+.selected-green {
+  transition: 0.5s;
+  border-left: 0px solid rgba(var(--ion-color-success-rgb), 1);
+  border-width: 15px;
+}
+
+.app-bg-danger {
+  border-left: 3px solid rgba(var(--ion-color-danger-rgb), 0.8);
+}
+
+.app-bg-primary {
+  border-left: 3px solid rgba(var(--ion-color-primary-rgb), 0.8);
+}
+
+.app-bg-secondary {
+  border-left: 3px solid rgba(var(--ion-color-secondary-rgb), 0.8);
+}
+
+.app-bg-warning {
+  border-left: 3px solid rgba(var(--ion-color-warning-rgb), 0.8);
+}
+
 .toolbar-round {
   padding: 0px;
   border-radius: 20px;

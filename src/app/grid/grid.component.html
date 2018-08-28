@@ -1,0 +1,13 @@
+<gridster [options]="options" [hidden]="dashboard?.length == 0">
+  <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="item" *ngFor="let item of dashboard">
+    <!-- your content here -->
+    <app-task-grid [filterId]="item.propName"></app-task-grid>
+
+  </gridster-item>
+</gridster>
+<div text-center padding [hidden]="dashboard?.length > 0">
+  <ion-text padding margin-top>
+    <ion-icon name="egg" [ngStyle]="{'font-size': '140px','margin-top': '150px'}" color="secondary"></ion-icon>
+    <h5 padding margin [ngStyle]="{ 'opacity': 0.5}">Arrange your workspace the way you like it.</h5>
+  </ion-text>
+</div>

@@ -20,11 +20,14 @@ import { AuthConfig, AppConfig } from '../config';
 import { FormioGrid } from 'angular-formio/grid';
 import { UserOptionsComponent } from './user-options/user-options.component';
 import { EventsService } from './events.service';
+import { StorageServiceModule } from 'angular-webstorage-service';
+
 
 @NgModule({
   declarations: [AppComponent, TaskOptionsComponent, UserOptionsComponent],
   entryComponents: [TaskOptionsComponent, UserOptionsComponent],
   imports: [
+    StorageServiceModule,
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot({
