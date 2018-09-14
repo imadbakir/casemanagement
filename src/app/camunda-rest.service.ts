@@ -82,6 +82,14 @@ export class CamundaRestService {
     );
   }
 
+  postAssignTask(taskId: String, variables: Object): Observable<any> {
+    const endpoint = `${this.engineRestUrl}task/${taskId}/assignee`;
+    return this.http.post<any>(endpoint, variables).pipe(
+      tap(tasks => this.log(`posted assign task`)),
+      catchError(this.handleError('postAssignTask', []))
+    );
+  }
+
   getProcessDefinitionTaskKey(processDefinitionKey): Observable<any> {
     const url = `${this.engineRestUrl}process-definition/key/${processDefinitionKey}/startForm`;
     return this.http.get<any>(url).pipe(

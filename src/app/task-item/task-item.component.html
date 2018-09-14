@@ -1,3 +1,60 @@
-<p>
-  task-item works!
-</p>
+<div class="flex-item">
+  <ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete}">
+
+
+    <ion-card-content>
+      <h2 data-ph="Task name..">{{task.name}} <div class="photo-container mini-avatar"></div>
+      </h2>
+      <div class="more-details">
+        <p>{{task.description}}</p>
+
+      </div>
+
+      <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
+        <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}
+      </ion-badge>
+      <ion-badge mat-raised-button (click)="follow_up.open()" color="light" slot="end" [hidden]="!task.due" [ngClass]="{'date-picker-badge':true ,'due':true}">
+        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.follow_up ? (task.follow_up
+        | date ): 'Follow Up'}}
+      </ion-badge>
+      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [hidden]="!task.due"
+        [ngClass]="{'date-picker-badge':true ,'due':true}">
+        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due | date}}
+      </ion-badge>
+      <input [matDatepicker]="myDatepicker" [(ngModel)]="task.due" hidden>
+      <mat-datepicker touchUi #myDatepicker></mat-datepicker>
+      <input [matDatepicker]="follow_up" [(ngModel)]="task.follow_up" hidden>
+      <mat-datepicker touchUi #follow_up></mat-datepicker>
+
+
+
+      <!-- <ion-buttons slot="end" class="hide-md hide-sm">
+                <ion-button clear color="dark" slot="icon-only" (click)="presentPopover($event)">
+                  <ion-icon name="md-more"></ion-icon>
+                </ion-button>
+              </ion-buttons> -->
+
+    </ion-card-content>
+    <div class="more-details task-options">
+      <input matInput #trigger [id]="task.id+'-assignee'" [ngStyle]="{'opacity':0,'width':0,'height':0}" [(ngModel)]="task.assignee"
+        [matAutocomplete]="auto" [matAutocompleteConnectedTo]="origin" />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let user of users" [value]="user.username">{{user.name}}</mat-option>
+      </mat-autocomplete>
+      <ion-button size="small" (click)="openAssignee(task.id)" matAutocompleteOrigin #origin="matAutocompleteOrigin"
+        color="primary" [fill]="task.assignee ? 'solid' : 'clear'">
+        <ion-icon name="person" slot="start"></ion-icon>
+        <span [hidden]="task.assignee">Claim</span>
+        <span [hidden]="!task.assignee">{{task.assignee}}</span>
+
+      </ion-button>
+      <ion-button size="small" color="primary" fill="clear">
+        <ion-icon name="people" slot="start"></ion-icon>Add Team
+      </ion-button>
+      <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == 'ahmad'" [ngStyle]="{'float':'right'}"
+        fill="clear">
+        <ion-icon name="checkmark" slot="start"></ion-icon>Complete
+      </ion-button>
+    </div>
+  </ion-card>
+</div>

@@ -7,7 +7,7 @@ import { CustomerModule } from './customer/customer.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'all-tasks',
     pathMatch: 'full'
   },
   {

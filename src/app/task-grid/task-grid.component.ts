@@ -9,10 +9,10 @@ import { SearchModalComponent } from '../search-modal/search-modal.component';
 @Component({
   selector: 'app-task-grid',
   templateUrl: './task-grid.component.html',
-  styleUrls: ['./task-grid.component.scss']
+  styleUrls: ['./task-grid.component.scss'],
 })
 export class TaskGridComponent implements OnInit, AfterViewChecked {
-  @Input() filterId;
+  @Input() filterItem;
   tsks: any = [];
   filtered: any = [];
   properties: any = ['Name'];
@@ -52,11 +52,12 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
   async openSearchModal() {
     const modal = await this.modalController.create({
       component: SearchModalComponent,
-      componentProps: { filterId: this.filterId }
+      componentProps: { filterId: this.filterItem.id }
     });
     return await modal.present();
   }
-  search() {
+  search(event) {
+    console.log(event);
     this.performSearch(this.filter.textSearch);
   }
   chooseTask(task) {
@@ -88,7 +89,7 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
     }
   }
   removeFilter() {
-    this.event.announceFilter({ id: this.filterId, bool: false });
+    this.event.announceFilter({ item: this.filterItem, bool: false });
   }
   toggleHack(event) {
     console.log(event);
@@ -108,6 +109,10 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
      return data;
    });
    */
+  }
+  clearSearch(event) {
+    this.filter.textSearch = '';
+    this.performSearch('');
   }
   performSearch(value) {
     this.tsks = this.tasksOrigin.filter(function (item) {
@@ -156,49 +161,7 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
     }
 
   }
-  getPriority(priority) {
-    let value = '';
-    switch (true) {
-      case priority >= 75:
-        value = 'app-bg-danger';
-        break;
-      case priority >= 50:
-        value = 'app-bg-warning';
-        break;
-      case priority >= 25:
-        value = 'app-bg-primary';
-        break;
-      case priority < 25:
-        value = '';
-        break;
 
-
-
-    }
-    return value;
-  }
-  getStatus(priority) {
-    let value = '';
-    switch (true) {
-      case priority >= 75:
-        value = 'Critical';
-        break;
-      case priority >= 50:
-        value = 'Important';
-        break;
-      case priority >= 25:
-        value = 'Normal';
-        break;
-      case priority < 25:
-        value = 'Low';
-        break;
-
-
-
-
-    }
-    return value;
-  }
   showDetails(task) {
     task.showDetails ? task.showDetails = false : task.showDetails = true;
   }
@@ -208,8 +171,8 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
   }
 
   ListFilter() {
-    if (this.filterId) {
-      this.camundaService.listFilter(this.filterId).subscribe(data => {
+    if (this.filterItem) {
+      this.camundaService.listFilter(this.filterItem.id).subscribe(data => {
         this.tasksOrigin = data;
         this.tsks = data;
       });
@@ -220,11 +183,11 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
     this.ListFilter();
   }
   ngAfterViewChecked() {
-    this.resizeAllGridItems();
+    // this.resizeAllGridItems();
   }
 
   onResize(event) {
-    this.resizeAllGridItems();
+    // this.resizeAllGridItems();
   }
 
   resizeGridItem(item) {

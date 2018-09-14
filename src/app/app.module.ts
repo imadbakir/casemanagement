@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -21,7 +20,8 @@ import { FormioGrid } from 'angular-formio/grid';
 import { UserOptionsComponent } from './user-options/user-options.component';
 import { EventsService } from './events.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
-
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, TaskOptionsComponent, UserOptionsComponent],
@@ -29,7 +29,9 @@ import { StorageServiceModule } from 'angular-webstorage-service';
   imports: [
     StorageServiceModule,
     HttpClientModule,
-    BrowserModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NoopAnimationsModule,
     IonicModule.forRoot({
       mode: 'md',
       backButtonText: '',

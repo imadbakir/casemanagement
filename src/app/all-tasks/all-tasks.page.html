@@ -1,75 +1,64 @@
-<ion-header>
-  <ion-toolbar  [ngClass]="''">
-    <ion-buttons slot="start">
-      <ion-menu-button menu="start"></ion-menu-button>
-    </ion-buttons>
+<ion-split-pane when="(min-width: 1140px)">
+  <!--  our side menu  -->
+  <ion-menu menu-id="start" [ngClass]="{'collapse-pane': !panesToggle.start && panesToggle.toggleHack}">
 
-    <ion-title>Tasks</ion-title>
+    <ion-toolbar>
 
+      <ion-buttons slot="start">
+        <!--<ion-button color="dark" clear class="toolbar-round" [hidden]="!panesToggle.toggleHack" (click)="toggleMenu('start')">
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>-->
+        <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Filter
+          <ion-icon slot="start" name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button color="dark" clear class="toolbar-round" (click)="presentPopover($event)">
+          <ion-icon slot="icon-only" name="settings"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
 
-    <ion-buttons slot="end">
-      <ion-button color="dark" round end-item slot="icon">
-        <ion-badge color="danger" class="notifications" slot="start">11</ion-badge>
-        <ion-icon name="notifications-outline"></ion-icon>
-      </ion-button>
-      <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Task
-        <ion-icon slot="start" name="add-circle"></ion-icon>
-      </ion-button>
-      <ion-menu-button menu="end"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-split-pane when="(min-width: 1024px)" (ionChange)="toggleHack($event)">
-    <!--  our side menu  -->
-    <ion-menu menu-id="start" [ngClass]="{'collapse-pane': !panesToggle.start && panesToggle.toggleHack}">
+    <ion-content>
+      <div class="profile-container">
+        <div class="photo-container"></div>
+        <h6 padding>{{auth.user?.data.name}}</h6>
+      </div>
+      <ion-searchbar mode="ios"></ion-searchbar>
 
-      <ion-toolbar>
-        <ion-buttons slot="start" [hidden]="!panesToggle.start && panesToggle.toggleHack">
-          <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Filter
-            <ion-icon slot="start" name="add-circle"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-          <ion-button color="dark" clear class="toolbar-round" [hidden]="!panesToggle.toggleHack" (click)="toggleMenu('start')">
-            <ion-icon [hidden]="!panesToggle.start" name="arrow-dropleft"></ion-icon>
-            <ion-icon [hidden]="panesToggle.start" name="arrow-dropright"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-      <ion-content>
-        <ion-list lines="full">
-          <ion-item *ngFor="let filter of filters" [ngClass]="{'selected-green': filterStorage.isFilterOpen(filter.id)}" (click)="toggleFilter(filter.id,!filterStorage.isFilterOpen(filter.id))">
-            <!-- <ion-avatar slot="start">
+      <ion-list lines="full">
+        <ion-item *ngFor="let filter of filters" [disabled]="filter.count == 0" [ngClass]="{'selected-green': filterStorage.isFilterOpen(filter)}"
+          (click)="toggleFilter(filter,!filterStorage.isFilterOpen(filter))">
+          <!-- <ion-avatar slot="start">
                     <img [src]="task.pic">
                   </ion-avatar>
                 -->
-            <ion-label text-wrap>
-              <ion-text>
-                <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
-                  {{filter.name}}
-                  <ion-badge color="secondary" slot="end">{{filter.count}}</ion-badge>
-                </h3>
-              </ion-text>
+          <ion-label text-wrap>
+            <ion-text>
+              <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
+                {{filter.name}}
+                <ion-badge color="secondary" slot="end">{{filter.count}}</ion-badge>
+              </h3>
+            </ion-text>
 
-            </ion-label>
+          </ion-label>
 
-            <ion-buttons slot="end" class="hide-md hide-sm">
-              <ion-button clear color="dark" slot="icon-only">
-                <ion-icon name="md-more"></ion-icon>
-              </ion-button>
-            </ion-buttons>
+          <ion-buttons slot="end" class="hide-md hide-sm">
+            <ion-button clear color="dark" slot="icon-only">
+              <ion-icon name="md-more"></ion-icon>
+            </ion-button>
+          </ion-buttons>
 
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
-    <!-- the main content -->
-    <app-grid main></app-grid>
-  </ion-split-pane>
+  <!-- the main content -->
+  <app-grid main></app-grid>
+</ion-split-pane>
 
-  <!--<ion-row>
+<!--<ion-row>
       <ion-col *ngFor="let task of filtered" col-6 col-md-4 col-lg-4>
         <ion-card [ngClass]="{'danger':task.priority > 50}">
           <ion-item>
@@ -106,4 +95,3 @@
         </ion-card>
       </ion-col>
     </ion-row> -->
-</ion-content>

@@ -27,17 +27,20 @@ export class GridComponent implements OnInit {
 
   changedOptions() {
     this.options.api.optionsChanged();
+    alert(1);
   }
 
-  removeItem(id) {
+  removeItem(filterItem) {
     const temp = this.dashboard.filter(function (item) {
-      return item.propName === id;
+      return item.propName.id === filterItem.id;
     })[0];
     this.dashboard.splice(this.dashboard.indexOf(temp), 1);
-    this.filterStorage.deleteFromLocalStorage(temp);
+   // this.filterStorage.deleteFromLocalStorage(filterItem);
+   this.filterStorage.updateAllStorage(this.dashboard);
+
   }
 
-  addItem(id) {
+  addItem(filterItem) {
     let x;
     if (this.previousItem) {
       x = this.previousItem.x + this.previousItem.cols;
@@ -45,10 +48,11 @@ export class GridComponent implements OnInit {
       x = 0;
 
     }
-    const item = { x: x, y: 0, cols: 2, rows: 2, propName: id };
+    const item = { x: x, y: 0, cols: 2, rows: 2, propName: filterItem };
     this.dashboard.push(item);
     this.previousItem = item;
-    this.filterStorage.storeOnLocalStorage(item);
+    // this.filterStorage.storeOnLocalStorage(item);
+    this.filterStorage.updateAllStorage(this.dashboard);
 
   }
 
@@ -56,30 +60,32 @@ export class GridComponent implements OnInit {
     this.event.filterAnnounced$.subscribe(data => {
       if (data.hasOwnProperty('bool')) {
         if (data.bool) {
-          this.addItem(data.id);
+          this.addItem(data.item);
         } else {
-          this.removeItem(data.id);
+          this.removeItem(data.item);
         }
       }
     });
     this.options = {
       itemResizeCallback: this.onResize,
-      gridType: GridType.HorizontalFixed,
+      gridType: GridType.Fit,
       compactType: CompactType.CompactUpAndLeft,
       margin: 10,
+      outerMarginTop: 40,
+      outerMarginRight: 100,
+      outerMarginBottom: 80,
+      outerMarginLeft: 100,
       keepFixedHeightInMobile: false,
       keepFixedWidthInMobile: false,
       mobileBreakpoint: 640,
-      maxCols: 100,
-      maxRows: 100,
-      maxItemCols: 100,
-      minItemCols: 2,
-      maxItemRows: 100,
+      maxCols: 4,
+      maxRows: 4,
+      maxItemCols: 2,
+      minItemCols: 1,
+      maxItemRows: 4,
       minItemRows: 2,
       maxItemArea: 2500,
       minItemArea: 1,
-      fixedColHeight: 250,
-      fixedColWidth: 250,
       draggable: {
         enabled: true,
         ignoreContent: true,
@@ -87,13 +93,12 @@ export class GridComponent implements OnInit {
       },
       resizable: {
         enabled: true,
-        handles: { s: false, e: true, n: false, w: true, se: false, ne: false, sw: false, nw: false }
+        handles: { s: true, e: true, n: true, w: true, se: true, ne: true, sw: true, nw: true }
       },
       swap: true,
       pushItems: true,
-      disablePushOnDrag: true,
+      disablePushOnDrag: false,
       disablePushOnResize: false,
-      pushDirections: { north: false, east: true, south: false, west: true },
       pushResizeItems: false,
       displayGrid: DisplayGrid.None,
       disableWindowResize: false,

@@ -11,6 +11,8 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .popover {
   max-width: none;
   background: transparent;
@@ -23,19 +25,19 @@
 }
 
 .app-bg-danger {
-  border-left: 3px solid rgba(var(--ion-color-danger-rgb), 0.8);
+  border-left: 5px solid rgba(var(--ion-color-danger-rgb), 0.8);
 }
 
 .app-bg-primary {
-  border-left: 3px solid rgba(var(--ion-color-primary-rgb), 0.8);
+  border-left: 5px solid rgba(var(--ion-color-primary-rgb), 0.8);
 }
 
 .app-bg-secondary {
-  border-left: 3px solid rgba(var(--ion-color-secondary-rgb), 0.8);
+  border-left: 5px solid rgba(var(--ion-color-secondary-rgb), 0.8);
 }
 
 .app-bg-warning {
-  border-left: 3px solid rgba(var(--ion-color-warning-rgb), 0.8);
+  border-left: 5px solid rgba(var(--ion-color-warning-rgb), 0.8);
 }
 
 .toolbar-round {
@@ -59,14 +61,13 @@
   border-right: 1px solid var(--list-ios-border-color);
 }
 
-@media (min-width: var(--grid-breakpoints-lg)) {
-  ion-navbar.toolbar,
-  ion-header .toolbar[fixed],
-  ion-footer .toolbar[fixed],
-  ion-tabs .tabbar {
-    margin: 0;
-    padding-right: calc((100% - var(--grid-max-widths-lg)) / 2);
-    padding-left: calc((100% - var(--grid-max-widths-lg)) / 2);
+@media (min-width: 1140px) {
+  ion-header[fixed] {
+    ion-toolbar {
+      margin: 0;
+      padding-left: 90px;
+      padding-right: 90px;
+    }
   }
 }
 
@@ -82,9 +83,14 @@
   border-radius: 100%;
   height: 170px;
   text-align: center;
-  background: url(https://i.dailymail.co.uk/i/pix/2017/04/20/13/3F6B966D00000578-4428630-image-m-80_1492690622006.jpg);
+  background: url('https://i.dailymail.co.uk/i/pix/2017/04/20/13/3F6B966D00000578-4428630-image-m-80_1492690622006.jpg');
   background-size: cover;
   background-position: center center;
+  &.mini-avatar{
+    width:30px;
+    height:30px;
+    float: right;
+  }
 }
 
 .photo-container img {

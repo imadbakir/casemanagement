@@ -17,7 +17,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-split-pane when="(min-width: 1024px)" (ionChange)="toggleHack($event)">
+  <ion-split-pane when="(min-width: 1024px)" >
     <!--  our side menu  -->
     <ion-menu menu-id="start" [ngClass]="{'collapse-pane': !panesToggle.start && panesToggle.toggleHack}">
 

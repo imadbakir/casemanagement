@@ -13,7 +13,7 @@ import { GridsterModule } from 'angular-gridster2';
 import { TaskGridComponent } from '../task-grid/task-grid.component';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { SearchModalComponent } from '../search-modal/search-modal.component';
-
+import { MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
 const routes: Routes = [
   {
     path: '',
@@ -27,9 +27,12 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    GridsterModule
+    GridsterModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule, MatInputModule
   ],
-  entryComponents: [SearchModalComponent],
+  entryComponents: [SearchModalComponent, TaskGridComponent, TaskItemComponent],
   declarations: [AllTasksPage, TasksComponent, OnCreateDirective, GridComponent, TaskGridComponent, TaskItemComponent, SearchModalComponent]
 })
 export class AllTasksPageModule { }
