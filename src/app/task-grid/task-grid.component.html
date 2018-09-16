@@ -1,17 +1,11 @@
 <ion-header override>
 
   <ion-toolbar>
-    <ion-searchbar mode="ios" [placeholder]="filterItem.name" slot="start"
-    [(ngModel)]="filter.textSearch" [showCancelButton]="true" 
-     (ionInput)="search($event)" 
-     (ionClear)="clearSearch($event)"
-     (ionCancel)="search($event)"></ion-searchbar>
+    <ion-searchbar mode="ios" placeholder="Search" slot="start" [(ngModel)]="filter.textSearch" [showCancelButton]="true"
+      (ionInput)="search($event)" (ionClear)="clearSearch($event)" (ionCancel)="search($event)"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button small (click)="openSearchModal()">
         <ion-icon size="small" slot="icon-only" name="funnel"></ion-icon>
-      </ion-button>
-      <ion-button small (click)="removeFilter()">
-        <ion-icon size="small" slot="icon-only" name="close"></ion-icon>
       </ion-button>
       <ion-button small [ngClass]="'move-handle'">
         <ion-icon size="small" slot="start" name="move"></ion-icon>
@@ -45,8 +39,13 @@
       </ion-row>-->
       <ion-row>
         <ion-col class="flex-container_">
-            <ion-spinner name="crescent" [hidden]="tsks.length > 0" color="secondary"></ion-spinner>
-          <app-task-item *ngFor="let task of tsks" [task]="task"></app-task-item>
+          <div text-center padding>
+            <ion-text [hidden]="tsks.length > 0">
+              <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
+              <h6 padding [ngStyle]="{ 'opacity': 0.5}">Please Choose a Filter</h6>
+            </ion-text>
+          </div>
+          <app-task-item *ngFor="let task of tsks" [formKey]="formKey" [task]="task"></app-task-item>
         </ion-col>
       </ion-row>
     </ion-grid>

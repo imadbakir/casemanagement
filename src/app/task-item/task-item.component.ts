@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CamundaRestService } from '../camunda-rest.service';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-task-item',
@@ -8,6 +9,7 @@ import { CamundaRestService } from '../camunda-rest.service';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task;
+  @Input() formKey;
   @Output() destoy = new EventEmitter();
   @ViewChild('trigger') input;
   users: any = [
@@ -16,7 +18,7 @@ export class TaskItemComponent implements OnInit {
     { name: 'imad', username: 'imad' }
   ];
 
-  constructor(private camundaService: CamundaRestService, ) { }
+  constructor(private camundaService: CamundaRestService, private event: EventsService) { }
 
   openAssignee() {
     setTimeout(() => {
@@ -33,6 +35,9 @@ export class TaskItemComponent implements OnInit {
 
     }, 100);
 
+  }
+  chooseItem(item) {
+    this.event.announceItem(item);
   }
   complete() {
     // this.task.complete = true;

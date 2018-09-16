@@ -1,6 +1,6 @@
 <ion-split-pane when="(min-width: 1140px)">
   <!--  our side menu  -->
-  <ion-menu menu-id="start" [ngClass]="{'collapse-pane': !panesToggle.start && panesToggle.toggleHack}">
+  <ion-menu menu-id="start">
 
     <ion-toolbar>
 
@@ -13,7 +13,7 @@
         </ion-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button color="dark" clear class="toolbar-round" (click)="presentPopover($event)">
+        <ion-button color="dark" clear class="toolbar-round">
           <ion-icon slot="icon-only" name="settings"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -49,6 +49,20 @@
             </ion-button>
           </ion-buttons>
 
+        </ion-item>
+        <ion-item [ngClass]="{}" (click)="toggleHistory()">
+          <!-- <ion-avatar slot="start">
+                    <img [src]="task.pic">
+                  </ion-avatar>
+                -->
+          <ion-label text-wrap>
+            <ion-text>
+              <h3 appOnCreate>
+                Completed Tasks
+              </h3>
+            </ion-text>
+
+          </ion-label>
         </ion-item>
       </ion-list>
     </ion-content>

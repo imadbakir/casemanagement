@@ -50,6 +50,13 @@ export class CamundaRestService {
       catchError(this.handleError('listFilter', []))
     );
   }
+  listHistory() {
+    const endpoint = `${this.engineRestUrl}history/task?finished=true`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched history`)),
+      catchError(this.handleError('listHistory', []))
+    );
+  }
   getFilterCount(id): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/count`;
     return this.http.get<any>(endpoint).pipe(
@@ -79,6 +86,13 @@ export class CamundaRestService {
     return this.http.post<any>(endpoint, variables).pipe(
       tap(tasks => this.log(`posted complete task`)),
       catchError(this.handleError('postCompleteTask', []))
+    );
+  }
+  putUpdateTask(taskId: String, variables: Object): Observable<any> {
+    const endpoint = `${this.engineRestUrl}task/${taskId}/`;
+    return this.http.put<any>(endpoint, variables).pipe(
+      tap(tasks => this.log(`put task`)),
+      catchError(this.handleError('putUpdateTask', []))
     );
   }
 

@@ -13,6 +13,8 @@ import { GridsterModule } from 'angular-gridster2';
 import { TaskGridComponent } from '../task-grid/task-grid.component';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { SearchModalComponent } from '../search-modal/search-modal.component';
+import { TaskDetailsComponent } from '../task-details/task-details.component';
+import { FormioModule } from 'angular-formio';
 import { MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
 const routes: Routes = [
   {
@@ -30,9 +32,11 @@ const routes: Routes = [
     GridsterModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatAutocompleteModule, MatInputModule
+    MatAutocompleteModule, MatInputModule,
+    FormioModule
   ],
-  entryComponents: [SearchModalComponent, TaskGridComponent, TaskItemComponent],
-  declarations: [AllTasksPage, TasksComponent, OnCreateDirective, GridComponent, TaskGridComponent, TaskItemComponent, SearchModalComponent]
+  entryComponents: [SearchModalComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent],
+  declarations: [AllTasksPage, TasksComponent, OnCreateDirective, GridComponent, TaskGridComponent,
+    TaskItemComponent, SearchModalComponent, TaskDetailsComponent]
 })
 export class AllTasksPageModule { }

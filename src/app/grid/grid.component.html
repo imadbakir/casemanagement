@@ -1,34 +1,35 @@
 <ion-header fixed>
-    <ion-toolbar  [ngClass]="''">
-      <ion-buttons slot="start">
-        <ion-menu-button menu="start"></ion-menu-button>
-      </ion-buttons>
-  
-      <ion-title>Tasks</ion-title>
-  
-      <ion-buttons slot="end">
-        <ion-button color="dark" round end-item slot="icon">
-          <ion-badge color="danger" class="notifications" slot="start">11</ion-badge>
-          <ion-icon name="notifications-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Task
-          <ion-icon slot="start" name="add-circle"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-<gridster [options]="options" [hidden]="dashboard?.length == 0">
-  <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="item" *ngFor="let item of dashboard">
-    <!-- your content here -->
-    <app-task-grid [filterItem]="item.propName"></app-task-grid>
+  <ion-toolbar [ngClass]="''">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="start"></ion-menu-button>
+    </ion-buttons>
 
-  </gridster-item>
-</gridster>
-<div text-center padding [hidden]="dashboard?.length > 0">
-  <ion-text padding margin-top>
-    <ion-icon name="egg" [ngStyle]="{'font-size': '140px','margin-top': '150px'}" color="secondary"></ion-icon>
-    <h5 padding margin [ngStyle]="{ 'opacity': 0.5}">Arrange your workspace the way you like it.</h5>
-  </ion-text>
-</div>
+    <ion-title>Tasks</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button color="dark" round end-item slot="icon">
+        <ion-badge color="danger" class="notifications" slot="start">11</ion-badge>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Task
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <gridster [options]="options">
+    <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="panels.tasks">
+      <!-- your content here  <app-task-grid [filterItem]="item.propName"></app-task-grid>
+        
+ -->
+      <app-task-grid [filterEvent]="filterEvent" [formKey]="formKey" [filterItems]="filters"></app-task-grid>
+
+
+    </gridster-item>
+    <gridster-item ion-card [ngClass]="{'grid-col': true, 'fullscreen': panels.details.fullscreen}" [item]="panels.details">
+      <app-task-details [panels]="panels" [formKey]="formKey"></app-task-details>
+    </gridster-item>
+  </gridster>
+
 </ion-content>

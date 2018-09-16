@@ -1,4 +1,7 @@
-import { Component, OnInit, AfterViewChecked, Input } from '@angular/core';
+import {
+  Component, OnInit, AfterViewChecked, Input, OnChanges, SimpleChanges,
+  IterableDiffers, DoCheck, ChangeDetectionStrategy
+} from '@angular/core';
 import { GridsterConfig, GridsterItem, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
 import { EventsService } from '../events.service';
 import { GridComponent } from '../grid/grid.component';
@@ -9,10 +12,12 @@ import { SearchModalComponent } from '../search-modal/search-modal.component';
 @Component({
   selector: 'app-task-grid',
   templateUrl: './task-grid.component.html',
-  styleUrls: ['./task-grid.component.scss'],
+  styleUrls: ['./task-grid.component.scss']
 })
-export class TaskGridComponent implements OnInit, AfterViewChecked {
-  @Input() filterItem;
+export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
+  @Input() filterItems;
+  @Input() filterEvent;
+  @Input() formKey;
   tsks: any = [];
   filtered: any = [];
   properties: any = ['Name'];
@@ -38,6 +43,7 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
   chosenTask;
   subOptions: GridsterConfig;
   items: Array<GridsterItem>;
+  iterableDiffer;
   static itemChange(item, itemComponent) {
     console.log('itemChanged', item, itemComponent);
   }
@@ -49,10 +55,13 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
 
   }
 
+  ngDoCheck() {
+    console.log(this.filterItems);
+  }
   async openSearchModal() {
     const modal = await this.modalController.create({
       component: SearchModalComponent,
-      componentProps: { filterId: this.filterItem.id }
+      componentProps: { filterId: this.filterItems.id }
     });
     return await modal.present();
   }
@@ -88,9 +97,7 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
 
     }
   }
-  removeFilter() {
-    this.event.announceFilter({ item: this.filterItem, bool: false });
-  }
+
   toggleHack(event) {
     console.log(event);
     if (event.detail.visible === true) {
@@ -169,18 +176,58 @@ export class TaskGridComponent implements OnInit, AfterViewChecked {
   removeItem(item) {
     this.items.splice(this.items.indexOf(item), 1);
   }
+  listArchive(event) {
+    if (event.bool) {
 
-  ListFilter() {
-    if (this.filterItem) {
-      this.camundaService.listFilter(this.filterItem.id).subscribe(data => {
-        this.tasksOrigin = data;
+      this.camundaService.listHistory().subscribe(data => {
         this.tsks = data;
+        this.tasksOrigin = data;
+
+      });
+
+
+    } else {
+      this.camundaService.listHistory().subscribe(data => {
+        data.forEach(entry => this.tasksOrigin.splice(this.tasksOrigin.indexOf(entry), 1));
+        this.tsks = this.tasksOrigin;
+
       });
 
     }
   }
+  ListFilter(event) {
+    if (event.bool) {
+
+      this.camundaService.listFilter(event.item.id).subscribe(data => {
+        console.log(data);
+        data.forEach(entry => this.tasksOrigin.push(entry));
+        this.tsks = this.tasksOrigin;
+
+      });
+
+
+    } else {
+      this.camundaService.listFilter(event.item.id).subscribe(data => {
+        data.forEach(entry => this.tasksOrigin.splice(this.tasksOrigin.indexOf(entry), 1));
+        this.tsks = this.tasksOrigin;
+
+      });
+
+    }
+  }
+
   ngOnInit() {
-    this.ListFilter();
+    this.filterEvent.subscribe(event => {
+      console.log(event);
+      this.ListFilter(event);
+
+    });
+
+    this.event.archiveAnnounced$.subscribe(event => {
+      console.log(event);
+      this.listArchive(event);
+
+    });
   }
   ngAfterViewChecked() {
     // this.resizeAllGridItems();

@@ -35,16 +35,20 @@ export class FilterService {
   }
   public isFilterOpen(filter, returnObj = false) {
     const currentFilterList = this.storage.get(STORAGE_KEY) || [];
-    const temp = currentFilterList.filter(function (item) {
-      return item.propName.id === filter.id;
-    });
-    if (returnObj) {
-      return temp.length > 0 ? temp : false;
+    if (currentFilterList.tasks.filters) {
+      const temp = currentFilterList.tasks.filters.filter(function (item) {
+        return item.id === filter.id;
+      });
+      if (returnObj) {
+        return temp.length > 0 ? temp : false;
+      } else {
+        return temp.length > 0;
+      }
     } else {
-      return temp.length > 0;
+      return false;
     }
   }
   public getFromLocalStorage() {
-    return this.storage.get(STORAGE_KEY) || [];
+    return this.storage.get(STORAGE_KEY) || false;
   }
 }

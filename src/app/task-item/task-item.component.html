@@ -1,5 +1,5 @@
 <div class="flex-item">
-  <ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete}">
+  <ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete}" (click)="chooseItem(task)">
 
 
     <ion-card-content>
@@ -13,13 +13,14 @@
       <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
         <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}
       </ion-badge>
-      <ion-badge mat-raised-button (click)="follow_up.open()" color="light" slot="end" [hidden]="!task.due" [ngClass]="{'date-picker-badge':true ,'due':true}">
+      <ion-badge mat-raised-button (click)="follow_up.open()" color="light" slot="end"  [ngClass]="{'date-picker-badge':true ,'due':true}">
         <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.follow_up ? (task.follow_up
         | date ): 'Follow Up'}}
       </ion-badge>
-      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [hidden]="!task.due"
+      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" 
         [ngClass]="{'date-picker-badge':true ,'due':true}">
-        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due | date}}
+        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due ? (task.due
+          | date ): 'Due'}}
       </ion-badge>
       <input [matDatepicker]="myDatepicker" [(ngModel)]="task.due" hidden>
       <mat-datepicker touchUi #myDatepicker></mat-datepicker>

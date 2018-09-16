@@ -9,12 +9,15 @@ export class EventsService {
   // Observable string sources
   private resizeSource = new BehaviorSubject<object>({});
   private filterSource = new BehaviorSubject<any>({});
+  private archiveSoruce = new BehaviorSubject<any>({});
   private refreshSource = new Subject<string>();
-
+  private itemSource = new BehaviorSubject<object>({});
   // Observable string streams
   refreshAnnounced$ = this.refreshSource.asObservable();
   resizeAnnounced$ = this.resizeSource.asObservable();
   filterAnnounced$ = this.filterSource.asObservable();
+  archiveAnnounced$ = this.archiveSoruce.asObservable();
+  itemChange$ = this.itemSource.asObservable();
 
   // Service message commands
   announceRefresh(data: string) {
@@ -26,5 +29,11 @@ export class EventsService {
   }
   announceFilter(filter) {
     this.filterSource.next(filter);
+  }
+  announceArchive(archive) {
+    this.archiveSoruce.next(archive);
+  }
+  announceItem(item) {
+    this.itemSource.next(item);
   }
 }

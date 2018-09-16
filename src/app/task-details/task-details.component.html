@@ -1,0 +1,40 @@
+<ion-header override>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button small [ngClass]="'move-handle'">
+        <ion-icon size="small" slot="start" name="move"></ion-icon>
+      </ion-button>
+      <ion-button small (click)="toggleFullScreen()">
+        <ion-icon size="small" slot="icon-only" name="expand" [hidden]="panels.details.fullscreen"></ion-icon>
+        <ion-icon size="small" slot="icon-only" name="contract" [hidden]="!panels.details.fullscreen"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" round end-item slot="icon">
+        <ion-badge color="danger" class="notifications" slot="start">4</ion-badge>
+        <ion-icon name="chatbubbles"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-scroll>
+    <div text-center padding [hidden]="task?.id">
+      <ion-text>
+        <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
+        <h6 padding [ngStyle]="{ 'opacity': 0.5}">Please Choose a Task</h6>
+
+      </ion-text>
+
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <formio src="https://jwcdiijtgujrnzb.form.io/task" [readOnly]="readOnly()" [refresh]="refreshForm" (submit)="onSubmit($event)" [submission]='{data: task}' [hidden]="!task?.id"></formio>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-scroll>
+</ion-content>

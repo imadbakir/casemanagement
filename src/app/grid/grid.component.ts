@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { GridsterConfig, GridsterItem, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
 import { EventsService } from '../events.service';
 import { FilterService } from '../filter.service';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-grid',
@@ -9,10 +11,16 @@ import { FilterService } from '../filter.service';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-  static resizeSource: EventEmitter<object> = new EventEmitter();
+  filterEvent: Subject<any> = new Subject();
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+  panels = {
+    tasks: { x: 0, y: 0, cols: 2, rows: 4, filters: [] },
+    details: { x: 2, y: 0, cols: 4, rows: 4, fullscreen: false },
+  };
+  filters = [];
   previousItem = null;
+  formKey = '';
   static itemChange(item, itemComponent) {
     console.log('itemChanged', item, itemComponent);
   }
@@ -22,37 +30,41 @@ export class GridComponent implements OnInit {
 
 
   constructor(public event: EventsService, public filterStorage: FilterService) {
-
   }
 
   changedOptions() {
     this.options.api.optionsChanged();
-    alert(1);
   }
 
   removeItem(filterItem) {
-    const temp = this.dashboard.filter(function (item) {
-      return item.propName.id === filterItem.id;
+    const temp = this.filters.filter(function (item) {
+      return item.id === filterItem.id;
     })[0];
-    this.dashboard.splice(this.dashboard.indexOf(temp), 1);
-   // this.filterStorage.deleteFromLocalStorage(filterItem);
-   this.filterStorage.updateAllStorage(this.dashboard);
+    this.filters.splice(this.filters.indexOf(temp), 1);
+    this.filterEvent.next({ item: filterItem, bool: false });
+    this.filters = [].concat(this.filters);
+    // this.filterStorage.deleteFromLocalStorage(filterItem);
+    this.panels.tasks.filters = this.filters;
+    this.filterStorage.updateAllStorage(this.panels);
 
   }
 
   addItem(filterItem) {
-    let x;
-    if (this.previousItem) {
-      x = this.previousItem.x + this.previousItem.cols;
-    } else {
-      x = 0;
-
-    }
-    const item = { x: x, y: 0, cols: 2, rows: 2, propName: filterItem };
-    this.dashboard.push(item);
-    this.previousItem = item;
+    this.filters.push(filterItem);
     // this.filterStorage.storeOnLocalStorage(item);
-    this.filterStorage.updateAllStorage(this.dashboard);
+    /* this.panels.tasks = { x: this.panels.tasks.x, y: this.panels.tasks.y,
+      cols: this.panels.tasks.cols, rows: this.panels.tasks.rows, filters: this.panels.tasks.filters };
+      */
+    this.filters = [].concat(this.filters);
+    this.filterEvent.next({ item: filterItem, bool: true });
+    this.panels.tasks.filters = this.filters;
+
+    this.filterStorage.updateAllStorage(this.panels);
+
+  }
+  restoreItems() {
+    this.filters = this.panels.tasks.filters;
+    this.filters.forEach(item => this.filterEvent.next({ item: item, bool: true }));
 
   }
 
@@ -78,12 +90,12 @@ export class GridComponent implements OnInit {
       keepFixedHeightInMobile: false,
       keepFixedWidthInMobile: false,
       mobileBreakpoint: 640,
-      maxCols: 4,
+      maxCols: 6,
       maxRows: 4,
-      maxItemCols: 2,
-      minItemCols: 1,
+      maxItemCols: 4,
+      minItemCols: 2,
       maxItemRows: 4,
-      minItemRows: 2,
+      minItemRows: 4,
       maxItemArea: 2500,
       minItemArea: 1,
       draggable: {
@@ -93,20 +105,22 @@ export class GridComponent implements OnInit {
       },
       resizable: {
         enabled: true,
-        handles: { s: true, e: true, n: true, w: true, se: true, ne: true, sw: true, nw: true }
+        handles: { s: false, e: true, n: false, w: true, se: false, ne: false, sw: false, nw: false }
       },
       swap: true,
       pushItems: true,
       disablePushOnDrag: false,
       disablePushOnResize: false,
-      pushResizeItems: false,
+      pushResizeItems: true,
       displayGrid: DisplayGrid.None,
       disableWindowResize: false,
       disableWarnings: false,
       scrollToNewItems: false
     };
     setTimeout(() => {
-      this.dashboard = this.filterStorage.getFromLocalStorage();
+      // tslint:disable-next-line:max-line-length
+      this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
+      this.restoreItems();
     }, 1000);
   }
 
