@@ -139,7 +139,7 @@ export class GridComponent implements OnInit {
       // tslint:disable-next-line:max-line-length
       this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
       this.restoreItems();
-    }, 1000);
+    }, 1500);
   }
 
 }
