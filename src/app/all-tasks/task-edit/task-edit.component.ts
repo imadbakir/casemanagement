@@ -51,8 +51,8 @@ export class TaskEditComponent implements OnInit, OnDestroy {
               console.log(submission);
               if (submission.data.completed === true) {
                 this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
+                  this.events.announceItem({ taskId: this.task.id, complete: true });
                   this.router.navigate(['tasks']);
-                  this.events.announceItem({ taskId: this.task.id, data: { complete: true } });
                 });
               } else {
                 this.events.announceRefresh('tasks');

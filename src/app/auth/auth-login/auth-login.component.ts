@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RemoteServiceProvider } from '../../remote.service';
 import { TaskOptionsComponent } from '../../task-options/task-options.component';
 import { PopoverController } from '@ionic/angular';
-import { KeysPipe } from '../../keys.pipe';
 import { IonicModule } from '@ionic/angular';
 import { FormioAuthLoginComponent, FormioAuthService } from 'angular-formio/auth';
 
@@ -12,7 +11,6 @@ import { FormioAuthLoginComponent, FormioAuthService } from 'angular-formio/auth
   selector: 'app-auth-login',
   templateUrl: './auth-login.component.html',
   styleUrls: ['./auth-login.component.scss'],
-  providers: [KeysPipe]
 })
 export class AuthLoginComponent extends FormioAuthLoginComponent {
   tsks: any = [];

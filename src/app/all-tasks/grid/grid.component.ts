@@ -27,7 +27,6 @@ export class GridComponent implements OnInit {
     console.log('itemChanged', item, itemComponent);
   }
   onResize(item, itemComponent) {
-    // GridComponent.resizeSource.emit(item);
   }
 
 
@@ -75,7 +74,7 @@ export class GridComponent implements OnInit {
 
   ngOnInit() {
     this.event.refreshAnnounced$.subscribe(data => {
-      this.restoreItems();
+      // this.restoreItems();
     });
 
     this.router.events.subscribe((event) => {

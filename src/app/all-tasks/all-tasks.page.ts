@@ -54,9 +54,7 @@ export class AllTasksPage  implements OnInit, OnDestroy {
   toggleFilter(item, bool) {
     this.event.announceFilter({ item: item, bool: bool });
   }
-  toggleHistory(item, bool = true) {
-    this.event.announceArchive({ archive: true, item: item, bool: bool });
-  }
+
   ngOnInit() {
     this.camundaService.getTasks().subscribe(data => { console.log(data); });
     this.camundaService.getFilters().subscribe(data => {

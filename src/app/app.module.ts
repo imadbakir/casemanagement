@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TasksComponent } from './tasks/tasks.component';
 import { TaskOptionsComponent } from './task-options/task-options.component';
 import { RemoteServiceProvider } from './remote.service';
 import { FormioModule, FormioAppConfig } from 'angular-formio';

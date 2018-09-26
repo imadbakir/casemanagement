@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
-import { TaskModule } from './task/task.module';
 const routes: Routes = [
   {
     path: '',

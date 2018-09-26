@@ -11,7 +11,7 @@ export class EventsService {
   private filterSource = new BehaviorSubject<any>({});
   private archiveSoruce = new BehaviorSubject<any>({});
   private refreshSource = new Subject<string>();
-  private itemSource = new BehaviorSubject<object>({});
+  private itemSource = new BehaviorSubject<any>({});
   // Observable string streams
   refreshAnnounced$ = this.refreshSource.asObservable();
   resizeAnnounced$ = this.resizeSource.asObservable();

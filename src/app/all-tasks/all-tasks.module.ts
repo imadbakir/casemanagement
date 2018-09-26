@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AllTasksPage } from './all-tasks.page';
-import { TasksComponent } from '../tasks/tasks.component';
 import { GridComponent } from './grid/grid.component';
 import { OnCreateDirective } from '../on-create.directive';
 import { GridsterModule } from 'angular-gridster2';
@@ -29,7 +28,6 @@ import { TaskViewComponent } from './task-view/task-view.component';
 import { TaskIndexComponent } from './task-index/task-index.component';
 import { IonicRouteStrategy } from '@ionic/angular';
 
-import { KeysPipe } from '../keys.pipe';
 import { EventsService } from '../events.service';
 import { ResourceService } from '../resource.service';
 
@@ -62,7 +60,7 @@ const routes: Routes = [
     TaskEditComponent,
     TaskCreateComponent, TaskViewComponent, TaskIndexComponent],
   declarations: [TaskEditComponent, TaskViewComponent,
-    TaskCreateComponent, TaskIndexComponent, AllTasksPage, TasksComponent, OnCreateDirective, GridComponent, TaskGridComponent,
+    TaskCreateComponent, TaskIndexComponent, AllTasksPage, OnCreateDirective, GridComponent, TaskGridComponent,
     TaskItemComponent, TaskDetailsComponent],
   providers: [
     FormioResourceService,

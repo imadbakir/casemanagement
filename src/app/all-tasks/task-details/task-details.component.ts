@@ -27,6 +27,7 @@ export class TaskDetailsComponent implements OnInit {
     });
   }
   completeTask() {
+    // for test
     this.event.announceItem({ taskId: '521b38f1-beaf-11e8-b81f-0eac374867d4',  complete: true  });
   }
   readOnly() {
