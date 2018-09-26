@@ -1,0 +1,36 @@
+<ion-header override>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button small (ionFocus)="panels.details.open" [routerLink]="['/tasks']"   [ngClass]="'move-handle visible-xs'">
+        <ion-icon size="medium" slot="start" name="close"></ion-icon>
+      </ion-button>
+      <ion-button small [ngClass]="'move-handle hide-xs'">
+        <ion-icon size="small" slot="start" name="move"></ion-icon>
+      </ion-button>
+      <ion-button [ngClass]="'hide-xs'" small (click)="toggleFullScreen()">
+        <ion-icon size="small" slot="icon-only" name="expand" [hidden]="panels.details.fullscreen"></ion-icon>
+        <ion-icon size="small" slot="icon-only" name="contract" [hidden]="!panels.details.fullscreen"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" round end-item slot="icon">
+        <ion-badge color="danger" class="notifications" slot="start">4</ion-badge>
+        <ion-icon name="chatbubbles"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-scroll>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <router-outlet></router-outlet>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-scroll>
+</ion-content>

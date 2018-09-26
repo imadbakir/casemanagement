@@ -50,7 +50,21 @@ export class CamundaRestService {
       catchError(this.handleError('listFilter', []))
     );
   }
+  getVariableInstanceByExecutionId(executionId) {
+    const endpoint = `${this.engineRestUrl}history/variable-instance?executionIdIn=${executionId}`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched history`)),
+      catchError(this.handleError('listHistory', []))
+    );
+  }
   listHistory() {
+    const endpoint = `${this.engineRestUrl}history/task?finished=true`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched history`)),
+      catchError(this.handleError('listHistory', []))
+    );
+  }
+  clearHistory() {
     const endpoint = `${this.engineRestUrl}history/task?finished=true`;
     return this.http.get<any>(endpoint).pipe(
       tap(form => this.log(`fetched history`)),
@@ -70,6 +84,43 @@ export class CamundaRestService {
     return this.http.get<any>(endpoint).pipe(
       tap(form => this.log(`fetched taskform`)),
       catchError(this.handleError('getTaskFormKey', []))
+    );
+  }
+
+  getTask(taskId: String): Observable<any> {
+    const endpoint = `${this.engineRestUrl}task/${taskId}`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched Task`)),
+      catchError(this.handleError('getTask', []))
+    );
+  }
+  getExecutionVariables(executionId: String): Observable<any> {
+    const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched ExecutionVariables`)),
+      catchError(this.handleError('getExecutionVariables', []))
+    );
+  }
+  modifyExecutionVariables(executionId: String, variables: Object): Observable<any> {
+    const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables`;
+    return this.http.post<any>(endpoint, variables).pipe(
+      tap(form => this.log(`posted ExecutionVariables`)),
+      catchError(this.handleError('modifyExecutionVariables', []))
+    );
+  }
+
+  updateExecutionVariables(executionId: String, variableName: String, variables: Object): Observable<any> {
+    const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}`;
+    return this.http.put<any>(endpoint, variables).pipe(
+      tap(form => this.log(`posted ExecutionVariables`)),
+      catchError(this.handleError('modifyExecutionVariables', []))
+    );
+  }
+  deleteExecutionVariables(executionId: String, variableName: String): Observable<any> {
+    const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}`;
+    return this.http.delete<any>(endpoint).pipe(
+      tap(form => this.log(`posted ExecutionVariables`)),
+      catchError(this.handleError('modifyExecutionVariables', []))
     );
   }
 

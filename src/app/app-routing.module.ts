@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { CustomerModule } from './customer/customer.module';
+import { TaskModule } from './task/task.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'all-tasks',
+    redirectTo: 'tasks',
     pathMatch: 'full'
   },
   {
@@ -18,8 +18,7 @@ const routes: Routes = [
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
-  { path: 'all-tasks', loadChildren: './all-tasks/all-tasks.module#AllTasksPageModule' },
-  { path: 'customer', loadChildren: () => CustomerModule },
+  { path: 'tasks', loadChildren: './all-tasks/all-tasks.module#AllTasksPageModule' },
   {
     path: 'auth',
     loadChildren: () => AuthModule

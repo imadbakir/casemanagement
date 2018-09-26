@@ -1,12 +1,14 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { ItemSliding, PopoverController, MenuController } from '@ionic/angular';
 import { RemoteServiceProvider } from '../remote.service';
 import { TaskOptionsComponent } from '../task-options/task-options.component';
 import { CamundaRestService } from '../camunda-rest.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GridsterConfig, GridsterItem, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
 import { EventsService } from '../events.service';
 import { FilterService } from '../filter.service';
+import { FormioResourceComponent, FormioResourceService } from 'angular-formio/resource';
+import { FormioAuthService } from 'angular-formio/auth';
 
 @Component({
   selector: 'app-all-tasks',
@@ -16,7 +18,7 @@ import { FilterService } from '../filter.service';
 
 
 
-export class AllTasksPage implements OnInit {
+export class AllTasksPage  implements OnInit, OnDestroy {
 
   auth: any = {
     user: { data: { name: 'Ahmad Arksousi', username: 'ahmad' } }
@@ -25,7 +27,9 @@ export class AllTasksPage implements OnInit {
 
   filterClicked: EventEmitter<String> = new EventEmitter();
   constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider, public event: EventsService,
-    private camundaService: CamundaRestService, private router: Router, private menu: MenuController, public filterStorage: FilterService) {
+    private camundaService: CamundaRestService, private router: Router, private menu: MenuController, public filterStorage: FilterService
+    , public eventService: EventsService,
+    public authz: FormioAuthService, public service: FormioResourceService, public route: ActivatedRoute) {
 
   }
 
@@ -59,6 +63,26 @@ export class AllTasksPage implements OnInit {
       this.filters = data;
     });
 
+  }
+  async presentPopover(myEvent, id) {
+    myEvent.stopPropagation();
+    const popover = await this.popoverCtrl.create({
+      component: TaskOptionsComponent,
+      componentProps: { id: id },
+      event: myEvent
+    });
+    return await popover.present();
+  }
+
+  announceRefresh() {
+    this.eventService.announceRefresh('refresh');
+  }
+  ngOnDestroy(): void {
+    this.service.refresh.emit({
+      property: 'submission',
+      value: this.service.resource
+    });
+    this.announceRefresh();
   }
 
 }

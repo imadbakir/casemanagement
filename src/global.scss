@@ -61,7 +61,7 @@
   border-right: 1px solid var(--list-ios-border-color);
 }
 
-@media (min-width: 1140px) {
+@media (min-width: 1550px) {
   ion-header[fixed] {
     ion-toolbar {
       margin: 0;
@@ -112,4 +112,15 @@
 
 .note-md {
   color: #777777;
+}
+.visible-xs{
+  display:none;
+}
+@media (max-width:780px){
+  .hide-xs{
+    display: none;
+  }
+  .visible-xs{
+    display: block;
+  }
 }
