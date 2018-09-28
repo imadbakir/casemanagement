@@ -140,12 +140,18 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
     }
     setTimeout(() => {
-      Formio.createForm(document.getElementById('formio'), this.service.form, { language: 'en' }).then(form => {
+      const currentLang = this.translate.currentLang;
+      Formio.createForm(document.getElementById('formio'), this.service.form, { language: currentLang }).then(form => {
         form.onSubmit = this.onSubmit(form.submission);
         form.submission = this.service.resource;
         form.disabled = this.task.disabled;
         console.log(this.service.resource);
-        console.log(form);
+        this.translate.getTranslation(currentLang).subscribe(data => {
+          form.i18next.options.resources[currentLang] = {
+            translation: data
+          };
+          form.language = currentLang;
+        });
         this.translate.onLangChange.subscribe(data => {
           console.log(data); console.log('--');
           form.i18next.options.resources[data.lang] = {

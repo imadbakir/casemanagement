@@ -157,11 +157,11 @@ export class GridComponent implements OnInit {
     };
     setTimeout(() => {
       // tslint:disable-next-line:max-line-length
-      // this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
+      this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
       this.restoreItems();
       this.panels.details.open = false;
       this.options.api.resize();
-    }, 1000);
+    }, 1200);
   }
 
 }

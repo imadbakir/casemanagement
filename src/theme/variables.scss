@@ -2,10 +2,10 @@
 // http://ionicframework.com/docs/theming/
 /** Ionic CSS Variables **/
 html[dir="rtl"] {
-  --font-family-md-base: 'Tajawal', sans-serif;
-  --font-family-ios-base: 'Tajawal', sans-serif;
-  --font-family-wp-base: 'Tajawal', sans-serif;
-  --ion-font-family: 'Tajawal', sans-serif !important;
+  --font-family-md-base: 'Cairo', sans-serif;
+  --font-family-ios-base: 'Cairo', sans-serif;
+  --font-family-wp-base: 'Cairo', sans-serif;
+  --ion-font-family: 'Cairo', sans-serif !important;
 
   body {
     text-align: right;
@@ -92,8 +92,8 @@ html[dir="rtl"] {
 
 
   @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700');
-  @import url('https://fonts.googleapis.com/css?family=Tajawal:400,500,700&subset=arabic');
-  --font-family-md-base: "Ubuntu";
+  @import url('https://fonts.googleapis.com/css?family=Cairo:400,700&subset=arabic');
+    --font-family-md-base: "Ubuntu";
   --font-family-ios-base: "Ubuntu";
   --font-family-wp-base: "Ubuntu";
   --ion-font-family: "Ubuntu" !important;
