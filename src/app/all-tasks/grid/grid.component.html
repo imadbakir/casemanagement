@@ -4,14 +4,17 @@
       <ion-menu-button menu="start"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Tasks</ion-title>
+    <ion-title>{{'Tasks' | translate}}</ion-title>
 
     <ion-buttons slot="end">
+        <ion-button color="dark" (click)="setLanguage(translate.currentLang == 'ar' ? 'en' : 'ar')">
+          {{translate.currentLang == 'ar' ? 'English' : 'Arabic' |  translate}}
+          </ion-button>
       <ion-button color="dark" round end-item slot="icon">
         <ion-badge color="danger" class="notifications" slot="start">11</ion-badge>
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
-      <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Task
+      <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">{{'Add Task' | translate}}
         <ion-icon slot="start" name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,7 +22,7 @@
 </ion-header>
 <ion-content>
   <div [ngClass]="'padding'">
-    <gridster [options]="options">
+    <gridster [options]="options" dir="ltr">
       <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="panels.tasks">
         <!-- your content here  <app-task-grid [filterItem]="item.propName"></app-task-grid>
         

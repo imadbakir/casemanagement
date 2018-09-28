@@ -14,7 +14,8 @@ import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { FormioModule } from 'angular-formio';
 import { MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
-
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RouteReuseStrategy } from '@angular/router';
 import {
   FormioResource,
@@ -30,6 +31,7 @@ import { IonicRouteStrategy } from '@ionic/angular';
 
 import { EventsService } from '../events.service';
 import { ResourceService } from '../resource.service';
+import { HttpClient } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -41,6 +43,9 @@ const routes: Routes = [
     ]
   }
 ];
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -54,6 +59,13 @@ const routes: Routes = [
     FormioModule,
     FormioResource,
     RouterModule.forChild(routes),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
 
   ],
   entryComponents: [TaskGridComponent, TaskItemComponent, TaskDetailsComponent,

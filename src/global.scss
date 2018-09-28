@@ -2,16 +2,24 @@
 @import "~bootswatch/dist/yeti/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/yeti/bootswatch";
+
+@import "~@ionic/angular/css/core.css";
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import "~@ionic/angular/css/colors.css";
+
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@ionic/angular/css/global.bundle.css";
+@import "~@ionic/angular/css/ionic.bundle.css";
+@import "~@ionic/angular/css/utils.bundle.css";
+
+$app-direction: multi;
 
 .popover {
   max-width: none;

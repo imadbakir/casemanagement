@@ -5,6 +5,7 @@ import { FilterService } from '../../filter.service';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-grid',
@@ -33,9 +34,28 @@ export class GridComponent implements OnInit {
   constructor(public event: EventsService,
     public filterStorage: FilterService,
     private router: Router,
-    private route: ActivatedRoute) {
-  }
+    private route: ActivatedRoute,
+    public translate: TranslateService) {
 
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('en');
+  }
+  setLanguage(lang) {
+    this.translate.use(lang);
+    const dir = this.translate.get('dir').subscribe(data => {
+      document.documentElement.setAttribute('dir', data);
+    });
+    const directions = document.getElementsByClassName('correct-dir');
+
+    /*
+     directions.array.forEach(element => {
+       element.setAttribute('dir', dir);
+     });
+     */
+  }
   changedOptions() {
     this.options.api.optionsChanged();
   }
@@ -137,11 +157,11 @@ export class GridComponent implements OnInit {
     };
     setTimeout(() => {
       // tslint:disable-next-line:max-line-length
-      this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
+      // this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
       this.restoreItems();
       this.panels.details.open = false;
-
-    }, 1500);
+      this.options.api.resize();
+    }, 1000);
   }
 
 }

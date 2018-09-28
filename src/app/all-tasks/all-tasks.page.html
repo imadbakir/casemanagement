@@ -8,7 +8,7 @@
         <!--<ion-button color="dark" clear class="toolbar-round" [hidden]="!panesToggle.toggleHack" (click)="toggleMenu('start')">
           <ion-icon slot="icon-only" name="menu"></ion-icon>
         </ion-button>-->
-        <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">Add Filter
+        <ion-button color="secondary" solid round end-item icon-end class="toolbar-round">{{"Add Filter" | translate}}
           <ion-icon slot="start" name="add-circle"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -50,7 +50,21 @@
           </ion-buttons>
 
         </ion-item>
-       
+        <!--  <ion-item  (click)="toggleHistory()">
+         <ion-avatar slot="start">
+                    <img [src]="task.pic">
+                  </ion-avatar>
+                
+          <ion-label text-wrap>
+            <ion-text>
+              <h3 appOnCreate>
+                Completed Tasks
+              </h3>١
+            </ion-text>
+
+          </ion-label>
+        </ion-item>
+        -->
       </ion-list>
     </ion-content>
   </ion-menu>

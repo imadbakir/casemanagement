@@ -9,6 +9,7 @@ import { EventsService } from '../events.service';
 import { FilterService } from '../filter.service';
 import { FormioResourceComponent, FormioResourceService } from 'angular-formio/resource';
 import { FormioAuthService } from 'angular-formio/auth';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-tasks',
@@ -18,7 +19,7 @@ import { FormioAuthService } from 'angular-formio/auth';
 
 
 
-export class AllTasksPage  implements OnInit, OnDestroy {
+export class AllTasksPage implements OnInit, OnDestroy {
 
   auth: any = {
     user: { data: { name: 'Ahmad Arksousi', username: 'ahmad' } }
@@ -28,7 +29,7 @@ export class AllTasksPage  implements OnInit, OnDestroy {
   filterClicked: EventEmitter<String> = new EventEmitter();
   constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider, public event: EventsService,
     private camundaService: CamundaRestService, private router: Router, private menu: MenuController, public filterStorage: FilterService
-    , public eventService: EventsService,
+    , public eventService: EventsService, public translate: TranslateService,
     public authz: FormioAuthService, public service: FormioResourceService, public route: ActivatedRoute) {
 
   }
@@ -54,7 +55,9 @@ export class AllTasksPage  implements OnInit, OnDestroy {
   toggleFilter(item, bool) {
     this.event.announceFilter({ item: item, bool: bool });
   }
-
+  toggleHistory() {
+    this.event.announceArchive({ archive: true, item: '', bool: true });
+  }
   ngOnInit() {
     this.camundaService.getTasks().subscribe(data => { console.log(data); });
     this.camundaService.getFilters().subscribe(data => {

@@ -24,12 +24,7 @@ export class TaskItemComponent implements OnInit {
     private camundaService: CamundaRestService, private event: EventsService) { }
 
   async presentLoading() {
-    const loading = await this.loadingController.create({
-      spinner: 'hide',
-      duration: 5000,
-      content: 'loading',
-      translucent: true
-    });
+    const loading = await this.loadingController.create({});
     return await loading.present();
   }
   getTaskExecutionVariable(task) {

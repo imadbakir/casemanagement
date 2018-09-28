@@ -1,5 +1,4 @@
-<formio  [form]="service.form" [readOnly]="task.disabled" *ngIf="task"
-  [submission]="service.resource" [refresh]="service.refresh" [hideComponents]="config.parents" [error]="onError" (submit)="onSubmit($event)"></formio>
+<formio id="formio"></formio>
 <div text-center padding *ngIf="!task">
   <ion-text>
     <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
@@ -8,3 +7,8 @@
   </ion-text>
 
 </div>
+<!-- 
+  <formio  [form]="service.form" [readOnly]="task.disabled" *ngIf="task"
+  [submission]="service.resource" [refresh]="service.refresh" [hideComponents]="config.parents" [error]="onError" (submit)="onSubmit($event)"></formio>
+
+-->

@@ -13,6 +13,12 @@ import { CamundaRestService } from '../../camunda-rest.service';
 import { LoadingController } from '@ionic/angular';
 import { FormioService, FormioAppConfig } from 'angular-formio';
 import { ResourceService } from '../../resource.service';
+import { Formio } from 'formiojs';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+
+declare global {
+  interface Window { setLanguage: any; }
+}
 @Component({
   selector: 'app-task-edit',
   templateUrl: './task-edit.component.html',
@@ -33,8 +39,10 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     private eventService: EventsService,
     private camundaService: CamundaRestService,
     private loadingController: LoadingController,
+    public translate: TranslateService,
   ) {
     //
+
   }
 
   announceRefresh() {
@@ -46,7 +54,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
       .save(submission)
       .then((data) => {
         if (!this.task.disabled) {
-          this.camundaService.updateExecutionVariables(this.task.executionId, 'task',
+          this.camundaService.updateExecutionVariables(this.task.executionId, this.task.formKey,
             { value: data._id, type: 'String' }).subscribe(() => {
               console.log(submission);
               if (submission.data.completed === true) {
@@ -67,10 +75,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
   async presentLoading() {
-    const loading = await this.loadingController.create({
-      content: 'loading',
-      translucent: true
-    });
+    const loading = await this.loadingController.create({});
     return await loading.present();
   }
   getTaskExecutionVariable(task) {
@@ -87,7 +92,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
   }
   ngOnInit() {
-    // this.presentLoading();
     this.task.id = this.route.snapshot.params.taskId;
     this.task.deleteReason = this.route.snapshot.params.deleteReason;
     this.task.executionId = this.route.snapshot.params.executionId;
@@ -135,5 +139,24 @@ export class TaskEditComponent implements OnInit, OnDestroy {
       // this.loadingController.dismiss();
 
     }
+    setTimeout(() => {
+      Formio.createForm(document.getElementById('formio'), this.service.form, { language: 'en' }).then(form => {
+        form.onSubmit = this.onSubmit(form.submission);
+        form.submission = this.service.resource;
+        form.disabled = this.task.disabled;
+        console.log(this.service.resource);
+        console.log(form);
+        this.translate.onLangChange.subscribe(data => {
+          console.log(data); console.log('--');
+          form.i18next.options.resources[data.lang] = {
+            translation: data.translations
+          };
+          form.language = data.lang;
+        });
+
+
+
+      });
+    }, 1300);
   }
 }

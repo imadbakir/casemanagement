@@ -34,8 +34,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     IonicModule.forRoot({
       mode: 'md',
       backButtonText: '',
-      iconMode: 'ios',
-      pageTransition: 'ios-transition',
       menuType: 'overlay',
       backButtonIcon: 'ios-arrow-back'
     }),

@@ -15,7 +15,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-scroll>
     <ion-grid no-padding>
       <!-- <ion-row>
 
@@ -42,14 +41,13 @@
           <div text-center padding  [hidden]="tsks.length > 0">
             <ion-text>
               <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
-              <h6 padding [ngStyle]="{ 'opacity': 0.5}">Please Choose a Filter</h6>
+              <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"Please Choose a Filter" | translate}}</h6>
             </ion-text>
           </div>
           <app-task-item *ngFor="let task of tsks" [task]="task"></app-task-item>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-scroll>
 </ion-content>
 <!-- 
   <gridster [options]="subOptions">
