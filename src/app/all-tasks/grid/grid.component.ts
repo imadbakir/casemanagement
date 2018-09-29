@@ -41,20 +41,51 @@ export class GridComponent implements OnInit {
     translate.setDefaultLang('en');
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('en');
+    this.translate.use('en');
+    translate.get('dir').subscribe(data => {
+      const dir = data;
+      this.fixDom(dir);
+    });
   }
   setLanguage(lang) {
     this.translate.use(lang);
-    const dir = this.translate.get('dir').subscribe(data => {
+    let dir = 'ltr';
+    this.translate.get('dir').subscribe(data => {
+      dir = data;
       document.documentElement.setAttribute('dir', data);
+
+      const tasksX = this.panels.tasks.x;
+      if (dir === 'rtl') {
+        this.panels.tasks.x = this.panels.details.cols;
+        this.panels.details.x = 0;
+      } else {
+        this.panels.details.x = this.panels.tasks.cols;
+        this.panels.tasks.x = 0;
+      }
+
+      this.options.api.optionsChanged();
+      this.fixDom(dir);
     });
-    const directions = document.getElementsByClassName('correct-dir');
 
     /*
      directions.array.forEach(element => {
        element.setAttribute('dir', dir);
      });
      */
+  }
+  fixDom(dir) {
+    const columns = document.getElementsByClassName('formio-component-columns');
+    const choices = document.getElementsByClassName('choices');
+    const headers = document.getElementsByClassName('header');
+    for (let i = 0; i < columns.length; i++) {
+      columns[i].setAttribute('dir', dir);
+    }
+    for (let i = 0; i < choices.length; i++) {
+      choices[i].setAttribute('dir', dir);
+    }
+    for (let i = 0; i < headers.length; i++) {
+      headers[i].setAttribute('dir', dir);
+    }
   }
   changedOptions() {
     this.options.api.optionsChanged();

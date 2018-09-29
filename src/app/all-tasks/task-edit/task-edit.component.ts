@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { FormioAuthService } from 'angular-formio/auth';
 import {
@@ -11,7 +11,7 @@ import FormioUtils from 'formiojs/utils';
 import { EventsService } from '../../events.service';
 import { CamundaRestService } from '../../camunda-rest.service';
 import { LoadingController } from '@ionic/angular';
-import { FormioService, FormioAppConfig } from 'angular-formio';
+import { FormioService, FormioAppConfig, FormioModule } from 'angular-formio';
 import { ResourceService } from '../../resource.service';
 import { Formio } from 'formiojs';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -19,6 +19,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 declare global {
   interface Window { setLanguage: any; }
 }
+
 @Component({
   selector: 'app-task-edit',
   templateUrl: './task-edit.component.html',
@@ -26,6 +27,7 @@ declare global {
 
 })
 export class TaskEditComponent implements OnInit, OnDestroy {
+  @ViewChild('formio') formioElement;
   task: any = {};
   submission = {};
   onError = new EventEmitter();
@@ -141,8 +143,12 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     }
     setTimeout(() => {
       const currentLang = this.translate.currentLang;
-      Formio.createForm(document.getElementById('formio'), this.service.form, { language: currentLang }).then(form => {
-        form.onSubmit = this.onSubmit(form.submission);
+     /* Formio.createForm(this.formioElement.formio, this.service.form, { language: currentLang }).then(form => {
+        console.log(form);
+        console.log(this.formioElement);
+        this.formioElement.formio.subscribe(data => {
+          alert(1);
+        });
         form.submission = this.service.resource;
         form.disabled = this.task.disabled;
         console.log(this.service.resource);
@@ -162,7 +168,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
 
 
-      });
+      }); */
     }, 1300);
   }
 }

@@ -24,7 +24,7 @@
         <div class="photo-container"></div>
         <h6 padding>{{auth.user?.data.name}}</h6>
       </div>
-      <ion-searchbar mode="ios"></ion-searchbar>
+      <ion-searchbar [placeholder]="'Search' | translate" mode="ios"></ion-searchbar>
 
       <ion-list lines="full">
         <ion-item *ngFor="let filter of filters" [disabled]="filter.count == 0" [ngClass]="{'selected-green': filterStorage.isFilterOpen(filter)}"

@@ -32,6 +32,7 @@ import { IonicRouteStrategy } from '@ionic/angular';
 import { EventsService } from '../events.service';
 import { ResourceService } from '../resource.service';
 import { HttpClient } from '@angular/common/http';
+import { AppFormioComponent } from '../formio/formio.component';
 
 
 const routes: Routes = [
@@ -68,10 +69,10 @@ export function createTranslateLoader(http: HttpClient) {
     })
 
   ],
-  entryComponents: [TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
+  entryComponents: [AppFormioComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
     TaskEditComponent,
     TaskCreateComponent, TaskViewComponent, TaskIndexComponent],
-  declarations: [TaskEditComponent, TaskViewComponent,
+  declarations: [TaskEditComponent, TaskViewComponent, AppFormioComponent,
     TaskCreateComponent, TaskIndexComponent, AllTasksPage, OnCreateDirective, GridComponent, TaskGridComponent,
     TaskItemComponent, TaskDetailsComponent],
   providers: [

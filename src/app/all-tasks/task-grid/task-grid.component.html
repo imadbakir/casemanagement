@@ -1,7 +1,7 @@
 <ion-header override>
 
   <ion-toolbar>
-    <ion-searchbar mode="ios" placeholder="Search" slot="start" [(ngModel)]="filter.textSearch" [showCancelButton]="true"
+    <ion-searchbar mode="ios"  [placeholder]="'Search' | translate" slot="start" [(ngModel)]="filter.textSearch" [showCancelButton]="true"
       (ionInput)="search($event)" (ionClear)="clearSearch($event)" (ionCancel)="search($event)"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button small >

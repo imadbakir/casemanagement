@@ -23,7 +23,7 @@
 <ion-content>
   <div [ngClass]="'padding'">
     <gridster [options]="options" dir="ltr">
-      <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="panels.tasks">
+      <gridster-item ion-card  [ngClass]="{'grid-col': true}" [item]="panels.tasks">
         <!-- your content here  <app-task-grid [filterItem]="item.propName"></app-task-grid>
         
  -->
@@ -31,7 +31,7 @@
 
 
       </gridster-item>
-<gridster-item ion-card [ngClass]="{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}"
+<gridster-item ion-card  [ngClass]="{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}"
         [item]="panels.details">
         <app-task-details [panels]="panels" [formKey]="formKey"></app-task-details>
       </gridster-item>

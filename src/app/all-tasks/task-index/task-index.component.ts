@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormioResourceConfig, FormioResourceService, FormioResourceIndexComponent } from 'angular-formio/resource';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { RemoteServiceProvider } from '../../remote.service';
@@ -15,9 +15,10 @@ import { Subscription } from 'rxjs';
 export class TaskIndexComponent extends FormioResourceIndexComponent implements OnInit {
 
   constructor(public remoteService: RemoteServiceProvider,
-    public service: FormioResourceService, private eventsService: EventsService,
+    public service: FormioResourceService, private eventsService: EventsService, ref: ChangeDetectorRef,
     config: FormioResourceConfig, public route: ActivatedRoute, public router: Router) {
     super(service, route, router, config);
+
   }
 
 

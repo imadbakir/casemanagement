@@ -14,8 +14,49 @@ html[dir="rtl"] {
   h3 ion-badge {
     float: left !important;
   }
-}
 
+  .photo-container.mini-avatar {
+    float: left;
+  }
+
+  .selected-green {
+    transition: 0.5s;
+    border-right: 0px solid rgba(var(--ion-color-success-rgb), 1);
+    border-left: 0px !important;
+    border-width: 15px;
+  }
+
+  .app-bg-danger {
+    border-right: 5px solid rgba(var(--ion-color-danger-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .app-bg-primary {
+    border-right: 5px solid rgba(var(--ion-color-primary-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .app-bg-secondary {
+    border-right: 5px solid rgba(var(--ion-color-secondary-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .app-bg-warning {
+    border-right: 5px solid rgba(var(--ion-color-warning-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .formio-form {
+    direction: rtl !important;
+  }
+  .col-sm-push-8{
+    right: 66.6666666667%;
+    left:auto;
+  }
+}
+.col-sm-push-8{
+  left: 66.6666666667%;
+}
 :root {
   /** primary **/
   --app-direction: multi;
@@ -93,7 +134,7 @@ html[dir="rtl"] {
 
   @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700');
   @import url('https://fonts.googleapis.com/css?family=Cairo:400,700&subset=arabic');
-    --font-family-md-base: "Ubuntu";
+  --font-family-md-base: "Ubuntu";
   --font-family-ios-base: "Ubuntu";
   --font-family-wp-base: "Ubuntu";
   --ion-font-family: "Ubuntu" !important;
