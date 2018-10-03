@@ -1,17 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+        <ion-icon name="egg" size="large" color="secondary"></ion-icon>
     </ion-buttons>
-    <ion-title>SUPER APP</ion-title>
-    <ion-buttons slot="end">
-      <ion-button color="secondary" [hidden]="route.url == '/auth/login'" solid round end-item icon-end class="toolbar-round" routerLink="login">Login
-        <ion-icon slot="start" name="person"></ion-icon>
-      </ion-button>
-      <ion-button color="secondary" [hidden]="route.url == '/auth/register'" solid round end-item icon-end class="toolbar-round" routerLink="register">Register
-        <ion-icon slot="start" name="person"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title color="primary">SUPER APP</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>

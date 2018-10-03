@@ -11,14 +11,11 @@ import { EventsService } from './events.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements CanActivate {
-  public appPages = [
-    { title: 'Tasks', url: '/all-tasks', icon: 'list' },
-  ];
 
   constructor(public eventService: EventsService,
     public popoverCtrl: PopoverController, public auth: FormioAuthService, private router: Router) {
     this.auth.onLogin.subscribe(() => {
-      this.router.navigate(['/customer']);
+      this.router.navigate(['/tasks']);
       this.eventService.announceRefresh('refresh');
     });
     this.auth.onLogout.subscribe(() => {
@@ -30,14 +27,6 @@ export class AppComponent implements CanActivate {
       this.router.navigate(['/customer']);
       this.eventService.announceRefresh('refresh');
     });
-  }
-  async presentPopover(myEvent) {
-    myEvent.stopPropagation();
-    const popover = await this.popoverCtrl.create({
-      component: UserOptionsComponent,
-      event: myEvent
-    });
-    return await popover.present();
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.auth.user) {

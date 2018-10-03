@@ -31,6 +31,8 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   task: any = {};
   submission = {};
   onError = new EventEmitter();
+  formVariables = {};
+  objectKeys = Object.keys;
   constructor(
     public service: ResourceService,
     public auth: FormioAuthService,
@@ -52,25 +54,32 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(submission) {
-    this.service
-      .save(submission)
-      .then((data) => {
-        if (!this.task.disabled) {
-          this.camundaService.updateExecutionVariables(this.task.executionId, this.task.formKey,
-            { value: data._id, type: 'String' }).subscribe(() => {
-              console.log(submission);
-              if (submission.data.completed === true) {
-                this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
-                  this.events.announceItem({ taskId: this.task.id, complete: true });
-                  this.router.navigate(['tasks']);
-                });
-              } else {
-                this.events.announceRefresh('tasks');
-              }
-            });
+    this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest',
+      { value: submission._id, type: 'String' }).subscribe(() => {
+        console.log(submission);
+        if (submission.data.completed === true) {
+          this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
+            this.events.announceItem({ taskId: this.task.id, complete: true });
+            this.router.navigate(['tasks']);
+          });
+        } else {
+          this.events.announceRefresh('tasks');
         }
-      })
-      .catch((err) => this.onError.emit(err));
+      });
+    /* if (!this.task.disabled) {
+      this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest',
+        { value: data._id, type: 'String' }).subscribe(() => {
+          console.log(submission);
+          if (submission.data.completed === true) {
+            this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
+              this.events.announceItem({ taskId: this.task.id, complete: true });
+              this.router.navigate(['tasks']);
+            });
+          } else {
+            this.events.announceRefresh('tasks');
+          }
+        });
+    }*/
     // console.log(submission);
 
   }
@@ -80,95 +89,62 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     const loading = await this.loadingController.create({});
     return await loading.present();
   }
-  getTaskExecutionVariable(task) {
 
-  }
 
-  loadResource(id, formKey, resourceName) {
-    const route = new ActivatedRoute;
-    route.snapshot = new ActivatedRouteSnapshot;
-    route.snapshot.params = { id: id };
-    return this.service.loadResourceCustom(route, formKey, resourceName);
-  }
-  updateResource(id) {
 
-  }
   ngOnInit() {
-    this.task.id = this.route.snapshot.params.taskId;
-    this.task.deleteReason = this.route.snapshot.params.deleteReason;
-    this.task.executionId = this.route.snapshot.params.executionId;
-    this.task.formKey = this.route.snapshot.params.formKey;
-    this.service.initialize();
-
-    if (this.task.executionId !== 'undefined') {
-      if (this.task.deleteReason === 'completed') {
-        this.task.disabled = true;
-        this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
-          // this.loadingController.dismiss();
-          if (variables.length > 0) {
-            variables.forEach(element => {
-              this.loadResource(element.value, this.task.formKey, 'task').then(data => {
-                this.service.resource.data.id = this.task.id;
-              }).catch((err) => {
-                console.error(err);
+    this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe(task => {
+      this.task = task;
+      if (this.task.executionId !== 'undefined') {
+        this.camundaService.getTaskFormVariables(this.task.id).subscribe((formVariables) => {
+          this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
+            if (formVariables) {
+              this.objectKeys(formVariables).forEach(element => {
+                console.log(executionVariables[formVariables[element].value]);
+                if (executionVariables[formVariables[element].value]) {
+                  formVariables[element].resourceId = executionVariables[formVariables[element].value].value;
+                } else {
+                  formVariables[element].resourceId = '';
+                }
+                if (this.task.formKey !== element) {
+                  formVariables[element].readOnly = true;
+                } else {
+                  formVariables[element].readOnly = false;
+                }
               });
-            });
+              this.formVariables = formVariables;
 
-          }
+            }
+          });
         });
-      } else {
-        this.camundaService.getExecutionVariables(this.task.executionId).subscribe(variables => {
-          // this.loadingController.dismiss();
-          if (variables.task && variables.task.value != null) {
-            console.log(variables.task);
-            this.task.new = false;
-            this.loadResource(variables.task.value, this.task.formKey, 'task').then(data => {
-              this.service.resource.data.id = this.task.id;
-            }).catch((err) => {
-              this.camundaService.deleteExecutionVariables(this.task.executionId, 'task').subscribe(data => {
+
+        /* if (this.task.deleteReason === 'completed') {
+          this.task.disabled = true;
+          this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
+            // this.loadingController.dismiss();
+            if (variables.length > 0) {
+              variables.forEach(element => {
 
               });
-              console.error(err);
-            });
 
-          } else {
-            this.task.new = true;
-          }
-        });
+            }
+          });
+        }*/
+        // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { console.log(data); });
+        /*
+          formkey = task1
+          execution
+            R1 : 5
+            approve: true
+            approveMng: false
+          form variables
+            task: servicerequest
+            task1: r1
+        */
+        // fill form variables
+
       }
+    });
 
-    } else {
-      // this.loadingController.dismiss();
-
-    }
-    setTimeout(() => {
-      const currentLang = this.translate.currentLang;
-     /* Formio.createForm(this.formioElement.formio, this.service.form, { language: currentLang }).then(form => {
-        console.log(form);
-        console.log(this.formioElement);
-        this.formioElement.formio.subscribe(data => {
-          alert(1);
-        });
-        form.submission = this.service.resource;
-        form.disabled = this.task.disabled;
-        console.log(this.service.resource);
-        this.translate.getTranslation(currentLang).subscribe(data => {
-          form.i18next.options.resources[currentLang] = {
-            translation: data
-          };
-          form.language = currentLang;
-        });
-        this.translate.onLangChange.subscribe(data => {
-          console.log(data); console.log('--');
-          form.i18next.options.resources[data.lang] = {
-            translation: data.translations
-          };
-          form.language = data.lang;
-        });
-
-
-
-      }); */
-    }, 1300);
   }
 }

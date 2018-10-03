@@ -9,7 +9,15 @@ import { AuthLoginComponent } from './auth-login/auth-login.component';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AuthIndexComponent } from './auth-index/auth-index.component';
 import { FormioModule } from 'angular-formio';
-const routes: Routes = [{}];
+const routes: Routes = [
+  {
+    path: '',
+    component: AuthIndexComponent,
+    children: [
+      { path: '', component: AuthLoginComponent }
+    ]
+  }
+];
 @NgModule({
   imports: [
     FormioModule,

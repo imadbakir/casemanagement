@@ -33,14 +33,14 @@ import { EventsService } from '../events.service';
 import { ResourceService } from '../resource.service';
 import { HttpClient } from '@angular/common/http';
 import { AppFormioComponent } from '../formio/formio.component';
-
+import { FormComponent } from '../form/form.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AllTasksPage,
     children: [
-      { path: 'edit/:formKey/:taskId/:executionId/:deleteReason', component: TaskEditComponent }
+      { path: 'edit/:taskId', component: TaskEditComponent }
     ]
   }
 ];
@@ -69,10 +69,10 @@ export function createTranslateLoader(http: HttpClient) {
     })
 
   ],
-  entryComponents: [AppFormioComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
+  entryComponents: [AppFormioComponent, FormComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
     TaskEditComponent,
     TaskCreateComponent, TaskViewComponent, TaskIndexComponent],
-  declarations: [TaskEditComponent, TaskViewComponent, AppFormioComponent,
+  declarations: [AppFormioComponent, FormComponent, TaskEditComponent, TaskViewComponent,
     TaskCreateComponent, TaskIndexComponent, AllTasksPage, OnCreateDirective, GridComponent, TaskGridComponent,
     TaskItemComponent, TaskDetailsComponent],
   providers: [
@@ -81,8 +81,15 @@ export function createTranslateLoader(http: HttpClient) {
     {
       provide: FormioResourceConfig,
       useValue: {
-        name: 'task',
-        form: 'task'
+        name: 'servicerequest',
+        form: 'task',
+        parents: [
+          {
+            field: 'user',
+            resource: 'currentUser',
+            filter: false
+          }
+        ]
       }
     }
     ,

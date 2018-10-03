@@ -1,8 +1,11 @@
-<app-formio #formio id="formio" [form]="service.form" [readOnly]="task.disabled" *ngIf="task" [submission]="service.resource"
-  [refresh]="service.refresh" [hideComponents]="config.parents" [error]="onError" (submit)="onSubmit($event)"></app-formio>
+<ng-container  *ngFor="let key of objectKeys(formVariables)">
+  <app-form *ngIf="key.includes('task')" [formKey]="key" [resourceName]="formVariables[key].value"
+    [resourceId]="formVariables[key].resourceId" [readOnly]="formVariables[key].readOnly" (submit)="onSubmit($event)"></app-form>
+</ng-container>
 
 
-<div text-center padding *ngIf="!task">
+
+<div text-center padding *ngIf="!formVariables">
   <ion-text>
     <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
     <h6 padding [ngStyle]="{ 'opacity': 0.5}">Please Choose a Task</h6>
@@ -14,4 +17,3 @@
   <formio  [form]="service.form" [readOnly]="task.disabled" *ngIf="task"
   [submission]="service.resource" [refresh]="service.refresh" [hideComponents]="config.parents" [error]="onError" (submit)="onSubmit($event)"></formio>
 -->
-

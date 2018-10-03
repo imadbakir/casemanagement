@@ -8,14 +8,6 @@ const routes: Routes = [
     redirectTo: 'tasks',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  },
   { path: 'tasks', loadChildren: './all-tasks/all-tasks.module#AllTasksPageModule' },
   {
     path: 'auth',

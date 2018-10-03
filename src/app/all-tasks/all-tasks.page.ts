@@ -10,6 +10,7 @@ import { FilterService } from '../filter.service';
 import { FormioResourceComponent, FormioResourceService } from 'angular-formio/resource';
 import { FormioAuthService } from 'angular-formio/auth';
 import { TranslateService } from '@ngx-translate/core';
+import { UserOptionsComponent } from '../user-options/user-options.component';
 
 @Component({
   selector: 'app-all-tasks',
@@ -44,7 +45,14 @@ export class AllTasksPage implements OnInit, OnDestroy {
    });
    */
   }
-
+  async presentPopover(myEvent) {
+    myEvent.stopPropagation();
+    const popover = await this.popoverCtrl.create({
+      component: UserOptionsComponent,
+      event: myEvent
+    });
+    return await popover.present();
+  }
 
   getFilterCount(filter) {
     this.camundaService.getFilterCount(filter.id).subscribe(data => {
@@ -64,15 +72,6 @@ export class AllTasksPage implements OnInit, OnDestroy {
       this.filters = data;
     });
 
-  }
-  async presentPopover(myEvent, id) {
-    myEvent.stopPropagation();
-    const popover = await this.popoverCtrl.create({
-      component: TaskOptionsComponent,
-      componentProps: { id: id },
-      event: myEvent
-    });
-    return await popover.present();
   }
 
   announceRefresh() {

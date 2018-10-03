@@ -1,7 +1,6 @@
 <div class="flex-item">
-  <ion-card class="card {{getPriority(task.priority)}}"
-   [ngClass]="{'complete' : task.complete}" 
-   [routerLink]="['/tasks/edit/',(task.formKey ? task.formKey : 0) ,task.id,task.executionId,task.deleteReason]" routerLinkActive="router-link-active">
+  <ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete}" [routerLink]="['/tasks/edit/',task.id]"
+    routerLinkActive="router-link-active">
 
 
     <ion-card-content>
@@ -43,7 +42,8 @@
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let user of users" [value]="user.username">{{user.name}}</mat-option>
       </mat-autocomplete>
-      <ion-button size="small" (click)="openAssignee($event)" matAutocompleteOrigin #origin="matAutocompleteOrigin" color="primary" [fill]="task.assignee ? 'solid' : 'clear'">
+      <ion-button size="small" (click)="openAssignee($event)" matAutocompleteOrigin #origin="matAutocompleteOrigin"
+        color="primary" [fill]="task.assignee ? 'solid' : 'clear'">
         <ion-icon name="person" slot="start"></ion-icon>
         <span [hidden]="task.assignee">Claim</span>
         <span [hidden]="!task.assignee">{{task.assignee}}</span>

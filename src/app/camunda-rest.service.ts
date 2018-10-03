@@ -86,6 +86,13 @@ export class CamundaRestService {
       catchError(this.handleError('getTaskFormKey', []))
     );
   }
+  getTaskFormVariables(taskId: String): Observable<any> {
+    const endpoint = `${this.engineRestUrl}task/${taskId}/form-variables`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched task form variables`)),
+      catchError(this.handleError('getTaskFormVariables', []))
+    );
+  }
 
   getTask(taskId: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}`;

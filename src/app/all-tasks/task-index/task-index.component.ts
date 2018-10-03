@@ -17,7 +17,7 @@ export class TaskIndexComponent extends FormioResourceIndexComponent implements 
   constructor(public remoteService: RemoteServiceProvider,
     public service: FormioResourceService, private eventsService: EventsService, ref: ChangeDetectorRef,
     config: FormioResourceConfig, public route: ActivatedRoute, public router: Router) {
-    super(service, route, router, config);
+    super(service, route, router, config, ref);
 
   }
 

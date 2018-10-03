@@ -1,0 +1,19 @@
+{
+    "dir": "ltr",
+    "Tasks": "Tasks",
+    "SAVE": "SAVE",
+    "Description" : "Description",
+    "Priority": "Priority",
+    "Task Name": "Task Name",
+    "COMPLETE": "COMPLETE",
+    "required": "{{field}} cannot be empty",
+    "invalid_email": "{{field}} is invalid",
+    "error": "Some error happened",
+    "Search":"Search",
+    "Add Task": "Add Task",
+    "Add Filter": "Add Filter",
+    "Pleaes Choose a Filter": "Please Choose a Filter",
+    "Arabic":"عربي",
+    "English": "English"
+  }
+  

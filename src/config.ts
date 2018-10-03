@@ -2,7 +2,7 @@ import { FormioAppConfig } from 'angular-formio';
 import { FormioAuthConfig } from 'angular-formio/auth';
 
 export const AppConfig: FormioAppConfig = {
-  appUrl: 'https://ykxbjkkflqdqicp.form.io',
+  appUrl: 'https://poigzzrvpuvpgcy.form.io',
   apiUrl: 'https://api.form.io',
   icons: 'fontawesome'
 };
