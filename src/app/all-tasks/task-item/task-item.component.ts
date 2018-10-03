@@ -3,6 +3,7 @@ import { CamundaRestService } from '../../camunda-rest.service';
 import { EventsService } from '../../events.service';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-task-item',
@@ -20,7 +21,7 @@ export class TaskItemComponent implements OnInit {
     { name: 'imad', username: 'imad' }
   ];
 
-  constructor(private loadingController: LoadingController, private router: Router,
+  constructor(private loadingController: LoadingController, private router: Router, public auth: AuthService,
     private camundaService: CamundaRestService, private event: EventsService) { }
 
   async presentLoading() {
@@ -66,7 +67,7 @@ export class TaskItemComponent implements OnInit {
         this.input.nativeElement.focus();
         this.task.assignee = null;
       } else {
-        this.task.assignee = 'ahmad';
+        this.task.assignee = this.auth.getUser().username;
       }
       this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(data => {
         console.log(data);

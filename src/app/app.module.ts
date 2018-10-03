@@ -21,7 +21,8 @@ import { EventsService } from './events.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 @NgModule({
   declarations: [AppComponent, TaskOptionsComponent, UserOptionsComponent],
   entryComponents: [TaskOptionsComponent, UserOptionsComponent],
@@ -43,6 +44,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
   ],
   providers: [
+    AuthService,
+    AuthGuard,
     EventsService,
     FormioResources,
     FormioAuthService,

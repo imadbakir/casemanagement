@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: AuthIndexComponent,
     children: [
-      { path: '', component: AuthLoginComponent }
+      { path: 'login', component: AuthLoginComponent }
     ]
   }
 ];

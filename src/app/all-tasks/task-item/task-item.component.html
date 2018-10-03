@@ -4,7 +4,7 @@
 
 
     <ion-card-content>
-      <h2 data-ph="Task name..">{{task.name}} <div class="photo-container mini-avatar"></div>
+      <h2 data-ph="Task name..">{{task.name}} <div class="photo-container mini-avatar" [ngStyle]="{'background-image': 'url(assets/img/'+task?.assignee+'.jpg)'}"></div>
       </h2>
       <div class="more-details">
         <p>{{task.description}}</p>
@@ -52,7 +52,7 @@
       <ion-button size="small" color="primary" fill="clear">
         <ion-icon name="people" slot="start"></ion-icon>Add Team
       </ion-button>
-      <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == 'ahmad'" [ngStyle]="{'float':'right'}"
+      <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == auth.getUser().username" [ngStyle]="{'float':'right'}"
         fill="clear">
         <ion-icon name="checkmark" slot="start"></ion-icon>Complete
       </ion-button>

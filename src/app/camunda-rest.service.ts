@@ -43,9 +43,16 @@ export class CamundaRestService {
       catchError(this.handleError('getFilter', []))
     );
   }
-  listFilter(id): Observable<any> {
+  createFilter(variables): Observable<any> {
+    const endpoint = `${this.engineRestUrl}filter`;
+    return this.http.post<any>(endpoint, variables).pipe(
+      tap(form => this.log(`created filter`)),
+      catchError(this.handleError('createFilter', []))
+    );
+  }
+  listFilter(id, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/list`;
-    return this.http.get<any>(endpoint).pipe(
+    return this.http.post<any>(endpoint, variables).pipe(
       tap(form => this.log(`fetched filter list ${id}`)),
       catchError(this.handleError('listFilter', []))
     );
@@ -71,9 +78,9 @@ export class CamundaRestService {
       catchError(this.handleError('listHistory', []))
     );
   }
-  getFilterCount(id): Observable<any> {
+  getFilterCount(id, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/count`;
-    return this.http.get<any>(endpoint).pipe(
+    return this.http.post<any>(endpoint, variables).pipe(
       tap(form => this.log(`fetched filter ${id} count`)),
       catchError(this.handleError('getFilterCount', []))
     );
@@ -232,6 +239,13 @@ export class CamundaRestService {
         return runs;
       }
     });*/
+  }
+  getIdentity(userId) {
+    const endpoint = `${this.engineRestUrl}identity/groups?userId=${userId}`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(processDefinitions => this.log(`posted process instance`)),
+      catchError(this.handleError('getUserProfile', []))
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

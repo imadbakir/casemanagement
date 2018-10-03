@@ -14,5 +14,14 @@
   "Add Filter": "إضافة فلتر",
   "Please Choose a Filter": "الرجاء اختيار فلتر",
   "Arabic": "عربي",
-  "English": "English"
+  "English": "English",
+  "Need Date": "تاريخ الحاجة",
+  "Return Date": "تاريخ الإعادة",
+  "Outside Use": "استخدام خارج أوقات الدوام",
+  "Service Type": "نوع الخدمة",
+  "Note": "ملاحظات",
+  "Manager Note": "ملاحظات المدير",
+  "Request Information": "معلومات الطلب",
+  "Seat Count": "عدد المقاعد",
+  "Objective": "غرض الطلب"
 }

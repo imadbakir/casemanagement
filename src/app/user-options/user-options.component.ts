@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PopoverController, NavParams } from '@ionic/angular';
 import { FormioAuthService } from 'angular-formio/auth';
 import { EventsService } from '../events.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-user-options',
@@ -11,7 +12,7 @@ import { EventsService } from '../events.service';
 export class UserOptionsComponent implements OnInit {
   id = '';
   constructor(public eventService: EventsService,
-    public auth: FormioAuthService, public popoverCtrl: PopoverController, public navParams: NavParams) {
+    public auth: AuthService, public popoverCtrl: PopoverController, public navParams: NavParams) {
     console.log(this.navParams.data);
     this.id = this.navParams.data.id;
 

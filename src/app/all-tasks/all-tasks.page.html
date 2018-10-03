@@ -13,7 +13,7 @@
         </ion-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button color="dark" click="presentPopover($event)" clear class="toolbar-round">
+        <ion-button color="dark" (click)="presentPopover($event)" clear class="toolbar-round">
           <ion-icon slot="icon-only" name="settings"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -21,8 +21,9 @@
 
     <ion-content>
       <div class="profile-container">
-        <div class="photo-container"></div>
-        <h6 padding>{{auth.user?.data.name}}</h6>
+        <div class="photo-container" [ngStyle]="{'background-image': 'url(assets/img/'+auth.getUser()?.username+'.jpg)'}"></div>
+        <h5 margin-top>{{auth.getUser()?.profile.firstName}} {{auth.getUser()?.profile.lastName}}</h5>
+        <span *ngFor="let group of auth.getUser()?.groups">{{group.name}} </span>
       </div>
       <ion-searchbar [placeholder]="'Search' | translate" mode="ios"></ion-searchbar>
 

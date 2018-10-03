@@ -7,6 +7,7 @@ import { EventsService } from '../../events.service';
 import { GridComponent } from '../grid/grid.component';
 import { CamundaRestService } from '../../camunda-rest.service';
 import { ModalController } from '@ionic/angular';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-task-grid',
@@ -50,7 +51,8 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
   static itemResize(item, itemComponent) {
     console.log('itemResized', item, itemComponent);
   }
-  constructor(private event: EventsService, private camundaService: CamundaRestService, public modalController: ModalController) {
+  constructor(private event: EventsService, private camundaService: CamundaRestService,
+    public modalController: ModalController, private auth: AuthService) {
 
   }
 
@@ -191,7 +193,11 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
   ListFilter(event) {
     if (event.bool) {
 
-      this.camundaService.listFilter(event.item.id).subscribe(data => {
+      this.camundaService.listFilter(event.item.id, {
+        assignee: this.auth.getUser().username,
+        firstResult: 0,
+        maxResults: 15
+      }).subscribe(data => {
         console.log(data);
         data.forEach(entry => this.tasksOrigin.push(entry));
         this.tsks = this.tasksOrigin;
@@ -200,7 +206,11 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
 
 
     } else {
-      this.camundaService.listFilter(event.item.id).subscribe(data => {
+      this.camundaService.listFilter(event.item.id, {
+        assignee: this.auth.getUser().username,
+        firstResult: 0,
+        maxResults: 15
+      }).subscribe(data => {
         data.forEach(entry => this.tasksOrigin.splice(this.tasksOrigin.indexOf(entry), 1));
         this.tsks = this.tasksOrigin;
 

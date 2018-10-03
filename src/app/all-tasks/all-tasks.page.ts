@@ -11,6 +11,7 @@ import { FormioResourceComponent, FormioResourceService } from 'angular-formio/r
 import { FormioAuthService } from 'angular-formio/auth';
 import { TranslateService } from '@ngx-translate/core';
 import { UserOptionsComponent } from '../user-options/user-options.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-all-tasks',
@@ -22,17 +23,15 @@ import { UserOptionsComponent } from '../user-options/user-options.component';
 
 export class AllTasksPage implements OnInit, OnDestroy {
 
-  auth: any = {
-    user: { data: { name: 'Ahmad Arksousi', username: 'ahmad' } }
-  };
-  filters = [];
 
+  filters = [];
+  user;
   filterClicked: EventEmitter<String> = new EventEmitter();
   constructor(public popoverCtrl: PopoverController, private remoteService: RemoteServiceProvider, public event: EventsService,
     private camundaService: CamundaRestService, private router: Router, private menu: MenuController, public filterStorage: FilterService
     , public eventService: EventsService, public translate: TranslateService,
+    public auth: AuthService,
     public authz: FormioAuthService, public service: FormioResourceService, public route: ActivatedRoute) {
-
   }
 
 
@@ -55,8 +54,11 @@ export class AllTasksPage implements OnInit, OnDestroy {
   }
 
   getFilterCount(filter) {
-    this.camundaService.getFilterCount(filter.id).subscribe(data => {
-      console.log(data);
+    this.camundaService.getFilterCount(filter.id, {
+      assignee: this.user.username,
+      firstResult: 0,
+      maxResults: 15
+    }).subscribe(data => {
       filter.count = data.count;
     });
   }
@@ -67,6 +69,7 @@ export class AllTasksPage implements OnInit, OnDestroy {
     this.event.announceArchive({ archive: true, item: '', bool: true });
   }
   ngOnInit() {
+    this.user = this.auth.getUser();
     this.camundaService.getTasks().subscribe(data => { console.log(data); });
     this.camundaService.getFilters().subscribe(data => {
       this.filters = data;

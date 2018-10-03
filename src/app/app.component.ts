@@ -5,15 +5,16 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from
 import { UserOptionsComponent } from './user-options/user-options.component';
 import { PopoverController } from '@ionic/angular';
 import { EventsService } from './events.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements CanActivate {
+export class AppComponent {
 
   constructor(public eventService: EventsService,
-    public popoverCtrl: PopoverController, public auth: FormioAuthService, private router: Router) {
+    public popoverCtrl: PopoverController, public auth: AuthService, private router: Router) {
     this.auth.onLogin.subscribe(() => {
       this.router.navigate(['/tasks']);
       this.eventService.announceRefresh('refresh');
@@ -23,20 +24,7 @@ export class AppComponent implements CanActivate {
       this.eventService.announceRefresh('refresh');
     });
 
-    this.auth.onRegister.subscribe(() => {
-      this.router.navigate(['/customer']);
-      this.eventService.announceRefresh('refresh');
-    });
-  }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.auth.user) {
-      // logged in so return true
-      return true;
-    }
 
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
-    return false;
   }
 }
 
