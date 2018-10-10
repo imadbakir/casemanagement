@@ -1,1397 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["all-tasks-all-tasks-module"],{
 
-/***/ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js ***!
-  \**********************************************************************/
-/*! exports provided: TranslateModule, TranslateLoader, TranslateFakeLoader, USE_STORE, USE_DEFAULT_LANG, TranslateService, MissingTranslationHandler, FakeMissingTranslationHandler, TranslateParser, TranslateDefaultParser, TranslateCompiler, TranslateFakeCompiler, TranslateDirective, TranslatePipe, TranslateStore */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateModule", function() { return TranslateModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateLoader", function() { return TranslateLoader; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateFakeLoader", function() { return TranslateFakeLoader; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USE_STORE", function() { return USE_STORE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USE_DEFAULT_LANG", function() { return USE_DEFAULT_LANG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateService", function() { return TranslateService; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MissingTranslationHandler", function() { return MissingTranslationHandler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FakeMissingTranslationHandler", function() { return FakeMissingTranslationHandler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateParser", function() { return TranslateParser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateDefaultParser", function() { return TranslateDefaultParser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateCompiler", function() { return TranslateCompiler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateFakeCompiler", function() { return TranslateFakeCompiler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateDirective", function() { return TranslateDirective; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslatePipe", function() { return TranslatePipe; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateStore", function() { return TranslateStore; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-
-
-
-
-/**
- * @abstract
- */
-var TranslateLoader = /** @class */ (function () {
-    function TranslateLoader() {
-    }
-    return TranslateLoader;
-}());
-/**
- * This loader is just a placeholder that does nothing, in case you don't need a loader at all
- */
-var TranslateFakeLoader = /** @class */ (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(TranslateFakeLoader, _super);
-    function TranslateFakeLoader() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateFakeLoader.prototype.getTranslation = function (lang) {
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])({});
-    };
-    return TranslateFakeLoader;
-}(TranslateLoader));
-TranslateFakeLoader.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] },
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * @abstract
- */
-var MissingTranslationHandler = /** @class */ (function () {
-    function MissingTranslationHandler() {
-    }
-    return MissingTranslationHandler;
-}());
-/**
- * This handler is just a placeholder that does nothing, in case you don't need a missing translation handler at all
- */
-var FakeMissingTranslationHandler = /** @class */ (function () {
-    function FakeMissingTranslationHandler() {
-    }
-    /**
-     * @param {?} params
-     * @return {?}
-     */
-    FakeMissingTranslationHandler.prototype.handle = function (params) {
-        return params.key;
-    };
-    return FakeMissingTranslationHandler;
-}());
-FakeMissingTranslationHandler.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] },
-];
-
-/**
- * @abstract
- */
-var TranslateCompiler = /** @class */ (function () {
-    function TranslateCompiler() {
-    }
-    return TranslateCompiler;
-}());
-/**
- * This compiler is just a placeholder that does nothing, in case you don't need a compiler at all
- */
-var TranslateFakeCompiler = /** @class */ (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(TranslateFakeCompiler, _super);
-    function TranslateFakeCompiler() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * @param {?} value
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateFakeCompiler.prototype.compile = function (value, lang) {
-        return value;
-    };
-    /**
-     * @param {?} translations
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateFakeCompiler.prototype.compileTranslations = function (translations, lang) {
-        return translations;
-    };
-    return TranslateFakeCompiler;
-}(TranslateCompiler));
-TranslateFakeCompiler.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] },
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Determines if two objects or two values are equivalent.
- *
- * Two objects or values are considered equivalent if at least one of the following is true:
- *
- * * Both objects or values pass `===` comparison.
- * * Both objects or values are of the same type and all of their properties are equal by
- *   comparing them with `equals`.
- *
- * @param {?} o1 Object or value to compare.
- * @param {?} o2 Object or value to compare.
- * @return {?} true if arguments are equal.
- */
-function equals(o1, o2) {
-    if (o1 === o2)
-        return true;
-    if (o1 === null || o2 === null)
-        return false;
-    if (o1 !== o1 && o2 !== o2)
-        return true; // NaN === NaN
-    var /** @type {?} */ t1 = typeof o1, /** @type {?} */ t2 = typeof o2, /** @type {?} */ length, /** @type {?} */ key, /** @type {?} */ keySet;
-    if (t1 == t2 && t1 == 'object') {
-        if (Array.isArray(o1)) {
-            if (!Array.isArray(o2))
-                return false;
-            if ((length = o1.length) == o2.length) {
-                for (key = 0; key < length; key++) {
-                    if (!equals(o1[key], o2[key]))
-                        return false;
-                }
-                return true;
-            }
-        }
-        else {
-            if (Array.isArray(o2)) {
-                return false;
-            }
-            keySet = Object.create(null);
-            for (key in o1) {
-                if (!equals(o1[key], o2[key])) {
-                    return false;
-                }
-                keySet[key] = true;
-            }
-            for (key in o2) {
-                if (!(key in keySet) && typeof o2[key] !== 'undefined') {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-    return false;
-}
-/**
- * @param {?} value
- * @return {?}
- */
-function isDefined(value) {
-    return typeof value !== 'undefined' && value !== null;
-}
-/**
- * @param {?} item
- * @return {?}
- */
-function isObject(item) {
-    return (item && typeof item === 'object' && !Array.isArray(item));
-}
-/**
- * @param {?} target
- * @param {?} source
- * @return {?}
- */
-function mergeDeep(target, source) {
-    var /** @type {?} */ output = Object.assign({}, target);
-    if (isObject(target) && isObject(source)) {
-        Object.keys(source).forEach(function (key) {
-            if (isObject(source[key])) {
-                if (!(key in target)) {
-                    Object.assign(output, (_a = {}, _a[key] = source[key], _a));
-                }
-                else {
-                    output[key] = mergeDeep(target[key], source[key]);
-                }
-            }
-            else {
-                Object.assign(output, (_b = {}, _b[key] = source[key], _b));
-            }
-            var _a, _b;
-        });
-    }
-    return output;
-}
-
-/**
- * @abstract
- */
-var TranslateParser = /** @class */ (function () {
-    function TranslateParser() {
-    }
-    return TranslateParser;
-}());
-var TranslateDefaultParser = /** @class */ (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(TranslateDefaultParser, _super);
-    function TranslateDefaultParser() {
-        var _this = _super.apply(this, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(arguments)) || this;
-        _this.templateMatcher = /{{\s?([^{}\s]*)\s?}}/g;
-        return _this;
-    }
-    /**
-     * @param {?} expr
-     * @param {?=} params
-     * @return {?}
-     */
-    TranslateDefaultParser.prototype.interpolate = function (expr, params) {
-        var /** @type {?} */ result;
-        if (typeof expr === 'string') {
-            result = this.interpolateString(expr, params);
-        }
-        else if (typeof expr === 'function') {
-            result = this.interpolateFunction(expr, params);
-        }
-        else {
-            // this should not happen, but an unrelated TranslateService test depends on it
-            result = /** @type {?} */ (expr);
-        }
-        return result;
-    };
-    /**
-     * @param {?} target
-     * @param {?} key
-     * @return {?}
-     */
-    TranslateDefaultParser.prototype.getValue = function (target, key) {
-        var /** @type {?} */ keys = key.split('.');
-        key = '';
-        do {
-            key += keys.shift();
-            if (isDefined(target) && isDefined(target[key]) && (typeof target[key] === 'object' || !keys.length)) {
-                target = target[key];
-                key = '';
-            }
-            else if (!keys.length) {
-                target = undefined;
-            }
-            else {
-                key += '.';
-            }
-        } while (keys.length);
-        return target;
-    };
-    /**
-     * @param {?} fn
-     * @param {?=} params
-     * @return {?}
-     */
-    TranslateDefaultParser.prototype.interpolateFunction = function (fn, params) {
-        return fn(params);
-    };
-    /**
-     * @param {?} expr
-     * @param {?=} params
-     * @return {?}
-     */
-    TranslateDefaultParser.prototype.interpolateString = function (expr, params) {
-        var _this = this;
-        if (!params) {
-            return expr;
-        }
-        return expr.replace(this.templateMatcher, function (substring, b) {
-            var /** @type {?} */ r = _this.getValue(params, b);
-            return isDefined(r) ? r : substring;
-        });
-    };
-    return TranslateDefaultParser;
-}(TranslateParser));
-TranslateDefaultParser.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] },
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var TranslateStore = /** @class */ (function () {
-    function TranslateStore() {
-        /**
-         * The lang currently used
-         */
-        this.currentLang = this.defaultLang;
-        /**
-         * a list of translations per lang
-         */
-        this.translations = {};
-        /**
-         * an array of langs
-         */
-        this.langs = [];
-        /**
-         * An EventEmitter to listen to translation change events
-         * onTranslationChange.subscribe((params: TranslationChangeEvent) => {
-         *     // do something
-         * });
-         */
-        this.onTranslationChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        /**
-         * An EventEmitter to listen to lang change events
-         * onLangChange.subscribe((params: LangChangeEvent) => {
-         *     // do something
-         * });
-         */
-        this.onLangChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        /**
-         * An EventEmitter to listen to default lang change events
-         * onDefaultLangChange.subscribe((params: DefaultLangChangeEvent) => {
-         *     // do something
-         * });
-         */
-        this.onDefaultLangChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-    }
-    return TranslateStore;
-}());
-
-var /** @type {?} */ USE_STORE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('USE_STORE');
-var /** @type {?} */ USE_DEFAULT_LANG = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('USE_DEFAULT_LANG');
-var TranslateService = /** @class */ (function () {
-    /**
-     *
-     * @param {?} store an instance of the store (that is supposed to be unique)
-     * @param {?} currentLoader An instance of the loader currently used
-     * @param {?} compiler An instance of the compiler currently used
-     * @param {?} parser An instance of the parser currently used
-     * @param {?} missingTranslationHandler A handler for missing translations.
-     * @param {?=} useDefaultLang whether we should use default language translation when current language translation is missing.
-     * @param {?=} isolate whether this service should use the store or not
-     */
-    function TranslateService(store, currentLoader, compiler, parser, missingTranslationHandler, useDefaultLang, isolate) {
-        if (useDefaultLang === void 0) { useDefaultLang = true; }
-        if (isolate === void 0) { isolate = false; }
-        this.store = store;
-        this.currentLoader = currentLoader;
-        this.compiler = compiler;
-        this.parser = parser;
-        this.missingTranslationHandler = missingTranslationHandler;
-        this.useDefaultLang = useDefaultLang;
-        this.isolate = isolate;
-        this.pending = false;
-        this._onTranslationChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this._onLangChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this._onDefaultLangChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this._langs = [];
-        this._translations = {};
-        this._translationRequests = {};
-    }
-    Object.defineProperty(TranslateService.prototype, "onTranslationChange", {
-        /**
-         * An EventEmitter to listen to translation change events
-         * onTranslationChange.subscribe((params: TranslationChangeEvent) => {
-         *     // do something
-         * });
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._onTranslationChange : this.store.onTranslationChange;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateService.prototype, "onLangChange", {
-        /**
-         * An EventEmitter to listen to lang change events
-         * onLangChange.subscribe((params: LangChangeEvent) => {
-         *     // do something
-         * });
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._onLangChange : this.store.onLangChange;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateService.prototype, "onDefaultLangChange", {
-        /**
-         * An EventEmitter to listen to default lang change events
-         * onDefaultLangChange.subscribe((params: DefaultLangChangeEvent) => {
-         *     // do something
-         * });
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._onDefaultLangChange : this.store.onDefaultLangChange;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateService.prototype, "defaultLang", {
-        /**
-         * The default lang to fallback when translations are missing on the current lang
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._defaultLang : this.store.defaultLang;
-        },
-        /**
-         * @param {?} defaultLang
-         * @return {?}
-         */
-        set: function (defaultLang) {
-            if (this.isolate) {
-                this._defaultLang = defaultLang;
-            }
-            else {
-                this.store.defaultLang = defaultLang;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateService.prototype, "currentLang", {
-        /**
-         * The lang currently used
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._currentLang : this.store.currentLang;
-        },
-        /**
-         * @param {?} currentLang
-         * @return {?}
-         */
-        set: function (currentLang) {
-            if (this.isolate) {
-                this._currentLang = currentLang;
-            }
-            else {
-                this.store.currentLang = currentLang;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateService.prototype, "langs", {
-        /**
-         * an array of langs
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._langs : this.store.langs;
-        },
-        /**
-         * @param {?} langs
-         * @return {?}
-         */
-        set: function (langs) {
-            if (this.isolate) {
-                this._langs = langs;
-            }
-            else {
-                this.store.langs = langs;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateService.prototype, "translations", {
-        /**
-         * a list of translations per lang
-         * @return {?}
-         */
-        get: function () {
-            return this.isolate ? this._translations : this.store.translations;
-        },
-        /**
-         * @param {?} translations
-         * @return {?}
-         */
-        set: function (translations) {
-            if (this.isolate) {
-                this._translations = translations;
-            }
-            else {
-                this.store.translations = translations;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * Sets the default language to use as a fallback
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.setDefaultLang = function (lang) {
-        var _this = this;
-        if (lang === this.defaultLang) {
-            return;
-        }
-        var /** @type {?} */ pending = this.retrieveTranslations(lang);
-        if (typeof pending !== "undefined") {
-            // on init set the defaultLang immediately
-            if (!this.defaultLang) {
-                this.defaultLang = lang;
-            }
-            pending.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1))
-                .subscribe(function (res) {
-                _this.changeDefaultLang(lang);
-            });
-        }
-        else {
-            // we already have this language
-            this.changeDefaultLang(lang);
-        }
-    };
-    /**
-     * Gets the default language used
-     * @return {?}
-     */
-    TranslateService.prototype.getDefaultLang = function () {
-        return this.defaultLang;
-    };
-    /**
-     * Changes the lang currently used
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.use = function (lang) {
-        var _this = this;
-        // don't change the language if the language given is already selected
-        if (lang === this.currentLang) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.translations[lang]);
-        }
-        var /** @type {?} */ pending = this.retrieveTranslations(lang);
-        if (typeof pending !== "undefined") {
-            // on init set the currentLang immediately
-            if (!this.currentLang) {
-                this.currentLang = lang;
-            }
-            pending.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1))
-                .subscribe(function (res) {
-                _this.changeLang(lang);
-            });
-            return pending;
-        }
-        else {
-            // we have this language, return an Observable
-            this.changeLang(lang);
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.translations[lang]);
-        }
-    };
-    /**
-     * Retrieves the given translations
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.retrieveTranslations = function (lang) {
-        var /** @type {?} */ pending;
-        // if this language is unavailable, ask for it
-        if (typeof this.translations[lang] === "undefined") {
-            this._translationRequests[lang] = this._translationRequests[lang] || this.getTranslation(lang);
-            pending = this._translationRequests[lang];
-        }
-        return pending;
-    };
-    /**
-     * Gets an object of translations for a given language with the current loader
-     * and passes it through the compiler
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.getTranslation = function (lang) {
-        var _this = this;
-        this.pending = true;
-        this.loadingTranslations = this.currentLoader.getTranslation(lang).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["share"])());
-        this.loadingTranslations.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1))
-            .subscribe(function (res) {
-            _this.translations[lang] = _this.compiler.compileTranslations(res, lang);
-            _this.updateLangs();
-            _this.pending = false;
-        }, function (err) {
-            _this.pending = false;
-        });
-        return this.loadingTranslations;
-    };
-    /**
-     * Manually sets an object of translations for a given language
-     * after passing it through the compiler
-     * @param {?} lang
-     * @param {?} translations
-     * @param {?=} shouldMerge
-     * @return {?}
-     */
-    TranslateService.prototype.setTranslation = function (lang, translations, shouldMerge) {
-        if (shouldMerge === void 0) { shouldMerge = false; }
-        translations = this.compiler.compileTranslations(translations, lang);
-        if (shouldMerge && this.translations[lang]) {
-            this.translations[lang] = mergeDeep(this.translations[lang], translations);
-        }
-        else {
-            this.translations[lang] = translations;
-        }
-        this.updateLangs();
-        this.onTranslationChange.emit({ lang: lang, translations: this.translations[lang] });
-    };
-    /**
-     * Returns an array of currently available langs
-     * @return {?}
-     */
-    TranslateService.prototype.getLangs = function () {
-        return this.langs;
-    };
-    /**
-     * Add available langs
-     * @param {?} langs
-     * @return {?}
-     */
-    TranslateService.prototype.addLangs = function (langs) {
-        var _this = this;
-        langs.forEach(function (lang) {
-            if (_this.langs.indexOf(lang) === -1) {
-                _this.langs.push(lang);
-            }
-        });
-    };
-    /**
-     * Update the list of available langs
-     * @return {?}
-     */
-    TranslateService.prototype.updateLangs = function () {
-        this.addLangs(Object.keys(this.translations));
-    };
-    /**
-     * Returns the parsed result of the translations
-     * @param {?} translations
-     * @param {?} key
-     * @param {?=} interpolateParams
-     * @return {?}
-     */
-    TranslateService.prototype.getParsedResult = function (translations, key, interpolateParams) {
-        var /** @type {?} */ res;
-        if (key instanceof Array) {
-            var /** @type {?} */ result = {}, /** @type {?} */ observables = false;
-            try {
-                for (var key_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__values"])(key), key_1_1 = key_1.next(); !key_1_1.done; key_1_1 = key_1.next()) {
-                    var k = key_1_1.value;
-                    result[k] = this.getParsedResult(translations, k, interpolateParams);
-                    if (typeof result[k].subscribe === "function") {
-                        observables = true;
-                    }
-                }
-            }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
-                try {
-                    if (key_1_1 && !key_1_1.done && (_a = key_1.return)) _a.call(key_1);
-                }
-                finally { if (e_1) throw e_1.error; }
-            }
-            if (observables) {
-                var /** @type {?} */ mergedObs = void 0;
-                try {
-                    for (var key_2 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__values"])(key), key_2_1 = key_2.next(); !key_2_1.done; key_2_1 = key_2.next()) {
-                        var k = key_2_1.value;
-                        var /** @type {?} */ obs = typeof result[k].subscribe === "function" ? result[k] : Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(/** @type {?} */ (result[k]));
-                        if (typeof mergedObs === "undefined") {
-                            mergedObs = obs;
-                        }
-                        else {
-                            mergedObs = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"])(mergedObs, obs);
-                        }
-                    }
-                }
-                catch (e_2_1) { e_2 = { error: e_2_1 }; }
-                finally {
-                    try {
-                        if (key_2_1 && !key_2_1.done && (_b = key_2.return)) _b.call(key_2);
-                    }
-                    finally { if (e_2) throw e_2.error; }
-                }
-                return mergedObs.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["toArray"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (arr) {
-                    var /** @type {?} */ obj = {};
-                    arr.forEach(function (value, index) {
-                        obj[key[index]] = value;
-                    });
-                    return obj;
-                }));
-            }
-            return result;
-        }
-        if (translations) {
-            res = this.parser.interpolate(this.parser.getValue(translations, key), interpolateParams);
-        }
-        if (typeof res === "undefined" && this.defaultLang && this.defaultLang !== this.currentLang && this.useDefaultLang) {
-            res = this.parser.interpolate(this.parser.getValue(this.translations[this.defaultLang], key), interpolateParams);
-        }
-        if (typeof res === "undefined") {
-            var /** @type {?} */ params = { key: key, translateService: this };
-            if (typeof interpolateParams !== 'undefined') {
-                params.interpolateParams = interpolateParams;
-            }
-            res = this.missingTranslationHandler.handle(params);
-        }
-        return typeof res !== "undefined" ? res : key;
-        var e_1, _a, e_2, _b;
-    };
-    /**
-     * Gets the translated value of a key (or an array of keys)
-     * @param {?} key
-     * @param {?=} interpolateParams
-     * @return {?} the translated key, or an object of translated keys
-     */
-    TranslateService.prototype.get = function (key, interpolateParams) {
-        var _this = this;
-        if (!isDefined(key) || !key.length) {
-            throw new Error("Parameter \"key\" required");
-        }
-        // check if we are loading a new translation to use
-        if (this.pending) {
-            return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].create(function (observer) {
-                var /** @type {?} */ onComplete = function (res) {
-                    observer.next(res);
-                    observer.complete();
-                };
-                var /** @type {?} */ onError = function (err) {
-                    observer.error(err);
-                };
-                _this.loadingTranslations.subscribe(function (res) {
-                    res = _this.getParsedResult(_this.compiler.compileTranslations(res, _this.currentLang), key, interpolateParams);
-                    if (typeof res.subscribe === "function") {
-                        res.subscribe(onComplete, onError);
-                    }
-                    else {
-                        onComplete(res);
-                    }
-                }, onError);
-            });
-        }
-        else {
-            var /** @type {?} */ res = this.getParsedResult(this.translations[this.currentLang], key, interpolateParams);
-            if (typeof res.subscribe === "function") {
-                return res;
-            }
-            else {
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(res);
-            }
-        }
-    };
-    /**
-     * Returns a stream of translated values of a key (or an array of keys) which updates
-     * whenever the language changes.
-     * @param {?} key
-     * @param {?=} interpolateParams
-     * @return {?} A stream of the translated key, or an object of translated keys
-     */
-    TranslateService.prototype.stream = function (key, interpolateParams) {
-        var _this = this;
-        if (!isDefined(key) || !key.length) {
-            throw new Error("Parameter \"key\" required");
-        }
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["concat"])(this.get(key, interpolateParams), this.onLangChange.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (event) {
-            var /** @type {?} */ res = _this.getParsedResult(event.translations, key, interpolateParams);
-            if (typeof res.subscribe === "function") {
-                return res;
-            }
-            else {
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(res);
-            }
-        })));
-    };
-    /**
-     * Returns a translation instantly from the internal state of loaded translation.
-     * All rules regarding the current language, the preferred language of even fallback languages will be used except any promise handling.
-     * @param {?} key
-     * @param {?=} interpolateParams
-     * @return {?}
-     */
-    TranslateService.prototype.instant = function (key, interpolateParams) {
-        if (!isDefined(key) || !key.length) {
-            throw new Error("Parameter \"key\" required");
-        }
-        var /** @type {?} */ res = this.getParsedResult(this.translations[this.currentLang], key, interpolateParams);
-        if (typeof res.subscribe !== "undefined") {
-            if (key instanceof Array) {
-                var /** @type {?} */ obj_1 = {};
-                key.forEach(function (value, index) {
-                    obj_1[key[index]] = key[index];
-                });
-                return obj_1;
-            }
-            return key;
-        }
-        else {
-            return res;
-        }
-    };
-    /**
-     * Sets the translated value of a key, after compiling it
-     * @param {?} key
-     * @param {?} value
-     * @param {?=} lang
-     * @return {?}
-     */
-    TranslateService.prototype.set = function (key, value, lang) {
-        if (lang === void 0) { lang = this.currentLang; }
-        this.translations[lang][key] = this.compiler.compile(value, lang);
-        this.updateLangs();
-        this.onTranslationChange.emit({ lang: lang, translations: this.translations[lang] });
-    };
-    /**
-     * Changes the current lang
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.changeLang = function (lang) {
-        this.currentLang = lang;
-        this.onLangChange.emit({ lang: lang, translations: this.translations[lang] });
-        // if there is no default lang, use the one that we just set
-        if (!this.defaultLang) {
-            this.changeDefaultLang(lang);
-        }
-    };
-    /**
-     * Changes the default lang
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.changeDefaultLang = function (lang) {
-        this.defaultLang = lang;
-        this.onDefaultLangChange.emit({ lang: lang, translations: this.translations[lang] });
-    };
-    /**
-     * Allows to reload the lang file from the file
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.reloadLang = function (lang) {
-        this.resetLang(lang);
-        return this.getTranslation(lang);
-    };
-    /**
-     * Deletes inner translation
-     * @param {?} lang
-     * @return {?}
-     */
-    TranslateService.prototype.resetLang = function (lang) {
-        this._translationRequests[lang] = undefined;
-        this.translations[lang] = undefined;
-    };
-    /**
-     * Returns the language code name from the browser, e.g. "de"
-     * @return {?}
-     */
-    TranslateService.prototype.getBrowserLang = function () {
-        if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
-            return undefined;
-        }
-        var /** @type {?} */ browserLang = window.navigator.languages ? window.navigator.languages[0] : null;
-        browserLang = browserLang || window.navigator.language || window.navigator.browserLanguage || window.navigator.userLanguage;
-        if (browserLang.indexOf('-') !== -1) {
-            browserLang = browserLang.split('-')[0];
-        }
-        if (browserLang.indexOf('_') !== -1) {
-            browserLang = browserLang.split('_')[0];
-        }
-        return browserLang;
-    };
-    /**
-     * Returns the culture language code name from the browser, e.g. "de-DE"
-     * @return {?}
-     */
-    TranslateService.prototype.getBrowserCultureLang = function () {
-        if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
-            return undefined;
-        }
-        var /** @type {?} */ browserCultureLang = window.navigator.languages ? window.navigator.languages[0] : null;
-        browserCultureLang = browserCultureLang || window.navigator.language || window.navigator.browserLanguage || window.navigator.userLanguage;
-        return browserCultureLang;
-    };
-    return TranslateService;
-}());
-TranslateService.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] },
-];
-/** @nocollapse */
-TranslateService.ctorParameters = function () { return [
-    { type: TranslateStore, },
-    { type: TranslateLoader, },
-    { type: TranslateCompiler, },
-    { type: TranslateParser, },
-    { type: MissingTranslationHandler, },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [USE_DEFAULT_LANG,] },] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [USE_STORE,] },] },
-]; };
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var TranslateDirective = /** @class */ (function () {
-    /**
-     * @param {?} translateService
-     * @param {?} element
-     * @param {?} _ref
-     */
-    function TranslateDirective(translateService, element, _ref) {
-        var _this = this;
-        this.translateService = translateService;
-        this.element = element;
-        this._ref = _ref;
-        // subscribe to onTranslationChange event, in case the translations of the current lang change
-        if (!this.onTranslationChangeSub) {
-            this.onTranslationChangeSub = this.translateService.onTranslationChange.subscribe(function (event) {
-                if (event.lang === _this.translateService.currentLang) {
-                    _this.checkNodes(true, event.translations);
-                }
-            });
-        }
-        // subscribe to onLangChange event, in case the language changes
-        if (!this.onLangChangeSub) {
-            this.onLangChangeSub = this.translateService.onLangChange.subscribe(function (event) {
-                _this.checkNodes(true, event.translations);
-            });
-        }
-        // subscribe to onDefaultLangChange event, in case the default language changes
-        if (!this.onDefaultLangChangeSub) {
-            this.onDefaultLangChangeSub = this.translateService.onDefaultLangChange.subscribe(function (event) {
-                _this.checkNodes(true);
-            });
-        }
-    }
-    Object.defineProperty(TranslateDirective.prototype, "translate", {
-        /**
-         * @param {?} key
-         * @return {?}
-         */
-        set: function (key) {
-            if (key) {
-                this.key = key;
-                this.checkNodes();
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TranslateDirective.prototype, "translateParams", {
-        /**
-         * @param {?} params
-         * @return {?}
-         */
-        set: function (params) {
-            if (!equals(this.currentParams, params)) {
-                this.currentParams = params;
-                this.checkNodes(true);
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @return {?}
-     */
-    TranslateDirective.prototype.ngAfterViewChecked = function () {
-        this.checkNodes();
-    };
-    /**
-     * @param {?=} forceUpdate
-     * @param {?=} translations
-     * @return {?}
-     */
-    TranslateDirective.prototype.checkNodes = function (forceUpdate, translations) {
-        if (forceUpdate === void 0) { forceUpdate = false; }
-        var /** @type {?} */ nodes = this.element.nativeElement.childNodes;
-        // if the element is empty
-        if (!nodes.length) {
-            // we add the key as content
-            this.setContent(this.element.nativeElement, this.key);
-            nodes = this.element.nativeElement.childNodes;
-        }
-        for (var /** @type {?} */ i = 0; i < nodes.length; ++i) {
-            var /** @type {?} */ node = nodes[i];
-            if (node.nodeType === 3) {
-                // node type 3 is a text node
-                var /** @type {?} */ key = void 0;
-                if (this.key) {
-                    key = this.key;
-                    if (forceUpdate) {
-                        node.lastKey = null;
-                    }
-                }
-                else {
-                    var /** @type {?} */ content = this.getContent(node);
-                    var /** @type {?} */ trimmedContent = content.trim();
-                    if (trimmedContent.length) {
-                        // we want to use the content as a key, not the translation value
-                        if (content !== node.currentValue) {
-                            key = trimmedContent;
-                            // the content was changed from the user, we'll use it as a reference if needed
-                            node.originalContent = this.getContent(node);
-                        }
-                        else if (node.originalContent && forceUpdate) {
-                            // the content seems ok, but the lang has changed
-                            node.lastKey = null;
-                            // the current content is the translation, not the key, use the last real content as key
-                            key = node.originalContent.trim();
-                        }
-                    }
-                }
-                this.updateValue(key, node, translations);
-            }
-        }
-    };
-    /**
-     * @param {?} key
-     * @param {?} node
-     * @param {?} translations
-     * @return {?}
-     */
-    TranslateDirective.prototype.updateValue = function (key, node, translations) {
-        var _this = this;
-        if (key) {
-            if (node.lastKey === key && this.lastParams === this.currentParams) {
-                return;
-            }
-            this.lastParams = this.currentParams;
-            var /** @type {?} */ onTranslation = function (res) {
-                if (res !== key) {
-                    node.lastKey = key;
-                }
-                if (!node.originalContent) {
-                    node.originalContent = _this.getContent(node);
-                }
-                node.currentValue = isDefined(res) ? res : (node.originalContent || key);
-                // we replace in the original content to preserve spaces that we might have trimmed
-                _this.setContent(node, _this.key ? node.currentValue : node.originalContent.replace(key, node.currentValue));
-                _this._ref.markForCheck();
-            };
-            if (isDefined(translations)) {
-                var /** @type {?} */ res = this.translateService.getParsedResult(translations, key, this.currentParams);
-                if (typeof res.subscribe === "function") {
-                    res.subscribe(onTranslation);
-                }
-                else {
-                    onTranslation(res);
-                }
-            }
-            else {
-                this.translateService.get(key, this.currentParams).subscribe(onTranslation);
-            }
-        }
-    };
-    /**
-     * @param {?} node
-     * @return {?}
-     */
-    TranslateDirective.prototype.getContent = function (node) {
-        return isDefined(node.textContent) ? node.textContent : node.data;
-    };
-    /**
-     * @param {?} node
-     * @param {?} content
-     * @return {?}
-     */
-    TranslateDirective.prototype.setContent = function (node, content) {
-        if (isDefined(node.textContent)) {
-            node.textContent = content;
-        }
-        else {
-            node.data = content;
-        }
-    };
-    /**
-     * @return {?}
-     */
-    TranslateDirective.prototype.ngOnDestroy = function () {
-        if (this.onLangChangeSub) {
-            this.onLangChangeSub.unsubscribe();
-        }
-        if (this.onDefaultLangChangeSub) {
-            this.onDefaultLangChangeSub.unsubscribe();
-        }
-        if (this.onTranslationChangeSub) {
-            this.onTranslationChangeSub.unsubscribe();
-        }
-    };
-    return TranslateDirective;
-}());
-TranslateDirective.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"], args: [{
-                selector: '[translate],[ngx-translate]'
-            },] },
-];
-/** @nocollapse */
-TranslateDirective.ctorParameters = function () { return [
-    { type: TranslateService, },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"], },
-]; };
-TranslateDirective.propDecorators = {
-    "translate": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] },],
-    "translateParams": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] },],
-};
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var TranslatePipe = /** @class */ (function () {
-    /**
-     * @param {?} translate
-     * @param {?} _ref
-     */
-    function TranslatePipe(translate, _ref) {
-        this.translate = translate;
-        this._ref = _ref;
-        this.value = '';
-    }
-    /**
-     * @param {?} key
-     * @param {?=} interpolateParams
-     * @param {?=} translations
-     * @return {?}
-     */
-    TranslatePipe.prototype.updateValue = function (key, interpolateParams, translations) {
-        var _this = this;
-        var /** @type {?} */ onTranslation = function (res) {
-            _this.value = res !== undefined ? res : key;
-            _this.lastKey = key;
-            _this._ref.markForCheck();
-        };
-        if (translations) {
-            var /** @type {?} */ res = this.translate.getParsedResult(translations, key, interpolateParams);
-            if (typeof res.subscribe === 'function') {
-                res.subscribe(onTranslation);
-            }
-            else {
-                onTranslation(res);
-            }
-        }
-        this.translate.get(key, interpolateParams).subscribe(onTranslation);
-    };
-    /**
-     * @param {?} query
-     * @param {...?} args
-     * @return {?}
-     */
-    TranslatePipe.prototype.transform = function (query) {
-        var _this = this;
-        var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
-        }
-        if (!query || query.length === 0) {
-            return query;
-        }
-        // if we ask another time for the same key, return the last value
-        if (equals(query, this.lastKey) && equals(args, this.lastParams)) {
-            return this.value;
-        }
-        var /** @type {?} */ interpolateParams;
-        if (isDefined(args[0]) && args.length) {
-            if (typeof args[0] === 'string' && args[0].length) {
-                // we accept objects written in the template such as {n:1}, {'n':1}, {n:'v'}
-                // which is why we might need to change it to real JSON objects such as {"n":1} or {"n":"v"}
-                var /** @type {?} */ validArgs = args[0]
-                    .replace(/(\')?([a-zA-Z0-9_]+)(\')?(\s)?:/g, '"$2":')
-                    .replace(/:(\s)?(\')(.*?)(\')/g, ':"$3"');
-                try {
-                    interpolateParams = JSON.parse(validArgs);
-                }
-                catch (e) {
-                    throw new SyntaxError("Wrong parameter in TranslatePipe. Expected a valid Object, received: " + args[0]);
-                }
-            }
-            else if (typeof args[0] === 'object' && !Array.isArray(args[0])) {
-                interpolateParams = args[0];
-            }
-        }
-        // store the query, in case it changes
-        this.lastKey = query;
-        // store the params, in case they change
-        this.lastParams = args;
-        // set the value
-        this.updateValue(query, interpolateParams);
-        // if there is a subscription to onLangChange, clean it
-        this._dispose();
-        // subscribe to onTranslationChange event, in case the translations change
-        if (!this.onTranslationChange) {
-            this.onTranslationChange = this.translate.onTranslationChange.subscribe(function (event) {
-                if (_this.lastKey && event.lang === _this.translate.currentLang) {
-                    _this.lastKey = null;
-                    _this.updateValue(query, interpolateParams, event.translations);
-                }
-            });
-        }
-        // subscribe to onLangChange event, in case the language changes
-        if (!this.onLangChange) {
-            this.onLangChange = this.translate.onLangChange.subscribe(function (event) {
-                if (_this.lastKey) {
-                    _this.lastKey = null; // we want to make sure it doesn't return the same value until it's been updated
-                    _this.updateValue(query, interpolateParams, event.translations);
-                }
-            });
-        }
-        // subscribe to onDefaultLangChange event, in case the default language changes
-        if (!this.onDefaultLangChange) {
-            this.onDefaultLangChange = this.translate.onDefaultLangChange.subscribe(function () {
-                if (_this.lastKey) {
-                    _this.lastKey = null; // we want to make sure it doesn't return the same value until it's been updated
-                    _this.updateValue(query, interpolateParams);
-                }
-            });
-        }
-        return this.value;
-    };
-    /**
-     * Clean any existing subscription to change events
-     * @return {?}
-     */
-    TranslatePipe.prototype._dispose = function () {
-        if (typeof this.onTranslationChange !== 'undefined') {
-            this.onTranslationChange.unsubscribe();
-            this.onTranslationChange = undefined;
-        }
-        if (typeof this.onLangChange !== 'undefined') {
-            this.onLangChange.unsubscribe();
-            this.onLangChange = undefined;
-        }
-        if (typeof this.onDefaultLangChange !== 'undefined') {
-            this.onDefaultLangChange.unsubscribe();
-            this.onDefaultLangChange = undefined;
-        }
-    };
-    /**
-     * @return {?}
-     */
-    TranslatePipe.prototype.ngOnDestroy = function () {
-        this._dispose();
-    };
-    return TranslatePipe;
-}());
-TranslatePipe.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"], args: [{
-                name: 'translate',
-                pure: false // required to update the value when the promise is resolved
-            },] },
-];
-/** @nocollapse */
-TranslatePipe.ctorParameters = function () { return [
-    { type: TranslateService, },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"], },
-]; };
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var TranslateModule = /** @class */ (function () {
-    function TranslateModule() {
-    }
-    /**
-     * Use this method in your root module to provide the TranslateService
-     * @param {?=} config
-     * @return {?}
-     */
-    TranslateModule.forRoot = function (config) {
-        if (config === void 0) { config = {}; }
-        return {
-            ngModule: TranslateModule,
-            providers: [
-                config.loader || { provide: TranslateLoader, useClass: TranslateFakeLoader },
-                config.compiler || { provide: TranslateCompiler, useClass: TranslateFakeCompiler },
-                config.parser || { provide: TranslateParser, useClass: TranslateDefaultParser },
-                config.missingTranslationHandler || { provide: MissingTranslationHandler, useClass: FakeMissingTranslationHandler },
-                TranslateStore,
-                { provide: USE_STORE, useValue: config.isolate },
-                { provide: USE_DEFAULT_LANG, useValue: config.useDefaultLang },
-                TranslateService
-            ]
-        };
-    };
-    /**
-     * Use this method in your other (non root) modules to import the directive/pipe
-     * @param {?=} config
-     * @return {?}
-     */
-    TranslateModule.forChild = function (config) {
-        if (config === void 0) { config = {}; }
-        return {
-            ngModule: TranslateModule,
-            providers: [
-                config.loader || { provide: TranslateLoader, useClass: TranslateFakeLoader },
-                config.compiler || { provide: TranslateCompiler, useClass: TranslateFakeCompiler },
-                config.parser || { provide: TranslateParser, useClass: TranslateDefaultParser },
-                config.missingTranslationHandler || { provide: MissingTranslationHandler, useClass: FakeMissingTranslationHandler },
-                { provide: USE_STORE, useValue: config.isolate },
-                { provide: USE_DEFAULT_LANG, useValue: config.useDefaultLang },
-                TranslateService
-            ]
-        };
-    };
-    return TranslateModule;
-}());
-TranslateModule.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"], args: [{
-                declarations: [
-                    TranslatePipe,
-                    TranslateDirective
-                ],
-                exports: [
-                    TranslatePipe,
-                    TranslateDirective
-                ]
-            },] },
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-
-
-//# sourceMappingURL=ngx-translate-core.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/@ngx-translate/http-loader/esm5/ngx-translate-http-loader.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@ngx-translate/http-loader/esm5/ngx-translate-http-loader.js ***!
-  \***********************************************************************************/
-/*! exports provided: TranslateHttpLoader */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TranslateHttpLoader", function() { return TranslateHttpLoader; });
-var TranslateHttpLoader = /** @class */ (function () {
-    function TranslateHttpLoader(http, prefix, suffix) {
-        if (prefix === void 0) { prefix = "/assets/i18n/"; }
-        if (suffix === void 0) { suffix = ".json"; }
-        this.http = http;
-        this.prefix = prefix;
-        this.suffix = suffix;
-    }
-    TranslateHttpLoader.prototype.getTranslation = function (lang) {
-        return this.http.get("" + this.prefix + lang + this.suffix);
-    };
-    return TranslateHttpLoader;
-}());
-
-
-//# sourceMappingURL=ngx-translate-http-loader.js.map
-
-
-/***/ }),
-
 /***/ "./node_modules/angular-gridster2/fesm5/angular-gridster2.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/angular-gridster2/fesm5/angular-gridster2.js ***!
@@ -8268,23 +6876,6 @@ rxjs__WEBPACK_IMPORTED_MODULE_0__["Observable"].prototype.zipAll = _operator_zip
 
 /***/ }),
 
-/***/ "./node_modules/rxjs-compat/_esm5/observable/of.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/rxjs-compat/_esm5/observable/of.js ***!
-  \*********************************************************/
-/*! exports provided: of */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "of", function() { return rxjs__WEBPACK_IMPORTED_MODULE_0__["of"]; });
-
-
-//# sourceMappingURL=of.js.map
-
-/***/ }),
-
 /***/ "./node_modules/rxjs-compat/_esm5/operator/audit.js":
 /*!**********************************************************!*\
   !*** ./node_modules/rxjs-compat/_esm5/operator/audit.js ***!
@@ -11944,12 +10535,11 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************!*\
   !*** ./src/app/all-tasks/all-tasks.module.ts ***!
   \***********************************************/
-/*! exports provided: createTranslateLoader, AllTasksPageModule */
+/*! exports provided: AllTasksPageModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTranslateLoader", function() { return createTranslateLoader; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllTasksPageModule", function() { return AllTasksPageModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
@@ -11965,16 +10555,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _task_details_task_details_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./task-details/task-details.component */ "./src/app/all-tasks/task-details/task-details.component.ts");
 /* harmony import */ var angular_formio__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! angular-formio */ "./node_modules/angular-formio/index.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
-/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/esm5/ngx-translate-http-loader.js");
-/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
-/* harmony import */ var _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./task-create/task-create.component */ "./src/app/all-tasks/task-create/task-create.component.ts");
-/* harmony import */ var _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./task-edit/task-edit.component */ "./src/app/all-tasks/task-edit/task-edit.component.ts");
-/* harmony import */ var _task_view_task_view_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./task-view/task-view.component */ "./src/app/all-tasks/task-view/task-view.component.ts");
-/* harmony import */ var _task_index_task_index_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./task-index/task-index.component */ "./src/app/all-tasks/task-index/task-index.component.ts");
-/* harmony import */ var _resource_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../resource.service */ "./src/app/resource.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _formio_formio_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../formio/formio.component */ "./src/app/formio/formio.component.ts");
+/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
+/* harmony import */ var _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./task-create/task-create.component */ "./src/app/all-tasks/task-create/task-create.component.ts");
+/* harmony import */ var _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./task-edit/task-edit.component */ "./src/app/all-tasks/task-edit/task-edit.component.ts");
+/* harmony import */ var _task_view_task_view_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./task-view/task-view.component */ "./src/app/all-tasks/task-view/task-view.component.ts");
+/* harmony import */ var _task_index_task_index_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./task-index/task-index.component */ "./src/app/all-tasks/task-index/task-index.component.ts");
+/* harmony import */ var _resource_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../resource.service */ "./src/app/resource.service.ts");
+/* harmony import */ var _formio_formio_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../formio/formio.component */ "./src/app/formio/formio.component.ts");
+/* harmony import */ var _form_form_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../form/form.component */ "./src/app/form/form.component.ts");
+/* harmony import */ var _filter_modal_filter_modal_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../filter-modal/filter-modal.component */ "./src/app/filter-modal/filter-modal.component.ts");
+/* harmony import */ var _process_list_process_list_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../process-list/process-list.component */ "./src/app/process-list/process-list.component.ts");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12007,18 +10598,16 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     {
         path: '',
         component: _all_tasks_page__WEBPACK_IMPORTED_MODULE_5__["AllTasksPage"],
         children: [
-            { path: 'edit/:formKey/:taskId/:executionId/:deleteReason', component: _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_18__["TaskEditComponent"] }
+            { path: 'edit/:taskId', component: _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_16__["TaskEditComponent"] }
         ]
     }
 ];
-function createTranslateLoader(http) {
-    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_15__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
-}
 var AllTasksPageModule = /** @class */ (function () {
     function AllTasksPageModule() {
     }
@@ -12033,32 +10622,36 @@ var AllTasksPageModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_13__["MatNativeDateModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_13__["MatAutocompleteModule"], _angular_material__WEBPACK_IMPORTED_MODULE_13__["MatInputModule"],
                 angular_formio__WEBPACK_IMPORTED_MODULE_12__["FormioModule"],
-                angular_formio_resource__WEBPACK_IMPORTED_MODULE_16__["FormioResource"],
+                angular_formio_resource__WEBPACK_IMPORTED_MODULE_14__["FormioResource"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes),
-                _ngx_translate_core__WEBPACK_IMPORTED_MODULE_14__["TranslateModule"].forRoot({
-                    loader: {
-                        provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_14__["TranslateLoader"],
-                        useFactory: (createTranslateLoader),
-                        deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_22__["HttpClient"]]
-                    }
-                })
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_24__["SharedModule"]
             ],
-            entryComponents: [_formio_formio_component__WEBPACK_IMPORTED_MODULE_23__["AppFormioComponent"], _task_grid_task_grid_component__WEBPACK_IMPORTED_MODULE_9__["TaskGridComponent"], _task_item_task_item_component__WEBPACK_IMPORTED_MODULE_10__["TaskItemComponent"], _task_details_task_details_component__WEBPACK_IMPORTED_MODULE_11__["TaskDetailsComponent"],
-                _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_18__["TaskEditComponent"],
-                _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_17__["TaskCreateComponent"], _task_view_task_view_component__WEBPACK_IMPORTED_MODULE_19__["TaskViewComponent"], _task_index_task_index_component__WEBPACK_IMPORTED_MODULE_20__["TaskIndexComponent"]],
-            declarations: [_task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_18__["TaskEditComponent"], _task_view_task_view_component__WEBPACK_IMPORTED_MODULE_19__["TaskViewComponent"], _formio_formio_component__WEBPACK_IMPORTED_MODULE_23__["AppFormioComponent"],
-                _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_17__["TaskCreateComponent"], _task_index_task_index_component__WEBPACK_IMPORTED_MODULE_20__["TaskIndexComponent"], _all_tasks_page__WEBPACK_IMPORTED_MODULE_5__["AllTasksPage"], _on_create_directive__WEBPACK_IMPORTED_MODULE_7__["OnCreateDirective"], _grid_grid_component__WEBPACK_IMPORTED_MODULE_6__["GridComponent"], _task_grid_task_grid_component__WEBPACK_IMPORTED_MODULE_9__["TaskGridComponent"],
+            entryComponents: [_process_list_process_list_component__WEBPACK_IMPORTED_MODULE_23__["ProcessListComponent"], _filter_modal_filter_modal_component__WEBPACK_IMPORTED_MODULE_22__["FilterModalComponent"],
+                _formio_formio_component__WEBPACK_IMPORTED_MODULE_20__["AppFormioComponent"], _form_form_component__WEBPACK_IMPORTED_MODULE_21__["FormComponent"], _task_grid_task_grid_component__WEBPACK_IMPORTED_MODULE_9__["TaskGridComponent"], _task_item_task_item_component__WEBPACK_IMPORTED_MODULE_10__["TaskItemComponent"], _task_details_task_details_component__WEBPACK_IMPORTED_MODULE_11__["TaskDetailsComponent"],
+                _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_16__["TaskEditComponent"],
+                _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_15__["TaskCreateComponent"], _task_view_task_view_component__WEBPACK_IMPORTED_MODULE_17__["TaskViewComponent"], _task_index_task_index_component__WEBPACK_IMPORTED_MODULE_18__["TaskIndexComponent"]],
+            declarations: [_process_list_process_list_component__WEBPACK_IMPORTED_MODULE_23__["ProcessListComponent"], _filter_modal_filter_modal_component__WEBPACK_IMPORTED_MODULE_22__["FilterModalComponent"],
+                _formio_formio_component__WEBPACK_IMPORTED_MODULE_20__["AppFormioComponent"], _form_form_component__WEBPACK_IMPORTED_MODULE_21__["FormComponent"], _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_16__["TaskEditComponent"], _task_view_task_view_component__WEBPACK_IMPORTED_MODULE_17__["TaskViewComponent"],
+                _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_15__["TaskCreateComponent"], _task_index_task_index_component__WEBPACK_IMPORTED_MODULE_18__["TaskIndexComponent"], _all_tasks_page__WEBPACK_IMPORTED_MODULE_5__["AllTasksPage"], _on_create_directive__WEBPACK_IMPORTED_MODULE_7__["OnCreateDirective"], _grid_grid_component__WEBPACK_IMPORTED_MODULE_6__["GridComponent"], _task_grid_task_grid_component__WEBPACK_IMPORTED_MODULE_9__["TaskGridComponent"],
                 _task_item_task_item_component__WEBPACK_IMPORTED_MODULE_10__["TaskItemComponent"], _task_details_task_details_component__WEBPACK_IMPORTED_MODULE_11__["TaskDetailsComponent"]],
             providers: [
-                angular_formio_resource__WEBPACK_IMPORTED_MODULE_16__["FormioResourceService"],
-                _resource_service__WEBPACK_IMPORTED_MODULE_21__["ResourceService"],
+                angular_formio_resource__WEBPACK_IMPORTED_MODULE_14__["FormioResourceService"],
+                _resource_service__WEBPACK_IMPORTED_MODULE_19__["ResourceService"],
                 {
-                    provide: angular_formio_resource__WEBPACK_IMPORTED_MODULE_16__["FormioResourceConfig"],
+                    provide: angular_formio_resource__WEBPACK_IMPORTED_MODULE_14__["FormioResourceConfig"],
                     useValue: {
-                        name: 'task',
-                        form: 'task'
+                        name: 'servicerequest',
+                        form: 'task',
+                        parents: [
+                            {
+                                field: 'user',
+                                resource: 'currentUser',
+                                filter: false
+                            }
+                        ]
                     }
                 },
+                ,
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ]
         })
@@ -12077,7 +10670,7 @@ var AllTasksPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-split-pane when=\"(min-width: 1300px)\">\n  <!--  our side menu  -->\n  <ion-menu menu-id=\"start\">\n\n    <ion-toolbar>\n\n      <ion-buttons slot=\"start\">\n        <!--<ion-button color=\"dark\" clear class=\"toolbar-round\" [hidden]=\"!panesToggle.toggleHack\" (click)=\"toggleMenu('start')\">\n          <ion-icon slot=\"icon-only\" name=\"menu\"></ion-icon>\n        </ion-button>-->\n        <ion-button color=\"secondary\" solid round end-item icon-end class=\"toolbar-round\">{{\"Add Filter\" | translate}}\n          <ion-icon slot=\"start\" name=\"add-circle\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n      <ion-buttons slot=\"end\">\n        <ion-button color=\"dark\" clear class=\"toolbar-round\">\n          <ion-icon slot=\"icon-only\" name=\"settings\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n    </ion-toolbar>\n\n    <ion-content>\n      <div class=\"profile-container\">\n        <div class=\"photo-container\"></div>\n        <h6 padding>{{auth.user?.data.name}}</h6>\n      </div>\n      <ion-searchbar [placeholder]=\"'Search' | translate\" mode=\"ios\"></ion-searchbar>\n\n      <ion-list lines=\"full\">\n        <ion-item *ngFor=\"let filter of filters\" [disabled]=\"filter.count == 0\" [ngClass]=\"{'selected-green': filterStorage.isFilterOpen(filter)}\"\n          (click)=\"toggleFilter(filter,!filterStorage.isFilterOpen(filter))\">\n          <!-- <ion-avatar slot=\"start\">\n                    <img [src]=\"task.pic\">\n                  </ion-avatar>\n                -->\n          <ion-label text-wrap>\n            <ion-text>\n              <h3 appOnCreate (OnCreateDirective)=\"getFilterCount(filter)\">\n                {{filter.name}}\n                <ion-badge color=\"secondary\" slot=\"end\">{{filter.count}}</ion-badge>\n              </h3>\n            </ion-text>\n\n          </ion-label>\n\n          <ion-buttons slot=\"end\" class=\"hide-md hide-sm\">\n            <ion-button clear color=\"dark\" slot=\"icon-only\">\n              <ion-icon name=\"md-more\"></ion-icon>\n            </ion-button>\n          </ion-buttons>\n\n        </ion-item>\n        <!--  <ion-item  (click)=\"toggleHistory()\">\n         <ion-avatar slot=\"start\">\n                    <img [src]=\"task.pic\">\n                  </ion-avatar>\n                \n          <ion-label text-wrap>\n            <ion-text>\n              <h3 appOnCreate>\n                Completed Tasks\n              </h3>١\n            </ion-text>\n\n          </ion-label>\n        </ion-item>\n        -->\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n  <!-- the main content -->\n  <app-grid main></app-grid>\n</ion-split-pane>\n\n<!--<ion-row>\n      <ion-col *ngFor=\"let task of filtered\" col-6 col-md-4 col-lg-4>\n        <ion-card [ngClass]=\"{'danger':task.priority > 50}\">\n          <ion-item>\n            <ion-avatar item-start>\n              <img src=\"http://flatable.phoenixcoded.net/default/assets/images/user.png\">\n            </ion-avatar>\n            <h2>To: {{task.assignee}}</h2>\n            <p>{{task.created | date}}</p>\n          </ion-item>\n\n\n\n          <ion-card-content>\n            <p>{{task.name}}</p>\n          </ion-card-content>\n\n          <ion-row hidden>\n            <ion-col>\n              <button ion-button icon-start clear small>\n                <div>Details</div>\n              </button>\n            </ion-col>\n            <ion-col>\n              <button ion-button icon-start clear small>\n                <div>Other Acion</div>\n              </button>\n            </ion-col>\n            <ion-col center text-center>\n              <ion-note>\n\n              </ion-note>\n            </ion-col>\n          </ion-row>\n        </ion-card>\n      </ion-col>\n    </ion-row> -->\n"
+module.exports = "<ion-split-pane when=\"(min-width: 1300px)\">\n  <!--  our side menu  -->\n  <ion-menu menu-id=\"start\">\n\n    <ion-toolbar>\n\n      <ion-buttons slot=\"start\">\n        <!--<ion-button color=\"dark\" clear class=\"toolbar-round\" [hidden]=\"!panesToggle.toggleHack\" (click)=\"toggleMenu('start')\">\n          <ion-icon slot=\"icon-only\" name=\"menu\"></ion-icon>\n        </ion-button>-->\n        <ion-button color=\"secondary\" solid round end-item icon-end (click)=\"presentFilter()\" class=\"toolbar-round\">{{\"Add\n          Filter\" | translate}}\n          <ion-icon slot=\"start\" name=\"add-circle\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n      <ion-buttons slot=\"end\">\n        <ion-button color=\"dark\" (click)=\"userOptions($event)\" clear class=\"toolbar-round\">\n          <ion-icon slot=\"icon-only\" name=\"settings\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n    </ion-toolbar>\n\n    <ion-content>\n      <div class=\"profile-container\">\n        <div class=\"photo-container\" [ngStyle]=\"{'background-image': 'url(assets/img/'+auth.getUser()?.username+'.jpg)'}\"></div>\n        <h5 margin-top>{{auth.getUser()?.profile.firstName}} {{auth.getUser()?.profile.lastName}}</h5>\n        <span *ngFor=\"let group of auth.getUser()?.groups\">{{group.name}} </span>\n      </div>\n      <ion-searchbar [placeholder]=\"'Search' | translate\" mode=\"ios\"></ion-searchbar>\n\n      <ion-list lines=\"full\">\n        <ion-item *ngFor=\"let filter of filters\" [disabled]=\"filter.count == 0\" [ngClass]=\"{'selected-green': filterStorage.isFilterOpen(filter)}\"\n          (click)=\"toggleFilter(filter,!filterStorage.isFilterOpen(filter))\">\n          <!-- <ion-avatar slot=\"start\">\n                    <img [src]=\"task.pic\">\n                  </ion-avatar>\n                -->\n          <ion-label text-wrap>\n            <ion-text>\n              <h3 appOnCreate (OnCreateDirective)=\"getFilterCount(filter)\">\n                {{filter.name}}\n                <ion-badge color=\"secondary\" slot=\"end\">{{filter.count}}</ion-badge>\n              </h3>\n            </ion-text>\n\n          </ion-label>\n\n          <ion-buttons slot=\"end\" class=\"hide-md hide-sm\">\n            <ion-button clear color=\"dark\" slot=\"icon-only\">\n              <ion-icon name=\"md-more\"></ion-icon>\n            </ion-button>\n          </ion-buttons>\n\n        </ion-item>\n        <ion-item (click)=\"toggleHistory()\">\n          <ion-label text-wrap>\n            <ion-text>\n              <h3 appOnCreate>\n                {{'Completed Tasks' | translate}}\n              </h3>\n            </ion-text>\n\n          </ion-label>\n        </ion-item>\n\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n  <!-- the main content -->\n  <app-grid main></app-grid>\n</ion-split-pane>\n\n<!--<ion-row>\n      <ion-col *ngFor=\"let task of filtered\" col-6 col-md-4 col-lg-4>\n        <ion-card [ngClass]=\"{'danger':task.priority > 50}\">\n          <ion-item>\n            <ion-avatar item-start>\n              <img src=\"http://flatable.phoenixcoded.net/default/assets/images/user.png\">\n            </ion-avatar>\n            <h2>To: {{task.assignee}}</h2>\n            <p>{{task.created | date}}</p>\n          </ion-item>\n\n\n\n          <ion-card-content>\n            <p>{{task.name}}</p>\n          </ion-card-content>\n\n          <ion-row hidden>\n            <ion-col>\n              <button ion-button icon-start clear small>\n                <div>Details</div>\n              </button>\n            </ion-col>\n            <ion-col>\n              <button ion-button icon-start clear small>\n                <div>Other Acion</div>\n              </button>\n            </ion-col>\n            <ion-col center text-center>\n              <ion-note>\n\n              </ion-note>\n            </ion-col>\n          </ion-row>\n        </ion-card>\n      </ion-col>\n    </ion-row> -->"
 
 /***/ }),
 
@@ -12105,14 +10698,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _remote_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../remote.service */ "./src/app/remote.service.ts");
-/* harmony import */ var _task_options_task_options_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../task-options/task-options.component */ "./src/app/task-options/task-options.component.ts");
-/* harmony import */ var _camunda_rest_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../camunda-rest.service */ "./src/app/camunda-rest.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../events.service */ "./src/app/events.service.ts");
-/* harmony import */ var _filter_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../filter.service */ "./src/app/filter.service.ts");
-/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
-/* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _camunda_rest_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../camunda-rest.service */ "./src/app/camunda-rest.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../events.service */ "./src/app/events.service.ts");
+/* harmony import */ var _filter_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../filter.service */ "./src/app/filter.service.ts");
+/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
+/* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../user-options/user-options.component */ "./src/app/user-options/user-options.component.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _filter_modal_filter_modal_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../filter-modal/filter-modal.component */ "./src/app/filter-modal/filter-modal.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12168,8 +10763,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var AllTasksPage = /** @class */ (function () {
-    function AllTasksPage(popoverCtrl, remoteService, event, camundaService, router, menu, filterStorage, eventService, translate, authz, service, route) {
+    function AllTasksPage(popoverCtrl, remoteService, event, camundaService, router, menu, filterStorage, eventService, translate, modalController, auth, authz, service, route) {
         this.popoverCtrl = popoverCtrl;
         this.remoteService = remoteService;
         this.event = event;
@@ -12179,26 +10776,54 @@ var AllTasksPage = /** @class */ (function () {
         this.filterStorage = filterStorage;
         this.eventService = eventService;
         this.translate = translate;
+        this.modalController = modalController;
+        this.auth = auth;
         this.authz = authz;
         this.service = service;
         this.route = route;
-        this.auth = {
-            user: { data: { name: 'Ahmad Arksousi', username: 'ahmad' } }
-        };
         this.filters = [];
         this.filterClicked = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
-    AllTasksPage.prototype.isStartOpen = function () {
-        return 1;
-        /*
-        this.menu.isOpen('start').then(function (data) {
-         return data;
-       });
-       */
+    AllTasksPage.prototype.userOptions = function (event) {
+        return __awaiter(this, void 0, void 0, function () {
+            var popover;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        event.stopPropagation();
+                        return [4 /*yield*/, this.popoverCtrl.create({
+                                component: _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_10__["UserOptionsComponent"],
+                                event: event
+                            })];
+                    case 1:
+                        popover = _a.sent();
+                        return [4 /*yield*/, popover.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    AllTasksPage.prototype.presentFilter = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var modal;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.modalController.create({
+                            component: _filter_modal_filter_modal_component__WEBPACK_IMPORTED_MODULE_12__["FilterModalComponent"],
+                            showBackdrop: true,
+                            backdropDismiss: true,
+                            animated: true
+                        })];
+                    case 1:
+                        modal = _a.sent();
+                        return [4 /*yield*/, modal.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     AllTasksPage.prototype.getFilterCount = function (filter) {
         this.camundaService.getFilterCount(filter.id).subscribe(function (data) {
-            console.log(data);
             filter.count = data.count;
         });
     };
@@ -12210,29 +10835,37 @@ var AllTasksPage = /** @class */ (function () {
     };
     AllTasksPage.prototype.ngOnInit = function () {
         var _this = this;
-        this.camundaService.getTasks().subscribe(function (data) { console.log(data); });
-        this.camundaService.getFilters().subscribe(function (data) {
-            _this.filters = data;
-        });
-    };
-    AllTasksPage.prototype.presentPopover = function (myEvent, id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var popover;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        myEvent.stopPropagation();
-                        return [4 /*yield*/, this.popoverCtrl.create({
-                                component: _task_options_task_options_component__WEBPACK_IMPORTED_MODULE_3__["TaskOptionsComponent"],
-                                componentProps: { id: id },
-                                event: myEvent
-                            })];
-                    case 1:
-                        popover = _a.sent();
-                        return [4 /*yield*/, popover.present()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                }
+        this.user = this.auth.getUser();
+        this.event.refreshFiltersAnnounced$.subscribe(function () {
+            _this.camundaService.getFilters(_this.auth.getUser().username).subscribe(function (filters) {
+                _this.filters = filters;
             });
+        });
+        this.camundaService.getFilters(this.auth.getUser().username).subscribe(function (filters) {
+            _this.filters = filters;
+            if (filters.length === 0) {
+                var filter = {
+                    resourceType: 'Task',
+                    name: 'All Tasks',
+                    owner: _this.auth.getUser().username,
+                    query: {
+                        orQueries: [
+                            {
+                                assignee: _this.auth.getUser().username,
+                                candidateGroups: Array.prototype.map.call(_this.auth.getUser().groups, function (item) { return item.id; })
+                            }
+                        ]
+                    },
+                    properties: {
+                        color: '',
+                        description: '',
+                        priority: ''
+                    }
+                };
+                _this.camundaService.createFilter(filter).subscribe(function (data) {
+                    _this.event.announceFiltersRefresh('');
+                });
+            }
         });
     };
     AllTasksPage.prototype.announceRefresh = function () {
@@ -12251,10 +10884,20 @@ var AllTasksPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./all-tasks.page.html */ "./src/app/all-tasks/all-tasks.page.html"),
             styles: [__webpack_require__(/*! ./all-tasks.page.scss */ "./src/app/all-tasks/all-tasks.page.scss")],
         }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"], _remote_service__WEBPACK_IMPORTED_MODULE_2__["RemoteServiceProvider"], _events_service__WEBPACK_IMPORTED_MODULE_6__["EventsService"],
-            _camunda_rest_service__WEBPACK_IMPORTED_MODULE_4__["CamundaRestService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["MenuController"], _filter_service__WEBPACK_IMPORTED_MODULE_7__["FilterService"],
-            _events_service__WEBPACK_IMPORTED_MODULE_6__["EventsService"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__["TranslateService"],
-            angular_formio_auth__WEBPACK_IMPORTED_MODULE_9__["FormioAuthService"], angular_formio_resource__WEBPACK_IMPORTED_MODULE_8__["FormioResourceService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"],
+            _remote_service__WEBPACK_IMPORTED_MODULE_2__["RemoteServiceProvider"],
+            _events_service__WEBPACK_IMPORTED_MODULE_5__["EventsService"],
+            _camunda_rest_service__WEBPACK_IMPORTED_MODULE_3__["CamundaRestService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["MenuController"],
+            _filter_service__WEBPACK_IMPORTED_MODULE_6__["FilterService"],
+            _events_service__WEBPACK_IMPORTED_MODULE_5__["EventsService"],
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_9__["TranslateService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"],
+            angular_formio_auth__WEBPACK_IMPORTED_MODULE_8__["FormioAuthService"],
+            angular_formio_resource__WEBPACK_IMPORTED_MODULE_7__["FormioResourceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
     ], AllTasksPage);
     return AllTasksPage;
 }());
@@ -12270,7 +10913,7 @@ var AllTasksPage = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header fixed>\n  <ion-toolbar [ngClass]=\"''\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button menu=\"start\"></ion-menu-button>\n    </ion-buttons>\n\n    <ion-title>{{'Tasks' | translate}}</ion-title>\n\n    <ion-buttons slot=\"end\">\n        <ion-button color=\"dark\" (click)=\"setLanguage(translate.currentLang == 'ar' ? 'en' : 'ar')\">\n          {{translate.currentLang == 'ar' ? 'English' : 'Arabic' |  translate}}\n          </ion-button>\n      <ion-button color=\"dark\" round end-item slot=\"icon\">\n        <ion-badge color=\"danger\" class=\"notifications\" slot=\"start\">11</ion-badge>\n        <ion-icon name=\"notifications-outline\"></ion-icon>\n      </ion-button>\n      <ion-button color=\"secondary\" solid round end-item icon-end class=\"toolbar-round\">{{'Add Task' | translate}}\n        <ion-icon slot=\"start\" name=\"add-circle\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div [ngClass]=\"'padding'\">\n    <gridster [options]=\"options\" dir=\"ltr\">\n      <gridster-item ion-card  [ngClass]=\"{'grid-col': true}\" [item]=\"panels.tasks\">\n        <!-- your content here  <app-task-grid [filterItem]=\"item.propName\"></app-task-grid>\n        \n -->\n        <app-task-grid [filterEvent]=\"filterEvent\" [formKey]=\"formKey\" [filterItems]=\"filters\"></app-task-grid>\n\n\n      </gridster-item>\n<gridster-item ion-card  [ngClass]=\"{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}\"\n        [item]=\"panels.details\">\n        <app-task-details [panels]=\"panels\" [formKey]=\"formKey\"></app-task-details>\n      </gridster-item>\n    </gridster>\n  </div>\n</ion-content>\n"
+module.exports = "<ion-header fixed>\n  <ion-toolbar [ngClass]=\"''\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button menu=\"start\"></ion-menu-button>\n    </ion-buttons>\n\n    <ion-title>{{'Tasks' | translate}}</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <!-- <ion-button color=\"dark\" (click)=\"setLanguage(translate.currentLang == 'ar' ? 'en' : 'ar')\">\n        {{translate.currentLang == 'ar' ? 'English' : 'Arabic' | translate}}\n      </ion-button> -->\n      <ion-button color=\"dark\" (click)=\"languages($event)\" round end-item slot=\"icon\">\n        <ion-badge color=\"primary\" slot=\"start\">{{translate.currentLang}}</ion-badge>\n        <ion-icon name=\"globe\"></ion-icon>\n      </ion-button>\n      <ion-button color=\"dark\" round end-item slot=\"icon\">\n        <ion-badge color=\"danger\" class=\"notifications\" slot=\"start\">11</ion-badge>\n        <ion-icon name=\"notifications-outline\"></ion-icon>\n      </ion-button>\n      <ion-button color=\"secondary\" solid round end-item icon-end (click)=\"process($event)\" class=\"toolbar-round\">{{'Add\n        Task' | translate}}\n        <ion-icon slot=\"start\" name=\"add-circle\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div [ngClass]=\"'padding'\">\n    <gridster [options]=\"options\" dir=\"ltr\">\n      <gridster-item ion-card [ngClass]=\"{'grid-col': true}\" [item]=\"panels.tasks\">\n        <!-- your content here  <app-task-grid [filterItem]=\"item.propName\"></app-task-grid>\n        \n -->\n        <app-task-grid [filterEvent]=\"filterEvent\" [formKey]=\"formKey\" [filterItems]=\"filters\"></app-task-grid>\n\n\n      </gridster-item>\n      <gridster-item ion-card [ngClass]=\"{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}\"\n        [item]=\"panels.details\">\n        <app-task-details [panels]=\"panels\" [formKey]=\"formKey\"></app-task-details>\n      </gridster-item>\n    </gridster>\n  </div>\n</ion-content>"
 
 /***/ }),
 
@@ -12302,6 +10945,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _process_list_process_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../process-list/process-list.component */ "./src/app/process-list/process-list.component.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _language_language_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../language/language.component */ "./src/app/language/language.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12311,6 +10957,44 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
 
 
 
@@ -12319,13 +11003,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var GridComponent = /** @class */ (function () {
-    function GridComponent(event, filterStorage, router, route, translate) {
-        var _this = this;
+    function GridComponent(event, filterStorage, router, route, translate, popoverCtrl) {
         this.event = event;
         this.filterStorage = filterStorage;
         this.router = router;
         this.route = route;
         this.translate = translate;
+        this.popoverCtrl = popoverCtrl;
         this.filterEvent = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.panels = {
             tasks: { x: 0, y: 0, cols: 2, rows: 4, filters: [] },
@@ -12333,62 +11017,49 @@ var GridComponent = /** @class */ (function () {
         };
         this.filters = [];
         this.previousItem = null;
-        this.formKey = '';
-        // this language will be used as a fallback when a translation isn't found in the current language
-        translate.setDefaultLang('en');
-        // the lang to use, if the lang isn't available, it will use the current loader to get them
-        this.translate.use('en');
-        translate.get('dir').subscribe(function (data) {
-            var dir = data;
-            _this.fixDom(dir);
-        });
     }
     GridComponent.itemChange = function (item, itemComponent) {
-        console.log('itemChanged', item, itemComponent);
     };
     GridComponent.prototype.onResize = function (item, itemComponent) {
     };
-    GridComponent.prototype.setLanguage = function (lang) {
-        var _this = this;
-        this.translate.use(lang);
-        var dir = 'ltr';
-        this.translate.get('dir').subscribe(function (data) {
-            dir = data;
-            document.documentElement.setAttribute('dir', data);
-            var tasksX = _this.panels.tasks.x;
-            if (dir === 'rtl') {
-                _this.panels.tasks.x = _this.panels.details.cols;
-                _this.panels.details.x = 0;
-            }
-            else {
-                _this.panels.details.x = _this.panels.tasks.cols;
-                _this.panels.tasks.x = 0;
-            }
-            _this.options.api.optionsChanged();
-            _this.fixDom(dir);
+    GridComponent.prototype.languages = function (event) {
+        return __awaiter(this, void 0, void 0, function () {
+            var popover;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.create({
+                            component: _language_language_component__WEBPACK_IMPORTED_MODULE_9__["LanguageComponent"],
+                            event: event
+                        })];
+                    case 1:
+                        popover = _a.sent();
+                        return [4 /*yield*/, popover.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
         });
-        /*
-         directions.array.forEach(element => {
-           element.setAttribute('dir', dir);
-         });
-         */
     };
-    GridComponent.prototype.fixDom = function (dir) {
-        var columns = document.getElementsByClassName('formio-component-columns');
-        var choices = document.getElementsByClassName('choices');
-        var headers = document.getElementsByClassName('header');
-        for (var i = 0; i < columns.length; i++) {
-            columns[i].setAttribute('dir', dir);
-        }
-        for (var i = 0; i < choices.length; i++) {
-            choices[i].setAttribute('dir', dir);
-        }
-        for (var i = 0; i < headers.length; i++) {
-            headers[i].setAttribute('dir', dir);
-        }
+    GridComponent.prototype.process = function (event) {
+        return __awaiter(this, void 0, void 0, function () {
+            var popover;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.create({
+                            component: _process_list_process_list_component__WEBPACK_IMPORTED_MODULE_7__["ProcessListComponent"],
+                            event: event
+                        })];
+                    case 1:
+                        popover = _a.sent();
+                        return [4 /*yield*/, popover.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     GridComponent.prototype.changedOptions = function () {
-        this.options.api.optionsChanged();
+        if (this.options) {
+            this.options.api.optionsChanged();
+        }
     };
     GridComponent.prototype.removeItem = function (filterItem) {
         var temp = this.filters.filter(function (item) {
@@ -12417,8 +11088,25 @@ var GridComponent = /** @class */ (function () {
         this.filters = this.panels.tasks.filters;
         this.filters.forEach(function (item) { return _this.filterEvent.next({ item: item, bool: true }); });
     };
+    GridComponent.prototype.fixPanelsDirection = function (dir) {
+        if (dir === 'rtl') {
+            this.panels.tasks.x = this.panels.details.cols;
+            this.panels.details.x = 0;
+        }
+        else {
+            this.panels.details.x = this.panels.tasks.cols;
+            this.panels.tasks.x = 0;
+        }
+        this.changedOptions();
+    };
     GridComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.translate.get('dir').subscribe(function (data) {
+            _this.fixPanelsDirection(data);
+        });
+        this.translate.onLangChange.subscribe(function (lang) {
+            _this.fixPanelsDirection(lang.translations.dir);
+        });
         this.event.refreshAnnounced$.subscribe(function (data) {
             // this.restoreItems();
         });
@@ -12499,7 +11187,8 @@ var GridComponent = /** @class */ (function () {
             _filter_service__WEBPACK_IMPORTED_MODULE_3__["FilterService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
-            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateService"]])
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["PopoverController"]])
     ], GridComponent);
     return GridComponent;
 }());
@@ -12614,8 +11303,6 @@ var TaskCreateComponent = /** @class */ (function (_super) {
         _super.prototype.ngOnInit.call(this);
         this.route.queryParams.subscribe(function (data) {
             _this.formKey = data.formKey;
-            console.log('-----------');
-            console.log(data);
         });
         // Wait for the parent event to be loaded.
         this.service.resources['task'].resourceLoaded.then(function (event) {
@@ -12724,13 +11411,11 @@ var TaskDetailsComponent = /** @class */ (function () {
         this.event.announceItem({ taskId: '521b38f1-beaf-11e8-b81f-0eac374867d4', complete: true });
     };
     TaskDetailsComponent.prototype.readOnly = function () {
-        console.log(this.task.deleteReason === 'completed');
         return this.task.deleteReason === 'completed' ? true : false;
     };
     TaskDetailsComponent.prototype.onSubmit = function (event) {
         if (event.data.complete !== true) {
             this.camundaService.putUpdateTask(this.task.id, event.data).subscribe(function (data) {
-                console.log(data);
             });
         }
         else {
@@ -12767,7 +11452,7 @@ var TaskDetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-formio #formio id=\"formio\" [form]=\"service.form\" [readOnly]=\"task.disabled\" *ngIf=\"task\" [submission]=\"service.resource\"\n  [refresh]=\"service.refresh\" [hideComponents]=\"config.parents\" [error]=\"onError\" (submit)=\"onSubmit($event)\"></app-formio>\n\n\n<div text-center padding *ngIf=\"!task\">\n  <ion-text>\n    <ion-icon name=\"egg\" [ngStyle]=\"{'font-size': '50px','margin-top': '150px'}\" color=\"secondary\"></ion-icon>\n    <h6 padding [ngStyle]=\"{ 'opacity': 0.5}\">Please Choose a Task</h6>\n\n  </ion-text>\n\n</div>\n<!-- \n  <formio  [form]=\"service.form\" [readOnly]=\"task.disabled\" *ngIf=\"task\"\n  [submission]=\"service.resource\" [refresh]=\"service.refresh\" [hideComponents]=\"config.parents\" [error]=\"onError\" (submit)=\"onSubmit($event)\"></formio>\n-->\n\n"
+module.exports = "<ng-container  *ngFor=\"let key of objectKeys(formVariables)\">\n  <app-form *ngIf=\"key.includes('task')\" [formKey]=\"key\" [resourceName]=\"formVariables[key].value\"\n    [resourceId]=\"formVariables[key].resourceId\" [readOnly]=\"formVariables[key].readOnly\" (submit)=\"onSubmit($event)\"></app-form>\n</ng-container>\n\n\n\n<div text-center padding *ngIf=\"!formVariables\">\n  <ion-text>\n    <ion-icon name=\"egg\" [ngStyle]=\"{'font-size': '50px','margin-top': '150px'}\" color=\"secondary\"></ion-icon>\n    <h6 padding [ngStyle]=\"{ 'opacity': 0.5}\">Please Choose a Task</h6>\n\n  </ion-text>\n\n</div>\n<!-- \n  <formio  [form]=\"service.form\" [readOnly]=\"task.disabled\" *ngIf=\"task\"\n  [submission]=\"service.resource\" [refresh]=\"service.refresh\" [hideComponents]=\"config.parents\" [error]=\"onError\" (submit)=\"onSubmit($event)\"></formio>\n-->\n"
 
 /***/ }),
 
@@ -12870,32 +11555,38 @@ var TaskEditComponent = /** @class */ (function () {
         this.task = {};
         this.submission = {};
         this.onError = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.formVariables = {};
+        this.objectKeys = Object.keys;
     }
     TaskEditComponent.prototype.announceRefresh = function () {
         this.eventService.announceRefresh('refresh');
     };
     TaskEditComponent.prototype.onSubmit = function (submission) {
         var _this = this;
-        this.service
-            .save(submission)
-            .then(function (data) {
-            if (!_this.task.disabled) {
-                _this.camundaService.updateExecutionVariables(_this.task.executionId, _this.task.formKey, { value: data._id, type: 'String' }).subscribe(function () {
-                    console.log(submission);
-                    if (submission.data.completed === true) {
-                        _this.camundaService.postCompleteTask(_this.task.id, {}).subscribe(function (data1) {
-                            _this.events.announceItem({ taskId: _this.task.id, complete: true });
-                            _this.router.navigate(['tasks']);
-                        });
-                    }
-                    else {
-                        _this.events.announceRefresh('tasks');
-                    }
+        this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest', { value: submission._id, type: 'String' }).subscribe(function () {
+            if (submission.data.completed === true) {
+                _this.camundaService.postCompleteTask(_this.task.id, {}).subscribe(function (data1) {
+                    _this.events.announceItem({ taskId: _this.task.id, complete: true });
+                    _this.router.navigate(['tasks']);
                 });
             }
-        })
-            .catch(function (err) { return _this.onError.emit(err); });
-        // console.log(submission);
+            else {
+                _this.events.announceRefresh('tasks');
+            }
+        });
+        /* if (!this.task.disabled) {
+          this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest',
+            { value: data._id, type: 'String' }).subscribe(() => {
+              if (submission.data.completed === true) {
+                this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
+                  this.events.announceItem({ taskId: this.task.id, complete: true });
+                  this.router.navigate(['tasks']);
+                });
+              } else {
+                this.events.announceRefresh('tasks');
+              }
+            });
+        }*/
     };
     TaskEditComponent.prototype.ngOnDestroy = function () {
     };
@@ -12913,91 +11604,84 @@ var TaskEditComponent = /** @class */ (function () {
             });
         });
     };
-    TaskEditComponent.prototype.getTaskExecutionVariable = function (task) {
-    };
-    TaskEditComponent.prototype.loadResource = function (id, formKey, resourceName) {
-        var route = new _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"];
-        route.snapshot = new _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRouteSnapshot"];
-        route.snapshot.params = { id: id };
-        return this.service.loadResourceCustom(route, formKey, resourceName);
-    };
-    TaskEditComponent.prototype.updateResource = function (id) {
-    };
     TaskEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.task.id = this.route.snapshot.params.taskId;
-        this.task.deleteReason = this.route.snapshot.params.deleteReason;
-        this.task.executionId = this.route.snapshot.params.executionId;
-        this.task.formKey = this.route.snapshot.params.formKey;
-        this.service.initialize();
-        if (this.task.executionId !== 'undefined') {
-            if (this.task.deleteReason === 'completed') {
-                this.task.disabled = true;
-                this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(function (variables) {
+        this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe(function (task) {
+            _this.task = task;
+            if (_this.task.executionId && _this.task.executionId !== 'undefined') {
+                _this.camundaService.getTaskFormVariables(_this.task.id).subscribe(function (formVariables) {
+                    _this.camundaService.getExecutionVariables(_this.task.executionId).subscribe(function (executionVariables) {
+                        if (formVariables) {
+                            _this.objectKeys(formVariables).forEach(function (element) {
+                                if (executionVariables[formVariables[element].value]) {
+                                    formVariables[element].resourceId = executionVariables[formVariables[element].value].value;
+                                }
+                                else {
+                                    formVariables[element].resourceId = '';
+                                }
+                                if (_this.task.formKey !== element) {
+                                    formVariables[element].readOnly = true;
+                                }
+                                else {
+                                    formVariables[element].readOnly = false;
+                                }
+                            });
+                            _this.formVariables = formVariables;
+                        }
+                    });
+                });
+                /* if (this.task.deleteReason === 'completed') {
+                  this.task.disabled = true;
+                  this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
                     // this.loadingController.dismiss();
                     if (variables.length > 0) {
-                        variables.forEach(function (element) {
-                            _this.loadResource(element.value, _this.task.formKey, 'task').then(function (data) {
-                                _this.service.resource.data.id = _this.task.id;
-                            }).catch(function (err) {
-                                console.error(err);
-                            });
-                        });
+                      variables.forEach(element => {
+        
+                      });
+        
                     }
-                });
+                  });
+                }*/
+                // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { });
+                /*
+                  formkey = task1
+                  execution
+                    R1 : 5
+                    approve: true
+                    approveMng: false
+                  form variables
+                    task: servicerequest
+                    task1: r1
+                */
+                // fill form variables
             }
             else {
-                this.camundaService.getExecutionVariables(this.task.executionId).subscribe(function (variables) {
-                    // this.loadingController.dismiss();
-                    if (variables.task && variables.task.value != null) {
-                        console.log(variables.task);
-                        _this.task.new = false;
-                        _this.loadResource(variables.task.value, _this.task.formKey, 'task').then(function (data) {
-                            _this.service.resource.data.id = _this.task.id;
-                        }).catch(function (err) {
-                            _this.camundaService.deleteExecutionVariables(_this.task.executionId, 'task').subscribe(function (data) {
-                            });
-                            console.error(err);
+                _this.camundaService.getHistoryTask(_this.route.snapshot.params.taskId).subscribe(function (tasks) {
+                    if (tasks.length > 0) {
+                        _this.task = tasks[0];
+                        _this.camundaService.getVariableInstanceByExecutionId(_this.task.executionId).subscribe(function (variables) {
+                            // this.loadingController.dismiss();
+                            _this.formVariables = {
+                                task: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true },
+                                task1: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true }
+                            };
+                            if (variables.length > 0) {
+                                variables.forEach(function (element) {
+                                    if (element.value) {
+                                        _this.formVariables['task'].resourceId = element.value;
+                                        _this.formVariables['task1'].resourceId = element.value;
+                                    }
+                                });
+                            }
                         });
                     }
                     else {
-                        _this.task.new = true;
+                        alert('this task does not exist!');
                     }
                 });
             }
-        }
-        else {
-            // this.loadingController.dismiss();
-        }
-        setTimeout(function () {
-            var currentLang = _this.translate.currentLang;
-            /* Formio.createForm(this.formioElement.formio, this.service.form, { language: currentLang }).then(form => {
-               console.log(form);
-               console.log(this.formioElement);
-               this.formioElement.formio.subscribe(data => {
-                 alert(1);
-               });
-               form.submission = this.service.resource;
-               form.disabled = this.task.disabled;
-               console.log(this.service.resource);
-               this.translate.getTranslation(currentLang).subscribe(data => {
-                 form.i18next.options.resources[currentLang] = {
-                   translation: data
-                 };
-                 form.language = currentLang;
-               });
-               this.translate.onLangChange.subscribe(data => {
-                 console.log(data); console.log('--');
-                 form.i18next.options.resources[data.lang] = {
-                   translation: data.translations
-                 };
-                 form.language = data.lang;
-               });
-       
-       
-       
-             }); */
-        }, 1300);
+        }, function (err) {
+        });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('formio'),
@@ -13034,7 +11718,7 @@ var TaskEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header override>\n\n  <ion-toolbar>\n    <ion-searchbar mode=\"ios\"  [placeholder]=\"'Search' | translate\" slot=\"start\" [(ngModel)]=\"filter.textSearch\" [showCancelButton]=\"true\"\n      (ionInput)=\"search($event)\" (ionClear)=\"clearSearch($event)\" (ionCancel)=\"search($event)\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button small >\n        <ion-icon size=\"small\" slot=\"icon-only\" name=\"funnel\"></ion-icon>\n      </ion-button>\n      <ion-button small [ngClass]=\"'move-handle hide-xs'\">\n        <ion-icon size=\"small\" slot=\"start\" name=\"move\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title></ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n    <ion-grid no-padding>\n      <!-- <ion-row>\n\n        <ion-col size=\"4\" size-lg=\"11\" class=\"filter\">\n          <ion-select interface=\"popover\" [interfaceOptions]=\"{event:popoverClick}\" class=\"pull-right\" placeholder=\"Sort By\" [(ngModel)]=\"filter.sortingProp\"\n            (ionChange)=\"sortArray(filter.sortingDirection)\">\n            <ion-select-option [value]=\"{name:'name',type:'string'}\">Name</ion-select-option>\n            <ion-select-option [value]=\"{name:'due',type:'datetime'}\">Due Date</ion-select-option>\n            <ion-select-option [value]=\"{name:'created',type:'datetime'}\">Created Date</ion-select-option>\n            <ion-select-option [value]=\"{name:'priority',type:'number'}\">Priority</ion-select-option>\n            <ion-select-option [value]=\"{name:'assignee',type:'string'}\">Assignee</ion-select-option>\n          </ion-select>\n        </ion-col>\n        <ion-col size=\"2\" size-lg=\"1\">\n          <ion-buttons>\n            <ion-button color=\"dark\" clear round end right icon-only (click)=\"setSortingDirection()\">\n              <ion-icon [name]=\"filter.sortingDirection == 1 ? 'md-arrow-down' : 'md-arrow-up'\"></ion-icon>\n            </ion-button>\n          </ion-buttons>\n        </ion-col>\n      </ion-row>-->\n      <ion-row>\n        <ion-col class=\"flex-container_\" >\n          <div text-center padding  [hidden]=\"tsks.length > 0\">\n            <ion-text>\n              <ion-icon name=\"egg\" [ngStyle]=\"{'font-size': '50px','margin-top': '150px'}\" color=\"secondary\"></ion-icon>\n              <h6 padding [ngStyle]=\"{ 'opacity': 0.5}\">{{\"Please Choose a Filter\" | translate}}</h6>\n            </ion-text>\n          </div>\n          <app-task-item *ngFor=\"let task of tsks\" [task]=\"task\"></app-task-item>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n</ion-content>\n<!-- \n  <gridster [options]=\"subOptions\">\n  <gridster-item ion-card [ngClass]=\"{'sc-ion-card-md-h sc-ion-card-md-s': true}\" [item]=\"item\" *ngFor=\"let item of items\">\n    <ion-card-header>\n        Filter Name\n      </ion-card-header>\n  \n      <ion-card-content >\n  \n      </ion-card-content>\n  \n    </gridster-item>\n  </gridster>\n-->\n"
+module.exports = "<ion-header override>\n\n  <ion-toolbar>\n    <ion-searchbar mode=\"ios\"  [placeholder]=\"'Search' | translate\" slot=\"start\" [(ngModel)]=\"filter.textSearch\" [showCancelButton]=\"true\"\n      (ionInput)=\"search($event)\" (ionClear)=\"clearSearch($event)\" (ionCancel)=\"search($event)\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button small >\n        <ion-icon size=\"small\" slot=\"icon-only\" name=\"funnel\"></ion-icon>\n      </ion-button>\n      <ion-button small [ngClass]=\"'move-handle hide-xs'\">\n        <ion-icon size=\"small\" slot=\"start\" name=\"move\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title></ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n    <ion-grid no-padding>\n      <!-- <ion-row>\n\n        <ion-col size=\"4\" size-lg=\"11\" class=\"filter\">\n          <ion-select interface=\"popover\" [interfaceOptions]=\"{event:popoverClick}\" class=\"pull-right\" placeholder=\"Sort By\" [(ngModel)]=\"filter.sortingProp\"\n            (ionChange)=\"sortArray(filter.sortingDirection)\">\n            <ion-select-option [value]=\"{name:'name',type:'string'}\">Name</ion-select-option>\n            <ion-select-option [value]=\"{name:'due',type:'datetime'}\">Due Date</ion-select-option>\n            <ion-select-option [value]=\"{name:'created',type:'datetime'}\">Created Date</ion-select-option>\n            <ion-select-option [value]=\"{name:'priority',type:'number'}\">Priority</ion-select-option>\n            <ion-select-option [value]=\"{name:'assignee',type:'string'}\">Assignee</ion-select-option>\n          </ion-select>\n        </ion-col>\n        <ion-col size=\"2\" size-lg=\"1\">\n          <ion-buttons>\n            <ion-button color=\"dark\" clear round end right icon-only (click)=\"setSortingDirection()\">\n              <ion-icon [name]=\"filter.sortingDirection == 1 ? 'md-arrow-down' : 'md-arrow-up'\"></ion-icon>\n            </ion-button>\n          </ion-buttons>\n        </ion-col>\n      </ion-row>-->\n      <ion-row>\n        <ion-col class=\"flex-container_\" >\n          <div text-center padding  [hidden]=\"tsks.length > 0\">\n            <ion-text>\n              <ion-icon name=\"egg\" [ngStyle]=\"{'font-size': '50px','margin-top': '150px'}\" color=\"secondary\"></ion-icon>\n              <h6 padding [ngStyle]=\"{ 'opacity': 0.5}\">{{\"No Tasks.\" | translate}}</h6>\n            </ion-text>\n          </div>\n          <app-task-item *ngFor=\"let task of tsks\" [task]=\"task\"></app-task-item>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n</ion-content>\n<!-- \n  <gridster [options]=\"subOptions\">\n  <gridster-item ion-card [ngClass]=\"{'sc-ion-card-md-h sc-ion-card-md-s': true}\" [item]=\"item\" *ngFor=\"let item of items\">\n    <ion-card-header>\n        Filter Name\n      </ion-card-header>\n  \n      <ion-card-content >\n  \n      </ion-card-content>\n  \n    </gridster-item>\n  </gridster>\n-->\n"
 
 /***/ }),
 
@@ -13063,6 +11747,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../events.service */ "./src/app/events.service.ts");
 /* harmony import */ var _camunda_rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../camunda-rest.service */ "./src/app/camunda-rest.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../auth.service */ "./src/app/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13076,11 +11761,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var TaskGridComponent = /** @class */ (function () {
-    function TaskGridComponent(event, camundaService, modalController) {
+    function TaskGridComponent(event, camundaService, modalController, auth) {
         this.event = event;
         this.camundaService = camundaService;
         this.modalController = modalController;
+        this.auth = auth;
         this.tsks = [];
         this.filtered = [];
         this.properties = ['Name'];
@@ -13105,16 +11792,12 @@ var TaskGridComponent = /** @class */ (function () {
         };
     }
     TaskGridComponent.itemChange = function (item, itemComponent) {
-        console.log('itemChanged', item, itemComponent);
     };
     TaskGridComponent.itemResize = function (item, itemComponent) {
-        console.log('itemResized', item, itemComponent);
     };
     TaskGridComponent.prototype.ngDoCheck = function () {
-        // console.log(this.filterItems);
     };
     TaskGridComponent.prototype.search = function (event) {
-        console.log(event);
         this.performSearch(this.filter.textSearch);
     };
     TaskGridComponent.prototype.chooseTask = function (task) {
@@ -13140,25 +11823,6 @@ var TaskGridComponent = /** @class */ (function () {
         else {
             item.x = 2;
         }
-    };
-    TaskGridComponent.prototype.toggleHack = function (event) {
-        console.log(event);
-        if (event.detail.visible === true) {
-            this.panesToggle['start'] = true;
-            this.panesToggle['toggleHack'] = true;
-        }
-        else {
-            this.panesToggle['start'] = false;
-            this.panesToggle['toggleHack'] = false;
-        }
-    };
-    TaskGridComponent.prototype.isStartOpen = function () {
-        return 1;
-        /*
-        this.menu.isOpen('start').then(function (data) {
-         return data;
-       });
-       */
     };
     TaskGridComponent.prototype.clearSearch = function (event) {
         this.filter.textSearch = '';
@@ -13217,13 +11881,13 @@ var TaskGridComponent = /** @class */ (function () {
     TaskGridComponent.prototype.listArchive = function (event) {
         var _this = this;
         if (event.bool) {
-            this.camundaService.listHistory().subscribe(function (data) {
+            this.camundaService.listHistory(this.auth.getUser().username).subscribe(function (data) {
                 _this.tsks = data;
                 _this.tasksOrigin = data;
             });
         }
         else {
-            this.camundaService.listHistory().subscribe(function (data) {
+            this.camundaService.listHistory(this.auth.getUser().username).subscribe(function (data) {
                 data.forEach(function (entry) { return _this.tasksOrigin.splice(_this.tasksOrigin.indexOf(entry), 1); });
                 _this.tsks = _this.tasksOrigin;
             });
@@ -13233,7 +11897,6 @@ var TaskGridComponent = /** @class */ (function () {
         var _this = this;
         if (event.bool) {
             this.camundaService.listFilter(event.item.id).subscribe(function (data) {
-                console.log(data);
                 data.forEach(function (entry) { return _this.tasksOrigin.push(entry); });
                 _this.tsks = _this.tasksOrigin;
             });
@@ -13262,11 +11925,9 @@ var TaskGridComponent = /** @class */ (function () {
             }
         });
         this.filterEvent.subscribe(function (event) {
-            console.log(event);
             _this.ListFilter(event);
         });
         this.event.archiveAnnounced$.subscribe(function (event) {
-            console.log(event);
             _this.listArchive(event);
         });
     };
@@ -13307,7 +11968,8 @@ var TaskGridComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./task-grid.component.html */ "./src/app/all-tasks/task-grid/task-grid.component.html"),
             styles: [__webpack_require__(/*! ./task-grid.component.scss */ "./src/app/all-tasks/task-grid/task-grid.component.scss")]
         }),
-        __metadata("design:paramtypes", [_events_service__WEBPACK_IMPORTED_MODULE_1__["EventsService"], _camunda_rest_service__WEBPACK_IMPORTED_MODULE_2__["CamundaRestService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
+        __metadata("design:paramtypes", [_events_service__WEBPACK_IMPORTED_MODULE_1__["EventsService"], _camunda_rest_service__WEBPACK_IMPORTED_MODULE_2__["CamundaRestService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
     ], TaskGridComponent);
     return TaskGridComponent;
 }());
@@ -13380,7 +12042,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var TaskIndexComponent = /** @class */ (function (_super) {
     __extends(TaskIndexComponent, _super);
     function TaskIndexComponent(remoteService, service, eventsService, ref, config, route, router) {
-        var _this = _super.call(this, service, route, router, config) || this;
+        var _this = _super.call(this, service, route, router, config, ref) || this;
         _this.remoteService = remoteService;
         _this.service = service;
         _this.eventsService = eventsService;
@@ -13414,7 +12076,7 @@ var TaskIndexComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"flex-item\">\n  <ion-card class=\"card {{getPriority(task.priority)}}\"\n   [ngClass]=\"{'complete' : task.complete}\" \n   [routerLink]=\"['/tasks/edit/',(task.formKey ? task.formKey : 0) ,task.id,task.executionId,task.deleteReason]\" routerLinkActive=\"router-link-active\">\n\n\n    <ion-card-content>\n      <h2 data-ph=\"Task name..\">{{task.name}} <div class=\"photo-container mini-avatar\"></div>\n      </h2>\n      <div class=\"more-details\">\n        <p>{{task.description}}</p>\n\n      </div>\n\n      <ion-badge color=\"light\" size=\"medium\" slot=\"end\" [hidden]=\"!task.created\" [ngClass]=\"{'date-picker-badge':true }\">\n        <ion-icon color=\"dark\" size=\"medium\" name=\"create\"></ion-icon>{{task.created | date}}\n      </ion-badge>\n      <ion-badge mat-raised-button (click)=\"follow_up.open()\" color=\"light\" slot=\"end\" [ngClass]=\"{'date-picker-badge':true ,'due':true}\">\n        <ion-icon color=\"warning\" size=\"medium\" name=\"calendar\"></ion-icon>{{task.follow_up ? (task.follow_up\n        | date ): 'Follow Up'}}\n      </ion-badge>\n      <ion-badge mat-raised-button (click)=\"myDatepicker.open()\" color=\"light\" slot=\"end\" [ngClass]=\"{'date-picker-badge':true ,'due':true}\">\n        <ion-icon color=\"warning\" size=\"medium\" name=\"calendar\"></ion-icon>{{task.due ? (task.due\n        | date ): 'Due'}}\n      </ion-badge>\n      <input [matDatepicker]=\"myDatepicker\" [(ngModel)]=\"task.due\" hidden>\n      <mat-datepicker touchUi #myDatepicker></mat-datepicker>\n      <input [matDatepicker]=\"follow_up\" [(ngModel)]=\"task.follow_up\" hidden>\n      <mat-datepicker touchUi #follow_up></mat-datepicker>\n\n\n\n      <!-- <ion-buttons slot=\"end\" class=\"hide-md hide-sm\">\n                <ion-button clear color=\"dark\" slot=\"icon-only\" (click)=\"presentPopover($event)\">\n                  <ion-icon name=\"md-more\"></ion-icon>\n                </ion-button>\n              </ion-buttons> -->\n\n    </ion-card-content>\n    <div class=\"more-details task-options\" *ngIf=\"!task.deleteReason\">\n      <input matInput #trigger [id]=\"task.id+'-assignee'\" [ngStyle]=\"{'opacity':0,'width':0,'height':0}\" [(ngModel)]=\"task.assignee\"\n        [matAutocomplete]=\"auto\" [matAutocompleteConnectedTo]=\"origin\" />\n      <mat-autocomplete #auto=\"matAutocomplete\">\n        <mat-option *ngFor=\"let user of users\" [value]=\"user.username\">{{user.name}}</mat-option>\n      </mat-autocomplete>\n      <ion-button size=\"small\" (click)=\"openAssignee($event)\" matAutocompleteOrigin #origin=\"matAutocompleteOrigin\" color=\"primary\" [fill]=\"task.assignee ? 'solid' : 'clear'\">\n        <ion-icon name=\"person\" slot=\"start\"></ion-icon>\n        <span [hidden]=\"task.assignee\">Claim</span>\n        <span [hidden]=\"!task.assignee\">{{task.assignee}}</span>\n\n      </ion-button>\n      <ion-button size=\"small\" color=\"primary\" fill=\"clear\">\n        <ion-icon name=\"people\" slot=\"start\"></ion-icon>Add Team\n      </ion-button>\n      <ion-button size=\"small\" color=\"success\" (click)=\"complete()\" *ngIf=\"task.assignee == 'ahmad'\" [ngStyle]=\"{'float':'right'}\"\n        fill=\"clear\">\n        <ion-icon name=\"checkmark\" slot=\"start\"></ion-icon>Complete\n      </ion-button>\n    </div>\n  </ion-card>\n</div>\n"
+module.exports = "<div class=\"flex-item\">\n  <ion-card class=\"card {{getPriority(task.priority)}}\" [ngClass]=\"{'complete' : task.complete}\" [routerLink]=\"['/tasks/edit/',task.id]\"\n    routerLinkActive=\"router-link-active\">\n\n\n    <ion-card-content>\n      <h2 data-ph=\"Task name..\">{{task.name}} <div class=\"photo-container mini-avatar\" [ngStyle]=\"{'background-image': 'url(assets/img/'+task?.assignee+'.jpg)'}\"></div>\n      </h2>\n      <div class=\"more-details\">\n        <p>{{task.description}}</p>\n\n      </div>\n      <ng-container *ngIf=\"!task.deleteReason\">\n        <ion-badge color=\"light\" size=\"medium\" slot=\"end\" [hidden]=\"!task.created\" [ngClass]=\"{'date-picker-badge':true }\">\n          <ion-icon color=\"dark\" size=\"medium\" name=\"create\"></ion-icon>{{task.created | date}}\n        </ion-badge>\n        <!-- <ion-badge mat-raised-button (click)=\"follow_up.open()\" color=\"light\" slot=\"end\" [ngClass]=\"{'date-picker-badge':true ,'due':true}\">\n          <ion-icon color=\"warning\" size=\"medium\" name=\"calendar\"></ion-icon>{{task.follow_up ? (task.follow_up\n          | date ): 'Follow Up'}}\n        </ion-badge> -->\n        <ion-badge mat-raised-button (click)=\"myDatepicker.open()\" color=\"light\" slot=\"end\" [ngClass]=\"{'date-picker-badge':true ,'due':true}\">\n          <ion-icon color=\"warning\" size=\"medium\" name=\"calendar\"></ion-icon>{{task.due ? (task.due\n          | date ): 'Due'  | translate}}\n        </ion-badge>\n        <input [matDatepicker]=\"myDatepicker\" [(ngModel)]=\"task.due\" hidden>\n        <mat-datepicker touchUi #myDatepicker></mat-datepicker>\n        <input [matDatepicker]=\"follow_up\" [(ngModel)]=\"task.follow_up\" hidden>\n        <mat-datepicker touchUi #follow_up></mat-datepicker>\n      </ng-container>\n\n\n      <!-- <ion-buttons slot=\"end\" class=\"hide-md hide-sm\">\n                <ion-button clear color=\"dark\" slot=\"icon-only\" (click)=\"presentPopover($event)\">\n                  <ion-icon name=\"md-more\"></ion-icon>\n                </ion-button>\n              </ion-buttons> -->\n\n    </ion-card-content>\n    <div class=\"more-details task-options\" *ngIf=\"!task.deleteReason\">\n      <input matInput #trigger [id]=\"task.id+'-assignee'\" [ngStyle]=\"{'opacity':0,'width':0,'height':0}\" [(ngModel)]=\"task.assignee\"\n        [matAutocomplete]=\"auto\" [matAutocompleteConnectedTo]=\"origin\" />\n      <mat-autocomplete #auto=\"matAutocomplete\">\n        <mat-option *ngFor=\"let user of users\" [value]=\"user.username\">{{user.name}}</mat-option>\n      </mat-autocomplete>\n      <ion-button size=\"small\" (click)=\"openAssignee($event)\" matAutocompleteOrigin #origin=\"matAutocompleteOrigin\"\n        color=\"primary\" [fill]=\"task.assignee ? 'solid' : 'clear'\">\n        <ion-icon name=\"person\" slot=\"start\"></ion-icon>\n        <span [hidden]=\"task.assignee\">{{'Claim' | translate}}</span>\n        <span [hidden]=\"!task.assignee\">{{task.assignee}}</span>\n\n      </ion-button>\n      <ion-button size=\"small\" color=\"primary\" fill=\"clear\">\n        <ion-icon name=\"people\" slot=\"start\"></ion-icon>{{'Add Group' | translate}}\n      </ion-button>\n      <ion-button size=\"small\" color=\"success\" (click)=\"complete()\" *ngIf=\"task.assignee == auth.getUser().username\"\n        [ngStyle]=\"{'float':'right'}\" fill=\"clear\">\n        <ion-icon name=\"checkmark\" slot=\"start\"></ion-icon>{{'Complete' | translate}}\n      </ion-button>\n    </div>\n  </ion-card>\n</div>"
 
 /***/ }),
 
@@ -13444,6 +12106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../events.service */ "./src/app/events.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../auth.service */ "./src/app/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13493,10 +12156,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var TaskItemComponent = /** @class */ (function () {
-    function TaskItemComponent(loadingController, router, camundaService, event) {
+    function TaskItemComponent(loadingController, router, auth, camundaService, event) {
         this.loadingController = loadingController;
         this.router = router;
+        this.auth = auth;
         this.camundaService = camundaService;
         this.event = event;
         this.destoy = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
@@ -13558,10 +12223,9 @@ var TaskItemComponent = /** @class */ (function () {
                 _this.task.assignee = null;
             }
             else {
-                _this.task.assignee = 'ahmad';
+                _this.task.assignee = _this.auth.getUser().username;
             }
             _this.camundaService.postAssignTask(_this.task.id, { userId: _this.task.assignee }).subscribe(function (data) {
-                console.log(data);
             });
         }, 100);
     };
@@ -13572,7 +12236,6 @@ var TaskItemComponent = /** @class */ (function () {
         var _this = this;
         // this.task.complete = true;
         this.camundaService.postCompleteTask(this.task.id, {}).subscribe(function (data) {
-            console.log(data);
             _this.task.complete = true;
             setTimeout(function () {
                 _this.destoy.emit();
@@ -13639,7 +12302,7 @@ var TaskItemComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./task-item.component.html */ "./src/app/all-tasks/task-item/task-item.component.html"),
             styles: [__webpack_require__(/*! ./task-item.component.scss */ "./src/app/all-tasks/task-item/task-item.component.scss")]
         }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
             _camunda_rest_service__WEBPACK_IMPORTED_MODULE_1__["CamundaRestService"], _events_service__WEBPACK_IMPORTED_MODULE_2__["EventsService"]])
     ], TaskItemComponent);
     return TaskItemComponent;
@@ -13738,20 +12401,43 @@ var TaskViewComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/app/camunda-rest.service.ts":
-/*!*****************************************!*\
-  !*** ./src/app/camunda-rest.service.ts ***!
-  \*****************************************/
-/*! exports provided: CamundaRestService */
+/***/ "./src/app/filter-modal/filter-modal.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/filter-modal/filter-modal.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header override>\n\n  <ion-toolbar>\n    <ion-title>{{'Add Filter' | translate}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n          <ion-label position=\"stacked\">{{'Name' | translate}}</ion-label>\n          <ion-input required type=\"text\" [(ngModel)]=\"filter.name\"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n        <ion-item>\n          <ion-label position=\"stacked\">{{'Priority' | translate}}</ion-label>\n          <ion-input required type=\"number\" [(ngModel)]=\"filter.properties.priority\"></ion-input>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n          <ion-label position=\"stacked\">{{'Description' | translate }}</ion-label>\n          <ion-input required type=\"text\" [(ngModel)]=\"filter.description\"></ion-input>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n            <ion-label position=\"stacked\">{{'Tasks Collection' | translate }}</ion-label>\n            <ion-select (ionChange)=\"updateQuery($event)\" cancel-text=\"Cancel\">\n            <ion-select-option value=\"1\">{{'My Tasks' | translate}}</ion-select-option>\n            <ion-select-option value=\"2\">{{'Group Tasks' | translate}}</ion-select-option>\n            <ion-select-option value=\"3\">{{'My & Group Tasks' | translate}} </ion-select-option>\n          </ion-select>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-toolbar>\n          <ion-title>{{'Filter Criteria' | translate}}</ion-title>\n          <ion-buttons slot=\"end\">\n            <ion-button size=\"small\" fill=\"clear\" (click)=\"criterias.push({ key: '', name: '', type: 'string', value:'' })\"\n              color=\"secondary\">\n              {{'Add Criterion' | translate}}\n              <ion-icon name=\"add-circle\" slot=\"end\" size=\"small\"></ion-icon>\n            </ion-button>\n          </ion-buttons>\n        </ion-toolbar>\n\n\n        <ion-grid>\n          <ion-row>\n            <ion-col>\n              <ion-text margin color=\"medium\" [ngStyle]=\"{'width': '100%'}\" [hidden]=\"criterias.length > 0\">\n                <p>{{'This section is aimed to set the parameters used to filter the tasks' | translate}}</p>\n              </ion-text>\n            </ion-col>\n          </ion-row>\n          <ion-row *ngFor=\"let item of criterias; let i = index\">\n            <ion-col size=\"1\">\n              <ion-button fill=\"outline\" [ngStyle]=\"{'margin-top': '37px'}\" expand=\"block\" size=\"small\" (click)=\"criterias.splice(i,1)\"\n                color=\"danger\">\n                <ion-icon slot=\"icon-only\" size=\"small\" name=\"close\"></ion-icon>\n              </ion-button>\n            </ion-col>\n            <ion-col size=\"5\">\n              <ion-item>\n                <ion-label position=\"stacked\">{{'Criterion' | translate}}</ion-label>\n                <ion-select [(ngModel)]=\"item.key\" ok-text=\"Select\" (ionChange)=\"updateType($event)\" [placeholder]=\"'Please Choose' | translate\" cancel-text=\"Cancel\">\n                  <ion-select-option *ngFor=\"let criterion of allCriterias\" [value]=\"criterion.key\">{{criterion.name | translate}}</ion-select-option>\n                </ion-select>\n              </ion-item>\n            </ion-col>\n            <ion-col size=\"6\">\n              <ion-item>\n                <ion-label position=\"stacked\">{{'Value' | translate}}</ion-label>\n                <ion-input *ngIf=\"item.type == 'string'\" required type=\"text\" [(ngModel)]=\"item.value\"></ion-input>\n                <ion-input *ngIf=\"item.type == 'number'\" required type=\"number\" [(ngModel)]=\"item.value\"></ion-input>\n                <ion-input *ngIf=\"item.type == 'date'\" (click)=\"picker.open()\" [(ngModel)]=\"item.value\"></ion-input>\n                <input *ngIf=\"item.type == 'date'\" hidden [(ngModel)]=\"item.value\" [matDatepicker]=\"picker\" />\n                <mat-datepicker touchUi #picker></mat-datepicker>\n              </ion-item>\n            </ion-col>\n\n          </ion-row>\n\n\n        </ion-grid>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n<ion-footer>\n  <ion-grid no-padding [ngStyle]=\"{'background': '#eaeaea'}\">\n    <ion-row>\n      <ion-col>\n        <ion-button fill=\"outline\" expand=\"block\" color=\"primary\" (click)=\"modal.dismiss()\">{{'Cancel' | translate}}</ion-button>\n      </ion-col>\n      <ion-col>\n        <ion-button fill=\"solid\" expand=\"block\" (click)=\"createFilter()\" color=\"success\">{{'Create' | translate}}</ion-button>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n</ion-footer>"
+
+/***/ }),
+
+/***/ "./src/app/filter-modal/filter-modal.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/filter-modal/filter-modal.component.scss ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/filter-modal/filter-modal.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/filter-modal/filter-modal.component.ts ***!
+  \********************************************************/
+/*! exports provided: FilterModalComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CamundaRestService", function() { return CamundaRestService; });
-/* harmony import */ var rxjs_observable_of__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/observable/of */ "./node_modules/rxjs-compat/_esm5/observable/of.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilterModalComponent", function() { return FilterModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _camunda_rest_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../camunda-rest.service */ "./src/app/camunda-rest.service.ts");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../events.service */ "./src/app/events.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13765,188 +12451,102 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var httpOptions = {
-    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Content-Type': 'application/json' })
-};
-var CamundaRestService = /** @class */ (function () {
-    function CamundaRestService(http) {
-        this.http = http;
-        this.engineRestUrl = 'http://34.207.137.198:8080/rest/';
-        this.engineApiUrl = 'http://34.207.137.198:8080/api/';
-    }
-    CamundaRestService.prototype.getTasks = function () {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task?sortBy=created&sortOrder=desc&maxResults=10";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched tasks"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTasks', [])));
-    };
-    CamundaRestService.prototype.getFilters = function () {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "filter";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filters"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getFilters', [])));
-    };
-    CamundaRestService.prototype.getFilter = function (id) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "filter/" + id;
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filter " + id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getFilter', [])));
-    };
-    CamundaRestService.prototype.listFilter = function (id) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "filter/" + id + "/list";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filter list " + id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listFilter', [])));
-    };
-    CamundaRestService.prototype.getVariableInstanceByExecutionId = function (executionId) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "history/variable-instance?executionIdIn=" + executionId;
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched history"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listHistory', [])));
-    };
-    CamundaRestService.prototype.listHistory = function () {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "history/task?finished=true";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched history"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listHistory', [])));
-    };
-    CamundaRestService.prototype.clearHistory = function () {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "history/task?finished=true";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched history"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listHistory', [])));
-    };
-    CamundaRestService.prototype.getFilterCount = function (id) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "filter/" + id + "/count";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filter " + id + " count"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getFilterCount', [])));
-    };
-    CamundaRestService.prototype.getTaskFormKey = function (taskId) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task/" + taskId + "/form";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched taskform"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTaskFormKey', [])));
-    };
-    CamundaRestService.prototype.getTask = function (taskId) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task/" + taskId;
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched Task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTask', [])));
-    };
-    CamundaRestService.prototype.getExecutionVariables = function (executionId) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getExecutionVariables', [])));
-    };
-    CamundaRestService.prototype.modifyExecutionVariables = function (executionId, variables) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables";
-        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("posted ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('modifyExecutionVariables', [])));
-    };
-    CamundaRestService.prototype.updateExecutionVariables = function (executionId, variableName, variables) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables/" + variableName;
-        return this.http.put(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("posted ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('modifyExecutionVariables', [])));
-    };
-    CamundaRestService.prototype.deleteExecutionVariables = function (executionId, variableName) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables/" + variableName;
-        return this.http.delete(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("posted ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('modifyExecutionVariables', [])));
-    };
-    CamundaRestService.prototype.getVariablesForTask = function (taskId, variableNames) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task/" + taskId + "/form-variables?variableNames=" + variableNames;
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched variables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getVariablesForTask', [])));
-    };
-    CamundaRestService.prototype.postCompleteTask = function (taskId, variables) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task/" + taskId + "/complete";
-        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (tasks) { return _this.log("posted complete task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postCompleteTask', [])));
-    };
-    CamundaRestService.prototype.putUpdateTask = function (taskId, variables) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task/" + taskId + "/";
-        return this.http.put(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (tasks) { return _this.log("put task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('putUpdateTask', [])));
-    };
-    CamundaRestService.prototype.postAssignTask = function (taskId, variables) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "task/" + taskId + "/assignee";
-        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (tasks) { return _this.log("posted assign task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postAssignTask', [])));
-    };
-    CamundaRestService.prototype.getProcessDefinitionTaskKey = function (processDefinitionKey) {
-        var _this = this;
-        var url = this.engineRestUrl + "process-definition/key/" + processDefinitionKey + "/startForm";
-        return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched formkey"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getProcessDeifnitionFormKey', [])));
-    };
-    CamundaRestService.prototype.getProcessDefinitions = function () {
-        var _this = this;
-        return this.http.get(this.engineRestUrl + 'process-definition?latestVersion=true').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("fetched processDefinitions"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getProcessDefinitions', [])));
-    };
-    CamundaRestService.prototype.postProcessInstance = function (processDefinitionKey, variables) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "process-definition/key/" + processDefinitionKey + "/start";
-        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postProcessInstance', [])));
-    };
-    CamundaRestService.prototype.deployProcess = function (fileToUpload) {
-        var endpoint = this.engineRestUrl + "deployment/create";
-        var formData = new FormData();
-        formData.append('fileKey', fileToUpload, fileToUpload.name);
-        return this.http.post(endpoint, formData);
-    };
-    CamundaRestService.prototype.getUserProfile = function (userId) {
-        var _this = this;
-        var endpoint = this.engineRestUrl + "user/" + userId + "/profile";
-        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getUserProfile', [])));
-    };
-    /*
-      postUserLogin(variables): Observable<any> {
-        const endpoint = `${this.engineApiUrl}admin/auth/user/default/login/welcome`;
-        return this.http.post<any>(endpoint, variables).pipe(
-          tap(processDefinitions => this.log(`posted process instance`)),
-          catchError(this.handleError('postProcessInstance', []))
-        );
-      }
-      */
-    CamundaRestService.prototype.postUserLogin = function (variables) {
-        var endpoint = this.engineApiUrl + "admin/auth/user/default/login/welcome";
-        var formData = new URLSearchParams();
-        var options = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded')
-        };
-        formData.append('username', variables.username);
-        formData.append('password', variables.password);
-        return this.http.post(endpoint, formData.toString(), options).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (data) { return data; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postUserLogin', [])));
-        /*.map((response: Response) => {
-          alert(response.status);
-          console.log(response.status);
-          if (response.status === 401) {
-            return Observable.throw('Unauthorized');
-          } else {
-            const runs = response.json();
-            console.log(runs);
-            return runs;
-          }
-        });*/
-    };
-    CamundaRestService.prototype.handleError = function (operation, result) {
-        var _this = this;
-        if (operation === void 0) { operation = 'operation'; }
-        return function (error) {
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
-            // TODO: better job of transforming error for user consumption
-            _this.log(operation + " failed: " + error.message);
-            // Let the app keep running by returning an empty result.
-            result['status'] = error.status;
-            if (error.error.hasOwnProperty('message')) {
-                result['message'] = error.error.message;
-                result['type'] = error.error.type;
+
+var FilterModalComponent = /** @class */ (function () {
+    function FilterModalComponent(auth, modal, camundaService, event) {
+        this.auth = auth;
+        this.modal = modal;
+        this.camundaService = camundaService;
+        this.event = event;
+        this.allCriterias = [
+            { key: 'active', name: 'Active', type: 'Bool' },
+            { key: 'name', name: 'Name', type: 'string' },
+            { key: 'nameLike', name: 'Name Like', type: 'string' },
+            { key: 'description', name: 'Description', type: 'string' },
+            { key: 'descriptionLike', name: 'Description Like', type: 'string' },
+            { key: 'priority', name: 'Priority', type: 'number' },
+            { key: 'priorityMin', name: 'Priority Min', type: 'number' },
+            { key: 'priorityMax', name: 'Priority Max', type: 'number' },
+            { key: 'createdBefore', name: 'Created Before', type: 'date' },
+            { key: 'createdAfter', name: 'Created After', type: 'date' },
+            { key: 'dueBefore', name: 'Due Before', type: 'date' },
+            { key: 'dueAfter', name: 'Due After', type: 'date' },
+        ];
+        this.criterias = [];
+        this.orQueries = [];
+        this.filter = {
+            resourceType: 'Task',
+            name: '',
+            owner: '',
+            query: {},
+            properties: {
+                color: '',
+                description: '',
+                priority: ''
             }
-            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_0__["of"])(result);
         };
+    }
+    FilterModalComponent.prototype.ngOnInit = function () {
+        this.filter.owner = this.auth.getUser().username;
     };
-    /** Log a HeroService message with the MessageService */
-    CamundaRestService.prototype.log = function (message) {
-        console.log(message);
+    FilterModalComponent.prototype.updateType = function (event) {
+        var _this = this;
+        this.allCriterias.filter(function (item) {
+            if (item.key === event.detail.value) {
+                _this.criterias.filter(function (item1) {
+                    if (item1.key === event.detail.value) {
+                        item1.type = item.type;
+                    }
+                });
+            }
+        });
     };
-    CamundaRestService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
-            providedIn: 'root'
+    FilterModalComponent.prototype.updateQuery = function (event) {
+        switch (event.detail.value) {
+            case '1':
+                this.orQueries = [];
+                this.orQueries.push({
+                    assignee: this.auth.getUser().username
+                });
+                break;
+            case '2':
+                this.orQueries = [];
+                this.orQueries.push({
+                    candidateGroups: Array.prototype.map.call(this.auth.getUser().groups, function (item) { return item.id; })
+                });
+                break;
+            case '3':
+                this.orQueries = [];
+                this.orQueries.push({
+                    assignee: this.auth.getUser().username,
+                    candidateGroups: Array.prototype.map.call(this.auth.getUser().groups, function (item) { return item.id; })
+                });
+                break;
+        }
+    };
+    FilterModalComponent.prototype.createFilter = function () {
+        var _this = this;
+        this.criterias.forEach(function (element) {
+            if (element.key.length > 0 && element.value.length > 0) {
+                _this.filter.query[element.key] = element.value;
+            }
+        });
+        this.filter.query['orQueries'] = this.orQueries;
+        this.camundaService.createFilter(this.filter).subscribe(function () {
+            _this.event.announceFiltersRefresh('');
+            _this.modal.dismiss();
+        });
+    };
+    FilterModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-filter-modal',
+            template: __webpack_require__(/*! ./filter-modal.component.html */ "./src/app/filter-modal/filter-modal.component.html"),
+            styles: [__webpack_require__(/*! ./filter-modal.component.scss */ "./src/app/filter-modal/filter-modal.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
-    ], CamundaRestService);
-    return CamundaRestService;
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
+            _camunda_rest_service__WEBPACK_IMPORTED_MODULE_3__["CamundaRestService"], _events_service__WEBPACK_IMPORTED_MODULE_4__["EventsService"]])
+    ], FilterModalComponent);
+    return FilterModalComponent;
 }());
 
 
@@ -14002,7 +12602,6 @@ var FilterService = /** @class */ (function () {
         var currentFilterList = this.storage.get(STORAGE_KEY) || [];
         var temp = this.isFilterOpen(gridItem, true);
         if (temp) {
-            console.log(temp);
             currentFilterList.splice(currentFilterList.indexOf(temp), 1);
         }
         this.storage.set(STORAGE_KEY, currentFilterList);
@@ -14043,6 +12642,296 @@ var FilterService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/form/form.component.html":
+/*!******************************************!*\
+  !*** ./src/app/form/form.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-formio id=\"formio\" [form]=\"form\" [readOnly]=\"readOnly\" [viewOnly]=\"readOnly\" [submission]=\"resource\"  [refresh]=\"refresh\" (submit)=\"onSubmit($event)\"></app-formio>\n"
+
+/***/ }),
+
+/***/ "./src/app/form/form.component.scss":
+/*!******************************************!*\
+  !*** ./src/app/form/form.component.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/form/form.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/form/form.component.ts ***!
+  \****************************************/
+/*! exports provided: FormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormComponent", function() { return FormComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _resource_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../resource.service */ "./src/app/resource.service.ts");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../events.service */ "./src/app/events.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var formiojs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formiojs */ "./node_modules/formiojs/index.js");
+/* harmony import */ var formiojs__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(formiojs__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var angular_formio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! angular-formio */ "./node_modules/angular-formio/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var FormComponent = /** @class */ (function () {
+    function FormComponent(service, events, route, config, eventService, loadingController, loader, appConfig, resourcesService) {
+        var _this = this;
+        this.service = service;
+        this.events = events;
+        this.route = route;
+        this.config = config;
+        this.eventService = eventService;
+        this.loadingController = loadingController;
+        this.loader = loader;
+        this.appConfig = appConfig;
+        this.resourcesService = resourcesService;
+        this.submit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.refresh = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.formLoaded = new Promise(function () { });
+        this.formLoaded = new Promise(function () { });
+        if (this.appConfig && this.appConfig.appUrl) {
+            formiojs__WEBPACK_IMPORTED_MODULE_6__["Formio"].setBaseUrl(this.appConfig.apiUrl);
+            formiojs__WEBPACK_IMPORTED_MODULE_6__["Formio"].setProjectUrl(this.appConfig.appUrl);
+            formiojs__WEBPACK_IMPORTED_MODULE_6__["Formio"].formOnly = this.appConfig.formOnly;
+        }
+        else {
+            console.error('You must provide an AppConfig within your application!');
+        }
+        // Create the form url and load the resources.
+        this.resource = { data: {} };
+        this.resourceLoaded = new Promise(function (resolve, reject) {
+            _this.resourceResolve = resolve;
+            _this.resourceReject = reject;
+        });
+        this.formLoaded = new Promise(function (resolve, reject) {
+            _this.formResolve = resolve;
+            _this.formReject = reject;
+        });
+        this.parentsLoaded = new Promise(function (resolve, reject) {
+            _this.parentsResolve = resolve;
+            _this.parentsReject = reject;
+        });
+        // Add this resource service to the list of all resources in context.
+        if (this.resourcesService) {
+            this.resources = this.resourcesService.resources;
+            this.resources[this.config.name] = this;
+        }
+    }
+    FormComponent.prototype.setParents = function () {
+        var _this = this;
+        if (!this.config.parents || !this.config.parents.length || !this.form) {
+            return;
+        }
+        if (!this.resourcesService) {
+            console.warn('You must provide the FormioResources within your application to use nested resources.');
+            return;
+        }
+        // Iterate through the list of parents.
+        var _parentsLoaded = [];
+        this.config.parents.forEach(function (parent) {
+            var resourceName = parent.resource || parent;
+            var resourceField = parent.field || parent;
+            var filterResource = parent.hasOwnProperty('filter') ? parent.filter : true;
+            if (_this.resources.hasOwnProperty(resourceName)) {
+                _parentsLoaded.push(_this.resources[resourceName].resourceLoaded.then(function (resource) {
+                    var parentPath = '';
+                    formiojs__WEBPACK_IMPORTED_MODULE_6__["Utils"].eachComponent(_this.form.components, function (component, path) {
+                        if (component.key === resourceField) {
+                            component.hidden = true;
+                            component.clearOnHide = false;
+                            lodash__WEBPACK_IMPORTED_MODULE_8___default.a.set(_this.resource.data, path, resource);
+                            parentPath = path;
+                            return true;
+                        }
+                    });
+                    return {
+                        name: parentPath,
+                        filter: filterResource,
+                        resource: resource
+                    };
+                }));
+            }
+        });
+        // When all the parents have loaded, emit that to the onParents emitter.
+        Promise.all(_parentsLoaded).then(function (parents) {
+            _this.parentsResolve(parents);
+            _this.refresh.emit({
+                form: _this.form,
+                submission: _this.resource
+            });
+        });
+    };
+    FormComponent.prototype.onSubmissionError = function (err) {
+        this.resourceReject(err);
+        this.onError(err);
+    };
+    FormComponent.prototype.setContext = function () {
+        this.resource = { data: {} };
+        this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
+        if (this.resourceId) {
+            this.resourceUrl += '/submission/' + this.resourceId;
+        }
+        this.formio = new formiojs__WEBPACK_IMPORTED_MODULE_6__["Formio"](this.resourceUrl);
+        this.setParents();
+    };
+    FormComponent.prototype.loadResource = function () {
+        var _this = this;
+        this.setContext();
+        this.loader.loading = true;
+        this.resourceLoading = this.formio
+            .loadSubmission(null, { ignoreCache: true })
+            .then(function (resource) {
+            _this.resource = resource;
+            _this.resourceResolve(resource);
+            _this.loader.loading = false;
+            _this.refresh.emit({
+                property: 'submission',
+                value: _this.resource
+            });
+            return resource;
+        }, function (err) { })
+            .catch(function (err) { });
+        return this.resourceLoading;
+    };
+    FormComponent.prototype.loadForm = function () {
+        var _this = this;
+        this.formFormio = new formiojs__WEBPACK_IMPORTED_MODULE_6__["Formio"](this.formUrl);
+        this.loader.loading = true;
+        this.formLoading = this.formFormio
+            .loadForm()
+            .then(function (form) {
+            _this.form = form;
+            _this.formResolve(form);
+            _this.loader.loading = false;
+            _this.setParents();
+            return form;
+        }, function (err) { return _this.onFormError(err); })
+            .catch(function (err) { return _this.onFormError(err); });
+        return this.formLoading;
+    };
+    /* loadResource() {
+       const route = new ActivatedRoute;
+       route.snapshot = new ActivatedRouteSnapshot;
+       route.snapshot.params = { id: this.resourceId, formKey: this.formKey, resourceName: this.resourceName };
+       return this.service.loadResource(route);
+     }
+     setContext(id = '') {
+       const route = new ActivatedRoute;
+       route.snapshot = new ActivatedRouteSnapshot;
+       route.snapshot.params = { id: this.resourceId, formKey: this.formKey, resourceName: this.resourceName };
+       this.service.setContext(route);
+     } */
+    FormComponent.prototype.onFormError = function (err) {
+        this.formReject(err);
+        this.onError(err);
+    };
+    FormComponent.prototype.onError = function (error) {
+        if (this.resourcesService) {
+            this.resourcesService.error.emit(error);
+        }
+        throw error;
+    };
+    FormComponent.prototype.onSubmit = function (event) {
+        var _this = this;
+        this.save(this.resource).then(function (data) {
+            _this.submit.emit(data);
+        });
+    };
+    FormComponent.prototype.save = function (resource) {
+        var _this = this;
+        var formio = resource._id ? this.formio : this.formFormio;
+        return formio
+            .saveSubmission(resource)
+            .then(function (saved) {
+            _this.resource = saved;
+            return saved;
+        }, function (err) { return _this.onError(err); })
+            .catch(function (err) { return _this.onError(err); });
+    };
+    FormComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.formUrl = this.appConfig.appUrl + '/' + this.formKey;
+        this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
+        this.loadForm().then(function () {
+            _this.loadResource();
+        });
+    };
+    FormComponent.prototype.ngOnDestroy = function () {
+        formiojs__WEBPACK_IMPORTED_MODULE_6__["Formio"].clearCache();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FormComponent.prototype, "formKey", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FormComponent.prototype, "resourceName", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FormComponent.prototype, "resourceId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FormComponent.prototype, "readOnly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], FormComponent.prototype, "submit", void 0);
+    FormComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-form',
+            template: __webpack_require__(/*! ./form.component.html */ "./src/app/form/form.component.html"),
+            styles: [__webpack_require__(/*! ./form.component.scss */ "./src/app/form/form.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_resource_service__WEBPACK_IMPORTED_MODULE_1__["ResourceService"],
+            _events_service__WEBPACK_IMPORTED_MODULE_2__["EventsService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            angular_formio_resource__WEBPACK_IMPORTED_MODULE_4__["FormioResourceConfig"],
+            _events_service__WEBPACK_IMPORTED_MODULE_2__["EventsService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"],
+            angular_formio__WEBPACK_IMPORTED_MODULE_7__["FormioLoader"],
+            angular_formio__WEBPACK_IMPORTED_MODULE_7__["FormioAppConfig"],
+            angular_formio_resource__WEBPACK_IMPORTED_MODULE_4__["FormioResources"]])
+    ], FormComponent);
+    return FormComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/formio/formio.component.html":
 /*!**********************************************!*\
   !*** ./src/app/formio/formio.component.html ***!
@@ -14061,7 +12950,7 @@ module.exports = "<div>\n    <formio-loader></formio-loader>\n    <formio-alerts
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@charset \"UTF-8\";\n:host ::ng-deep .flatpickr-calendar {\n  background: transparent;\n  opacity: 0;\n  display: none;\n  text-align: center;\n  visibility: hidden;\n  padding: 0;\n  -webkit-animation: none;\n  animation: none;\n  direction: ltr;\n  border: 0;\n  font-size: 14px;\n  line-height: 24px;\n  border-radius: 5px;\n  position: absolute;\n  width: 307.875px;\n  box-sizing: border-box;\n  touch-action: manipulation;\n  background: #fff;\n  box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08); }\n:host ::ng-deep .flatpickr-calendar.open,\n:host ::ng-deep .flatpickr-calendar.inline {\n  opacity: 1;\n  max-height: 640px;\n  visibility: visible; }\n:host ::ng-deep .flatpickr-calendar.open {\n  display: inline-block;\n  z-index: 99999; }\n:host ::ng-deep .flatpickr-calendar.animate.open {\n  -webkit-animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);\n  animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1); }\n:host ::ng-deep .flatpickr-calendar.inline {\n  display: block;\n  position: relative;\n  top: 2px; }\n:host ::ng-deep .flatpickr-calendar.static {\n  position: absolute;\n  top: calc(100% + 2px); }\n:host ::ng-deep .flatpickr-calendar.static.open {\n  z-index: 999;\n  display: block; }\n:host ::ng-deep .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {\n  box-shadow: none !important; }\n:host ::ng-deep .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {\n  box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar .hasWeeks .dayContainer,\n:host ::ng-deep .flatpickr-calendar .hasTime .dayContainer {\n  border-bottom: 0;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n:host ::ng-deep .flatpickr-calendar .hasWeeks .dayContainer {\n  border-left: 0; }\n:host ::ng-deep .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {\n  height: 40px;\n  border-top: 1px solid #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar.noCalendar.hasTime .flatpickr-time {\n  height: auto; }\n:host ::ng-deep .flatpickr-calendar:before,\n:host ::ng-deep .flatpickr-calendar:after {\n  position: absolute;\n  display: block;\n  pointer-events: none;\n  border: solid transparent;\n  content: '';\n  height: 0;\n  width: 0;\n  left: 22px; }\n:host ::ng-deep .flatpickr-calendar.rightMost:before,\n:host ::ng-deep .flatpickr-calendar.rightMost:after {\n  left: auto;\n  right: 22px; }\n:host ::ng-deep .flatpickr-calendar:before {\n  border-width: 5px;\n  margin: 0 -5px; }\n:host ::ng-deep .flatpickr-calendar:after {\n  border-width: 4px;\n  margin: 0 -4px; }\n:host ::ng-deep .flatpickr-calendar.arrowTop:before,\n:host ::ng-deep .flatpickr-calendar.arrowTop:after {\n  bottom: 100%; }\n:host ::ng-deep .flatpickr-calendar.arrowTop:before {\n  border-bottom-color: #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar.arrowTop:after {\n  border-bottom-color: #fff; }\n:host ::ng-deep .flatpickr-calendar.arrowBottom:before,\n:host ::ng-deep .flatpickr-calendar.arrowBottom:after {\n  top: 100%; }\n:host ::ng-deep .flatpickr-calendar.arrowBottom:before {\n  border-top-color: #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar.arrowBottom:after {\n  border-top-color: #fff; }\n:host ::ng-deep .flatpickr-calendar:focus {\n  outline: 0; }\n:host ::ng-deep .flatpickr-wrapper {\n  position: relative;\n  display: inline-block; }\n:host ::ng-deep .flatpickr-months {\n  display: flex; }\n:host ::ng-deep .flatpickr-months .flatpickr-month {\n  background: transparent;\n  color: rgba(0, 0, 0, 0.9);\n  fill: rgba(0, 0, 0, 0.9);\n  height: 28px;\n  line-height: 1;\n  text-align: center;\n  position: relative;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: hidden;\n  flex: 1; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month {\n  text-decoration: none;\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  line-height: 16px;\n  height: 28px;\n  padding: 10px;\n  z-index: 3;\n  color: rgba(0, 0, 0, 0.9);\n  fill: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month.disabled,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month.disabled {\n  display: none; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month i,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month i {\n  position: relative; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month.flatpickr-prev-month {\n  left: 0; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month.flatpickr-next-month,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month.flatpickr-next-month {\n  right: 0; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month:hover,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month:hover {\n  color: #959ea9; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month:hover svg,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month:hover svg {\n  fill: #f64747; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month svg,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month svg {\n  width: 14px;\n  height: 14px; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month svg path,\n:host ::ng-deep .flatpickr-months .flatpickr-next-month svg path {\n  transition: fill .1s;\n  fill: inherit; }\n:host ::ng-deep .numInputWrapper {\n  position: relative;\n  height: auto; }\n:host ::ng-deep .numInputWrapper input,\n:host ::ng-deep .numInputWrapper span {\n  display: inline-block; }\n:host ::ng-deep .numInputWrapper input {\n  width: 100%; }\n:host ::ng-deep .numInputWrapper input::-ms-clear {\n  display: none; }\n:host ::ng-deep .numInputWrapper span {\n  position: absolute;\n  right: 0;\n  width: 14px;\n  padding: 0 4px 0 2px;\n  height: 50%;\n  line-height: 50%;\n  opacity: 0;\n  cursor: pointer;\n  border: 1px solid rgba(57, 57, 57, 0.15);\n  box-sizing: border-box; }\n:host ::ng-deep .numInputWrapper span:hover {\n  background: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .numInputWrapper span:active {\n  background: rgba(0, 0, 0, 0.2); }\n:host ::ng-deep .numInputWrapper span:after {\n  display: block;\n  content: \"\";\n  position: absolute; }\n:host ::ng-deep .numInputWrapper span.arrowUp {\n  top: 0;\n  border-bottom: 0; }\n:host ::ng-deep .numInputWrapper span.arrowUp:after {\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-bottom: 4px solid rgba(57, 57, 57, 0.6);\n  top: 26%; }\n:host ::ng-deep .numInputWrapper span.arrowDown {\n  top: 50%; }\n:host ::ng-deep .numInputWrapper span.arrowDown:after {\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-top: 4px solid rgba(57, 57, 57, 0.6);\n  top: 40%; }\n:host ::ng-deep .numInputWrapper span svg {\n  width: inherit;\n  height: auto; }\n:host ::ng-deep .numInputWrapper span svg path {\n  fill: rgba(0, 0, 0, 0.5); }\n:host ::ng-deep .numInputWrapper:hover {\n  background: rgba(0, 0, 0, 0.05); }\n:host ::ng-deep .numInputWrapper:hover span {\n  opacity: 1; }\n:host ::ng-deep .flatpickr-current-month {\n  font-size: 135%;\n  line-height: inherit;\n  font-weight: 300;\n  color: inherit;\n  position: absolute;\n  width: 75%;\n  left: 12.5%;\n  padding: 6.16px 0 0 0;\n  line-height: 1;\n  height: 28px;\n  display: inline-block;\n  text-align: center;\n  -webkit-transform: translate3d(0, 0, 0);\n  transform: translate3d(0, 0, 0); }\n:host ::ng-deep .flatpickr-current-month span.cur-month {\n  font-family: inherit;\n  font-weight: 700;\n  color: inherit;\n  display: inline-block;\n  margin-left: .5ch;\n  padding: 0; }\n:host ::ng-deep .flatpickr-current-month span.cur-month:hover {\n  background: rgba(0, 0, 0, 0.05); }\n:host ::ng-deep .flatpickr-current-month .numInputWrapper {\n  width: 6ch;\n  width: 7ch\\0;\n  display: inline-block; }\n:host ::ng-deep .flatpickr-current-month .numInputWrapper span.arrowUp:after {\n  border-bottom-color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .flatpickr-current-month .numInputWrapper span.arrowDown:after {\n  border-top-color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .flatpickr-current-month input.cur-year {\n  background: transparent;\n  box-sizing: border-box;\n  color: inherit;\n  cursor: text;\n  padding: 0 0 0 .5ch;\n  margin: 0;\n  display: inline-block;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: 300;\n  line-height: inherit;\n  height: auto;\n  border: 0;\n  border-radius: 0;\n  vertical-align: initial; }\n:host ::ng-deep .flatpickr-current-month input.cur-year:focus {\n  outline: 0; }\n:host ::ng-deep .flatpickr-current-month input.cur-year[disabled],\n:host ::ng-deep .flatpickr-current-month input.cur-year[disabled]:hover {\n  font-size: 100%;\n  color: rgba(0, 0, 0, 0.5);\n  background: transparent;\n  pointer-events: none; }\n:host ::ng-deep .flatpickr-weekdays {\n  background: transparent;\n  text-align: center;\n  overflow: hidden;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  height: 28px; }\n:host ::ng-deep .flatpickr-weekdays .flatpickr-weekdaycontainer {\n  display: flex;\n  flex: 1; }\n:host ::ng-deep span.flatpickr-weekday {\n  cursor: default;\n  font-size: 90%;\n  background: transparent;\n  color: rgba(0, 0, 0, 0.54);\n  line-height: 1;\n  margin: 0;\n  text-align: center;\n  display: block;\n  flex: 1;\n  font-weight: bolder; }\n:host ::ng-deep .dayContainer,\n:host ::ng-deep .flatpickr-weeks {\n  padding: 1px 0 0 0; }\n:host ::ng-deep .flatpickr-days {\n  position: relative;\n  overflow: hidden;\n  display: flex;\n  align-items: flex-start;\n  width: 307.875px; }\n:host ::ng-deep .flatpickr-days:focus {\n  outline: 0; }\n:host ::ng-deep .dayContainer {\n  padding: 0;\n  outline: 0;\n  text-align: left;\n  width: 307.875px;\n  min-width: 307.875px;\n  max-width: 307.875px;\n  box-sizing: border-box;\n  display: inline-block;\n  display: flex;\n  flex-wrap: wrap;\n  -ms-flex-wrap: wrap;\n  justify-content: space-around;\n  -webkit-transform: translate3d(0, 0, 0);\n  transform: translate3d(0, 0, 0);\n  opacity: 1; }\n:host ::ng-deep .dayContainer + .dayContainer {\n  box-shadow: -1px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-day {\n  background: none;\n  border: 1px solid transparent;\n  border-radius: 150px;\n  box-sizing: border-box;\n  color: #393939;\n  cursor: pointer;\n  font-weight: 400;\n  width: 14.2857143%;\n  flex-basis: 14.2857143%;\n  max-width: 39px;\n  height: 39px;\n  line-height: 39px;\n  margin: 0;\n  display: inline-block;\n  position: relative;\n  justify-content: center;\n  text-align: center; }\n:host ::ng-deep .flatpickr-day.inRange,\n:host ::ng-deep .flatpickr-day.prevMonthDay.inRange,\n:host ::ng-deep .flatpickr-day.nextMonthDay.inRange,\n:host ::ng-deep .flatpickr-day.today.inRange,\n:host ::ng-deep .flatpickr-day.prevMonthDay.today.inRange,\n:host ::ng-deep .flatpickr-day.nextMonthDay.today.inRange,\n:host ::ng-deep .flatpickr-day:hover,\n:host ::ng-deep .flatpickr-day.prevMonthDay:hover,\n:host ::ng-deep .flatpickr-day.nextMonthDay:hover,\n:host ::ng-deep .flatpickr-day:focus,\n:host ::ng-deep .flatpickr-day.prevMonthDay:focus,\n:host ::ng-deep .flatpickr-day.nextMonthDay:focus {\n  cursor: pointer;\n  outline: 0;\n  background: #e6e6e6;\n  border-color: #e6e6e6; }\n:host ::ng-deep .flatpickr-day.today {\n  border-color: #959ea9; }\n:host ::ng-deep .flatpickr-day.today:hover,\n:host ::ng-deep .flatpickr-day.today:focus {\n  border-color: #959ea9;\n  background: #959ea9;\n  color: #fff; }\n:host ::ng-deep .flatpickr-day.selected,\n:host ::ng-deep .flatpickr-day.startRange,\n:host ::ng-deep .flatpickr-day.endRange,\n:host ::ng-deep .flatpickr-day.selected.inRange,\n:host ::ng-deep .flatpickr-day.startRange.inRange,\n:host ::ng-deep .flatpickr-day.endRange.inRange,\n:host ::ng-deep .flatpickr-day.selected:focus,\n:host ::ng-deep .flatpickr-day.startRange:focus,\n:host ::ng-deep .flatpickr-day.endRange:focus,\n:host ::ng-deep .flatpickr-day.selected:hover,\n:host ::ng-deep .flatpickr-day.startRange:hover,\n:host ::ng-deep .flatpickr-day.endRange:hover,\n:host ::ng-deep .flatpickr-day.selected.prevMonthDay,\n:host ::ng-deep .flatpickr-day.startRange.prevMonthDay,\n:host ::ng-deep .flatpickr-day.endRange.prevMonthDay,\n:host ::ng-deep .flatpickr-day.selected.nextMonthDay,\n:host ::ng-deep .flatpickr-day.startRange.nextMonthDay,\n:host ::ng-deep .flatpickr-day.endRange.nextMonthDay {\n  background: #569ff7;\n  box-shadow: none;\n  color: #fff;\n  border-color: #569ff7; }\n:host ::ng-deep .flatpickr-day.selected.startRange,\n:host ::ng-deep .flatpickr-day.startRange.startRange,\n:host ::ng-deep .flatpickr-day.endRange.startRange {\n  border-radius: 50px 0 0 50px; }\n:host ::ng-deep .flatpickr-day.selected.endRange,\n:host ::ng-deep .flatpickr-day.startRange.endRange,\n:host ::ng-deep .flatpickr-day.endRange.endRange {\n  border-radius: 0 50px 50px 0; }\n:host ::ng-deep .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),\n:host ::ng-deep .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),\n:host ::ng-deep .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {\n  box-shadow: -10px 0 0 #569ff7; }\n:host ::ng-deep .flatpickr-day.selected.startRange.endRange,\n:host ::ng-deep .flatpickr-day.startRange.startRange.endRange,\n:host ::ng-deep .flatpickr-day.endRange.startRange.endRange {\n  border-radius: 50px; }\n:host ::ng-deep .flatpickr-day.inRange {\n  border-radius: 0;\n  box-shadow: -5px 0 0 #e6e6e6, 5px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-day.disabled,\n:host ::ng-deep .flatpickr-day.disabled:hover,\n:host ::ng-deep .flatpickr-day.prevMonthDay,\n:host ::ng-deep .flatpickr-day.nextMonthDay,\n:host ::ng-deep .flatpickr-day.notAllowed,\n:host ::ng-deep .flatpickr-day.notAllowed.prevMonthDay,\n:host ::ng-deep .flatpickr-day.notAllowed.nextMonthDay {\n  color: rgba(57, 57, 57, 0.3);\n  background: transparent;\n  border-color: transparent;\n  cursor: default; }\n:host ::ng-deep .flatpickr-day.disabled,\n:host ::ng-deep .flatpickr-day.disabled:hover {\n  cursor: not-allowed;\n  color: rgba(57, 57, 57, 0.1); }\n:host ::ng-deep .flatpickr-day.week.selected {\n  border-radius: 0;\n  box-shadow: -5px 0 0 #569ff7, 5px 0 0 #569ff7; }\n:host ::ng-deep .flatpickr-day.hidden {\n  visibility: hidden; }\n:host ::ng-deep .rangeMode .flatpickr-day {\n  margin-top: 1px; }\n:host ::ng-deep .flatpickr-weekwrapper {\n  display: inline-block;\n  float: left; }\n:host ::ng-deep .flatpickr-weekwrapper .flatpickr-weeks {\n  padding: 0 12px;\n  box-shadow: 1px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-weekwrapper .flatpickr-weekday {\n  float: none;\n  width: 100%;\n  line-height: 28px; }\n:host ::ng-deep .flatpickr-weekwrapper span.flatpickr-day,\n:host ::ng-deep .flatpickr-weekwrapper span.flatpickr-day:hover {\n  display: block;\n  width: 100%;\n  max-width: none;\n  color: rgba(57, 57, 57, 0.3);\n  background: transparent;\n  cursor: default;\n  border: none; }\n:host ::ng-deep .flatpickr-innerContainer {\n  display: block;\n  display: flex;\n  box-sizing: border-box;\n  overflow: hidden; }\n:host ::ng-deep .flatpickr-rContainer {\n  display: inline-block;\n  padding: 0;\n  box-sizing: border-box; }\n:host ::ng-deep .flatpickr-time {\n  text-align: center;\n  outline: 0;\n  display: block;\n  height: 0;\n  line-height: 40px;\n  max-height: 40px;\n  box-sizing: border-box;\n  overflow: hidden;\n  display: flex; }\n:host ::ng-deep .flatpickr-time:after {\n  content: \"\";\n  display: table;\n  clear: both; }\n:host ::ng-deep .flatpickr-time .numInputWrapper {\n  flex: 1;\n  width: 40%;\n  height: 40px;\n  float: left; }\n:host ::ng-deep .flatpickr-time .numInputWrapper span.arrowUp:after {\n  border-bottom-color: #393939; }\n:host ::ng-deep .flatpickr-time .numInputWrapper span.arrowDown:after {\n  border-top-color: #393939; }\n:host ::ng-deep .flatpickr-time.hasSeconds .numInputWrapper {\n  width: 26%; }\n:host ::ng-deep .flatpickr-time.time24hr .numInputWrapper {\n  width: 49%; }\n:host ::ng-deep .flatpickr-time input {\n  background: transparent;\n  box-shadow: none;\n  border: 0;\n  border-radius: 0;\n  text-align: center;\n  margin: 0;\n  padding: 0;\n  height: inherit;\n  line-height: inherit;\n  color: #393939;\n  font-size: 14px;\n  position: relative;\n  box-sizing: border-box; }\n:host ::ng-deep .flatpickr-time input.flatpickr-hour {\n  font-weight: bold; }\n:host ::ng-deep .flatpickr-time input.flatpickr-minute,\n:host ::ng-deep .flatpickr-time input.flatpickr-second {\n  font-weight: 400; }\n:host ::ng-deep .flatpickr-time input:focus {\n  outline: 0;\n  border: 0; }\n:host ::ng-deep .flatpickr-time .flatpickr-time-separator,\n:host ::ng-deep .flatpickr-time .flatpickr-am-pm {\n  height: inherit;\n  display: inline-block;\n  float: left;\n  line-height: inherit;\n  color: #393939;\n  font-weight: bold;\n  width: 2%;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -ms-grid-row-align: center;\n      align-self: center; }\n:host ::ng-deep .flatpickr-time .flatpickr-am-pm {\n  outline: 0;\n  width: 18%;\n  cursor: pointer;\n  text-align: center;\n  font-weight: 400; }\n:host ::ng-deep .flatpickr-time input:hover,\n:host ::ng-deep .flatpickr-time .flatpickr-am-pm:hover,\n:host ::ng-deep .flatpickr-time input:focus,\n:host ::ng-deep .flatpickr-time .flatpickr-am-pm:focus {\n  background: #f3f3f3; }\n:host ::ng-deep .flatpickr-input[readonly] {\n  cursor: pointer; }\n@-webkit-keyframes fpFadeInDown {\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n    transform: translate3d(0, -20px, 0); }\n  to {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); } }\n@keyframes fpFadeInDown {\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n    transform: translate3d(0, -20px, 0); }\n  to {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); } }\n:host ::ng-deep .choices {\n  position: relative;\n  margin-bottom: 24px;\n  font-size: 16px; }\n:host ::ng-deep .choices:focus {\n  outline: none; }\n:host ::ng-deep .choices:last-child {\n  margin-bottom: 0; }\n:host ::ng-deep .choices.is-disabled .choices__inner,\n:host ::ng-deep .choices.is-disabled .choices__input {\n  background-color: #eaeaea;\n  cursor: not-allowed;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n:host ::ng-deep .choices.is-disabled .choices__item {\n  cursor: not-allowed; }\n:host ::ng-deep .choices[data-type*=select-one] {\n  cursor: pointer; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__inner {\n  padding-bottom: 7.5px; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__input {\n  display: block;\n  width: 100%;\n  padding: 10px;\n  border-bottom: 1px solid #ddd;\n  background-color: #fff;\n  margin: 0; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__button {\n  background-image: url(\"data:image/svg+xml,%3Csvg width%3D%2221%22 height%3D%2221%22 viewBox%3D%220 0 21 21%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22%23000%22 fill-rule%3D%22evenodd%22%3E%3Cpath d%3D%22M2.592.044l18.364 18.364-2.548 2.548L.044 2.592z%22%2F%3E%3Cpath d%3D%22M0 18.364L18.364 0l2.548 2.548L2.548 20.912z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E\");\n  padding: 0;\n  background-size: 8px;\n  position: absolute;\n  top: 50%;\n  right: 0;\n  margin-top: -10px;\n  margin-right: 25px;\n  height: 20px;\n  width: 20px;\n  border-radius: 10em;\n  opacity: .5; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__button:focus,\n:host ::ng-deep .choices[data-type*=select-one] .choices__button:hover {\n  opacity: 1; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__button:focus {\n  box-shadow: 0 0 0 2px #00bcd4; }\n:host ::ng-deep .choices[data-type*=select-one]:after {\n  content: \"\";\n  height: 0;\n  width: 0;\n  border-style: solid;\n  border-color: #333 transparent transparent transparent;\n  border-width: 5px;\n  position: absolute;\n  right: 11.5px;\n  top: 50%;\n  margin-top: -2.5px;\n  pointer-events: none; }\n:host ::ng-deep .choices[data-type*=select-one].is-open:after {\n  border-color: transparent transparent #333 transparent;\n  margin-top: -7.5px; }\n:host ::ng-deep .choices[data-type*=select-one][dir=rtl]:after {\n  left: 11.5px;\n  right: auto; }\n:host ::ng-deep .choices[data-type*=select-one][dir=rtl] .choices__button {\n  right: auto;\n  left: 0;\n  margin-left: 25px;\n  margin-right: 0; }\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__inner,\n:host ::ng-deep .choices[data-type*=text] .choices__inner {\n  cursor: text; }\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__button,\n:host ::ng-deep .choices[data-type*=text] .choices__button {\n  position: relative;\n  display: inline-block;\n  margin: 0 -4px 0 8px;\n  padding-left: 16px;\n  border-left: 1px solid #008fa1;\n  background-image: url(\"data:image/svg+xml,%3Csvg width%3D%2221%22 height%3D%2221%22 viewBox%3D%220 0 21 21%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22%23FFF%22 fill-rule%3D%22evenodd%22%3E%3Cpath d%3D%22M2.592.044l18.364 18.364-2.548 2.548L.044 2.592z%22%2F%3E%3Cpath d%3D%22M0 18.364L18.364 0l2.548 2.548L2.548 20.912z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E\");\n  background-size: 8px;\n  width: 8px;\n  line-height: 1;\n  opacity: .75; }\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__button:focus,\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__button:hover,\n:host ::ng-deep .choices[data-type*=text] .choices__button:focus,\n:host ::ng-deep .choices[data-type*=text] .choices__button:hover {\n  opacity: 1; }\n:host ::ng-deep .choices__inner {\n  display: inline-block;\n  vertical-align: top;\n  width: 100%;\n  background-color: #f9f9f9;\n  padding: 7.5px 7.5px 3.75px;\n  border: 1px solid #ddd;\n  border-radius: 2.5px;\n  font-size: 14px;\n  min-height: 44px;\n  overflow: hidden; }\n:host ::ng-deep .is-focused .choices__inner,\n:host ::ng-deep .is-open .choices__inner {\n  border-color: #b7b7b7; }\n:host ::ng-deep .is-open .choices__inner {\n  border-radius: 2.5px 2.5px 0 0; }\n:host ::ng-deep .is-flipped.is-open .choices__inner {\n  border-radius: 0 0 2.5px 2.5px; }\n:host ::ng-deep .choices__list {\n  margin: 0;\n  padding-left: 0;\n  list-style: none; }\n:host ::ng-deep .choices__list--single {\n  display: inline-block;\n  padding: 4px 16px 4px 4px;\n  width: 100%; }\n:host ::ng-deep [dir=rtl] .choices__list--single {\n  padding-right: 4px;\n  padding-left: 16px; }\n:host ::ng-deep .choices__list--single .choices__item {\n  width: 100%; }\n:host ::ng-deep .choices__list--multiple {\n  display: inline; }\n:host ::ng-deep .choices__list--multiple .choices__item {\n  display: inline-block;\n  vertical-align: middle;\n  border-radius: 20px;\n  padding: 4px 10px;\n  font-size: 12px;\n  font-weight: 500;\n  margin-right: 3.75px;\n  margin-bottom: 3.75px;\n  background-color: #00bcd4;\n  border: 1px solid #00a5bb;\n  color: #fff;\n  word-break: break-all; }\n:host ::ng-deep .choices__list--multiple .choices__item[data-deletable] {\n  padding-right: 5px; }\n:host ::ng-deep [dir=rtl] .choices__list--multiple .choices__item {\n  margin-right: 0;\n  margin-left: 3.75px; }\n:host ::ng-deep .choices__list--multiple .choices__item.is-highlighted {\n  background-color: #00a5bb;\n  border: 1px solid #008fa1; }\n:host ::ng-deep .is-disabled .choices__list--multiple .choices__item {\n  background-color: #aaa;\n  border: 1px solid #919191; }\n:host ::ng-deep .choices__list--dropdown {\n  display: none;\n  z-index: 1;\n  position: absolute;\n  width: 100%;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  top: 100%;\n  margin-top: -1px;\n  border-bottom-left-radius: 2.5px;\n  border-bottom-right-radius: 2.5px;\n  overflow: hidden;\n  word-break: break-all; }\n:host ::ng-deep .choices__list--dropdown.is-active {\n  display: block; }\n:host ::ng-deep .is-open .choices__list--dropdown {\n  border-color: #b7b7b7; }\n:host ::ng-deep .is-flipped .choices__list--dropdown {\n  top: auto;\n  bottom: 100%;\n  margin-top: 0;\n  margin-bottom: -1px;\n  border-radius: .25rem .25rem 0 0; }\n:host ::ng-deep .choices__list--dropdown .choices__list {\n  position: relative;\n  max-height: 300px;\n  overflow: auto;\n  -webkit-overflow-scrolling: touch;\n  will-change: scroll-position; }\n:host ::ng-deep .choices__list--dropdown .choices__item {\n  position: relative;\n  padding: 10px;\n  font-size: 14px; }\n:host ::ng-deep [dir=rtl] .choices__list--dropdown .choices__item {\n  text-align: right; }\n@media (min-width: 640px) {\n  :host ::ng-deep .choices__list--dropdown .choices__item--selectable {\n    padding-right: 100px; }\n  :host ::ng-deep .choices__list--dropdown .choices__item--selectable:after {\n    content: attr(data-select-text);\n    font-size: 12px;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n    transform: translateY(-50%); }\n  :host ::ng-deep [dir=rtl] .choices__list--dropdown .choices__item--selectable {\n    text-align: right;\n    padding-left: 100px;\n    padding-right: 10px; }\n  :host ::ng-deep [dir=rtl] .choices__list--dropdown .choices__item--selectable:after {\n    right: auto;\n    left: 10px; } }\n:host ::ng-deep .choices__list--dropdown .choices__item--selectable.is-highlighted {\n  background-color: #f2f2f2; }\n:host ::ng-deep .choices__list--dropdown .choices__item--selectable.is-highlighted:after {\n  opacity: .5; }\n:host ::ng-deep .choices__item {\n  cursor: default; }\n:host ::ng-deep .choices__item--selectable {\n  cursor: pointer; }\n:host ::ng-deep .choices__item--disabled {\n  cursor: not-allowed;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  opacity: .5; }\n:host ::ng-deep .choices__heading {\n  font-weight: 600;\n  font-size: 12px;\n  padding: 10px;\n  border-bottom: 1px solid #f7f7f7;\n  color: gray; }\n:host ::ng-deep .choices__button {\n  text-indent: -9999px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n  cursor: pointer; }\n:host ::ng-deep .choices__button:focus {\n  outline: none; }\n:host ::ng-deep .choices__input {\n  display: inline-block;\n  vertical-align: baseline;\n  background-color: #f9f9f9;\n  font-size: 14px;\n  margin-bottom: 5px;\n  border: 0;\n  border-radius: 0;\n  max-width: 100%;\n  padding: 4px 0 4px 2px; }\n:host ::ng-deep .choices__input:focus {\n  outline: 0; }\n:host ::ng-deep [dir=rtl] .choices__input {\n  padding-right: 2px;\n  padding-left: 0; }\n:host ::ng-deep .choices__placeholder {\n  opacity: .5; }\n:host ::ng-deep dialog {\n  position: absolute;\n  left: 0;\n  right: 0;\n  width: -moz-fit-content;\n  width: -webkit-fit-content;\n  width: fit-content;\n  height: -moz-fit-content;\n  height: -webkit-fit-content;\n  height: fit-content;\n  margin: auto;\n  border: solid;\n  padding: 1em;\n  background: white;\n  color: black;\n  display: block; }\n:host ::ng-deep dialog:not([open]) {\n  display: none; }\n:host ::ng-deep dialog + .backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep ._dialog_overlay {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0; }\n:host ::ng-deep dialog.fixed {\n  position: fixed;\n  top: 50%;\n  -webkit-transform: translate(0, -50%);\n          transform: translate(0, -50%); }\n:host ::ng-deep .gu-mirror {\n  position: fixed !important;\n  margin: 0 !important;\n  z-index: 9999 !important;\n  opacity: 0.8;\n  -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)\";\n  filter: alpha(opacity=80); }\n:host ::ng-deep .gu-hide {\n  display: none !important; }\n:host ::ng-deep .gu-unselectable {\n  -webkit-user-select: none !important;\n  -moz-user-select: none !important;\n  -ms-user-select: none !important;\n  user-select: none !important; }\n:host ::ng-deep .gu-transit {\n  opacity: 0.2;\n  -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)\";\n  filter: alpha(opacity=20); }\n@font-face {\n  :host ::ng-deep {\n    font-family: 'FontAwesome';\n    src: url('fontawesome-webfont.eot?v=4.7.0');\n    src: url('fontawesome-webfont.eot?#iefix&v=4.7.0') format(\"embedded-opentype\"), url('fontawesome-webfont.woff2?v=4.7.0') format(\"woff2\"), url('fontawesome-webfont.woff?v=4.7.0') format(\"woff\"), url('fontawesome-webfont.ttf?v=4.7.0') format(\"truetype\"), url('fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format(\"svg\");\n    font-weight: normal;\n    font-style: normal; } }\n:host ::ng-deep .fa {\n  display: inline-block;\n  font: normal normal normal 14px/1 FontAwesome;\n  font-size: inherit;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n:host ::ng-deep .fa-lg {\n  font-size: 1.33333333em;\n  line-height: 0.75em;\n  vertical-align: -15%; }\n:host ::ng-deep .fa-2x {\n  font-size: 2em; }\n:host ::ng-deep .fa-3x {\n  font-size: 3em; }\n:host ::ng-deep .fa-4x {\n  font-size: 4em; }\n:host ::ng-deep .fa-5x {\n  font-size: 5em; }\n:host ::ng-deep .fa-fw {\n  width: 1.28571429em;\n  text-align: center; }\n:host ::ng-deep .fa-ul {\n  padding-left: 0;\n  margin-left: 2.14285714em;\n  list-style-type: none; }\n:host ::ng-deep .fa-ul > li {\n  position: relative; }\n:host ::ng-deep .fa-li {\n  position: absolute;\n  left: -2.14285714em;\n  width: 2.14285714em;\n  top: 0.14285714em;\n  text-align: center; }\n:host ::ng-deep .fa-li.fa-lg {\n  left: -1.85714286em; }\n:host ::ng-deep .fa-border {\n  padding: .2em .25em .15em;\n  border: solid 0.08em #eeeeee;\n  border-radius: .1em; }\n:host ::ng-deep .fa-pull-left {\n  float: left; }\n:host ::ng-deep .fa-pull-right {\n  float: right; }\n:host ::ng-deep .fa.fa-pull-left {\n  margin-right: .3em; }\n:host ::ng-deep .fa.fa-pull-right {\n  margin-left: .3em; }\n:host ::ng-deep .pull-left {\n  float: left; }\n:host ::ng-deep .fa.pull-left {\n  margin-right: .3em; }\n:host ::ng-deep .fa.pull-right {\n  margin-left: .3em; }\n:host ::ng-deep .fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n  animation: fa-spin 2s infinite linear; }\n:host ::ng-deep .fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n  animation: fa-spin 1s infinite steps(8); }\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg); } }\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg); } }\n:host ::ng-deep .fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n  transform: rotate(90deg); }\n:host ::ng-deep .fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n  transform: rotate(180deg); }\n:host ::ng-deep .fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n  transform: rotate(270deg); }\n:host ::ng-deep .fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n  transform: scale(-1, 1); }\n:host ::ng-deep .fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n  transform: scale(1, -1); }\n:host ::ng-deep :root .fa-rotate-90,\n:host ::ng-deep :root .fa-rotate-180,\n:host ::ng-deep :root .fa-rotate-270,\n:host ::ng-deep :root .fa-flip-horizontal,\n:host ::ng-deep :root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n:host ::ng-deep .fa-stack {\n  position: relative;\n  display: inline-block;\n  width: 2em;\n  height: 2em;\n  line-height: 2em;\n  vertical-align: middle; }\n:host ::ng-deep .fa-stack-1x,\n:host ::ng-deep .fa-stack-2x {\n  position: absolute;\n  left: 0;\n  width: 100%;\n  text-align: center; }\n:host ::ng-deep .fa-stack-1x {\n  line-height: inherit; }\n:host ::ng-deep .fa-stack-2x {\n  font-size: 2em; }\n:host ::ng-deep .fa-inverse {\n  color: #ffffff; }\n:host ::ng-deep .fa-glass:before {\n  content: \"\\f000\"; }\n:host ::ng-deep .fa-music:before {\n  content: \"\\f001\"; }\n:host ::ng-deep .fa-search:before {\n  content: \"\\f002\"; }\n:host ::ng-deep .fa-envelope-o:before {\n  content: \"\\f003\"; }\n:host ::ng-deep .fa-heart:before {\n  content: \"\\f004\"; }\n:host ::ng-deep .fa-star:before {\n  content: \"\\f005\"; }\n:host ::ng-deep .fa-star-o:before {\n  content: \"\\f006\"; }\n:host ::ng-deep .fa-user:before {\n  content: \"\\f007\"; }\n:host ::ng-deep .fa-film:before {\n  content: \"\\f008\"; }\n:host ::ng-deep .fa-th-large:before {\n  content: \"\\f009\"; }\n:host ::ng-deep .fa-th:before {\n  content: \"\\f00a\"; }\n:host ::ng-deep .fa-th-list:before {\n  content: \"\\f00b\"; }\n:host ::ng-deep .fa-check:before {\n  content: \"\\f00c\"; }\n:host ::ng-deep .fa-remove:before,\n:host ::ng-deep .fa-close:before,\n:host ::ng-deep .fa-times:before {\n  content: \"\\f00d\"; }\n:host ::ng-deep .fa-search-plus:before {\n  content: \"\\f00e\"; }\n:host ::ng-deep .fa-search-minus:before {\n  content: \"\\f010\"; }\n:host ::ng-deep .fa-power-off:before {\n  content: \"\\f011\"; }\n:host ::ng-deep .fa-signal:before {\n  content: \"\\f012\"; }\n:host ::ng-deep .fa-gear:before,\n:host ::ng-deep .fa-cog:before {\n  content: \"\\f013\"; }\n:host ::ng-deep .fa-trash-o:before {\n  content: \"\\f014\"; }\n:host ::ng-deep .fa-home:before {\n  content: \"\\f015\"; }\n:host ::ng-deep .fa-file-o:before {\n  content: \"\\f016\"; }\n:host ::ng-deep .fa-clock-o:before {\n  content: \"\\f017\"; }\n:host ::ng-deep .fa-road:before {\n  content: \"\\f018\"; }\n:host ::ng-deep .fa-download:before {\n  content: \"\\f019\"; }\n:host ::ng-deep .fa-arrow-circle-o-down:before {\n  content: \"\\f01a\"; }\n:host ::ng-deep .fa-arrow-circle-o-up:before {\n  content: \"\\f01b\"; }\n:host ::ng-deep .fa-inbox:before {\n  content: \"\\f01c\"; }\n:host ::ng-deep .fa-play-circle-o:before {\n  content: \"\\f01d\"; }\n:host ::ng-deep .fa-rotate-right:before,\n:host ::ng-deep .fa-repeat:before {\n  content: \"\\f01e\"; }\n:host ::ng-deep .fa-refresh:before {\n  content: \"\\f021\"; }\n:host ::ng-deep .fa-list-alt:before {\n  content: \"\\f022\"; }\n:host ::ng-deep .fa-lock:before {\n  content: \"\\f023\"; }\n:host ::ng-deep .fa-flag:before {\n  content: \"\\f024\"; }\n:host ::ng-deep .fa-headphones:before {\n  content: \"\\f025\"; }\n:host ::ng-deep .fa-volume-off:before {\n  content: \"\\f026\"; }\n:host ::ng-deep .fa-volume-down:before {\n  content: \"\\f027\"; }\n:host ::ng-deep .fa-volume-up:before {\n  content: \"\\f028\"; }\n:host ::ng-deep .fa-qrcode:before {\n  content: \"\\f029\"; }\n:host ::ng-deep .fa-barcode:before {\n  content: \"\\f02a\"; }\n:host ::ng-deep .fa-tag:before {\n  content: \"\\f02b\"; }\n:host ::ng-deep .fa-tags:before {\n  content: \"\\f02c\"; }\n:host ::ng-deep .fa-book:before {\n  content: \"\\f02d\"; }\n:host ::ng-deep .fa-bookmark:before {\n  content: \"\\f02e\"; }\n:host ::ng-deep .fa-print:before {\n  content: \"\\f02f\"; }\n:host ::ng-deep .fa-camera:before {\n  content: \"\\f030\"; }\n:host ::ng-deep .fa-font:before {\n  content: \"\\f031\"; }\n:host ::ng-deep .fa-bold:before {\n  content: \"\\f032\"; }\n:host ::ng-deep .fa-italic:before {\n  content: \"\\f033\"; }\n:host ::ng-deep .fa-text-height:before {\n  content: \"\\f034\"; }\n:host ::ng-deep .fa-text-width:before {\n  content: \"\\f035\"; }\n:host ::ng-deep .fa-align-left:before {\n  content: \"\\f036\"; }\n:host ::ng-deep .fa-align-center:before {\n  content: \"\\f037\"; }\n:host ::ng-deep .fa-align-right:before {\n  content: \"\\f038\"; }\n:host ::ng-deep .fa-align-justify:before {\n  content: \"\\f039\"; }\n:host ::ng-deep .fa-list:before {\n  content: \"\\f03a\"; }\n:host ::ng-deep .fa-dedent:before,\n:host ::ng-deep .fa-outdent:before {\n  content: \"\\f03b\"; }\n:host ::ng-deep .fa-indent:before {\n  content: \"\\f03c\"; }\n:host ::ng-deep .fa-video-camera:before {\n  content: \"\\f03d\"; }\n:host ::ng-deep .fa-photo:before,\n:host ::ng-deep .fa-image:before,\n:host ::ng-deep .fa-picture-o:before {\n  content: \"\\f03e\"; }\n:host ::ng-deep .fa-pencil:before {\n  content: \"\\f040\"; }\n:host ::ng-deep .fa-map-marker:before {\n  content: \"\\f041\"; }\n:host ::ng-deep .fa-adjust:before {\n  content: \"\\f042\"; }\n:host ::ng-deep .fa-tint:before {\n  content: \"\\f043\"; }\n:host ::ng-deep .fa-edit:before,\n:host ::ng-deep .fa-pencil-square-o:before {\n  content: \"\\f044\"; }\n:host ::ng-deep .fa-share-square-o:before {\n  content: \"\\f045\"; }\n:host ::ng-deep .fa-check-square-o:before {\n  content: \"\\f046\"; }\n:host ::ng-deep .fa-arrows:before {\n  content: \"\\f047\"; }\n:host ::ng-deep .fa-step-backward:before {\n  content: \"\\f048\"; }\n:host ::ng-deep .fa-fast-backward:before {\n  content: \"\\f049\"; }\n:host ::ng-deep .fa-backward:before {\n  content: \"\\f04a\"; }\n:host ::ng-deep .fa-play:before {\n  content: \"\\f04b\"; }\n:host ::ng-deep .fa-pause:before {\n  content: \"\\f04c\"; }\n:host ::ng-deep .fa-stop:before {\n  content: \"\\f04d\"; }\n:host ::ng-deep .fa-forward:before {\n  content: \"\\f04e\"; }\n:host ::ng-deep .fa-fast-forward:before {\n  content: \"\\f050\"; }\n:host ::ng-deep .fa-step-forward:before {\n  content: \"\\f051\"; }\n:host ::ng-deep .fa-eject:before {\n  content: \"\\f052\"; }\n:host ::ng-deep .fa-chevron-left:before {\n  content: \"\\f053\"; }\n:host ::ng-deep .fa-chevron-right:before {\n  content: \"\\f054\"; }\n:host ::ng-deep .fa-plus-circle:before {\n  content: \"\\f055\"; }\n:host ::ng-deep .fa-minus-circle:before {\n  content: \"\\f056\"; }\n:host ::ng-deep .fa-times-circle:before {\n  content: \"\\f057\"; }\n:host ::ng-deep .fa-check-circle:before {\n  content: \"\\f058\"; }\n:host ::ng-deep .fa-question-circle:before {\n  content: \"\\f059\"; }\n:host ::ng-deep .fa-info-circle:before {\n  content: \"\\f05a\"; }\n:host ::ng-deep .fa-crosshairs:before {\n  content: \"\\f05b\"; }\n:host ::ng-deep .fa-times-circle-o:before {\n  content: \"\\f05c\"; }\n:host ::ng-deep .fa-check-circle-o:before {\n  content: \"\\f05d\"; }\n:host ::ng-deep .fa-ban:before {\n  content: \"\\f05e\"; }\n:host ::ng-deep .fa-arrow-left:before {\n  content: \"\\f060\"; }\n:host ::ng-deep .fa-arrow-right:before {\n  content: \"\\f061\"; }\n:host ::ng-deep .fa-arrow-up:before {\n  content: \"\\f062\"; }\n:host ::ng-deep .fa-arrow-down:before {\n  content: \"\\f063\"; }\n:host ::ng-deep .fa-mail-forward:before,\n:host ::ng-deep .fa-share:before {\n  content: \"\\f064\"; }\n:host ::ng-deep .fa-expand:before {\n  content: \"\\f065\"; }\n:host ::ng-deep .fa-compress:before {\n  content: \"\\f066\"; }\n:host ::ng-deep .fa-plus:before {\n  content: \"\\f067\"; }\n:host ::ng-deep .fa-minus:before {\n  content: \"\\f068\"; }\n:host ::ng-deep .fa-asterisk:before {\n  content: \"\\f069\"; }\n:host ::ng-deep .fa-exclamation-circle:before {\n  content: \"\\f06a\"; }\n:host ::ng-deep .fa-gift:before {\n  content: \"\\f06b\"; }\n:host ::ng-deep .fa-leaf:before {\n  content: \"\\f06c\"; }\n:host ::ng-deep .fa-fire:before {\n  content: \"\\f06d\"; }\n:host ::ng-deep .fa-eye:before {\n  content: \"\\f06e\"; }\n:host ::ng-deep .fa-eye-slash:before {\n  content: \"\\f070\"; }\n:host ::ng-deep .fa-warning:before,\n:host ::ng-deep .fa-exclamation-triangle:before {\n  content: \"\\f071\"; }\n:host ::ng-deep .fa-plane:before {\n  content: \"\\f072\"; }\n:host ::ng-deep .fa-calendar:before {\n  content: \"\\f073\"; }\n:host ::ng-deep .fa-random:before {\n  content: \"\\f074\"; }\n:host ::ng-deep .fa-comment:before {\n  content: \"\\f075\"; }\n:host ::ng-deep .fa-magnet:before {\n  content: \"\\f076\"; }\n:host ::ng-deep .fa-chevron-up:before {\n  content: \"\\f077\"; }\n:host ::ng-deep .fa-chevron-down:before {\n  content: \"\\f078\"; }\n:host ::ng-deep .fa-retweet:before {\n  content: \"\\f079\"; }\n:host ::ng-deep .fa-shopping-cart:before {\n  content: \"\\f07a\"; }\n:host ::ng-deep .fa-folder:before {\n  content: \"\\f07b\"; }\n:host ::ng-deep .fa-folder-open:before {\n  content: \"\\f07c\"; }\n:host ::ng-deep .fa-arrows-v:before {\n  content: \"\\f07d\"; }\n:host ::ng-deep .fa-arrows-h:before {\n  content: \"\\f07e\"; }\n:host ::ng-deep .fa-bar-chart-o:before,\n:host ::ng-deep .fa-bar-chart:before {\n  content: \"\\f080\"; }\n:host ::ng-deep .fa-twitter-square:before {\n  content: \"\\f081\"; }\n:host ::ng-deep .fa-facebook-square:before {\n  content: \"\\f082\"; }\n:host ::ng-deep .fa-camera-retro:before {\n  content: \"\\f083\"; }\n:host ::ng-deep .fa-key:before {\n  content: \"\\f084\"; }\n:host ::ng-deep .fa-gears:before,\n:host ::ng-deep .fa-cogs:before {\n  content: \"\\f085\"; }\n:host ::ng-deep .fa-comments:before {\n  content: \"\\f086\"; }\n:host ::ng-deep .fa-thumbs-o-up:before {\n  content: \"\\f087\"; }\n:host ::ng-deep .fa-thumbs-o-down:before {\n  content: \"\\f088\"; }\n:host ::ng-deep .fa-star-half:before {\n  content: \"\\f089\"; }\n:host ::ng-deep .fa-heart-o:before {\n  content: \"\\f08a\"; }\n:host ::ng-deep .fa-sign-out:before {\n  content: \"\\f08b\"; }\n:host ::ng-deep .fa-linkedin-square:before {\n  content: \"\\f08c\"; }\n:host ::ng-deep .fa-thumb-tack:before {\n  content: \"\\f08d\"; }\n:host ::ng-deep .fa-external-link:before {\n  content: \"\\f08e\"; }\n:host ::ng-deep .fa-sign-in:before {\n  content: \"\\f090\"; }\n:host ::ng-deep .fa-trophy:before {\n  content: \"\\f091\"; }\n:host ::ng-deep .fa-github-square:before {\n  content: \"\\f092\"; }\n:host ::ng-deep .fa-upload:before {\n  content: \"\\f093\"; }\n:host ::ng-deep .fa-lemon-o:before {\n  content: \"\\f094\"; }\n:host ::ng-deep .fa-phone:before {\n  content: \"\\f095\"; }\n:host ::ng-deep .fa-square-o:before {\n  content: \"\\f096\"; }\n:host ::ng-deep .fa-bookmark-o:before {\n  content: \"\\f097\"; }\n:host ::ng-deep .fa-phone-square:before {\n  content: \"\\f098\"; }\n:host ::ng-deep .fa-twitter:before {\n  content: \"\\f099\"; }\n:host ::ng-deep .fa-facebook-f:before,\n:host ::ng-deep .fa-facebook:before {\n  content: \"\\f09a\"; }\n:host ::ng-deep .fa-github:before {\n  content: \"\\f09b\"; }\n:host ::ng-deep .fa-unlock:before {\n  content: \"\\f09c\"; }\n:host ::ng-deep .fa-credit-card:before {\n  content: \"\\f09d\"; }\n:host ::ng-deep .fa-feed:before,\n:host ::ng-deep .fa-rss:before {\n  content: \"\\f09e\"; }\n:host ::ng-deep .fa-hdd-o:before {\n  content: \"\\f0a0\"; }\n:host ::ng-deep .fa-bullhorn:before {\n  content: \"\\f0a1\"; }\n:host ::ng-deep .fa-bell:before {\n  content: \"\\f0f3\"; }\n:host ::ng-deep .fa-certificate:before {\n  content: \"\\f0a3\"; }\n:host ::ng-deep .fa-hand-o-right:before {\n  content: \"\\f0a4\"; }\n:host ::ng-deep .fa-hand-o-left:before {\n  content: \"\\f0a5\"; }\n:host ::ng-deep .fa-hand-o-up:before {\n  content: \"\\f0a6\"; }\n:host ::ng-deep .fa-hand-o-down:before {\n  content: \"\\f0a7\"; }\n:host ::ng-deep .fa-arrow-circle-left:before {\n  content: \"\\f0a8\"; }\n:host ::ng-deep .fa-arrow-circle-right:before {\n  content: \"\\f0a9\"; }\n:host ::ng-deep .fa-arrow-circle-up:before {\n  content: \"\\f0aa\"; }\n:host ::ng-deep .fa-arrow-circle-down:before {\n  content: \"\\f0ab\"; }\n:host ::ng-deep .fa-globe:before {\n  content: \"\\f0ac\"; }\n:host ::ng-deep .fa-wrench:before {\n  content: \"\\f0ad\"; }\n:host ::ng-deep .fa-tasks:before {\n  content: \"\\f0ae\"; }\n:host ::ng-deep .fa-filter:before {\n  content: \"\\f0b0\"; }\n:host ::ng-deep .fa-briefcase:before {\n  content: \"\\f0b1\"; }\n:host ::ng-deep .fa-arrows-alt:before {\n  content: \"\\f0b2\"; }\n:host ::ng-deep .fa-group:before,\n:host ::ng-deep .fa-users:before {\n  content: \"\\f0c0\"; }\n:host ::ng-deep .fa-chain:before,\n:host ::ng-deep .fa-link:before {\n  content: \"\\f0c1\"; }\n:host ::ng-deep .fa-cloud:before {\n  content: \"\\f0c2\"; }\n:host ::ng-deep .fa-flask:before {\n  content: \"\\f0c3\"; }\n:host ::ng-deep .fa-cut:before,\n:host ::ng-deep .fa-scissors:before {\n  content: \"\\f0c4\"; }\n:host ::ng-deep .fa-copy:before,\n:host ::ng-deep .fa-files-o:before {\n  content: \"\\f0c5\"; }\n:host ::ng-deep .fa-paperclip:before {\n  content: \"\\f0c6\"; }\n:host ::ng-deep .fa-save:before,\n:host ::ng-deep .fa-floppy-o:before {\n  content: \"\\f0c7\"; }\n:host ::ng-deep .fa-square:before {\n  content: \"\\f0c8\"; }\n:host ::ng-deep .fa-navicon:before,\n:host ::ng-deep .fa-reorder:before,\n:host ::ng-deep .fa-bars:before {\n  content: \"\\f0c9\"; }\n:host ::ng-deep .fa-list-ul:before {\n  content: \"\\f0ca\"; }\n:host ::ng-deep .fa-list-ol:before {\n  content: \"\\f0cb\"; }\n:host ::ng-deep .fa-strikethrough:before {\n  content: \"\\f0cc\"; }\n:host ::ng-deep .fa-underline:before {\n  content: \"\\f0cd\"; }\n:host ::ng-deep .fa-table:before {\n  content: \"\\f0ce\"; }\n:host ::ng-deep .fa-magic:before {\n  content: \"\\f0d0\"; }\n:host ::ng-deep .fa-truck:before {\n  content: \"\\f0d1\"; }\n:host ::ng-deep .fa-pinterest:before {\n  content: \"\\f0d2\"; }\n:host ::ng-deep .fa-pinterest-square:before {\n  content: \"\\f0d3\"; }\n:host ::ng-deep .fa-google-plus-square:before {\n  content: \"\\f0d4\"; }\n:host ::ng-deep .fa-google-plus:before {\n  content: \"\\f0d5\"; }\n:host ::ng-deep .fa-money:before {\n  content: \"\\f0d6\"; }\n:host ::ng-deep .fa-caret-down:before {\n  content: \"\\f0d7\"; }\n:host ::ng-deep .fa-caret-up:before {\n  content: \"\\f0d8\"; }\n:host ::ng-deep .fa-caret-left:before {\n  content: \"\\f0d9\"; }\n:host ::ng-deep .fa-caret-right:before {\n  content: \"\\f0da\"; }\n:host ::ng-deep .fa-columns:before {\n  content: \"\\f0db\"; }\n:host ::ng-deep .fa-unsorted:before,\n:host ::ng-deep .fa-sort:before {\n  content: \"\\f0dc\"; }\n:host ::ng-deep .fa-sort-down:before,\n:host ::ng-deep .fa-sort-desc:before {\n  content: \"\\f0dd\"; }\n:host ::ng-deep .fa-sort-up:before,\n:host ::ng-deep .fa-sort-asc:before {\n  content: \"\\f0de\"; }\n:host ::ng-deep .fa-envelope:before {\n  content: \"\\f0e0\"; }\n:host ::ng-deep .fa-linkedin:before {\n  content: \"\\f0e1\"; }\n:host ::ng-deep .fa-rotate-left:before,\n:host ::ng-deep .fa-undo:before {\n  content: \"\\f0e2\"; }\n:host ::ng-deep .fa-legal:before,\n:host ::ng-deep .fa-gavel:before {\n  content: \"\\f0e3\"; }\n:host ::ng-deep .fa-dashboard:before,\n:host ::ng-deep .fa-tachometer:before {\n  content: \"\\f0e4\"; }\n:host ::ng-deep .fa-comment-o:before {\n  content: \"\\f0e5\"; }\n:host ::ng-deep .fa-comments-o:before {\n  content: \"\\f0e6\"; }\n:host ::ng-deep .fa-flash:before,\n:host ::ng-deep .fa-bolt:before {\n  content: \"\\f0e7\"; }\n:host ::ng-deep .fa-sitemap:before {\n  content: \"\\f0e8\"; }\n:host ::ng-deep .fa-umbrella:before {\n  content: \"\\f0e9\"; }\n:host ::ng-deep .fa-paste:before,\n:host ::ng-deep .fa-clipboard:before {\n  content: \"\\f0ea\"; }\n:host ::ng-deep .fa-lightbulb-o:before {\n  content: \"\\f0eb\"; }\n:host ::ng-deep .fa-exchange:before {\n  content: \"\\f0ec\"; }\n:host ::ng-deep .fa-cloud-download:before {\n  content: \"\\f0ed\"; }\n:host ::ng-deep .fa-cloud-upload:before {\n  content: \"\\f0ee\"; }\n:host ::ng-deep .fa-user-md:before {\n  content: \"\\f0f0\"; }\n:host ::ng-deep .fa-stethoscope:before {\n  content: \"\\f0f1\"; }\n:host ::ng-deep .fa-suitcase:before {\n  content: \"\\f0f2\"; }\n:host ::ng-deep .fa-bell-o:before {\n  content: \"\\f0a2\"; }\n:host ::ng-deep .fa-coffee:before {\n  content: \"\\f0f4\"; }\n:host ::ng-deep .fa-cutlery:before {\n  content: \"\\f0f5\"; }\n:host ::ng-deep .fa-file-text-o:before {\n  content: \"\\f0f6\"; }\n:host ::ng-deep .fa-building-o:before {\n  content: \"\\f0f7\"; }\n:host ::ng-deep .fa-hospital-o:before {\n  content: \"\\f0f8\"; }\n:host ::ng-deep .fa-ambulance:before {\n  content: \"\\f0f9\"; }\n:host ::ng-deep .fa-medkit:before {\n  content: \"\\f0fa\"; }\n:host ::ng-deep .fa-fighter-jet:before {\n  content: \"\\f0fb\"; }\n:host ::ng-deep .fa-beer:before {\n  content: \"\\f0fc\"; }\n:host ::ng-deep .fa-h-square:before {\n  content: \"\\f0fd\"; }\n:host ::ng-deep .fa-plus-square:before {\n  content: \"\\f0fe\"; }\n:host ::ng-deep .fa-angle-double-left:before {\n  content: \"\\f100\"; }\n:host ::ng-deep .fa-angle-double-right:before {\n  content: \"\\f101\"; }\n:host ::ng-deep .fa-angle-double-up:before {\n  content: \"\\f102\"; }\n:host ::ng-deep .fa-angle-double-down:before {\n  content: \"\\f103\"; }\n:host ::ng-deep .fa-angle-left:before {\n  content: \"\\f104\"; }\n:host ::ng-deep .fa-angle-right:before {\n  content: \"\\f105\"; }\n:host ::ng-deep .fa-angle-up:before {\n  content: \"\\f106\"; }\n:host ::ng-deep .fa-angle-down:before {\n  content: \"\\f107\"; }\n:host ::ng-deep .fa-desktop:before {\n  content: \"\\f108\"; }\n:host ::ng-deep .fa-laptop:before {\n  content: \"\\f109\"; }\n:host ::ng-deep .fa-tablet:before {\n  content: \"\\f10a\"; }\n:host ::ng-deep .fa-mobile-phone:before,\n:host ::ng-deep .fa-mobile:before {\n  content: \"\\f10b\"; }\n:host ::ng-deep .fa-circle-o:before {\n  content: \"\\f10c\"; }\n:host ::ng-deep .fa-quote-left:before {\n  content: \"\\f10d\"; }\n:host ::ng-deep .fa-quote-right:before {\n  content: \"\\f10e\"; }\n:host ::ng-deep .fa-spinner:before {\n  content: \"\\f110\"; }\n:host ::ng-deep .fa-circle:before {\n  content: \"\\f111\"; }\n:host ::ng-deep .fa-mail-reply:before,\n:host ::ng-deep .fa-reply:before {\n  content: \"\\f112\"; }\n:host ::ng-deep .fa-github-alt:before {\n  content: \"\\f113\"; }\n:host ::ng-deep .fa-folder-o:before {\n  content: \"\\f114\"; }\n:host ::ng-deep .fa-folder-open-o:before {\n  content: \"\\f115\"; }\n:host ::ng-deep .fa-smile-o:before {\n  content: \"\\f118\"; }\n:host ::ng-deep .fa-frown-o:before {\n  content: \"\\f119\"; }\n:host ::ng-deep .fa-meh-o:before {\n  content: \"\\f11a\"; }\n:host ::ng-deep .fa-gamepad:before {\n  content: \"\\f11b\"; }\n:host ::ng-deep .fa-keyboard-o:before {\n  content: \"\\f11c\"; }\n:host ::ng-deep .fa-flag-o:before {\n  content: \"\\f11d\"; }\n:host ::ng-deep .fa-flag-checkered:before {\n  content: \"\\f11e\"; }\n:host ::ng-deep .fa-terminal:before {\n  content: \"\\f120\"; }\n:host ::ng-deep .fa-code:before {\n  content: \"\\f121\"; }\n:host ::ng-deep .fa-mail-reply-all:before,\n:host ::ng-deep .fa-reply-all:before {\n  content: \"\\f122\"; }\n:host ::ng-deep .fa-star-half-empty:before,\n:host ::ng-deep .fa-star-half-full:before,\n:host ::ng-deep .fa-star-half-o:before {\n  content: \"\\f123\"; }\n:host ::ng-deep .fa-location-arrow:before {\n  content: \"\\f124\"; }\n:host ::ng-deep .fa-crop:before {\n  content: \"\\f125\"; }\n:host ::ng-deep .fa-code-fork:before {\n  content: \"\\f126\"; }\n:host ::ng-deep .fa-unlink:before,\n:host ::ng-deep .fa-chain-broken:before {\n  content: \"\\f127\"; }\n:host ::ng-deep .fa-question:before {\n  content: \"\\f128\"; }\n:host ::ng-deep .fa-info:before {\n  content: \"\\f129\"; }\n:host ::ng-deep .fa-exclamation:before {\n  content: \"\\f12a\"; }\n:host ::ng-deep .fa-superscript:before {\n  content: \"\\f12b\"; }\n:host ::ng-deep .fa-subscript:before {\n  content: \"\\f12c\"; }\n:host ::ng-deep .fa-eraser:before {\n  content: \"\\f12d\"; }\n:host ::ng-deep .fa-puzzle-piece:before {\n  content: \"\\f12e\"; }\n:host ::ng-deep .fa-microphone:before {\n  content: \"\\f130\"; }\n:host ::ng-deep .fa-microphone-slash:before {\n  content: \"\\f131\"; }\n:host ::ng-deep .fa-shield:before {\n  content: \"\\f132\"; }\n:host ::ng-deep .fa-calendar-o:before {\n  content: \"\\f133\"; }\n:host ::ng-deep .fa-fire-extinguisher:before {\n  content: \"\\f134\"; }\n:host ::ng-deep .fa-rocket:before {\n  content: \"\\f135\"; }\n:host ::ng-deep .fa-maxcdn:before {\n  content: \"\\f136\"; }\n:host ::ng-deep .fa-chevron-circle-left:before {\n  content: \"\\f137\"; }\n:host ::ng-deep .fa-chevron-circle-right:before {\n  content: \"\\f138\"; }\n:host ::ng-deep .fa-chevron-circle-up:before {\n  content: \"\\f139\"; }\n:host ::ng-deep .fa-chevron-circle-down:before {\n  content: \"\\f13a\"; }\n:host ::ng-deep .fa-html5:before {\n  content: \"\\f13b\"; }\n:host ::ng-deep .fa-css3:before {\n  content: \"\\f13c\"; }\n:host ::ng-deep .fa-anchor:before {\n  content: \"\\f13d\"; }\n:host ::ng-deep .fa-unlock-alt:before {\n  content: \"\\f13e\"; }\n:host ::ng-deep .fa-bullseye:before {\n  content: \"\\f140\"; }\n:host ::ng-deep .fa-ellipsis-h:before {\n  content: \"\\f141\"; }\n:host ::ng-deep .fa-ellipsis-v:before {\n  content: \"\\f142\"; }\n:host ::ng-deep .fa-rss-square:before {\n  content: \"\\f143\"; }\n:host ::ng-deep .fa-play-circle:before {\n  content: \"\\f144\"; }\n:host ::ng-deep .fa-ticket:before {\n  content: \"\\f145\"; }\n:host ::ng-deep .fa-minus-square:before {\n  content: \"\\f146\"; }\n:host ::ng-deep .fa-minus-square-o:before {\n  content: \"\\f147\"; }\n:host ::ng-deep .fa-level-up:before {\n  content: \"\\f148\"; }\n:host ::ng-deep .fa-level-down:before {\n  content: \"\\f149\"; }\n:host ::ng-deep .fa-check-square:before {\n  content: \"\\f14a\"; }\n:host ::ng-deep .fa-pencil-square:before {\n  content: \"\\f14b\"; }\n:host ::ng-deep .fa-external-link-square:before {\n  content: \"\\f14c\"; }\n:host ::ng-deep .fa-share-square:before {\n  content: \"\\f14d\"; }\n:host ::ng-deep .fa-compass:before {\n  content: \"\\f14e\"; }\n:host ::ng-deep .fa-toggle-down:before,\n:host ::ng-deep .fa-caret-square-o-down:before {\n  content: \"\\f150\"; }\n:host ::ng-deep .fa-toggle-up:before,\n:host ::ng-deep .fa-caret-square-o-up:before {\n  content: \"\\f151\"; }\n:host ::ng-deep .fa-toggle-right:before,\n:host ::ng-deep .fa-caret-square-o-right:before {\n  content: \"\\f152\"; }\n:host ::ng-deep .fa-euro:before,\n:host ::ng-deep .fa-eur:before {\n  content: \"\\f153\"; }\n:host ::ng-deep .fa-gbp:before {\n  content: \"\\f154\"; }\n:host ::ng-deep .fa-dollar:before,\n:host ::ng-deep .fa-usd:before {\n  content: \"\\f155\"; }\n:host ::ng-deep .fa-rupee:before,\n:host ::ng-deep .fa-inr:before {\n  content: \"\\f156\"; }\n:host ::ng-deep .fa-cny:before,\n:host ::ng-deep .fa-rmb:before,\n:host ::ng-deep .fa-yen:before,\n:host ::ng-deep .fa-jpy:before {\n  content: \"\\f157\"; }\n:host ::ng-deep .fa-ruble:before,\n:host ::ng-deep .fa-rouble:before,\n:host ::ng-deep .fa-rub:before {\n  content: \"\\f158\"; }\n:host ::ng-deep .fa-won:before,\n:host ::ng-deep .fa-krw:before {\n  content: \"\\f159\"; }\n:host ::ng-deep .fa-bitcoin:before,\n:host ::ng-deep .fa-btc:before {\n  content: \"\\f15a\"; }\n:host ::ng-deep .fa-file:before {\n  content: \"\\f15b\"; }\n:host ::ng-deep .fa-file-text:before {\n  content: \"\\f15c\"; }\n:host ::ng-deep .fa-sort-alpha-asc:before {\n  content: \"\\f15d\"; }\n:host ::ng-deep .fa-sort-alpha-desc:before {\n  content: \"\\f15e\"; }\n:host ::ng-deep .fa-sort-amount-asc:before {\n  content: \"\\f160\"; }\n:host ::ng-deep .fa-sort-amount-desc:before {\n  content: \"\\f161\"; }\n:host ::ng-deep .fa-sort-numeric-asc:before {\n  content: \"\\f162\"; }\n:host ::ng-deep .fa-sort-numeric-desc:before {\n  content: \"\\f163\"; }\n:host ::ng-deep .fa-thumbs-up:before {\n  content: \"\\f164\"; }\n:host ::ng-deep .fa-thumbs-down:before {\n  content: \"\\f165\"; }\n:host ::ng-deep .fa-youtube-square:before {\n  content: \"\\f166\"; }\n:host ::ng-deep .fa-youtube:before {\n  content: \"\\f167\"; }\n:host ::ng-deep .fa-xing:before {\n  content: \"\\f168\"; }\n:host ::ng-deep .fa-xing-square:before {\n  content: \"\\f169\"; }\n:host ::ng-deep .fa-youtube-play:before {\n  content: \"\\f16a\"; }\n:host ::ng-deep .fa-dropbox:before {\n  content: \"\\f16b\"; }\n:host ::ng-deep .fa-stack-overflow:before {\n  content: \"\\f16c\"; }\n:host ::ng-deep .fa-instagram:before {\n  content: \"\\f16d\"; }\n:host ::ng-deep .fa-flickr:before {\n  content: \"\\f16e\"; }\n:host ::ng-deep .fa-adn:before {\n  content: \"\\f170\"; }\n:host ::ng-deep .fa-bitbucket:before {\n  content: \"\\f171\"; }\n:host ::ng-deep .fa-bitbucket-square:before {\n  content: \"\\f172\"; }\n:host ::ng-deep .fa-tumblr:before {\n  content: \"\\f173\"; }\n:host ::ng-deep .fa-tumblr-square:before {\n  content: \"\\f174\"; }\n:host ::ng-deep .fa-long-arrow-down:before {\n  content: \"\\f175\"; }\n:host ::ng-deep .fa-long-arrow-up:before {\n  content: \"\\f176\"; }\n:host ::ng-deep .fa-long-arrow-left:before {\n  content: \"\\f177\"; }\n:host ::ng-deep .fa-long-arrow-right:before {\n  content: \"\\f178\"; }\n:host ::ng-deep .fa-apple:before {\n  content: \"\\f179\"; }\n:host ::ng-deep .fa-windows:before {\n  content: \"\\f17a\"; }\n:host ::ng-deep .fa-android:before {\n  content: \"\\f17b\"; }\n:host ::ng-deep .fa-linux:before {\n  content: \"\\f17c\"; }\n:host ::ng-deep .fa-dribbble:before {\n  content: \"\\f17d\"; }\n:host ::ng-deep .fa-skype:before {\n  content: \"\\f17e\"; }\n:host ::ng-deep .fa-foursquare:before {\n  content: \"\\f180\"; }\n:host ::ng-deep .fa-trello:before {\n  content: \"\\f181\"; }\n:host ::ng-deep .fa-female:before {\n  content: \"\\f182\"; }\n:host ::ng-deep .fa-male:before {\n  content: \"\\f183\"; }\n:host ::ng-deep .fa-gittip:before,\n:host ::ng-deep .fa-gratipay:before {\n  content: \"\\f184\"; }\n:host ::ng-deep .fa-sun-o:before {\n  content: \"\\f185\"; }\n:host ::ng-deep .fa-moon-o:before {\n  content: \"\\f186\"; }\n:host ::ng-deep .fa-archive:before {\n  content: \"\\f187\"; }\n:host ::ng-deep .fa-bug:before {\n  content: \"\\f188\"; }\n:host ::ng-deep .fa-vk:before {\n  content: \"\\f189\"; }\n:host ::ng-deep .fa-weibo:before {\n  content: \"\\f18a\"; }\n:host ::ng-deep .fa-renren:before {\n  content: \"\\f18b\"; }\n:host ::ng-deep .fa-pagelines:before {\n  content: \"\\f18c\"; }\n:host ::ng-deep .fa-stack-exchange:before {\n  content: \"\\f18d\"; }\n:host ::ng-deep .fa-arrow-circle-o-right:before {\n  content: \"\\f18e\"; }\n:host ::ng-deep .fa-arrow-circle-o-left:before {\n  content: \"\\f190\"; }\n:host ::ng-deep .fa-toggle-left:before,\n:host ::ng-deep .fa-caret-square-o-left:before {\n  content: \"\\f191\"; }\n:host ::ng-deep .fa-dot-circle-o:before {\n  content: \"\\f192\"; }\n:host ::ng-deep .fa-wheelchair:before {\n  content: \"\\f193\"; }\n:host ::ng-deep .fa-vimeo-square:before {\n  content: \"\\f194\"; }\n:host ::ng-deep .fa-turkish-lira:before,\n:host ::ng-deep .fa-try:before {\n  content: \"\\f195\"; }\n:host ::ng-deep .fa-plus-square-o:before {\n  content: \"\\f196\"; }\n:host ::ng-deep .fa-space-shuttle:before {\n  content: \"\\f197\"; }\n:host ::ng-deep .fa-slack:before {\n  content: \"\\f198\"; }\n:host ::ng-deep .fa-envelope-square:before {\n  content: \"\\f199\"; }\n:host ::ng-deep .fa-wordpress:before {\n  content: \"\\f19a\"; }\n:host ::ng-deep .fa-openid:before {\n  content: \"\\f19b\"; }\n:host ::ng-deep .fa-institution:before,\n:host ::ng-deep .fa-bank:before,\n:host ::ng-deep .fa-university:before {\n  content: \"\\f19c\"; }\n:host ::ng-deep .fa-mortar-board:before,\n:host ::ng-deep .fa-graduation-cap:before {\n  content: \"\\f19d\"; }\n:host ::ng-deep .fa-yahoo:before {\n  content: \"\\f19e\"; }\n:host ::ng-deep .fa-google:before {\n  content: \"\\f1a0\"; }\n:host ::ng-deep .fa-reddit:before {\n  content: \"\\f1a1\"; }\n:host ::ng-deep .fa-reddit-square:before {\n  content: \"\\f1a2\"; }\n:host ::ng-deep .fa-stumbleupon-circle:before {\n  content: \"\\f1a3\"; }\n:host ::ng-deep .fa-stumbleupon:before {\n  content: \"\\f1a4\"; }\n:host ::ng-deep .fa-delicious:before {\n  content: \"\\f1a5\"; }\n:host ::ng-deep .fa-digg:before {\n  content: \"\\f1a6\"; }\n:host ::ng-deep .fa-pied-piper-pp:before {\n  content: \"\\f1a7\"; }\n:host ::ng-deep .fa-pied-piper-alt:before {\n  content: \"\\f1a8\"; }\n:host ::ng-deep .fa-drupal:before {\n  content: \"\\f1a9\"; }\n:host ::ng-deep .fa-joomla:before {\n  content: \"\\f1aa\"; }\n:host ::ng-deep .fa-language:before {\n  content: \"\\f1ab\"; }\n:host ::ng-deep .fa-fax:before {\n  content: \"\\f1ac\"; }\n:host ::ng-deep .fa-building:before {\n  content: \"\\f1ad\"; }\n:host ::ng-deep .fa-child:before {\n  content: \"\\f1ae\"; }\n:host ::ng-deep .fa-paw:before {\n  content: \"\\f1b0\"; }\n:host ::ng-deep .fa-spoon:before {\n  content: \"\\f1b1\"; }\n:host ::ng-deep .fa-cube:before {\n  content: \"\\f1b2\"; }\n:host ::ng-deep .fa-cubes:before {\n  content: \"\\f1b3\"; }\n:host ::ng-deep .fa-behance:before {\n  content: \"\\f1b4\"; }\n:host ::ng-deep .fa-behance-square:before {\n  content: \"\\f1b5\"; }\n:host ::ng-deep .fa-steam:before {\n  content: \"\\f1b6\"; }\n:host ::ng-deep .fa-steam-square:before {\n  content: \"\\f1b7\"; }\n:host ::ng-deep .fa-recycle:before {\n  content: \"\\f1b8\"; }\n:host ::ng-deep .fa-automobile:before,\n:host ::ng-deep .fa-car:before {\n  content: \"\\f1b9\"; }\n:host ::ng-deep .fa-cab:before,\n:host ::ng-deep .fa-taxi:before {\n  content: \"\\f1ba\"; }\n:host ::ng-deep .fa-tree:before {\n  content: \"\\f1bb\"; }\n:host ::ng-deep .fa-spotify:before {\n  content: \"\\f1bc\"; }\n:host ::ng-deep .fa-deviantart:before {\n  content: \"\\f1bd\"; }\n:host ::ng-deep .fa-soundcloud:before {\n  content: \"\\f1be\"; }\n:host ::ng-deep .fa-database:before {\n  content: \"\\f1c0\"; }\n:host ::ng-deep .fa-file-pdf-o:before {\n  content: \"\\f1c1\"; }\n:host ::ng-deep .fa-file-word-o:before {\n  content: \"\\f1c2\"; }\n:host ::ng-deep .fa-file-excel-o:before {\n  content: \"\\f1c3\"; }\n:host ::ng-deep .fa-file-powerpoint-o:before {\n  content: \"\\f1c4\"; }\n:host ::ng-deep .fa-file-photo-o:before,\n:host ::ng-deep .fa-file-picture-o:before,\n:host ::ng-deep .fa-file-image-o:before {\n  content: \"\\f1c5\"; }\n:host ::ng-deep .fa-file-zip-o:before,\n:host ::ng-deep .fa-file-archive-o:before {\n  content: \"\\f1c6\"; }\n:host ::ng-deep .fa-file-sound-o:before,\n:host ::ng-deep .fa-file-audio-o:before {\n  content: \"\\f1c7\"; }\n:host ::ng-deep .fa-file-movie-o:before,\n:host ::ng-deep .fa-file-video-o:before {\n  content: \"\\f1c8\"; }\n:host ::ng-deep .fa-file-code-o:before {\n  content: \"\\f1c9\"; }\n:host ::ng-deep .fa-vine:before {\n  content: \"\\f1ca\"; }\n:host ::ng-deep .fa-codepen:before {\n  content: \"\\f1cb\"; }\n:host ::ng-deep .fa-jsfiddle:before {\n  content: \"\\f1cc\"; }\n:host ::ng-deep .fa-life-bouy:before,\n:host ::ng-deep .fa-life-buoy:before,\n:host ::ng-deep .fa-life-saver:before,\n:host ::ng-deep .fa-support:before,\n:host ::ng-deep .fa-life-ring:before {\n  content: \"\\f1cd\"; }\n:host ::ng-deep .fa-circle-o-notch:before {\n  content: \"\\f1ce\"; }\n:host ::ng-deep .fa-ra:before,\n:host ::ng-deep .fa-resistance:before,\n:host ::ng-deep .fa-rebel:before {\n  content: \"\\f1d0\"; }\n:host ::ng-deep .fa-ge:before,\n:host ::ng-deep .fa-empire:before {\n  content: \"\\f1d1\"; }\n:host ::ng-deep .fa-git-square:before {\n  content: \"\\f1d2\"; }\n:host ::ng-deep .fa-git:before {\n  content: \"\\f1d3\"; }\n:host ::ng-deep .fa-y-combinator-square:before,\n:host ::ng-deep .fa-yc-square:before,\n:host ::ng-deep .fa-hacker-news:before {\n  content: \"\\f1d4\"; }\n:host ::ng-deep .fa-tencent-weibo:before {\n  content: \"\\f1d5\"; }\n:host ::ng-deep .fa-qq:before {\n  content: \"\\f1d6\"; }\n:host ::ng-deep .fa-wechat:before,\n:host ::ng-deep .fa-weixin:before {\n  content: \"\\f1d7\"; }\n:host ::ng-deep .fa-send:before,\n:host ::ng-deep .fa-paper-plane:before {\n  content: \"\\f1d8\"; }\n:host ::ng-deep .fa-send-o:before,\n:host ::ng-deep .fa-paper-plane-o:before {\n  content: \"\\f1d9\"; }\n:host ::ng-deep .fa-history:before {\n  content: \"\\f1da\"; }\n:host ::ng-deep .fa-circle-thin:before {\n  content: \"\\f1db\"; }\n:host ::ng-deep .fa-header:before {\n  content: \"\\f1dc\"; }\n:host ::ng-deep .fa-paragraph:before {\n  content: \"\\f1dd\"; }\n:host ::ng-deep .fa-sliders:before {\n  content: \"\\f1de\"; }\n:host ::ng-deep .fa-share-alt:before {\n  content: \"\\f1e0\"; }\n:host ::ng-deep .fa-share-alt-square:before {\n  content: \"\\f1e1\"; }\n:host ::ng-deep .fa-bomb:before {\n  content: \"\\f1e2\"; }\n:host ::ng-deep .fa-soccer-ball-o:before,\n:host ::ng-deep .fa-futbol-o:before {\n  content: \"\\f1e3\"; }\n:host ::ng-deep .fa-tty:before {\n  content: \"\\f1e4\"; }\n:host ::ng-deep .fa-binoculars:before {\n  content: \"\\f1e5\"; }\n:host ::ng-deep .fa-plug:before {\n  content: \"\\f1e6\"; }\n:host ::ng-deep .fa-slideshare:before {\n  content: \"\\f1e7\"; }\n:host ::ng-deep .fa-twitch:before {\n  content: \"\\f1e8\"; }\n:host ::ng-deep .fa-yelp:before {\n  content: \"\\f1e9\"; }\n:host ::ng-deep .fa-newspaper-o:before {\n  content: \"\\f1ea\"; }\n:host ::ng-deep .fa-wifi:before {\n  content: \"\\f1eb\"; }\n:host ::ng-deep .fa-calculator:before {\n  content: \"\\f1ec\"; }\n:host ::ng-deep .fa-paypal:before {\n  content: \"\\f1ed\"; }\n:host ::ng-deep .fa-google-wallet:before {\n  content: \"\\f1ee\"; }\n:host ::ng-deep .fa-cc-visa:before {\n  content: \"\\f1f0\"; }\n:host ::ng-deep .fa-cc-mastercard:before {\n  content: \"\\f1f1\"; }\n:host ::ng-deep .fa-cc-discover:before {\n  content: \"\\f1f2\"; }\n:host ::ng-deep .fa-cc-amex:before {\n  content: \"\\f1f3\"; }\n:host ::ng-deep .fa-cc-paypal:before {\n  content: \"\\f1f4\"; }\n:host ::ng-deep .fa-cc-stripe:before {\n  content: \"\\f1f5\"; }\n:host ::ng-deep .fa-bell-slash:before {\n  content: \"\\f1f6\"; }\n:host ::ng-deep .fa-bell-slash-o:before {\n  content: \"\\f1f7\"; }\n:host ::ng-deep .fa-trash:before {\n  content: \"\\f1f8\"; }\n:host ::ng-deep .fa-copyright:before {\n  content: \"\\f1f9\"; }\n:host ::ng-deep .fa-at:before {\n  content: \"\\f1fa\"; }\n:host ::ng-deep .fa-eyedropper:before {\n  content: \"\\f1fb\"; }\n:host ::ng-deep .fa-paint-brush:before {\n  content: \"\\f1fc\"; }\n:host ::ng-deep .fa-birthday-cake:before {\n  content: \"\\f1fd\"; }\n:host ::ng-deep .fa-area-chart:before {\n  content: \"\\f1fe\"; }\n:host ::ng-deep .fa-pie-chart:before {\n  content: \"\\f200\"; }\n:host ::ng-deep .fa-line-chart:before {\n  content: \"\\f201\"; }\n:host ::ng-deep .fa-lastfm:before {\n  content: \"\\f202\"; }\n:host ::ng-deep .fa-lastfm-square:before {\n  content: \"\\f203\"; }\n:host ::ng-deep .fa-toggle-off:before {\n  content: \"\\f204\"; }\n:host ::ng-deep .fa-toggle-on:before {\n  content: \"\\f205\"; }\n:host ::ng-deep .fa-bicycle:before {\n  content: \"\\f206\"; }\n:host ::ng-deep .fa-bus:before {\n  content: \"\\f207\"; }\n:host ::ng-deep .fa-ioxhost:before {\n  content: \"\\f208\"; }\n:host ::ng-deep .fa-angellist:before {\n  content: \"\\f209\"; }\n:host ::ng-deep .fa-cc:before {\n  content: \"\\f20a\"; }\n:host ::ng-deep .fa-shekel:before,\n:host ::ng-deep .fa-sheqel:before,\n:host ::ng-deep .fa-ils:before {\n  content: \"\\f20b\"; }\n:host ::ng-deep .fa-meanpath:before {\n  content: \"\\f20c\"; }\n:host ::ng-deep .fa-buysellads:before {\n  content: \"\\f20d\"; }\n:host ::ng-deep .fa-connectdevelop:before {\n  content: \"\\f20e\"; }\n:host ::ng-deep .fa-dashcube:before {\n  content: \"\\f210\"; }\n:host ::ng-deep .fa-forumbee:before {\n  content: \"\\f211\"; }\n:host ::ng-deep .fa-leanpub:before {\n  content: \"\\f212\"; }\n:host ::ng-deep .fa-sellsy:before {\n  content: \"\\f213\"; }\n:host ::ng-deep .fa-shirtsinbulk:before {\n  content: \"\\f214\"; }\n:host ::ng-deep .fa-simplybuilt:before {\n  content: \"\\f215\"; }\n:host ::ng-deep .fa-skyatlas:before {\n  content: \"\\f216\"; }\n:host ::ng-deep .fa-cart-plus:before {\n  content: \"\\f217\"; }\n:host ::ng-deep .fa-cart-arrow-down:before {\n  content: \"\\f218\"; }\n:host ::ng-deep .fa-diamond:before {\n  content: \"\\f219\"; }\n:host ::ng-deep .fa-ship:before {\n  content: \"\\f21a\"; }\n:host ::ng-deep .fa-user-secret:before {\n  content: \"\\f21b\"; }\n:host ::ng-deep .fa-motorcycle:before {\n  content: \"\\f21c\"; }\n:host ::ng-deep .fa-street-view:before {\n  content: \"\\f21d\"; }\n:host ::ng-deep .fa-heartbeat:before {\n  content: \"\\f21e\"; }\n:host ::ng-deep .fa-venus:before {\n  content: \"\\f221\"; }\n:host ::ng-deep .fa-mars:before {\n  content: \"\\f222\"; }\n:host ::ng-deep .fa-mercury:before {\n  content: \"\\f223\"; }\n:host ::ng-deep .fa-intersex:before,\n:host ::ng-deep .fa-transgender:before {\n  content: \"\\f224\"; }\n:host ::ng-deep .fa-transgender-alt:before {\n  content: \"\\f225\"; }\n:host ::ng-deep .fa-venus-double:before {\n  content: \"\\f226\"; }\n:host ::ng-deep .fa-mars-double:before {\n  content: \"\\f227\"; }\n:host ::ng-deep .fa-venus-mars:before {\n  content: \"\\f228\"; }\n:host ::ng-deep .fa-mars-stroke:before {\n  content: \"\\f229\"; }\n:host ::ng-deep .fa-mars-stroke-v:before {\n  content: \"\\f22a\"; }\n:host ::ng-deep .fa-mars-stroke-h:before {\n  content: \"\\f22b\"; }\n:host ::ng-deep .fa-neuter:before {\n  content: \"\\f22c\"; }\n:host ::ng-deep .fa-genderless:before {\n  content: \"\\f22d\"; }\n:host ::ng-deep .fa-facebook-official:before {\n  content: \"\\f230\"; }\n:host ::ng-deep .fa-pinterest-p:before {\n  content: \"\\f231\"; }\n:host ::ng-deep .fa-whatsapp:before {\n  content: \"\\f232\"; }\n:host ::ng-deep .fa-server:before {\n  content: \"\\f233\"; }\n:host ::ng-deep .fa-user-plus:before {\n  content: \"\\f234\"; }\n:host ::ng-deep .fa-user-times:before {\n  content: \"\\f235\"; }\n:host ::ng-deep .fa-hotel:before,\n:host ::ng-deep .fa-bed:before {\n  content: \"\\f236\"; }\n:host ::ng-deep .fa-viacoin:before {\n  content: \"\\f237\"; }\n:host ::ng-deep .fa-train:before {\n  content: \"\\f238\"; }\n:host ::ng-deep .fa-subway:before {\n  content: \"\\f239\"; }\n:host ::ng-deep .fa-medium:before {\n  content: \"\\f23a\"; }\n:host ::ng-deep .fa-yc:before,\n:host ::ng-deep .fa-y-combinator:before {\n  content: \"\\f23b\"; }\n:host ::ng-deep .fa-optin-monster:before {\n  content: \"\\f23c\"; }\n:host ::ng-deep .fa-opencart:before {\n  content: \"\\f23d\"; }\n:host ::ng-deep .fa-expeditedssl:before {\n  content: \"\\f23e\"; }\n:host ::ng-deep .fa-battery-4:before,\n:host ::ng-deep .fa-battery:before,\n:host ::ng-deep .fa-battery-full:before {\n  content: \"\\f240\"; }\n:host ::ng-deep .fa-battery-3:before,\n:host ::ng-deep .fa-battery-three-quarters:before {\n  content: \"\\f241\"; }\n:host ::ng-deep .fa-battery-2:before,\n:host ::ng-deep .fa-battery-half:before {\n  content: \"\\f242\"; }\n:host ::ng-deep .fa-battery-1:before,\n:host ::ng-deep .fa-battery-quarter:before {\n  content: \"\\f243\"; }\n:host ::ng-deep .fa-battery-0:before,\n:host ::ng-deep .fa-battery-empty:before {\n  content: \"\\f244\"; }\n:host ::ng-deep .fa-mouse-pointer:before {\n  content: \"\\f245\"; }\n:host ::ng-deep .fa-i-cursor:before {\n  content: \"\\f246\"; }\n:host ::ng-deep .fa-object-group:before {\n  content: \"\\f247\"; }\n:host ::ng-deep .fa-object-ungroup:before {\n  content: \"\\f248\"; }\n:host ::ng-deep .fa-sticky-note:before {\n  content: \"\\f249\"; }\n:host ::ng-deep .fa-sticky-note-o:before {\n  content: \"\\f24a\"; }\n:host ::ng-deep .fa-cc-jcb:before {\n  content: \"\\f24b\"; }\n:host ::ng-deep .fa-cc-diners-club:before {\n  content: \"\\f24c\"; }\n:host ::ng-deep .fa-clone:before {\n  content: \"\\f24d\"; }\n:host ::ng-deep .fa-balance-scale:before {\n  content: \"\\f24e\"; }\n:host ::ng-deep .fa-hourglass-o:before {\n  content: \"\\f250\"; }\n:host ::ng-deep .fa-hourglass-1:before,\n:host ::ng-deep .fa-hourglass-start:before {\n  content: \"\\f251\"; }\n:host ::ng-deep .fa-hourglass-2:before,\n:host ::ng-deep .fa-hourglass-half:before {\n  content: \"\\f252\"; }\n:host ::ng-deep .fa-hourglass-3:before,\n:host ::ng-deep .fa-hourglass-end:before {\n  content: \"\\f253\"; }\n:host ::ng-deep .fa-hourglass:before {\n  content: \"\\f254\"; }\n:host ::ng-deep .fa-hand-grab-o:before,\n:host ::ng-deep .fa-hand-rock-o:before {\n  content: \"\\f255\"; }\n:host ::ng-deep .fa-hand-stop-o:before,\n:host ::ng-deep .fa-hand-paper-o:before {\n  content: \"\\f256\"; }\n:host ::ng-deep .fa-hand-scissors-o:before {\n  content: \"\\f257\"; }\n:host ::ng-deep .fa-hand-lizard-o:before {\n  content: \"\\f258\"; }\n:host ::ng-deep .fa-hand-spock-o:before {\n  content: \"\\f259\"; }\n:host ::ng-deep .fa-hand-pointer-o:before {\n  content: \"\\f25a\"; }\n:host ::ng-deep .fa-hand-peace-o:before {\n  content: \"\\f25b\"; }\n:host ::ng-deep .fa-trademark:before {\n  content: \"\\f25c\"; }\n:host ::ng-deep .fa-registered:before {\n  content: \"\\f25d\"; }\n:host ::ng-deep .fa-creative-commons:before {\n  content: \"\\f25e\"; }\n:host ::ng-deep .fa-gg:before {\n  content: \"\\f260\"; }\n:host ::ng-deep .fa-gg-circle:before {\n  content: \"\\f261\"; }\n:host ::ng-deep .fa-tripadvisor:before {\n  content: \"\\f262\"; }\n:host ::ng-deep .fa-odnoklassniki:before {\n  content: \"\\f263\"; }\n:host ::ng-deep .fa-odnoklassniki-square:before {\n  content: \"\\f264\"; }\n:host ::ng-deep .fa-get-pocket:before {\n  content: \"\\f265\"; }\n:host ::ng-deep .fa-wikipedia-w:before {\n  content: \"\\f266\"; }\n:host ::ng-deep .fa-safari:before {\n  content: \"\\f267\"; }\n:host ::ng-deep .fa-chrome:before {\n  content: \"\\f268\"; }\n:host ::ng-deep .fa-firefox:before {\n  content: \"\\f269\"; }\n:host ::ng-deep .fa-opera:before {\n  content: \"\\f26a\"; }\n:host ::ng-deep .fa-internet-explorer:before {\n  content: \"\\f26b\"; }\n:host ::ng-deep .fa-tv:before,\n:host ::ng-deep .fa-television:before {\n  content: \"\\f26c\"; }\n:host ::ng-deep .fa-contao:before {\n  content: \"\\f26d\"; }\n:host ::ng-deep .fa-500px:before {\n  content: \"\\f26e\"; }\n:host ::ng-deep .fa-amazon:before {\n  content: \"\\f270\"; }\n:host ::ng-deep .fa-calendar-plus-o:before {\n  content: \"\\f271\"; }\n:host ::ng-deep .fa-calendar-minus-o:before {\n  content: \"\\f272\"; }\n:host ::ng-deep .fa-calendar-times-o:before {\n  content: \"\\f273\"; }\n:host ::ng-deep .fa-calendar-check-o:before {\n  content: \"\\f274\"; }\n:host ::ng-deep .fa-industry:before {\n  content: \"\\f275\"; }\n:host ::ng-deep .fa-map-pin:before {\n  content: \"\\f276\"; }\n:host ::ng-deep .fa-map-signs:before {\n  content: \"\\f277\"; }\n:host ::ng-deep .fa-map-o:before {\n  content: \"\\f278\"; }\n:host ::ng-deep .fa-map:before {\n  content: \"\\f279\"; }\n:host ::ng-deep .fa-commenting:before {\n  content: \"\\f27a\"; }\n:host ::ng-deep .fa-commenting-o:before {\n  content: \"\\f27b\"; }\n:host ::ng-deep .fa-houzz:before {\n  content: \"\\f27c\"; }\n:host ::ng-deep .fa-vimeo:before {\n  content: \"\\f27d\"; }\n:host ::ng-deep .fa-black-tie:before {\n  content: \"\\f27e\"; }\n:host ::ng-deep .fa-fonticons:before {\n  content: \"\\f280\"; }\n:host ::ng-deep .fa-reddit-alien:before {\n  content: \"\\f281\"; }\n:host ::ng-deep .fa-edge:before {\n  content: \"\\f282\"; }\n:host ::ng-deep .fa-credit-card-alt:before {\n  content: \"\\f283\"; }\n:host ::ng-deep .fa-codiepie:before {\n  content: \"\\f284\"; }\n:host ::ng-deep .fa-modx:before {\n  content: \"\\f285\"; }\n:host ::ng-deep .fa-fort-awesome:before {\n  content: \"\\f286\"; }\n:host ::ng-deep .fa-usb:before {\n  content: \"\\f287\"; }\n:host ::ng-deep .fa-product-hunt:before {\n  content: \"\\f288\"; }\n:host ::ng-deep .fa-mixcloud:before {\n  content: \"\\f289\"; }\n:host ::ng-deep .fa-scribd:before {\n  content: \"\\f28a\"; }\n:host ::ng-deep .fa-pause-circle:before {\n  content: \"\\f28b\"; }\n:host ::ng-deep .fa-pause-circle-o:before {\n  content: \"\\f28c\"; }\n:host ::ng-deep .fa-stop-circle:before {\n  content: \"\\f28d\"; }\n:host ::ng-deep .fa-stop-circle-o:before {\n  content: \"\\f28e\"; }\n:host ::ng-deep .fa-shopping-bag:before {\n  content: \"\\f290\"; }\n:host ::ng-deep .fa-shopping-basket:before {\n  content: \"\\f291\"; }\n:host ::ng-deep .fa-hashtag:before {\n  content: \"\\f292\"; }\n:host ::ng-deep .fa-bluetooth:before {\n  content: \"\\f293\"; }\n:host ::ng-deep .fa-bluetooth-b:before {\n  content: \"\\f294\"; }\n:host ::ng-deep .fa-percent:before {\n  content: \"\\f295\"; }\n:host ::ng-deep .fa-gitlab:before {\n  content: \"\\f296\"; }\n:host ::ng-deep .fa-wpbeginner:before {\n  content: \"\\f297\"; }\n:host ::ng-deep .fa-wpforms:before {\n  content: \"\\f298\"; }\n:host ::ng-deep .fa-envira:before {\n  content: \"\\f299\"; }\n:host ::ng-deep .fa-universal-access:before {\n  content: \"\\f29a\"; }\n:host ::ng-deep .fa-wheelchair-alt:before {\n  content: \"\\f29b\"; }\n:host ::ng-deep .fa-question-circle-o:before {\n  content: \"\\f29c\"; }\n:host ::ng-deep .fa-blind:before {\n  content: \"\\f29d\"; }\n:host ::ng-deep .fa-audio-description:before {\n  content: \"\\f29e\"; }\n:host ::ng-deep .fa-volume-control-phone:before {\n  content: \"\\f2a0\"; }\n:host ::ng-deep .fa-braille:before {\n  content: \"\\f2a1\"; }\n:host ::ng-deep .fa-assistive-listening-systems:before {\n  content: \"\\f2a2\"; }\n:host ::ng-deep .fa-asl-interpreting:before,\n:host ::ng-deep .fa-american-sign-language-interpreting:before {\n  content: \"\\f2a3\"; }\n:host ::ng-deep .fa-deafness:before,\n:host ::ng-deep .fa-hard-of-hearing:before,\n:host ::ng-deep .fa-deaf:before {\n  content: \"\\f2a4\"; }\n:host ::ng-deep .fa-glide:before {\n  content: \"\\f2a5\"; }\n:host ::ng-deep .fa-glide-g:before {\n  content: \"\\f2a6\"; }\n:host ::ng-deep .fa-signing:before,\n:host ::ng-deep .fa-sign-language:before {\n  content: \"\\f2a7\"; }\n:host ::ng-deep .fa-low-vision:before {\n  content: \"\\f2a8\"; }\n:host ::ng-deep .fa-viadeo:before {\n  content: \"\\f2a9\"; }\n:host ::ng-deep .fa-viadeo-square:before {\n  content: \"\\f2aa\"; }\n:host ::ng-deep .fa-snapchat:before {\n  content: \"\\f2ab\"; }\n:host ::ng-deep .fa-snapchat-ghost:before {\n  content: \"\\f2ac\"; }\n:host ::ng-deep .fa-snapchat-square:before {\n  content: \"\\f2ad\"; }\n:host ::ng-deep .fa-pied-piper:before {\n  content: \"\\f2ae\"; }\n:host ::ng-deep .fa-first-order:before {\n  content: \"\\f2b0\"; }\n:host ::ng-deep .fa-yoast:before {\n  content: \"\\f2b1\"; }\n:host ::ng-deep .fa-themeisle:before {\n  content: \"\\f2b2\"; }\n:host ::ng-deep .fa-google-plus-circle:before,\n:host ::ng-deep .fa-google-plus-official:before {\n  content: \"\\f2b3\"; }\n:host ::ng-deep .fa-fa:before,\n:host ::ng-deep .fa-font-awesome:before {\n  content: \"\\f2b4\"; }\n:host ::ng-deep .fa-handshake-o:before {\n  content: \"\\f2b5\"; }\n:host ::ng-deep .fa-envelope-open:before {\n  content: \"\\f2b6\"; }\n:host ::ng-deep .fa-envelope-open-o:before {\n  content: \"\\f2b7\"; }\n:host ::ng-deep .fa-linode:before {\n  content: \"\\f2b8\"; }\n:host ::ng-deep .fa-address-book:before {\n  content: \"\\f2b9\"; }\n:host ::ng-deep .fa-address-book-o:before {\n  content: \"\\f2ba\"; }\n:host ::ng-deep .fa-vcard:before,\n:host ::ng-deep .fa-address-card:before {\n  content: \"\\f2bb\"; }\n:host ::ng-deep .fa-vcard-o:before,\n:host ::ng-deep .fa-address-card-o:before {\n  content: \"\\f2bc\"; }\n:host ::ng-deep .fa-user-circle:before {\n  content: \"\\f2bd\"; }\n:host ::ng-deep .fa-user-circle-o:before {\n  content: \"\\f2be\"; }\n:host ::ng-deep .fa-user-o:before {\n  content: \"\\f2c0\"; }\n:host ::ng-deep .fa-id-badge:before {\n  content: \"\\f2c1\"; }\n:host ::ng-deep .fa-drivers-license:before,\n:host ::ng-deep .fa-id-card:before {\n  content: \"\\f2c2\"; }\n:host ::ng-deep .fa-drivers-license-o:before,\n:host ::ng-deep .fa-id-card-o:before {\n  content: \"\\f2c3\"; }\n:host ::ng-deep .fa-quora:before {\n  content: \"\\f2c4\"; }\n:host ::ng-deep .fa-free-code-camp:before {\n  content: \"\\f2c5\"; }\n:host ::ng-deep .fa-telegram:before {\n  content: \"\\f2c6\"; }\n:host ::ng-deep .fa-thermometer-4:before,\n:host ::ng-deep .fa-thermometer:before,\n:host ::ng-deep .fa-thermometer-full:before {\n  content: \"\\f2c7\"; }\n:host ::ng-deep .fa-thermometer-3:before,\n:host ::ng-deep .fa-thermometer-three-quarters:before {\n  content: \"\\f2c8\"; }\n:host ::ng-deep .fa-thermometer-2:before,\n:host ::ng-deep .fa-thermometer-half:before {\n  content: \"\\f2c9\"; }\n:host ::ng-deep .fa-thermometer-1:before,\n:host ::ng-deep .fa-thermometer-quarter:before {\n  content: \"\\f2ca\"; }\n:host ::ng-deep .fa-thermometer-0:before,\n:host ::ng-deep .fa-thermometer-empty:before {\n  content: \"\\f2cb\"; }\n:host ::ng-deep .fa-shower:before {\n  content: \"\\f2cc\"; }\n:host ::ng-deep .fa-bathtub:before,\n:host ::ng-deep .fa-s15:before,\n:host ::ng-deep .fa-bath:before {\n  content: \"\\f2cd\"; }\n:host ::ng-deep .fa-podcast:before {\n  content: \"\\f2ce\"; }\n:host ::ng-deep .fa-window-maximize:before {\n  content: \"\\f2d0\"; }\n:host ::ng-deep .fa-window-minimize:before {\n  content: \"\\f2d1\"; }\n:host ::ng-deep .fa-window-restore:before {\n  content: \"\\f2d2\"; }\n:host ::ng-deep .fa-times-rectangle:before,\n:host ::ng-deep .fa-window-close:before {\n  content: \"\\f2d3\"; }\n:host ::ng-deep .fa-times-rectangle-o:before,\n:host ::ng-deep .fa-window-close-o:before {\n  content: \"\\f2d4\"; }\n:host ::ng-deep .fa-bandcamp:before {\n  content: \"\\f2d5\"; }\n:host ::ng-deep .fa-grav:before {\n  content: \"\\f2d6\"; }\n:host ::ng-deep .fa-etsy:before {\n  content: \"\\f2d7\"; }\n:host ::ng-deep .fa-imdb:before {\n  content: \"\\f2d8\"; }\n:host ::ng-deep .fa-ravelry:before {\n  content: \"\\f2d9\"; }\n:host ::ng-deep .fa-eercast:before {\n  content: \"\\f2da\"; }\n:host ::ng-deep .fa-microchip:before {\n  content: \"\\f2db\"; }\n:host ::ng-deep .fa-snowflake-o:before {\n  content: \"\\f2dc\"; }\n:host ::ng-deep .fa-superpowers:before {\n  content: \"\\f2dd\"; }\n:host ::ng-deep .fa-wpexplorer:before {\n  content: \"\\f2de\"; }\n:host ::ng-deep .fa-meetup:before {\n  content: \"\\f2e0\"; }\n:host ::ng-deep .sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0; }\n:host ::ng-deep .sr-only-focusable:active,\n:host ::ng-deep .sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto; }\n:host ::ng-deep .formio-form {\n  position: relative;\n  min-height: 80px; }\n:host ::ng-deep .formio-disabled-input .form-control.flatpickr-input {\n  background-color: #eee; }\n:host ::ng-deep .formio-component.has-error .invalid-feedback {\n  display: block; }\n:host ::ng-deep .formio-wysiwyg-editor {\n  min-height: 200px;\n  background-color: #fff; }\n:host ::ng-deep .has-feedback .form-control {\n  padding-right: 10px; }\n:host ::ng-deep .has-feedback .form-control[type=hidden] {\n  padding-right: 0px; }\n:host ::ng-deep .has-error.bg-danger {\n  padding: 4px; }\n:host ::ng-deep .ql-source:after {\n  content: \"[source]\"; }\n:host ::ng-deep .quill-source-code {\n  width: 100%;\n  margin: 0px;\n  background: #1d1d1d;\n  box-sizing: border-box;\n  color: #cccccc;\n  font-size: 15px;\n  outline: none;\n  padding: 20px;\n  line-height: 24px;\n  font-family: Consolas, Menlo, Monaco, \"Courier New\", monospace;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  border: none;\n  display: none; }\n:host ::ng-deep .formio-component-tags tags {\n  background-color: #fff; }\n:host ::ng-deep .field-required:after {\n  content: \" *\";\n  color: red; }\n:host ::ng-deep .glyphicon-spin {\n  -webkit-animation: formio-spin 1s infinite linear;\n  animation: formio-spin 1s infinite linear; }\n@-webkit-keyframes formio-spin {\n  from {\n    -webkit-transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg); } }\n@keyframes formio-spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n:host ::ng-deep .button-icon-right {\n  margin-left: 5px; }\n:host ::ng-deep .formio-component-submit .submit-success::after {\n  font-family: 'Glyphicons Halflings';\n  content: '\\e013';\n  position: relative;\n  right: -4px;\n  top: 1;\n  line-height: 1; }\n:host ::ng-deep .formio-component-submit .submit-fail::after {\n  font-family: 'Glyphicons Halflings';\n  content: '\\e014';\n  position: relative;\n  right: -4px;\n  top: 1;\n  line-height: 1; }\n:host ::ng-deep .formio-component-submit .submit-fail[disabled] {\n  opacity: 1; }\n:host ::ng-deep .form-control.flatpickr-input {\n  background-color: #fff; }\n:host ::ng-deep td > .form-group {\n  margin-bottom: 0; }\n:host ::ng-deep .signature-pad {\n  position: relative; }\n:host ::ng-deep .signature-pad-body {\n  overflow: hidden; }\n:host ::ng-deep .signature-pad-canvas {\n  border-radius: 4px;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;\n  border: 1px solid #f4f4f4; }\n:host ::ng-deep .btn.signature-pad-refresh {\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1000;\n  padding: 3px;\n  line-height: 0; }\n:host ::ng-deep .choices__list--dropdown .choices__item--selectable {\n  padding-right: 0px; }\n:host ::ng-deep .signature-pad-refresh img {\n  height: 1.2em; }\n:host ::ng-deep .signature-pad-footer {\n  text-align: center;\n  color: #C3C3C3; }\n:host ::ng-deep .loader-wrapper {\n  z-index: 1000;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  bottom: 0px;\n  right: 0px;\n  background-color: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .loader {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  margin-left: -30px;\n  margin-top: -30px;\n  z-index: 10000;\n  display: inline-block;\n  border: 6px solid #f3f3f3;\n  border-top: 6px solid #3498db;\n  border-radius: 50%;\n  width: 60px;\n  height: 60px;\n  -webkit-animation: spin 2s linear infinite;\n          animation: spin 2s linear infinite; }\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n@keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n:host ::ng-deep .choices__list--dropdown {\n  z-index: 100; }\n:host ::ng-deep .choices__list--multiple .choices__item {\n  border-radius: 0;\n  padding: 2px 8px;\n  line-height: 1em;\n  margin-bottom: 6px; }\n:host ::ng-deep .choices__list--single {\n  padding: 0; }\n:host ::ng-deep .choices__input {\n  padding: 2px; }\n:host ::ng-deep .formio-component-file .fileSelector {\n  padding: 15px;\n  border: 2px dashed #ddd;\n  text-align: center; }\n:host ::ng-deep .formio-component-file .fileSelector.fileDragOver {\n  border-color: #127abe; }\n:host ::ng-deep .formio-component-file .fileSelector .glyphicon,\n:host ::ng-deep .formio-component-file .fileSelector .fa {\n  font-size: 20px;\n  margin-right: 5px; }\n:host ::ng-deep .formio-component-file .fileSelector .browse {\n  cursor: pointer; }\n@-webkit-keyframes formio-dialog-fadeout {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n@keyframes formio-dialog-fadeout {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n@-webkit-keyframes formio-dialog-fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n@keyframes formio-dialog-fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n:host ::ng-deep .formio-dialog {\n  box-sizing: border-box;\n  font-size: 0.8em;\n  color: #666; }\n:host ::ng-deep .formio-dialog *,\n:host ::ng-deep .formio-dialog *:before,\n:host ::ng-deep .formio-dialog *:after {\n  box-sizing: inherit; }\n:host ::ng-deep .formio-dialog {\n  position: fixed;\n  overflow: auto;\n  -webkit-overflow-scrolling: touch;\n  z-index: 10000;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.4);\n  -webkit-animation: formio-dialog-fadein 0.5s;\n          animation: formio-dialog-fadein 0.5s; }\n:host ::ng-deep .formio-dialog.formio-dialog-disabled-animation,\n:host ::ng-deep .formio-dialog.formio-dialog-disabled-animation .formio-dialog-overlay,\n:host ::ng-deep .formio-dialog.formio-dialog-disabled-animation .formio-dialog-content {\n  -webkit-animation: none !important;\n  animation: none !important; }\n:host ::ng-deep .formio-dialog-overlay {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  -webkit-backface-visibility: hidden;\n  -webkit-animation: formio-dialog-fadein 0.5s;\n  animation: formio-dialog-fadein 0.5s;\n  margin-right: 15px;\n  background: transparent; }\n:host ::ng-deep .formio-dialog-no-overlay {\n  pointer-events: none; }\n:host ::ng-deep .formio-dialog.formio-dialog-closing .formio-dialog-overlay {\n  -webkit-backface-visibility: hidden;\n  -webkit-animation: formio-dialog-fadeout 0.5s;\n  animation: formio-dialog-fadeout 0.5s; }\n:host ::ng-deep .formio-dialog-content {\n  background: white;\n  -webkit-backface-visibility: hidden;\n  -webkit-animation: formio-dialog-fadein 0.5s;\n  animation: formio-dialog-fadein 0.5s;\n  pointer-events: all; }\n:host ::ng-deep .formio-dialog.formio-dialog-closing .formio-dialog-content {\n  -webkit-backface-visibility: hidden;\n  -webkit-animation: formio-dialog-fadeout 0.5s;\n  animation: formio-dialog-fadeout 0.5s; }\n:host ::ng-deep .formio-dialog-close:before {\n  font-family: 'Helvetica', Arial, sans-serif;\n  content: '×';\n  cursor: pointer; }\n:host ::ng-deep html.formio-dialog-open,\n:host ::ng-deep body.formio-dialog-open {\n  overflow: hidden; }\n@-webkit-keyframes formio-dialog-flyin {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); } }\n@keyframes formio-dialog-flyin {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); } }\n@-webkit-keyframes formio-dialog-flyout {\n  0% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n@keyframes formio-dialog-flyout {\n  0% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default {\n  padding-bottom: 160px;\n  padding-top: 160px; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default.formio-dialog-closing .formio-dialog-content {\n  -webkit-animation: formio-dialog-flyout .5s;\n  animation: formio-dialog-flyout .5s; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-content {\n  -webkit-animation: formio-dialog-flyin .5s;\n  animation: formio-dialog-flyin .5s;\n  background: #f0f0f0;\n  border-radius: 5px;\n  font-family: 'Helvetica', sans-serif;\n  font-size: 1.1em;\n  line-height: 1.5em;\n  margin: 0 auto;\n  max-width: 100%;\n  padding: 1em;\n  position: relative;\n  width: 65%; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close {\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  position: absolute;\n  right: 0;\n  top: 0; }\n:host ::ng-deep .formio-clickable {\n  cursor: pointer; }\n:host ::ng-deep .component-settings .nav > li > a {\n  padding: 8px 10px; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close:before {\n  display: block;\n  padding: 3px;\n  background: transparent;\n  color: #bbb;\n  content: '×';\n  font-size: 26px;\n  font-weight: 400;\n  line-height: 26px;\n  text-align: center; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close:hover:before,\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close:active:before {\n  color: #777; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-message {\n  margin-bottom: .5em; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input {\n  margin-bottom: 1em; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input textarea,\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"text\"],\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"password\"],\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"email\"],\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"url\"] {\n  background: #fff;\n  border: 0;\n  border-radius: 3px;\n  font-family: inherit;\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0 0 .25em;\n  min-height: 2.5em;\n  padding: .25em .67em;\n  width: 100%; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input textarea:focus,\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"text\"]:focus,\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"password\"]:focus,\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"email\"]:focus,\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"url\"]:focus {\n  box-shadow: inset 0 0 0 2px #8dbdf1;\n  outline: none; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-buttons {\n  *zoom: 1; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-buttons:after {\n  content: '';\n  display: table;\n  clear: both; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button {\n  border: 0;\n  border-radius: 3px;\n  cursor: pointer;\n  float: right;\n  font-family: inherit;\n  font-size: .8em;\n  letter-spacing: .1em;\n  line-height: 1em;\n  margin: 0 0 0 .5em;\n  padding: .75em 2em;\n  text-transform: uppercase; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button:focus {\n  -webkit-animation: formio-dialog-pulse 1.1s infinite;\n  animation: formio-dialog-pulse 1.1s infinite;\n  outline: none; }\n@media (max-width: 568px) {\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button:focus {\n    -webkit-animation: none;\n    animation: none; } }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button.formio-dialog-button-primary {\n  background: #3288e6;\n  color: #fff; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button.formio-dialog-button-secondary {\n  background: #e0e0e0;\n  color: #777; }\n:host ::ng-deep .formio-dialog-content .panel {\n  margin: 0; }\n:host ::ng-deep .formio-placeholder {\n  position: absolute;\n  color: #999; }\n:host ::ng-deep .formio-dialog .formio-dialog-close {\n  cursor: pointer; }\n:host ::ng-deep .formio-iframe {\n  border: none;\n  width: 100%;\n  height: 1000px; }\n:host ::ng-deep .inline-form-button {\n  margin-right: 10px; }\n:host ::ng-deep .tooltip {\n  opacity: 1; }\n:host ::ng-deep .tooltip[x-placement=\"right\"] .tooltip-arrow {\n  border-right: 5px solid black; }\n:host ::ng-deep .tooltip[x-placement=\"right\"] .tooltip-inner {\n  margin-left: 8px; }\n:host ::ng-deep .control-label--bottom {\n  margin-bottom: 0;\n  margin-top: 5px; }\n:host ::ng-deep .formio-component-label-hidden {\n  position: relative; }\n:host ::ng-deep .control-label--hidden {\n  position: absolute;\n  top: 6px;\n  right: 5px;\n  font-size: 1.5em; }\n:host ::ng-deep .formio-component-datetime .control-label--hidden.field-required {\n  right: 45px;\n  z-index: 3; }\n:host ::ng-deep .formio-component-survey .control-label--hidden.field-required,\n:host ::ng-deep .formio-component-selectboxes .control-label--hidden.field-required {\n  top: 0; }\n:host ::ng-deep .formio-component-resource .control-label--hidden.field-required,\n:host ::ng-deep .formio-component-select .control-label--hidden.field-required {\n  right: 40px;\n  z-index: 2; }\n:host ::ng-deep .checkbox-inline label,\n:host ::ng-deep .radio-inline label {\n  font-weight: 400;\n  cursor: pointer; }\n:host ::ng-deep .editgrid-listgroup {\n  margin-bottom: 10px; }\n:host ::ng-deep .formio-component-submit .has-error {\n  display: none; }\n:host ::ng-deep .formio-component-submit button[disabled] + .has-error {\n  display: block; }\n:host ::ng-deep .formio-choices.form-group {\n  margin-bottom: 0; }\n:host ::ng-deep .formio-choices[data-type=select-multiple] .form-control {\n  height: auto; }\n:host ::ng-deep .form-control.formio-multiple-mask-select {\n  width: 15%;\n  z-index: 4; }\n:host ::ng-deep .form-control.formio-multiple-mask-input {\n  width: 85%; }\n:host ::ng-deep .input-group.formio-multiple-mask-container {\n  width: 100%; }\n:host ::ng-deep .formio-component .table {\n  margin-bottom: 0; }\n:host ::ng-deep .formio-hide-label-panel-tooltip {\n  margin-top: -10px;\n  margin-left: -10px; }\n:host ::ng-deep .is-disabled .choices__list--multiple .choices__item {\n  padding: 5px 10px; }\n:host ::ng-deep .is-disabled .choices__list--multiple .choices__item .choices__button {\n  display: none; }\n:host ::ng-deep .formio-collapse-icon {\n  cursor: pointer;\n  color: #666;\n  font-size: 0.6em;\n  border: 1px solid #ccc;\n  border-radius: 0.3em;\n  padding: 0.2em 0.4em;\n  vertical-align: top;\n  margin-right: 4px;\n  margin-top: 1px; }\n:host ::ng-deep .formbuilder {\n  position: relative; }\n:host ::ng-deep .drag-container {\n  padding: 10px;\n  border: dotted 2px #e8e8e8; }\n:host ::ng-deep .drag-container:hover {\n  cursor: move;\n  border: dotted 2px #ccc; }\n:host ::ng-deep .component-btn-group {\n  position: absolute;\n  right: 0;\n  z-index: 1000;\n  margin-top: -2px; }\n:host ::ng-deep .formio-component:not(:hover) .component-btn-group {\n  display: none; }\n:host ::ng-deep .builder-group-button {\n  background-color: transparent;\n  white-space: normal;\n  text-align: left; }\n:host ::ng-deep .form-builder-group-header {\n  padding: 0; }\n:host ::ng-deep .formio-dialog .tab-content {\n  padding-top: 12px; }\n:host ::ng-deep .component-btn-group .component-settings-button {\n  float: right;\n  z-index: 1001;\n  margin: 4px 4px 0 0;\n  z-index: 1001;\n  box-shadow: 0px 0px 10px 1px rgba(48, 113, 169, 0.6); }\n:host ::ng-deep .formbuilder .formio-component-hidden,\n:host ::ng-deep .formbuilder .formio-component-form {\n  border: 2px dashed #ddd; }\n:host ::ng-deep .formbuilder .formio-component-hidden {\n  height: 3em;\n  text-align: center;\n  color: #aaa;\n  padding-top: 0.5em; }\n:host ::ng-deep .formbuilder .row.formio-component-columns {\n  margin-left: 0;\n  margin-right: 0; }\n:host ::ng-deep .btn-xxs,\n:host ::ng-deep .btn-group-xxs > .btn,\n:host ::ng-deep .component-btn-group .component-settings-button {\n  padding: 2px 2px;\n  font-size: 10px;\n  line-height: 1.2em;\n  border-radius: 0;\n  width: 18px;\n  height: 18px; }\n:host ::ng-deep .formcomponents .formcomponent {\n  text-align: left;\n  padding: 5px 5px 5px 8px;\n  margin-top: 0.2rem;\n  font-size: 0.8em;\n  line-height: 1.2;\n  border-radius: 0.3em; }\n:host ::ng-deep .form-builder-panel .panel-body {\n  padding: 5px; }\n:host ::ng-deep .formio-pdf-builder {\n  position: relative; }\n:host ::ng-deep .formio-drop-zone {\n  display: none;\n  position: absolute;\n  z-index: 10;\n  background-color: #0d87e9;\n  opacity: 0.1; }\n:host ::ng-deep .formio-drop-zone.enabled {\n  display: inherit; }\n:host ::ng-deep .component-settings-button-paste {\n  display: none; }\n:host ::ng-deep .builder-paste-mode .component-settings-button-paste {\n  display: inherit; }\n:host ::ng-deep .wizard-page-label {\n  cursor: pointer; }\n:host ::ng-deep .panel-body .drag-and-drop-alert {\n  margin-bottom: 0; }\n"
+module.exports = "\n@import url(\"https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700\");\n@charset \"UTF-8\";\n:host ::ng-deep {\n  /*!\n * Bootstrap v4.1.3 (https://getbootstrap.com/)\n * Copyright 2011-2018 The Bootstrap Authors\n * Copyright 2011-2018 Twitter, Inc.\n * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n */ }\n:host ::ng-deep :root {\n    --blue: #008cba;\n    --indigo: #6610f2;\n    --purple: #6f42c1;\n    --pink: #e83e8c;\n    --red: #F04124;\n    --orange: #fd7e14;\n    --yellow: #E99002;\n    --green: #43ac6a;\n    --teal: #20c997;\n    --cyan: #5bc0de;\n    --white: #fff;\n    --gray: #888;\n    --gray-dark: #333;\n    --primary: #008cba;\n    --secondary: #eee;\n    --success: #43ac6a;\n    --info: #5bc0de;\n    --warning: #E99002;\n    --danger: #F04124;\n    --light: #eee;\n    --dark: #222;\n    --breakpoint-xs: 0;\n    --breakpoint-sm: 576px;\n    --breakpoint-md: 768px;\n    --breakpoint-lg: 992px;\n    --breakpoint-xl: 1200px;\n    --font-family-sans-serif: \"Open Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; }\n:host ::ng-deep *,\n  :host ::ng-deep *::before,\n  :host ::ng-deep *::after {\n    box-sizing: border-box; }\n:host ::ng-deep html {\n    font-family: sans-serif;\n    line-height: 1.15;\n    -webkit-text-size-adjust: 100%;\n    -ms-text-size-adjust: 100%;\n    -ms-overflow-style: scrollbar;\n    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n@-ms-viewport {\n  width: device-width; }\n:host ::ng-deep article, :host ::ng-deep aside, :host ::ng-deep figcaption, :host ::ng-deep figure, :host ::ng-deep footer, :host ::ng-deep header, :host ::ng-deep hgroup, :host ::ng-deep main, :host ::ng-deep nav, :host ::ng-deep section {\n    display: block; }\n:host ::ng-deep body {\n    margin: 0;\n    font-family: \"Open Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n    font-size: 0.9375rem;\n    font-weight: 400;\n    line-height: 1.5;\n    color: #222;\n    text-align: left;\n    background-color: #fff; }\n:host ::ng-deep [tabindex=\"-1\"]:focus {\n    outline: 0 !important; }\n:host ::ng-deep hr {\n    box-sizing: content-box;\n    height: 0;\n    overflow: visible; }\n:host ::ng-deep h1, :host ::ng-deep h2, :host ::ng-deep h3, :host ::ng-deep h4, :host ::ng-deep h5, :host ::ng-deep h6 {\n    margin-top: 0;\n    margin-bottom: 0.5rem; }\n:host ::ng-deep p {\n    margin-top: 0;\n    margin-bottom: 1rem; }\n:host ::ng-deep abbr[title],\n  :host ::ng-deep abbr[data-original-title] {\n    text-decoration: underline;\n    -webkit-text-decoration: underline dotted;\n            text-decoration: underline dotted;\n    cursor: help;\n    border-bottom: 0; }\n:host ::ng-deep address {\n    margin-bottom: 1rem;\n    font-style: normal;\n    line-height: inherit; }\n:host ::ng-deep ol,\n  :host ::ng-deep ul,\n  :host ::ng-deep dl {\n    margin-top: 0;\n    margin-bottom: 1rem; }\n:host ::ng-deep ol ol,\n  :host ::ng-deep ul ul,\n  :host ::ng-deep ol ul,\n  :host ::ng-deep ul ol {\n    margin-bottom: 0; }\n:host ::ng-deep dt {\n    font-weight: 700; }\n:host ::ng-deep dd {\n    margin-bottom: .5rem;\n    margin-left: 0; }\n:host ::ng-deep blockquote {\n    margin: 0 0 1rem; }\n:host ::ng-deep dfn {\n    font-style: italic; }\n:host ::ng-deep b,\n  :host ::ng-deep strong {\n    font-weight: bolder; }\n:host ::ng-deep small {\n    font-size: 80%; }\n:host ::ng-deep sub,\n  :host ::ng-deep sup {\n    position: relative;\n    font-size: 75%;\n    line-height: 0;\n    vertical-align: baseline; }\n:host ::ng-deep sub {\n    bottom: -.25em; }\n:host ::ng-deep sup {\n    top: -.5em; }\n:host ::ng-deep a {\n    color: #008cba;\n    text-decoration: none;\n    background-color: transparent;\n    -webkit-text-decoration-skip: objects; }\n:host ::ng-deep a:hover {\n      color: #00526e;\n      text-decoration: underline; }\n:host ::ng-deep a:not([href]):not([tabindex]) {\n    color: inherit;\n    text-decoration: none; }\n:host ::ng-deep a:not([href]):not([tabindex]):hover, :host ::ng-deep a:not([href]):not([tabindex]):focus {\n      color: inherit;\n      text-decoration: none; }\n:host ::ng-deep a:not([href]):not([tabindex]):focus {\n      outline: 0; }\n:host ::ng-deep pre,\n  :host ::ng-deep code,\n  :host ::ng-deep kbd,\n  :host ::ng-deep samp {\n    font-family: SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n    font-size: 1em; }\n:host ::ng-deep pre {\n    margin-top: 0;\n    margin-bottom: 1rem;\n    overflow: auto;\n    -ms-overflow-style: scrollbar; }\n:host ::ng-deep figure {\n    margin: 0 0 1rem; }\n:host ::ng-deep img {\n    vertical-align: middle;\n    border-style: none; }\n:host ::ng-deep svg {\n    overflow: hidden;\n    vertical-align: middle; }\n:host ::ng-deep table {\n    border-collapse: collapse; }\n:host ::ng-deep caption {\n    padding-top: 0.75rem;\n    padding-bottom: 0.75rem;\n    color: #888;\n    text-align: left;\n    caption-side: bottom; }\n:host ::ng-deep th {\n    text-align: inherit; }\n:host ::ng-deep label {\n    display: inline-block;\n    margin-bottom: 0.5rem; }\n:host ::ng-deep button {\n    border-radius: 0; }\n:host ::ng-deep button:focus {\n    outline: 1px dotted;\n    outline: 5px auto -webkit-focus-ring-color; }\n:host ::ng-deep input,\n  :host ::ng-deep button,\n  :host ::ng-deep select,\n  :host ::ng-deep optgroup,\n  :host ::ng-deep textarea {\n    margin: 0;\n    font-family: inherit;\n    font-size: inherit;\n    line-height: inherit; }\n:host ::ng-deep button,\n  :host ::ng-deep input {\n    overflow: visible; }\n:host ::ng-deep button,\n  :host ::ng-deep select {\n    text-transform: none; }\n:host ::ng-deep button,\n  :host ::ng-deep html [type=\"button\"],\n  :host ::ng-deep [type=\"reset\"],\n  :host ::ng-deep [type=\"submit\"] {\n    -webkit-appearance: button; }\n:host ::ng-deep button::-moz-focus-inner,\n  :host ::ng-deep [type=\"button\"]::-moz-focus-inner,\n  :host ::ng-deep [type=\"reset\"]::-moz-focus-inner,\n  :host ::ng-deep [type=\"submit\"]::-moz-focus-inner {\n    padding: 0;\n    border-style: none; }\n:host ::ng-deep input[type=\"radio\"],\n  :host ::ng-deep input[type=\"checkbox\"] {\n    box-sizing: border-box;\n    padding: 0; }\n:host ::ng-deep input[type=\"date\"],\n  :host ::ng-deep input[type=\"time\"],\n  :host ::ng-deep input[type=\"datetime-local\"],\n  :host ::ng-deep input[type=\"month\"] {\n    -webkit-appearance: listbox; }\n:host ::ng-deep textarea {\n    overflow: auto;\n    resize: vertical; }\n:host ::ng-deep fieldset {\n    min-width: 0;\n    padding: 0;\n    margin: 0;\n    border: 0; }\n:host ::ng-deep legend {\n    display: block;\n    width: 100%;\n    max-width: 100%;\n    padding: 0;\n    margin-bottom: .5rem;\n    font-size: 1.5rem;\n    line-height: inherit;\n    color: inherit;\n    white-space: normal; }\n:host ::ng-deep progress {\n    vertical-align: baseline; }\n:host ::ng-deep [type=\"number\"]::-webkit-inner-spin-button,\n  :host ::ng-deep [type=\"number\"]::-webkit-outer-spin-button {\n    height: auto; }\n:host ::ng-deep [type=\"search\"] {\n    outline-offset: -2px;\n    -webkit-appearance: none; }\n:host ::ng-deep [type=\"search\"]::-webkit-search-cancel-button,\n  :host ::ng-deep [type=\"search\"]::-webkit-search-decoration {\n    -webkit-appearance: none; }\n:host ::ng-deep ::-webkit-file-upload-button {\n    font: inherit;\n    -webkit-appearance: button; }\n:host ::ng-deep output {\n    display: inline-block; }\n:host ::ng-deep summary {\n    display: list-item;\n    cursor: pointer; }\n:host ::ng-deep template {\n    display: none; }\n:host ::ng-deep [hidden] {\n    display: none !important; }\n:host ::ng-deep h1, :host ::ng-deep h2, :host ::ng-deep h3, :host ::ng-deep h4, :host ::ng-deep h5, :host ::ng-deep h6,\n  :host ::ng-deep .h1, :host ::ng-deep .h2, :host ::ng-deep .h3, :host ::ng-deep .h4, :host ::ng-deep .h5, :host ::ng-deep .h6 {\n    margin-bottom: 0.5rem;\n    font-family: inherit;\n    font-weight: 300;\n    line-height: 1.2;\n    color: inherit; }\n:host ::ng-deep h1, :host ::ng-deep .h1 {\n    font-size: 2.34375rem; }\n:host ::ng-deep h2, :host ::ng-deep .h2 {\n    font-size: 1.875rem; }\n:host ::ng-deep h3, :host ::ng-deep .h3 {\n    font-size: 1.640625rem; }\n:host ::ng-deep h4, :host ::ng-deep .h4 {\n    font-size: 1.40625rem; }\n:host ::ng-deep h5, :host ::ng-deep .h5 {\n    font-size: 1.171875rem; }\n:host ::ng-deep h6, :host ::ng-deep .h6 {\n    font-size: 0.9375rem; }\n:host ::ng-deep .lead {\n    font-size: 1.171875rem;\n    font-weight: 300; }\n:host ::ng-deep .display-1 {\n    font-size: 6rem;\n    font-weight: 300;\n    line-height: 1.2; }\n:host ::ng-deep .display-2 {\n    font-size: 5.5rem;\n    font-weight: 300;\n    line-height: 1.2; }\n:host ::ng-deep .display-3 {\n    font-size: 4.5rem;\n    font-weight: 300;\n    line-height: 1.2; }\n:host ::ng-deep .display-4 {\n    font-size: 3.5rem;\n    font-weight: 300;\n    line-height: 1.2; }\n:host ::ng-deep hr {\n    margin-top: 1rem;\n    margin-bottom: 1rem;\n    border: 0;\n    border-top: 1px solid rgba(0, 0, 0, 0.1); }\n:host ::ng-deep small,\n  :host ::ng-deep .small {\n    font-size: 80%;\n    font-weight: 400; }\n:host ::ng-deep mark,\n  :host ::ng-deep .mark {\n    padding: 0.2em;\n    background-color: #fcf8e3; }\n:host ::ng-deep .list-unstyled {\n    padding-left: 0;\n    list-style: none; }\n:host ::ng-deep .list-inline {\n    padding-left: 0;\n    list-style: none; }\n:host ::ng-deep .list-inline-item {\n    display: inline-block; }\n:host ::ng-deep .list-inline-item:not(:last-child) {\n      margin-right: 0.5rem; }\n:host ::ng-deep .initialism {\n    font-size: 90%;\n    text-transform: uppercase; }\n:host ::ng-deep .blockquote {\n    margin-bottom: 1rem;\n    font-size: 1.171875rem; }\n:host ::ng-deep .blockquote-footer {\n    display: block;\n    font-size: 80%;\n    color: #888; }\n:host ::ng-deep .blockquote-footer::before {\n      content: \"\\2014 \\00A0\"; }\n:host ::ng-deep .img-fluid {\n    max-width: 100%;\n    height: auto; }\n:host ::ng-deep .img-thumbnail {\n    padding: 0.25rem;\n    background-color: #fff;\n    border: 1px solid #dee2e6;\n    border-radius: 0;\n    max-width: 100%;\n    height: auto; }\n:host ::ng-deep .figure {\n    display: inline-block; }\n:host ::ng-deep .figure-img {\n    margin-bottom: 0.5rem;\n    line-height: 1; }\n:host ::ng-deep .figure-caption {\n    font-size: 90%;\n    color: #888; }\n:host ::ng-deep code {\n    font-size: 87.5%;\n    color: #e83e8c;\n    word-break: break-word; }\na > :host ::ng-deep code {\n      color: inherit; }\n:host ::ng-deep kbd {\n    padding: 0.2rem 0.4rem;\n    font-size: 87.5%;\n    color: #fff;\n    background-color: #222;\n    border-radius: 0; }\n:host ::ng-deep kbd kbd {\n      padding: 0;\n      font-size: 100%;\n      font-weight: 700; }\n:host ::ng-deep pre {\n    display: block;\n    font-size: 87.5%;\n    color: #222; }\n:host ::ng-deep pre code {\n      font-size: inherit;\n      color: inherit;\n      word-break: normal; }\n:host ::ng-deep .pre-scrollable {\n    max-height: 340px;\n    overflow-y: scroll; }\n:host ::ng-deep .container {\n    width: 100%;\n    padding-right: 15px;\n    padding-left: 15px;\n    margin-right: auto;\n    margin-left: auto; }\n@media (min-width: 576px) {\n      :host ::ng-deep .container {\n        max-width: 540px; } }\n@media (min-width: 768px) {\n      :host ::ng-deep .container {\n        max-width: 720px; } }\n@media (min-width: 992px) {\n      :host ::ng-deep .container {\n        max-width: 960px; } }\n@media (min-width: 1200px) {\n      :host ::ng-deep .container {\n        max-width: 1140px; } }\n:host ::ng-deep .container-fluid {\n    width: 100%;\n    padding-right: 15px;\n    padding-left: 15px;\n    margin-right: auto;\n    margin-left: auto; }\n:host ::ng-deep .row {\n    display: flex;\n    flex-wrap: wrap;\n    margin-right: -15px;\n    margin-left: -15px; }\n:host ::ng-deep .no-gutters {\n    margin-right: 0;\n    margin-left: 0; }\n:host ::ng-deep .no-gutters > .col,\n    :host ::ng-deep .no-gutters > [class*=\"col-\"] {\n      padding-right: 0;\n      padding-left: 0; }\n:host ::ng-deep .col-1, :host ::ng-deep .col-2, :host ::ng-deep .col-3, :host ::ng-deep .col-4, :host ::ng-deep .col-5, :host ::ng-deep .col-6, :host ::ng-deep .col-7, :host ::ng-deep .col-8, :host ::ng-deep .col-9, :host ::ng-deep .col-10, :host ::ng-deep .col-11, :host ::ng-deep .col-12, :host ::ng-deep .col,\n  :host ::ng-deep .col-auto, :host ::ng-deep .col-sm-1, :host ::ng-deep .col-sm-2, :host ::ng-deep .col-sm-3, :host ::ng-deep .col-sm-4, :host ::ng-deep .col-sm-5, :host ::ng-deep .col-sm-6, :host ::ng-deep .col-sm-7, :host ::ng-deep .col-sm-8, :host ::ng-deep .col-sm-9, :host ::ng-deep .col-sm-10, :host ::ng-deep .col-sm-11, :host ::ng-deep .col-sm-12, :host ::ng-deep .col-sm,\n  :host ::ng-deep .col-sm-auto, :host ::ng-deep .col-md-1, :host ::ng-deep .col-md-2, :host ::ng-deep .col-md-3, :host ::ng-deep .col-md-4, :host ::ng-deep .col-md-5, :host ::ng-deep .col-md-6, :host ::ng-deep .col-md-7, :host ::ng-deep .col-md-8, :host ::ng-deep .col-md-9, :host ::ng-deep .col-md-10, :host ::ng-deep .col-md-11, :host ::ng-deep .col-md-12, :host ::ng-deep .col-md,\n  :host ::ng-deep .col-md-auto, :host ::ng-deep .col-lg-1, :host ::ng-deep .col-lg-2, :host ::ng-deep .col-lg-3, :host ::ng-deep .col-lg-4, :host ::ng-deep .col-lg-5, :host ::ng-deep .col-lg-6, :host ::ng-deep .col-lg-7, :host ::ng-deep .col-lg-8, :host ::ng-deep .col-lg-9, :host ::ng-deep .col-lg-10, :host ::ng-deep .col-lg-11, :host ::ng-deep .col-lg-12, :host ::ng-deep .col-lg,\n  :host ::ng-deep .col-lg-auto, :host ::ng-deep .col-xl-1, :host ::ng-deep .col-xl-2, :host ::ng-deep .col-xl-3, :host ::ng-deep .col-xl-4, :host ::ng-deep .col-xl-5, :host ::ng-deep .col-xl-6, :host ::ng-deep .col-xl-7, :host ::ng-deep .col-xl-8, :host ::ng-deep .col-xl-9, :host ::ng-deep .col-xl-10, :host ::ng-deep .col-xl-11, :host ::ng-deep .col-xl-12, :host ::ng-deep .col-xl,\n  :host ::ng-deep .col-xl-auto {\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px; }\n:host ::ng-deep .col {\n    flex-basis: 0;\n    flex-grow: 1;\n    max-width: 100%; }\n:host ::ng-deep .col-auto {\n    flex: 0 0 auto;\n    width: auto;\n    max-width: none; }\n:host ::ng-deep .col-1 {\n    flex: 0 0 8.33333333%;\n    max-width: 8.33333333%; }\n:host ::ng-deep .col-2 {\n    flex: 0 0 16.66666667%;\n    max-width: 16.66666667%; }\n:host ::ng-deep .col-3 {\n    flex: 0 0 25%;\n    max-width: 25%; }\n:host ::ng-deep .col-4 {\n    flex: 0 0 33.33333333%;\n    max-width: 33.33333333%; }\n:host ::ng-deep .col-5 {\n    flex: 0 0 41.66666667%;\n    max-width: 41.66666667%; }\n:host ::ng-deep .col-6 {\n    flex: 0 0 50%;\n    max-width: 50%; }\n:host ::ng-deep .col-7 {\n    flex: 0 0 58.33333333%;\n    max-width: 58.33333333%; }\n:host ::ng-deep .col-8 {\n    flex: 0 0 66.66666667%;\n    max-width: 66.66666667%; }\n:host ::ng-deep .col-9 {\n    flex: 0 0 75%;\n    max-width: 75%; }\n:host ::ng-deep .col-10 {\n    flex: 0 0 83.33333333%;\n    max-width: 83.33333333%; }\n:host ::ng-deep .col-11 {\n    flex: 0 0 91.66666667%;\n    max-width: 91.66666667%; }\n:host ::ng-deep .col-12 {\n    flex: 0 0 100%;\n    max-width: 100%; }\n:host ::ng-deep .order-first {\n    order: -1; }\n:host ::ng-deep .order-last {\n    order: 13; }\n:host ::ng-deep .order-0 {\n    order: 0; }\n:host ::ng-deep .order-1 {\n    order: 1; }\n:host ::ng-deep .order-2 {\n    order: 2; }\n:host ::ng-deep .order-3 {\n    order: 3; }\n:host ::ng-deep .order-4 {\n    order: 4; }\n:host ::ng-deep .order-5 {\n    order: 5; }\n:host ::ng-deep .order-6 {\n    order: 6; }\n:host ::ng-deep .order-7 {\n    order: 7; }\n:host ::ng-deep .order-8 {\n    order: 8; }\n:host ::ng-deep .order-9 {\n    order: 9; }\n:host ::ng-deep .order-10 {\n    order: 10; }\n:host ::ng-deep .order-11 {\n    order: 11; }\n:host ::ng-deep .order-12 {\n    order: 12; }\n:host ::ng-deep .offset-1 {\n    margin-left: 8.33333333%; }\n:host ::ng-deep .offset-2 {\n    margin-left: 16.66666667%; }\n:host ::ng-deep .offset-3 {\n    margin-left: 25%; }\n:host ::ng-deep .offset-4 {\n    margin-left: 33.33333333%; }\n:host ::ng-deep .offset-5 {\n    margin-left: 41.66666667%; }\n:host ::ng-deep .offset-6 {\n    margin-left: 50%; }\n:host ::ng-deep .offset-7 {\n    margin-left: 58.33333333%; }\n:host ::ng-deep .offset-8 {\n    margin-left: 66.66666667%; }\n:host ::ng-deep .offset-9 {\n    margin-left: 75%; }\n:host ::ng-deep .offset-10 {\n    margin-left: 83.33333333%; }\n:host ::ng-deep .offset-11 {\n    margin-left: 91.66666667%; }\n@media (min-width: 576px) {\n    :host ::ng-deep .col-sm {\n      flex-basis: 0;\n      flex-grow: 1;\n      max-width: 100%; }\n    :host ::ng-deep .col-sm-auto {\n      flex: 0 0 auto;\n      width: auto;\n      max-width: none; }\n    :host ::ng-deep .col-sm-1 {\n      flex: 0 0 8.33333333%;\n      max-width: 8.33333333%; }\n    :host ::ng-deep .col-sm-2 {\n      flex: 0 0 16.66666667%;\n      max-width: 16.66666667%; }\n    :host ::ng-deep .col-sm-3 {\n      flex: 0 0 25%;\n      max-width: 25%; }\n    :host ::ng-deep .col-sm-4 {\n      flex: 0 0 33.33333333%;\n      max-width: 33.33333333%; }\n    :host ::ng-deep .col-sm-5 {\n      flex: 0 0 41.66666667%;\n      max-width: 41.66666667%; }\n    :host ::ng-deep .col-sm-6 {\n      flex: 0 0 50%;\n      max-width: 50%; }\n    :host ::ng-deep .col-sm-7 {\n      flex: 0 0 58.33333333%;\n      max-width: 58.33333333%; }\n    :host ::ng-deep .col-sm-8 {\n      flex: 0 0 66.66666667%;\n      max-width: 66.66666667%; }\n    :host ::ng-deep .col-sm-9 {\n      flex: 0 0 75%;\n      max-width: 75%; }\n    :host ::ng-deep .col-sm-10 {\n      flex: 0 0 83.33333333%;\n      max-width: 83.33333333%; }\n    :host ::ng-deep .col-sm-11 {\n      flex: 0 0 91.66666667%;\n      max-width: 91.66666667%; }\n    :host ::ng-deep .col-sm-12 {\n      flex: 0 0 100%;\n      max-width: 100%; }\n    :host ::ng-deep .order-sm-first {\n      order: -1; }\n    :host ::ng-deep .order-sm-last {\n      order: 13; }\n    :host ::ng-deep .order-sm-0 {\n      order: 0; }\n    :host ::ng-deep .order-sm-1 {\n      order: 1; }\n    :host ::ng-deep .order-sm-2 {\n      order: 2; }\n    :host ::ng-deep .order-sm-3 {\n      order: 3; }\n    :host ::ng-deep .order-sm-4 {\n      order: 4; }\n    :host ::ng-deep .order-sm-5 {\n      order: 5; }\n    :host ::ng-deep .order-sm-6 {\n      order: 6; }\n    :host ::ng-deep .order-sm-7 {\n      order: 7; }\n    :host ::ng-deep .order-sm-8 {\n      order: 8; }\n    :host ::ng-deep .order-sm-9 {\n      order: 9; }\n    :host ::ng-deep .order-sm-10 {\n      order: 10; }\n    :host ::ng-deep .order-sm-11 {\n      order: 11; }\n    :host ::ng-deep .order-sm-12 {\n      order: 12; }\n    :host ::ng-deep .offset-sm-0 {\n      margin-left: 0; }\n    :host ::ng-deep .offset-sm-1 {\n      margin-left: 8.33333333%; }\n    :host ::ng-deep .offset-sm-2 {\n      margin-left: 16.66666667%; }\n    :host ::ng-deep .offset-sm-3 {\n      margin-left: 25%; }\n    :host ::ng-deep .offset-sm-4 {\n      margin-left: 33.33333333%; }\n    :host ::ng-deep .offset-sm-5 {\n      margin-left: 41.66666667%; }\n    :host ::ng-deep .offset-sm-6 {\n      margin-left: 50%; }\n    :host ::ng-deep .offset-sm-7 {\n      margin-left: 58.33333333%; }\n    :host ::ng-deep .offset-sm-8 {\n      margin-left: 66.66666667%; }\n    :host ::ng-deep .offset-sm-9 {\n      margin-left: 75%; }\n    :host ::ng-deep .offset-sm-10 {\n      margin-left: 83.33333333%; }\n    :host ::ng-deep .offset-sm-11 {\n      margin-left: 91.66666667%; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .col-md {\n      flex-basis: 0;\n      flex-grow: 1;\n      max-width: 100%; }\n    :host ::ng-deep .col-md-auto {\n      flex: 0 0 auto;\n      width: auto;\n      max-width: none; }\n    :host ::ng-deep .col-md-1 {\n      flex: 0 0 8.33333333%;\n      max-width: 8.33333333%; }\n    :host ::ng-deep .col-md-2 {\n      flex: 0 0 16.66666667%;\n      max-width: 16.66666667%; }\n    :host ::ng-deep .col-md-3 {\n      flex: 0 0 25%;\n      max-width: 25%; }\n    :host ::ng-deep .col-md-4 {\n      flex: 0 0 33.33333333%;\n      max-width: 33.33333333%; }\n    :host ::ng-deep .col-md-5 {\n      flex: 0 0 41.66666667%;\n      max-width: 41.66666667%; }\n    :host ::ng-deep .col-md-6 {\n      flex: 0 0 50%;\n      max-width: 50%; }\n    :host ::ng-deep .col-md-7 {\n      flex: 0 0 58.33333333%;\n      max-width: 58.33333333%; }\n    :host ::ng-deep .col-md-8 {\n      flex: 0 0 66.66666667%;\n      max-width: 66.66666667%; }\n    :host ::ng-deep .col-md-9 {\n      flex: 0 0 75%;\n      max-width: 75%; }\n    :host ::ng-deep .col-md-10 {\n      flex: 0 0 83.33333333%;\n      max-width: 83.33333333%; }\n    :host ::ng-deep .col-md-11 {\n      flex: 0 0 91.66666667%;\n      max-width: 91.66666667%; }\n    :host ::ng-deep .col-md-12 {\n      flex: 0 0 100%;\n      max-width: 100%; }\n    :host ::ng-deep .order-md-first {\n      order: -1; }\n    :host ::ng-deep .order-md-last {\n      order: 13; }\n    :host ::ng-deep .order-md-0 {\n      order: 0; }\n    :host ::ng-deep .order-md-1 {\n      order: 1; }\n    :host ::ng-deep .order-md-2 {\n      order: 2; }\n    :host ::ng-deep .order-md-3 {\n      order: 3; }\n    :host ::ng-deep .order-md-4 {\n      order: 4; }\n    :host ::ng-deep .order-md-5 {\n      order: 5; }\n    :host ::ng-deep .order-md-6 {\n      order: 6; }\n    :host ::ng-deep .order-md-7 {\n      order: 7; }\n    :host ::ng-deep .order-md-8 {\n      order: 8; }\n    :host ::ng-deep .order-md-9 {\n      order: 9; }\n    :host ::ng-deep .order-md-10 {\n      order: 10; }\n    :host ::ng-deep .order-md-11 {\n      order: 11; }\n    :host ::ng-deep .order-md-12 {\n      order: 12; }\n    :host ::ng-deep .offset-md-0 {\n      margin-left: 0; }\n    :host ::ng-deep .offset-md-1 {\n      margin-left: 8.33333333%; }\n    :host ::ng-deep .offset-md-2 {\n      margin-left: 16.66666667%; }\n    :host ::ng-deep .offset-md-3 {\n      margin-left: 25%; }\n    :host ::ng-deep .offset-md-4 {\n      margin-left: 33.33333333%; }\n    :host ::ng-deep .offset-md-5 {\n      margin-left: 41.66666667%; }\n    :host ::ng-deep .offset-md-6 {\n      margin-left: 50%; }\n    :host ::ng-deep .offset-md-7 {\n      margin-left: 58.33333333%; }\n    :host ::ng-deep .offset-md-8 {\n      margin-left: 66.66666667%; }\n    :host ::ng-deep .offset-md-9 {\n      margin-left: 75%; }\n    :host ::ng-deep .offset-md-10 {\n      margin-left: 83.33333333%; }\n    :host ::ng-deep .offset-md-11 {\n      margin-left: 91.66666667%; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .col-lg {\n      flex-basis: 0;\n      flex-grow: 1;\n      max-width: 100%; }\n    :host ::ng-deep .col-lg-auto {\n      flex: 0 0 auto;\n      width: auto;\n      max-width: none; }\n    :host ::ng-deep .col-lg-1 {\n      flex: 0 0 8.33333333%;\n      max-width: 8.33333333%; }\n    :host ::ng-deep .col-lg-2 {\n      flex: 0 0 16.66666667%;\n      max-width: 16.66666667%; }\n    :host ::ng-deep .col-lg-3 {\n      flex: 0 0 25%;\n      max-width: 25%; }\n    :host ::ng-deep .col-lg-4 {\n      flex: 0 0 33.33333333%;\n      max-width: 33.33333333%; }\n    :host ::ng-deep .col-lg-5 {\n      flex: 0 0 41.66666667%;\n      max-width: 41.66666667%; }\n    :host ::ng-deep .col-lg-6 {\n      flex: 0 0 50%;\n      max-width: 50%; }\n    :host ::ng-deep .col-lg-7 {\n      flex: 0 0 58.33333333%;\n      max-width: 58.33333333%; }\n    :host ::ng-deep .col-lg-8 {\n      flex: 0 0 66.66666667%;\n      max-width: 66.66666667%; }\n    :host ::ng-deep .col-lg-9 {\n      flex: 0 0 75%;\n      max-width: 75%; }\n    :host ::ng-deep .col-lg-10 {\n      flex: 0 0 83.33333333%;\n      max-width: 83.33333333%; }\n    :host ::ng-deep .col-lg-11 {\n      flex: 0 0 91.66666667%;\n      max-width: 91.66666667%; }\n    :host ::ng-deep .col-lg-12 {\n      flex: 0 0 100%;\n      max-width: 100%; }\n    :host ::ng-deep .order-lg-first {\n      order: -1; }\n    :host ::ng-deep .order-lg-last {\n      order: 13; }\n    :host ::ng-deep .order-lg-0 {\n      order: 0; }\n    :host ::ng-deep .order-lg-1 {\n      order: 1; }\n    :host ::ng-deep .order-lg-2 {\n      order: 2; }\n    :host ::ng-deep .order-lg-3 {\n      order: 3; }\n    :host ::ng-deep .order-lg-4 {\n      order: 4; }\n    :host ::ng-deep .order-lg-5 {\n      order: 5; }\n    :host ::ng-deep .order-lg-6 {\n      order: 6; }\n    :host ::ng-deep .order-lg-7 {\n      order: 7; }\n    :host ::ng-deep .order-lg-8 {\n      order: 8; }\n    :host ::ng-deep .order-lg-9 {\n      order: 9; }\n    :host ::ng-deep .order-lg-10 {\n      order: 10; }\n    :host ::ng-deep .order-lg-11 {\n      order: 11; }\n    :host ::ng-deep .order-lg-12 {\n      order: 12; }\n    :host ::ng-deep .offset-lg-0 {\n      margin-left: 0; }\n    :host ::ng-deep .offset-lg-1 {\n      margin-left: 8.33333333%; }\n    :host ::ng-deep .offset-lg-2 {\n      margin-left: 16.66666667%; }\n    :host ::ng-deep .offset-lg-3 {\n      margin-left: 25%; }\n    :host ::ng-deep .offset-lg-4 {\n      margin-left: 33.33333333%; }\n    :host ::ng-deep .offset-lg-5 {\n      margin-left: 41.66666667%; }\n    :host ::ng-deep .offset-lg-6 {\n      margin-left: 50%; }\n    :host ::ng-deep .offset-lg-7 {\n      margin-left: 58.33333333%; }\n    :host ::ng-deep .offset-lg-8 {\n      margin-left: 66.66666667%; }\n    :host ::ng-deep .offset-lg-9 {\n      margin-left: 75%; }\n    :host ::ng-deep .offset-lg-10 {\n      margin-left: 83.33333333%; }\n    :host ::ng-deep .offset-lg-11 {\n      margin-left: 91.66666667%; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .col-xl {\n      flex-basis: 0;\n      flex-grow: 1;\n      max-width: 100%; }\n    :host ::ng-deep .col-xl-auto {\n      flex: 0 0 auto;\n      width: auto;\n      max-width: none; }\n    :host ::ng-deep .col-xl-1 {\n      flex: 0 0 8.33333333%;\n      max-width: 8.33333333%; }\n    :host ::ng-deep .col-xl-2 {\n      flex: 0 0 16.66666667%;\n      max-width: 16.66666667%; }\n    :host ::ng-deep .col-xl-3 {\n      flex: 0 0 25%;\n      max-width: 25%; }\n    :host ::ng-deep .col-xl-4 {\n      flex: 0 0 33.33333333%;\n      max-width: 33.33333333%; }\n    :host ::ng-deep .col-xl-5 {\n      flex: 0 0 41.66666667%;\n      max-width: 41.66666667%; }\n    :host ::ng-deep .col-xl-6 {\n      flex: 0 0 50%;\n      max-width: 50%; }\n    :host ::ng-deep .col-xl-7 {\n      flex: 0 0 58.33333333%;\n      max-width: 58.33333333%; }\n    :host ::ng-deep .col-xl-8 {\n      flex: 0 0 66.66666667%;\n      max-width: 66.66666667%; }\n    :host ::ng-deep .col-xl-9 {\n      flex: 0 0 75%;\n      max-width: 75%; }\n    :host ::ng-deep .col-xl-10 {\n      flex: 0 0 83.33333333%;\n      max-width: 83.33333333%; }\n    :host ::ng-deep .col-xl-11 {\n      flex: 0 0 91.66666667%;\n      max-width: 91.66666667%; }\n    :host ::ng-deep .col-xl-12 {\n      flex: 0 0 100%;\n      max-width: 100%; }\n    :host ::ng-deep .order-xl-first {\n      order: -1; }\n    :host ::ng-deep .order-xl-last {\n      order: 13; }\n    :host ::ng-deep .order-xl-0 {\n      order: 0; }\n    :host ::ng-deep .order-xl-1 {\n      order: 1; }\n    :host ::ng-deep .order-xl-2 {\n      order: 2; }\n    :host ::ng-deep .order-xl-3 {\n      order: 3; }\n    :host ::ng-deep .order-xl-4 {\n      order: 4; }\n    :host ::ng-deep .order-xl-5 {\n      order: 5; }\n    :host ::ng-deep .order-xl-6 {\n      order: 6; }\n    :host ::ng-deep .order-xl-7 {\n      order: 7; }\n    :host ::ng-deep .order-xl-8 {\n      order: 8; }\n    :host ::ng-deep .order-xl-9 {\n      order: 9; }\n    :host ::ng-deep .order-xl-10 {\n      order: 10; }\n    :host ::ng-deep .order-xl-11 {\n      order: 11; }\n    :host ::ng-deep .order-xl-12 {\n      order: 12; }\n    :host ::ng-deep .offset-xl-0 {\n      margin-left: 0; }\n    :host ::ng-deep .offset-xl-1 {\n      margin-left: 8.33333333%; }\n    :host ::ng-deep .offset-xl-2 {\n      margin-left: 16.66666667%; }\n    :host ::ng-deep .offset-xl-3 {\n      margin-left: 25%; }\n    :host ::ng-deep .offset-xl-4 {\n      margin-left: 33.33333333%; }\n    :host ::ng-deep .offset-xl-5 {\n      margin-left: 41.66666667%; }\n    :host ::ng-deep .offset-xl-6 {\n      margin-left: 50%; }\n    :host ::ng-deep .offset-xl-7 {\n      margin-left: 58.33333333%; }\n    :host ::ng-deep .offset-xl-8 {\n      margin-left: 66.66666667%; }\n    :host ::ng-deep .offset-xl-9 {\n      margin-left: 75%; }\n    :host ::ng-deep .offset-xl-10 {\n      margin-left: 83.33333333%; }\n    :host ::ng-deep .offset-xl-11 {\n      margin-left: 91.66666667%; } }\n:host ::ng-deep .table {\n    width: 100%;\n    margin-bottom: 1rem;\n    background-color: transparent; }\n:host ::ng-deep .table th,\n    :host ::ng-deep .table td {\n      padding: 0.75rem;\n      vertical-align: top;\n      border-top: 1px solid #dee2e6; }\n:host ::ng-deep .table thead th {\n      vertical-align: bottom;\n      border-bottom: 2px solid #dee2e6; }\n:host ::ng-deep .table tbody + tbody {\n      border-top: 2px solid #dee2e6; }\n:host ::ng-deep .table .table {\n      background-color: #fff; }\n:host ::ng-deep .table-sm th,\n  :host ::ng-deep .table-sm td {\n    padding: 0.3rem; }\n:host ::ng-deep .table-bordered {\n    border: 1px solid #dee2e6; }\n:host ::ng-deep .table-bordered th,\n    :host ::ng-deep .table-bordered td {\n      border: 1px solid #dee2e6; }\n:host ::ng-deep .table-bordered thead th,\n    :host ::ng-deep .table-bordered thead td {\n      border-bottom-width: 2px; }\n:host ::ng-deep .table-borderless th,\n  :host ::ng-deep .table-borderless td,\n  :host ::ng-deep .table-borderless thead th,\n  :host ::ng-deep .table-borderless tbody + tbody {\n    border: 0; }\n:host ::ng-deep .table-striped tbody tr:nth-of-type(odd) {\n    background-color: rgba(0, 0, 0, 0.05); }\n:host ::ng-deep .table-hover tbody tr:hover {\n    background-color: rgba(0, 0, 0, 0.075); }\n:host ::ng-deep .table-primary,\n  :host ::ng-deep .table-primary > th,\n  :host ::ng-deep .table-primary > td {\n    background-color: #b8dfec; }\n:host ::ng-deep .table-hover .table-primary:hover {\n    background-color: #a4d6e7; }\n:host ::ng-deep .table-hover .table-primary:hover > td,\n    :host ::ng-deep .table-hover .table-primary:hover > th {\n      background-color: #a4d6e7; }\n:host ::ng-deep .table-secondary,\n  :host ::ng-deep .table-secondary > th,\n  :host ::ng-deep .table-secondary > td {\n    background-color: #fafafa; }\n:host ::ng-deep .table-hover .table-secondary:hover {\n    background-color: #ededed; }\n:host ::ng-deep .table-hover .table-secondary:hover > td,\n    :host ::ng-deep .table-hover .table-secondary:hover > th {\n      background-color: #ededed; }\n:host ::ng-deep .table-success,\n  :host ::ng-deep .table-success > th,\n  :host ::ng-deep .table-success > td {\n    background-color: #cae8d5; }\n:host ::ng-deep .table-hover .table-success:hover {\n    background-color: #b8e0c7; }\n:host ::ng-deep .table-hover .table-success:hover > td,\n    :host ::ng-deep .table-hover .table-success:hover > th {\n      background-color: #b8e0c7; }\n:host ::ng-deep .table-info,\n  :host ::ng-deep .table-info > th,\n  :host ::ng-deep .table-info > td {\n    background-color: #d1edf6; }\n:host ::ng-deep .table-hover .table-info:hover {\n    background-color: #bce5f2; }\n:host ::ng-deep .table-hover .table-info:hover > td,\n    :host ::ng-deep .table-hover .table-info:hover > th {\n      background-color: #bce5f2; }\n:host ::ng-deep .table-warning,\n  :host ::ng-deep .table-warning > th,\n  :host ::ng-deep .table-warning > td {\n    background-color: #f9e0b8; }\n:host ::ng-deep .table-hover .table-warning:hover {\n    background-color: #f7d6a0; }\n:host ::ng-deep .table-hover .table-warning:hover > td,\n    :host ::ng-deep .table-hover .table-warning:hover > th {\n      background-color: #f7d6a0; }\n:host ::ng-deep .table-danger,\n  :host ::ng-deep .table-danger > th,\n  :host ::ng-deep .table-danger > td {\n    background-color: #fbcac2; }\n:host ::ng-deep .table-hover .table-danger:hover {\n    background-color: #f9b5aa; }\n:host ::ng-deep .table-hover .table-danger:hover > td,\n    :host ::ng-deep .table-hover .table-danger:hover > th {\n      background-color: #f9b5aa; }\n:host ::ng-deep .table-light,\n  :host ::ng-deep .table-light > th,\n  :host ::ng-deep .table-light > td {\n    background-color: #fafafa; }\n:host ::ng-deep .table-hover .table-light:hover {\n    background-color: #ededed; }\n:host ::ng-deep .table-hover .table-light:hover > td,\n    :host ::ng-deep .table-hover .table-light:hover > th {\n      background-color: #ededed; }\n:host ::ng-deep .table-dark,\n  :host ::ng-deep .table-dark > th,\n  :host ::ng-deep .table-dark > td {\n    background-color: #c1c1c1; }\n:host ::ng-deep .table-hover .table-dark:hover {\n    background-color: #b4b4b4; }\n:host ::ng-deep .table-hover .table-dark:hover > td,\n    :host ::ng-deep .table-hover .table-dark:hover > th {\n      background-color: #b4b4b4; }\n:host ::ng-deep .table-active,\n  :host ::ng-deep .table-active > th,\n  :host ::ng-deep .table-active > td {\n    background-color: rgba(0, 0, 0, 0.075); }\n:host ::ng-deep .table-hover .table-active:hover {\n    background-color: rgba(0, 0, 0, 0.075); }\n:host ::ng-deep .table-hover .table-active:hover > td,\n    :host ::ng-deep .table-hover .table-active:hover > th {\n      background-color: rgba(0, 0, 0, 0.075); }\n:host ::ng-deep .table .thead-dark th {\n    color: #fff;\n    background-color: #222;\n    border-color: #353535; }\n:host ::ng-deep .table .thead-light th {\n    color: #495057;\n    background-color: #eee;\n    border-color: #dee2e6; }\n:host ::ng-deep .table-dark {\n    color: #fff;\n    background-color: #222; }\n:host ::ng-deep .table-dark th,\n    :host ::ng-deep .table-dark td,\n    :host ::ng-deep .table-dark thead th {\n      border-color: #353535; }\n:host ::ng-deep .table-dark.table-bordered {\n      border: 0; }\n:host ::ng-deep .table-dark.table-striped tbody tr:nth-of-type(odd) {\n      background-color: rgba(255, 255, 255, 0.05); }\n:host ::ng-deep .table-dark.table-hover tbody tr:hover {\n      background-color: rgba(255, 255, 255, 0.075); }\n@media (max-width: 575.98px) {\n    :host ::ng-deep .table-responsive-sm {\n      display: block;\n      width: 100%;\n      overflow-x: auto;\n      -webkit-overflow-scrolling: touch;\n      -ms-overflow-style: -ms-autohiding-scrollbar; }\n      :host ::ng-deep .table-responsive-sm > .table-bordered {\n        border: 0; } }\n@media (max-width: 767.98px) {\n    :host ::ng-deep .table-responsive-md {\n      display: block;\n      width: 100%;\n      overflow-x: auto;\n      -webkit-overflow-scrolling: touch;\n      -ms-overflow-style: -ms-autohiding-scrollbar; }\n      :host ::ng-deep .table-responsive-md > .table-bordered {\n        border: 0; } }\n@media (max-width: 991.98px) {\n    :host ::ng-deep .table-responsive-lg {\n      display: block;\n      width: 100%;\n      overflow-x: auto;\n      -webkit-overflow-scrolling: touch;\n      -ms-overflow-style: -ms-autohiding-scrollbar; }\n      :host ::ng-deep .table-responsive-lg > .table-bordered {\n        border: 0; } }\n@media (max-width: 1199.98px) {\n    :host ::ng-deep .table-responsive-xl {\n      display: block;\n      width: 100%;\n      overflow-x: auto;\n      -webkit-overflow-scrolling: touch;\n      -ms-overflow-style: -ms-autohiding-scrollbar; }\n      :host ::ng-deep .table-responsive-xl > .table-bordered {\n        border: 0; } }\n:host ::ng-deep .table-responsive {\n    display: block;\n    width: 100%;\n    overflow-x: auto;\n    -webkit-overflow-scrolling: touch;\n    -ms-overflow-style: -ms-autohiding-scrollbar; }\n:host ::ng-deep .table-responsive > .table-bordered {\n      border: 0; }\n:host ::ng-deep .form-control {\n    display: block;\n    width: 100%;\n    height: calc(2.15625rem + 2px);\n    padding: 0.375rem 0.5rem;\n    font-size: 0.9375rem;\n    line-height: 1.5;\n    color: #495057;\n    background-color: #fff;\n    background-clip: padding-box;\n    border: 1px solid #ccc;\n    border-radius: 0;\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .form-control {\n        transition: none; } }\n:host ::ng-deep .form-control::-ms-expand {\n      background-color: transparent;\n      border: 0; }\n:host ::ng-deep .form-control:focus {\n      color: #495057;\n      background-color: #fff;\n      border-color: #3bceff;\n      outline: 0;\n      box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .form-control::-webkit-input-placeholder {\n      color: #888;\n      opacity: 1; }\n:host ::ng-deep .form-control:-ms-input-placeholder {\n      color: #888;\n      opacity: 1; }\n:host ::ng-deep .form-control::-ms-input-placeholder {\n      color: #888;\n      opacity: 1; }\n:host ::ng-deep .form-control::placeholder {\n      color: #888;\n      opacity: 1; }\n:host ::ng-deep .form-control:disabled, :host ::ng-deep .form-control[readonly] {\n      background-color: #eee;\n      opacity: 1; }\n:host ::ng-deep select.form-control:focus::-ms-value {\n    color: #495057;\n    background-color: #fff; }\n:host ::ng-deep .form-control-file,\n  :host ::ng-deep .form-control-range {\n    display: block;\n    width: 100%; }\n:host ::ng-deep .col-form-label {\n    padding-top: calc(0.375rem + 1px);\n    padding-bottom: calc(0.375rem + 1px);\n    margin-bottom: 0;\n    font-size: inherit;\n    line-height: 1.5; }\n:host ::ng-deep .col-form-label-lg {\n    padding-top: calc(0.5rem + 1px);\n    padding-bottom: calc(0.5rem + 1px);\n    font-size: 1.171875rem;\n    line-height: 1.5; }\n:host ::ng-deep .col-form-label-sm {\n    padding-top: calc(0.25rem + 1px);\n    padding-bottom: calc(0.25rem + 1px);\n    font-size: 0.8203125rem;\n    line-height: 1.5; }\n:host ::ng-deep .form-control-plaintext {\n    display: block;\n    width: 100%;\n    padding-top: 0.375rem;\n    padding-bottom: 0.375rem;\n    margin-bottom: 0;\n    line-height: 1.5;\n    color: #222;\n    background-color: transparent;\n    border: solid transparent;\n    border-width: 1px 0; }\n:host ::ng-deep .form-control-plaintext.form-control-sm, :host ::ng-deep .form-control-plaintext.form-control-lg {\n      padding-right: 0;\n      padding-left: 0; }\n:host ::ng-deep .form-control-sm {\n    height: calc(1.73046875rem + 2px);\n    padding: 0.25rem 0.5rem;\n    font-size: 0.8203125rem;\n    line-height: 1.5;\n    border-radius: 0; }\n:host ::ng-deep .form-control-lg {\n    height: calc(2.7578125rem + 2px);\n    padding: 0.5rem 1rem;\n    font-size: 1.171875rem;\n    line-height: 1.5;\n    border-radius: 0; }\n:host ::ng-deep select.form-control[size], :host ::ng-deep select.form-control[multiple] {\n    height: auto; }\n:host ::ng-deep textarea.form-control {\n    height: auto; }\n:host ::ng-deep .form-group {\n    margin-bottom: 1rem; }\n:host ::ng-deep .form-text {\n    display: block;\n    margin-top: 0.25rem; }\n:host ::ng-deep .form-row {\n    display: flex;\n    flex-wrap: wrap;\n    margin-right: -5px;\n    margin-left: -5px; }\n:host ::ng-deep .form-row > .col,\n    :host ::ng-deep .form-row > [class*=\"col-\"] {\n      padding-right: 5px;\n      padding-left: 5px; }\n:host ::ng-deep .form-check {\n    position: relative;\n    display: block;\n    padding-left: 1.25rem; }\n:host ::ng-deep .form-check-input {\n    position: absolute;\n    margin-top: 0.3rem;\n    margin-left: -1.25rem; }\n:host ::ng-deep .form-check-input:disabled ~ .form-check-label {\n      color: #888; }\n:host ::ng-deep .form-check-label {\n    margin-bottom: 0; }\n:host ::ng-deep .form-check-inline {\n    display: inline-flex;\n    align-items: center;\n    padding-left: 0;\n    margin-right: 0.75rem; }\n:host ::ng-deep .form-check-inline .form-check-input {\n      position: static;\n      margin-top: 0;\n      margin-right: 0.3125rem;\n      margin-left: 0; }\n:host ::ng-deep .valid-feedback {\n    display: none;\n    width: 100%;\n    margin-top: 0.25rem;\n    font-size: 80%;\n    color: #43ac6a; }\n:host ::ng-deep .valid-tooltip {\n    position: absolute;\n    top: 100%;\n    z-index: 5;\n    display: none;\n    max-width: 100%;\n    padding: 0.25rem 0.5rem;\n    margin-top: .1rem;\n    font-size: 0.8203125rem;\n    line-height: 1.5;\n    color: #fff;\n    background-color: rgba(67, 172, 106, 0.9);\n    border-radius: 0; }\n.was-validated :host ::ng-deep .form-control:valid, :host ::ng-deep .form-control.is-valid, .was-validated\n  :host ::ng-deep .custom-select:valid,\n  :host ::ng-deep .custom-select.is-valid {\n    border-color: #43ac6a; }\n.was-validated :host ::ng-deep .form-control:valid:focus, :host ::ng-deep .form-control.is-valid:focus, .was-validated\n    :host ::ng-deep .custom-select:valid:focus,\n    :host ::ng-deep .custom-select.is-valid:focus {\n      border-color: #43ac6a;\n      box-shadow: 0 0 0 0.2rem rgba(67, 172, 106, 0.25); }\n.was-validated :host ::ng-deep .form-control:valid ~ .valid-feedback,\n    .was-validated :host ::ng-deep .form-control:valid ~ .valid-tooltip, :host ::ng-deep .form-control.is-valid ~ .valid-feedback,\n    :host ::ng-deep .form-control.is-valid ~ .valid-tooltip, .was-validated\n    :host ::ng-deep .custom-select:valid ~ .valid-feedback,\n    .was-validated\n    :host ::ng-deep .custom-select:valid ~ .valid-tooltip,\n    :host ::ng-deep .custom-select.is-valid ~ .valid-feedback,\n    :host ::ng-deep .custom-select.is-valid ~ .valid-tooltip {\n      display: block; }\n.was-validated :host ::ng-deep .form-control-file:valid ~ .valid-feedback,\n  .was-validated :host ::ng-deep .form-control-file:valid ~ .valid-tooltip, :host ::ng-deep .form-control-file.is-valid ~ .valid-feedback,\n  :host ::ng-deep .form-control-file.is-valid ~ .valid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .form-check-input:valid ~ .form-check-label, :host ::ng-deep .form-check-input.is-valid ~ .form-check-label {\n    color: #43ac6a; }\n.was-validated :host ::ng-deep .form-check-input:valid ~ .valid-feedback,\n  .was-validated :host ::ng-deep .form-check-input:valid ~ .valid-tooltip, :host ::ng-deep .form-check-input.is-valid ~ .valid-feedback,\n  :host ::ng-deep .form-check-input.is-valid ~ .valid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .custom-control-input:valid ~ .custom-control-label, :host ::ng-deep .custom-control-input.is-valid ~ .custom-control-label {\n    color: #43ac6a; }\n.was-validated :host ::ng-deep .custom-control-input:valid ~ .custom-control-label::before, :host ::ng-deep .custom-control-input.is-valid ~ .custom-control-label::before {\n      background-color: #98d7af; }\n.was-validated :host ::ng-deep .custom-control-input:valid ~ .valid-feedback,\n  .was-validated :host ::ng-deep .custom-control-input:valid ~ .valid-tooltip, :host ::ng-deep .custom-control-input.is-valid ~ .valid-feedback,\n  :host ::ng-deep .custom-control-input.is-valid ~ .valid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .custom-control-input:valid:checked ~ .custom-control-label::before, :host ::ng-deep .custom-control-input.is-valid:checked ~ .custom-control-label::before {\n    background-color: #61c185; }\n.was-validated :host ::ng-deep .custom-control-input:valid:focus ~ .custom-control-label::before, :host ::ng-deep .custom-control-input.is-valid:focus ~ .custom-control-label::before {\n    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(67, 172, 106, 0.25); }\n.was-validated :host ::ng-deep .custom-file-input:valid ~ .custom-file-label, :host ::ng-deep .custom-file-input.is-valid ~ .custom-file-label {\n    border-color: #43ac6a; }\n.was-validated :host ::ng-deep .custom-file-input:valid ~ .custom-file-label::after, :host ::ng-deep .custom-file-input.is-valid ~ .custom-file-label::after {\n      border-color: inherit; }\n.was-validated :host ::ng-deep .custom-file-input:valid ~ .valid-feedback,\n  .was-validated :host ::ng-deep .custom-file-input:valid ~ .valid-tooltip, :host ::ng-deep .custom-file-input.is-valid ~ .valid-feedback,\n  :host ::ng-deep .custom-file-input.is-valid ~ .valid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .custom-file-input:valid:focus ~ .custom-file-label, :host ::ng-deep .custom-file-input.is-valid:focus ~ .custom-file-label {\n    box-shadow: 0 0 0 0.2rem rgba(67, 172, 106, 0.25); }\n:host ::ng-deep .invalid-feedback {\n    display: none;\n    width: 100%;\n    margin-top: 0.25rem;\n    font-size: 80%;\n    color: #F04124; }\n:host ::ng-deep .invalid-tooltip {\n    position: absolute;\n    top: 100%;\n    z-index: 5;\n    display: none;\n    max-width: 100%;\n    padding: 0.25rem 0.5rem;\n    margin-top: .1rem;\n    font-size: 0.8203125rem;\n    line-height: 1.5;\n    color: #fff;\n    background-color: rgba(240, 65, 36, 0.9);\n    border-radius: 0; }\n.was-validated :host ::ng-deep .form-control:invalid, :host ::ng-deep .form-control.is-invalid, .was-validated\n  :host ::ng-deep .custom-select:invalid,\n  :host ::ng-deep .custom-select.is-invalid {\n    border-color: #F04124; }\n.was-validated :host ::ng-deep .form-control:invalid:focus, :host ::ng-deep .form-control.is-invalid:focus, .was-validated\n    :host ::ng-deep .custom-select:invalid:focus,\n    :host ::ng-deep .custom-select.is-invalid:focus {\n      border-color: #F04124;\n      box-shadow: 0 0 0 0.2rem rgba(240, 65, 36, 0.25); }\n.was-validated :host ::ng-deep .form-control:invalid ~ .invalid-feedback,\n    .was-validated :host ::ng-deep .form-control:invalid ~ .invalid-tooltip, :host ::ng-deep .form-control.is-invalid ~ .invalid-feedback,\n    :host ::ng-deep .form-control.is-invalid ~ .invalid-tooltip, .was-validated\n    :host ::ng-deep .custom-select:invalid ~ .invalid-feedback,\n    .was-validated\n    :host ::ng-deep .custom-select:invalid ~ .invalid-tooltip,\n    :host ::ng-deep .custom-select.is-invalid ~ .invalid-feedback,\n    :host ::ng-deep .custom-select.is-invalid ~ .invalid-tooltip {\n      display: block; }\n.was-validated :host ::ng-deep .form-control-file:invalid ~ .invalid-feedback,\n  .was-validated :host ::ng-deep .form-control-file:invalid ~ .invalid-tooltip, :host ::ng-deep .form-control-file.is-invalid ~ .invalid-feedback,\n  :host ::ng-deep .form-control-file.is-invalid ~ .invalid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .form-check-input:invalid ~ .form-check-label, :host ::ng-deep .form-check-input.is-invalid ~ .form-check-label {\n    color: #F04124; }\n.was-validated :host ::ng-deep .form-check-input:invalid ~ .invalid-feedback,\n  .was-validated :host ::ng-deep .form-check-input:invalid ~ .invalid-tooltip, :host ::ng-deep .form-check-input.is-invalid ~ .invalid-feedback,\n  :host ::ng-deep .form-check-input.is-invalid ~ .invalid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .custom-control-input:invalid ~ .custom-control-label, :host ::ng-deep .custom-control-input.is-invalid ~ .custom-control-label {\n    color: #F04124; }\n.was-validated :host ::ng-deep .custom-control-input:invalid ~ .custom-control-label::before, :host ::ng-deep .custom-control-input.is-invalid ~ .custom-control-label::before {\n      background-color: #f8a99b; }\n.was-validated :host ::ng-deep .custom-control-input:invalid ~ .invalid-feedback,\n  .was-validated :host ::ng-deep .custom-control-input:invalid ~ .invalid-tooltip, :host ::ng-deep .custom-control-input.is-invalid ~ .invalid-feedback,\n  :host ::ng-deep .custom-control-input.is-invalid ~ .invalid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .custom-control-input:invalid:checked ~ .custom-control-label::before, :host ::ng-deep .custom-control-input.is-invalid:checked ~ .custom-control-label::before {\n    background-color: #f36a54; }\n.was-validated :host ::ng-deep .custom-control-input:invalid:focus ~ .custom-control-label::before, :host ::ng-deep .custom-control-input.is-invalid:focus ~ .custom-control-label::before {\n    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(240, 65, 36, 0.25); }\n.was-validated :host ::ng-deep .custom-file-input:invalid ~ .custom-file-label, :host ::ng-deep .custom-file-input.is-invalid ~ .custom-file-label {\n    border-color: #F04124; }\n.was-validated :host ::ng-deep .custom-file-input:invalid ~ .custom-file-label::after, :host ::ng-deep .custom-file-input.is-invalid ~ .custom-file-label::after {\n      border-color: inherit; }\n.was-validated :host ::ng-deep .custom-file-input:invalid ~ .invalid-feedback,\n  .was-validated :host ::ng-deep .custom-file-input:invalid ~ .invalid-tooltip, :host ::ng-deep .custom-file-input.is-invalid ~ .invalid-feedback,\n  :host ::ng-deep .custom-file-input.is-invalid ~ .invalid-tooltip {\n    display: block; }\n.was-validated :host ::ng-deep .custom-file-input:invalid:focus ~ .custom-file-label, :host ::ng-deep .custom-file-input.is-invalid:focus ~ .custom-file-label {\n    box-shadow: 0 0 0 0.2rem rgba(240, 65, 36, 0.25); }\n:host ::ng-deep .form-inline {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: center; }\n:host ::ng-deep .form-inline .form-check {\n      width: 100%; }\n@media (min-width: 576px) {\n      :host ::ng-deep .form-inline label {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        margin-bottom: 0; }\n      :host ::ng-deep .form-inline .form-group {\n        display: flex;\n        flex: 0 0 auto;\n        flex-flow: row wrap;\n        align-items: center;\n        margin-bottom: 0; }\n      :host ::ng-deep .form-inline .form-control {\n        display: inline-block;\n        width: auto;\n        vertical-align: middle; }\n      :host ::ng-deep .form-inline .form-control-plaintext {\n        display: inline-block; }\n      :host ::ng-deep .form-inline .input-group,\n      :host ::ng-deep .form-inline .custom-select {\n        width: auto; }\n      :host ::ng-deep .form-inline .form-check {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        width: auto;\n        padding-left: 0; }\n      :host ::ng-deep .form-inline .form-check-input {\n        position: relative;\n        margin-top: 0;\n        margin-right: 0.25rem;\n        margin-left: 0; }\n      :host ::ng-deep .form-inline .custom-control {\n        align-items: center;\n        justify-content: center; }\n      :host ::ng-deep .form-inline .custom-control-label {\n        margin-bottom: 0; } }\n:host ::ng-deep .btn {\n    display: inline-block;\n    font-weight: 300;\n    text-align: center;\n    white-space: nowrap;\n    vertical-align: middle;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 1px solid transparent;\n    padding: 0.375rem 0.5rem;\n    font-size: 0.9375rem;\n    line-height: 1.5;\n    border-radius: 0;\n    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .btn {\n        transition: none; } }\n:host ::ng-deep .btn:hover, :host ::ng-deep .btn:focus {\n      text-decoration: none; }\n:host ::ng-deep .btn:focus, :host ::ng-deep .btn.focus {\n      outline: 0;\n      box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .btn.disabled, :host ::ng-deep .btn:disabled {\n      opacity: 0.65; }\n:host ::ng-deep .btn:not(:disabled):not(.disabled) {\n      cursor: pointer; }\n:host ::ng-deep a.btn.disabled,\n  :host ::ng-deep fieldset:disabled a.btn {\n    pointer-events: none; }\n:host ::ng-deep .btn-primary {\n    color: #fff;\n    background-color: #008cba;\n    border-color: #008cba; }\n:host ::ng-deep .btn-primary:hover {\n      color: #fff;\n      background-color: #006f94;\n      border-color: #006687; }\n:host ::ng-deep .btn-primary:focus, :host ::ng-deep .btn-primary.focus {\n      box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .btn-primary.disabled, :host ::ng-deep .btn-primary:disabled {\n      color: #fff;\n      background-color: #008cba;\n      border-color: #008cba; }\n:host ::ng-deep .btn-primary:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-primary:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-primary.dropdown-toggle {\n      color: #fff;\n      background-color: #006687;\n      border-color: #005c7a; }\n:host ::ng-deep .btn-primary:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-primary:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-primary.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .btn-secondary {\n    color: #222;\n    background-color: #eee;\n    border-color: #eee; }\n:host ::ng-deep .btn-secondary:hover {\n      color: #222;\n      background-color: #dbdbdb;\n      border-color: #d5d4d4; }\n:host ::ng-deep .btn-secondary:focus, :host ::ng-deep .btn-secondary.focus {\n      box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-secondary.disabled, :host ::ng-deep .btn-secondary:disabled {\n      color: #222;\n      background-color: #eee;\n      border-color: #eee; }\n:host ::ng-deep .btn-secondary:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-secondary:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-secondary.dropdown-toggle {\n      color: #222;\n      background-color: #d5d4d4;\n      border-color: #cecece; }\n:host ::ng-deep .btn-secondary:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-secondary:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-secondary.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-success {\n    color: #fff;\n    background-color: #43ac6a;\n    border-color: #43ac6a; }\n:host ::ng-deep .btn-success:hover {\n      color: #fff;\n      background-color: #389059;\n      border-color: #358753; }\n:host ::ng-deep .btn-success:focus, :host ::ng-deep .btn-success.focus {\n      box-shadow: 0 0 0 0.2rem rgba(67, 172, 106, 0.5); }\n:host ::ng-deep .btn-success.disabled, :host ::ng-deep .btn-success:disabled {\n      color: #fff;\n      background-color: #43ac6a;\n      border-color: #43ac6a; }\n:host ::ng-deep .btn-success:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-success:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-success.dropdown-toggle {\n      color: #fff;\n      background-color: #358753;\n      border-color: #317e4e; }\n:host ::ng-deep .btn-success:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-success:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-success.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(67, 172, 106, 0.5); }\n:host ::ng-deep .btn-info {\n    color: #fff;\n    background-color: #5bc0de;\n    border-color: #5bc0de; }\n:host ::ng-deep .btn-info:hover {\n      color: #fff;\n      background-color: #3bb4d8;\n      border-color: #31b0d5; }\n:host ::ng-deep .btn-info:focus, :host ::ng-deep .btn-info.focus {\n      box-shadow: 0 0 0 0.2rem rgba(91, 192, 222, 0.5); }\n:host ::ng-deep .btn-info.disabled, :host ::ng-deep .btn-info:disabled {\n      color: #fff;\n      background-color: #5bc0de;\n      border-color: #5bc0de; }\n:host ::ng-deep .btn-info:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-info:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-info.dropdown-toggle {\n      color: #fff;\n      background-color: #31b0d5;\n      border-color: #2aaacf; }\n:host ::ng-deep .btn-info:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-info:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-info.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(91, 192, 222, 0.5); }\n:host ::ng-deep .btn-warning {\n    color: #fff;\n    background-color: #E99002;\n    border-color: #E99002; }\n:host ::ng-deep .btn-warning:hover {\n      color: #fff;\n      background-color: #c37902;\n      border-color: #b67102; }\n:host ::ng-deep .btn-warning:focus, :host ::ng-deep .btn-warning.focus {\n      box-shadow: 0 0 0 0.2rem rgba(233, 144, 2, 0.5); }\n:host ::ng-deep .btn-warning.disabled, :host ::ng-deep .btn-warning:disabled {\n      color: #fff;\n      background-color: #E99002;\n      border-color: #E99002; }\n:host ::ng-deep .btn-warning:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-warning:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-warning.dropdown-toggle {\n      color: #fff;\n      background-color: #b67102;\n      border-color: #aa6901; }\n:host ::ng-deep .btn-warning:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-warning:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-warning.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(233, 144, 2, 0.5); }\n:host ::ng-deep .btn-danger {\n    color: #fff;\n    background-color: #F04124;\n    border-color: #F04124; }\n:host ::ng-deep .btn-danger:hover {\n      color: #fff;\n      background-color: #df2d0f;\n      border-color: #d32a0e; }\n:host ::ng-deep .btn-danger:focus, :host ::ng-deep .btn-danger.focus {\n      box-shadow: 0 0 0 0.2rem rgba(240, 65, 36, 0.5); }\n:host ::ng-deep .btn-danger.disabled, :host ::ng-deep .btn-danger:disabled {\n      color: #fff;\n      background-color: #F04124;\n      border-color: #F04124; }\n:host ::ng-deep .btn-danger:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-danger:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-danger.dropdown-toggle {\n      color: #fff;\n      background-color: #d32a0e;\n      border-color: #c7280e; }\n:host ::ng-deep .btn-danger:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-danger:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-danger.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(240, 65, 36, 0.5); }\n:host ::ng-deep .btn-light {\n    color: #222;\n    background-color: #eee;\n    border-color: #eee; }\n:host ::ng-deep .btn-light:hover {\n      color: #222;\n      background-color: #dbdbdb;\n      border-color: #d5d4d4; }\n:host ::ng-deep .btn-light:focus, :host ::ng-deep .btn-light.focus {\n      box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-light.disabled, :host ::ng-deep .btn-light:disabled {\n      color: #222;\n      background-color: #eee;\n      border-color: #eee; }\n:host ::ng-deep .btn-light:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-light:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-light.dropdown-toggle {\n      color: #222;\n      background-color: #d5d4d4;\n      border-color: #cecece; }\n:host ::ng-deep .btn-light:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-light:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-light.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-dark {\n    color: #fff;\n    background-color: #222;\n    border-color: #222; }\n:host ::ng-deep .btn-dark:hover {\n      color: #fff;\n      background-color: #0f0f0f;\n      border-color: #090909; }\n:host ::ng-deep .btn-dark:focus, :host ::ng-deep .btn-dark.focus {\n      box-shadow: 0 0 0 0.2rem rgba(34, 34, 34, 0.5); }\n:host ::ng-deep .btn-dark.disabled, :host ::ng-deep .btn-dark:disabled {\n      color: #fff;\n      background-color: #222;\n      border-color: #222; }\n:host ::ng-deep .btn-dark:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-dark:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-dark.dropdown-toggle {\n      color: #fff;\n      background-color: #090909;\n      border-color: #020202; }\n:host ::ng-deep .btn-dark:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-dark:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-dark.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(34, 34, 34, 0.5); }\n:host ::ng-deep .btn-outline-primary {\n    color: #008cba;\n    background-color: transparent;\n    background-image: none;\n    border-color: #008cba; }\n:host ::ng-deep .btn-outline-primary:hover {\n      color: #fff;\n      background-color: #008cba;\n      border-color: #008cba; }\n:host ::ng-deep .btn-outline-primary:focus, :host ::ng-deep .btn-outline-primary.focus {\n      box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .btn-outline-primary.disabled, :host ::ng-deep .btn-outline-primary:disabled {\n      color: #008cba;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-primary:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-primary:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-primary.dropdown-toggle {\n      color: #fff;\n      background-color: #008cba;\n      border-color: #008cba; }\n:host ::ng-deep .btn-outline-primary:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-primary:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-primary.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .btn-outline-secondary {\n    color: #eee;\n    background-color: transparent;\n    background-image: none;\n    border-color: #eee; }\n:host ::ng-deep .btn-outline-secondary:hover {\n      color: #222;\n      background-color: #eee;\n      border-color: #eee; }\n:host ::ng-deep .btn-outline-secondary:focus, :host ::ng-deep .btn-outline-secondary.focus {\n      box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-outline-secondary.disabled, :host ::ng-deep .btn-outline-secondary:disabled {\n      color: #eee;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-secondary:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-secondary:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-secondary.dropdown-toggle {\n      color: #222;\n      background-color: #eee;\n      border-color: #eee; }\n:host ::ng-deep .btn-outline-secondary:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-secondary.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-outline-success {\n    color: #43ac6a;\n    background-color: transparent;\n    background-image: none;\n    border-color: #43ac6a; }\n:host ::ng-deep .btn-outline-success:hover {\n      color: #fff;\n      background-color: #43ac6a;\n      border-color: #43ac6a; }\n:host ::ng-deep .btn-outline-success:focus, :host ::ng-deep .btn-outline-success.focus {\n      box-shadow: 0 0 0 0.2rem rgba(67, 172, 106, 0.5); }\n:host ::ng-deep .btn-outline-success.disabled, :host ::ng-deep .btn-outline-success:disabled {\n      color: #43ac6a;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-success:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-success:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-success.dropdown-toggle {\n      color: #fff;\n      background-color: #43ac6a;\n      border-color: #43ac6a; }\n:host ::ng-deep .btn-outline-success:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-success:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-success.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(67, 172, 106, 0.5); }\n:host ::ng-deep .btn-outline-info {\n    color: #5bc0de;\n    background-color: transparent;\n    background-image: none;\n    border-color: #5bc0de; }\n:host ::ng-deep .btn-outline-info:hover {\n      color: #fff;\n      background-color: #5bc0de;\n      border-color: #5bc0de; }\n:host ::ng-deep .btn-outline-info:focus, :host ::ng-deep .btn-outline-info.focus {\n      box-shadow: 0 0 0 0.2rem rgba(91, 192, 222, 0.5); }\n:host ::ng-deep .btn-outline-info.disabled, :host ::ng-deep .btn-outline-info:disabled {\n      color: #5bc0de;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-info:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-info:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-info.dropdown-toggle {\n      color: #fff;\n      background-color: #5bc0de;\n      border-color: #5bc0de; }\n:host ::ng-deep .btn-outline-info:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-info:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-info.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(91, 192, 222, 0.5); }\n:host ::ng-deep .btn-outline-warning {\n    color: #E99002;\n    background-color: transparent;\n    background-image: none;\n    border-color: #E99002; }\n:host ::ng-deep .btn-outline-warning:hover {\n      color: #fff;\n      background-color: #E99002;\n      border-color: #E99002; }\n:host ::ng-deep .btn-outline-warning:focus, :host ::ng-deep .btn-outline-warning.focus {\n      box-shadow: 0 0 0 0.2rem rgba(233, 144, 2, 0.5); }\n:host ::ng-deep .btn-outline-warning.disabled, :host ::ng-deep .btn-outline-warning:disabled {\n      color: #E99002;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-warning:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-warning:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-warning.dropdown-toggle {\n      color: #fff;\n      background-color: #E99002;\n      border-color: #E99002; }\n:host ::ng-deep .btn-outline-warning:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-warning:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-warning.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(233, 144, 2, 0.5); }\n:host ::ng-deep .btn-outline-danger {\n    color: #F04124;\n    background-color: transparent;\n    background-image: none;\n    border-color: #F04124; }\n:host ::ng-deep .btn-outline-danger:hover {\n      color: #fff;\n      background-color: #F04124;\n      border-color: #F04124; }\n:host ::ng-deep .btn-outline-danger:focus, :host ::ng-deep .btn-outline-danger.focus {\n      box-shadow: 0 0 0 0.2rem rgba(240, 65, 36, 0.5); }\n:host ::ng-deep .btn-outline-danger.disabled, :host ::ng-deep .btn-outline-danger:disabled {\n      color: #F04124;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-danger:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-danger:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-danger.dropdown-toggle {\n      color: #fff;\n      background-color: #F04124;\n      border-color: #F04124; }\n:host ::ng-deep .btn-outline-danger:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-danger:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-danger.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(240, 65, 36, 0.5); }\n:host ::ng-deep .btn-outline-light {\n    color: #eee;\n    background-color: transparent;\n    background-image: none;\n    border-color: #eee; }\n:host ::ng-deep .btn-outline-light:hover {\n      color: #222;\n      background-color: #eee;\n      border-color: #eee; }\n:host ::ng-deep .btn-outline-light:focus, :host ::ng-deep .btn-outline-light.focus {\n      box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-outline-light.disabled, :host ::ng-deep .btn-outline-light:disabled {\n      color: #eee;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-light:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-light:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-light.dropdown-toggle {\n      color: #222;\n      background-color: #eee;\n      border-color: #eee; }\n:host ::ng-deep .btn-outline-light:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-light:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-light.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }\n:host ::ng-deep .btn-outline-dark {\n    color: #222;\n    background-color: transparent;\n    background-image: none;\n    border-color: #222; }\n:host ::ng-deep .btn-outline-dark:hover {\n      color: #fff;\n      background-color: #222;\n      border-color: #222; }\n:host ::ng-deep .btn-outline-dark:focus, :host ::ng-deep .btn-outline-dark.focus {\n      box-shadow: 0 0 0 0.2rem rgba(34, 34, 34, 0.5); }\n:host ::ng-deep .btn-outline-dark.disabled, :host ::ng-deep .btn-outline-dark:disabled {\n      color: #222;\n      background-color: transparent; }\n:host ::ng-deep .btn-outline-dark:not(:disabled):not(.disabled):active, :host ::ng-deep .btn-outline-dark:not(:disabled):not(.disabled).active,\n    .show > :host ::ng-deep .btn-outline-dark.dropdown-toggle {\n      color: #fff;\n      background-color: #222;\n      border-color: #222; }\n:host ::ng-deep .btn-outline-dark:not(:disabled):not(.disabled):active:focus, :host ::ng-deep .btn-outline-dark:not(:disabled):not(.disabled).active:focus,\n      .show > :host ::ng-deep .btn-outline-dark.dropdown-toggle:focus {\n        box-shadow: 0 0 0 0.2rem rgba(34, 34, 34, 0.5); }\n:host ::ng-deep .btn-link {\n    font-weight: 400;\n    color: #008cba;\n    background-color: transparent; }\n:host ::ng-deep .btn-link:hover {\n      color: #00526e;\n      text-decoration: underline;\n      background-color: transparent;\n      border-color: transparent; }\n:host ::ng-deep .btn-link:focus, :host ::ng-deep .btn-link.focus {\n      text-decoration: underline;\n      border-color: transparent;\n      box-shadow: none; }\n:host ::ng-deep .btn-link:disabled, :host ::ng-deep .btn-link.disabled {\n      color: #888;\n      pointer-events: none; }\n:host ::ng-deep .btn-lg, :host ::ng-deep .btn-group-lg > .btn {\n    padding: 0.5rem 1rem;\n    font-size: 1.171875rem;\n    line-height: 1.5;\n    border-radius: 0; }\n:host ::ng-deep .btn-sm, :host ::ng-deep .btn-group-sm > .btn {\n    padding: 0.25rem 0.5rem;\n    font-size: 0.8203125rem;\n    line-height: 1.5;\n    border-radius: 0; }\n:host ::ng-deep .btn-block {\n    display: block;\n    width: 100%; }\n:host ::ng-deep .btn-block + .btn-block {\n      margin-top: 0.5rem; }\n:host ::ng-deep input[type=\"submit\"].btn-block,\n  :host ::ng-deep input[type=\"reset\"].btn-block,\n  :host ::ng-deep input[type=\"button\"].btn-block {\n    width: 100%; }\n:host ::ng-deep .fade {\n    transition: opacity 0.15s linear; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .fade {\n        transition: none; } }\n:host ::ng-deep .fade:not(.show) {\n      opacity: 0; }\n:host ::ng-deep .collapse:not(.show) {\n    display: none; }\n:host ::ng-deep .collapsing {\n    position: relative;\n    height: 0;\n    overflow: hidden;\n    transition: height 0.35s ease; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .collapsing {\n        transition: none; } }\n:host ::ng-deep .dropup,\n  :host ::ng-deep .dropright,\n  :host ::ng-deep .dropdown,\n  :host ::ng-deep .dropleft {\n    position: relative; }\n:host ::ng-deep .dropdown-toggle::after {\n    display: inline-block;\n    width: 0;\n    height: 0;\n    margin-left: 0.255em;\n    vertical-align: 0.255em;\n    content: \"\";\n    border-top: 0.3em solid;\n    border-right: 0.3em solid transparent;\n    border-bottom: 0;\n    border-left: 0.3em solid transparent; }\n:host ::ng-deep .dropdown-toggle:empty::after {\n    margin-left: 0; }\n:host ::ng-deep .dropdown-menu {\n    position: absolute;\n    top: 100%;\n    left: 0;\n    z-index: 1000;\n    display: none;\n    float: left;\n    min-width: 10rem;\n    padding: 0.5rem 0;\n    margin: 0.125rem 0 0;\n    font-size: 0.9375rem;\n    color: #222;\n    text-align: left;\n    list-style: none;\n    background-color: #fff;\n    background-clip: padding-box;\n    border: 1px solid rgba(0, 0, 0, 0.1);\n    border-radius: 0; }\n:host ::ng-deep .dropdown-menu-right {\n    right: 0;\n    left: auto; }\n:host ::ng-deep .dropup .dropdown-menu {\n    top: auto;\n    bottom: 100%;\n    margin-top: 0;\n    margin-bottom: 0.125rem; }\n:host ::ng-deep .dropup .dropdown-toggle::after {\n    display: inline-block;\n    width: 0;\n    height: 0;\n    margin-left: 0.255em;\n    vertical-align: 0.255em;\n    content: \"\";\n    border-top: 0;\n    border-right: 0.3em solid transparent;\n    border-bottom: 0.3em solid;\n    border-left: 0.3em solid transparent; }\n:host ::ng-deep .dropup .dropdown-toggle:empty::after {\n    margin-left: 0; }\n:host ::ng-deep .dropright .dropdown-menu {\n    top: 0;\n    right: auto;\n    left: 100%;\n    margin-top: 0;\n    margin-left: 0.125rem; }\n:host ::ng-deep .dropright .dropdown-toggle::after {\n    display: inline-block;\n    width: 0;\n    height: 0;\n    margin-left: 0.255em;\n    vertical-align: 0.255em;\n    content: \"\";\n    border-top: 0.3em solid transparent;\n    border-right: 0;\n    border-bottom: 0.3em solid transparent;\n    border-left: 0.3em solid; }\n:host ::ng-deep .dropright .dropdown-toggle:empty::after {\n    margin-left: 0; }\n:host ::ng-deep .dropright .dropdown-toggle::after {\n    vertical-align: 0; }\n:host ::ng-deep .dropleft .dropdown-menu {\n    top: 0;\n    right: 100%;\n    left: auto;\n    margin-top: 0;\n    margin-right: 0.125rem; }\n:host ::ng-deep .dropleft .dropdown-toggle::after {\n    display: inline-block;\n    width: 0;\n    height: 0;\n    margin-left: 0.255em;\n    vertical-align: 0.255em;\n    content: \"\"; }\n:host ::ng-deep .dropleft .dropdown-toggle::after {\n    display: none; }\n:host ::ng-deep .dropleft .dropdown-toggle::before {\n    display: inline-block;\n    width: 0;\n    height: 0;\n    margin-right: 0.255em;\n    vertical-align: 0.255em;\n    content: \"\";\n    border-top: 0.3em solid transparent;\n    border-right: 0.3em solid;\n    border-bottom: 0.3em solid transparent; }\n:host ::ng-deep .dropleft .dropdown-toggle:empty::after {\n    margin-left: 0; }\n:host ::ng-deep .dropleft .dropdown-toggle::before {\n    vertical-align: 0; }\n:host ::ng-deep .dropdown-menu[x-placement^=\"top\"], :host ::ng-deep .dropdown-menu[x-placement^=\"right\"], :host ::ng-deep .dropdown-menu[x-placement^=\"bottom\"], :host ::ng-deep .dropdown-menu[x-placement^=\"left\"] {\n    right: auto;\n    bottom: auto; }\n:host ::ng-deep .dropdown-divider {\n    height: 0;\n    margin: 0.5rem 0;\n    overflow: hidden;\n    border-top: 1px solid rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .dropdown-item {\n    display: block;\n    width: 100%;\n    padding: 0.25rem 1.5rem;\n    clear: both;\n    font-weight: 400;\n    color: #222;\n    text-align: inherit;\n    white-space: nowrap;\n    background-color: transparent;\n    border: 0; }\n:host ::ng-deep .dropdown-item:hover, :host ::ng-deep .dropdown-item:focus {\n      color: #151515;\n      text-decoration: none;\n      background-color: #f8f9fa; }\n:host ::ng-deep .dropdown-item.active, :host ::ng-deep .dropdown-item:active {\n      color: #fff;\n      text-decoration: none;\n      background-color: #008cba; }\n:host ::ng-deep .dropdown-item.disabled, :host ::ng-deep .dropdown-item:disabled {\n      color: #888;\n      background-color: transparent; }\n:host ::ng-deep .dropdown-menu.show {\n    display: block; }\n:host ::ng-deep .dropdown-header {\n    display: block;\n    padding: 0.5rem 1.5rem;\n    margin-bottom: 0;\n    font-size: 0.8203125rem;\n    color: #888;\n    white-space: nowrap; }\n:host ::ng-deep .dropdown-item-text {\n    display: block;\n    padding: 0.25rem 1.5rem;\n    color: #222; }\n:host ::ng-deep .btn-group,\n  :host ::ng-deep .btn-group-vertical {\n    position: relative;\n    display: inline-flex;\n    vertical-align: middle; }\n:host ::ng-deep .btn-group > .btn,\n    :host ::ng-deep .btn-group-vertical > .btn {\n      position: relative;\n      flex: 0 1 auto; }\n:host ::ng-deep .btn-group > .btn:hover,\n      :host ::ng-deep .btn-group-vertical > .btn:hover {\n        z-index: 1; }\n:host ::ng-deep .btn-group > .btn:focus, :host ::ng-deep .btn-group > .btn:active, :host ::ng-deep .btn-group > .btn.active,\n      :host ::ng-deep .btn-group-vertical > .btn:focus,\n      :host ::ng-deep .btn-group-vertical > .btn:active,\n      :host ::ng-deep .btn-group-vertical > .btn.active {\n        z-index: 1; }\n:host ::ng-deep .btn-group .btn + .btn,\n    :host ::ng-deep .btn-group .btn + .btn-group,\n    :host ::ng-deep .btn-group .btn-group + .btn,\n    :host ::ng-deep .btn-group .btn-group + .btn-group,\n    :host ::ng-deep .btn-group-vertical .btn + .btn,\n    :host ::ng-deep .btn-group-vertical .btn + .btn-group,\n    :host ::ng-deep .btn-group-vertical .btn-group + .btn,\n    :host ::ng-deep .btn-group-vertical .btn-group + .btn-group {\n      margin-left: -1px; }\n:host ::ng-deep .btn-toolbar {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: flex-start; }\n:host ::ng-deep .btn-toolbar .input-group {\n      width: auto; }\n:host ::ng-deep .btn-group > .btn:first-child {\n    margin-left: 0; }\n:host ::ng-deep .btn-group > .btn:not(:last-child):not(.dropdown-toggle),\n  :host ::ng-deep .btn-group > .btn-group:not(:last-child) > .btn {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0; }\n:host ::ng-deep .btn-group > .btn:not(:first-child),\n  :host ::ng-deep .btn-group > .btn-group:not(:first-child) > .btn {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .dropdown-toggle-split {\n    padding-right: 0.375rem;\n    padding-left: 0.375rem; }\n:host ::ng-deep .dropdown-toggle-split::after,\n    .dropup :host ::ng-deep .dropdown-toggle-split::after,\n    .dropright :host ::ng-deep .dropdown-toggle-split::after {\n      margin-left: 0; }\n.dropleft :host ::ng-deep .dropdown-toggle-split::before {\n      margin-right: 0; }\n:host ::ng-deep .btn-sm + .dropdown-toggle-split, :host ::ng-deep .btn-group-sm > .btn + .dropdown-toggle-split {\n    padding-right: 0.375rem;\n    padding-left: 0.375rem; }\n:host ::ng-deep .btn-lg + .dropdown-toggle-split, :host ::ng-deep .btn-group-lg > .btn + .dropdown-toggle-split {\n    padding-right: 0.75rem;\n    padding-left: 0.75rem; }\n:host ::ng-deep .btn-group-vertical {\n    flex-direction: column;\n    align-items: flex-start;\n    justify-content: center; }\n:host ::ng-deep .btn-group-vertical .btn,\n    :host ::ng-deep .btn-group-vertical .btn-group {\n      width: 100%; }\n:host ::ng-deep .btn-group-vertical > .btn + .btn,\n    :host ::ng-deep .btn-group-vertical > .btn + .btn-group,\n    :host ::ng-deep .btn-group-vertical > .btn-group + .btn,\n    :host ::ng-deep .btn-group-vertical > .btn-group + .btn-group {\n      margin-top: -1px;\n      margin-left: 0; }\n:host ::ng-deep .btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle),\n    :host ::ng-deep .btn-group-vertical > .btn-group:not(:last-child) > .btn {\n      border-bottom-right-radius: 0;\n      border-bottom-left-radius: 0; }\n:host ::ng-deep .btn-group-vertical > .btn:not(:first-child),\n    :host ::ng-deep .btn-group-vertical > .btn-group:not(:first-child) > .btn {\n      border-top-left-radius: 0;\n      border-top-right-radius: 0; }\n:host ::ng-deep .btn-group-toggle > .btn,\n  :host ::ng-deep .btn-group-toggle > .btn-group > .btn {\n    margin-bottom: 0; }\n:host ::ng-deep .btn-group-toggle > .btn input[type=\"radio\"],\n    :host ::ng-deep .btn-group-toggle > .btn input[type=\"checkbox\"],\n    :host ::ng-deep .btn-group-toggle > .btn-group > .btn input[type=\"radio\"],\n    :host ::ng-deep .btn-group-toggle > .btn-group > .btn input[type=\"checkbox\"] {\n      position: absolute;\n      clip: rect(0, 0, 0, 0);\n      pointer-events: none; }\n:host ::ng-deep .input-group {\n    position: relative;\n    display: flex;\n    flex-wrap: wrap;\n    align-items: stretch;\n    width: 100%; }\n:host ::ng-deep .input-group > .form-control,\n    :host ::ng-deep .input-group > .custom-select,\n    :host ::ng-deep .input-group > .custom-file {\n      position: relative;\n      flex: 1 1 auto;\n      width: 1%;\n      margin-bottom: 0; }\n:host ::ng-deep .input-group > .form-control + .form-control,\n      :host ::ng-deep .input-group > .form-control + .custom-select,\n      :host ::ng-deep .input-group > .form-control + .custom-file,\n      :host ::ng-deep .input-group > .custom-select + .form-control,\n      :host ::ng-deep .input-group > .custom-select + .custom-select,\n      :host ::ng-deep .input-group > .custom-select + .custom-file,\n      :host ::ng-deep .input-group > .custom-file + .form-control,\n      :host ::ng-deep .input-group > .custom-file + .custom-select,\n      :host ::ng-deep .input-group > .custom-file + .custom-file {\n        margin-left: -1px; }\n:host ::ng-deep .input-group > .form-control:focus,\n    :host ::ng-deep .input-group > .custom-select:focus,\n    :host ::ng-deep .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {\n      z-index: 3; }\n:host ::ng-deep .input-group > .custom-file .custom-file-input:focus {\n      z-index: 4; }\n:host ::ng-deep .input-group > .form-control:not(:last-child),\n    :host ::ng-deep .input-group > .custom-select:not(:last-child) {\n      border-top-right-radius: 0;\n      border-bottom-right-radius: 0; }\n:host ::ng-deep .input-group > .form-control:not(:first-child),\n    :host ::ng-deep .input-group > .custom-select:not(:first-child) {\n      border-top-left-radius: 0;\n      border-bottom-left-radius: 0; }\n:host ::ng-deep .input-group > .custom-file {\n      display: flex;\n      align-items: center; }\n:host ::ng-deep .input-group > .custom-file:not(:last-child) .custom-file-label,\n      :host ::ng-deep .input-group > .custom-file:not(:last-child) .custom-file-label::after {\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0; }\n:host ::ng-deep .input-group > .custom-file:not(:first-child) .custom-file-label {\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0; }\n:host ::ng-deep .input-group-prepend,\n  :host ::ng-deep .input-group-append {\n    display: flex; }\n:host ::ng-deep .input-group-prepend .btn,\n    :host ::ng-deep .input-group-append .btn {\n      position: relative;\n      z-index: 2; }\n:host ::ng-deep .input-group-prepend .btn + .btn,\n    :host ::ng-deep .input-group-prepend .btn + .input-group-text,\n    :host ::ng-deep .input-group-prepend .input-group-text + .input-group-text,\n    :host ::ng-deep .input-group-prepend .input-group-text + .btn,\n    :host ::ng-deep .input-group-append .btn + .btn,\n    :host ::ng-deep .input-group-append .btn + .input-group-text,\n    :host ::ng-deep .input-group-append .input-group-text + .input-group-text,\n    :host ::ng-deep .input-group-append .input-group-text + .btn {\n      margin-left: -1px; }\n:host ::ng-deep .input-group-prepend {\n    margin-right: -1px; }\n:host ::ng-deep .input-group-append {\n    margin-left: -1px; }\n:host ::ng-deep .input-group-text {\n    display: flex;\n    align-items: center;\n    padding: 0.375rem 0.5rem;\n    margin-bottom: 0;\n    font-size: 0.9375rem;\n    font-weight: 400;\n    line-height: 1.5;\n    color: #495057;\n    text-align: center;\n    white-space: nowrap;\n    background-color: #eee;\n    border: 1px solid #ccc;\n    border-radius: 0; }\n:host ::ng-deep .input-group-text input[type=\"radio\"],\n    :host ::ng-deep .input-group-text input[type=\"checkbox\"] {\n      margin-top: 0; }\n:host ::ng-deep .input-group-lg > .form-control,\n  :host ::ng-deep .input-group-lg > .input-group-prepend > .input-group-text,\n  :host ::ng-deep .input-group-lg > .input-group-append > .input-group-text,\n  :host ::ng-deep .input-group-lg > .input-group-prepend > .btn,\n  :host ::ng-deep .input-group-lg > .input-group-append > .btn {\n    height: calc(2.7578125rem + 2px);\n    padding: 0.5rem 1rem;\n    font-size: 1.171875rem;\n    line-height: 1.5;\n    border-radius: 0; }\n:host ::ng-deep .input-group-sm > .form-control,\n  :host ::ng-deep .input-group-sm > .input-group-prepend > .input-group-text,\n  :host ::ng-deep .input-group-sm > .input-group-append > .input-group-text,\n  :host ::ng-deep .input-group-sm > .input-group-prepend > .btn,\n  :host ::ng-deep .input-group-sm > .input-group-append > .btn {\n    height: calc(1.73046875rem + 2px);\n    padding: 0.25rem 0.5rem;\n    font-size: 0.8203125rem;\n    line-height: 1.5;\n    border-radius: 0; }\n:host ::ng-deep .input-group > .input-group-prepend > .btn,\n  :host ::ng-deep .input-group > .input-group-prepend > .input-group-text,\n  :host ::ng-deep .input-group > .input-group-append:not(:last-child) > .btn,\n  :host ::ng-deep .input-group > .input-group-append:not(:last-child) > .input-group-text,\n  :host ::ng-deep .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),\n  :host ::ng-deep .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0; }\n:host ::ng-deep .input-group > .input-group-append > .btn,\n  :host ::ng-deep .input-group > .input-group-append > .input-group-text,\n  :host ::ng-deep .input-group > .input-group-prepend:not(:first-child) > .btn,\n  :host ::ng-deep .input-group > .input-group-prepend:not(:first-child) > .input-group-text,\n  :host ::ng-deep .input-group > .input-group-prepend:first-child > .btn:not(:first-child),\n  :host ::ng-deep .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .custom-control {\n    position: relative;\n    display: block;\n    min-height: 1.40625rem;\n    padding-left: 1.5rem; }\n:host ::ng-deep .custom-control-inline {\n    display: inline-flex;\n    margin-right: 1rem; }\n:host ::ng-deep .custom-control-input {\n    position: absolute;\n    z-index: -1;\n    opacity: 0; }\n:host ::ng-deep .custom-control-input:checked ~ .custom-control-label::before {\n      color: #fff;\n      background-color: #008cba; }\n:host ::ng-deep .custom-control-input:focus ~ .custom-control-label::before {\n      box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .custom-control-input:active ~ .custom-control-label::before {\n      color: #fff;\n      background-color: #6edbff; }\n:host ::ng-deep .custom-control-input:disabled ~ .custom-control-label {\n      color: #888; }\n:host ::ng-deep .custom-control-input:disabled ~ .custom-control-label::before {\n        background-color: #eee; }\n:host ::ng-deep .custom-control-label {\n    position: relative;\n    margin-bottom: 0; }\n:host ::ng-deep .custom-control-label::before {\n      position: absolute;\n      top: 0.203125rem;\n      left: -1.5rem;\n      display: block;\n      width: 1rem;\n      height: 1rem;\n      pointer-events: none;\n      content: \"\";\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none;\n      background-color: #dee2e6; }\n:host ::ng-deep .custom-control-label::after {\n      position: absolute;\n      top: 0.203125rem;\n      left: -1.5rem;\n      display: block;\n      width: 1rem;\n      height: 1rem;\n      content: \"\";\n      background-repeat: no-repeat;\n      background-position: center center;\n      background-size: 50% 50%; }\n:host ::ng-deep .custom-checkbox .custom-control-label::before {\n    border-radius: 0; }\n:host ::ng-deep .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {\n    background-color: #008cba; }\n:host ::ng-deep .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {\n    background-color: #008cba; }\n:host ::ng-deep .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {\n    background-color: rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {\n    background-color: rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .custom-radio .custom-control-label::before {\n    border-radius: 50%; }\n:host ::ng-deep .custom-radio .custom-control-input:checked ~ .custom-control-label::before {\n    background-color: #008cba; }\n:host ::ng-deep .custom-radio .custom-control-input:checked ~ .custom-control-label::after {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {\n    background-color: rgba(0, 140, 186, 0.5); }\n:host ::ng-deep .custom-select {\n    display: inline-block;\n    width: 100%;\n    height: calc(2.15625rem + 2px);\n    padding: 0.375rem 1.75rem 0.375rem 0.75rem;\n    line-height: 1.5;\n    color: #495057;\n    vertical-align: middle;\n    background: #fff url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E\") no-repeat right 0.75rem center;\n    background-size: 8px 10px;\n    border: 1px solid #ccc;\n    border-radius: 0;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none; }\n:host ::ng-deep .custom-select:focus {\n      border-color: #3bceff;\n      outline: 0;\n      box-shadow: 0 0 0 0.2rem rgba(59, 206, 255, 0.5); }\n:host ::ng-deep .custom-select:focus::-ms-value {\n        color: #495057;\n        background-color: #fff; }\n:host ::ng-deep .custom-select[multiple], :host ::ng-deep .custom-select[size]:not([size=\"1\"]) {\n      height: auto;\n      padding-right: 0.75rem;\n      background-image: none; }\n:host ::ng-deep .custom-select:disabled {\n      color: #888;\n      background-color: #eee; }\n:host ::ng-deep .custom-select::-ms-expand {\n      opacity: 0; }\n:host ::ng-deep .custom-select-sm {\n    height: calc(1.73046875rem + 2px);\n    padding-top: 0.375rem;\n    padding-bottom: 0.375rem;\n    font-size: 75%; }\n:host ::ng-deep .custom-select-lg {\n    height: calc(2.7578125rem + 2px);\n    padding-top: 0.375rem;\n    padding-bottom: 0.375rem;\n    font-size: 125%; }\n:host ::ng-deep .custom-file {\n    position: relative;\n    display: inline-block;\n    width: 100%;\n    height: calc(2.15625rem + 2px);\n    margin-bottom: 0; }\n:host ::ng-deep .custom-file-input {\n    position: relative;\n    z-index: 2;\n    width: 100%;\n    height: calc(2.15625rem + 2px);\n    margin: 0;\n    opacity: 0; }\n:host ::ng-deep .custom-file-input:focus ~ .custom-file-label {\n      border-color: #3bceff;\n      box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .custom-file-input:focus ~ .custom-file-label::after {\n        border-color: #3bceff; }\n:host ::ng-deep .custom-file-input:disabled ~ .custom-file-label {\n      background-color: #eee; }\n:host ::ng-deep .custom-file-input:lang(en) ~ .custom-file-label::after {\n      content: \"Browse\"; }\n:host ::ng-deep .custom-file-label {\n    position: absolute;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 1;\n    height: calc(2.15625rem + 2px);\n    padding: 0.375rem 0.5rem;\n    line-height: 1.5;\n    color: #495057;\n    background-color: #fff;\n    border: 1px solid #ccc;\n    border-radius: 0; }\n:host ::ng-deep .custom-file-label::after {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      z-index: 3;\n      display: block;\n      height: 2.15625rem;\n      padding: 0.375rem 0.5rem;\n      line-height: 1.5;\n      color: #495057;\n      content: \"Browse\";\n      background-color: #eee;\n      border-left: 1px solid #ccc;\n      border-radius: 0 0 0 0; }\n:host ::ng-deep .custom-range {\n    width: 100%;\n    padding-left: 0;\n    background-color: transparent;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none; }\n:host ::ng-deep .custom-range:focus {\n      outline: none; }\n:host ::ng-deep .custom-range:focus::-webkit-slider-thumb {\n        box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .custom-range:focus::-moz-range-thumb {\n        box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .custom-range:focus::-ms-thumb {\n        box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .custom-range::-moz-focus-outer {\n      border: 0; }\n:host ::ng-deep .custom-range::-webkit-slider-thumb {\n      width: 1rem;\n      height: 1rem;\n      margin-top: -0.25rem;\n      background-color: #008cba;\n      border: 0;\n      border-radius: 1rem;\n      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n      -webkit-appearance: none;\n              appearance: none; }\n@media screen and (prefers-reduced-motion: reduce) {\n        :host ::ng-deep .custom-range::-webkit-slider-thumb {\n          transition: none; } }\n:host ::ng-deep .custom-range::-webkit-slider-thumb:active {\n        background-color: #6edbff; }\n:host ::ng-deep .custom-range::-webkit-slider-runnable-track {\n      width: 100%;\n      height: 0.5rem;\n      color: transparent;\n      cursor: pointer;\n      background-color: #dee2e6;\n      border-color: transparent;\n      border-radius: 1rem; }\n:host ::ng-deep .custom-range::-moz-range-thumb {\n      width: 1rem;\n      height: 1rem;\n      background-color: #008cba;\n      border: 0;\n      border-radius: 1rem;\n      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n      -moz-appearance: none;\n           appearance: none; }\n@media screen and (prefers-reduced-motion: reduce) {\n        :host ::ng-deep .custom-range::-moz-range-thumb {\n          transition: none; } }\n:host ::ng-deep .custom-range::-moz-range-thumb:active {\n        background-color: #6edbff; }\n:host ::ng-deep .custom-range::-moz-range-track {\n      width: 100%;\n      height: 0.5rem;\n      color: transparent;\n      cursor: pointer;\n      background-color: #dee2e6;\n      border-color: transparent;\n      border-radius: 1rem; }\n:host ::ng-deep .custom-range::-ms-thumb {\n      width: 1rem;\n      height: 1rem;\n      margin-top: 0;\n      margin-right: 0.2rem;\n      margin-left: 0.2rem;\n      background-color: #008cba;\n      border: 0;\n      border-radius: 1rem;\n      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n      appearance: none; }\n@media screen and (prefers-reduced-motion: reduce) {\n        :host ::ng-deep .custom-range::-ms-thumb {\n          transition: none; } }\n:host ::ng-deep .custom-range::-ms-thumb:active {\n        background-color: #6edbff; }\n:host ::ng-deep .custom-range::-ms-track {\n      width: 100%;\n      height: 0.5rem;\n      color: transparent;\n      cursor: pointer;\n      background-color: transparent;\n      border-color: transparent;\n      border-width: 0.5rem; }\n:host ::ng-deep .custom-range::-ms-fill-lower {\n      background-color: #dee2e6;\n      border-radius: 1rem; }\n:host ::ng-deep .custom-range::-ms-fill-upper {\n      margin-right: 15px;\n      background-color: #dee2e6;\n      border-radius: 1rem; }\n:host ::ng-deep .custom-control-label::before,\n  :host ::ng-deep .custom-file-label,\n  :host ::ng-deep .custom-select {\n    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .custom-control-label::before,\n      :host ::ng-deep .custom-file-label,\n      :host ::ng-deep .custom-select {\n        transition: none; } }\n:host ::ng-deep .nav {\n    display: flex;\n    flex-wrap: wrap;\n    padding-left: 0;\n    margin-bottom: 0;\n    list-style: none; }\n:host ::ng-deep .nav-link {\n    display: block;\n    padding: 0.5rem 1rem; }\n:host ::ng-deep .nav-link:hover, :host ::ng-deep .nav-link:focus {\n      text-decoration: none; }\n:host ::ng-deep .nav-link.disabled {\n      color: #ccc; }\n:host ::ng-deep .nav-tabs {\n    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .nav-tabs .nav-item {\n      margin-bottom: -1px; }\n:host ::ng-deep .nav-tabs .nav-link {\n      border: 1px solid transparent;\n      border-top-left-radius: 0;\n      border-top-right-radius: 0; }\n:host ::ng-deep .nav-tabs .nav-link:hover, :host ::ng-deep .nav-tabs .nav-link:focus {\n        border-color: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .nav-tabs .nav-link.disabled {\n        color: #ccc;\n        background-color: transparent;\n        border-color: transparent; }\n:host ::ng-deep .nav-tabs .nav-link.active,\n    :host ::ng-deep .nav-tabs .nav-item.show .nav-link {\n      color: #495057;\n      background-color: #fff;\n      border-color: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .nav-tabs .dropdown-menu {\n      margin-top: -1px;\n      border-top-left-radius: 0;\n      border-top-right-radius: 0; }\n:host ::ng-deep .nav-pills .nav-link {\n    border-radius: 0; }\n:host ::ng-deep .nav-pills .nav-link.active,\n  :host ::ng-deep .nav-pills .show > .nav-link {\n    color: #fff;\n    background-color: #008cba; }\n:host ::ng-deep .nav-fill .nav-item {\n    flex: 1 1 auto;\n    text-align: center; }\n:host ::ng-deep .nav-justified .nav-item {\n    flex-basis: 0;\n    flex-grow: 1;\n    text-align: center; }\n:host ::ng-deep .tab-content > .tab-pane {\n    display: none; }\n:host ::ng-deep .tab-content > .active {\n    display: block; }\n:host ::ng-deep .navbar {\n    position: relative;\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0.5rem 1rem; }\n:host ::ng-deep .navbar > .container,\n    :host ::ng-deep .navbar > .container-fluid {\n      display: flex;\n      flex-wrap: wrap;\n      align-items: center;\n      justify-content: space-between; }\n:host ::ng-deep .navbar-brand {\n    display: inline-block;\n    padding-top: 0.32421875rem;\n    padding-bottom: 0.32421875rem;\n    margin-right: 1rem;\n    font-size: 1.171875rem;\n    line-height: inherit;\n    white-space: nowrap; }\n:host ::ng-deep .navbar-brand:hover, :host ::ng-deep .navbar-brand:focus {\n      text-decoration: none; }\n:host ::ng-deep .navbar-nav {\n    display: flex;\n    flex-direction: column;\n    padding-left: 0;\n    margin-bottom: 0;\n    list-style: none; }\n:host ::ng-deep .navbar-nav .nav-link {\n      padding-right: 0;\n      padding-left: 0; }\n:host ::ng-deep .navbar-nav .dropdown-menu {\n      position: static;\n      float: none; }\n:host ::ng-deep .navbar-text {\n    display: inline-block;\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem; }\n:host ::ng-deep .navbar-collapse {\n    flex-basis: 100%;\n    flex-grow: 1;\n    align-items: center; }\n:host ::ng-deep .navbar-toggler {\n    padding: 0.25rem 0.75rem;\n    font-size: 1.171875rem;\n    line-height: 1;\n    background-color: transparent;\n    border: 1px solid transparent;\n    border-radius: 0; }\n:host ::ng-deep .navbar-toggler:hover, :host ::ng-deep .navbar-toggler:focus {\n      text-decoration: none; }\n:host ::ng-deep .navbar-toggler:not(:disabled):not(.disabled) {\n      cursor: pointer; }\n:host ::ng-deep .navbar-toggler-icon {\n    display: inline-block;\n    width: 1.5em;\n    height: 1.5em;\n    vertical-align: middle;\n    content: \"\";\n    background: no-repeat center center;\n    background-size: 100% 100%; }\n@media (max-width: 575.98px) {\n    :host ::ng-deep .navbar-expand-sm > .container,\n    :host ::ng-deep .navbar-expand-sm > .container-fluid {\n      padding-right: 0;\n      padding-left: 0; } }\n@media (min-width: 576px) {\n    :host ::ng-deep .navbar-expand-sm {\n      flex-flow: row nowrap;\n      justify-content: flex-start; }\n      :host ::ng-deep .navbar-expand-sm .navbar-nav {\n        flex-direction: row; }\n        :host ::ng-deep .navbar-expand-sm .navbar-nav .dropdown-menu {\n          position: absolute; }\n        :host ::ng-deep .navbar-expand-sm .navbar-nav .nav-link {\n          padding-right: 0.5rem;\n          padding-left: 0.5rem; }\n      :host ::ng-deep .navbar-expand-sm > .container,\n      :host ::ng-deep .navbar-expand-sm > .container-fluid {\n        flex-wrap: nowrap; }\n      :host ::ng-deep .navbar-expand-sm .navbar-collapse {\n        display: flex !important;\n        flex-basis: auto; }\n      :host ::ng-deep .navbar-expand-sm .navbar-toggler {\n        display: none; } }\n@media (max-width: 767.98px) {\n    :host ::ng-deep .navbar-expand-md > .container,\n    :host ::ng-deep .navbar-expand-md > .container-fluid {\n      padding-right: 0;\n      padding-left: 0; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .navbar-expand-md {\n      flex-flow: row nowrap;\n      justify-content: flex-start; }\n      :host ::ng-deep .navbar-expand-md .navbar-nav {\n        flex-direction: row; }\n        :host ::ng-deep .navbar-expand-md .navbar-nav .dropdown-menu {\n          position: absolute; }\n        :host ::ng-deep .navbar-expand-md .navbar-nav .nav-link {\n          padding-right: 0.5rem;\n          padding-left: 0.5rem; }\n      :host ::ng-deep .navbar-expand-md > .container,\n      :host ::ng-deep .navbar-expand-md > .container-fluid {\n        flex-wrap: nowrap; }\n      :host ::ng-deep .navbar-expand-md .navbar-collapse {\n        display: flex !important;\n        flex-basis: auto; }\n      :host ::ng-deep .navbar-expand-md .navbar-toggler {\n        display: none; } }\n@media (max-width: 991.98px) {\n    :host ::ng-deep .navbar-expand-lg > .container,\n    :host ::ng-deep .navbar-expand-lg > .container-fluid {\n      padding-right: 0;\n      padding-left: 0; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .navbar-expand-lg {\n      flex-flow: row nowrap;\n      justify-content: flex-start; }\n      :host ::ng-deep .navbar-expand-lg .navbar-nav {\n        flex-direction: row; }\n        :host ::ng-deep .navbar-expand-lg .navbar-nav .dropdown-menu {\n          position: absolute; }\n        :host ::ng-deep .navbar-expand-lg .navbar-nav .nav-link {\n          padding-right: 0.5rem;\n          padding-left: 0.5rem; }\n      :host ::ng-deep .navbar-expand-lg > .container,\n      :host ::ng-deep .navbar-expand-lg > .container-fluid {\n        flex-wrap: nowrap; }\n      :host ::ng-deep .navbar-expand-lg .navbar-collapse {\n        display: flex !important;\n        flex-basis: auto; }\n      :host ::ng-deep .navbar-expand-lg .navbar-toggler {\n        display: none; } }\n@media (max-width: 1199.98px) {\n    :host ::ng-deep .navbar-expand-xl > .container,\n    :host ::ng-deep .navbar-expand-xl > .container-fluid {\n      padding-right: 0;\n      padding-left: 0; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .navbar-expand-xl {\n      flex-flow: row nowrap;\n      justify-content: flex-start; }\n      :host ::ng-deep .navbar-expand-xl .navbar-nav {\n        flex-direction: row; }\n        :host ::ng-deep .navbar-expand-xl .navbar-nav .dropdown-menu {\n          position: absolute; }\n        :host ::ng-deep .navbar-expand-xl .navbar-nav .nav-link {\n          padding-right: 0.5rem;\n          padding-left: 0.5rem; }\n      :host ::ng-deep .navbar-expand-xl > .container,\n      :host ::ng-deep .navbar-expand-xl > .container-fluid {\n        flex-wrap: nowrap; }\n      :host ::ng-deep .navbar-expand-xl .navbar-collapse {\n        display: flex !important;\n        flex-basis: auto; }\n      :host ::ng-deep .navbar-expand-xl .navbar-toggler {\n        display: none; } }\n:host ::ng-deep .navbar-expand {\n    flex-flow: row nowrap;\n    justify-content: flex-start; }\n:host ::ng-deep .navbar-expand > .container,\n    :host ::ng-deep .navbar-expand > .container-fluid {\n      padding-right: 0;\n      padding-left: 0; }\n:host ::ng-deep .navbar-expand .navbar-nav {\n      flex-direction: row; }\n:host ::ng-deep .navbar-expand .navbar-nav .dropdown-menu {\n        position: absolute; }\n:host ::ng-deep .navbar-expand .navbar-nav .nav-link {\n        padding-right: 0.5rem;\n        padding-left: 0.5rem; }\n:host ::ng-deep .navbar-expand > .container,\n    :host ::ng-deep .navbar-expand > .container-fluid {\n      flex-wrap: nowrap; }\n:host ::ng-deep .navbar-expand .navbar-collapse {\n      display: flex !important;\n      flex-basis: auto; }\n:host ::ng-deep .navbar-expand .navbar-toggler {\n      display: none; }\n:host ::ng-deep .navbar-light .navbar-brand {\n    color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .navbar-light .navbar-brand:hover, :host ::ng-deep .navbar-light .navbar-brand:focus {\n      color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .navbar-light .navbar-nav .nav-link {\n    color: rgba(0, 0, 0, 0.5); }\n:host ::ng-deep .navbar-light .navbar-nav .nav-link:hover, :host ::ng-deep .navbar-light .navbar-nav .nav-link:focus {\n      color: rgba(0, 0, 0, 0.7); }\n:host ::ng-deep .navbar-light .navbar-nav .nav-link.disabled {\n      color: rgba(0, 0, 0, 0.3); }\n:host ::ng-deep .navbar-light .navbar-nav .show > .nav-link,\n  :host ::ng-deep .navbar-light .navbar-nav .active > .nav-link,\n  :host ::ng-deep .navbar-light .navbar-nav .nav-link.show,\n  :host ::ng-deep .navbar-light .navbar-nav .nav-link.active {\n    color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .navbar-light .navbar-toggler {\n    color: rgba(0, 0, 0, 0.5);\n    border-color: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .navbar-light .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .navbar-light .navbar-text {\n    color: rgba(0, 0, 0, 0.5); }\n:host ::ng-deep .navbar-light .navbar-text a {\n      color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .navbar-light .navbar-text a:hover, :host ::ng-deep .navbar-light .navbar-text a:focus {\n        color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .navbar-dark .navbar-brand {\n    color: #fff; }\n:host ::ng-deep .navbar-dark .navbar-brand:hover, :host ::ng-deep .navbar-dark .navbar-brand:focus {\n      color: #fff; }\n:host ::ng-deep .navbar-dark .navbar-nav .nav-link {\n    color: rgba(255, 255, 255, 0.7); }\n:host ::ng-deep .navbar-dark .navbar-nav .nav-link:hover, :host ::ng-deep .navbar-dark .navbar-nav .nav-link:focus {\n      color: #fff; }\n:host ::ng-deep .navbar-dark .navbar-nav .nav-link.disabled {\n      color: rgba(255, 255, 255, 0.25); }\n:host ::ng-deep .navbar-dark .navbar-nav .show > .nav-link,\n  :host ::ng-deep .navbar-dark .navbar-nav .active > .nav-link,\n  :host ::ng-deep .navbar-dark .navbar-nav .nav-link.show,\n  :host ::ng-deep .navbar-dark .navbar-nav .nav-link.active {\n    color: #fff; }\n:host ::ng-deep .navbar-dark .navbar-toggler {\n    color: rgba(255, 255, 255, 0.7);\n    border-color: rgba(255, 255, 255, 0.1); }\n:host ::ng-deep .navbar-dark .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .navbar-dark .navbar-text {\n    color: rgba(255, 255, 255, 0.7); }\n:host ::ng-deep .navbar-dark .navbar-text a {\n      color: #fff; }\n:host ::ng-deep .navbar-dark .navbar-text a:hover, :host ::ng-deep .navbar-dark .navbar-text a:focus {\n        color: #fff; }\n:host ::ng-deep .card {\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    min-width: 0;\n    word-wrap: break-word;\n    background-color: #fff;\n    background-clip: border-box;\n    border: 1px solid rgba(0, 0, 0, 0.125);\n    border-radius: 0; }\n:host ::ng-deep .card > hr {\n      margin-right: 0;\n      margin-left: 0; }\n:host ::ng-deep .card > .list-group:first-child .list-group-item:first-child {\n      border-top-left-radius: 0;\n      border-top-right-radius: 0; }\n:host ::ng-deep .card > .list-group:last-child .list-group-item:last-child {\n      border-bottom-right-radius: 0;\n      border-bottom-left-radius: 0; }\n:host ::ng-deep .card-body {\n    flex: 1 1 auto;\n    padding: 1.25rem; }\n:host ::ng-deep .card-title {\n    margin-bottom: 0.75rem; }\n:host ::ng-deep .card-subtitle {\n    margin-top: -0.375rem;\n    margin-bottom: 0; }\n:host ::ng-deep .card-text:last-child {\n    margin-bottom: 0; }\n:host ::ng-deep .card-link:hover {\n    text-decoration: none; }\n:host ::ng-deep .card-link + .card-link {\n    margin-left: 1.25rem; }\n:host ::ng-deep .card-header {\n    padding: 0.75rem 1.25rem;\n    margin-bottom: 0;\n    background-color: rgba(0, 0, 0, 0.03);\n    border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n:host ::ng-deep .card-header:first-child {\n      border-radius: calc(0 - 1px) calc(0 - 1px) 0 0; }\n:host ::ng-deep .card-header + .list-group .list-group-item:first-child {\n      border-top: 0; }\n:host ::ng-deep .card-footer {\n    padding: 0.75rem 1.25rem;\n    background-color: rgba(0, 0, 0, 0.03);\n    border-top: 1px solid rgba(0, 0, 0, 0.125); }\n:host ::ng-deep .card-footer:last-child {\n      border-radius: 0 0 calc(0 - 1px) calc(0 - 1px); }\n:host ::ng-deep .card-header-tabs {\n    margin-right: -0.625rem;\n    margin-bottom: -0.75rem;\n    margin-left: -0.625rem;\n    border-bottom: 0; }\n:host ::ng-deep .card-header-pills {\n    margin-right: -0.625rem;\n    margin-left: -0.625rem; }\n:host ::ng-deep .card-img-overlay {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 1.25rem; }\n:host ::ng-deep .card-img {\n    width: 100%;\n    border-radius: calc(0 - 1px); }\n:host ::ng-deep .card-img-top {\n    width: 100%;\n    border-top-left-radius: calc(0 - 1px);\n    border-top-right-radius: calc(0 - 1px); }\n:host ::ng-deep .card-img-bottom {\n    width: 100%;\n    border-bottom-right-radius: calc(0 - 1px);\n    border-bottom-left-radius: calc(0 - 1px); }\n:host ::ng-deep .card-deck {\n    display: flex;\n    flex-direction: column; }\n:host ::ng-deep .card-deck .card {\n      margin-bottom: 15px; }\n@media (min-width: 576px) {\n      :host ::ng-deep .card-deck {\n        flex-flow: row wrap;\n        margin-right: -15px;\n        margin-left: -15px; }\n        :host ::ng-deep .card-deck .card {\n          display: flex;\n          flex: 1 0 0%;\n          flex-direction: column;\n          margin-right: 15px;\n          margin-bottom: 0;\n          margin-left: 15px; } }\n:host ::ng-deep .card-group {\n    display: flex;\n    flex-direction: column; }\n:host ::ng-deep .card-group > .card {\n      margin-bottom: 15px; }\n@media (min-width: 576px) {\n      :host ::ng-deep .card-group {\n        flex-flow: row wrap; }\n        :host ::ng-deep .card-group > .card {\n          flex: 1 0 0%;\n          margin-bottom: 0; }\n          :host ::ng-deep .card-group > .card + .card {\n            margin-left: 0;\n            border-left: 0; }\n          :host ::ng-deep .card-group > .card:first-child {\n            border-top-right-radius: 0;\n            border-bottom-right-radius: 0; }\n            :host ::ng-deep .card-group > .card:first-child .card-img-top,\n            :host ::ng-deep .card-group > .card:first-child .card-header {\n              border-top-right-radius: 0; }\n            :host ::ng-deep .card-group > .card:first-child .card-img-bottom,\n            :host ::ng-deep .card-group > .card:first-child .card-footer {\n              border-bottom-right-radius: 0; }\n          :host ::ng-deep .card-group > .card:last-child {\n            border-top-left-radius: 0;\n            border-bottom-left-radius: 0; }\n            :host ::ng-deep .card-group > .card:last-child .card-img-top,\n            :host ::ng-deep .card-group > .card:last-child .card-header {\n              border-top-left-radius: 0; }\n            :host ::ng-deep .card-group > .card:last-child .card-img-bottom,\n            :host ::ng-deep .card-group > .card:last-child .card-footer {\n              border-bottom-left-radius: 0; }\n          :host ::ng-deep .card-group > .card:only-child {\n            border-radius: 0; }\n            :host ::ng-deep .card-group > .card:only-child .card-img-top,\n            :host ::ng-deep .card-group > .card:only-child .card-header {\n              border-top-left-radius: 0;\n              border-top-right-radius: 0; }\n            :host ::ng-deep .card-group > .card:only-child .card-img-bottom,\n            :host ::ng-deep .card-group > .card:only-child .card-footer {\n              border-bottom-right-radius: 0;\n              border-bottom-left-radius: 0; }\n          :host ::ng-deep .card-group > .card:not(:first-child):not(:last-child):not(:only-child) {\n            border-radius: 0; }\n            :host ::ng-deep .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-img-top,\n            :host ::ng-deep .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-img-bottom,\n            :host ::ng-deep .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-header,\n            :host ::ng-deep .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-footer {\n              border-radius: 0; } }\n:host ::ng-deep .card-columns .card {\n    margin-bottom: 0.75rem; }\n@media (min-width: 576px) {\n    :host ::ng-deep .card-columns {\n      -webkit-column-count: 3;\n              column-count: 3;\n      -webkit-column-gap: 1.25rem;\n              column-gap: 1.25rem;\n      orphans: 1;\n      widows: 1; }\n      :host ::ng-deep .card-columns .card {\n        display: inline-block;\n        width: 100%; } }\n:host ::ng-deep .accordion .card:not(:first-of-type):not(:last-of-type) {\n    border-bottom: 0;\n    border-radius: 0; }\n:host ::ng-deep .accordion .card:not(:first-of-type) .card-header:first-child {\n    border-radius: 0; }\n:host ::ng-deep .accordion .card:first-of-type {\n    border-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .accordion .card:last-of-type {\n    border-top-left-radius: 0;\n    border-top-right-radius: 0; }\n:host ::ng-deep .breadcrumb {\n    display: flex;\n    flex-wrap: wrap;\n    padding: 0.75rem 1rem;\n    margin-bottom: 1rem;\n    list-style: none;\n    background-color: #eee;\n    border-radius: 0; }\n:host ::ng-deep .breadcrumb-item + .breadcrumb-item {\n    padding-left: 0.5rem; }\n:host ::ng-deep .breadcrumb-item + .breadcrumb-item::before {\n      display: inline-block;\n      padding-right: 0.5rem;\n      color: #888;\n      content: \"/\"; }\n:host ::ng-deep .breadcrumb-item + .breadcrumb-item:hover::before {\n    text-decoration: underline; }\n:host ::ng-deep .breadcrumb-item + .breadcrumb-item:hover::before {\n    text-decoration: none; }\n:host ::ng-deep .breadcrumb-item.active {\n    color: #888; }\n:host ::ng-deep .pagination {\n    display: flex;\n    padding-left: 0;\n    list-style: none;\n    border-radius: 0; }\n:host ::ng-deep .page-link {\n    position: relative;\n    display: block;\n    padding: 0.5rem 0.75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #888;\n    background-color: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .page-link:hover {\n      z-index: 2;\n      color: #00526e;\n      text-decoration: none;\n      background-color: #eee;\n      border-color: #dee2e6; }\n:host ::ng-deep .page-link:focus {\n      z-index: 2;\n      outline: 0;\n      box-shadow: 0 0 0 0.2rem rgba(0, 140, 186, 0.25); }\n:host ::ng-deep .page-link:not(:disabled):not(.disabled) {\n      cursor: pointer; }\n:host ::ng-deep .page-item:first-child .page-link {\n    margin-left: 0;\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .page-item:last-child .page-link {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0; }\n:host ::ng-deep .page-item.active .page-link {\n    z-index: 1;\n    color: #fff;\n    background-color: #008cba;\n    border-color: #0079a1; }\n:host ::ng-deep .page-item.disabled .page-link {\n    color: #eee;\n    pointer-events: none;\n    cursor: auto;\n    background-color: #fff;\n    border-color: #dee2e6; }\n:host ::ng-deep .pagination-lg .page-link {\n    padding: 0.75rem 1.5rem;\n    font-size: 1.171875rem;\n    line-height: 1.5; }\n:host ::ng-deep .pagination-lg .page-item:first-child .page-link {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .pagination-lg .page-item:last-child .page-link {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0; }\n:host ::ng-deep .pagination-sm .page-link {\n    padding: 0.25rem 0.5rem;\n    font-size: 0.8203125rem;\n    line-height: 1.5; }\n:host ::ng-deep .pagination-sm .page-item:first-child .page-link {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .pagination-sm .page-item:last-child .page-link {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0; }\n:host ::ng-deep .badge {\n    display: inline-block;\n    padding: 0.25em 1rem;\n    font-size: 75%;\n    font-weight: 300;\n    line-height: 1;\n    text-align: center;\n    white-space: nowrap;\n    vertical-align: baseline;\n    border-radius: 0; }\n:host ::ng-deep .badge:empty {\n      display: none; }\n:host ::ng-deep .btn .badge {\n    position: relative;\n    top: -1px; }\n:host ::ng-deep .badge-pill {\n    padding-right: 0.6em;\n    padding-left: 0.6em;\n    border-radius: 10rem; }\n:host ::ng-deep .badge-primary {\n    color: #fff;\n    background-color: #008cba; }\n:host ::ng-deep .badge-primary[href]:hover, :host ::ng-deep .badge-primary[href]:focus {\n      color: #fff;\n      text-decoration: none;\n      background-color: #006687; }\n:host ::ng-deep .badge-secondary {\n    color: #222;\n    background-color: #eee; }\n:host ::ng-deep .badge-secondary[href]:hover, :host ::ng-deep .badge-secondary[href]:focus {\n      color: #222;\n      text-decoration: none;\n      background-color: #d5d4d4; }\n:host ::ng-deep .badge-success {\n    color: #fff;\n    background-color: #43ac6a; }\n:host ::ng-deep .badge-success[href]:hover, :host ::ng-deep .badge-success[href]:focus {\n      color: #fff;\n      text-decoration: none;\n      background-color: #358753; }\n:host ::ng-deep .badge-info {\n    color: #fff;\n    background-color: #5bc0de; }\n:host ::ng-deep .badge-info[href]:hover, :host ::ng-deep .badge-info[href]:focus {\n      color: #fff;\n      text-decoration: none;\n      background-color: #31b0d5; }\n:host ::ng-deep .badge-warning {\n    color: #fff;\n    background-color: #E99002; }\n:host ::ng-deep .badge-warning[href]:hover, :host ::ng-deep .badge-warning[href]:focus {\n      color: #fff;\n      text-decoration: none;\n      background-color: #b67102; }\n:host ::ng-deep .badge-danger {\n    color: #fff;\n    background-color: #F04124; }\n:host ::ng-deep .badge-danger[href]:hover, :host ::ng-deep .badge-danger[href]:focus {\n      color: #fff;\n      text-decoration: none;\n      background-color: #d32a0e; }\n:host ::ng-deep .badge-light {\n    color: #222;\n    background-color: #eee; }\n:host ::ng-deep .badge-light[href]:hover, :host ::ng-deep .badge-light[href]:focus {\n      color: #222;\n      text-decoration: none;\n      background-color: #d5d4d4; }\n:host ::ng-deep .badge-dark {\n    color: #fff;\n    background-color: #222; }\n:host ::ng-deep .badge-dark[href]:hover, :host ::ng-deep .badge-dark[href]:focus {\n      color: #fff;\n      text-decoration: none;\n      background-color: #090909; }\n:host ::ng-deep .jumbotron {\n    padding: 4rem 2rem;\n    margin-bottom: 4rem;\n    background-color: #eee;\n    border-radius: 0; }\n@media (min-width: 576px) {\n      :host ::ng-deep .jumbotron {\n        padding: 8rem 4rem; } }\n:host ::ng-deep .jumbotron-fluid {\n    padding-right: 0;\n    padding-left: 0;\n    border-radius: 0; }\n:host ::ng-deep .alert {\n    position: relative;\n    padding: 0.75rem 1.25rem;\n    margin-bottom: 1rem;\n    border: 1px solid transparent;\n    border-radius: 0; }\n:host ::ng-deep .alert-heading {\n    color: inherit; }\n:host ::ng-deep .alert-link {\n    font-weight: 700; }\n:host ::ng-deep .alert-dismissible {\n    padding-right: 3.90625rem; }\n:host ::ng-deep .alert-dismissible .close {\n      position: absolute;\n      top: 0;\n      right: 0;\n      padding: 0.75rem 1.25rem;\n      color: inherit; }\n:host ::ng-deep .alert-primary {\n    color: #004961;\n    background-color: #cce8f1;\n    border-color: #b8dfec; }\n:host ::ng-deep .alert-primary hr {\n      border-top-color: #a4d6e7; }\n:host ::ng-deep .alert-primary .alert-link {\n      color: #00232e; }\n:host ::ng-deep .alert-secondary {\n    color: #7c7c7c;\n    background-color: #fcfcfc;\n    border-color: #fafafa; }\n:host ::ng-deep .alert-secondary hr {\n      border-top-color: #ededed; }\n:host ::ng-deep .alert-secondary .alert-link {\n      color: #636262; }\n:host ::ng-deep .alert-success {\n    color: #235937;\n    background-color: #d9eee1;\n    border-color: #cae8d5; }\n:host ::ng-deep .alert-success hr {\n      border-top-color: #b8e0c7; }\n:host ::ng-deep .alert-success .alert-link {\n      color: #153420; }\n:host ::ng-deep .alert-info {\n    color: #2f6473;\n    background-color: #def2f8;\n    border-color: #d1edf6; }\n:host ::ng-deep .alert-info hr {\n      border-top-color: #bce5f2; }\n:host ::ng-deep .alert-info .alert-link {\n      color: #20454f; }\n:host ::ng-deep .alert-warning {\n    color: #794b01;\n    background-color: #fbe9cc;\n    border-color: #f9e0b8; }\n:host ::ng-deep .alert-warning hr {\n      border-top-color: #f7d6a0; }\n:host ::ng-deep .alert-warning .alert-link {\n      color: #462c01; }\n:host ::ng-deep .alert-danger {\n    color: #7d2213;\n    background-color: #fcd9d3;\n    border-color: #fbcac2; }\n:host ::ng-deep .alert-danger hr {\n      border-top-color: #f9b5aa; }\n:host ::ng-deep .alert-danger .alert-link {\n      color: #51160c; }\n:host ::ng-deep .alert-light {\n    color: #7c7c7c;\n    background-color: #fcfcfc;\n    border-color: #fafafa; }\n:host ::ng-deep .alert-light hr {\n      border-top-color: #ededed; }\n:host ::ng-deep .alert-light .alert-link {\n      color: #636262; }\n:host ::ng-deep .alert-dark {\n    color: #121212;\n    background-color: lightgray;\n    border-color: #c1c1c1; }\n:host ::ng-deep .alert-dark hr {\n      border-top-color: #b4b4b4; }\n:host ::ng-deep .alert-dark .alert-link {\n      color: black; }\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 1rem 0; }\n  to {\n    background-position: 0 0; } }\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 1rem 0; }\n  to {\n    background-position: 0 0; } }\n:host ::ng-deep .progress {\n    display: flex;\n    height: 1rem;\n    overflow: hidden;\n    font-size: 0.703125rem;\n    background-color: #f6f6f6;\n    border-radius: 0; }\n:host ::ng-deep .progress-bar {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: #008cba;\n    text-align: center;\n    white-space: nowrap;\n    background-color: #008cba;\n    transition: width 0.6s ease; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .progress-bar {\n        transition: none; } }\n:host ::ng-deep .progress-bar-striped {\n    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n    background-size: 1rem 1rem; }\n:host ::ng-deep .progress-bar-animated {\n    -webkit-animation: progress-bar-stripes 1s linear infinite;\n            animation: progress-bar-stripes 1s linear infinite; }\n:host ::ng-deep .media {\n    display: flex;\n    align-items: flex-start; }\n:host ::ng-deep .media-body {\n    flex: 1; }\n:host ::ng-deep .list-group {\n    display: flex;\n    flex-direction: column;\n    padding-left: 0;\n    margin-bottom: 0; }\n:host ::ng-deep .list-group-item-action {\n    width: 100%;\n    color: #495057;\n    text-align: inherit; }\n:host ::ng-deep .list-group-item-action:hover, :host ::ng-deep .list-group-item-action:focus {\n      color: #495057;\n      text-decoration: none;\n      background-color: #f8f9fa; }\n:host ::ng-deep .list-group-item-action:active {\n      color: #222;\n      background-color: #eee; }\n:host ::ng-deep .list-group-item {\n    position: relative;\n    display: block;\n    padding: 0.75rem 1.25rem;\n    margin-bottom: -1px;\n    background-color: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.125); }\n:host ::ng-deep .list-group-item:first-child {\n      border-top-left-radius: 0;\n      border-top-right-radius: 0; }\n:host ::ng-deep .list-group-item:last-child {\n      margin-bottom: 0;\n      border-bottom-right-radius: 0;\n      border-bottom-left-radius: 0; }\n:host ::ng-deep .list-group-item:hover, :host ::ng-deep .list-group-item:focus {\n      z-index: 1;\n      text-decoration: none; }\n:host ::ng-deep .list-group-item.disabled, :host ::ng-deep .list-group-item:disabled {\n      color: #888;\n      background-color: #eee; }\n:host ::ng-deep .list-group-item.active {\n      z-index: 2;\n      color: #fff;\n      background-color: #008cba;\n      border-color: #008cba; }\n:host ::ng-deep .list-group-flush .list-group-item {\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0; }\n:host ::ng-deep .list-group-flush:first-child .list-group-item:first-child {\n    border-top: 0; }\n:host ::ng-deep .list-group-flush:last-child .list-group-item:last-child {\n    border-bottom: 0; }\n:host ::ng-deep .list-group-item-primary {\n    color: #004961;\n    background-color: #b8dfec; }\n:host ::ng-deep .list-group-item-primary.list-group-item-action:hover, :host ::ng-deep .list-group-item-primary.list-group-item-action:focus {\n      color: #004961;\n      background-color: #a4d6e7; }\n:host ::ng-deep .list-group-item-primary.list-group-item-action.active {\n      color: #fff;\n      background-color: #004961;\n      border-color: #004961; }\n:host ::ng-deep .list-group-item-secondary {\n    color: #7c7c7c;\n    background-color: #fafafa; }\n:host ::ng-deep .list-group-item-secondary.list-group-item-action:hover, :host ::ng-deep .list-group-item-secondary.list-group-item-action:focus {\n      color: #7c7c7c;\n      background-color: #ededed; }\n:host ::ng-deep .list-group-item-secondary.list-group-item-action.active {\n      color: #fff;\n      background-color: #7c7c7c;\n      border-color: #7c7c7c; }\n:host ::ng-deep .list-group-item-success {\n    color: #235937;\n    background-color: #cae8d5; }\n:host ::ng-deep .list-group-item-success.list-group-item-action:hover, :host ::ng-deep .list-group-item-success.list-group-item-action:focus {\n      color: #235937;\n      background-color: #b8e0c7; }\n:host ::ng-deep .list-group-item-success.list-group-item-action.active {\n      color: #fff;\n      background-color: #235937;\n      border-color: #235937; }\n:host ::ng-deep .list-group-item-info {\n    color: #2f6473;\n    background-color: #d1edf6; }\n:host ::ng-deep .list-group-item-info.list-group-item-action:hover, :host ::ng-deep .list-group-item-info.list-group-item-action:focus {\n      color: #2f6473;\n      background-color: #bce5f2; }\n:host ::ng-deep .list-group-item-info.list-group-item-action.active {\n      color: #fff;\n      background-color: #2f6473;\n      border-color: #2f6473; }\n:host ::ng-deep .list-group-item-warning {\n    color: #794b01;\n    background-color: #f9e0b8; }\n:host ::ng-deep .list-group-item-warning.list-group-item-action:hover, :host ::ng-deep .list-group-item-warning.list-group-item-action:focus {\n      color: #794b01;\n      background-color: #f7d6a0; }\n:host ::ng-deep .list-group-item-warning.list-group-item-action.active {\n      color: #fff;\n      background-color: #794b01;\n      border-color: #794b01; }\n:host ::ng-deep .list-group-item-danger {\n    color: #7d2213;\n    background-color: #fbcac2; }\n:host ::ng-deep .list-group-item-danger.list-group-item-action:hover, :host ::ng-deep .list-group-item-danger.list-group-item-action:focus {\n      color: #7d2213;\n      background-color: #f9b5aa; }\n:host ::ng-deep .list-group-item-danger.list-group-item-action.active {\n      color: #fff;\n      background-color: #7d2213;\n      border-color: #7d2213; }\n:host ::ng-deep .list-group-item-light {\n    color: #7c7c7c;\n    background-color: #fafafa; }\n:host ::ng-deep .list-group-item-light.list-group-item-action:hover, :host ::ng-deep .list-group-item-light.list-group-item-action:focus {\n      color: #7c7c7c;\n      background-color: #ededed; }\n:host ::ng-deep .list-group-item-light.list-group-item-action.active {\n      color: #fff;\n      background-color: #7c7c7c;\n      border-color: #7c7c7c; }\n:host ::ng-deep .list-group-item-dark {\n    color: #121212;\n    background-color: #c1c1c1; }\n:host ::ng-deep .list-group-item-dark.list-group-item-action:hover, :host ::ng-deep .list-group-item-dark.list-group-item-action:focus {\n      color: #121212;\n      background-color: #b4b4b4; }\n:host ::ng-deep .list-group-item-dark.list-group-item-action.active {\n      color: #fff;\n      background-color: #121212;\n      border-color: #121212; }\n:host ::ng-deep .close {\n    float: right;\n    font-size: 1.40625rem;\n    font-weight: 700;\n    line-height: 1;\n    color: #888;\n    text-shadow: none;\n    opacity: .5; }\n:host ::ng-deep .close:not(:disabled):not(.disabled) {\n      cursor: pointer; }\n:host ::ng-deep .close:not(:disabled):not(.disabled):hover, :host ::ng-deep .close:not(:disabled):not(.disabled):focus {\n        color: #888;\n        text-decoration: none;\n        opacity: .75; }\n:host ::ng-deep button.close {\n    padding: 0;\n    background-color: transparent;\n    border: 0;\n    -webkit-appearance: none; }\n:host ::ng-deep .modal-open {\n    overflow: hidden; }\n:host ::ng-deep .modal-open .modal {\n      overflow-x: hidden;\n      overflow-y: auto; }\n:host ::ng-deep .modal {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 1050;\n    display: none;\n    overflow: hidden;\n    outline: 0; }\n:host ::ng-deep .modal-dialog {\n    position: relative;\n    width: auto;\n    margin: 0.5rem;\n    pointer-events: none; }\n.modal.fade :host ::ng-deep .modal-dialog {\n      transition: -webkit-transform 0.3s ease-out;\n      transition: transform 0.3s ease-out;\n      transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;\n      -webkit-transform: translate(0, -25%);\n              transform: translate(0, -25%); }\n@media screen and (prefers-reduced-motion: reduce) {\n        .modal.fade :host ::ng-deep .modal-dialog {\n          transition: none; } }\n.modal.show :host ::ng-deep .modal-dialog {\n      -webkit-transform: translate(0, 0);\n              transform: translate(0, 0); }\n:host ::ng-deep .modal-dialog-centered {\n    display: flex;\n    align-items: center;\n    min-height: calc(100% - (0.5rem * 2)); }\n:host ::ng-deep .modal-dialog-centered::before {\n      display: block;\n      height: calc(100vh - (0.5rem * 2));\n      content: \"\"; }\n:host ::ng-deep .modal-content {\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    pointer-events: auto;\n    background-color: #fff;\n    background-clip: padding-box;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 0;\n    outline: 0; }\n:host ::ng-deep .modal-backdrop {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 1040;\n    background-color: #000; }\n:host ::ng-deep .modal-backdrop.fade {\n      opacity: 0; }\n:host ::ng-deep .modal-backdrop.show {\n      opacity: 0.5; }\n:host ::ng-deep .modal-header {\n    display: flex;\n    align-items: flex-start;\n    justify-content: space-between;\n    padding: 1rem;\n    border-bottom: 1px solid #eee;\n    border-top-left-radius: 0;\n    border-top-right-radius: 0; }\n:host ::ng-deep .modal-header .close {\n      padding: 1rem;\n      margin: -1rem -1rem -1rem auto; }\n:host ::ng-deep .modal-title {\n    margin-bottom: 0;\n    line-height: 1.5; }\n:host ::ng-deep .modal-body {\n    position: relative;\n    flex: 1 1 auto;\n    padding: 1rem; }\n:host ::ng-deep .modal-footer {\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    padding: 1rem;\n    border-top: 1px solid #eee; }\n:host ::ng-deep .modal-footer > :not(:first-child) {\n      margin-left: .25rem; }\n:host ::ng-deep .modal-footer > :not(:last-child) {\n      margin-right: .25rem; }\n:host ::ng-deep .modal-scrollbar-measure {\n    position: absolute;\n    top: -9999px;\n    width: 50px;\n    height: 50px;\n    overflow: scroll; }\n@media (min-width: 576px) {\n    :host ::ng-deep .modal-dialog {\n      max-width: 500px;\n      margin: 1.75rem auto; }\n    :host ::ng-deep .modal-dialog-centered {\n      min-height: calc(100% - (1.75rem * 2)); }\n      :host ::ng-deep .modal-dialog-centered::before {\n        height: calc(100vh - (1.75rem * 2)); }\n    :host ::ng-deep .modal-sm {\n      max-width: 300px; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .modal-lg {\n      max-width: 800px; } }\n:host ::ng-deep .tooltip {\n    position: absolute;\n    z-index: 1070;\n    display: block;\n    margin: 0;\n    font-family: \"Open Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n    font-style: normal;\n    font-weight: 400;\n    line-height: 1.5;\n    text-align: left;\n    text-align: start;\n    text-decoration: none;\n    text-shadow: none;\n    text-transform: none;\n    letter-spacing: normal;\n    word-break: normal;\n    word-spacing: normal;\n    white-space: normal;\n    line-break: auto;\n    font-size: 0.8203125rem;\n    word-wrap: break-word;\n    opacity: 0; }\n:host ::ng-deep .tooltip.show {\n      opacity: 0.9; }\n:host ::ng-deep .tooltip .arrow {\n      position: absolute;\n      display: block;\n      width: 0.8rem;\n      height: 0.4rem; }\n:host ::ng-deep .tooltip .arrow::before {\n        position: absolute;\n        content: \"\";\n        border-color: transparent;\n        border-style: solid; }\n:host ::ng-deep .bs-tooltip-top, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"top\"] {\n    padding: 0.4rem 0; }\n:host ::ng-deep .bs-tooltip-top .arrow, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"top\"] .arrow {\n      bottom: 0; }\n:host ::ng-deep .bs-tooltip-top .arrow::before, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"top\"] .arrow::before {\n        top: 0;\n        border-width: 0.4rem 0.4rem 0;\n        border-top-color: #000; }\n:host ::ng-deep .bs-tooltip-right, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"right\"] {\n    padding: 0 0.4rem; }\n:host ::ng-deep .bs-tooltip-right .arrow, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"right\"] .arrow {\n      left: 0;\n      width: 0.4rem;\n      height: 0.8rem; }\n:host ::ng-deep .bs-tooltip-right .arrow::before, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"right\"] .arrow::before {\n        right: 0;\n        border-width: 0.4rem 0.4rem 0.4rem 0;\n        border-right-color: #000; }\n:host ::ng-deep .bs-tooltip-bottom, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"bottom\"] {\n    padding: 0.4rem 0; }\n:host ::ng-deep .bs-tooltip-bottom .arrow, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"bottom\"] .arrow {\n      top: 0; }\n:host ::ng-deep .bs-tooltip-bottom .arrow::before, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"bottom\"] .arrow::before {\n        bottom: 0;\n        border-width: 0 0.4rem 0.4rem;\n        border-bottom-color: #000; }\n:host ::ng-deep .bs-tooltip-left, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"left\"] {\n    padding: 0 0.4rem; }\n:host ::ng-deep .bs-tooltip-left .arrow, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"left\"] .arrow {\n      right: 0;\n      width: 0.4rem;\n      height: 0.8rem; }\n:host ::ng-deep .bs-tooltip-left .arrow::before, :host ::ng-deep .bs-tooltip-auto[x-placement^=\"left\"] .arrow::before {\n        left: 0;\n        border-width: 0.4rem 0 0.4rem 0.4rem;\n        border-left-color: #000; }\n:host ::ng-deep .tooltip-inner {\n    max-width: 200px;\n    padding: 0.25rem 0.5rem;\n    color: #fff;\n    text-align: center;\n    background-color: #000;\n    border-radius: 0; }\n:host ::ng-deep .popover {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1060;\n    display: block;\n    max-width: 276px;\n    font-family: \"Open Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n    font-style: normal;\n    font-weight: 400;\n    line-height: 1.5;\n    text-align: left;\n    text-align: start;\n    text-decoration: none;\n    text-shadow: none;\n    text-transform: none;\n    letter-spacing: normal;\n    word-break: normal;\n    word-spacing: normal;\n    white-space: normal;\n    line-break: auto;\n    font-size: 0.8203125rem;\n    word-wrap: break-word;\n    background-color: #fff;\n    background-clip: padding-box;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 0; }\n:host ::ng-deep .popover .arrow {\n      position: absolute;\n      display: block;\n      width: 1rem;\n      height: 0.5rem;\n      margin: 0 0; }\n:host ::ng-deep .popover .arrow::before, :host ::ng-deep .popover .arrow::after {\n        position: absolute;\n        display: block;\n        content: \"\";\n        border-color: transparent;\n        border-style: solid; }\n:host ::ng-deep .bs-popover-top, :host ::ng-deep .bs-popover-auto[x-placement^=\"top\"] {\n    margin-bottom: 0.5rem; }\n:host ::ng-deep .bs-popover-top .arrow, :host ::ng-deep .bs-popover-auto[x-placement^=\"top\"] .arrow {\n      bottom: calc((0.5rem + 1px) * -1); }\n:host ::ng-deep .bs-popover-top .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"top\"] .arrow::before,\n    :host ::ng-deep .bs-popover-top .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"top\"] .arrow::after {\n      border-width: 0.5rem 0.5rem 0; }\n:host ::ng-deep .bs-popover-top .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"top\"] .arrow::before {\n      bottom: 0;\n      border-top-color: rgba(0, 0, 0, 0.25); }\n:host ::ng-deep .bs-popover-top .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"top\"] .arrow::after {\n      bottom: 1px;\n      border-top-color: #fff; }\n:host ::ng-deep .bs-popover-right, :host ::ng-deep .bs-popover-auto[x-placement^=\"right\"] {\n    margin-left: 0.5rem; }\n:host ::ng-deep .bs-popover-right .arrow, :host ::ng-deep .bs-popover-auto[x-placement^=\"right\"] .arrow {\n      left: calc((0.5rem + 1px) * -1);\n      width: 0.5rem;\n      height: 1rem;\n      margin: 0 0; }\n:host ::ng-deep .bs-popover-right .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"right\"] .arrow::before,\n    :host ::ng-deep .bs-popover-right .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"right\"] .arrow::after {\n      border-width: 0.5rem 0.5rem 0.5rem 0; }\n:host ::ng-deep .bs-popover-right .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"right\"] .arrow::before {\n      left: 0;\n      border-right-color: rgba(0, 0, 0, 0.25); }\n:host ::ng-deep .bs-popover-right .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"right\"] .arrow::after {\n      left: 1px;\n      border-right-color: #fff; }\n:host ::ng-deep .bs-popover-bottom, :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] {\n    margin-top: 0.5rem; }\n:host ::ng-deep .bs-popover-bottom .arrow, :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] .arrow {\n      top: calc((0.5rem + 1px) * -1); }\n:host ::ng-deep .bs-popover-bottom .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] .arrow::before,\n    :host ::ng-deep .bs-popover-bottom .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] .arrow::after {\n      border-width: 0 0.5rem 0.5rem 0.5rem; }\n:host ::ng-deep .bs-popover-bottom .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] .arrow::before {\n      top: 0;\n      border-bottom-color: rgba(0, 0, 0, 0.25); }\n:host ::ng-deep .bs-popover-bottom .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] .arrow::after {\n      top: 1px;\n      border-bottom-color: #fff; }\n:host ::ng-deep .bs-popover-bottom .popover-header::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"bottom\"] .popover-header::before {\n      position: absolute;\n      top: 0;\n      left: 50%;\n      display: block;\n      width: 1rem;\n      margin-left: -0.5rem;\n      content: \"\";\n      border-bottom: 1px solid #f7f7f7; }\n:host ::ng-deep .bs-popover-left, :host ::ng-deep .bs-popover-auto[x-placement^=\"left\"] {\n    margin-right: 0.5rem; }\n:host ::ng-deep .bs-popover-left .arrow, :host ::ng-deep .bs-popover-auto[x-placement^=\"left\"] .arrow {\n      right: calc((0.5rem + 1px) * -1);\n      width: 0.5rem;\n      height: 1rem;\n      margin: 0 0; }\n:host ::ng-deep .bs-popover-left .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"left\"] .arrow::before,\n    :host ::ng-deep .bs-popover-left .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"left\"] .arrow::after {\n      border-width: 0.5rem 0 0.5rem 0.5rem; }\n:host ::ng-deep .bs-popover-left .arrow::before, :host ::ng-deep .bs-popover-auto[x-placement^=\"left\"] .arrow::before {\n      right: 0;\n      border-left-color: rgba(0, 0, 0, 0.25); }\n:host ::ng-deep .bs-popover-left .arrow::after,\n    :host ::ng-deep .bs-popover-auto[x-placement^=\"left\"] .arrow::after {\n      right: 1px;\n      border-left-color: #fff; }\n:host ::ng-deep .popover-header {\n    padding: 0.5rem 0.75rem;\n    margin-bottom: 0;\n    font-size: 0.9375rem;\n    color: inherit;\n    background-color: #f7f7f7;\n    border-bottom: 1px solid #ebebeb;\n    border-top-left-radius: calc(0 - 1px);\n    border-top-right-radius: calc(0 - 1px); }\n:host ::ng-deep .popover-header:empty {\n      display: none; }\n:host ::ng-deep .popover-body {\n    padding: 0.5rem 0.75rem;\n    color: #222; }\n:host ::ng-deep .carousel {\n    position: relative; }\n:host ::ng-deep .carousel-inner {\n    position: relative;\n    width: 100%;\n    overflow: hidden; }\n:host ::ng-deep .carousel-item {\n    position: relative;\n    display: none;\n    align-items: center;\n    width: 100%;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    -webkit-perspective: 1000px;\n            perspective: 1000px; }\n:host ::ng-deep .carousel-item.active,\n  :host ::ng-deep .carousel-item-next,\n  :host ::ng-deep .carousel-item-prev {\n    display: block;\n    transition: -webkit-transform 0.6s ease;\n    transition: transform 0.6s ease;\n    transition: transform 0.6s ease, -webkit-transform 0.6s ease; }\n@media screen and (prefers-reduced-motion: reduce) {\n      :host ::ng-deep .carousel-item.active,\n      :host ::ng-deep .carousel-item-next,\n      :host ::ng-deep .carousel-item-prev {\n        transition: none; } }\n:host ::ng-deep .carousel-item-next,\n  :host ::ng-deep .carousel-item-prev {\n    position: absolute;\n    top: 0; }\n:host ::ng-deep .carousel-item-next.carousel-item-left,\n  :host ::ng-deep .carousel-item-prev.carousel-item-right {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {\n      :host ::ng-deep .carousel-item-next.carousel-item-left,\n      :host ::ng-deep .carousel-item-prev.carousel-item-right {\n        -webkit-transform: translate3d(0, 0, 0);\n                transform: translate3d(0, 0, 0); } }\n:host ::ng-deep .carousel-item-next,\n  :host ::ng-deep .active.carousel-item-right {\n    -webkit-transform: translateX(100%);\n            transform: translateX(100%); }\n@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {\n      :host ::ng-deep .carousel-item-next,\n      :host ::ng-deep .active.carousel-item-right {\n        -webkit-transform: translate3d(100%, 0, 0);\n                transform: translate3d(100%, 0, 0); } }\n:host ::ng-deep .carousel-item-prev,\n  :host ::ng-deep .active.carousel-item-left {\n    -webkit-transform: translateX(-100%);\n            transform: translateX(-100%); }\n@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {\n      :host ::ng-deep .carousel-item-prev,\n      :host ::ng-deep .active.carousel-item-left {\n        -webkit-transform: translate3d(-100%, 0, 0);\n                transform: translate3d(-100%, 0, 0); } }\n:host ::ng-deep .carousel-fade .carousel-item {\n    opacity: 0;\n    transition-duration: .6s;\n    transition-property: opacity; }\n:host ::ng-deep .carousel-fade .carousel-item.active,\n  :host ::ng-deep .carousel-fade .carousel-item-next.carousel-item-left,\n  :host ::ng-deep .carousel-fade .carousel-item-prev.carousel-item-right {\n    opacity: 1; }\n:host ::ng-deep .carousel-fade .active.carousel-item-left,\n  :host ::ng-deep .carousel-fade .active.carousel-item-right {\n    opacity: 0; }\n:host ::ng-deep .carousel-fade .carousel-item-next,\n  :host ::ng-deep .carousel-fade .carousel-item-prev,\n  :host ::ng-deep .carousel-fade .carousel-item.active,\n  :host ::ng-deep .carousel-fade .active.carousel-item-left,\n  :host ::ng-deep .carousel-fade .active.carousel-item-prev {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {\n      :host ::ng-deep .carousel-fade .carousel-item-next,\n      :host ::ng-deep .carousel-fade .carousel-item-prev,\n      :host ::ng-deep .carousel-fade .carousel-item.active,\n      :host ::ng-deep .carousel-fade .active.carousel-item-left,\n      :host ::ng-deep .carousel-fade .active.carousel-item-prev {\n        -webkit-transform: translate3d(0, 0, 0);\n                transform: translate3d(0, 0, 0); } }\n:host ::ng-deep .carousel-control-prev,\n  :host ::ng-deep .carousel-control-next {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 15%;\n    color: #fff;\n    text-align: center;\n    opacity: 0.5; }\n:host ::ng-deep .carousel-control-prev:hover, :host ::ng-deep .carousel-control-prev:focus,\n    :host ::ng-deep .carousel-control-next:hover,\n    :host ::ng-deep .carousel-control-next:focus {\n      color: #fff;\n      text-decoration: none;\n      outline: 0;\n      opacity: .9; }\n:host ::ng-deep .carousel-control-prev {\n    left: 0; }\n:host ::ng-deep .carousel-control-next {\n    right: 0; }\n:host ::ng-deep .carousel-control-prev-icon,\n  :host ::ng-deep .carousel-control-next-icon {\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    background: transparent no-repeat center center;\n    background-size: 100% 100%; }\n:host ::ng-deep .carousel-control-prev-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .carousel-control-next-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E\"); }\n:host ::ng-deep .carousel-indicators {\n    position: absolute;\n    right: 0;\n    bottom: 10px;\n    left: 0;\n    z-index: 15;\n    display: flex;\n    justify-content: center;\n    padding-left: 0;\n    margin-right: 15%;\n    margin-left: 15%;\n    list-style: none; }\n:host ::ng-deep .carousel-indicators li {\n      position: relative;\n      flex: 0 1 auto;\n      width: 30px;\n      height: 3px;\n      margin-right: 3px;\n      margin-left: 3px;\n      text-indent: -999px;\n      cursor: pointer;\n      background-color: rgba(255, 255, 255, 0.5); }\n:host ::ng-deep .carousel-indicators li::before {\n        position: absolute;\n        top: -10px;\n        left: 0;\n        display: inline-block;\n        width: 100%;\n        height: 10px;\n        content: \"\"; }\n:host ::ng-deep .carousel-indicators li::after {\n        position: absolute;\n        bottom: -10px;\n        left: 0;\n        display: inline-block;\n        width: 100%;\n        height: 10px;\n        content: \"\"; }\n:host ::ng-deep .carousel-indicators .active {\n      background-color: #fff; }\n:host ::ng-deep .carousel-caption {\n    position: absolute;\n    right: 15%;\n    bottom: 20px;\n    left: 15%;\n    z-index: 10;\n    padding-top: 20px;\n    padding-bottom: 20px;\n    color: #fff;\n    text-align: center; }\n:host ::ng-deep .align-baseline {\n    vertical-align: baseline !important; }\n:host ::ng-deep .align-top {\n    vertical-align: top !important; }\n:host ::ng-deep .align-middle {\n    vertical-align: middle !important; }\n:host ::ng-deep .align-bottom {\n    vertical-align: bottom !important; }\n:host ::ng-deep .align-text-bottom {\n    vertical-align: text-bottom !important; }\n:host ::ng-deep .align-text-top {\n    vertical-align: text-top !important; }\n:host ::ng-deep .bg-primary {\n    background-color: #008cba !important; }\n:host ::ng-deep a.bg-primary:hover, :host ::ng-deep a.bg-primary:focus,\n  :host ::ng-deep button.bg-primary:hover,\n  :host ::ng-deep button.bg-primary:focus {\n    background-color: #006687 !important; }\n:host ::ng-deep .bg-secondary {\n    background-color: #eee !important; }\n:host ::ng-deep a.bg-secondary:hover, :host ::ng-deep a.bg-secondary:focus,\n  :host ::ng-deep button.bg-secondary:hover,\n  :host ::ng-deep button.bg-secondary:focus {\n    background-color: #d5d4d4 !important; }\n:host ::ng-deep .bg-success {\n    background-color: #43ac6a !important; }\n:host ::ng-deep a.bg-success:hover, :host ::ng-deep a.bg-success:focus,\n  :host ::ng-deep button.bg-success:hover,\n  :host ::ng-deep button.bg-success:focus {\n    background-color: #358753 !important; }\n:host ::ng-deep .bg-info {\n    background-color: #5bc0de !important; }\n:host ::ng-deep a.bg-info:hover, :host ::ng-deep a.bg-info:focus,\n  :host ::ng-deep button.bg-info:hover,\n  :host ::ng-deep button.bg-info:focus {\n    background-color: #31b0d5 !important; }\n:host ::ng-deep .bg-warning {\n    background-color: #E99002 !important; }\n:host ::ng-deep a.bg-warning:hover, :host ::ng-deep a.bg-warning:focus,\n  :host ::ng-deep button.bg-warning:hover,\n  :host ::ng-deep button.bg-warning:focus {\n    background-color: #b67102 !important; }\n:host ::ng-deep .bg-danger {\n    background-color: #F04124 !important; }\n:host ::ng-deep a.bg-danger:hover, :host ::ng-deep a.bg-danger:focus,\n  :host ::ng-deep button.bg-danger:hover,\n  :host ::ng-deep button.bg-danger:focus {\n    background-color: #d32a0e !important; }\n:host ::ng-deep .bg-light {\n    background-color: #eee !important; }\n:host ::ng-deep a.bg-light:hover, :host ::ng-deep a.bg-light:focus,\n  :host ::ng-deep button.bg-light:hover,\n  :host ::ng-deep button.bg-light:focus {\n    background-color: #d5d4d4 !important; }\n:host ::ng-deep .bg-dark {\n    background-color: #222 !important; }\n:host ::ng-deep a.bg-dark:hover, :host ::ng-deep a.bg-dark:focus,\n  :host ::ng-deep button.bg-dark:hover,\n  :host ::ng-deep button.bg-dark:focus {\n    background-color: #090909 !important; }\n:host ::ng-deep .bg-white {\n    background-color: #fff !important; }\n:host ::ng-deep .bg-transparent {\n    background-color: transparent !important; }\n:host ::ng-deep .border {\n    border: 1px solid #dee2e6 !important; }\n:host ::ng-deep .border-top {\n    border-top: 1px solid #dee2e6 !important; }\n:host ::ng-deep .border-right {\n    border-right: 1px solid #dee2e6 !important; }\n:host ::ng-deep .border-bottom {\n    border-bottom: 1px solid #dee2e6 !important; }\n:host ::ng-deep .border-left {\n    border-left: 1px solid #dee2e6 !important; }\n:host ::ng-deep .border-0 {\n    border: 0 !important; }\n:host ::ng-deep .border-top-0 {\n    border-top: 0 !important; }\n:host ::ng-deep .border-right-0 {\n    border-right: 0 !important; }\n:host ::ng-deep .border-bottom-0 {\n    border-bottom: 0 !important; }\n:host ::ng-deep .border-left-0 {\n    border-left: 0 !important; }\n:host ::ng-deep .border-primary {\n    border-color: #008cba !important; }\n:host ::ng-deep .border-secondary {\n    border-color: #eee !important; }\n:host ::ng-deep .border-success {\n    border-color: #43ac6a !important; }\n:host ::ng-deep .border-info {\n    border-color: #5bc0de !important; }\n:host ::ng-deep .border-warning {\n    border-color: #E99002 !important; }\n:host ::ng-deep .border-danger {\n    border-color: #F04124 !important; }\n:host ::ng-deep .border-light {\n    border-color: #eee !important; }\n:host ::ng-deep .border-dark {\n    border-color: #222 !important; }\n:host ::ng-deep .border-white {\n    border-color: #fff !important; }\n:host ::ng-deep .rounded {\n    border-radius: 0 !important; }\n:host ::ng-deep .rounded-top {\n    border-top-left-radius: 0 !important;\n    border-top-right-radius: 0 !important; }\n:host ::ng-deep .rounded-right {\n    border-top-right-radius: 0 !important;\n    border-bottom-right-radius: 0 !important; }\n:host ::ng-deep .rounded-bottom {\n    border-bottom-right-radius: 0 !important;\n    border-bottom-left-radius: 0 !important; }\n:host ::ng-deep .rounded-left {\n    border-top-left-radius: 0 !important;\n    border-bottom-left-radius: 0 !important; }\n:host ::ng-deep .rounded-circle {\n    border-radius: 50% !important; }\n:host ::ng-deep .rounded-0 {\n    border-radius: 0 !important; }\n:host ::ng-deep .clearfix::after {\n    display: block;\n    clear: both;\n    content: \"\"; }\n:host ::ng-deep .d-none {\n    display: none !important; }\n:host ::ng-deep .d-inline {\n    display: inline !important; }\n:host ::ng-deep .d-inline-block {\n    display: inline-block !important; }\n:host ::ng-deep .d-block {\n    display: block !important; }\n:host ::ng-deep .d-table {\n    display: table !important; }\n:host ::ng-deep .d-table-row {\n    display: table-row !important; }\n:host ::ng-deep .d-table-cell {\n    display: table-cell !important; }\n:host ::ng-deep .d-flex {\n    display: flex !important; }\n:host ::ng-deep .d-inline-flex {\n    display: inline-flex !important; }\n@media (min-width: 576px) {\n    :host ::ng-deep .d-sm-none {\n      display: none !important; }\n    :host ::ng-deep .d-sm-inline {\n      display: inline !important; }\n    :host ::ng-deep .d-sm-inline-block {\n      display: inline-block !important; }\n    :host ::ng-deep .d-sm-block {\n      display: block !important; }\n    :host ::ng-deep .d-sm-table {\n      display: table !important; }\n    :host ::ng-deep .d-sm-table-row {\n      display: table-row !important; }\n    :host ::ng-deep .d-sm-table-cell {\n      display: table-cell !important; }\n    :host ::ng-deep .d-sm-flex {\n      display: flex !important; }\n    :host ::ng-deep .d-sm-inline-flex {\n      display: inline-flex !important; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .d-md-none {\n      display: none !important; }\n    :host ::ng-deep .d-md-inline {\n      display: inline !important; }\n    :host ::ng-deep .d-md-inline-block {\n      display: inline-block !important; }\n    :host ::ng-deep .d-md-block {\n      display: block !important; }\n    :host ::ng-deep .d-md-table {\n      display: table !important; }\n    :host ::ng-deep .d-md-table-row {\n      display: table-row !important; }\n    :host ::ng-deep .d-md-table-cell {\n      display: table-cell !important; }\n    :host ::ng-deep .d-md-flex {\n      display: flex !important; }\n    :host ::ng-deep .d-md-inline-flex {\n      display: inline-flex !important; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .d-lg-none {\n      display: none !important; }\n    :host ::ng-deep .d-lg-inline {\n      display: inline !important; }\n    :host ::ng-deep .d-lg-inline-block {\n      display: inline-block !important; }\n    :host ::ng-deep .d-lg-block {\n      display: block !important; }\n    :host ::ng-deep .d-lg-table {\n      display: table !important; }\n    :host ::ng-deep .d-lg-table-row {\n      display: table-row !important; }\n    :host ::ng-deep .d-lg-table-cell {\n      display: table-cell !important; }\n    :host ::ng-deep .d-lg-flex {\n      display: flex !important; }\n    :host ::ng-deep .d-lg-inline-flex {\n      display: inline-flex !important; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .d-xl-none {\n      display: none !important; }\n    :host ::ng-deep .d-xl-inline {\n      display: inline !important; }\n    :host ::ng-deep .d-xl-inline-block {\n      display: inline-block !important; }\n    :host ::ng-deep .d-xl-block {\n      display: block !important; }\n    :host ::ng-deep .d-xl-table {\n      display: table !important; }\n    :host ::ng-deep .d-xl-table-row {\n      display: table-row !important; }\n    :host ::ng-deep .d-xl-table-cell {\n      display: table-cell !important; }\n    :host ::ng-deep .d-xl-flex {\n      display: flex !important; }\n    :host ::ng-deep .d-xl-inline-flex {\n      display: inline-flex !important; } }\n@media print {\n    :host ::ng-deep .d-print-none {\n      display: none !important; }\n    :host ::ng-deep .d-print-inline {\n      display: inline !important; }\n    :host ::ng-deep .d-print-inline-block {\n      display: inline-block !important; }\n    :host ::ng-deep .d-print-block {\n      display: block !important; }\n    :host ::ng-deep .d-print-table {\n      display: table !important; }\n    :host ::ng-deep .d-print-table-row {\n      display: table-row !important; }\n    :host ::ng-deep .d-print-table-cell {\n      display: table-cell !important; }\n    :host ::ng-deep .d-print-flex {\n      display: flex !important; }\n    :host ::ng-deep .d-print-inline-flex {\n      display: inline-flex !important; } }\n:host ::ng-deep .embed-responsive {\n    position: relative;\n    display: block;\n    width: 100%;\n    padding: 0;\n    overflow: hidden; }\n:host ::ng-deep .embed-responsive::before {\n      display: block;\n      content: \"\"; }\n:host ::ng-deep .embed-responsive .embed-responsive-item,\n    :host ::ng-deep .embed-responsive iframe,\n    :host ::ng-deep .embed-responsive embed,\n    :host ::ng-deep .embed-responsive object,\n    :host ::ng-deep .embed-responsive video {\n      position: absolute;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      border: 0; }\n:host ::ng-deep .embed-responsive-21by9::before {\n    padding-top: 42.85714286%; }\n:host ::ng-deep .embed-responsive-16by9::before {\n    padding-top: 56.25%; }\n:host ::ng-deep .embed-responsive-4by3::before {\n    padding-top: 75%; }\n:host ::ng-deep .embed-responsive-1by1::before {\n    padding-top: 100%; }\n:host ::ng-deep .flex-row {\n    flex-direction: row !important; }\n:host ::ng-deep .flex-column {\n    flex-direction: column !important; }\n:host ::ng-deep .flex-row-reverse {\n    flex-direction: row-reverse !important; }\n:host ::ng-deep .flex-column-reverse {\n    flex-direction: column-reverse !important; }\n:host ::ng-deep .flex-wrap {\n    flex-wrap: wrap !important; }\n:host ::ng-deep .flex-nowrap {\n    flex-wrap: nowrap !important; }\n:host ::ng-deep .flex-wrap-reverse {\n    flex-wrap: wrap-reverse !important; }\n:host ::ng-deep .flex-fill {\n    flex: 1 1 auto !important; }\n:host ::ng-deep .flex-grow-0 {\n    flex-grow: 0 !important; }\n:host ::ng-deep .flex-grow-1 {\n    flex-grow: 1 !important; }\n:host ::ng-deep .flex-shrink-0 {\n    flex-shrink: 0 !important; }\n:host ::ng-deep .flex-shrink-1 {\n    flex-shrink: 1 !important; }\n:host ::ng-deep .justify-content-start {\n    justify-content: flex-start !important; }\n:host ::ng-deep .justify-content-end {\n    justify-content: flex-end !important; }\n:host ::ng-deep .justify-content-center {\n    justify-content: center !important; }\n:host ::ng-deep .justify-content-between {\n    justify-content: space-between !important; }\n:host ::ng-deep .justify-content-around {\n    justify-content: space-around !important; }\n:host ::ng-deep .align-items-start {\n    align-items: flex-start !important; }\n:host ::ng-deep .align-items-end {\n    align-items: flex-end !important; }\n:host ::ng-deep .align-items-center {\n    align-items: center !important; }\n:host ::ng-deep .align-items-baseline {\n    align-items: baseline !important; }\n:host ::ng-deep .align-items-stretch {\n    align-items: stretch !important; }\n:host ::ng-deep .align-content-start {\n    align-content: flex-start !important; }\n:host ::ng-deep .align-content-end {\n    align-content: flex-end !important; }\n:host ::ng-deep .align-content-center {\n    align-content: center !important; }\n:host ::ng-deep .align-content-between {\n    align-content: space-between !important; }\n:host ::ng-deep .align-content-around {\n    align-content: space-around !important; }\n:host ::ng-deep .align-content-stretch {\n    align-content: stretch !important; }\n:host ::ng-deep .align-self-auto {\n    -ms-grid-row-align: auto !important;\n        align-self: auto !important; }\n:host ::ng-deep .align-self-start {\n    align-self: flex-start !important; }\n:host ::ng-deep .align-self-end {\n    align-self: flex-end !important; }\n:host ::ng-deep .align-self-center {\n    -ms-grid-row-align: center !important;\n        align-self: center !important; }\n:host ::ng-deep .align-self-baseline {\n    align-self: baseline !important; }\n:host ::ng-deep .align-self-stretch {\n    -ms-grid-row-align: stretch !important;\n        align-self: stretch !important; }\n@media (min-width: 576px) {\n    :host ::ng-deep .flex-sm-row {\n      flex-direction: row !important; }\n    :host ::ng-deep .flex-sm-column {\n      flex-direction: column !important; }\n    :host ::ng-deep .flex-sm-row-reverse {\n      flex-direction: row-reverse !important; }\n    :host ::ng-deep .flex-sm-column-reverse {\n      flex-direction: column-reverse !important; }\n    :host ::ng-deep .flex-sm-wrap {\n      flex-wrap: wrap !important; }\n    :host ::ng-deep .flex-sm-nowrap {\n      flex-wrap: nowrap !important; }\n    :host ::ng-deep .flex-sm-wrap-reverse {\n      flex-wrap: wrap-reverse !important; }\n    :host ::ng-deep .flex-sm-fill {\n      flex: 1 1 auto !important; }\n    :host ::ng-deep .flex-sm-grow-0 {\n      flex-grow: 0 !important; }\n    :host ::ng-deep .flex-sm-grow-1 {\n      flex-grow: 1 !important; }\n    :host ::ng-deep .flex-sm-shrink-0 {\n      flex-shrink: 0 !important; }\n    :host ::ng-deep .flex-sm-shrink-1 {\n      flex-shrink: 1 !important; }\n    :host ::ng-deep .justify-content-sm-start {\n      justify-content: flex-start !important; }\n    :host ::ng-deep .justify-content-sm-end {\n      justify-content: flex-end !important; }\n    :host ::ng-deep .justify-content-sm-center {\n      justify-content: center !important; }\n    :host ::ng-deep .justify-content-sm-between {\n      justify-content: space-between !important; }\n    :host ::ng-deep .justify-content-sm-around {\n      justify-content: space-around !important; }\n    :host ::ng-deep .align-items-sm-start {\n      align-items: flex-start !important; }\n    :host ::ng-deep .align-items-sm-end {\n      align-items: flex-end !important; }\n    :host ::ng-deep .align-items-sm-center {\n      align-items: center !important; }\n    :host ::ng-deep .align-items-sm-baseline {\n      align-items: baseline !important; }\n    :host ::ng-deep .align-items-sm-stretch {\n      align-items: stretch !important; }\n    :host ::ng-deep .align-content-sm-start {\n      align-content: flex-start !important; }\n    :host ::ng-deep .align-content-sm-end {\n      align-content: flex-end !important; }\n    :host ::ng-deep .align-content-sm-center {\n      align-content: center !important; }\n    :host ::ng-deep .align-content-sm-between {\n      align-content: space-between !important; }\n    :host ::ng-deep .align-content-sm-around {\n      align-content: space-around !important; }\n    :host ::ng-deep .align-content-sm-stretch {\n      align-content: stretch !important; }\n    :host ::ng-deep .align-self-sm-auto {\n      -ms-grid-row-align: auto !important;\n          align-self: auto !important; }\n    :host ::ng-deep .align-self-sm-start {\n      align-self: flex-start !important; }\n    :host ::ng-deep .align-self-sm-end {\n      align-self: flex-end !important; }\n    :host ::ng-deep .align-self-sm-center {\n      -ms-grid-row-align: center !important;\n          align-self: center !important; }\n    :host ::ng-deep .align-self-sm-baseline {\n      align-self: baseline !important; }\n    :host ::ng-deep .align-self-sm-stretch {\n      -ms-grid-row-align: stretch !important;\n          align-self: stretch !important; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .flex-md-row {\n      flex-direction: row !important; }\n    :host ::ng-deep .flex-md-column {\n      flex-direction: column !important; }\n    :host ::ng-deep .flex-md-row-reverse {\n      flex-direction: row-reverse !important; }\n    :host ::ng-deep .flex-md-column-reverse {\n      flex-direction: column-reverse !important; }\n    :host ::ng-deep .flex-md-wrap {\n      flex-wrap: wrap !important; }\n    :host ::ng-deep .flex-md-nowrap {\n      flex-wrap: nowrap !important; }\n    :host ::ng-deep .flex-md-wrap-reverse {\n      flex-wrap: wrap-reverse !important; }\n    :host ::ng-deep .flex-md-fill {\n      flex: 1 1 auto !important; }\n    :host ::ng-deep .flex-md-grow-0 {\n      flex-grow: 0 !important; }\n    :host ::ng-deep .flex-md-grow-1 {\n      flex-grow: 1 !important; }\n    :host ::ng-deep .flex-md-shrink-0 {\n      flex-shrink: 0 !important; }\n    :host ::ng-deep .flex-md-shrink-1 {\n      flex-shrink: 1 !important; }\n    :host ::ng-deep .justify-content-md-start {\n      justify-content: flex-start !important; }\n    :host ::ng-deep .justify-content-md-end {\n      justify-content: flex-end !important; }\n    :host ::ng-deep .justify-content-md-center {\n      justify-content: center !important; }\n    :host ::ng-deep .justify-content-md-between {\n      justify-content: space-between !important; }\n    :host ::ng-deep .justify-content-md-around {\n      justify-content: space-around !important; }\n    :host ::ng-deep .align-items-md-start {\n      align-items: flex-start !important; }\n    :host ::ng-deep .align-items-md-end {\n      align-items: flex-end !important; }\n    :host ::ng-deep .align-items-md-center {\n      align-items: center !important; }\n    :host ::ng-deep .align-items-md-baseline {\n      align-items: baseline !important; }\n    :host ::ng-deep .align-items-md-stretch {\n      align-items: stretch !important; }\n    :host ::ng-deep .align-content-md-start {\n      align-content: flex-start !important; }\n    :host ::ng-deep .align-content-md-end {\n      align-content: flex-end !important; }\n    :host ::ng-deep .align-content-md-center {\n      align-content: center !important; }\n    :host ::ng-deep .align-content-md-between {\n      align-content: space-between !important; }\n    :host ::ng-deep .align-content-md-around {\n      align-content: space-around !important; }\n    :host ::ng-deep .align-content-md-stretch {\n      align-content: stretch !important; }\n    :host ::ng-deep .align-self-md-auto {\n      -ms-grid-row-align: auto !important;\n          align-self: auto !important; }\n    :host ::ng-deep .align-self-md-start {\n      align-self: flex-start !important; }\n    :host ::ng-deep .align-self-md-end {\n      align-self: flex-end !important; }\n    :host ::ng-deep .align-self-md-center {\n      -ms-grid-row-align: center !important;\n          align-self: center !important; }\n    :host ::ng-deep .align-self-md-baseline {\n      align-self: baseline !important; }\n    :host ::ng-deep .align-self-md-stretch {\n      -ms-grid-row-align: stretch !important;\n          align-self: stretch !important; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .flex-lg-row {\n      flex-direction: row !important; }\n    :host ::ng-deep .flex-lg-column {\n      flex-direction: column !important; }\n    :host ::ng-deep .flex-lg-row-reverse {\n      flex-direction: row-reverse !important; }\n    :host ::ng-deep .flex-lg-column-reverse {\n      flex-direction: column-reverse !important; }\n    :host ::ng-deep .flex-lg-wrap {\n      flex-wrap: wrap !important; }\n    :host ::ng-deep .flex-lg-nowrap {\n      flex-wrap: nowrap !important; }\n    :host ::ng-deep .flex-lg-wrap-reverse {\n      flex-wrap: wrap-reverse !important; }\n    :host ::ng-deep .flex-lg-fill {\n      flex: 1 1 auto !important; }\n    :host ::ng-deep .flex-lg-grow-0 {\n      flex-grow: 0 !important; }\n    :host ::ng-deep .flex-lg-grow-1 {\n      flex-grow: 1 !important; }\n    :host ::ng-deep .flex-lg-shrink-0 {\n      flex-shrink: 0 !important; }\n    :host ::ng-deep .flex-lg-shrink-1 {\n      flex-shrink: 1 !important; }\n    :host ::ng-deep .justify-content-lg-start {\n      justify-content: flex-start !important; }\n    :host ::ng-deep .justify-content-lg-end {\n      justify-content: flex-end !important; }\n    :host ::ng-deep .justify-content-lg-center {\n      justify-content: center !important; }\n    :host ::ng-deep .justify-content-lg-between {\n      justify-content: space-between !important; }\n    :host ::ng-deep .justify-content-lg-around {\n      justify-content: space-around !important; }\n    :host ::ng-deep .align-items-lg-start {\n      align-items: flex-start !important; }\n    :host ::ng-deep .align-items-lg-end {\n      align-items: flex-end !important; }\n    :host ::ng-deep .align-items-lg-center {\n      align-items: center !important; }\n    :host ::ng-deep .align-items-lg-baseline {\n      align-items: baseline !important; }\n    :host ::ng-deep .align-items-lg-stretch {\n      align-items: stretch !important; }\n    :host ::ng-deep .align-content-lg-start {\n      align-content: flex-start !important; }\n    :host ::ng-deep .align-content-lg-end {\n      align-content: flex-end !important; }\n    :host ::ng-deep .align-content-lg-center {\n      align-content: center !important; }\n    :host ::ng-deep .align-content-lg-between {\n      align-content: space-between !important; }\n    :host ::ng-deep .align-content-lg-around {\n      align-content: space-around !important; }\n    :host ::ng-deep .align-content-lg-stretch {\n      align-content: stretch !important; }\n    :host ::ng-deep .align-self-lg-auto {\n      -ms-grid-row-align: auto !important;\n          align-self: auto !important; }\n    :host ::ng-deep .align-self-lg-start {\n      align-self: flex-start !important; }\n    :host ::ng-deep .align-self-lg-end {\n      align-self: flex-end !important; }\n    :host ::ng-deep .align-self-lg-center {\n      -ms-grid-row-align: center !important;\n          align-self: center !important; }\n    :host ::ng-deep .align-self-lg-baseline {\n      align-self: baseline !important; }\n    :host ::ng-deep .align-self-lg-stretch {\n      -ms-grid-row-align: stretch !important;\n          align-self: stretch !important; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .flex-xl-row {\n      flex-direction: row !important; }\n    :host ::ng-deep .flex-xl-column {\n      flex-direction: column !important; }\n    :host ::ng-deep .flex-xl-row-reverse {\n      flex-direction: row-reverse !important; }\n    :host ::ng-deep .flex-xl-column-reverse {\n      flex-direction: column-reverse !important; }\n    :host ::ng-deep .flex-xl-wrap {\n      flex-wrap: wrap !important; }\n    :host ::ng-deep .flex-xl-nowrap {\n      flex-wrap: nowrap !important; }\n    :host ::ng-deep .flex-xl-wrap-reverse {\n      flex-wrap: wrap-reverse !important; }\n    :host ::ng-deep .flex-xl-fill {\n      flex: 1 1 auto !important; }\n    :host ::ng-deep .flex-xl-grow-0 {\n      flex-grow: 0 !important; }\n    :host ::ng-deep .flex-xl-grow-1 {\n      flex-grow: 1 !important; }\n    :host ::ng-deep .flex-xl-shrink-0 {\n      flex-shrink: 0 !important; }\n    :host ::ng-deep .flex-xl-shrink-1 {\n      flex-shrink: 1 !important; }\n    :host ::ng-deep .justify-content-xl-start {\n      justify-content: flex-start !important; }\n    :host ::ng-deep .justify-content-xl-end {\n      justify-content: flex-end !important; }\n    :host ::ng-deep .justify-content-xl-center {\n      justify-content: center !important; }\n    :host ::ng-deep .justify-content-xl-between {\n      justify-content: space-between !important; }\n    :host ::ng-deep .justify-content-xl-around {\n      justify-content: space-around !important; }\n    :host ::ng-deep .align-items-xl-start {\n      align-items: flex-start !important; }\n    :host ::ng-deep .align-items-xl-end {\n      align-items: flex-end !important; }\n    :host ::ng-deep .align-items-xl-center {\n      align-items: center !important; }\n    :host ::ng-deep .align-items-xl-baseline {\n      align-items: baseline !important; }\n    :host ::ng-deep .align-items-xl-stretch {\n      align-items: stretch !important; }\n    :host ::ng-deep .align-content-xl-start {\n      align-content: flex-start !important; }\n    :host ::ng-deep .align-content-xl-end {\n      align-content: flex-end !important; }\n    :host ::ng-deep .align-content-xl-center {\n      align-content: center !important; }\n    :host ::ng-deep .align-content-xl-between {\n      align-content: space-between !important; }\n    :host ::ng-deep .align-content-xl-around {\n      align-content: space-around !important; }\n    :host ::ng-deep .align-content-xl-stretch {\n      align-content: stretch !important; }\n    :host ::ng-deep .align-self-xl-auto {\n      -ms-grid-row-align: auto !important;\n          align-self: auto !important; }\n    :host ::ng-deep .align-self-xl-start {\n      align-self: flex-start !important; }\n    :host ::ng-deep .align-self-xl-end {\n      align-self: flex-end !important; }\n    :host ::ng-deep .align-self-xl-center {\n      -ms-grid-row-align: center !important;\n          align-self: center !important; }\n    :host ::ng-deep .align-self-xl-baseline {\n      align-self: baseline !important; }\n    :host ::ng-deep .align-self-xl-stretch {\n      -ms-grid-row-align: stretch !important;\n          align-self: stretch !important; } }\n:host ::ng-deep .float-left {\n    float: left !important; }\n:host ::ng-deep .float-right {\n    float: right !important; }\n:host ::ng-deep .float-none {\n    float: none !important; }\n@media (min-width: 576px) {\n    :host ::ng-deep .float-sm-left {\n      float: left !important; }\n    :host ::ng-deep .float-sm-right {\n      float: right !important; }\n    :host ::ng-deep .float-sm-none {\n      float: none !important; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .float-md-left {\n      float: left !important; }\n    :host ::ng-deep .float-md-right {\n      float: right !important; }\n    :host ::ng-deep .float-md-none {\n      float: none !important; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .float-lg-left {\n      float: left !important; }\n    :host ::ng-deep .float-lg-right {\n      float: right !important; }\n    :host ::ng-deep .float-lg-none {\n      float: none !important; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .float-xl-left {\n      float: left !important; }\n    :host ::ng-deep .float-xl-right {\n      float: right !important; }\n    :host ::ng-deep .float-xl-none {\n      float: none !important; } }\n:host ::ng-deep .position-static {\n    position: static !important; }\n:host ::ng-deep .position-relative {\n    position: relative !important; }\n:host ::ng-deep .position-absolute {\n    position: absolute !important; }\n:host ::ng-deep .position-fixed {\n    position: fixed !important; }\n:host ::ng-deep .position-sticky {\n    position: -webkit-sticky !important;\n    position: sticky !important; }\n:host ::ng-deep .fixed-top {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 1030; }\n:host ::ng-deep .fixed-bottom {\n    position: fixed;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 1030; }\n@supports ((position: -webkit-sticky) or (position: sticky)) {\n    :host ::ng-deep .sticky-top {\n      position: -webkit-sticky;\n      position: sticky;\n      top: 0;\n      z-index: 1020; } }\n:host ::ng-deep .sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    overflow: hidden;\n    clip: rect(0, 0, 0, 0);\n    white-space: nowrap;\n    border: 0; }\n:host ::ng-deep .sr-only-focusable:active, :host ::ng-deep .sr-only-focusable:focus {\n    position: static;\n    width: auto;\n    height: auto;\n    overflow: visible;\n    clip: auto;\n    white-space: normal; }\n:host ::ng-deep .shadow-sm {\n    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }\n:host ::ng-deep .shadow {\n    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; }\n:host ::ng-deep .shadow-lg {\n    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important; }\n:host ::ng-deep .shadow-none {\n    box-shadow: none !important; }\n:host ::ng-deep .w-25 {\n    width: 25% !important; }\n:host ::ng-deep .w-50 {\n    width: 50% !important; }\n:host ::ng-deep .w-75 {\n    width: 75% !important; }\n:host ::ng-deep .w-100 {\n    width: 100% !important; }\n:host ::ng-deep .w-auto {\n    width: auto !important; }\n:host ::ng-deep .h-25 {\n    height: 25% !important; }\n:host ::ng-deep .h-50 {\n    height: 50% !important; }\n:host ::ng-deep .h-75 {\n    height: 75% !important; }\n:host ::ng-deep .h-100 {\n    height: 100% !important; }\n:host ::ng-deep .h-auto {\n    height: auto !important; }\n:host ::ng-deep .mw-100 {\n    max-width: 100% !important; }\n:host ::ng-deep .mh-100 {\n    max-height: 100% !important; }\n:host ::ng-deep .m-0 {\n    margin: 0 !important; }\n:host ::ng-deep .mt-0,\n  :host ::ng-deep .my-0 {\n    margin-top: 0 !important; }\n:host ::ng-deep .mr-0,\n  :host ::ng-deep .mx-0 {\n    margin-right: 0 !important; }\n:host ::ng-deep .mb-0,\n  :host ::ng-deep .my-0 {\n    margin-bottom: 0 !important; }\n:host ::ng-deep .ml-0,\n  :host ::ng-deep .mx-0 {\n    margin-left: 0 !important; }\n:host ::ng-deep .m-1 {\n    margin: 0.25rem !important; }\n:host ::ng-deep .mt-1,\n  :host ::ng-deep .my-1 {\n    margin-top: 0.25rem !important; }\n:host ::ng-deep .mr-1,\n  :host ::ng-deep .mx-1 {\n    margin-right: 0.25rem !important; }\n:host ::ng-deep .mb-1,\n  :host ::ng-deep .my-1 {\n    margin-bottom: 0.25rem !important; }\n:host ::ng-deep .ml-1,\n  :host ::ng-deep .mx-1 {\n    margin-left: 0.25rem !important; }\n:host ::ng-deep .m-2 {\n    margin: 0.5rem !important; }\n:host ::ng-deep .mt-2,\n  :host ::ng-deep .my-2 {\n    margin-top: 0.5rem !important; }\n:host ::ng-deep .mr-2,\n  :host ::ng-deep .mx-2 {\n    margin-right: 0.5rem !important; }\n:host ::ng-deep .mb-2,\n  :host ::ng-deep .my-2 {\n    margin-bottom: 0.5rem !important; }\n:host ::ng-deep .ml-2,\n  :host ::ng-deep .mx-2 {\n    margin-left: 0.5rem !important; }\n:host ::ng-deep .m-3 {\n    margin: 1rem !important; }\n:host ::ng-deep .mt-3,\n  :host ::ng-deep .my-3 {\n    margin-top: 1rem !important; }\n:host ::ng-deep .mr-3,\n  :host ::ng-deep .mx-3 {\n    margin-right: 1rem !important; }\n:host ::ng-deep .mb-3,\n  :host ::ng-deep .my-3 {\n    margin-bottom: 1rem !important; }\n:host ::ng-deep .ml-3,\n  :host ::ng-deep .mx-3 {\n    margin-left: 1rem !important; }\n:host ::ng-deep .m-4 {\n    margin: 1.5rem !important; }\n:host ::ng-deep .mt-4,\n  :host ::ng-deep .my-4 {\n    margin-top: 1.5rem !important; }\n:host ::ng-deep .mr-4,\n  :host ::ng-deep .mx-4 {\n    margin-right: 1.5rem !important; }\n:host ::ng-deep .mb-4,\n  :host ::ng-deep .my-4 {\n    margin-bottom: 1.5rem !important; }\n:host ::ng-deep .ml-4,\n  :host ::ng-deep .mx-4 {\n    margin-left: 1.5rem !important; }\n:host ::ng-deep .m-5 {\n    margin: 3rem !important; }\n:host ::ng-deep .mt-5,\n  :host ::ng-deep .my-5 {\n    margin-top: 3rem !important; }\n:host ::ng-deep .mr-5,\n  :host ::ng-deep .mx-5 {\n    margin-right: 3rem !important; }\n:host ::ng-deep .mb-5,\n  :host ::ng-deep .my-5 {\n    margin-bottom: 3rem !important; }\n:host ::ng-deep .ml-5,\n  :host ::ng-deep .mx-5 {\n    margin-left: 3rem !important; }\n:host ::ng-deep .p-0 {\n    padding: 0 !important; }\n:host ::ng-deep .pt-0,\n  :host ::ng-deep .py-0 {\n    padding-top: 0 !important; }\n:host ::ng-deep .pr-0,\n  :host ::ng-deep .px-0 {\n    padding-right: 0 !important; }\n:host ::ng-deep .pb-0,\n  :host ::ng-deep .py-0 {\n    padding-bottom: 0 !important; }\n:host ::ng-deep .pl-0,\n  :host ::ng-deep .px-0 {\n    padding-left: 0 !important; }\n:host ::ng-deep .p-1 {\n    padding: 0.25rem !important; }\n:host ::ng-deep .pt-1,\n  :host ::ng-deep .py-1 {\n    padding-top: 0.25rem !important; }\n:host ::ng-deep .pr-1,\n  :host ::ng-deep .px-1 {\n    padding-right: 0.25rem !important; }\n:host ::ng-deep .pb-1,\n  :host ::ng-deep .py-1 {\n    padding-bottom: 0.25rem !important; }\n:host ::ng-deep .pl-1,\n  :host ::ng-deep .px-1 {\n    padding-left: 0.25rem !important; }\n:host ::ng-deep .p-2 {\n    padding: 0.5rem !important; }\n:host ::ng-deep .pt-2,\n  :host ::ng-deep .py-2 {\n    padding-top: 0.5rem !important; }\n:host ::ng-deep .pr-2,\n  :host ::ng-deep .px-2 {\n    padding-right: 0.5rem !important; }\n:host ::ng-deep .pb-2,\n  :host ::ng-deep .py-2 {\n    padding-bottom: 0.5rem !important; }\n:host ::ng-deep .pl-2,\n  :host ::ng-deep .px-2 {\n    padding-left: 0.5rem !important; }\n:host ::ng-deep .p-3 {\n    padding: 1rem !important; }\n:host ::ng-deep .pt-3,\n  :host ::ng-deep .py-3 {\n    padding-top: 1rem !important; }\n:host ::ng-deep .pr-3,\n  :host ::ng-deep .px-3 {\n    padding-right: 1rem !important; }\n:host ::ng-deep .pb-3,\n  :host ::ng-deep .py-3 {\n    padding-bottom: 1rem !important; }\n:host ::ng-deep .pl-3,\n  :host ::ng-deep .px-3 {\n    padding-left: 1rem !important; }\n:host ::ng-deep .p-4 {\n    padding: 1.5rem !important; }\n:host ::ng-deep .pt-4,\n  :host ::ng-deep .py-4 {\n    padding-top: 1.5rem !important; }\n:host ::ng-deep .pr-4,\n  :host ::ng-deep .px-4 {\n    padding-right: 1.5rem !important; }\n:host ::ng-deep .pb-4,\n  :host ::ng-deep .py-4 {\n    padding-bottom: 1.5rem !important; }\n:host ::ng-deep .pl-4,\n  :host ::ng-deep .px-4 {\n    padding-left: 1.5rem !important; }\n:host ::ng-deep .p-5 {\n    padding: 3rem !important; }\n:host ::ng-deep .pt-5,\n  :host ::ng-deep .py-5 {\n    padding-top: 3rem !important; }\n:host ::ng-deep .pr-5,\n  :host ::ng-deep .px-5 {\n    padding-right: 3rem !important; }\n:host ::ng-deep .pb-5,\n  :host ::ng-deep .py-5 {\n    padding-bottom: 3rem !important; }\n:host ::ng-deep .pl-5,\n  :host ::ng-deep .px-5 {\n    padding-left: 3rem !important; }\n:host ::ng-deep .m-auto {\n    margin: auto !important; }\n:host ::ng-deep .mt-auto,\n  :host ::ng-deep .my-auto {\n    margin-top: auto !important; }\n:host ::ng-deep .mr-auto,\n  :host ::ng-deep .mx-auto {\n    margin-right: auto !important; }\n:host ::ng-deep .mb-auto,\n  :host ::ng-deep .my-auto {\n    margin-bottom: auto !important; }\n:host ::ng-deep .ml-auto,\n  :host ::ng-deep .mx-auto {\n    margin-left: auto !important; }\n@media (min-width: 576px) {\n    :host ::ng-deep .m-sm-0 {\n      margin: 0 !important; }\n    :host ::ng-deep .mt-sm-0,\n    :host ::ng-deep .my-sm-0 {\n      margin-top: 0 !important; }\n    :host ::ng-deep .mr-sm-0,\n    :host ::ng-deep .mx-sm-0 {\n      margin-right: 0 !important; }\n    :host ::ng-deep .mb-sm-0,\n    :host ::ng-deep .my-sm-0 {\n      margin-bottom: 0 !important; }\n    :host ::ng-deep .ml-sm-0,\n    :host ::ng-deep .mx-sm-0 {\n      margin-left: 0 !important; }\n    :host ::ng-deep .m-sm-1 {\n      margin: 0.25rem !important; }\n    :host ::ng-deep .mt-sm-1,\n    :host ::ng-deep .my-sm-1 {\n      margin-top: 0.25rem !important; }\n    :host ::ng-deep .mr-sm-1,\n    :host ::ng-deep .mx-sm-1 {\n      margin-right: 0.25rem !important; }\n    :host ::ng-deep .mb-sm-1,\n    :host ::ng-deep .my-sm-1 {\n      margin-bottom: 0.25rem !important; }\n    :host ::ng-deep .ml-sm-1,\n    :host ::ng-deep .mx-sm-1 {\n      margin-left: 0.25rem !important; }\n    :host ::ng-deep .m-sm-2 {\n      margin: 0.5rem !important; }\n    :host ::ng-deep .mt-sm-2,\n    :host ::ng-deep .my-sm-2 {\n      margin-top: 0.5rem !important; }\n    :host ::ng-deep .mr-sm-2,\n    :host ::ng-deep .mx-sm-2 {\n      margin-right: 0.5rem !important; }\n    :host ::ng-deep .mb-sm-2,\n    :host ::ng-deep .my-sm-2 {\n      margin-bottom: 0.5rem !important; }\n    :host ::ng-deep .ml-sm-2,\n    :host ::ng-deep .mx-sm-2 {\n      margin-left: 0.5rem !important; }\n    :host ::ng-deep .m-sm-3 {\n      margin: 1rem !important; }\n    :host ::ng-deep .mt-sm-3,\n    :host ::ng-deep .my-sm-3 {\n      margin-top: 1rem !important; }\n    :host ::ng-deep .mr-sm-3,\n    :host ::ng-deep .mx-sm-3 {\n      margin-right: 1rem !important; }\n    :host ::ng-deep .mb-sm-3,\n    :host ::ng-deep .my-sm-3 {\n      margin-bottom: 1rem !important; }\n    :host ::ng-deep .ml-sm-3,\n    :host ::ng-deep .mx-sm-3 {\n      margin-left: 1rem !important; }\n    :host ::ng-deep .m-sm-4 {\n      margin: 1.5rem !important; }\n    :host ::ng-deep .mt-sm-4,\n    :host ::ng-deep .my-sm-4 {\n      margin-top: 1.5rem !important; }\n    :host ::ng-deep .mr-sm-4,\n    :host ::ng-deep .mx-sm-4 {\n      margin-right: 1.5rem !important; }\n    :host ::ng-deep .mb-sm-4,\n    :host ::ng-deep .my-sm-4 {\n      margin-bottom: 1.5rem !important; }\n    :host ::ng-deep .ml-sm-4,\n    :host ::ng-deep .mx-sm-4 {\n      margin-left: 1.5rem !important; }\n    :host ::ng-deep .m-sm-5 {\n      margin: 3rem !important; }\n    :host ::ng-deep .mt-sm-5,\n    :host ::ng-deep .my-sm-5 {\n      margin-top: 3rem !important; }\n    :host ::ng-deep .mr-sm-5,\n    :host ::ng-deep .mx-sm-5 {\n      margin-right: 3rem !important; }\n    :host ::ng-deep .mb-sm-5,\n    :host ::ng-deep .my-sm-5 {\n      margin-bottom: 3rem !important; }\n    :host ::ng-deep .ml-sm-5,\n    :host ::ng-deep .mx-sm-5 {\n      margin-left: 3rem !important; }\n    :host ::ng-deep .p-sm-0 {\n      padding: 0 !important; }\n    :host ::ng-deep .pt-sm-0,\n    :host ::ng-deep .py-sm-0 {\n      padding-top: 0 !important; }\n    :host ::ng-deep .pr-sm-0,\n    :host ::ng-deep .px-sm-0 {\n      padding-right: 0 !important; }\n    :host ::ng-deep .pb-sm-0,\n    :host ::ng-deep .py-sm-0 {\n      padding-bottom: 0 !important; }\n    :host ::ng-deep .pl-sm-0,\n    :host ::ng-deep .px-sm-0 {\n      padding-left: 0 !important; }\n    :host ::ng-deep .p-sm-1 {\n      padding: 0.25rem !important; }\n    :host ::ng-deep .pt-sm-1,\n    :host ::ng-deep .py-sm-1 {\n      padding-top: 0.25rem !important; }\n    :host ::ng-deep .pr-sm-1,\n    :host ::ng-deep .px-sm-1 {\n      padding-right: 0.25rem !important; }\n    :host ::ng-deep .pb-sm-1,\n    :host ::ng-deep .py-sm-1 {\n      padding-bottom: 0.25rem !important; }\n    :host ::ng-deep .pl-sm-1,\n    :host ::ng-deep .px-sm-1 {\n      padding-left: 0.25rem !important; }\n    :host ::ng-deep .p-sm-2 {\n      padding: 0.5rem !important; }\n    :host ::ng-deep .pt-sm-2,\n    :host ::ng-deep .py-sm-2 {\n      padding-top: 0.5rem !important; }\n    :host ::ng-deep .pr-sm-2,\n    :host ::ng-deep .px-sm-2 {\n      padding-right: 0.5rem !important; }\n    :host ::ng-deep .pb-sm-2,\n    :host ::ng-deep .py-sm-2 {\n      padding-bottom: 0.5rem !important; }\n    :host ::ng-deep .pl-sm-2,\n    :host ::ng-deep .px-sm-2 {\n      padding-left: 0.5rem !important; }\n    :host ::ng-deep .p-sm-3 {\n      padding: 1rem !important; }\n    :host ::ng-deep .pt-sm-3,\n    :host ::ng-deep .py-sm-3 {\n      padding-top: 1rem !important; }\n    :host ::ng-deep .pr-sm-3,\n    :host ::ng-deep .px-sm-3 {\n      padding-right: 1rem !important; }\n    :host ::ng-deep .pb-sm-3,\n    :host ::ng-deep .py-sm-3 {\n      padding-bottom: 1rem !important; }\n    :host ::ng-deep .pl-sm-3,\n    :host ::ng-deep .px-sm-3 {\n      padding-left: 1rem !important; }\n    :host ::ng-deep .p-sm-4 {\n      padding: 1.5rem !important; }\n    :host ::ng-deep .pt-sm-4,\n    :host ::ng-deep .py-sm-4 {\n      padding-top: 1.5rem !important; }\n    :host ::ng-deep .pr-sm-4,\n    :host ::ng-deep .px-sm-4 {\n      padding-right: 1.5rem !important; }\n    :host ::ng-deep .pb-sm-4,\n    :host ::ng-deep .py-sm-4 {\n      padding-bottom: 1.5rem !important; }\n    :host ::ng-deep .pl-sm-4,\n    :host ::ng-deep .px-sm-4 {\n      padding-left: 1.5rem !important; }\n    :host ::ng-deep .p-sm-5 {\n      padding: 3rem !important; }\n    :host ::ng-deep .pt-sm-5,\n    :host ::ng-deep .py-sm-5 {\n      padding-top: 3rem !important; }\n    :host ::ng-deep .pr-sm-5,\n    :host ::ng-deep .px-sm-5 {\n      padding-right: 3rem !important; }\n    :host ::ng-deep .pb-sm-5,\n    :host ::ng-deep .py-sm-5 {\n      padding-bottom: 3rem !important; }\n    :host ::ng-deep .pl-sm-5,\n    :host ::ng-deep .px-sm-5 {\n      padding-left: 3rem !important; }\n    :host ::ng-deep .m-sm-auto {\n      margin: auto !important; }\n    :host ::ng-deep .mt-sm-auto,\n    :host ::ng-deep .my-sm-auto {\n      margin-top: auto !important; }\n    :host ::ng-deep .mr-sm-auto,\n    :host ::ng-deep .mx-sm-auto {\n      margin-right: auto !important; }\n    :host ::ng-deep .mb-sm-auto,\n    :host ::ng-deep .my-sm-auto {\n      margin-bottom: auto !important; }\n    :host ::ng-deep .ml-sm-auto,\n    :host ::ng-deep .mx-sm-auto {\n      margin-left: auto !important; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .m-md-0 {\n      margin: 0 !important; }\n    :host ::ng-deep .mt-md-0,\n    :host ::ng-deep .my-md-0 {\n      margin-top: 0 !important; }\n    :host ::ng-deep .mr-md-0,\n    :host ::ng-deep .mx-md-0 {\n      margin-right: 0 !important; }\n    :host ::ng-deep .mb-md-0,\n    :host ::ng-deep .my-md-0 {\n      margin-bottom: 0 !important; }\n    :host ::ng-deep .ml-md-0,\n    :host ::ng-deep .mx-md-0 {\n      margin-left: 0 !important; }\n    :host ::ng-deep .m-md-1 {\n      margin: 0.25rem !important; }\n    :host ::ng-deep .mt-md-1,\n    :host ::ng-deep .my-md-1 {\n      margin-top: 0.25rem !important; }\n    :host ::ng-deep .mr-md-1,\n    :host ::ng-deep .mx-md-1 {\n      margin-right: 0.25rem !important; }\n    :host ::ng-deep .mb-md-1,\n    :host ::ng-deep .my-md-1 {\n      margin-bottom: 0.25rem !important; }\n    :host ::ng-deep .ml-md-1,\n    :host ::ng-deep .mx-md-1 {\n      margin-left: 0.25rem !important; }\n    :host ::ng-deep .m-md-2 {\n      margin: 0.5rem !important; }\n    :host ::ng-deep .mt-md-2,\n    :host ::ng-deep .my-md-2 {\n      margin-top: 0.5rem !important; }\n    :host ::ng-deep .mr-md-2,\n    :host ::ng-deep .mx-md-2 {\n      margin-right: 0.5rem !important; }\n    :host ::ng-deep .mb-md-2,\n    :host ::ng-deep .my-md-2 {\n      margin-bottom: 0.5rem !important; }\n    :host ::ng-deep .ml-md-2,\n    :host ::ng-deep .mx-md-2 {\n      margin-left: 0.5rem !important; }\n    :host ::ng-deep .m-md-3 {\n      margin: 1rem !important; }\n    :host ::ng-deep .mt-md-3,\n    :host ::ng-deep .my-md-3 {\n      margin-top: 1rem !important; }\n    :host ::ng-deep .mr-md-3,\n    :host ::ng-deep .mx-md-3 {\n      margin-right: 1rem !important; }\n    :host ::ng-deep .mb-md-3,\n    :host ::ng-deep .my-md-3 {\n      margin-bottom: 1rem !important; }\n    :host ::ng-deep .ml-md-3,\n    :host ::ng-deep .mx-md-3 {\n      margin-left: 1rem !important; }\n    :host ::ng-deep .m-md-4 {\n      margin: 1.5rem !important; }\n    :host ::ng-deep .mt-md-4,\n    :host ::ng-deep .my-md-4 {\n      margin-top: 1.5rem !important; }\n    :host ::ng-deep .mr-md-4,\n    :host ::ng-deep .mx-md-4 {\n      margin-right: 1.5rem !important; }\n    :host ::ng-deep .mb-md-4,\n    :host ::ng-deep .my-md-4 {\n      margin-bottom: 1.5rem !important; }\n    :host ::ng-deep .ml-md-4,\n    :host ::ng-deep .mx-md-4 {\n      margin-left: 1.5rem !important; }\n    :host ::ng-deep .m-md-5 {\n      margin: 3rem !important; }\n    :host ::ng-deep .mt-md-5,\n    :host ::ng-deep .my-md-5 {\n      margin-top: 3rem !important; }\n    :host ::ng-deep .mr-md-5,\n    :host ::ng-deep .mx-md-5 {\n      margin-right: 3rem !important; }\n    :host ::ng-deep .mb-md-5,\n    :host ::ng-deep .my-md-5 {\n      margin-bottom: 3rem !important; }\n    :host ::ng-deep .ml-md-5,\n    :host ::ng-deep .mx-md-5 {\n      margin-left: 3rem !important; }\n    :host ::ng-deep .p-md-0 {\n      padding: 0 !important; }\n    :host ::ng-deep .pt-md-0,\n    :host ::ng-deep .py-md-0 {\n      padding-top: 0 !important; }\n    :host ::ng-deep .pr-md-0,\n    :host ::ng-deep .px-md-0 {\n      padding-right: 0 !important; }\n    :host ::ng-deep .pb-md-0,\n    :host ::ng-deep .py-md-0 {\n      padding-bottom: 0 !important; }\n    :host ::ng-deep .pl-md-0,\n    :host ::ng-deep .px-md-0 {\n      padding-left: 0 !important; }\n    :host ::ng-deep .p-md-1 {\n      padding: 0.25rem !important; }\n    :host ::ng-deep .pt-md-1,\n    :host ::ng-deep .py-md-1 {\n      padding-top: 0.25rem !important; }\n    :host ::ng-deep .pr-md-1,\n    :host ::ng-deep .px-md-1 {\n      padding-right: 0.25rem !important; }\n    :host ::ng-deep .pb-md-1,\n    :host ::ng-deep .py-md-1 {\n      padding-bottom: 0.25rem !important; }\n    :host ::ng-deep .pl-md-1,\n    :host ::ng-deep .px-md-1 {\n      padding-left: 0.25rem !important; }\n    :host ::ng-deep .p-md-2 {\n      padding: 0.5rem !important; }\n    :host ::ng-deep .pt-md-2,\n    :host ::ng-deep .py-md-2 {\n      padding-top: 0.5rem !important; }\n    :host ::ng-deep .pr-md-2,\n    :host ::ng-deep .px-md-2 {\n      padding-right: 0.5rem !important; }\n    :host ::ng-deep .pb-md-2,\n    :host ::ng-deep .py-md-2 {\n      padding-bottom: 0.5rem !important; }\n    :host ::ng-deep .pl-md-2,\n    :host ::ng-deep .px-md-2 {\n      padding-left: 0.5rem !important; }\n    :host ::ng-deep .p-md-3 {\n      padding: 1rem !important; }\n    :host ::ng-deep .pt-md-3,\n    :host ::ng-deep .py-md-3 {\n      padding-top: 1rem !important; }\n    :host ::ng-deep .pr-md-3,\n    :host ::ng-deep .px-md-3 {\n      padding-right: 1rem !important; }\n    :host ::ng-deep .pb-md-3,\n    :host ::ng-deep .py-md-3 {\n      padding-bottom: 1rem !important; }\n    :host ::ng-deep .pl-md-3,\n    :host ::ng-deep .px-md-3 {\n      padding-left: 1rem !important; }\n    :host ::ng-deep .p-md-4 {\n      padding: 1.5rem !important; }\n    :host ::ng-deep .pt-md-4,\n    :host ::ng-deep .py-md-4 {\n      padding-top: 1.5rem !important; }\n    :host ::ng-deep .pr-md-4,\n    :host ::ng-deep .px-md-4 {\n      padding-right: 1.5rem !important; }\n    :host ::ng-deep .pb-md-4,\n    :host ::ng-deep .py-md-4 {\n      padding-bottom: 1.5rem !important; }\n    :host ::ng-deep .pl-md-4,\n    :host ::ng-deep .px-md-4 {\n      padding-left: 1.5rem !important; }\n    :host ::ng-deep .p-md-5 {\n      padding: 3rem !important; }\n    :host ::ng-deep .pt-md-5,\n    :host ::ng-deep .py-md-5 {\n      padding-top: 3rem !important; }\n    :host ::ng-deep .pr-md-5,\n    :host ::ng-deep .px-md-5 {\n      padding-right: 3rem !important; }\n    :host ::ng-deep .pb-md-5,\n    :host ::ng-deep .py-md-5 {\n      padding-bottom: 3rem !important; }\n    :host ::ng-deep .pl-md-5,\n    :host ::ng-deep .px-md-5 {\n      padding-left: 3rem !important; }\n    :host ::ng-deep .m-md-auto {\n      margin: auto !important; }\n    :host ::ng-deep .mt-md-auto,\n    :host ::ng-deep .my-md-auto {\n      margin-top: auto !important; }\n    :host ::ng-deep .mr-md-auto,\n    :host ::ng-deep .mx-md-auto {\n      margin-right: auto !important; }\n    :host ::ng-deep .mb-md-auto,\n    :host ::ng-deep .my-md-auto {\n      margin-bottom: auto !important; }\n    :host ::ng-deep .ml-md-auto,\n    :host ::ng-deep .mx-md-auto {\n      margin-left: auto !important; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .m-lg-0 {\n      margin: 0 !important; }\n    :host ::ng-deep .mt-lg-0,\n    :host ::ng-deep .my-lg-0 {\n      margin-top: 0 !important; }\n    :host ::ng-deep .mr-lg-0,\n    :host ::ng-deep .mx-lg-0 {\n      margin-right: 0 !important; }\n    :host ::ng-deep .mb-lg-0,\n    :host ::ng-deep .my-lg-0 {\n      margin-bottom: 0 !important; }\n    :host ::ng-deep .ml-lg-0,\n    :host ::ng-deep .mx-lg-0 {\n      margin-left: 0 !important; }\n    :host ::ng-deep .m-lg-1 {\n      margin: 0.25rem !important; }\n    :host ::ng-deep .mt-lg-1,\n    :host ::ng-deep .my-lg-1 {\n      margin-top: 0.25rem !important; }\n    :host ::ng-deep .mr-lg-1,\n    :host ::ng-deep .mx-lg-1 {\n      margin-right: 0.25rem !important; }\n    :host ::ng-deep .mb-lg-1,\n    :host ::ng-deep .my-lg-1 {\n      margin-bottom: 0.25rem !important; }\n    :host ::ng-deep .ml-lg-1,\n    :host ::ng-deep .mx-lg-1 {\n      margin-left: 0.25rem !important; }\n    :host ::ng-deep .m-lg-2 {\n      margin: 0.5rem !important; }\n    :host ::ng-deep .mt-lg-2,\n    :host ::ng-deep .my-lg-2 {\n      margin-top: 0.5rem !important; }\n    :host ::ng-deep .mr-lg-2,\n    :host ::ng-deep .mx-lg-2 {\n      margin-right: 0.5rem !important; }\n    :host ::ng-deep .mb-lg-2,\n    :host ::ng-deep .my-lg-2 {\n      margin-bottom: 0.5rem !important; }\n    :host ::ng-deep .ml-lg-2,\n    :host ::ng-deep .mx-lg-2 {\n      margin-left: 0.5rem !important; }\n    :host ::ng-deep .m-lg-3 {\n      margin: 1rem !important; }\n    :host ::ng-deep .mt-lg-3,\n    :host ::ng-deep .my-lg-3 {\n      margin-top: 1rem !important; }\n    :host ::ng-deep .mr-lg-3,\n    :host ::ng-deep .mx-lg-3 {\n      margin-right: 1rem !important; }\n    :host ::ng-deep .mb-lg-3,\n    :host ::ng-deep .my-lg-3 {\n      margin-bottom: 1rem !important; }\n    :host ::ng-deep .ml-lg-3,\n    :host ::ng-deep .mx-lg-3 {\n      margin-left: 1rem !important; }\n    :host ::ng-deep .m-lg-4 {\n      margin: 1.5rem !important; }\n    :host ::ng-deep .mt-lg-4,\n    :host ::ng-deep .my-lg-4 {\n      margin-top: 1.5rem !important; }\n    :host ::ng-deep .mr-lg-4,\n    :host ::ng-deep .mx-lg-4 {\n      margin-right: 1.5rem !important; }\n    :host ::ng-deep .mb-lg-4,\n    :host ::ng-deep .my-lg-4 {\n      margin-bottom: 1.5rem !important; }\n    :host ::ng-deep .ml-lg-4,\n    :host ::ng-deep .mx-lg-4 {\n      margin-left: 1.5rem !important; }\n    :host ::ng-deep .m-lg-5 {\n      margin: 3rem !important; }\n    :host ::ng-deep .mt-lg-5,\n    :host ::ng-deep .my-lg-5 {\n      margin-top: 3rem !important; }\n    :host ::ng-deep .mr-lg-5,\n    :host ::ng-deep .mx-lg-5 {\n      margin-right: 3rem !important; }\n    :host ::ng-deep .mb-lg-5,\n    :host ::ng-deep .my-lg-5 {\n      margin-bottom: 3rem !important; }\n    :host ::ng-deep .ml-lg-5,\n    :host ::ng-deep .mx-lg-5 {\n      margin-left: 3rem !important; }\n    :host ::ng-deep .p-lg-0 {\n      padding: 0 !important; }\n    :host ::ng-deep .pt-lg-0,\n    :host ::ng-deep .py-lg-0 {\n      padding-top: 0 !important; }\n    :host ::ng-deep .pr-lg-0,\n    :host ::ng-deep .px-lg-0 {\n      padding-right: 0 !important; }\n    :host ::ng-deep .pb-lg-0,\n    :host ::ng-deep .py-lg-0 {\n      padding-bottom: 0 !important; }\n    :host ::ng-deep .pl-lg-0,\n    :host ::ng-deep .px-lg-0 {\n      padding-left: 0 !important; }\n    :host ::ng-deep .p-lg-1 {\n      padding: 0.25rem !important; }\n    :host ::ng-deep .pt-lg-1,\n    :host ::ng-deep .py-lg-1 {\n      padding-top: 0.25rem !important; }\n    :host ::ng-deep .pr-lg-1,\n    :host ::ng-deep .px-lg-1 {\n      padding-right: 0.25rem !important; }\n    :host ::ng-deep .pb-lg-1,\n    :host ::ng-deep .py-lg-1 {\n      padding-bottom: 0.25rem !important; }\n    :host ::ng-deep .pl-lg-1,\n    :host ::ng-deep .px-lg-1 {\n      padding-left: 0.25rem !important; }\n    :host ::ng-deep .p-lg-2 {\n      padding: 0.5rem !important; }\n    :host ::ng-deep .pt-lg-2,\n    :host ::ng-deep .py-lg-2 {\n      padding-top: 0.5rem !important; }\n    :host ::ng-deep .pr-lg-2,\n    :host ::ng-deep .px-lg-2 {\n      padding-right: 0.5rem !important; }\n    :host ::ng-deep .pb-lg-2,\n    :host ::ng-deep .py-lg-2 {\n      padding-bottom: 0.5rem !important; }\n    :host ::ng-deep .pl-lg-2,\n    :host ::ng-deep .px-lg-2 {\n      padding-left: 0.5rem !important; }\n    :host ::ng-deep .p-lg-3 {\n      padding: 1rem !important; }\n    :host ::ng-deep .pt-lg-3,\n    :host ::ng-deep .py-lg-3 {\n      padding-top: 1rem !important; }\n    :host ::ng-deep .pr-lg-3,\n    :host ::ng-deep .px-lg-3 {\n      padding-right: 1rem !important; }\n    :host ::ng-deep .pb-lg-3,\n    :host ::ng-deep .py-lg-3 {\n      padding-bottom: 1rem !important; }\n    :host ::ng-deep .pl-lg-3,\n    :host ::ng-deep .px-lg-3 {\n      padding-left: 1rem !important; }\n    :host ::ng-deep .p-lg-4 {\n      padding: 1.5rem !important; }\n    :host ::ng-deep .pt-lg-4,\n    :host ::ng-deep .py-lg-4 {\n      padding-top: 1.5rem !important; }\n    :host ::ng-deep .pr-lg-4,\n    :host ::ng-deep .px-lg-4 {\n      padding-right: 1.5rem !important; }\n    :host ::ng-deep .pb-lg-4,\n    :host ::ng-deep .py-lg-4 {\n      padding-bottom: 1.5rem !important; }\n    :host ::ng-deep .pl-lg-4,\n    :host ::ng-deep .px-lg-4 {\n      padding-left: 1.5rem !important; }\n    :host ::ng-deep .p-lg-5 {\n      padding: 3rem !important; }\n    :host ::ng-deep .pt-lg-5,\n    :host ::ng-deep .py-lg-5 {\n      padding-top: 3rem !important; }\n    :host ::ng-deep .pr-lg-5,\n    :host ::ng-deep .px-lg-5 {\n      padding-right: 3rem !important; }\n    :host ::ng-deep .pb-lg-5,\n    :host ::ng-deep .py-lg-5 {\n      padding-bottom: 3rem !important; }\n    :host ::ng-deep .pl-lg-5,\n    :host ::ng-deep .px-lg-5 {\n      padding-left: 3rem !important; }\n    :host ::ng-deep .m-lg-auto {\n      margin: auto !important; }\n    :host ::ng-deep .mt-lg-auto,\n    :host ::ng-deep .my-lg-auto {\n      margin-top: auto !important; }\n    :host ::ng-deep .mr-lg-auto,\n    :host ::ng-deep .mx-lg-auto {\n      margin-right: auto !important; }\n    :host ::ng-deep .mb-lg-auto,\n    :host ::ng-deep .my-lg-auto {\n      margin-bottom: auto !important; }\n    :host ::ng-deep .ml-lg-auto,\n    :host ::ng-deep .mx-lg-auto {\n      margin-left: auto !important; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .m-xl-0 {\n      margin: 0 !important; }\n    :host ::ng-deep .mt-xl-0,\n    :host ::ng-deep .my-xl-0 {\n      margin-top: 0 !important; }\n    :host ::ng-deep .mr-xl-0,\n    :host ::ng-deep .mx-xl-0 {\n      margin-right: 0 !important; }\n    :host ::ng-deep .mb-xl-0,\n    :host ::ng-deep .my-xl-0 {\n      margin-bottom: 0 !important; }\n    :host ::ng-deep .ml-xl-0,\n    :host ::ng-deep .mx-xl-0 {\n      margin-left: 0 !important; }\n    :host ::ng-deep .m-xl-1 {\n      margin: 0.25rem !important; }\n    :host ::ng-deep .mt-xl-1,\n    :host ::ng-deep .my-xl-1 {\n      margin-top: 0.25rem !important; }\n    :host ::ng-deep .mr-xl-1,\n    :host ::ng-deep .mx-xl-1 {\n      margin-right: 0.25rem !important; }\n    :host ::ng-deep .mb-xl-1,\n    :host ::ng-deep .my-xl-1 {\n      margin-bottom: 0.25rem !important; }\n    :host ::ng-deep .ml-xl-1,\n    :host ::ng-deep .mx-xl-1 {\n      margin-left: 0.25rem !important; }\n    :host ::ng-deep .m-xl-2 {\n      margin: 0.5rem !important; }\n    :host ::ng-deep .mt-xl-2,\n    :host ::ng-deep .my-xl-2 {\n      margin-top: 0.5rem !important; }\n    :host ::ng-deep .mr-xl-2,\n    :host ::ng-deep .mx-xl-2 {\n      margin-right: 0.5rem !important; }\n    :host ::ng-deep .mb-xl-2,\n    :host ::ng-deep .my-xl-2 {\n      margin-bottom: 0.5rem !important; }\n    :host ::ng-deep .ml-xl-2,\n    :host ::ng-deep .mx-xl-2 {\n      margin-left: 0.5rem !important; }\n    :host ::ng-deep .m-xl-3 {\n      margin: 1rem !important; }\n    :host ::ng-deep .mt-xl-3,\n    :host ::ng-deep .my-xl-3 {\n      margin-top: 1rem !important; }\n    :host ::ng-deep .mr-xl-3,\n    :host ::ng-deep .mx-xl-3 {\n      margin-right: 1rem !important; }\n    :host ::ng-deep .mb-xl-3,\n    :host ::ng-deep .my-xl-3 {\n      margin-bottom: 1rem !important; }\n    :host ::ng-deep .ml-xl-3,\n    :host ::ng-deep .mx-xl-3 {\n      margin-left: 1rem !important; }\n    :host ::ng-deep .m-xl-4 {\n      margin: 1.5rem !important; }\n    :host ::ng-deep .mt-xl-4,\n    :host ::ng-deep .my-xl-4 {\n      margin-top: 1.5rem !important; }\n    :host ::ng-deep .mr-xl-4,\n    :host ::ng-deep .mx-xl-4 {\n      margin-right: 1.5rem !important; }\n    :host ::ng-deep .mb-xl-4,\n    :host ::ng-deep .my-xl-4 {\n      margin-bottom: 1.5rem !important; }\n    :host ::ng-deep .ml-xl-4,\n    :host ::ng-deep .mx-xl-4 {\n      margin-left: 1.5rem !important; }\n    :host ::ng-deep .m-xl-5 {\n      margin: 3rem !important; }\n    :host ::ng-deep .mt-xl-5,\n    :host ::ng-deep .my-xl-5 {\n      margin-top: 3rem !important; }\n    :host ::ng-deep .mr-xl-5,\n    :host ::ng-deep .mx-xl-5 {\n      margin-right: 3rem !important; }\n    :host ::ng-deep .mb-xl-5,\n    :host ::ng-deep .my-xl-5 {\n      margin-bottom: 3rem !important; }\n    :host ::ng-deep .ml-xl-5,\n    :host ::ng-deep .mx-xl-5 {\n      margin-left: 3rem !important; }\n    :host ::ng-deep .p-xl-0 {\n      padding: 0 !important; }\n    :host ::ng-deep .pt-xl-0,\n    :host ::ng-deep .py-xl-0 {\n      padding-top: 0 !important; }\n    :host ::ng-deep .pr-xl-0,\n    :host ::ng-deep .px-xl-0 {\n      padding-right: 0 !important; }\n    :host ::ng-deep .pb-xl-0,\n    :host ::ng-deep .py-xl-0 {\n      padding-bottom: 0 !important; }\n    :host ::ng-deep .pl-xl-0,\n    :host ::ng-deep .px-xl-0 {\n      padding-left: 0 !important; }\n    :host ::ng-deep .p-xl-1 {\n      padding: 0.25rem !important; }\n    :host ::ng-deep .pt-xl-1,\n    :host ::ng-deep .py-xl-1 {\n      padding-top: 0.25rem !important; }\n    :host ::ng-deep .pr-xl-1,\n    :host ::ng-deep .px-xl-1 {\n      padding-right: 0.25rem !important; }\n    :host ::ng-deep .pb-xl-1,\n    :host ::ng-deep .py-xl-1 {\n      padding-bottom: 0.25rem !important; }\n    :host ::ng-deep .pl-xl-1,\n    :host ::ng-deep .px-xl-1 {\n      padding-left: 0.25rem !important; }\n    :host ::ng-deep .p-xl-2 {\n      padding: 0.5rem !important; }\n    :host ::ng-deep .pt-xl-2,\n    :host ::ng-deep .py-xl-2 {\n      padding-top: 0.5rem !important; }\n    :host ::ng-deep .pr-xl-2,\n    :host ::ng-deep .px-xl-2 {\n      padding-right: 0.5rem !important; }\n    :host ::ng-deep .pb-xl-2,\n    :host ::ng-deep .py-xl-2 {\n      padding-bottom: 0.5rem !important; }\n    :host ::ng-deep .pl-xl-2,\n    :host ::ng-deep .px-xl-2 {\n      padding-left: 0.5rem !important; }\n    :host ::ng-deep .p-xl-3 {\n      padding: 1rem !important; }\n    :host ::ng-deep .pt-xl-3,\n    :host ::ng-deep .py-xl-3 {\n      padding-top: 1rem !important; }\n    :host ::ng-deep .pr-xl-3,\n    :host ::ng-deep .px-xl-3 {\n      padding-right: 1rem !important; }\n    :host ::ng-deep .pb-xl-3,\n    :host ::ng-deep .py-xl-3 {\n      padding-bottom: 1rem !important; }\n    :host ::ng-deep .pl-xl-3,\n    :host ::ng-deep .px-xl-3 {\n      padding-left: 1rem !important; }\n    :host ::ng-deep .p-xl-4 {\n      padding: 1.5rem !important; }\n    :host ::ng-deep .pt-xl-4,\n    :host ::ng-deep .py-xl-4 {\n      padding-top: 1.5rem !important; }\n    :host ::ng-deep .pr-xl-4,\n    :host ::ng-deep .px-xl-4 {\n      padding-right: 1.5rem !important; }\n    :host ::ng-deep .pb-xl-4,\n    :host ::ng-deep .py-xl-4 {\n      padding-bottom: 1.5rem !important; }\n    :host ::ng-deep .pl-xl-4,\n    :host ::ng-deep .px-xl-4 {\n      padding-left: 1.5rem !important; }\n    :host ::ng-deep .p-xl-5 {\n      padding: 3rem !important; }\n    :host ::ng-deep .pt-xl-5,\n    :host ::ng-deep .py-xl-5 {\n      padding-top: 3rem !important; }\n    :host ::ng-deep .pr-xl-5,\n    :host ::ng-deep .px-xl-5 {\n      padding-right: 3rem !important; }\n    :host ::ng-deep .pb-xl-5,\n    :host ::ng-deep .py-xl-5 {\n      padding-bottom: 3rem !important; }\n    :host ::ng-deep .pl-xl-5,\n    :host ::ng-deep .px-xl-5 {\n      padding-left: 3rem !important; }\n    :host ::ng-deep .m-xl-auto {\n      margin: auto !important; }\n    :host ::ng-deep .mt-xl-auto,\n    :host ::ng-deep .my-xl-auto {\n      margin-top: auto !important; }\n    :host ::ng-deep .mr-xl-auto,\n    :host ::ng-deep .mx-xl-auto {\n      margin-right: auto !important; }\n    :host ::ng-deep .mb-xl-auto,\n    :host ::ng-deep .my-xl-auto {\n      margin-bottom: auto !important; }\n    :host ::ng-deep .ml-xl-auto,\n    :host ::ng-deep .mx-xl-auto {\n      margin-left: auto !important; } }\n:host ::ng-deep .text-monospace {\n    font-family: SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; }\n:host ::ng-deep .text-justify {\n    text-align: justify !important; }\n:host ::ng-deep .text-nowrap {\n    white-space: nowrap !important; }\n:host ::ng-deep .text-truncate {\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n:host ::ng-deep .text-left {\n    text-align: left !important; }\n:host ::ng-deep .text-right {\n    text-align: right !important; }\n:host ::ng-deep .text-center {\n    text-align: center !important; }\n@media (min-width: 576px) {\n    :host ::ng-deep .text-sm-left {\n      text-align: left !important; }\n    :host ::ng-deep .text-sm-right {\n      text-align: right !important; }\n    :host ::ng-deep .text-sm-center {\n      text-align: center !important; } }\n@media (min-width: 768px) {\n    :host ::ng-deep .text-md-left {\n      text-align: left !important; }\n    :host ::ng-deep .text-md-right {\n      text-align: right !important; }\n    :host ::ng-deep .text-md-center {\n      text-align: center !important; } }\n@media (min-width: 992px) {\n    :host ::ng-deep .text-lg-left {\n      text-align: left !important; }\n    :host ::ng-deep .text-lg-right {\n      text-align: right !important; }\n    :host ::ng-deep .text-lg-center {\n      text-align: center !important; } }\n@media (min-width: 1200px) {\n    :host ::ng-deep .text-xl-left {\n      text-align: left !important; }\n    :host ::ng-deep .text-xl-right {\n      text-align: right !important; }\n    :host ::ng-deep .text-xl-center {\n      text-align: center !important; } }\n:host ::ng-deep .text-lowercase {\n    text-transform: lowercase !important; }\n:host ::ng-deep .text-uppercase {\n    text-transform: uppercase !important; }\n:host ::ng-deep .text-capitalize {\n    text-transform: capitalize !important; }\n:host ::ng-deep .font-weight-light {\n    font-weight: 300 !important; }\n:host ::ng-deep .font-weight-normal {\n    font-weight: 400 !important; }\n:host ::ng-deep .font-weight-bold {\n    font-weight: 700 !important; }\n:host ::ng-deep .font-italic {\n    font-style: italic !important; }\n:host ::ng-deep .text-white {\n    color: #fff !important; }\n:host ::ng-deep .text-primary {\n    color: #008cba !important; }\n:host ::ng-deep a.text-primary:hover, :host ::ng-deep a.text-primary:focus {\n    color: #006687 !important; }\n:host ::ng-deep .text-secondary {\n    color: #eee !important; }\n:host ::ng-deep a.text-secondary:hover, :host ::ng-deep a.text-secondary:focus {\n    color: #d5d4d4 !important; }\n:host ::ng-deep .text-success {\n    color: #43ac6a !important; }\n:host ::ng-deep a.text-success:hover, :host ::ng-deep a.text-success:focus {\n    color: #358753 !important; }\n:host ::ng-deep .text-info {\n    color: #5bc0de !important; }\n:host ::ng-deep a.text-info:hover, :host ::ng-deep a.text-info:focus {\n    color: #31b0d5 !important; }\n:host ::ng-deep .text-warning {\n    color: #E99002 !important; }\n:host ::ng-deep a.text-warning:hover, :host ::ng-deep a.text-warning:focus {\n    color: #b67102 !important; }\n:host ::ng-deep .text-danger {\n    color: #F04124 !important; }\n:host ::ng-deep a.text-danger:hover, :host ::ng-deep a.text-danger:focus {\n    color: #d32a0e !important; }\n:host ::ng-deep .text-light {\n    color: #eee !important; }\n:host ::ng-deep a.text-light:hover, :host ::ng-deep a.text-light:focus {\n    color: #d5d4d4 !important; }\n:host ::ng-deep .text-dark {\n    color: #222 !important; }\n:host ::ng-deep a.text-dark:hover, :host ::ng-deep a.text-dark:focus {\n    color: #090909 !important; }\n:host ::ng-deep .text-body {\n    color: #222 !important; }\n:host ::ng-deep .text-muted {\n    color: #888 !important; }\n:host ::ng-deep .text-black-50 {\n    color: rgba(0, 0, 0, 0.5) !important; }\n:host ::ng-deep .text-white-50 {\n    color: rgba(255, 255, 255, 0.5) !important; }\n:host ::ng-deep .text-hide {\n    font: 0/0 a;\n    color: transparent;\n    text-shadow: none;\n    background-color: transparent;\n    border: 0; }\n:host ::ng-deep .visible {\n    visibility: visible !important; }\n:host ::ng-deep .invisible {\n    visibility: hidden !important; }\n@media print {\n    :host ::ng-deep *,\n    :host ::ng-deep *::before,\n    :host ::ng-deep *::after {\n      text-shadow: none !important;\n      box-shadow: none !important; }\n    :host ::ng-deep a:not(.btn) {\n      text-decoration: underline; }\n    :host ::ng-deep abbr[title]::after {\n      content: \" (\" attr(title) \")\"; }\n    :host ::ng-deep pre {\n      white-space: pre-wrap !important; }\n    :host ::ng-deep pre,\n    :host ::ng-deep blockquote {\n      border: 1px solid #adb5bd;\n      page-break-inside: avoid; }\n    :host ::ng-deep thead {\n      display: table-header-group; }\n    :host ::ng-deep tr,\n    :host ::ng-deep img {\n      page-break-inside: avoid; }\n    :host ::ng-deep p,\n    :host ::ng-deep h2,\n    :host ::ng-deep h3 {\n      orphans: 3;\n      widows: 3; }\n    :host ::ng-deep h2,\n    :host ::ng-deep h3 {\n      page-break-after: avoid; }\n    @page {\n      :host ::ng-deep {\n        size: a3; } }\n    :host ::ng-deep body {\n      min-width: 992px !important; }\n    :host ::ng-deep .container {\n      min-width: 992px !important; }\n    :host ::ng-deep .navbar {\n      display: none; }\n    :host ::ng-deep .badge {\n      border: 1px solid #000; }\n    :host ::ng-deep .table {\n      border-collapse: collapse !important; }\n      :host ::ng-deep .table td,\n      :host ::ng-deep .table th {\n        background-color: #fff !important; }\n    :host ::ng-deep .table-bordered th,\n    :host ::ng-deep .table-bordered td {\n      border: 1px solid #dee2e6 !important; }\n    :host ::ng-deep .table-dark {\n      color: inherit; }\n      :host ::ng-deep .table-dark th,\n      :host ::ng-deep .table-dark td,\n      :host ::ng-deep .table-dark thead th,\n      :host ::ng-deep .table-dark tbody + tbody {\n        border-color: #dee2e6; }\n    :host ::ng-deep .table .thead-dark th {\n      color: inherit;\n      border-color: #dee2e6; } }\n:host ::ng-deep .navbar {\n    font-size: 0.8203125rem;\n    font-weight: 300; }\n:host ::ng-deep .bg-primary .dropdown-menu {\n    background-color: #008cba; }\n:host ::ng-deep .bg-primary .dropdown-menu .dropdown-item,\n    :host ::ng-deep .bg-primary .dropdown-menu .dropdown-item:focus {\n      color: rgba(255, 255, 255, 0.7); }\n:host ::ng-deep .bg-primary .dropdown-menu .dropdown-item.active,\n    :host ::ng-deep .bg-primary .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .bg-primary .dropdown-menu .dropdown-item:focus {\n      background-color: #0079a1;\n      color: #fff; }\n:host ::ng-deep .bg-dark {\n    background-color: #333 !important; }\n:host ::ng-deep .bg-dark .dropdown-menu {\n      background-color: #333; }\n:host ::ng-deep .bg-dark .dropdown-menu .dropdown-item,\n      :host ::ng-deep .bg-dark .dropdown-menu .dropdown-item:focus {\n        color: rgba(255, 255, 255, 0.7); }\n:host ::ng-deep .bg-dark .dropdown-menu .dropdown-item.active,\n      :host ::ng-deep .bg-dark .dropdown-menu .dropdown-item:hover,\n      :host ::ng-deep .bg-dark .dropdown-menu .dropdown-item:focus {\n        background-color: #262626;\n        color: #fff; }\n:host ::ng-deep .bg-light .dropdown-menu {\n    background-color: #eee; }\n:host ::ng-deep .bg-light .dropdown-menu .dropdown-item,\n    :host ::ng-deep .bg-light .dropdown-menu .dropdown-item:focus {\n      color: rgba(0, 0, 0, 0.5); }\n:host ::ng-deep .bg-light .dropdown-menu .dropdown-item.active,\n    :host ::ng-deep .bg-light .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .bg-light .dropdown-menu .dropdown-item:focus {\n      background-color: #fbfbfb;\n      color: rgba(0, 0, 0, 0.7); }\n:host ::ng-deep .btn-primary {\n    border-color: #0079a1; }\n:host ::ng-deep .btn-secondary {\n    border-color: #e1e1e1; }\n:host ::ng-deep .btn-success {\n    border-color: #3c9a5f; }\n:host ::ng-deep .btn-info {\n    border-color: #46b8da;\n    color: #fff; }\n:host ::ng-deep .btn-danger {\n    border-color: #ea2f10; }\n:host ::ng-deep .btn-warning {\n    border-color: #d08002;\n    color: #fff; }\n:host ::ng-deep .btn-light {\n    border-color: #e1e1e1; }\n:host ::ng-deep .btn-dark {\n    border-color: #151515; }\n:host ::ng-deep .btn-group .dropdown-menu {\n    border-top-width: 0; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-primary ~ .dropdown-menu {\n    background-color: #008cba;\n    border-color: #0079a1; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-primary ~ .dropdown-menu .dropdown-item {\n      color: #fff; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-primary ~ .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .btn-group .dropdown-toggle.btn-primary ~ .dropdown-menu .dropdown-item:focus {\n      background-color: #006d91; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-secondary ~ .dropdown-menu {\n    background-color: #eee;\n    border-color: #e1e1e1; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-secondary ~ .dropdown-menu .dropdown-item {\n      color: #fff; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-secondary ~ .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .btn-group .dropdown-toggle.btn-secondary ~ .dropdown-menu .dropdown-item:focus {\n      background-color: #dadada; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-success ~ .dropdown-menu {\n    background-color: #43ac6a;\n    border-color: #3c9a5f; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-success ~ .dropdown-menu .dropdown-item {\n      color: #fff; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-success ~ .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .btn-group .dropdown-toggle.btn-success ~ .dropdown-menu .dropdown-item:focus {\n      background-color: #388f58; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-info ~ .dropdown-menu {\n    background-color: #5bc0de;\n    border-color: #46b8da; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-info ~ .dropdown-menu .dropdown-item {\n      color: #fff; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-info ~ .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .btn-group .dropdown-toggle.btn-info ~ .dropdown-menu .dropdown-item:focus {\n      background-color: #39b3d7; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-warning ~ .dropdown-menu {\n    background-color: #E99002;\n    border-color: #d08002; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-warning ~ .dropdown-menu .dropdown-item {\n      color: #fff; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-warning ~ .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .btn-group .dropdown-toggle.btn-warning ~ .dropdown-menu .dropdown-item:focus {\n      background-color: #c17702; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-danger ~ .dropdown-menu {\n    background-color: #F04124;\n    border-color: #0079a1; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-danger ~ .dropdown-menu .dropdown-item {\n      color: #fff; }\n:host ::ng-deep .btn-group .dropdown-toggle.btn-danger ~ .dropdown-menu .dropdown-item:hover,\n    :host ::ng-deep .btn-group .dropdown-toggle.btn-danger ~ .dropdown-menu .dropdown-item:focus {\n      background-color: #dc2c0f; }\n:host ::ng-deep .blockquote-footer {\n    color: #888; }\n:host ::ng-deep table {\n    font-size: 0.8203125rem; }\n:host ::ng-deep .table-success, :host ::ng-deep .table-info, :host ::ng-deep .table-warning, :host ::ng-deep .table-danger {\n    color: #fff; }\n:host ::ng-deep .table-success,\n  :host ::ng-deep .table-success > th,\n  :host ::ng-deep .table-success > td {\n    background-color: #43ac6a; }\n:host ::ng-deep .table-info,\n  :host ::ng-deep .table-info > th,\n  :host ::ng-deep .table-info > td {\n    background-color: #5bc0de; }\n:host ::ng-deep .table-danger,\n  :host ::ng-deep .table-danger > th,\n  :host ::ng-deep .table-danger > td {\n    background-color: #F04124; }\n:host ::ng-deep .table-warning,\n  :host ::ng-deep .table-warning > th,\n  :host ::ng-deep .table-warning > td {\n    background-color: #E99002; }\n:host ::ng-deep .table-hover .table-success:hover, :host ::ng-deep .table-hover .table-success:hover > th, :host ::ng-deep .table-hover .table-success:hover > td {\n    background-color: #3c9a5f; }\n:host ::ng-deep .table-hover .table-info:hover, :host ::ng-deep .table-hover .table-info:hover > th, :host ::ng-deep .table-hover .table-info:hover > td {\n    background-color: #46b8da; }\n:host ::ng-deep .table-hover .table-danger:hover, :host ::ng-deep .table-hover .table-danger:hover > th, :host ::ng-deep .table-hover .table-danger:hover > td {\n    background-color: #ea2f10; }\n:host ::ng-deep .table-hover .table-warning:hover, :host ::ng-deep .table-hover .table-warning:hover > th, :host ::ng-deep .table-hover .table-warning:hover > td {\n    background-color: #d08002; }\n:host ::ng-deep label,\n  :host ::ng-deep .control-label,\n  :host ::ng-deep .help-block,\n  :host ::ng-deep .checkbox,\n  :host ::ng-deep .radio,\n  :host ::ng-deep .form-control-feedback {\n    font-size: 0.8203125rem; }\n:host ::ng-deep .dropdown-item {\n    padding-top: 0.75rem;\n    padding-bottom: 0.75rem;\n    font-size: 0.8203125rem;\n    font-weight: 300; }\n:host ::ng-deep .nav-tabs .nav-link,\n  :host ::ng-deep .nav-tabs .nav-link.disabled,\n  :host ::ng-deep .nav-tabs .nav-link.disabled:hover,\n  :host ::ng-deep .nav-tabs .nav-link.disabled:focus {\n    border-color: rgba(0, 0, 0, 0.1);\n    background-color: #eee; }\n:host ::ng-deep .nav-tabs .nav-link:hover, :host ::ng-deep .nav-tabs .nav-link:focus {\n    background-color: #fbfbfb; }\n:host ::ng-deep .nav-pills .active {\n    border: 1px solid #0079a1; }\n:host ::ng-deep .breadcrumb {\n    border: 1px solid rgba(0, 0, 0, 0.1);\n    border-radius: 3px;\n    font-size: 0.8203125rem;\n    font-weight: 300;\n    text-transform: uppercase; }\n:host ::ng-deep .pagination {\n    font-weight: 300; }\n:host ::ng-deep .pagination .page-link {\n      border-color: transparent;\n      border-radius: 3px;\n      margin-left: 0.1em;\n      margin-right: 0.1em; }\n:host ::ng-deep .pagination .page-link:hover, :host ::ng-deep .pagination .page-link:focus {\n        text-decoration: none; }\n:host ::ng-deep .pagination .page-item.disabled .page-link {\n      border-color: transparent; }\n:host ::ng-deep .pagination .page-item:first-child .page-link,\n  :host ::ng-deep .pagination .page-item:last-child .page-link,\n  :host ::ng-deep .pagination-lg .page-item:first-child .page-link,\n  :host ::ng-deep .pagination-lg .page-item:last-child .page-link,\n  :host ::ng-deep .pagination-sm .page-item:first-child .page-link,\n  :host ::ng-deep .pagination-sm .page-item:last-child .page-link {\n    border-radius: 3px; }\n:host ::ng-deep .list-group {\n    font-size: 0.8203125rem;\n    font-weight: 300; }\n:host ::ng-deep .close {\n    opacity: 0.6;\n    text-shadow: none; }\n:host ::ng-deep .close:hover, :host ::ng-deep .close:focus {\n      opacity: 1; }\n:host ::ng-deep .alert {\n    font-size: 0.8203125rem;\n    font-weight: 300;\n    color: #fff; }\n:host ::ng-deep .alert-primary, :host ::ng-deep .alert-primary > th, :host ::ng-deep .alert-primary > td {\n      background-color: #008cba; }\n:host ::ng-deep .alert-secondary, :host ::ng-deep .alert-secondary > th, :host ::ng-deep .alert-secondary > td {\n      background-color: #eee; }\n:host ::ng-deep .alert-success, :host ::ng-deep .alert-success > th, :host ::ng-deep .alert-success > td {\n      background-color: #43ac6a; }\n:host ::ng-deep .alert-info, :host ::ng-deep .alert-info > th, :host ::ng-deep .alert-info > td {\n      background-color: #5bc0de; }\n:host ::ng-deep .alert-danger, :host ::ng-deep .alert-danger > th, :host ::ng-deep .alert-danger > td {\n      background-color: #F04124; }\n:host ::ng-deep .alert-warning, :host ::ng-deep .alert-warning > th, :host ::ng-deep .alert-warning > td {\n      background-color: #E99002; }\n:host ::ng-deep .alert-dark, :host ::ng-deep .alert-dark > th, :host ::ng-deep .alert-dark > td {\n      background-color: #222; }\n:host ::ng-deep .alert-light, :host ::ng-deep .alert-light > th, :host ::ng-deep .alert-light > td {\n      background-color: #eee; }\n:host ::ng-deep .alert .alert-link {\n      font-weight: normal;\n      color: #fff;\n      text-decoration: underline; }\n:host ::ng-deep .alert-secondary,\n    :host ::ng-deep .alert-secondary a:not(.btn),\n    :host ::ng-deep .alert-secondary .alert-link, :host ::ng-deep .alert-light,\n    :host ::ng-deep .alert-light a:not(.btn),\n    :host ::ng-deep .alert-light .alert-link {\n      color: #222; }\n:host ::ng-deep .badge {\n    padding-bottom: .3em; }\n:host ::ng-deep .badge-warning, :host ::ng-deep .badge-info {\n      color: #fff; }\n:host ::ng-deep .progress[value] {\n    height: 22px;\n    padding: 2px;\n    background-color: #f6f6f6;\n    border: 1px solid #ccc; }\n:host ::ng-deep .flatpickr-calendar {\n    background: transparent;\n    opacity: 0;\n    display: none;\n    text-align: center;\n    visibility: hidden;\n    padding: 0;\n    -webkit-animation: none;\n    animation: none;\n    direction: ltr;\n    border: 0;\n    font-size: 14px;\n    line-height: 24px;\n    border-radius: 5px;\n    position: absolute;\n    width: 307.875px;\n    box-sizing: border-box;\n    touch-action: manipulation;\n    background: #fff;\n    box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08); }\n:host ::ng-deep .flatpickr-calendar.open,\n  :host ::ng-deep .flatpickr-calendar.inline {\n    opacity: 1;\n    max-height: 640px;\n    visibility: visible; }\n:host ::ng-deep .flatpickr-calendar.open {\n    display: inline-block;\n    z-index: 99999; }\n:host ::ng-deep .flatpickr-calendar.animate.open {\n    -webkit-animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);\n    animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1); }\n:host ::ng-deep .flatpickr-calendar.inline {\n    display: block;\n    position: relative;\n    top: 2px; }\n:host ::ng-deep .flatpickr-calendar.static {\n    position: absolute;\n    top: calc(100% + 2px); }\n:host ::ng-deep .flatpickr-calendar.static.open {\n    z-index: 999;\n    display: block; }\n:host ::ng-deep .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {\n    box-shadow: none !important; }\n:host ::ng-deep .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {\n    box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar .hasWeeks .dayContainer,\n  :host ::ng-deep .flatpickr-calendar .hasTime .dayContainer {\n    border-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0; }\n:host ::ng-deep .flatpickr-calendar .hasWeeks .dayContainer {\n    border-left: 0; }\n:host ::ng-deep .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {\n    height: 40px;\n    border-top: 1px solid #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar.noCalendar.hasTime .flatpickr-time {\n    height: auto; }\n:host ::ng-deep .flatpickr-calendar:before,\n  :host ::ng-deep .flatpickr-calendar:after {\n    position: absolute;\n    display: block;\n    pointer-events: none;\n    border: solid transparent;\n    content: '';\n    height: 0;\n    width: 0;\n    left: 22px; }\n:host ::ng-deep .flatpickr-calendar.rightMost:before,\n  :host ::ng-deep .flatpickr-calendar.rightMost:after {\n    left: auto;\n    right: 22px; }\n:host ::ng-deep .flatpickr-calendar:before {\n    border-width: 5px;\n    margin: 0 -5px; }\n:host ::ng-deep .flatpickr-calendar:after {\n    border-width: 4px;\n    margin: 0 -4px; }\n:host ::ng-deep .flatpickr-calendar.arrowTop:before,\n  :host ::ng-deep .flatpickr-calendar.arrowTop:after {\n    bottom: 100%; }\n:host ::ng-deep .flatpickr-calendar.arrowTop:before {\n    border-bottom-color: #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar.arrowTop:after {\n    border-bottom-color: #fff; }\n:host ::ng-deep .flatpickr-calendar.arrowBottom:before,\n  :host ::ng-deep .flatpickr-calendar.arrowBottom:after {\n    top: 100%; }\n:host ::ng-deep .flatpickr-calendar.arrowBottom:before {\n    border-top-color: #e6e6e6; }\n:host ::ng-deep .flatpickr-calendar.arrowBottom:after {\n    border-top-color: #fff; }\n:host ::ng-deep .flatpickr-calendar:focus {\n    outline: 0; }\n:host ::ng-deep .flatpickr-wrapper {\n    position: relative;\n    display: inline-block; }\n:host ::ng-deep .flatpickr-months {\n    display: flex; }\n:host ::ng-deep .flatpickr-months .flatpickr-month {\n    background: transparent;\n    color: rgba(0, 0, 0, 0.9);\n    fill: rgba(0, 0, 0, 0.9);\n    height: 28px;\n    line-height: 1;\n    text-align: center;\n    position: relative;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    overflow: hidden;\n    flex: 1; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month {\n    text-decoration: none;\n    cursor: pointer;\n    position: absolute;\n    top: 0;\n    line-height: 16px;\n    height: 28px;\n    padding: 10px;\n    z-index: 3;\n    color: rgba(0, 0, 0, 0.9);\n    fill: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month.disabled,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month.disabled {\n    display: none; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month i,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month i {\n    position: relative; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month.flatpickr-prev-month {\n    left: 0; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month.flatpickr-next-month,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month.flatpickr-next-month {\n    right: 0; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month:hover,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month:hover {\n    color: #959ea9; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month:hover svg,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month:hover svg {\n    fill: #f64747; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month svg,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month svg {\n    width: 14px;\n    height: 14px; }\n:host ::ng-deep .flatpickr-months .flatpickr-prev-month svg path,\n  :host ::ng-deep .flatpickr-months .flatpickr-next-month svg path {\n    transition: fill .1s;\n    fill: inherit; }\n:host ::ng-deep .numInputWrapper {\n    position: relative;\n    height: auto; }\n:host ::ng-deep .numInputWrapper input,\n  :host ::ng-deep .numInputWrapper span {\n    display: inline-block; }\n:host ::ng-deep .numInputWrapper input {\n    width: 100%; }\n:host ::ng-deep .numInputWrapper input::-ms-clear {\n    display: none; }\n:host ::ng-deep .numInputWrapper span {\n    position: absolute;\n    right: 0;\n    width: 14px;\n    padding: 0 4px 0 2px;\n    height: 50%;\n    line-height: 50%;\n    opacity: 0;\n    cursor: pointer;\n    border: 1px solid rgba(57, 57, 57, 0.15);\n    box-sizing: border-box; }\n:host ::ng-deep .numInputWrapper span:hover {\n    background: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .numInputWrapper span:active {\n    background: rgba(0, 0, 0, 0.2); }\n:host ::ng-deep .numInputWrapper span:after {\n    display: block;\n    content: \"\";\n    position: absolute; }\n:host ::ng-deep .numInputWrapper span.arrowUp {\n    top: 0;\n    border-bottom: 0; }\n:host ::ng-deep .numInputWrapper span.arrowUp:after {\n    border-left: 4px solid transparent;\n    border-right: 4px solid transparent;\n    border-bottom: 4px solid rgba(57, 57, 57, 0.6);\n    top: 26%; }\n:host ::ng-deep .numInputWrapper span.arrowDown {\n    top: 50%; }\n:host ::ng-deep .numInputWrapper span.arrowDown:after {\n    border-left: 4px solid transparent;\n    border-right: 4px solid transparent;\n    border-top: 4px solid rgba(57, 57, 57, 0.6);\n    top: 40%; }\n:host ::ng-deep .numInputWrapper span svg {\n    width: inherit;\n    height: auto; }\n:host ::ng-deep .numInputWrapper span svg path {\n    fill: rgba(0, 0, 0, 0.5); }\n:host ::ng-deep .numInputWrapper:hover {\n    background: rgba(0, 0, 0, 0.05); }\n:host ::ng-deep .numInputWrapper:hover span {\n    opacity: 1; }\n:host ::ng-deep .flatpickr-current-month {\n    font-size: 135%;\n    line-height: inherit;\n    font-weight: 300;\n    color: inherit;\n    position: absolute;\n    width: 75%;\n    left: 12.5%;\n    padding: 6.16px 0 0 0;\n    line-height: 1;\n    height: 28px;\n    display: inline-block;\n    text-align: center;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); }\n:host ::ng-deep .flatpickr-current-month span.cur-month {\n    font-family: inherit;\n    font-weight: 700;\n    color: inherit;\n    display: inline-block;\n    margin-left: .5ch;\n    padding: 0; }\n:host ::ng-deep .flatpickr-current-month span.cur-month:hover {\n    background: rgba(0, 0, 0, 0.05); }\n:host ::ng-deep .flatpickr-current-month .numInputWrapper {\n    width: 6ch;\n    width: 7ch\\0;\n    display: inline-block; }\n:host ::ng-deep .flatpickr-current-month .numInputWrapper span.arrowUp:after {\n    border-bottom-color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .flatpickr-current-month .numInputWrapper span.arrowDown:after {\n    border-top-color: rgba(0, 0, 0, 0.9); }\n:host ::ng-deep .flatpickr-current-month input.cur-year {\n    background: transparent;\n    box-sizing: border-box;\n    color: inherit;\n    cursor: text;\n    padding: 0 0 0 .5ch;\n    margin: 0;\n    display: inline-block;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: 300;\n    line-height: inherit;\n    height: auto;\n    border: 0;\n    border-radius: 0;\n    vertical-align: initial; }\n:host ::ng-deep .flatpickr-current-month input.cur-year:focus {\n    outline: 0; }\n:host ::ng-deep .flatpickr-current-month input.cur-year[disabled],\n  :host ::ng-deep .flatpickr-current-month input.cur-year[disabled]:hover {\n    font-size: 100%;\n    color: rgba(0, 0, 0, 0.5);\n    background: transparent;\n    pointer-events: none; }\n:host ::ng-deep .flatpickr-weekdays {\n    background: transparent;\n    text-align: center;\n    overflow: hidden;\n    width: 100%;\n    display: flex;\n    align-items: center;\n    height: 28px; }\n:host ::ng-deep .flatpickr-weekdays .flatpickr-weekdaycontainer {\n    display: flex;\n    flex: 1; }\n:host ::ng-deep span.flatpickr-weekday {\n    cursor: default;\n    font-size: 90%;\n    background: transparent;\n    color: rgba(0, 0, 0, 0.54);\n    line-height: 1;\n    margin: 0;\n    text-align: center;\n    display: block;\n    flex: 1;\n    font-weight: bolder; }\n:host ::ng-deep .dayContainer,\n  :host ::ng-deep .flatpickr-weeks {\n    padding: 1px 0 0 0; }\n:host ::ng-deep .flatpickr-days {\n    position: relative;\n    overflow: hidden;\n    display: flex;\n    align-items: flex-start;\n    width: 307.875px; }\n:host ::ng-deep .flatpickr-days:focus {\n    outline: 0; }\n:host ::ng-deep .dayContainer {\n    padding: 0;\n    outline: 0;\n    text-align: left;\n    width: 307.875px;\n    min-width: 307.875px;\n    max-width: 307.875px;\n    box-sizing: border-box;\n    display: inline-block;\n    display: flex;\n    flex-wrap: wrap;\n    -ms-flex-wrap: wrap;\n    justify-content: space-around;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0);\n    opacity: 1; }\n:host ::ng-deep .dayContainer + .dayContainer {\n    box-shadow: -1px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-day {\n    background: none;\n    border: 1px solid transparent;\n    border-radius: 150px;\n    box-sizing: border-box;\n    color: #393939;\n    cursor: pointer;\n    font-weight: 400;\n    width: 14.2857143%;\n    flex-basis: 14.2857143%;\n    max-width: 39px;\n    height: 39px;\n    line-height: 39px;\n    margin: 0;\n    display: inline-block;\n    position: relative;\n    justify-content: center;\n    text-align: center; }\n:host ::ng-deep .flatpickr-day.inRange,\n  :host ::ng-deep .flatpickr-day.prevMonthDay.inRange,\n  :host ::ng-deep .flatpickr-day.nextMonthDay.inRange,\n  :host ::ng-deep .flatpickr-day.today.inRange,\n  :host ::ng-deep .flatpickr-day.prevMonthDay.today.inRange,\n  :host ::ng-deep .flatpickr-day.nextMonthDay.today.inRange,\n  :host ::ng-deep .flatpickr-day:hover,\n  :host ::ng-deep .flatpickr-day.prevMonthDay:hover,\n  :host ::ng-deep .flatpickr-day.nextMonthDay:hover,\n  :host ::ng-deep .flatpickr-day:focus,\n  :host ::ng-deep .flatpickr-day.prevMonthDay:focus,\n  :host ::ng-deep .flatpickr-day.nextMonthDay:focus {\n    cursor: pointer;\n    outline: 0;\n    background: #e6e6e6;\n    border-color: #e6e6e6; }\n:host ::ng-deep .flatpickr-day.today {\n    border-color: #959ea9; }\n:host ::ng-deep .flatpickr-day.today:hover,\n  :host ::ng-deep .flatpickr-day.today:focus {\n    border-color: #959ea9;\n    background: #959ea9;\n    color: #fff; }\n:host ::ng-deep .flatpickr-day.selected,\n  :host ::ng-deep .flatpickr-day.startRange,\n  :host ::ng-deep .flatpickr-day.endRange,\n  :host ::ng-deep .flatpickr-day.selected.inRange,\n  :host ::ng-deep .flatpickr-day.startRange.inRange,\n  :host ::ng-deep .flatpickr-day.endRange.inRange,\n  :host ::ng-deep .flatpickr-day.selected:focus,\n  :host ::ng-deep .flatpickr-day.startRange:focus,\n  :host ::ng-deep .flatpickr-day.endRange:focus,\n  :host ::ng-deep .flatpickr-day.selected:hover,\n  :host ::ng-deep .flatpickr-day.startRange:hover,\n  :host ::ng-deep .flatpickr-day.endRange:hover,\n  :host ::ng-deep .flatpickr-day.selected.prevMonthDay,\n  :host ::ng-deep .flatpickr-day.startRange.prevMonthDay,\n  :host ::ng-deep .flatpickr-day.endRange.prevMonthDay,\n  :host ::ng-deep .flatpickr-day.selected.nextMonthDay,\n  :host ::ng-deep .flatpickr-day.startRange.nextMonthDay,\n  :host ::ng-deep .flatpickr-day.endRange.nextMonthDay {\n    background: #569ff7;\n    box-shadow: none;\n    color: #fff;\n    border-color: #569ff7; }\n:host ::ng-deep .flatpickr-day.selected.startRange,\n  :host ::ng-deep .flatpickr-day.startRange.startRange,\n  :host ::ng-deep .flatpickr-day.endRange.startRange {\n    border-radius: 50px 0 0 50px; }\n:host ::ng-deep .flatpickr-day.selected.endRange,\n  :host ::ng-deep .flatpickr-day.startRange.endRange,\n  :host ::ng-deep .flatpickr-day.endRange.endRange {\n    border-radius: 0 50px 50px 0; }\n:host ::ng-deep .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),\n  :host ::ng-deep .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),\n  :host ::ng-deep .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {\n    box-shadow: -10px 0 0 #569ff7; }\n:host ::ng-deep .flatpickr-day.selected.startRange.endRange,\n  :host ::ng-deep .flatpickr-day.startRange.startRange.endRange,\n  :host ::ng-deep .flatpickr-day.endRange.startRange.endRange {\n    border-radius: 50px; }\n:host ::ng-deep .flatpickr-day.inRange {\n    border-radius: 0;\n    box-shadow: -5px 0 0 #e6e6e6, 5px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-day.disabled,\n  :host ::ng-deep .flatpickr-day.disabled:hover,\n  :host ::ng-deep .flatpickr-day.prevMonthDay,\n  :host ::ng-deep .flatpickr-day.nextMonthDay,\n  :host ::ng-deep .flatpickr-day.notAllowed,\n  :host ::ng-deep .flatpickr-day.notAllowed.prevMonthDay,\n  :host ::ng-deep .flatpickr-day.notAllowed.nextMonthDay {\n    color: rgba(57, 57, 57, 0.3);\n    background: transparent;\n    border-color: transparent;\n    cursor: default; }\n:host ::ng-deep .flatpickr-day.disabled,\n  :host ::ng-deep .flatpickr-day.disabled:hover {\n    cursor: not-allowed;\n    color: rgba(57, 57, 57, 0.1); }\n:host ::ng-deep .flatpickr-day.week.selected {\n    border-radius: 0;\n    box-shadow: -5px 0 0 #569ff7, 5px 0 0 #569ff7; }\n:host ::ng-deep .flatpickr-day.hidden {\n    visibility: hidden; }\n:host ::ng-deep .rangeMode .flatpickr-day {\n    margin-top: 1px; }\n:host ::ng-deep .flatpickr-weekwrapper {\n    display: inline-block;\n    float: left; }\n:host ::ng-deep .flatpickr-weekwrapper .flatpickr-weeks {\n    padding: 0 12px;\n    box-shadow: 1px 0 0 #e6e6e6; }\n:host ::ng-deep .flatpickr-weekwrapper .flatpickr-weekday {\n    float: none;\n    width: 100%;\n    line-height: 28px; }\n:host ::ng-deep .flatpickr-weekwrapper span.flatpickr-day,\n  :host ::ng-deep .flatpickr-weekwrapper span.flatpickr-day:hover {\n    display: block;\n    width: 100%;\n    max-width: none;\n    color: rgba(57, 57, 57, 0.3);\n    background: transparent;\n    cursor: default;\n    border: none; }\n:host ::ng-deep .flatpickr-innerContainer {\n    display: block;\n    display: flex;\n    box-sizing: border-box;\n    overflow: hidden; }\n:host ::ng-deep .flatpickr-rContainer {\n    display: inline-block;\n    padding: 0;\n    box-sizing: border-box; }\n:host ::ng-deep .flatpickr-time {\n    text-align: center;\n    outline: 0;\n    display: block;\n    height: 0;\n    line-height: 40px;\n    max-height: 40px;\n    box-sizing: border-box;\n    overflow: hidden;\n    display: flex; }\n:host ::ng-deep .flatpickr-time:after {\n    content: \"\";\n    display: table;\n    clear: both; }\n:host ::ng-deep .flatpickr-time .numInputWrapper {\n    flex: 1;\n    width: 40%;\n    height: 40px;\n    float: left; }\n:host ::ng-deep .flatpickr-time .numInputWrapper span.arrowUp:after {\n    border-bottom-color: #393939; }\n:host ::ng-deep .flatpickr-time .numInputWrapper span.arrowDown:after {\n    border-top-color: #393939; }\n:host ::ng-deep .flatpickr-time.hasSeconds .numInputWrapper {\n    width: 26%; }\n:host ::ng-deep .flatpickr-time.time24hr .numInputWrapper {\n    width: 49%; }\n:host ::ng-deep .flatpickr-time input {\n    background: transparent;\n    box-shadow: none;\n    border: 0;\n    border-radius: 0;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    height: inherit;\n    line-height: inherit;\n    color: #393939;\n    font-size: 14px;\n    position: relative;\n    box-sizing: border-box; }\n:host ::ng-deep .flatpickr-time input.flatpickr-hour {\n    font-weight: bold; }\n:host ::ng-deep .flatpickr-time input.flatpickr-minute,\n  :host ::ng-deep .flatpickr-time input.flatpickr-second {\n    font-weight: 400; }\n:host ::ng-deep .flatpickr-time input:focus {\n    outline: 0;\n    border: 0; }\n:host ::ng-deep .flatpickr-time .flatpickr-time-separator,\n  :host ::ng-deep .flatpickr-time .flatpickr-am-pm {\n    height: inherit;\n    display: inline-block;\n    float: left;\n    line-height: inherit;\n    color: #393939;\n    font-weight: bold;\n    width: 2%;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    -ms-grid-row-align: center;\n        align-self: center; }\n:host ::ng-deep .flatpickr-time .flatpickr-am-pm {\n    outline: 0;\n    width: 18%;\n    cursor: pointer;\n    text-align: center;\n    font-weight: 400; }\n:host ::ng-deep .flatpickr-time input:hover,\n  :host ::ng-deep .flatpickr-time .flatpickr-am-pm:hover,\n  :host ::ng-deep .flatpickr-time input:focus,\n  :host ::ng-deep .flatpickr-time .flatpickr-am-pm:focus {\n    background: #f3f3f3; }\n:host ::ng-deep .flatpickr-input[readonly] {\n    cursor: pointer; }\n@-webkit-keyframes fpFadeInDown {\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n    transform: translate3d(0, -20px, 0); }\n  to {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); } }\n@keyframes fpFadeInDown {\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n    transform: translate3d(0, -20px, 0); }\n  to {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0); } }\n:host ::ng-deep .choices {\n    position: relative;\n    margin-bottom: 24px;\n    font-size: 16px; }\n:host ::ng-deep .choices:focus {\n    outline: none; }\n:host ::ng-deep .choices:last-child {\n    margin-bottom: 0; }\n:host ::ng-deep .choices.is-disabled .choices__inner,\n  :host ::ng-deep .choices.is-disabled .choices__input {\n    background-color: #eaeaea;\n    cursor: not-allowed;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n:host ::ng-deep .choices.is-disabled .choices__item {\n    cursor: not-allowed; }\n:host ::ng-deep .choices[data-type*=select-one] {\n    cursor: pointer; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__inner {\n    padding-bottom: 7.5px; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__input {\n    display: block;\n    width: 100%;\n    padding: 10px;\n    border-bottom: 1px solid #ddd;\n    background-color: #fff;\n    margin: 0; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__button {\n    background-image: url(\"data:image/svg+xml,%3Csvg width%3D%2221%22 height%3D%2221%22 viewBox%3D%220 0 21 21%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22%23000%22 fill-rule%3D%22evenodd%22%3E%3Cpath d%3D%22M2.592.044l18.364 18.364-2.548 2.548L.044 2.592z%22%2F%3E%3Cpath d%3D%22M0 18.364L18.364 0l2.548 2.548L2.548 20.912z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E\");\n    padding: 0;\n    background-size: 8px;\n    position: absolute;\n    top: 50%;\n    right: 0;\n    margin-top: -10px;\n    margin-right: 25px;\n    height: 20px;\n    width: 20px;\n    border-radius: 10em;\n    opacity: .5; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__button:focus,\n  :host ::ng-deep .choices[data-type*=select-one] .choices__button:hover {\n    opacity: 1; }\n:host ::ng-deep .choices[data-type*=select-one] .choices__button:focus {\n    box-shadow: 0 0 0 2px #00bcd4; }\n:host ::ng-deep .choices[data-type*=select-one]:after {\n    content: \"\";\n    height: 0;\n    width: 0;\n    border-style: solid;\n    border-color: #333 transparent transparent transparent;\n    border-width: 5px;\n    position: absolute;\n    right: 11.5px;\n    top: 50%;\n    margin-top: -2.5px;\n    pointer-events: none; }\n:host ::ng-deep .choices[data-type*=select-one].is-open:after {\n    border-color: transparent transparent #333 transparent;\n    margin-top: -7.5px; }\n:host ::ng-deep .choices[data-type*=select-one][dir=rtl]:after {\n    left: 11.5px;\n    right: auto; }\n:host ::ng-deep .choices[data-type*=select-one][dir=rtl] .choices__button {\n    right: auto;\n    left: 0;\n    margin-left: 25px;\n    margin-right: 0; }\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__inner,\n  :host ::ng-deep .choices[data-type*=text] .choices__inner {\n    cursor: text; }\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__button,\n  :host ::ng-deep .choices[data-type*=text] .choices__button {\n    position: relative;\n    display: inline-block;\n    margin: 0 -4px 0 8px;\n    padding-left: 16px;\n    border-left: 1px solid #008fa1;\n    background-image: url(\"data:image/svg+xml,%3Csvg width%3D%2221%22 height%3D%2221%22 viewBox%3D%220 0 21 21%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22%23FFF%22 fill-rule%3D%22evenodd%22%3E%3Cpath d%3D%22M2.592.044l18.364 18.364-2.548 2.548L.044 2.592z%22%2F%3E%3Cpath d%3D%22M0 18.364L18.364 0l2.548 2.548L2.548 20.912z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E\");\n    background-size: 8px;\n    width: 8px;\n    line-height: 1;\n    opacity: .75; }\n:host ::ng-deep .choices[data-type*=select-multiple] .choices__button:focus,\n  :host ::ng-deep .choices[data-type*=select-multiple] .choices__button:hover,\n  :host ::ng-deep .choices[data-type*=text] .choices__button:focus,\n  :host ::ng-deep .choices[data-type*=text] .choices__button:hover {\n    opacity: 1; }\n:host ::ng-deep .choices__inner {\n    display: inline-block;\n    vertical-align: top;\n    width: 100%;\n    background-color: #f9f9f9;\n    padding: 7.5px 7.5px 3.75px;\n    border: 1px solid #ddd;\n    border-radius: 2.5px;\n    font-size: 14px;\n    min-height: 44px;\n    overflow: hidden; }\n:host ::ng-deep .is-focused .choices__inner,\n  :host ::ng-deep .is-open .choices__inner {\n    border-color: #b7b7b7; }\n:host ::ng-deep .is-open .choices__inner {\n    border-radius: 2.5px 2.5px 0 0; }\n:host ::ng-deep .is-flipped.is-open .choices__inner {\n    border-radius: 0 0 2.5px 2.5px; }\n:host ::ng-deep .choices__list {\n    margin: 0;\n    padding-left: 0;\n    list-style: none; }\n:host ::ng-deep .choices__list--single {\n    display: inline-block;\n    padding: 4px 16px 4px 4px;\n    width: 100%; }\n:host ::ng-deep [dir=rtl] .choices__list--single {\n    padding-right: 4px;\n    padding-left: 16px; }\n:host ::ng-deep .choices__list--single .choices__item {\n    width: 100%; }\n:host ::ng-deep .choices__list--multiple {\n    display: inline; }\n:host ::ng-deep .choices__list--multiple .choices__item {\n    display: inline-block;\n    vertical-align: middle;\n    border-radius: 20px;\n    padding: 4px 10px;\n    font-size: 12px;\n    font-weight: 500;\n    margin-right: 3.75px;\n    margin-bottom: 3.75px;\n    background-color: #00bcd4;\n    border: 1px solid #00a5bb;\n    color: #fff;\n    word-break: break-all; }\n:host ::ng-deep .choices__list--multiple .choices__item[data-deletable] {\n    padding-right: 5px; }\n:host ::ng-deep [dir=rtl] .choices__list--multiple .choices__item {\n    margin-right: 0;\n    margin-left: 3.75px; }\n:host ::ng-deep .choices__list--multiple .choices__item.is-highlighted {\n    background-color: #00a5bb;\n    border: 1px solid #008fa1; }\n:host ::ng-deep .is-disabled .choices__list--multiple .choices__item {\n    background-color: #aaa;\n    border: 1px solid #919191; }\n:host ::ng-deep .choices__list--dropdown {\n    display: none;\n    z-index: 1;\n    position: absolute;\n    width: 100%;\n    background-color: #fff;\n    border: 1px solid #ddd;\n    top: 100%;\n    margin-top: -1px;\n    border-bottom-left-radius: 2.5px;\n    border-bottom-right-radius: 2.5px;\n    overflow: hidden;\n    word-break: break-all; }\n:host ::ng-deep .choices__list--dropdown.is-active {\n    display: block; }\n:host ::ng-deep .is-open .choices__list--dropdown {\n    border-color: #b7b7b7; }\n:host ::ng-deep .is-flipped .choices__list--dropdown {\n    top: auto;\n    bottom: 100%;\n    margin-top: 0;\n    margin-bottom: -1px;\n    border-radius: .25rem .25rem 0 0; }\n:host ::ng-deep .choices__list--dropdown .choices__list {\n    position: relative;\n    max-height: 300px;\n    overflow: auto;\n    -webkit-overflow-scrolling: touch;\n    will-change: scroll-position; }\n:host ::ng-deep .choices__list--dropdown .choices__item {\n    position: relative;\n    padding: 10px;\n    font-size: 14px; }\n:host ::ng-deep [dir=rtl] .choices__list--dropdown .choices__item {\n    text-align: right; }\n@media (min-width: 640px) {\n    :host ::ng-deep .choices__list--dropdown .choices__item--selectable {\n      padding-right: 100px; }\n    :host ::ng-deep .choices__list--dropdown .choices__item--selectable:after {\n      content: attr(data-select-text);\n      font-size: 12px;\n      opacity: 0;\n      position: absolute;\n      right: 10px;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n      transform: translateY(-50%); }\n    :host ::ng-deep [dir=rtl] .choices__list--dropdown .choices__item--selectable {\n      text-align: right;\n      padding-left: 100px;\n      padding-right: 10px; }\n    :host ::ng-deep [dir=rtl] .choices__list--dropdown .choices__item--selectable:after {\n      right: auto;\n      left: 10px; } }\n:host ::ng-deep .choices__list--dropdown .choices__item--selectable.is-highlighted {\n    background-color: #f2f2f2; }\n:host ::ng-deep .choices__list--dropdown .choices__item--selectable.is-highlighted:after {\n    opacity: .5; }\n:host ::ng-deep .choices__item {\n    cursor: default; }\n:host ::ng-deep .choices__item--selectable {\n    cursor: pointer; }\n:host ::ng-deep .choices__item--disabled {\n    cursor: not-allowed;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    opacity: .5; }\n:host ::ng-deep .choices__heading {\n    font-weight: 600;\n    font-size: 12px;\n    padding: 10px;\n    border-bottom: 1px solid #f7f7f7;\n    color: gray; }\n:host ::ng-deep .choices__button {\n    text-indent: -9999px;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    border: 0;\n    background-color: transparent;\n    background-repeat: no-repeat;\n    background-position: center;\n    cursor: pointer; }\n:host ::ng-deep .choices__button:focus {\n    outline: none; }\n:host ::ng-deep .choices__input {\n    display: inline-block;\n    vertical-align: baseline;\n    background-color: #f9f9f9;\n    font-size: 14px;\n    margin-bottom: 5px;\n    border: 0;\n    border-radius: 0;\n    max-width: 100%;\n    padding: 4px 0 4px 2px; }\n:host ::ng-deep .choices__input:focus {\n    outline: 0; }\n:host ::ng-deep [dir=rtl] .choices__input {\n    padding-right: 2px;\n    padding-left: 0; }\n:host ::ng-deep .choices__placeholder {\n    opacity: .5; }\n:host ::ng-deep dialog {\n    position: absolute;\n    left: 0;\n    right: 0;\n    width: -moz-fit-content;\n    width: -webkit-fit-content;\n    width: fit-content;\n    height: -moz-fit-content;\n    height: -webkit-fit-content;\n    height: fit-content;\n    margin: auto;\n    border: solid;\n    padding: 1em;\n    background: white;\n    color: black;\n    display: block; }\n:host ::ng-deep dialog:not([open]) {\n    display: none; }\n:host ::ng-deep dialog + .backdrop {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep ._dialog_overlay {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0; }\n:host ::ng-deep dialog.fixed {\n    position: fixed;\n    top: 50%;\n    -webkit-transform: translate(0, -50%);\n            transform: translate(0, -50%); }\n:host ::ng-deep .gu-mirror {\n    position: fixed !important;\n    margin: 0 !important;\n    z-index: 9999 !important;\n    opacity: 0.8;\n    -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)\";\n    filter: alpha(opacity=80); }\n:host ::ng-deep .gu-hide {\n    display: none !important; }\n:host ::ng-deep .gu-unselectable {\n    -webkit-user-select: none !important;\n    -moz-user-select: none !important;\n    -ms-user-select: none !important;\n    user-select: none !important; }\n:host ::ng-deep .gu-transit {\n    opacity: 0.2;\n    -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)\";\n    filter: alpha(opacity=20); }\n@font-face {\n  :host ::ng-deep {\n    font-family: 'FontAwesome';\n    src: url('fontawesome-webfont.eot?v=4.7.0');\n    src: url('fontawesome-webfont.eot?#iefix&v=4.7.0') format(\"embedded-opentype\"), url('fontawesome-webfont.woff2?v=4.7.0') format(\"woff2\"), url('fontawesome-webfont.woff?v=4.7.0') format(\"woff\"), url('fontawesome-webfont.ttf?v=4.7.0') format(\"truetype\"), url('fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format(\"svg\");\n    font-weight: normal;\n    font-style: normal; } }\n:host ::ng-deep .fa {\n    display: inline-block;\n    font: normal normal normal 14px/1 FontAwesome;\n    font-size: inherit;\n    text-rendering: auto;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale; }\n:host ::ng-deep .fa-lg {\n    font-size: 1.33333333em;\n    line-height: 0.75em;\n    vertical-align: -15%; }\n:host ::ng-deep .fa-2x {\n    font-size: 2em; }\n:host ::ng-deep .fa-3x {\n    font-size: 3em; }\n:host ::ng-deep .fa-4x {\n    font-size: 4em; }\n:host ::ng-deep .fa-5x {\n    font-size: 5em; }\n:host ::ng-deep .fa-fw {\n    width: 1.28571429em;\n    text-align: center; }\n:host ::ng-deep .fa-ul {\n    padding-left: 0;\n    margin-left: 2.14285714em;\n    list-style-type: none; }\n:host ::ng-deep .fa-ul > li {\n    position: relative; }\n:host ::ng-deep .fa-li {\n    position: absolute;\n    left: -2.14285714em;\n    width: 2.14285714em;\n    top: 0.14285714em;\n    text-align: center; }\n:host ::ng-deep .fa-li.fa-lg {\n    left: -1.85714286em; }\n:host ::ng-deep .fa-border {\n    padding: .2em .25em .15em;\n    border: solid 0.08em #eeeeee;\n    border-radius: .1em; }\n:host ::ng-deep .fa-pull-left {\n    float: left; }\n:host ::ng-deep .fa-pull-right {\n    float: right; }\n:host ::ng-deep .fa.fa-pull-left {\n    margin-right: .3em; }\n:host ::ng-deep .fa.fa-pull-right {\n    margin-left: .3em; }\n:host ::ng-deep .pull-left {\n    float: left; }\n:host ::ng-deep .fa.pull-left {\n    margin-right: .3em; }\n:host ::ng-deep .fa.pull-right {\n    margin-left: .3em; }\n:host ::ng-deep .fa-spin {\n    -webkit-animation: fa-spin 2s infinite linear;\n    animation: fa-spin 2s infinite linear; }\n:host ::ng-deep .fa-pulse {\n    -webkit-animation: fa-spin 1s infinite steps(8);\n    animation: fa-spin 1s infinite steps(8); }\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg); } }\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg); } }\n:host ::ng-deep .fa-rotate-90 {\n    -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n    -webkit-transform: rotate(90deg);\n    transform: rotate(90deg); }\n:host ::ng-deep .fa-rotate-180 {\n    -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n    -webkit-transform: rotate(180deg);\n    transform: rotate(180deg); }\n:host ::ng-deep .fa-rotate-270 {\n    -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n    -webkit-transform: rotate(270deg);\n    transform: rotate(270deg); }\n:host ::ng-deep .fa-flip-horizontal {\n    -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n    -webkit-transform: scale(-1, 1);\n    transform: scale(-1, 1); }\n:host ::ng-deep .fa-flip-vertical {\n    -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n    -webkit-transform: scale(1, -1);\n    transform: scale(1, -1); }\n:host ::ng-deep :root .fa-rotate-90,\n  :host ::ng-deep :root .fa-rotate-180,\n  :host ::ng-deep :root .fa-rotate-270,\n  :host ::ng-deep :root .fa-flip-horizontal,\n  :host ::ng-deep :root .fa-flip-vertical {\n    -webkit-filter: none;\n            filter: none; }\n:host ::ng-deep .fa-stack {\n    position: relative;\n    display: inline-block;\n    width: 2em;\n    height: 2em;\n    line-height: 2em;\n    vertical-align: middle; }\n:host ::ng-deep .fa-stack-1x,\n  :host ::ng-deep .fa-stack-2x {\n    position: absolute;\n    left: 0;\n    width: 100%;\n    text-align: center; }\n:host ::ng-deep .fa-stack-1x {\n    line-height: inherit; }\n:host ::ng-deep .fa-stack-2x {\n    font-size: 2em; }\n:host ::ng-deep .fa-inverse {\n    color: #ffffff; }\n:host ::ng-deep .fa-glass:before {\n    content: \"\\f000\"; }\n:host ::ng-deep .fa-music:before {\n    content: \"\\f001\"; }\n:host ::ng-deep .fa-search:before {\n    content: \"\\f002\"; }\n:host ::ng-deep .fa-envelope-o:before {\n    content: \"\\f003\"; }\n:host ::ng-deep .fa-heart:before {\n    content: \"\\f004\"; }\n:host ::ng-deep .fa-star:before {\n    content: \"\\f005\"; }\n:host ::ng-deep .fa-star-o:before {\n    content: \"\\f006\"; }\n:host ::ng-deep .fa-user:before {\n    content: \"\\f007\"; }\n:host ::ng-deep .fa-film:before {\n    content: \"\\f008\"; }\n:host ::ng-deep .fa-th-large:before {\n    content: \"\\f009\"; }\n:host ::ng-deep .fa-th:before {\n    content: \"\\f00a\"; }\n:host ::ng-deep .fa-th-list:before {\n    content: \"\\f00b\"; }\n:host ::ng-deep .fa-check:before {\n    content: \"\\f00c\"; }\n:host ::ng-deep .fa-remove:before,\n  :host ::ng-deep .fa-close:before,\n  :host ::ng-deep .fa-times:before {\n    content: \"\\f00d\"; }\n:host ::ng-deep .fa-search-plus:before {\n    content: \"\\f00e\"; }\n:host ::ng-deep .fa-search-minus:before {\n    content: \"\\f010\"; }\n:host ::ng-deep .fa-power-off:before {\n    content: \"\\f011\"; }\n:host ::ng-deep .fa-signal:before {\n    content: \"\\f012\"; }\n:host ::ng-deep .fa-gear:before,\n  :host ::ng-deep .fa-cog:before {\n    content: \"\\f013\"; }\n:host ::ng-deep .fa-trash-o:before {\n    content: \"\\f014\"; }\n:host ::ng-deep .fa-home:before {\n    content: \"\\f015\"; }\n:host ::ng-deep .fa-file-o:before {\n    content: \"\\f016\"; }\n:host ::ng-deep .fa-clock-o:before {\n    content: \"\\f017\"; }\n:host ::ng-deep .fa-road:before {\n    content: \"\\f018\"; }\n:host ::ng-deep .fa-download:before {\n    content: \"\\f019\"; }\n:host ::ng-deep .fa-arrow-circle-o-down:before {\n    content: \"\\f01a\"; }\n:host ::ng-deep .fa-arrow-circle-o-up:before {\n    content: \"\\f01b\"; }\n:host ::ng-deep .fa-inbox:before {\n    content: \"\\f01c\"; }\n:host ::ng-deep .fa-play-circle-o:before {\n    content: \"\\f01d\"; }\n:host ::ng-deep .fa-rotate-right:before,\n  :host ::ng-deep .fa-repeat:before {\n    content: \"\\f01e\"; }\n:host ::ng-deep .fa-refresh:before {\n    content: \"\\f021\"; }\n:host ::ng-deep .fa-list-alt:before {\n    content: \"\\f022\"; }\n:host ::ng-deep .fa-lock:before {\n    content: \"\\f023\"; }\n:host ::ng-deep .fa-flag:before {\n    content: \"\\f024\"; }\n:host ::ng-deep .fa-headphones:before {\n    content: \"\\f025\"; }\n:host ::ng-deep .fa-volume-off:before {\n    content: \"\\f026\"; }\n:host ::ng-deep .fa-volume-down:before {\n    content: \"\\f027\"; }\n:host ::ng-deep .fa-volume-up:before {\n    content: \"\\f028\"; }\n:host ::ng-deep .fa-qrcode:before {\n    content: \"\\f029\"; }\n:host ::ng-deep .fa-barcode:before {\n    content: \"\\f02a\"; }\n:host ::ng-deep .fa-tag:before {\n    content: \"\\f02b\"; }\n:host ::ng-deep .fa-tags:before {\n    content: \"\\f02c\"; }\n:host ::ng-deep .fa-book:before {\n    content: \"\\f02d\"; }\n:host ::ng-deep .fa-bookmark:before {\n    content: \"\\f02e\"; }\n:host ::ng-deep .fa-print:before {\n    content: \"\\f02f\"; }\n:host ::ng-deep .fa-camera:before {\n    content: \"\\f030\"; }\n:host ::ng-deep .fa-font:before {\n    content: \"\\f031\"; }\n:host ::ng-deep .fa-bold:before {\n    content: \"\\f032\"; }\n:host ::ng-deep .fa-italic:before {\n    content: \"\\f033\"; }\n:host ::ng-deep .fa-text-height:before {\n    content: \"\\f034\"; }\n:host ::ng-deep .fa-text-width:before {\n    content: \"\\f035\"; }\n:host ::ng-deep .fa-align-left:before {\n    content: \"\\f036\"; }\n:host ::ng-deep .fa-align-center:before {\n    content: \"\\f037\"; }\n:host ::ng-deep .fa-align-right:before {\n    content: \"\\f038\"; }\n:host ::ng-deep .fa-align-justify:before {\n    content: \"\\f039\"; }\n:host ::ng-deep .fa-list:before {\n    content: \"\\f03a\"; }\n:host ::ng-deep .fa-dedent:before,\n  :host ::ng-deep .fa-outdent:before {\n    content: \"\\f03b\"; }\n:host ::ng-deep .fa-indent:before {\n    content: \"\\f03c\"; }\n:host ::ng-deep .fa-video-camera:before {\n    content: \"\\f03d\"; }\n:host ::ng-deep .fa-photo:before,\n  :host ::ng-deep .fa-image:before,\n  :host ::ng-deep .fa-picture-o:before {\n    content: \"\\f03e\"; }\n:host ::ng-deep .fa-pencil:before {\n    content: \"\\f040\"; }\n:host ::ng-deep .fa-map-marker:before {\n    content: \"\\f041\"; }\n:host ::ng-deep .fa-adjust:before {\n    content: \"\\f042\"; }\n:host ::ng-deep .fa-tint:before {\n    content: \"\\f043\"; }\n:host ::ng-deep .fa-edit:before,\n  :host ::ng-deep .fa-pencil-square-o:before {\n    content: \"\\f044\"; }\n:host ::ng-deep .fa-share-square-o:before {\n    content: \"\\f045\"; }\n:host ::ng-deep .fa-check-square-o:before {\n    content: \"\\f046\"; }\n:host ::ng-deep .fa-arrows:before {\n    content: \"\\f047\"; }\n:host ::ng-deep .fa-step-backward:before {\n    content: \"\\f048\"; }\n:host ::ng-deep .fa-fast-backward:before {\n    content: \"\\f049\"; }\n:host ::ng-deep .fa-backward:before {\n    content: \"\\f04a\"; }\n:host ::ng-deep .fa-play:before {\n    content: \"\\f04b\"; }\n:host ::ng-deep .fa-pause:before {\n    content: \"\\f04c\"; }\n:host ::ng-deep .fa-stop:before {\n    content: \"\\f04d\"; }\n:host ::ng-deep .fa-forward:before {\n    content: \"\\f04e\"; }\n:host ::ng-deep .fa-fast-forward:before {\n    content: \"\\f050\"; }\n:host ::ng-deep .fa-step-forward:before {\n    content: \"\\f051\"; }\n:host ::ng-deep .fa-eject:before {\n    content: \"\\f052\"; }\n:host ::ng-deep .fa-chevron-left:before {\n    content: \"\\f053\"; }\n:host ::ng-deep .fa-chevron-right:before {\n    content: \"\\f054\"; }\n:host ::ng-deep .fa-plus-circle:before {\n    content: \"\\f055\"; }\n:host ::ng-deep .fa-minus-circle:before {\n    content: \"\\f056\"; }\n:host ::ng-deep .fa-times-circle:before {\n    content: \"\\f057\"; }\n:host ::ng-deep .fa-check-circle:before {\n    content: \"\\f058\"; }\n:host ::ng-deep .fa-question-circle:before {\n    content: \"\\f059\"; }\n:host ::ng-deep .fa-info-circle:before {\n    content: \"\\f05a\"; }\n:host ::ng-deep .fa-crosshairs:before {\n    content: \"\\f05b\"; }\n:host ::ng-deep .fa-times-circle-o:before {\n    content: \"\\f05c\"; }\n:host ::ng-deep .fa-check-circle-o:before {\n    content: \"\\f05d\"; }\n:host ::ng-deep .fa-ban:before {\n    content: \"\\f05e\"; }\n:host ::ng-deep .fa-arrow-left:before {\n    content: \"\\f060\"; }\n:host ::ng-deep .fa-arrow-right:before {\n    content: \"\\f061\"; }\n:host ::ng-deep .fa-arrow-up:before {\n    content: \"\\f062\"; }\n:host ::ng-deep .fa-arrow-down:before {\n    content: \"\\f063\"; }\n:host ::ng-deep .fa-mail-forward:before,\n  :host ::ng-deep .fa-share:before {\n    content: \"\\f064\"; }\n:host ::ng-deep .fa-expand:before {\n    content: \"\\f065\"; }\n:host ::ng-deep .fa-compress:before {\n    content: \"\\f066\"; }\n:host ::ng-deep .fa-plus:before {\n    content: \"\\f067\"; }\n:host ::ng-deep .fa-minus:before {\n    content: \"\\f068\"; }\n:host ::ng-deep .fa-asterisk:before {\n    content: \"\\f069\"; }\n:host ::ng-deep .fa-exclamation-circle:before {\n    content: \"\\f06a\"; }\n:host ::ng-deep .fa-gift:before {\n    content: \"\\f06b\"; }\n:host ::ng-deep .fa-leaf:before {\n    content: \"\\f06c\"; }\n:host ::ng-deep .fa-fire:before {\n    content: \"\\f06d\"; }\n:host ::ng-deep .fa-eye:before {\n    content: \"\\f06e\"; }\n:host ::ng-deep .fa-eye-slash:before {\n    content: \"\\f070\"; }\n:host ::ng-deep .fa-warning:before,\n  :host ::ng-deep .fa-exclamation-triangle:before {\n    content: \"\\f071\"; }\n:host ::ng-deep .fa-plane:before {\n    content: \"\\f072\"; }\n:host ::ng-deep .fa-calendar:before {\n    content: \"\\f073\"; }\n:host ::ng-deep .fa-random:before {\n    content: \"\\f074\"; }\n:host ::ng-deep .fa-comment:before {\n    content: \"\\f075\"; }\n:host ::ng-deep .fa-magnet:before {\n    content: \"\\f076\"; }\n:host ::ng-deep .fa-chevron-up:before {\n    content: \"\\f077\"; }\n:host ::ng-deep .fa-chevron-down:before {\n    content: \"\\f078\"; }\n:host ::ng-deep .fa-retweet:before {\n    content: \"\\f079\"; }\n:host ::ng-deep .fa-shopping-cart:before {\n    content: \"\\f07a\"; }\n:host ::ng-deep .fa-folder:before {\n    content: \"\\f07b\"; }\n:host ::ng-deep .fa-folder-open:before {\n    content: \"\\f07c\"; }\n:host ::ng-deep .fa-arrows-v:before {\n    content: \"\\f07d\"; }\n:host ::ng-deep .fa-arrows-h:before {\n    content: \"\\f07e\"; }\n:host ::ng-deep .fa-bar-chart-o:before,\n  :host ::ng-deep .fa-bar-chart:before {\n    content: \"\\f080\"; }\n:host ::ng-deep .fa-twitter-square:before {\n    content: \"\\f081\"; }\n:host ::ng-deep .fa-facebook-square:before {\n    content: \"\\f082\"; }\n:host ::ng-deep .fa-camera-retro:before {\n    content: \"\\f083\"; }\n:host ::ng-deep .fa-key:before {\n    content: \"\\f084\"; }\n:host ::ng-deep .fa-gears:before,\n  :host ::ng-deep .fa-cogs:before {\n    content: \"\\f085\"; }\n:host ::ng-deep .fa-comments:before {\n    content: \"\\f086\"; }\n:host ::ng-deep .fa-thumbs-o-up:before {\n    content: \"\\f087\"; }\n:host ::ng-deep .fa-thumbs-o-down:before {\n    content: \"\\f088\"; }\n:host ::ng-deep .fa-star-half:before {\n    content: \"\\f089\"; }\n:host ::ng-deep .fa-heart-o:before {\n    content: \"\\f08a\"; }\n:host ::ng-deep .fa-sign-out:before {\n    content: \"\\f08b\"; }\n:host ::ng-deep .fa-linkedin-square:before {\n    content: \"\\f08c\"; }\n:host ::ng-deep .fa-thumb-tack:before {\n    content: \"\\f08d\"; }\n:host ::ng-deep .fa-external-link:before {\n    content: \"\\f08e\"; }\n:host ::ng-deep .fa-sign-in:before {\n    content: \"\\f090\"; }\n:host ::ng-deep .fa-trophy:before {\n    content: \"\\f091\"; }\n:host ::ng-deep .fa-github-square:before {\n    content: \"\\f092\"; }\n:host ::ng-deep .fa-upload:before {\n    content: \"\\f093\"; }\n:host ::ng-deep .fa-lemon-o:before {\n    content: \"\\f094\"; }\n:host ::ng-deep .fa-phone:before {\n    content: \"\\f095\"; }\n:host ::ng-deep .fa-square-o:before {\n    content: \"\\f096\"; }\n:host ::ng-deep .fa-bookmark-o:before {\n    content: \"\\f097\"; }\n:host ::ng-deep .fa-phone-square:before {\n    content: \"\\f098\"; }\n:host ::ng-deep .fa-twitter:before {\n    content: \"\\f099\"; }\n:host ::ng-deep .fa-facebook-f:before,\n  :host ::ng-deep .fa-facebook:before {\n    content: \"\\f09a\"; }\n:host ::ng-deep .fa-github:before {\n    content: \"\\f09b\"; }\n:host ::ng-deep .fa-unlock:before {\n    content: \"\\f09c\"; }\n:host ::ng-deep .fa-credit-card:before {\n    content: \"\\f09d\"; }\n:host ::ng-deep .fa-feed:before,\n  :host ::ng-deep .fa-rss:before {\n    content: \"\\f09e\"; }\n:host ::ng-deep .fa-hdd-o:before {\n    content: \"\\f0a0\"; }\n:host ::ng-deep .fa-bullhorn:before {\n    content: \"\\f0a1\"; }\n:host ::ng-deep .fa-bell:before {\n    content: \"\\f0f3\"; }\n:host ::ng-deep .fa-certificate:before {\n    content: \"\\f0a3\"; }\n:host ::ng-deep .fa-hand-o-right:before {\n    content: \"\\f0a4\"; }\n:host ::ng-deep .fa-hand-o-left:before {\n    content: \"\\f0a5\"; }\n:host ::ng-deep .fa-hand-o-up:before {\n    content: \"\\f0a6\"; }\n:host ::ng-deep .fa-hand-o-down:before {\n    content: \"\\f0a7\"; }\n:host ::ng-deep .fa-arrow-circle-left:before {\n    content: \"\\f0a8\"; }\n:host ::ng-deep .fa-arrow-circle-right:before {\n    content: \"\\f0a9\"; }\n:host ::ng-deep .fa-arrow-circle-up:before {\n    content: \"\\f0aa\"; }\n:host ::ng-deep .fa-arrow-circle-down:before {\n    content: \"\\f0ab\"; }\n:host ::ng-deep .fa-globe:before {\n    content: \"\\f0ac\"; }\n:host ::ng-deep .fa-wrench:before {\n    content: \"\\f0ad\"; }\n:host ::ng-deep .fa-tasks:before {\n    content: \"\\f0ae\"; }\n:host ::ng-deep .fa-filter:before {\n    content: \"\\f0b0\"; }\n:host ::ng-deep .fa-briefcase:before {\n    content: \"\\f0b1\"; }\n:host ::ng-deep .fa-arrows-alt:before {\n    content: \"\\f0b2\"; }\n:host ::ng-deep .fa-group:before,\n  :host ::ng-deep .fa-users:before {\n    content: \"\\f0c0\"; }\n:host ::ng-deep .fa-chain:before,\n  :host ::ng-deep .fa-link:before {\n    content: \"\\f0c1\"; }\n:host ::ng-deep .fa-cloud:before {\n    content: \"\\f0c2\"; }\n:host ::ng-deep .fa-flask:before {\n    content: \"\\f0c3\"; }\n:host ::ng-deep .fa-cut:before,\n  :host ::ng-deep .fa-scissors:before {\n    content: \"\\f0c4\"; }\n:host ::ng-deep .fa-copy:before,\n  :host ::ng-deep .fa-files-o:before {\n    content: \"\\f0c5\"; }\n:host ::ng-deep .fa-paperclip:before {\n    content: \"\\f0c6\"; }\n:host ::ng-deep .fa-save:before,\n  :host ::ng-deep .fa-floppy-o:before {\n    content: \"\\f0c7\"; }\n:host ::ng-deep .fa-square:before {\n    content: \"\\f0c8\"; }\n:host ::ng-deep .fa-navicon:before,\n  :host ::ng-deep .fa-reorder:before,\n  :host ::ng-deep .fa-bars:before {\n    content: \"\\f0c9\"; }\n:host ::ng-deep .fa-list-ul:before {\n    content: \"\\f0ca\"; }\n:host ::ng-deep .fa-list-ol:before {\n    content: \"\\f0cb\"; }\n:host ::ng-deep .fa-strikethrough:before {\n    content: \"\\f0cc\"; }\n:host ::ng-deep .fa-underline:before {\n    content: \"\\f0cd\"; }\n:host ::ng-deep .fa-table:before {\n    content: \"\\f0ce\"; }\n:host ::ng-deep .fa-magic:before {\n    content: \"\\f0d0\"; }\n:host ::ng-deep .fa-truck:before {\n    content: \"\\f0d1\"; }\n:host ::ng-deep .fa-pinterest:before {\n    content: \"\\f0d2\"; }\n:host ::ng-deep .fa-pinterest-square:before {\n    content: \"\\f0d3\"; }\n:host ::ng-deep .fa-google-plus-square:before {\n    content: \"\\f0d4\"; }\n:host ::ng-deep .fa-google-plus:before {\n    content: \"\\f0d5\"; }\n:host ::ng-deep .fa-money:before {\n    content: \"\\f0d6\"; }\n:host ::ng-deep .fa-caret-down:before {\n    content: \"\\f0d7\"; }\n:host ::ng-deep .fa-caret-up:before {\n    content: \"\\f0d8\"; }\n:host ::ng-deep .fa-caret-left:before {\n    content: \"\\f0d9\"; }\n:host ::ng-deep .fa-caret-right:before {\n    content: \"\\f0da\"; }\n:host ::ng-deep .fa-columns:before {\n    content: \"\\f0db\"; }\n:host ::ng-deep .fa-unsorted:before,\n  :host ::ng-deep .fa-sort:before {\n    content: \"\\f0dc\"; }\n:host ::ng-deep .fa-sort-down:before,\n  :host ::ng-deep .fa-sort-desc:before {\n    content: \"\\f0dd\"; }\n:host ::ng-deep .fa-sort-up:before,\n  :host ::ng-deep .fa-sort-asc:before {\n    content: \"\\f0de\"; }\n:host ::ng-deep .fa-envelope:before {\n    content: \"\\f0e0\"; }\n:host ::ng-deep .fa-linkedin:before {\n    content: \"\\f0e1\"; }\n:host ::ng-deep .fa-rotate-left:before,\n  :host ::ng-deep .fa-undo:before {\n    content: \"\\f0e2\"; }\n:host ::ng-deep .fa-legal:before,\n  :host ::ng-deep .fa-gavel:before {\n    content: \"\\f0e3\"; }\n:host ::ng-deep .fa-dashboard:before,\n  :host ::ng-deep .fa-tachometer:before {\n    content: \"\\f0e4\"; }\n:host ::ng-deep .fa-comment-o:before {\n    content: \"\\f0e5\"; }\n:host ::ng-deep .fa-comments-o:before {\n    content: \"\\f0e6\"; }\n:host ::ng-deep .fa-flash:before,\n  :host ::ng-deep .fa-bolt:before {\n    content: \"\\f0e7\"; }\n:host ::ng-deep .fa-sitemap:before {\n    content: \"\\f0e8\"; }\n:host ::ng-deep .fa-umbrella:before {\n    content: \"\\f0e9\"; }\n:host ::ng-deep .fa-paste:before,\n  :host ::ng-deep .fa-clipboard:before {\n    content: \"\\f0ea\"; }\n:host ::ng-deep .fa-lightbulb-o:before {\n    content: \"\\f0eb\"; }\n:host ::ng-deep .fa-exchange:before {\n    content: \"\\f0ec\"; }\n:host ::ng-deep .fa-cloud-download:before {\n    content: \"\\f0ed\"; }\n:host ::ng-deep .fa-cloud-upload:before {\n    content: \"\\f0ee\"; }\n:host ::ng-deep .fa-user-md:before {\n    content: \"\\f0f0\"; }\n:host ::ng-deep .fa-stethoscope:before {\n    content: \"\\f0f1\"; }\n:host ::ng-deep .fa-suitcase:before {\n    content: \"\\f0f2\"; }\n:host ::ng-deep .fa-bell-o:before {\n    content: \"\\f0a2\"; }\n:host ::ng-deep .fa-coffee:before {\n    content: \"\\f0f4\"; }\n:host ::ng-deep .fa-cutlery:before {\n    content: \"\\f0f5\"; }\n:host ::ng-deep .fa-file-text-o:before {\n    content: \"\\f0f6\"; }\n:host ::ng-deep .fa-building-o:before {\n    content: \"\\f0f7\"; }\n:host ::ng-deep .fa-hospital-o:before {\n    content: \"\\f0f8\"; }\n:host ::ng-deep .fa-ambulance:before {\n    content: \"\\f0f9\"; }\n:host ::ng-deep .fa-medkit:before {\n    content: \"\\f0fa\"; }\n:host ::ng-deep .fa-fighter-jet:before {\n    content: \"\\f0fb\"; }\n:host ::ng-deep .fa-beer:before {\n    content: \"\\f0fc\"; }\n:host ::ng-deep .fa-h-square:before {\n    content: \"\\f0fd\"; }\n:host ::ng-deep .fa-plus-square:before {\n    content: \"\\f0fe\"; }\n:host ::ng-deep .fa-angle-double-left:before {\n    content: \"\\f100\"; }\n:host ::ng-deep .fa-angle-double-right:before {\n    content: \"\\f101\"; }\n:host ::ng-deep .fa-angle-double-up:before {\n    content: \"\\f102\"; }\n:host ::ng-deep .fa-angle-double-down:before {\n    content: \"\\f103\"; }\n:host ::ng-deep .fa-angle-left:before {\n    content: \"\\f104\"; }\n:host ::ng-deep .fa-angle-right:before {\n    content: \"\\f105\"; }\n:host ::ng-deep .fa-angle-up:before {\n    content: \"\\f106\"; }\n:host ::ng-deep .fa-angle-down:before {\n    content: \"\\f107\"; }\n:host ::ng-deep .fa-desktop:before {\n    content: \"\\f108\"; }\n:host ::ng-deep .fa-laptop:before {\n    content: \"\\f109\"; }\n:host ::ng-deep .fa-tablet:before {\n    content: \"\\f10a\"; }\n:host ::ng-deep .fa-mobile-phone:before,\n  :host ::ng-deep .fa-mobile:before {\n    content: \"\\f10b\"; }\n:host ::ng-deep .fa-circle-o:before {\n    content: \"\\f10c\"; }\n:host ::ng-deep .fa-quote-left:before {\n    content: \"\\f10d\"; }\n:host ::ng-deep .fa-quote-right:before {\n    content: \"\\f10e\"; }\n:host ::ng-deep .fa-spinner:before {\n    content: \"\\f110\"; }\n:host ::ng-deep .fa-circle:before {\n    content: \"\\f111\"; }\n:host ::ng-deep .fa-mail-reply:before,\n  :host ::ng-deep .fa-reply:before {\n    content: \"\\f112\"; }\n:host ::ng-deep .fa-github-alt:before {\n    content: \"\\f113\"; }\n:host ::ng-deep .fa-folder-o:before {\n    content: \"\\f114\"; }\n:host ::ng-deep .fa-folder-open-o:before {\n    content: \"\\f115\"; }\n:host ::ng-deep .fa-smile-o:before {\n    content: \"\\f118\"; }\n:host ::ng-deep .fa-frown-o:before {\n    content: \"\\f119\"; }\n:host ::ng-deep .fa-meh-o:before {\n    content: \"\\f11a\"; }\n:host ::ng-deep .fa-gamepad:before {\n    content: \"\\f11b\"; }\n:host ::ng-deep .fa-keyboard-o:before {\n    content: \"\\f11c\"; }\n:host ::ng-deep .fa-flag-o:before {\n    content: \"\\f11d\"; }\n:host ::ng-deep .fa-flag-checkered:before {\n    content: \"\\f11e\"; }\n:host ::ng-deep .fa-terminal:before {\n    content: \"\\f120\"; }\n:host ::ng-deep .fa-code:before {\n    content: \"\\f121\"; }\n:host ::ng-deep .fa-mail-reply-all:before,\n  :host ::ng-deep .fa-reply-all:before {\n    content: \"\\f122\"; }\n:host ::ng-deep .fa-star-half-empty:before,\n  :host ::ng-deep .fa-star-half-full:before,\n  :host ::ng-deep .fa-star-half-o:before {\n    content: \"\\f123\"; }\n:host ::ng-deep .fa-location-arrow:before {\n    content: \"\\f124\"; }\n:host ::ng-deep .fa-crop:before {\n    content: \"\\f125\"; }\n:host ::ng-deep .fa-code-fork:before {\n    content: \"\\f126\"; }\n:host ::ng-deep .fa-unlink:before,\n  :host ::ng-deep .fa-chain-broken:before {\n    content: \"\\f127\"; }\n:host ::ng-deep .fa-question:before {\n    content: \"\\f128\"; }\n:host ::ng-deep .fa-info:before {\n    content: \"\\f129\"; }\n:host ::ng-deep .fa-exclamation:before {\n    content: \"\\f12a\"; }\n:host ::ng-deep .fa-superscript:before {\n    content: \"\\f12b\"; }\n:host ::ng-deep .fa-subscript:before {\n    content: \"\\f12c\"; }\n:host ::ng-deep .fa-eraser:before {\n    content: \"\\f12d\"; }\n:host ::ng-deep .fa-puzzle-piece:before {\n    content: \"\\f12e\"; }\n:host ::ng-deep .fa-microphone:before {\n    content: \"\\f130\"; }\n:host ::ng-deep .fa-microphone-slash:before {\n    content: \"\\f131\"; }\n:host ::ng-deep .fa-shield:before {\n    content: \"\\f132\"; }\n:host ::ng-deep .fa-calendar-o:before {\n    content: \"\\f133\"; }\n:host ::ng-deep .fa-fire-extinguisher:before {\n    content: \"\\f134\"; }\n:host ::ng-deep .fa-rocket:before {\n    content: \"\\f135\"; }\n:host ::ng-deep .fa-maxcdn:before {\n    content: \"\\f136\"; }\n:host ::ng-deep .fa-chevron-circle-left:before {\n    content: \"\\f137\"; }\n:host ::ng-deep .fa-chevron-circle-right:before {\n    content: \"\\f138\"; }\n:host ::ng-deep .fa-chevron-circle-up:before {\n    content: \"\\f139\"; }\n:host ::ng-deep .fa-chevron-circle-down:before {\n    content: \"\\f13a\"; }\n:host ::ng-deep .fa-html5:before {\n    content: \"\\f13b\"; }\n:host ::ng-deep .fa-css3:before {\n    content: \"\\f13c\"; }\n:host ::ng-deep .fa-anchor:before {\n    content: \"\\f13d\"; }\n:host ::ng-deep .fa-unlock-alt:before {\n    content: \"\\f13e\"; }\n:host ::ng-deep .fa-bullseye:before {\n    content: \"\\f140\"; }\n:host ::ng-deep .fa-ellipsis-h:before {\n    content: \"\\f141\"; }\n:host ::ng-deep .fa-ellipsis-v:before {\n    content: \"\\f142\"; }\n:host ::ng-deep .fa-rss-square:before {\n    content: \"\\f143\"; }\n:host ::ng-deep .fa-play-circle:before {\n    content: \"\\f144\"; }\n:host ::ng-deep .fa-ticket:before {\n    content: \"\\f145\"; }\n:host ::ng-deep .fa-minus-square:before {\n    content: \"\\f146\"; }\n:host ::ng-deep .fa-minus-square-o:before {\n    content: \"\\f147\"; }\n:host ::ng-deep .fa-level-up:before {\n    content: \"\\f148\"; }\n:host ::ng-deep .fa-level-down:before {\n    content: \"\\f149\"; }\n:host ::ng-deep .fa-check-square:before {\n    content: \"\\f14a\"; }\n:host ::ng-deep .fa-pencil-square:before {\n    content: \"\\f14b\"; }\n:host ::ng-deep .fa-external-link-square:before {\n    content: \"\\f14c\"; }\n:host ::ng-deep .fa-share-square:before {\n    content: \"\\f14d\"; }\n:host ::ng-deep .fa-compass:before {\n    content: \"\\f14e\"; }\n:host ::ng-deep .fa-toggle-down:before,\n  :host ::ng-deep .fa-caret-square-o-down:before {\n    content: \"\\f150\"; }\n:host ::ng-deep .fa-toggle-up:before,\n  :host ::ng-deep .fa-caret-square-o-up:before {\n    content: \"\\f151\"; }\n:host ::ng-deep .fa-toggle-right:before,\n  :host ::ng-deep .fa-caret-square-o-right:before {\n    content: \"\\f152\"; }\n:host ::ng-deep .fa-euro:before,\n  :host ::ng-deep .fa-eur:before {\n    content: \"\\f153\"; }\n:host ::ng-deep .fa-gbp:before {\n    content: \"\\f154\"; }\n:host ::ng-deep .fa-dollar:before,\n  :host ::ng-deep .fa-usd:before {\n    content: \"\\f155\"; }\n:host ::ng-deep .fa-rupee:before,\n  :host ::ng-deep .fa-inr:before {\n    content: \"\\f156\"; }\n:host ::ng-deep .fa-cny:before,\n  :host ::ng-deep .fa-rmb:before,\n  :host ::ng-deep .fa-yen:before,\n  :host ::ng-deep .fa-jpy:before {\n    content: \"\\f157\"; }\n:host ::ng-deep .fa-ruble:before,\n  :host ::ng-deep .fa-rouble:before,\n  :host ::ng-deep .fa-rub:before {\n    content: \"\\f158\"; }\n:host ::ng-deep .fa-won:before,\n  :host ::ng-deep .fa-krw:before {\n    content: \"\\f159\"; }\n:host ::ng-deep .fa-bitcoin:before,\n  :host ::ng-deep .fa-btc:before {\n    content: \"\\f15a\"; }\n:host ::ng-deep .fa-file:before {\n    content: \"\\f15b\"; }\n:host ::ng-deep .fa-file-text:before {\n    content: \"\\f15c\"; }\n:host ::ng-deep .fa-sort-alpha-asc:before {\n    content: \"\\f15d\"; }\n:host ::ng-deep .fa-sort-alpha-desc:before {\n    content: \"\\f15e\"; }\n:host ::ng-deep .fa-sort-amount-asc:before {\n    content: \"\\f160\"; }\n:host ::ng-deep .fa-sort-amount-desc:before {\n    content: \"\\f161\"; }\n:host ::ng-deep .fa-sort-numeric-asc:before {\n    content: \"\\f162\"; }\n:host ::ng-deep .fa-sort-numeric-desc:before {\n    content: \"\\f163\"; }\n:host ::ng-deep .fa-thumbs-up:before {\n    content: \"\\f164\"; }\n:host ::ng-deep .fa-thumbs-down:before {\n    content: \"\\f165\"; }\n:host ::ng-deep .fa-youtube-square:before {\n    content: \"\\f166\"; }\n:host ::ng-deep .fa-youtube:before {\n    content: \"\\f167\"; }\n:host ::ng-deep .fa-xing:before {\n    content: \"\\f168\"; }\n:host ::ng-deep .fa-xing-square:before {\n    content: \"\\f169\"; }\n:host ::ng-deep .fa-youtube-play:before {\n    content: \"\\f16a\"; }\n:host ::ng-deep .fa-dropbox:before {\n    content: \"\\f16b\"; }\n:host ::ng-deep .fa-stack-overflow:before {\n    content: \"\\f16c\"; }\n:host ::ng-deep .fa-instagram:before {\n    content: \"\\f16d\"; }\n:host ::ng-deep .fa-flickr:before {\n    content: \"\\f16e\"; }\n:host ::ng-deep .fa-adn:before {\n    content: \"\\f170\"; }\n:host ::ng-deep .fa-bitbucket:before {\n    content: \"\\f171\"; }\n:host ::ng-deep .fa-bitbucket-square:before {\n    content: \"\\f172\"; }\n:host ::ng-deep .fa-tumblr:before {\n    content: \"\\f173\"; }\n:host ::ng-deep .fa-tumblr-square:before {\n    content: \"\\f174\"; }\n:host ::ng-deep .fa-long-arrow-down:before {\n    content: \"\\f175\"; }\n:host ::ng-deep .fa-long-arrow-up:before {\n    content: \"\\f176\"; }\n:host ::ng-deep .fa-long-arrow-left:before {\n    content: \"\\f177\"; }\n:host ::ng-deep .fa-long-arrow-right:before {\n    content: \"\\f178\"; }\n:host ::ng-deep .fa-apple:before {\n    content: \"\\f179\"; }\n:host ::ng-deep .fa-windows:before {\n    content: \"\\f17a\"; }\n:host ::ng-deep .fa-android:before {\n    content: \"\\f17b\"; }\n:host ::ng-deep .fa-linux:before {\n    content: \"\\f17c\"; }\n:host ::ng-deep .fa-dribbble:before {\n    content: \"\\f17d\"; }\n:host ::ng-deep .fa-skype:before {\n    content: \"\\f17e\"; }\n:host ::ng-deep .fa-foursquare:before {\n    content: \"\\f180\"; }\n:host ::ng-deep .fa-trello:before {\n    content: \"\\f181\"; }\n:host ::ng-deep .fa-female:before {\n    content: \"\\f182\"; }\n:host ::ng-deep .fa-male:before {\n    content: \"\\f183\"; }\n:host ::ng-deep .fa-gittip:before,\n  :host ::ng-deep .fa-gratipay:before {\n    content: \"\\f184\"; }\n:host ::ng-deep .fa-sun-o:before {\n    content: \"\\f185\"; }\n:host ::ng-deep .fa-moon-o:before {\n    content: \"\\f186\"; }\n:host ::ng-deep .fa-archive:before {\n    content: \"\\f187\"; }\n:host ::ng-deep .fa-bug:before {\n    content: \"\\f188\"; }\n:host ::ng-deep .fa-vk:before {\n    content: \"\\f189\"; }\n:host ::ng-deep .fa-weibo:before {\n    content: \"\\f18a\"; }\n:host ::ng-deep .fa-renren:before {\n    content: \"\\f18b\"; }\n:host ::ng-deep .fa-pagelines:before {\n    content: \"\\f18c\"; }\n:host ::ng-deep .fa-stack-exchange:before {\n    content: \"\\f18d\"; }\n:host ::ng-deep .fa-arrow-circle-o-right:before {\n    content: \"\\f18e\"; }\n:host ::ng-deep .fa-arrow-circle-o-left:before {\n    content: \"\\f190\"; }\n:host ::ng-deep .fa-toggle-left:before,\n  :host ::ng-deep .fa-caret-square-o-left:before {\n    content: \"\\f191\"; }\n:host ::ng-deep .fa-dot-circle-o:before {\n    content: \"\\f192\"; }\n:host ::ng-deep .fa-wheelchair:before {\n    content: \"\\f193\"; }\n:host ::ng-deep .fa-vimeo-square:before {\n    content: \"\\f194\"; }\n:host ::ng-deep .fa-turkish-lira:before,\n  :host ::ng-deep .fa-try:before {\n    content: \"\\f195\"; }\n:host ::ng-deep .fa-plus-square-o:before {\n    content: \"\\f196\"; }\n:host ::ng-deep .fa-space-shuttle:before {\n    content: \"\\f197\"; }\n:host ::ng-deep .fa-slack:before {\n    content: \"\\f198\"; }\n:host ::ng-deep .fa-envelope-square:before {\n    content: \"\\f199\"; }\n:host ::ng-deep .fa-wordpress:before {\n    content: \"\\f19a\"; }\n:host ::ng-deep .fa-openid:before {\n    content: \"\\f19b\"; }\n:host ::ng-deep .fa-institution:before,\n  :host ::ng-deep .fa-bank:before,\n  :host ::ng-deep .fa-university:before {\n    content: \"\\f19c\"; }\n:host ::ng-deep .fa-mortar-board:before,\n  :host ::ng-deep .fa-graduation-cap:before {\n    content: \"\\f19d\"; }\n:host ::ng-deep .fa-yahoo:before {\n    content: \"\\f19e\"; }\n:host ::ng-deep .fa-google:before {\n    content: \"\\f1a0\"; }\n:host ::ng-deep .fa-reddit:before {\n    content: \"\\f1a1\"; }\n:host ::ng-deep .fa-reddit-square:before {\n    content: \"\\f1a2\"; }\n:host ::ng-deep .fa-stumbleupon-circle:before {\n    content: \"\\f1a3\"; }\n:host ::ng-deep .fa-stumbleupon:before {\n    content: \"\\f1a4\"; }\n:host ::ng-deep .fa-delicious:before {\n    content: \"\\f1a5\"; }\n:host ::ng-deep .fa-digg:before {\n    content: \"\\f1a6\"; }\n:host ::ng-deep .fa-pied-piper-pp:before {\n    content: \"\\f1a7\"; }\n:host ::ng-deep .fa-pied-piper-alt:before {\n    content: \"\\f1a8\"; }\n:host ::ng-deep .fa-drupal:before {\n    content: \"\\f1a9\"; }\n:host ::ng-deep .fa-joomla:before {\n    content: \"\\f1aa\"; }\n:host ::ng-deep .fa-language:before {\n    content: \"\\f1ab\"; }\n:host ::ng-deep .fa-fax:before {\n    content: \"\\f1ac\"; }\n:host ::ng-deep .fa-building:before {\n    content: \"\\f1ad\"; }\n:host ::ng-deep .fa-child:before {\n    content: \"\\f1ae\"; }\n:host ::ng-deep .fa-paw:before {\n    content: \"\\f1b0\"; }\n:host ::ng-deep .fa-spoon:before {\n    content: \"\\f1b1\"; }\n:host ::ng-deep .fa-cube:before {\n    content: \"\\f1b2\"; }\n:host ::ng-deep .fa-cubes:before {\n    content: \"\\f1b3\"; }\n:host ::ng-deep .fa-behance:before {\n    content: \"\\f1b4\"; }\n:host ::ng-deep .fa-behance-square:before {\n    content: \"\\f1b5\"; }\n:host ::ng-deep .fa-steam:before {\n    content: \"\\f1b6\"; }\n:host ::ng-deep .fa-steam-square:before {\n    content: \"\\f1b7\"; }\n:host ::ng-deep .fa-recycle:before {\n    content: \"\\f1b8\"; }\n:host ::ng-deep .fa-automobile:before,\n  :host ::ng-deep .fa-car:before {\n    content: \"\\f1b9\"; }\n:host ::ng-deep .fa-cab:before,\n  :host ::ng-deep .fa-taxi:before {\n    content: \"\\f1ba\"; }\n:host ::ng-deep .fa-tree:before {\n    content: \"\\f1bb\"; }\n:host ::ng-deep .fa-spotify:before {\n    content: \"\\f1bc\"; }\n:host ::ng-deep .fa-deviantart:before {\n    content: \"\\f1bd\"; }\n:host ::ng-deep .fa-soundcloud:before {\n    content: \"\\f1be\"; }\n:host ::ng-deep .fa-database:before {\n    content: \"\\f1c0\"; }\n:host ::ng-deep .fa-file-pdf-o:before {\n    content: \"\\f1c1\"; }\n:host ::ng-deep .fa-file-word-o:before {\n    content: \"\\f1c2\"; }\n:host ::ng-deep .fa-file-excel-o:before {\n    content: \"\\f1c3\"; }\n:host ::ng-deep .fa-file-powerpoint-o:before {\n    content: \"\\f1c4\"; }\n:host ::ng-deep .fa-file-photo-o:before,\n  :host ::ng-deep .fa-file-picture-o:before,\n  :host ::ng-deep .fa-file-image-o:before {\n    content: \"\\f1c5\"; }\n:host ::ng-deep .fa-file-zip-o:before,\n  :host ::ng-deep .fa-file-archive-o:before {\n    content: \"\\f1c6\"; }\n:host ::ng-deep .fa-file-sound-o:before,\n  :host ::ng-deep .fa-file-audio-o:before {\n    content: \"\\f1c7\"; }\n:host ::ng-deep .fa-file-movie-o:before,\n  :host ::ng-deep .fa-file-video-o:before {\n    content: \"\\f1c8\"; }\n:host ::ng-deep .fa-file-code-o:before {\n    content: \"\\f1c9\"; }\n:host ::ng-deep .fa-vine:before {\n    content: \"\\f1ca\"; }\n:host ::ng-deep .fa-codepen:before {\n    content: \"\\f1cb\"; }\n:host ::ng-deep .fa-jsfiddle:before {\n    content: \"\\f1cc\"; }\n:host ::ng-deep .fa-life-bouy:before,\n  :host ::ng-deep .fa-life-buoy:before,\n  :host ::ng-deep .fa-life-saver:before,\n  :host ::ng-deep .fa-support:before,\n  :host ::ng-deep .fa-life-ring:before {\n    content: \"\\f1cd\"; }\n:host ::ng-deep .fa-circle-o-notch:before {\n    content: \"\\f1ce\"; }\n:host ::ng-deep .fa-ra:before,\n  :host ::ng-deep .fa-resistance:before,\n  :host ::ng-deep .fa-rebel:before {\n    content: \"\\f1d0\"; }\n:host ::ng-deep .fa-ge:before,\n  :host ::ng-deep .fa-empire:before {\n    content: \"\\f1d1\"; }\n:host ::ng-deep .fa-git-square:before {\n    content: \"\\f1d2\"; }\n:host ::ng-deep .fa-git:before {\n    content: \"\\f1d3\"; }\n:host ::ng-deep .fa-y-combinator-square:before,\n  :host ::ng-deep .fa-yc-square:before,\n  :host ::ng-deep .fa-hacker-news:before {\n    content: \"\\f1d4\"; }\n:host ::ng-deep .fa-tencent-weibo:before {\n    content: \"\\f1d5\"; }\n:host ::ng-deep .fa-qq:before {\n    content: \"\\f1d6\"; }\n:host ::ng-deep .fa-wechat:before,\n  :host ::ng-deep .fa-weixin:before {\n    content: \"\\f1d7\"; }\n:host ::ng-deep .fa-send:before,\n  :host ::ng-deep .fa-paper-plane:before {\n    content: \"\\f1d8\"; }\n:host ::ng-deep .fa-send-o:before,\n  :host ::ng-deep .fa-paper-plane-o:before {\n    content: \"\\f1d9\"; }\n:host ::ng-deep .fa-history:before {\n    content: \"\\f1da\"; }\n:host ::ng-deep .fa-circle-thin:before {\n    content: \"\\f1db\"; }\n:host ::ng-deep .fa-header:before {\n    content: \"\\f1dc\"; }\n:host ::ng-deep .fa-paragraph:before {\n    content: \"\\f1dd\"; }\n:host ::ng-deep .fa-sliders:before {\n    content: \"\\f1de\"; }\n:host ::ng-deep .fa-share-alt:before {\n    content: \"\\f1e0\"; }\n:host ::ng-deep .fa-share-alt-square:before {\n    content: \"\\f1e1\"; }\n:host ::ng-deep .fa-bomb:before {\n    content: \"\\f1e2\"; }\n:host ::ng-deep .fa-soccer-ball-o:before,\n  :host ::ng-deep .fa-futbol-o:before {\n    content: \"\\f1e3\"; }\n:host ::ng-deep .fa-tty:before {\n    content: \"\\f1e4\"; }\n:host ::ng-deep .fa-binoculars:before {\n    content: \"\\f1e5\"; }\n:host ::ng-deep .fa-plug:before {\n    content: \"\\f1e6\"; }\n:host ::ng-deep .fa-slideshare:before {\n    content: \"\\f1e7\"; }\n:host ::ng-deep .fa-twitch:before {\n    content: \"\\f1e8\"; }\n:host ::ng-deep .fa-yelp:before {\n    content: \"\\f1e9\"; }\n:host ::ng-deep .fa-newspaper-o:before {\n    content: \"\\f1ea\"; }\n:host ::ng-deep .fa-wifi:before {\n    content: \"\\f1eb\"; }\n:host ::ng-deep .fa-calculator:before {\n    content: \"\\f1ec\"; }\n:host ::ng-deep .fa-paypal:before {\n    content: \"\\f1ed\"; }\n:host ::ng-deep .fa-google-wallet:before {\n    content: \"\\f1ee\"; }\n:host ::ng-deep .fa-cc-visa:before {\n    content: \"\\f1f0\"; }\n:host ::ng-deep .fa-cc-mastercard:before {\n    content: \"\\f1f1\"; }\n:host ::ng-deep .fa-cc-discover:before {\n    content: \"\\f1f2\"; }\n:host ::ng-deep .fa-cc-amex:before {\n    content: \"\\f1f3\"; }\n:host ::ng-deep .fa-cc-paypal:before {\n    content: \"\\f1f4\"; }\n:host ::ng-deep .fa-cc-stripe:before {\n    content: \"\\f1f5\"; }\n:host ::ng-deep .fa-bell-slash:before {\n    content: \"\\f1f6\"; }\n:host ::ng-deep .fa-bell-slash-o:before {\n    content: \"\\f1f7\"; }\n:host ::ng-deep .fa-trash:before {\n    content: \"\\f1f8\"; }\n:host ::ng-deep .fa-copyright:before {\n    content: \"\\f1f9\"; }\n:host ::ng-deep .fa-at:before {\n    content: \"\\f1fa\"; }\n:host ::ng-deep .fa-eyedropper:before {\n    content: \"\\f1fb\"; }\n:host ::ng-deep .fa-paint-brush:before {\n    content: \"\\f1fc\"; }\n:host ::ng-deep .fa-birthday-cake:before {\n    content: \"\\f1fd\"; }\n:host ::ng-deep .fa-area-chart:before {\n    content: \"\\f1fe\"; }\n:host ::ng-deep .fa-pie-chart:before {\n    content: \"\\f200\"; }\n:host ::ng-deep .fa-line-chart:before {\n    content: \"\\f201\"; }\n:host ::ng-deep .fa-lastfm:before {\n    content: \"\\f202\"; }\n:host ::ng-deep .fa-lastfm-square:before {\n    content: \"\\f203\"; }\n:host ::ng-deep .fa-toggle-off:before {\n    content: \"\\f204\"; }\n:host ::ng-deep .fa-toggle-on:before {\n    content: \"\\f205\"; }\n:host ::ng-deep .fa-bicycle:before {\n    content: \"\\f206\"; }\n:host ::ng-deep .fa-bus:before {\n    content: \"\\f207\"; }\n:host ::ng-deep .fa-ioxhost:before {\n    content: \"\\f208\"; }\n:host ::ng-deep .fa-angellist:before {\n    content: \"\\f209\"; }\n:host ::ng-deep .fa-cc:before {\n    content: \"\\f20a\"; }\n:host ::ng-deep .fa-shekel:before,\n  :host ::ng-deep .fa-sheqel:before,\n  :host ::ng-deep .fa-ils:before {\n    content: \"\\f20b\"; }\n:host ::ng-deep .fa-meanpath:before {\n    content: \"\\f20c\"; }\n:host ::ng-deep .fa-buysellads:before {\n    content: \"\\f20d\"; }\n:host ::ng-deep .fa-connectdevelop:before {\n    content: \"\\f20e\"; }\n:host ::ng-deep .fa-dashcube:before {\n    content: \"\\f210\"; }\n:host ::ng-deep .fa-forumbee:before {\n    content: \"\\f211\"; }\n:host ::ng-deep .fa-leanpub:before {\n    content: \"\\f212\"; }\n:host ::ng-deep .fa-sellsy:before {\n    content: \"\\f213\"; }\n:host ::ng-deep .fa-shirtsinbulk:before {\n    content: \"\\f214\"; }\n:host ::ng-deep .fa-simplybuilt:before {\n    content: \"\\f215\"; }\n:host ::ng-deep .fa-skyatlas:before {\n    content: \"\\f216\"; }\n:host ::ng-deep .fa-cart-plus:before {\n    content: \"\\f217\"; }\n:host ::ng-deep .fa-cart-arrow-down:before {\n    content: \"\\f218\"; }\n:host ::ng-deep .fa-diamond:before {\n    content: \"\\f219\"; }\n:host ::ng-deep .fa-ship:before {\n    content: \"\\f21a\"; }\n:host ::ng-deep .fa-user-secret:before {\n    content: \"\\f21b\"; }\n:host ::ng-deep .fa-motorcycle:before {\n    content: \"\\f21c\"; }\n:host ::ng-deep .fa-street-view:before {\n    content: \"\\f21d\"; }\n:host ::ng-deep .fa-heartbeat:before {\n    content: \"\\f21e\"; }\n:host ::ng-deep .fa-venus:before {\n    content: \"\\f221\"; }\n:host ::ng-deep .fa-mars:before {\n    content: \"\\f222\"; }\n:host ::ng-deep .fa-mercury:before {\n    content: \"\\f223\"; }\n:host ::ng-deep .fa-intersex:before,\n  :host ::ng-deep .fa-transgender:before {\n    content: \"\\f224\"; }\n:host ::ng-deep .fa-transgender-alt:before {\n    content: \"\\f225\"; }\n:host ::ng-deep .fa-venus-double:before {\n    content: \"\\f226\"; }\n:host ::ng-deep .fa-mars-double:before {\n    content: \"\\f227\"; }\n:host ::ng-deep .fa-venus-mars:before {\n    content: \"\\f228\"; }\n:host ::ng-deep .fa-mars-stroke:before {\n    content: \"\\f229\"; }\n:host ::ng-deep .fa-mars-stroke-v:before {\n    content: \"\\f22a\"; }\n:host ::ng-deep .fa-mars-stroke-h:before {\n    content: \"\\f22b\"; }\n:host ::ng-deep .fa-neuter:before {\n    content: \"\\f22c\"; }\n:host ::ng-deep .fa-genderless:before {\n    content: \"\\f22d\"; }\n:host ::ng-deep .fa-facebook-official:before {\n    content: \"\\f230\"; }\n:host ::ng-deep .fa-pinterest-p:before {\n    content: \"\\f231\"; }\n:host ::ng-deep .fa-whatsapp:before {\n    content: \"\\f232\"; }\n:host ::ng-deep .fa-server:before {\n    content: \"\\f233\"; }\n:host ::ng-deep .fa-user-plus:before {\n    content: \"\\f234\"; }\n:host ::ng-deep .fa-user-times:before {\n    content: \"\\f235\"; }\n:host ::ng-deep .fa-hotel:before,\n  :host ::ng-deep .fa-bed:before {\n    content: \"\\f236\"; }\n:host ::ng-deep .fa-viacoin:before {\n    content: \"\\f237\"; }\n:host ::ng-deep .fa-train:before {\n    content: \"\\f238\"; }\n:host ::ng-deep .fa-subway:before {\n    content: \"\\f239\"; }\n:host ::ng-deep .fa-medium:before {\n    content: \"\\f23a\"; }\n:host ::ng-deep .fa-yc:before,\n  :host ::ng-deep .fa-y-combinator:before {\n    content: \"\\f23b\"; }\n:host ::ng-deep .fa-optin-monster:before {\n    content: \"\\f23c\"; }\n:host ::ng-deep .fa-opencart:before {\n    content: \"\\f23d\"; }\n:host ::ng-deep .fa-expeditedssl:before {\n    content: \"\\f23e\"; }\n:host ::ng-deep .fa-battery-4:before,\n  :host ::ng-deep .fa-battery:before,\n  :host ::ng-deep .fa-battery-full:before {\n    content: \"\\f240\"; }\n:host ::ng-deep .fa-battery-3:before,\n  :host ::ng-deep .fa-battery-three-quarters:before {\n    content: \"\\f241\"; }\n:host ::ng-deep .fa-battery-2:before,\n  :host ::ng-deep .fa-battery-half:before {\n    content: \"\\f242\"; }\n:host ::ng-deep .fa-battery-1:before,\n  :host ::ng-deep .fa-battery-quarter:before {\n    content: \"\\f243\"; }\n:host ::ng-deep .fa-battery-0:before,\n  :host ::ng-deep .fa-battery-empty:before {\n    content: \"\\f244\"; }\n:host ::ng-deep .fa-mouse-pointer:before {\n    content: \"\\f245\"; }\n:host ::ng-deep .fa-i-cursor:before {\n    content: \"\\f246\"; }\n:host ::ng-deep .fa-object-group:before {\n    content: \"\\f247\"; }\n:host ::ng-deep .fa-object-ungroup:before {\n    content: \"\\f248\"; }\n:host ::ng-deep .fa-sticky-note:before {\n    content: \"\\f249\"; }\n:host ::ng-deep .fa-sticky-note-o:before {\n    content: \"\\f24a\"; }\n:host ::ng-deep .fa-cc-jcb:before {\n    content: \"\\f24b\"; }\n:host ::ng-deep .fa-cc-diners-club:before {\n    content: \"\\f24c\"; }\n:host ::ng-deep .fa-clone:before {\n    content: \"\\f24d\"; }\n:host ::ng-deep .fa-balance-scale:before {\n    content: \"\\f24e\"; }\n:host ::ng-deep .fa-hourglass-o:before {\n    content: \"\\f250\"; }\n:host ::ng-deep .fa-hourglass-1:before,\n  :host ::ng-deep .fa-hourglass-start:before {\n    content: \"\\f251\"; }\n:host ::ng-deep .fa-hourglass-2:before,\n  :host ::ng-deep .fa-hourglass-half:before {\n    content: \"\\f252\"; }\n:host ::ng-deep .fa-hourglass-3:before,\n  :host ::ng-deep .fa-hourglass-end:before {\n    content: \"\\f253\"; }\n:host ::ng-deep .fa-hourglass:before {\n    content: \"\\f254\"; }\n:host ::ng-deep .fa-hand-grab-o:before,\n  :host ::ng-deep .fa-hand-rock-o:before {\n    content: \"\\f255\"; }\n:host ::ng-deep .fa-hand-stop-o:before,\n  :host ::ng-deep .fa-hand-paper-o:before {\n    content: \"\\f256\"; }\n:host ::ng-deep .fa-hand-scissors-o:before {\n    content: \"\\f257\"; }\n:host ::ng-deep .fa-hand-lizard-o:before {\n    content: \"\\f258\"; }\n:host ::ng-deep .fa-hand-spock-o:before {\n    content: \"\\f259\"; }\n:host ::ng-deep .fa-hand-pointer-o:before {\n    content: \"\\f25a\"; }\n:host ::ng-deep .fa-hand-peace-o:before {\n    content: \"\\f25b\"; }\n:host ::ng-deep .fa-trademark:before {\n    content: \"\\f25c\"; }\n:host ::ng-deep .fa-registered:before {\n    content: \"\\f25d\"; }\n:host ::ng-deep .fa-creative-commons:before {\n    content: \"\\f25e\"; }\n:host ::ng-deep .fa-gg:before {\n    content: \"\\f260\"; }\n:host ::ng-deep .fa-gg-circle:before {\n    content: \"\\f261\"; }\n:host ::ng-deep .fa-tripadvisor:before {\n    content: \"\\f262\"; }\n:host ::ng-deep .fa-odnoklassniki:before {\n    content: \"\\f263\"; }\n:host ::ng-deep .fa-odnoklassniki-square:before {\n    content: \"\\f264\"; }\n:host ::ng-deep .fa-get-pocket:before {\n    content: \"\\f265\"; }\n:host ::ng-deep .fa-wikipedia-w:before {\n    content: \"\\f266\"; }\n:host ::ng-deep .fa-safari:before {\n    content: \"\\f267\"; }\n:host ::ng-deep .fa-chrome:before {\n    content: \"\\f268\"; }\n:host ::ng-deep .fa-firefox:before {\n    content: \"\\f269\"; }\n:host ::ng-deep .fa-opera:before {\n    content: \"\\f26a\"; }\n:host ::ng-deep .fa-internet-explorer:before {\n    content: \"\\f26b\"; }\n:host ::ng-deep .fa-tv:before,\n  :host ::ng-deep .fa-television:before {\n    content: \"\\f26c\"; }\n:host ::ng-deep .fa-contao:before {\n    content: \"\\f26d\"; }\n:host ::ng-deep .fa-500px:before {\n    content: \"\\f26e\"; }\n:host ::ng-deep .fa-amazon:before {\n    content: \"\\f270\"; }\n:host ::ng-deep .fa-calendar-plus-o:before {\n    content: \"\\f271\"; }\n:host ::ng-deep .fa-calendar-minus-o:before {\n    content: \"\\f272\"; }\n:host ::ng-deep .fa-calendar-times-o:before {\n    content: \"\\f273\"; }\n:host ::ng-deep .fa-calendar-check-o:before {\n    content: \"\\f274\"; }\n:host ::ng-deep .fa-industry:before {\n    content: \"\\f275\"; }\n:host ::ng-deep .fa-map-pin:before {\n    content: \"\\f276\"; }\n:host ::ng-deep .fa-map-signs:before {\n    content: \"\\f277\"; }\n:host ::ng-deep .fa-map-o:before {\n    content: \"\\f278\"; }\n:host ::ng-deep .fa-map:before {\n    content: \"\\f279\"; }\n:host ::ng-deep .fa-commenting:before {\n    content: \"\\f27a\"; }\n:host ::ng-deep .fa-commenting-o:before {\n    content: \"\\f27b\"; }\n:host ::ng-deep .fa-houzz:before {\n    content: \"\\f27c\"; }\n:host ::ng-deep .fa-vimeo:before {\n    content: \"\\f27d\"; }\n:host ::ng-deep .fa-black-tie:before {\n    content: \"\\f27e\"; }\n:host ::ng-deep .fa-fonticons:before {\n    content: \"\\f280\"; }\n:host ::ng-deep .fa-reddit-alien:before {\n    content: \"\\f281\"; }\n:host ::ng-deep .fa-edge:before {\n    content: \"\\f282\"; }\n:host ::ng-deep .fa-credit-card-alt:before {\n    content: \"\\f283\"; }\n:host ::ng-deep .fa-codiepie:before {\n    content: \"\\f284\"; }\n:host ::ng-deep .fa-modx:before {\n    content: \"\\f285\"; }\n:host ::ng-deep .fa-fort-awesome:before {\n    content: \"\\f286\"; }\n:host ::ng-deep .fa-usb:before {\n    content: \"\\f287\"; }\n:host ::ng-deep .fa-product-hunt:before {\n    content: \"\\f288\"; }\n:host ::ng-deep .fa-mixcloud:before {\n    content: \"\\f289\"; }\n:host ::ng-deep .fa-scribd:before {\n    content: \"\\f28a\"; }\n:host ::ng-deep .fa-pause-circle:before {\n    content: \"\\f28b\"; }\n:host ::ng-deep .fa-pause-circle-o:before {\n    content: \"\\f28c\"; }\n:host ::ng-deep .fa-stop-circle:before {\n    content: \"\\f28d\"; }\n:host ::ng-deep .fa-stop-circle-o:before {\n    content: \"\\f28e\"; }\n:host ::ng-deep .fa-shopping-bag:before {\n    content: \"\\f290\"; }\n:host ::ng-deep .fa-shopping-basket:before {\n    content: \"\\f291\"; }\n:host ::ng-deep .fa-hashtag:before {\n    content: \"\\f292\"; }\n:host ::ng-deep .fa-bluetooth:before {\n    content: \"\\f293\"; }\n:host ::ng-deep .fa-bluetooth-b:before {\n    content: \"\\f294\"; }\n:host ::ng-deep .fa-percent:before {\n    content: \"\\f295\"; }\n:host ::ng-deep .fa-gitlab:before {\n    content: \"\\f296\"; }\n:host ::ng-deep .fa-wpbeginner:before {\n    content: \"\\f297\"; }\n:host ::ng-deep .fa-wpforms:before {\n    content: \"\\f298\"; }\n:host ::ng-deep .fa-envira:before {\n    content: \"\\f299\"; }\n:host ::ng-deep .fa-universal-access:before {\n    content: \"\\f29a\"; }\n:host ::ng-deep .fa-wheelchair-alt:before {\n    content: \"\\f29b\"; }\n:host ::ng-deep .fa-question-circle-o:before {\n    content: \"\\f29c\"; }\n:host ::ng-deep .fa-blind:before {\n    content: \"\\f29d\"; }\n:host ::ng-deep .fa-audio-description:before {\n    content: \"\\f29e\"; }\n:host ::ng-deep .fa-volume-control-phone:before {\n    content: \"\\f2a0\"; }\n:host ::ng-deep .fa-braille:before {\n    content: \"\\f2a1\"; }\n:host ::ng-deep .fa-assistive-listening-systems:before {\n    content: \"\\f2a2\"; }\n:host ::ng-deep .fa-asl-interpreting:before,\n  :host ::ng-deep .fa-american-sign-language-interpreting:before {\n    content: \"\\f2a3\"; }\n:host ::ng-deep .fa-deafness:before,\n  :host ::ng-deep .fa-hard-of-hearing:before,\n  :host ::ng-deep .fa-deaf:before {\n    content: \"\\f2a4\"; }\n:host ::ng-deep .fa-glide:before {\n    content: \"\\f2a5\"; }\n:host ::ng-deep .fa-glide-g:before {\n    content: \"\\f2a6\"; }\n:host ::ng-deep .fa-signing:before,\n  :host ::ng-deep .fa-sign-language:before {\n    content: \"\\f2a7\"; }\n:host ::ng-deep .fa-low-vision:before {\n    content: \"\\f2a8\"; }\n:host ::ng-deep .fa-viadeo:before {\n    content: \"\\f2a9\"; }\n:host ::ng-deep .fa-viadeo-square:before {\n    content: \"\\f2aa\"; }\n:host ::ng-deep .fa-snapchat:before {\n    content: \"\\f2ab\"; }\n:host ::ng-deep .fa-snapchat-ghost:before {\n    content: \"\\f2ac\"; }\n:host ::ng-deep .fa-snapchat-square:before {\n    content: \"\\f2ad\"; }\n:host ::ng-deep .fa-pied-piper:before {\n    content: \"\\f2ae\"; }\n:host ::ng-deep .fa-first-order:before {\n    content: \"\\f2b0\"; }\n:host ::ng-deep .fa-yoast:before {\n    content: \"\\f2b1\"; }\n:host ::ng-deep .fa-themeisle:before {\n    content: \"\\f2b2\"; }\n:host ::ng-deep .fa-google-plus-circle:before,\n  :host ::ng-deep .fa-google-plus-official:before {\n    content: \"\\f2b3\"; }\n:host ::ng-deep .fa-fa:before,\n  :host ::ng-deep .fa-font-awesome:before {\n    content: \"\\f2b4\"; }\n:host ::ng-deep .fa-handshake-o:before {\n    content: \"\\f2b5\"; }\n:host ::ng-deep .fa-envelope-open:before {\n    content: \"\\f2b6\"; }\n:host ::ng-deep .fa-envelope-open-o:before {\n    content: \"\\f2b7\"; }\n:host ::ng-deep .fa-linode:before {\n    content: \"\\f2b8\"; }\n:host ::ng-deep .fa-address-book:before {\n    content: \"\\f2b9\"; }\n:host ::ng-deep .fa-address-book-o:before {\n    content: \"\\f2ba\"; }\n:host ::ng-deep .fa-vcard:before,\n  :host ::ng-deep .fa-address-card:before {\n    content: \"\\f2bb\"; }\n:host ::ng-deep .fa-vcard-o:before,\n  :host ::ng-deep .fa-address-card-o:before {\n    content: \"\\f2bc\"; }\n:host ::ng-deep .fa-user-circle:before {\n    content: \"\\f2bd\"; }\n:host ::ng-deep .fa-user-circle-o:before {\n    content: \"\\f2be\"; }\n:host ::ng-deep .fa-user-o:before {\n    content: \"\\f2c0\"; }\n:host ::ng-deep .fa-id-badge:before {\n    content: \"\\f2c1\"; }\n:host ::ng-deep .fa-drivers-license:before,\n  :host ::ng-deep .fa-id-card:before {\n    content: \"\\f2c2\"; }\n:host ::ng-deep .fa-drivers-license-o:before,\n  :host ::ng-deep .fa-id-card-o:before {\n    content: \"\\f2c3\"; }\n:host ::ng-deep .fa-quora:before {\n    content: \"\\f2c4\"; }\n:host ::ng-deep .fa-free-code-camp:before {\n    content: \"\\f2c5\"; }\n:host ::ng-deep .fa-telegram:before {\n    content: \"\\f2c6\"; }\n:host ::ng-deep .fa-thermometer-4:before,\n  :host ::ng-deep .fa-thermometer:before,\n  :host ::ng-deep .fa-thermometer-full:before {\n    content: \"\\f2c7\"; }\n:host ::ng-deep .fa-thermometer-3:before,\n  :host ::ng-deep .fa-thermometer-three-quarters:before {\n    content: \"\\f2c8\"; }\n:host ::ng-deep .fa-thermometer-2:before,\n  :host ::ng-deep .fa-thermometer-half:before {\n    content: \"\\f2c9\"; }\n:host ::ng-deep .fa-thermometer-1:before,\n  :host ::ng-deep .fa-thermometer-quarter:before {\n    content: \"\\f2ca\"; }\n:host ::ng-deep .fa-thermometer-0:before,\n  :host ::ng-deep .fa-thermometer-empty:before {\n    content: \"\\f2cb\"; }\n:host ::ng-deep .fa-shower:before {\n    content: \"\\f2cc\"; }\n:host ::ng-deep .fa-bathtub:before,\n  :host ::ng-deep .fa-s15:before,\n  :host ::ng-deep .fa-bath:before {\n    content: \"\\f2cd\"; }\n:host ::ng-deep .fa-podcast:before {\n    content: \"\\f2ce\"; }\n:host ::ng-deep .fa-window-maximize:before {\n    content: \"\\f2d0\"; }\n:host ::ng-deep .fa-window-minimize:before {\n    content: \"\\f2d1\"; }\n:host ::ng-deep .fa-window-restore:before {\n    content: \"\\f2d2\"; }\n:host ::ng-deep .fa-times-rectangle:before,\n  :host ::ng-deep .fa-window-close:before {\n    content: \"\\f2d3\"; }\n:host ::ng-deep .fa-times-rectangle-o:before,\n  :host ::ng-deep .fa-window-close-o:before {\n    content: \"\\f2d4\"; }\n:host ::ng-deep .fa-bandcamp:before {\n    content: \"\\f2d5\"; }\n:host ::ng-deep .fa-grav:before {\n    content: \"\\f2d6\"; }\n:host ::ng-deep .fa-etsy:before {\n    content: \"\\f2d7\"; }\n:host ::ng-deep .fa-imdb:before {\n    content: \"\\f2d8\"; }\n:host ::ng-deep .fa-ravelry:before {\n    content: \"\\f2d9\"; }\n:host ::ng-deep .fa-eercast:before {\n    content: \"\\f2da\"; }\n:host ::ng-deep .fa-microchip:before {\n    content: \"\\f2db\"; }\n:host ::ng-deep .fa-snowflake-o:before {\n    content: \"\\f2dc\"; }\n:host ::ng-deep .fa-superpowers:before {\n    content: \"\\f2dd\"; }\n:host ::ng-deep .fa-wpexplorer:before {\n    content: \"\\f2de\"; }\n:host ::ng-deep .fa-meetup:before {\n    content: \"\\f2e0\"; }\n:host ::ng-deep .sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip: rect(0, 0, 0, 0);\n    border: 0; }\n:host ::ng-deep .sr-only-focusable:active, :host ::ng-deep .sr-only-focusable:focus {\n    position: static;\n    width: auto;\n    height: auto;\n    margin: 0;\n    overflow: visible;\n    clip: auto; }\n:host ::ng-deep .formio-form {\n    position: relative;\n    min-height: 80px; }\n:host ::ng-deep .formio-disabled-input .form-control.flatpickr-input {\n    background-color: #eee; }\n:host ::ng-deep .formio-component.has-error .invalid-feedback {\n    display: block; }\n:host ::ng-deep .formio-wysiwyg-editor {\n    min-height: 200px;\n    background-color: #fff; }\n:host ::ng-deep .has-feedback .form-control {\n    padding-right: 10px; }\n:host ::ng-deep .has-feedback .form-control[type=hidden] {\n    padding-right: 0px; }\n:host ::ng-deep .has-error.bg-danger {\n    padding: 4px; }\n:host ::ng-deep .ql-source:after {\n    content: \"[source]\"; }\n:host ::ng-deep .quill-source-code {\n    width: 100%;\n    margin: 0px;\n    background: #1d1d1d;\n    box-sizing: border-box;\n    color: #cccccc;\n    font-size: 15px;\n    outline: none;\n    padding: 20px;\n    line-height: 24px;\n    font-family: Consolas, Menlo, Monaco, \"Courier New\", monospace;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    border: none;\n    display: none; }\n:host ::ng-deep .formio-component-tags tags {\n    background-color: #fff; }\n:host ::ng-deep .field-required:after {\n    content: \" *\";\n    color: red; }\n:host ::ng-deep .glyphicon-spin {\n    -webkit-animation: formio-spin 1s infinite linear;\n    animation: formio-spin 1s infinite linear; }\n@-webkit-keyframes formio-spin {\n  from {\n    -webkit-transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg); } }\n@keyframes formio-spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n:host ::ng-deep .button-icon-right {\n    margin-left: 5px; }\n:host ::ng-deep .formio-component-submit .submit-success::after {\n    font-family: 'Glyphicons Halflings';\n    content: '\\e013';\n    position: relative;\n    right: -4px;\n    top: 1;\n    line-height: 1; }\n:host ::ng-deep .formio-component-submit .submit-fail::after {\n    font-family: 'Glyphicons Halflings';\n    content: '\\e014';\n    position: relative;\n    right: -4px;\n    top: 1;\n    line-height: 1; }\n:host ::ng-deep .formio-component-submit .submit-fail[disabled] {\n    opacity: 1; }\n:host ::ng-deep .form-control.flatpickr-input {\n    background-color: #fff; }\n:host ::ng-deep td > .form-group {\n    margin-bottom: 0; }\n:host ::ng-deep .signature-pad {\n    position: relative; }\n:host ::ng-deep .signature-pad-body {\n    overflow: hidden; }\n:host ::ng-deep .signature-pad-canvas {\n    border-radius: 4px;\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;\n    border: 1px solid #f4f4f4; }\n:host ::ng-deep .btn.signature-pad-refresh {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: 1000;\n    padding: 3px;\n    line-height: 0; }\n:host ::ng-deep .choices__list--dropdown .choices__item--selectable {\n    padding-right: 0px; }\n:host ::ng-deep .signature-pad-refresh img {\n    height: 1.2em; }\n:host ::ng-deep .signature-pad-footer {\n    text-align: center;\n    color: #C3C3C3; }\n:host ::ng-deep .loader-wrapper {\n    z-index: 1000;\n    position: absolute;\n    top: 0px;\n    left: 0px;\n    bottom: 0px;\n    right: 0px;\n    background-color: rgba(0, 0, 0, 0.1); }\n:host ::ng-deep .loader {\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    margin-left: -30px;\n    margin-top: -30px;\n    z-index: 10000;\n    display: inline-block;\n    border: 6px solid #f3f3f3;\n    border-top: 6px solid #3498db;\n    border-radius: 50%;\n    width: 60px;\n    height: 60px;\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite; }\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n@keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n:host ::ng-deep .choices__list--dropdown {\n    z-index: 100; }\n:host ::ng-deep .choices__list--multiple .choices__item {\n    border-radius: 0;\n    padding: 2px 8px;\n    line-height: 1em;\n    margin-bottom: 6px; }\n:host ::ng-deep .choices__list--single {\n    padding: 0; }\n:host ::ng-deep .choices__input {\n    padding: 2px; }\n:host ::ng-deep .formio-component-file .fileSelector {\n    padding: 15px;\n    border: 2px dashed #ddd;\n    text-align: center; }\n:host ::ng-deep .formio-component-file .fileSelector.fileDragOver {\n    border-color: #127abe; }\n:host ::ng-deep .formio-component-file .fileSelector .glyphicon,\n  :host ::ng-deep .formio-component-file .fileSelector .fa {\n    font-size: 20px;\n    margin-right: 5px; }\n:host ::ng-deep .formio-component-file .fileSelector .browse {\n    cursor: pointer; }\n@-webkit-keyframes formio-dialog-fadeout {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n@keyframes formio-dialog-fadeout {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n@-webkit-keyframes formio-dialog-fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n@keyframes formio-dialog-fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n:host ::ng-deep .formio-dialog {\n    box-sizing: border-box;\n    font-size: 0.8em;\n    color: #666; }\n:host ::ng-deep .formio-dialog *,\n  :host ::ng-deep .formio-dialog *:before,\n  :host ::ng-deep .formio-dialog *:after {\n    box-sizing: inherit; }\n:host ::ng-deep .formio-dialog {\n    position: fixed;\n    overflow: auto;\n    -webkit-overflow-scrolling: touch;\n    z-index: 10000;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, 0.4);\n    -webkit-animation: formio-dialog-fadein 0.5s;\n            animation: formio-dialog-fadein 0.5s; }\n:host ::ng-deep .formio-dialog.formio-dialog-disabled-animation,\n  :host ::ng-deep .formio-dialog.formio-dialog-disabled-animation .formio-dialog-overlay,\n  :host ::ng-deep .formio-dialog.formio-dialog-disabled-animation .formio-dialog-content {\n    -webkit-animation: none !important;\n    animation: none !important; }\n:host ::ng-deep .formio-dialog-overlay {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    -webkit-backface-visibility: hidden;\n    -webkit-animation: formio-dialog-fadein 0.5s;\n    animation: formio-dialog-fadein 0.5s;\n    margin-right: 15px;\n    background: transparent; }\n:host ::ng-deep .formio-dialog-no-overlay {\n    pointer-events: none; }\n:host ::ng-deep .formio-dialog.formio-dialog-closing .formio-dialog-overlay {\n    -webkit-backface-visibility: hidden;\n    -webkit-animation: formio-dialog-fadeout 0.5s;\n    animation: formio-dialog-fadeout 0.5s; }\n:host ::ng-deep .formio-dialog-content {\n    background: white;\n    -webkit-backface-visibility: hidden;\n    -webkit-animation: formio-dialog-fadein 0.5s;\n    animation: formio-dialog-fadein 0.5s;\n    pointer-events: all; }\n:host ::ng-deep .formio-dialog.formio-dialog-closing .formio-dialog-content {\n    -webkit-backface-visibility: hidden;\n    -webkit-animation: formio-dialog-fadeout 0.5s;\n    animation: formio-dialog-fadeout 0.5s; }\n:host ::ng-deep .formio-dialog-close:before {\n    font-family: 'Helvetica', Arial, sans-serif;\n    content: '×';\n    cursor: pointer; }\n:host ::ng-deep html.formio-dialog-open,\n  :host ::ng-deep body.formio-dialog-open {\n    overflow: hidden; }\n@-webkit-keyframes formio-dialog-flyin {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); } }\n@keyframes formio-dialog-flyin {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); } }\n@-webkit-keyframes formio-dialog-flyout {\n  0% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n@keyframes formio-dialog-flyout {\n  0% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n    transform: translateY(0); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default {\n    padding-bottom: 160px;\n    padding-top: 160px; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default.formio-dialog-closing .formio-dialog-content {\n    -webkit-animation: formio-dialog-flyout .5s;\n    animation: formio-dialog-flyout .5s; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-content {\n    -webkit-animation: formio-dialog-flyin .5s;\n    animation: formio-dialog-flyin .5s;\n    background: #f0f0f0;\n    border-radius: 5px;\n    font-family: 'Helvetica', sans-serif;\n    font-size: 1.1em;\n    line-height: 1.5em;\n    margin: 0 auto;\n    max-width: 100%;\n    padding: 1em;\n    position: relative;\n    width: 65%; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close {\n    border: none;\n    background: transparent;\n    cursor: pointer;\n    position: absolute;\n    right: 0;\n    top: 0; }\n:host ::ng-deep .formio-clickable {\n    cursor: pointer; }\n:host ::ng-deep .component-settings .nav > li > a {\n    padding: 8px 10px; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close:before {\n    display: block;\n    padding: 3px;\n    background: transparent;\n    color: #bbb;\n    content: '×';\n    font-size: 26px;\n    font-weight: 400;\n    line-height: 26px;\n    text-align: center; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close:hover:before,\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-close:active:before {\n    color: #777; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-message {\n    margin-bottom: .5em; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input {\n    margin-bottom: 1em; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input textarea,\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"text\"],\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"password\"],\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"email\"],\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"url\"] {\n    background: #fff;\n    border: 0;\n    border-radius: 3px;\n    font-family: inherit;\n    font-size: inherit;\n    font-weight: inherit;\n    margin: 0 0 .25em;\n    min-height: 2.5em;\n    padding: .25em .67em;\n    width: 100%; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input textarea:focus,\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"text\"]:focus,\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"password\"]:focus,\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"email\"]:focus,\n  :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-input input[type=\"url\"]:focus {\n    box-shadow: inset 0 0 0 2px #8dbdf1;\n    outline: none; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-buttons {\n    *zoom: 1; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-buttons:after {\n    content: '';\n    display: table;\n    clear: both; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button {\n    border: 0;\n    border-radius: 3px;\n    cursor: pointer;\n    float: right;\n    font-family: inherit;\n    font-size: .8em;\n    letter-spacing: .1em;\n    line-height: 1em;\n    margin: 0 0 0 .5em;\n    padding: .75em 2em;\n    text-transform: uppercase; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button:focus {\n    -webkit-animation: formio-dialog-pulse 1.1s infinite;\n    animation: formio-dialog-pulse 1.1s infinite;\n    outline: none; }\n@media (max-width: 568px) {\n    :host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button:focus {\n      -webkit-animation: none;\n      animation: none; } }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button.formio-dialog-button-primary {\n    background: #3288e6;\n    color: #fff; }\n:host ::ng-deep .formio-dialog.formio-dialog-theme-default .formio-dialog-button.formio-dialog-button-secondary {\n    background: #e0e0e0;\n    color: #777; }\n:host ::ng-deep .formio-dialog-content .panel {\n    margin: 0; }\n:host ::ng-deep .formio-placeholder {\n    position: absolute;\n    color: #999; }\n:host ::ng-deep .formio-dialog .formio-dialog-close {\n    cursor: pointer; }\n:host ::ng-deep .formio-iframe {\n    border: none;\n    width: 100%;\n    height: 1000px; }\n:host ::ng-deep .inline-form-button {\n    margin-right: 10px; }\n:host ::ng-deep .tooltip {\n    opacity: 1; }\n:host ::ng-deep .tooltip[x-placement=\"right\"] .tooltip-arrow {\n    border-right: 5px solid black; }\n:host ::ng-deep .tooltip[x-placement=\"right\"] .tooltip-inner {\n    margin-left: 8px; }\n:host ::ng-deep .control-label--bottom {\n    margin-bottom: 0;\n    margin-top: 5px; }\n:host ::ng-deep .formio-component-label-hidden {\n    position: relative; }\n:host ::ng-deep .control-label--hidden {\n    position: absolute;\n    top: 6px;\n    right: 5px;\n    font-size: 1.5em; }\n:host ::ng-deep .formio-component-datetime .control-label--hidden.field-required {\n    right: 45px;\n    z-index: 3; }\n:host ::ng-deep .formio-component-survey .control-label--hidden.field-required,\n  :host ::ng-deep .formio-component-selectboxes .control-label--hidden.field-required {\n    top: 0; }\n:host ::ng-deep .formio-component-resource .control-label--hidden.field-required,\n  :host ::ng-deep .formio-component-select .control-label--hidden.field-required {\n    right: 40px;\n    z-index: 2; }\n:host ::ng-deep .checkbox-inline label,\n  :host ::ng-deep .radio-inline label {\n    font-weight: 400;\n    cursor: pointer; }\n:host ::ng-deep .editgrid-listgroup {\n    margin-bottom: 10px; }\n:host ::ng-deep .formio-component-submit .has-error {\n    display: none; }\n:host ::ng-deep .formio-component-submit button[disabled] + .has-error {\n    display: block; }\n:host ::ng-deep .formio-choices.form-group {\n    margin-bottom: 0; }\n:host ::ng-deep .formio-choices[data-type=select-multiple] .form-control {\n    height: auto; }\n:host ::ng-deep .form-control.formio-multiple-mask-select {\n    width: 15%;\n    z-index: 4; }\n:host ::ng-deep .form-control.formio-multiple-mask-input {\n    width: 85%; }\n:host ::ng-deep .input-group.formio-multiple-mask-container {\n    width: 100%; }\n:host ::ng-deep .formio-component .table {\n    margin-bottom: 0; }\n:host ::ng-deep .formio-hide-label-panel-tooltip {\n    margin-top: -10px;\n    margin-left: -10px; }\n:host ::ng-deep .is-disabled .choices__list--multiple .choices__item {\n    padding: 5px 10px; }\n:host ::ng-deep .is-disabled .choices__list--multiple .choices__item .choices__button {\n    display: none; }\n:host ::ng-deep .formio-collapse-icon {\n    cursor: pointer;\n    color: #666;\n    font-size: 0.6em;\n    border: 1px solid #ccc;\n    border-radius: 0.3em;\n    padding: 0.2em 0.4em;\n    vertical-align: top;\n    margin-right: 4px;\n    margin-top: 1px; }\n:host ::ng-deep .formbuilder {\n    position: relative; }\n:host ::ng-deep .drag-container {\n    padding: 10px;\n    border: dotted 2px #e8e8e8; }\n:host ::ng-deep .drag-container:hover {\n    cursor: move;\n    border: dotted 2px #ccc; }\n:host ::ng-deep .component-btn-group {\n    position: absolute;\n    right: 0;\n    z-index: 1000;\n    margin-top: -2px; }\n:host ::ng-deep .formio-component:not(:hover) .component-btn-group {\n    display: none; }\n:host ::ng-deep .builder-group-button {\n    background-color: transparent;\n    white-space: normal;\n    text-align: left; }\n:host ::ng-deep .form-builder-group-header {\n    padding: 0; }\n:host ::ng-deep .formio-dialog .tab-content {\n    padding-top: 12px; }\n:host ::ng-deep .component-btn-group .component-settings-button {\n    float: right;\n    z-index: 1001;\n    margin: 4px 4px 0 0;\n    z-index: 1001;\n    box-shadow: 0px 0px 10px 1px rgba(48, 113, 169, 0.6); }\n:host ::ng-deep .formbuilder .formio-component-hidden,\n  :host ::ng-deep .formbuilder .formio-component-form {\n    border: 2px dashed #ddd; }\n:host ::ng-deep .formbuilder .formio-component-hidden {\n    height: 3em;\n    text-align: center;\n    color: #aaa;\n    padding-top: 0.5em; }\n:host ::ng-deep .formbuilder .row.formio-component-columns {\n    margin-left: 0;\n    margin-right: 0; }\n:host ::ng-deep .btn-xxs,\n  :host ::ng-deep .btn-group-xxs > .btn,\n  :host ::ng-deep .component-btn-group .component-settings-button {\n    padding: 2px 2px;\n    font-size: 10px;\n    line-height: 1.2em;\n    border-radius: 0;\n    width: 18px;\n    height: 18px; }\n:host ::ng-deep .formcomponents .formcomponent {\n    text-align: left;\n    padding: 5px 5px 5px 8px;\n    margin-top: 0.2rem;\n    font-size: 0.8em;\n    line-height: 1.2;\n    border-radius: 0.3em; }\n:host ::ng-deep .form-builder-panel .panel-body {\n    padding: 5px; }\n:host ::ng-deep .formio-pdf-builder {\n    position: relative; }\n:host ::ng-deep .formio-drop-zone {\n    display: none;\n    position: absolute;\n    z-index: 10;\n    background-color: #0d87e9;\n    opacity: 0.1; }\n:host ::ng-deep .formio-drop-zone.enabled {\n    display: inherit; }\n:host ::ng-deep .component-settings-button-paste {\n    display: none; }\n:host ::ng-deep .builder-paste-mode .component-settings-button-paste {\n    display: inherit; }\n:host ::ng-deep .wizard-page-label {\n    cursor: pointer; }\n:host ::ng-deep .panel-body .drag-and-drop-alert {\n    margin-bottom: 0; }\n"
 
 /***/ }),
 
@@ -14080,19 +12969,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
 /* harmony import */ var formiojs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formiojs */ "./node_modules/formiojs/index.js");
 /* harmony import */ var formiojs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(formiojs__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _resource_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../resource.service */ "./src/app/resource.service.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14102,94 +12980,91 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 
 
 
 
-
-var AppFormioComponent = /** @class */ (function (_super) {
-    __extends(AppFormioComponent, _super);
-    function AppFormioComponent(_loader, _config, translate, formioService) {
-        var _this_1 = _super.call(this, _loader, _config) || this;
-        _this_1.translate = translate;
-        _this_1.formioService = formioService;
-        _this_1.LanguageChanger = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        return _this_1;
-    }
-    /* ngOnInit() {
-        const currentLang = this.translate.currentLang;
-        Formio.createForm(this.formioElement ? this.formioElement.nativeElement : null,
-            this.formioService.form, { language: currentLang }).then(form => {
-                console.log(form);
-                console.log(this.formioElement);
-                form.submission = this.formioService.resource;
-                console.log(this.formioService.resource);
-                this.translate.getTranslation(currentLang).subscribe(data => {
-                    form.i18next.options.resources[currentLang] = {
-                        translation: data
-                    };
-                    form.language = currentLang;
-                });
-                this.translate.onLangChange.subscribe(data => {
-                    console.log(data); console.log('--');
-                    form.i18next.options.resources[data.lang] = {
-                        translation: data.translations
-                    };
-                    form.language = data.lang;
-                });
-            });
-    }
-} */
-    AppFormioComponent.prototype.ngOninit = function () {
-        _super.prototype.ngOnInit.call(this);
-        this.translate.onLangChange.subscribe(function (data) {
-            // this.language.emit(data);
+var AppFormioComponent = /** @class */ (function () {
+    function AppFormioComponent(loader, config, translate) {
+        var _this = this;
+        this.loader = loader;
+        this.config = config;
+        this.translate = translate;
+        this.submission = {};
+        this.readOnly = false;
+        this.viewOnly = false;
+        this.hooks = {};
+        if (this.config) {
+            formiojs__WEBPACK_IMPORTED_MODULE_3__["Formio"].setBaseUrl(this.config.apiUrl);
+            formiojs__WEBPACK_IMPORTED_MODULE_3__["Formio"].setProjectUrl(this.config.appUrl);
+        }
+        else {
+            console.warn('You must provide an AppConfig within your application!');
+        }
+        this.formioReady = new Promise(function (ready) {
+            _this.formioReadyResolve = ready;
         });
-    };
+        this.submitting = false;
+        this.alerts = new angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioAlerts"]();
+        this.beforeSubmit = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.prevPage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.nextPage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.submit = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.errorChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.invalid = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.change = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.customEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.render = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.formLoad = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.ready = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.initialized = false;
+        this.alerts.alerts = [];
+    }
     AppFormioComponent.prototype.setForm = function (form) {
-        var _this_1 = this;
         var _this = this;
         this.form = form;
         // Only initialize a single formio instance.
         if (this.formio) {
-            this.formio.form = this.form;
-            return;
+            // this.formio.form = this.form;
+            // return;
+            this.formio = {};
         }
         // Create the form.
-        return formiojs__WEBPACK_IMPORTED_MODULE_3__["Formio"].createForm(this.formioElement ? this.formioElement.nativeElement : null, this.form, {
-            icons: this._config ? this._config.icons : '',
-            noAlerts: Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(this.options, 'noAlerts', true),
+        return formiojs__WEBPACK_IMPORTED_MODULE_3__["Formio"].createForm(this.formioElement ? this.formioElement.nativeElement : null, this.form, Object(lodash__WEBPACK_IMPORTED_MODULE_4__["assign"])({}, {
+            icons: Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(this.config, 'icons', 'fontawesome'),
+            noAlerts: Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(this.options, 'noAlerts', true),
             readOnly: this.readOnly,
             viewAsHtml: this.viewOnly,
-            i18n: Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(this.options, 'i18n', null),
-            fileService: Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(this.options, 'fileService', null),
+            i18n: Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(this.options, 'i18n', null),
+            fileService: Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(this.options, 'fileService', null),
             hooks: this.hooks
-        }).then(function (formio) {
-            var currentLang = _this_1.translate.currentLang;
-            formio.submission = _this_1.formioService.resource;
-            console.log(formio);
-            _this_1.translate.getTranslation(currentLang).subscribe(function (data) {
-                formio.i18next.options.resources[currentLang] = {
-                    translation: data
-                };
-                formio.language = currentLang;
-            });
-            _this_1.translate.onLangChange.subscribe(function (data) {
-                formio.i18next.options.resources[data.lang] = {
-                    translation: data.translations
-                };
-                formio.language = data.lang;
-                console.log(formio);
-            });
+        }, this.renderOptions || {})).then(function (formio) {
             _this.formio = formio;
             if (_this.url) {
-                _this.formio.url = _this.url;
+                _this.formio.setUrl(_this.url, _this.formioOptions || {});
             }
             if (_this.src) {
-                _this.formio.url = _this.src;
+                _this.formio.setUrl(_this.src, _this.formioOptions || {});
             }
+            var currentLang = _this.translate.currentLang;
+            _this.formio.submission = _this.submission;
+            _this.translate.getTranslation(currentLang).subscribe(function (data) {
+                _this.formio.i18next.options.resources[currentLang] = {
+                    translation: data
+                };
+                _this.formio.language = currentLang;
+            });
+            _this.translate.onLangChange.subscribe(function (data) {
+                _this.formio.i18next.options.resources[data.lang] = {
+                    translation: data.translations
+                };
+                _this.formio.language = data.lang;
+            });
             _this.formio.nosubmit = true;
             _this.formio.on('prevPage', function (data) { return _this.onPrevPage(data); });
             _this.formio.on('nextPage', function (data) { return _this.onNextPage(data); });
@@ -14205,21 +13080,350 @@ var AppFormioComponent = /** @class */ (function (_super) {
             _this.formio.on('formLoad', function (loadedForm) {
                 return _this.formLoad.emit(loadedForm);
             });
-            _this.readyResolve(_this.formio);
+            _this.loader.loading = false;
+            _this.ready.emit(_this);
+            _this.formioReadyResolve(_this.formio);
             return _this.formio;
         });
+        /*
+        if (this.formio) {
+            return;
+        } else {
+            this.formio = super.setForm(form).then(formio => {
+                const this = this;
+                // Only initialize a single formio instance.
+
+                // Create the form.
+                const currentLang = this.translate.currentLang;
+                this.formio.submission = this.submission;
+                this.translate.getTranslation(currentLang).subscribe(data => {
+
+                    this.formio.i18next.options.resources[currentLang] = {
+                        translation: data
+                    };
+                    this.formio.language = currentLang;
+                });
+                this.translate.onLangChange.subscribe(data => {
+                    this.formio.i18next.options.resources[data.lang] = {
+                        translation: data.translations
+                    };
+                    this.formio.language = data.lang;
+
+                });
+                // this._formioReadyResolve(this.formio);
+                return this.formio;
+            });
+        } */
     };
+    AppFormioComponent.prototype.initialize = function () {
+        if (this.initialized) {
+            return;
+        }
+        this.options = Object.assign({
+            errors: {
+                message: 'Please fix the following errors before submitting.'
+            },
+            alerts: {
+                submitMessage: 'Submission Complete.'
+            },
+            disableAlerts: false,
+            hooks: {
+                beforeSubmit: null
+            }
+        }, this.options);
+        this.initialized = true;
+    };
+    AppFormioComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.initialize();
+        if (this.language) {
+            this.language.subscribe(function (lang) {
+                _this.formio.language = lang;
+            });
+        }
+        if (this.refresh) {
+            this.refresh.subscribe(function (refresh) {
+                return _this.onRefresh(refresh);
+            });
+        }
+        if (this.error) {
+            this.error.subscribe(function (err) { return _this.onError(err); });
+        }
+        if (this.success) {
+            this.success.subscribe(function (message) {
+                _this.alerts.setAlert({
+                    type: 'success',
+                    message: message || Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(_this.options, 'alerts.submitMessage')
+                });
+            });
+        }
+        if (this.src) {
+            if (!this.service) {
+                this.service = new angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioService"](this.src);
+            }
+            this.loader.loading = true;
+            this.service.loadForm({ params: { live: 1 } }).subscribe(function (form) {
+                if (form && form.components) {
+                    _this.setForm(form);
+                }
+                // if a submission is also provided.
+                if (Object(lodash__WEBPACK_IMPORTED_MODULE_4__["isEmpty"])(_this.submission) &&
+                    _this.service &&
+                    _this.service.formio.submissionId) {
+                    _this.service.loadSubmission().subscribe(function (submission) {
+                        if (_this.readOnly) {
+                            _this.formio.options.readOnly = true;
+                        }
+                        _this.submission = _this.formio.submission = submission;
+                    }, function (err) { return _this.onError(err); });
+                }
+            }, function (err) { return _this.onError(err); });
+        }
+        if (this.url && !this.service) {
+            this.service = new angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioService"](this.url);
+        }
+    };
+    AppFormioComponent.prototype.onRefresh = function (refresh) {
+        var _this = this;
+        this.formioReady.then(function () {
+            if (refresh.form) {
+                _this.formio.setForm(refresh.form).then(function () {
+                    if (refresh.submission) {
+                        _this.formio.setSubmission(refresh.submission);
+                    }
+                });
+            }
+            else if (refresh.submission) {
+                _this.formio.setSubmission(refresh.submission);
+            }
+            else {
+                switch (refresh.property) {
+                    case 'submission':
+                        _this.formio.submission = refresh.value;
+                        break;
+                    case 'form':
+                        _this.formio.form = refresh.value;
+                        break;
+                }
+            }
+        });
+    };
+    AppFormioComponent.prototype.ngOnChanges = function (changes) {
+        var _this = this;
+        this.initialize();
+        if (changes.form && changes.form.currentValue) {
+            this.setForm(changes.form.currentValue);
+        }
+        this.formioReady.then(function () {
+            if (changes.submission && changes.submission.currentValue) {
+                _this.formio.submission = changes.submission.currentValue;
+            }
+            if (changes.hideComponents) {
+                _this.formio.hideComponents(changes.hideComponents.currentValue);
+            }
+        });
+    };
+    AppFormioComponent.prototype.onPrevPage = function (data) {
+        this.alerts.setAlerts([]);
+        this.prevPage.emit(data);
+    };
+    AppFormioComponent.prototype.onNextPage = function (data) {
+        this.alerts.setAlerts([]);
+        this.nextPage.emit(data);
+    };
+    AppFormioComponent.prototype.onSubmit = function (submission, saved) {
+        this.submitting = false;
+        if (saved) {
+            this.formio.emit('submitDone', submission);
+        }
+        this.submit.emit(submission);
+        if (!this.success) {
+            this.alerts.setAlert({
+                type: 'success',
+                message: Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(this.options, 'alerts.submitMessage')
+            });
+        }
+    };
+    AppFormioComponent.prototype.onError = function (err) {
+        var _this = this;
+        this.loader.loading = false;
+        this.alerts.setAlerts([]);
+        this.submitting = false;
+        if (!err) {
+            return;
+        }
+        // Make sure it is an array.
+        err = err instanceof Array ? err : [err];
+        // Emit these errors again.
+        this.errorChange.emit(err);
+        // Iterate through each one and set the alerts array.
+        Object(lodash__WEBPACK_IMPORTED_MODULE_4__["each"])(err, function (error) {
+            _this.alerts.addAlert({
+                type: 'danger',
+                message: error.message || error.toString()
+            });
+        });
+    };
+    AppFormioComponent.prototype.submitExecute = function (submission) {
+        var _this = this;
+        if (this.service && !this.url) {
+            this.service
+                .saveSubmission(submission)
+                .subscribe(function (sub) { return _this.onSubmit(sub, true); }, function (err) { return _this.onError(err); });
+        }
+        else {
+            this.onSubmit(submission, false);
+        }
+    };
+    AppFormioComponent.prototype.submitForm = function (submission) {
+        var _this = this;
+        // Keep double submits from occurring...
+        if (this.submitting) {
+            return;
+        }
+        this.submitting = true;
+        this.beforeSubmit.emit(submission);
+        // if they provide a beforeSubmit hook, then allow them to alter the submission asynchronously
+        // or even provide a custom Error method.
+        var beforeSubmit = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(this.options, 'hooks.beforeSubmit');
+        if (beforeSubmit) {
+            beforeSubmit(submission, function (err, sub) {
+                if (err) {
+                    _this.onError(err);
+                    return;
+                }
+                _this.submitExecute(sub);
+            });
+        }
+        else {
+            this.submitExecute(submission);
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "form", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "submission", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", String)
+    ], AppFormioComponent.prototype, "src", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", String)
+    ], AppFormioComponent.prototype, "url", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioService"])
+    ], AppFormioComponent.prototype, "service", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "options", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "formioOptions", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "renderOptions", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "readOnly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "viewOnly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Array)
+    ], AppFormioComponent.prototype, "hideComponents", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "refresh", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "error", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "success", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "language", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        __metadata("design:type", Object)
+    ], AppFormioComponent.prototype, "hooks", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "render", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "customEvent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "submit", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "prevPage", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "nextPage", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "beforeSubmit", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "change", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "invalid", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "errorChange", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "formLoad", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], AppFormioComponent.prototype, "ready", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('formio'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
+    ], AppFormioComponent.prototype, "formioElement", void 0);
     AppFormioComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-formio',
             template: __webpack_require__(/*! ./formio.component.html */ "./src/app/formio/formio.component.html"),
             styles: [__webpack_require__(/*! ./formio.component.scss */ "./src/app/formio/formio.component.scss")],
         }),
-        __metadata("design:paramtypes", [angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioLoader"], angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioAppConfig"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__["TranslateService"],
-            _resource_service__WEBPACK_IMPORTED_MODULE_4__["ResourceService"]])
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()),
+        __metadata("design:paramtypes", [angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioLoader"],
+            angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioAppConfig"],
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__["TranslateService"]])
     ], AppFormioComponent);
     return AppFormioComponent;
-}(angular_formio__WEBPACK_IMPORTED_MODULE_0__["FormioComponent"]));
+}());
 
 
 
@@ -14264,6 +13468,93 @@ var OnCreateDirective = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], OnCreateDirective);
     return OnCreateDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/process-list/process-list.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/process-list/process-list.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-list no-padding no-margin>\n  <ion-item (click)=\"startProcess(processDefinition.id)\" *ngFor=\"let processDefinition of processDefinitions\">{{processDefinition.key}}</ion-item>\n</ion-list>"
+
+/***/ }),
+
+/***/ "./src/app/process-list/process-list.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/process-list/process-list.component.scss ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/process-list/process-list.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/process-list/process-list.component.ts ***!
+  \********************************************************/
+/*! exports provided: ProcessListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProcessListComponent", function() { return ProcessListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _camunda_rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../camunda-rest.service */ "./src/app/camunda-rest.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ProcessListComponent = /** @class */ (function () {
+    function ProcessListComponent(camundaService, router, popoverCtrl) {
+        this.camundaService = camundaService;
+        this.router = router;
+        this.popoverCtrl = popoverCtrl;
+        this.processDefinitions = [];
+    }
+    ProcessListComponent.prototype.startProcess = function (processDefinitionId) {
+        var _this = this;
+        this.camundaService.processDefinitionSubmitForm(processDefinitionId, {}).subscribe(function (instance) {
+            // this.router.navigate([`/tasks/edit/${instance.id}`]);
+            alert('process started');
+            _this.popoverCtrl.dismiss();
+        });
+    };
+    ProcessListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.camundaService.getProcessDefinitions().subscribe(function (processDefinitions) {
+            _this.processDefinitions = processDefinitions;
+        });
+    };
+    ProcessListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-process-list',
+            template: __webpack_require__(/*! ./process-list.component.html */ "./src/app/process-list/process-list.component.html"),
+            styles: [__webpack_require__(/*! ./process-list.component.scss */ "./src/app/process-list/process-list.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_camunda_rest_service__WEBPACK_IMPORTED_MODULE_1__["CamundaRestService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["PopoverController"]])
+    ], ProcessListComponent);
+    return ProcessListComponent;
 }());
 
 
@@ -14358,6 +13649,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angular_formio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! angular-formio */ "./node_modules/angular-formio/index.js");
 /* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var formiojs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formiojs */ "./node_modules/formiojs/index.js");
+/* harmony import */ var formiojs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(formiojs__WEBPACK_IMPORTED_MODULE_3__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -14381,19 +13674,63 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ResourceService = /** @class */ (function (_super) {
     __extends(ResourceService, _super);
     function ResourceService(appConfig, config, loader, resourcesService) {
-        return _super.call(this, appConfig, config, loader, resourcesService) || this;
+        var _this_1 = _super.call(this, appConfig, config, loader, resourcesService) || this;
+        _this_1._refresh = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["EventEmitter"]();
+        return _this_1;
     }
-    ResourceService.prototype.initialize = function () {
-        this.formUrl = this.appConfig.appUrl + '/edittask';
-        _super.prototype.initialize.call(this);
+    ResourceService.prototype.setContext = function (route) {
+        this.resourceId = route.snapshot.params['id'];
+        this.resource = { data: {} };
+        this.resourceUrl = this.appConfig.appUrl + '/' + route.snapshot.params['resourceName'];
+        this.formUrl = this.appConfig.appUrl + '/' + route.snapshot.params['formKey'];
+        if (this.resourceId) {
+            this.resourceUrl += '/submission/' + this.resourceId;
+        }
+        this.formio = new formiojs__WEBPACK_IMPORTED_MODULE_3__["Formio"](this.resourceUrl);
+        this.setParents();
+        this.loadForm();
     };
-    ResourceService.prototype.loadResourceCustom = function (route, formKey, resourceName) {
-        this.config.form = resourceName;
-        console.log(this.config);
-        return _super.prototype.loadResource.call(this, route);
+    ResourceService.prototype.setFormKey = function (formKey) {
+        // this.formUrl = this.appConfig.appUrl + '/' + formKey;
+    };
+    ResourceService.prototype.loadForm = function () {
+        var _this = this;
+        this.formFormio = new formiojs__WEBPACK_IMPORTED_MODULE_3__["Formio"](this.formUrl);
+        this.loader.loading = true;
+        this.formLoading = this.formFormio
+            .loadForm()
+            .then(function (form) {
+            _this.form = form;
+            _this.formResolve(form);
+            _this.loader.loading = false;
+            _this.setParents();
+            return form;
+        }, function (err) { return _this.onFormError(err); })
+            .catch(function (err) { return _this.onFormError(err); });
+        return this.formLoading;
+    };
+    ResourceService.prototype.loadResource = function (route) {
+        var _this = this;
+        this.setContext(route);
+        this.loader.loading = true;
+        this.resourceLoading = this.formio
+            .loadSubmission(null, { ignoreCache: true })
+            .then(function (resource) {
+            _this.resource = resource;
+            _this.resourceResolve(resource);
+            _this.loader.loading = false;
+            _this._refresh.emit({
+                property: 'submission',
+                value: _this.resource
+            });
+            return resource;
+        }, function (err) { return _this.onSubmissionError(err); })
+            .catch(function (err) { return _this.onSubmissionError(err); });
+        return this.resourceLoading;
     };
     ResourceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({

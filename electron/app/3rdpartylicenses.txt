@@ -24,14 +24,6 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@ngx-translate/core@10.0.2
-MIT
-MIT
-
-@ngx-translate/http-loader@3.0.1
-MIT
-MIT
-
 angular-gridster2@6.0.10
 MIT
 MIT
@@ -609,7 +601,15 @@ MIT
 MIT
 MIT
 
-angular-formio@2.2.0
+@ngx-translate/core@10.0.2
+MIT
+MIT
+
+@ngx-translate/http-loader@3.0.1
+MIT
+MIT
+
+angular-formio@3.2.0
 MIT
 MIT
 

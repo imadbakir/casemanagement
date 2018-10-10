@@ -56,10 +56,10 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   onSubmit(submission) {
     this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest',
       { value: submission._id, type: 'String' }).subscribe(() => {
-        console.log(submission);
         if (submission.data.completed === true) {
           this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
             this.events.announceItem({ taskId: this.task.id, complete: true });
+            this.events.announceFiltersRefresh('');
             this.router.navigate(['tasks']);
           });
         } else {
@@ -69,7 +69,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     /* if (!this.task.disabled) {
       this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest',
         { value: data._id, type: 'String' }).subscribe(() => {
-          console.log(submission);
           if (submission.data.completed === true) {
             this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
               this.events.announceItem({ taskId: this.task.id, complete: true });
@@ -80,7 +79,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           }
         });
     }*/
-    // console.log(submission);
 
   }
   ngOnDestroy(): void {
@@ -93,14 +91,14 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe(task => {
+    this.presentLoading();
+    this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe((task) => {
       this.task = task;
-      if (this.task.executionId !== 'undefined') {
+      if (this.task.executionId && this.task.executionId !== 'undefined') {
         this.camundaService.getTaskFormVariables(this.task.id).subscribe((formVariables) => {
           this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
             if (formVariables) {
               this.objectKeys(formVariables).forEach(element => {
-                console.log(executionVariables[formVariables[element].value]);
                 if (executionVariables[formVariables[element].value]) {
                   formVariables[element].resourceId = executionVariables[formVariables[element].value].value;
                 } else {
@@ -113,7 +111,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
                 }
               });
               this.formVariables = formVariables;
-
+              this.loadingController.dismiss();
             }
           });
         });
@@ -130,7 +128,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
             }
           });
         }*/
-        // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { console.log(data); });
+        // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { });
         /*
           formkey = task1
           execution
@@ -143,8 +141,39 @@ export class TaskEditComponent implements OnInit, OnDestroy {
         */
         // fill form variables
 
+      } else {
+        this.camundaService.getHistoryTask(this.route.snapshot.params.taskId).subscribe(tasks => {
+          if (tasks.length > 0) {
+            this.task = tasks[0];
+            this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
+              // this.loadingController.dismiss();
+              this.formVariables = {
+                task: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true },
+                task1: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true }
+              };
+              if (variables.length > 0) {
+                variables.forEach(element => {
+                  if (element.value) {
+                    this.formVariables['task'].resourceId = element.value;
+                    this.formVariables['task1'].resourceId = element.value;
+                  }
+                });
+
+              }
+              this.loadingController.dismiss();
+
+            });
+          } else {
+            alert('this task does not exist!');
+            this.loadingController.dismiss();
+
+          }
+        });
       }
-    });
+    },
+      (err) => {
+
+      });
 
   }
 }

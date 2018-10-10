@@ -28,7 +28,6 @@ export class FilterService {
     const currentFilterList = this.storage.get(STORAGE_KEY) || [];
     const temp = this.isFilterOpen(gridItem, true);
     if (temp) {
-      console.log(temp);
       currentFilterList.splice(currentFilterList.indexOf(temp), 1);
     } this.storage.set(STORAGE_KEY, currentFilterList);
     // insert updated array to local storage

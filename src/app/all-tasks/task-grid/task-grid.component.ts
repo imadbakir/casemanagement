@@ -6,7 +6,7 @@ import { GridsterConfig, GridsterItem, GridType, CompactType, DisplayGrid } from
 import { EventsService } from '../../events.service';
 import { GridComponent } from '../grid/grid.component';
 import { CamundaRestService } from '../../camunda-rest.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -32,57 +32,27 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
     sortingDirection: -1,
     textSearch: '',
   };
-  filters = [];
   tasksOrigin: any = [];
-  panesToggle = {
-    start: true,
-    middle: true,
-    end: true,
-    toggleHack: false
-  };
-  chosenTask;
-  subOptions: GridsterConfig;
+
   items: Array<GridsterItem>;
   iterableDiffer;
   static itemChange(item, itemComponent) {
-    console.log('itemChanged', item, itemComponent);
   }
 
   static itemResize(item, itemComponent) {
-    console.log('itemResized', item, itemComponent);
   }
   constructor(private event: EventsService, private camundaService: CamundaRestService,
-    public modalController: ModalController, private auth: AuthService) {
+    public modalController: ModalController, private auth: AuthService, public loadingController: LoadingController) {
 
   }
 
   ngDoCheck() {
-    // console.log(this.filterItems);
   }
 
   search(event) {
-    console.log(event);
     this.performSearch(this.filter.textSearch);
   }
-  chooseTask(task) {
-    this.chosenTask = task;
-  }
-  toggleMenu(item) {
-    // this.menu.toggle();
-    this.panesToggle[item] = !this.panesToggle[item];
 
-    if (!this.panesToggle['end'] && !this.panesToggle['middle']) {
-      if (item === 'middle') {
-        this.panesToggle['middle'] = true;
-        this.panesToggle['end'] = true;
-
-      } else {
-        this.panesToggle['middle'] = true;
-
-      }
-    }
-
-  }
   toggleExpand(item) {
     if (item.x < 5) {
       item.x = 5;
@@ -92,25 +62,9 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
 
     }
   }
-
-  toggleHack(event) {
-    console.log(event);
-    if (event.detail.visible === true) {
-      this.panesToggle['start'] = true;
-      this.panesToggle['toggleHack'] = true;
-    } else {
-      this.panesToggle['start'] = false;
-      this.panesToggle['toggleHack'] = false;
-    }
-
-  }
-  isStartOpen() {
-    return 1;
-    /*
-    this.menu.isOpen('start').then(function (data) {
-     return data;
-   });
-   */
+  async presentLoading() {
+    const loading = await this.loadingController.create({});
+    return await loading.present();
   }
   clearSearch(event) {
     this.filter.textSearch = '';
@@ -173,16 +127,17 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
   }
   listArchive(event) {
     if (event.bool) {
-
-      this.camundaService.listHistory().subscribe(data => {
+      this.presentLoading();
+      this.camundaService.listHistory(this.auth.getUser().username).subscribe(data => {
         this.tsks = data;
         this.tasksOrigin = data;
+        this.loadingController.dismiss();
 
       });
 
 
     } else {
-      this.camundaService.listHistory().subscribe(data => {
+      this.camundaService.listHistory(this.auth.getUser().username).subscribe(data => {
         data.forEach(entry => this.tasksOrigin.splice(this.tasksOrigin.indexOf(entry), 1));
         this.tsks = this.tasksOrigin;
 
@@ -192,29 +147,13 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
   }
   ListFilter(event) {
     if (event.bool) {
-
-      this.camundaService.listFilter(event.item.id, {
-        assignee: this.auth.getUser().username,
-        firstResult: 0,
-        maxResults: 15
-      }).subscribe(data => {
-        console.log(data);
-        data.forEach(entry => this.tasksOrigin.push(entry));
+      this.presentLoading();
+      this.camundaService.listFilter(event.item.id).subscribe(data => {
+        this.tasksOrigin = data;
         this.tsks = this.tasksOrigin;
-
+        this.loadingController.dismiss();
       });
 
-
-    } else {
-      this.camundaService.listFilter(event.item.id, {
-        assignee: this.auth.getUser().username,
-        firstResult: 0,
-        maxResults: 15
-      }).subscribe(data => {
-        data.forEach(entry => this.tasksOrigin.splice(this.tasksOrigin.indexOf(entry), 1));
-        this.tsks = this.tasksOrigin;
-
-      });
 
     }
   }
@@ -234,14 +173,19 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
         });
       }
     });
-    this.filterEvent.subscribe(event => {
-      console.log(event);
+    this.event.filterAnnounced$.subscribe(data => {
+      if (data.hasOwnProperty('bool')) {
+        if (data.bool) {
+          this.ListFilter(data);
+        }
+      }
+    });
+    /*this.filterEvent.subscribe(event => {
       this.ListFilter(event);
 
-    });
+    });*/
 
     this.event.archiveAnnounced$.subscribe(event => {
-      console.log(event);
       this.listArchive(event);
 
     });

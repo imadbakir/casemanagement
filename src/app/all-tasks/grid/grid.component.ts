@@ -6,6 +6,9 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ProcessListComponent } from '../../process-list/process-list.component';
+import { PopoverController } from '@ionic/angular';
+import { LanguageComponent } from '../../language/language.component';
 
 @Component({
   selector: 'app-grid',
@@ -23,9 +26,7 @@ export class GridComponent implements OnInit {
   };
   filters = [];
   previousItem = null;
-  formKey = '';
   static itemChange(item, itemComponent) {
-    console.log('itemChanged', item, itemComponent);
   }
   onResize(item, itemComponent) {
   }
@@ -35,60 +36,30 @@ export class GridComponent implements OnInit {
     public filterStorage: FilterService,
     private router: Router,
     private route: ActivatedRoute,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    public popoverCtrl: PopoverController
+  ) {
 
-    // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('en');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    this.translate.use('en');
-    translate.get('dir').subscribe(data => {
-      const dir = data;
-      this.fixDom(dir);
+  }
+  async languages(event) {
+    const popover = await this.popoverCtrl.create({
+      component: LanguageComponent,
+      event: event
     });
+    return await popover.present();
   }
-  setLanguage(lang) {
-    this.translate.use(lang);
-    let dir = 'ltr';
-    this.translate.get('dir').subscribe(data => {
-      dir = data;
-      document.documentElement.setAttribute('dir', data);
-
-      const tasksX = this.panels.tasks.x;
-      if (dir === 'rtl') {
-        this.panels.tasks.x = this.panels.details.cols;
-        this.panels.details.x = 0;
-      } else {
-        this.panels.details.x = this.panels.tasks.cols;
-        this.panels.tasks.x = 0;
-      }
-
-      this.options.api.optionsChanged();
-      this.fixDom(dir);
+  async process(event) {
+    const popover = await this.popoverCtrl.create({
+      component: ProcessListComponent,
+      event: event
     });
+    return await popover.present();
+  }
 
-    /*
-     directions.array.forEach(element => {
-       element.setAttribute('dir', dir);
-     });
-     */
-  }
-  fixDom(dir) {
-    const columns = document.getElementsByClassName('formio-component-columns');
-    const choices = document.getElementsByClassName('choices');
-    const headers = document.getElementsByClassName('header');
-    for (let i = 0; i < columns.length; i++) {
-      columns[i].setAttribute('dir', dir);
-    }
-    for (let i = 0; i < choices.length; i++) {
-      choices[i].setAttribute('dir', dir);
-    }
-    for (let i = 0; i < headers.length; i++) {
-      headers[i].setAttribute('dir', dir);
-    }
-  }
   changedOptions() {
-    this.options.api.optionsChanged();
+    if (this.options) {
+      this.options.api.optionsChanged();
+    }
   }
 
   removeItem(filterItem) {
@@ -105,6 +76,7 @@ export class GridComponent implements OnInit {
   }
 
   addItem(filterItem) {
+    this.filters = [];
     this.filters.push(filterItem);
     // this.filterStorage.storeOnLocalStorage(item);
     /* this.panels.tasks = { x: this.panels.tasks.x, y: this.panels.tasks.y,
@@ -122,8 +94,24 @@ export class GridComponent implements OnInit {
     this.filters.forEach(item => this.filterEvent.next({ item: item, bool: true }));
 
   }
+  fixPanelsDirection(dir) {
+    if (dir === 'rtl') {
+      this.panels.tasks.x = this.panels.details.cols;
+      this.panels.details.x = 0;
+    } else {
+      this.panels.details.x = this.panels.tasks.cols;
+      this.panels.tasks.x = 0;
+    }
 
+    this.changedOptions();
+  }
   ngOnInit() {
+    this.translate.get('dir').subscribe((data) => {
+      this.fixPanelsDirection(data);
+    });
+    this.translate.onLangChange.subscribe(lang => {
+      this.fixPanelsDirection(lang.translations.dir);
+    });
     this.event.refreshAnnounced$.subscribe(data => {
       // this.restoreItems();
     });
@@ -138,7 +126,7 @@ export class GridComponent implements OnInit {
         }
       }
     });
-    this.event.filterAnnounced$.subscribe(data => {
+    /*this.event.filterAnnounced$.subscribe(data => {
       if (data.hasOwnProperty('bool')) {
         if (data.bool) {
           this.addItem(data.item);
@@ -146,7 +134,7 @@ export class GridComponent implements OnInit {
           this.removeItem(data.item);
         }
       }
-    });
+    });*/
     this.options = {
       itemResizeCallback: this.onResize,
       gridType: GridType.Fit,
@@ -189,7 +177,7 @@ export class GridComponent implements OnInit {
     setTimeout(() => {
       // tslint:disable-next-line:max-line-length
       this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
-      this.restoreItems();
+      // this.restoreItems();
       this.panels.details.open = false;
       this.options.api.resize();
     }, 1200);

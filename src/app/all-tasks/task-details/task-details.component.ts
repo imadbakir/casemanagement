@@ -31,14 +31,12 @@ export class TaskDetailsComponent implements OnInit {
     this.event.announceItem({ taskId: '521b38f1-beaf-11e8-b81f-0eac374867d4',  complete: true  });
   }
   readOnly() {
-    console.log(this.task.deleteReason === 'completed');
     return this.task.deleteReason === 'completed' ? true : false;
 
   }
   onSubmit(event) {
     if (event.data.complete !== true) {
       this.camundaService.putUpdateTask(this.task.id, event.data).subscribe(data => {
-        console.log(data);
       });
     } else {
       this.task = null;

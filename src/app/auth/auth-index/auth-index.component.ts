@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormioAuthComponent, FormioAuthService } from 'angular-formio/auth';
 import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { LanguageComponent } from '../../language/language.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-index-login',
@@ -8,27 +11,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth-index.component.scss'],
 })
 export class AuthIndexComponent extends FormioAuthComponent implements OnInit {
-  tsks: any = [];
-  filtered: any = [];
-  properties: any = ['Name'];
-  dataLoaded: Boolean = false;
-  filter: any = {
-    createdAt: '',
-    dueAt: '',
-    sortingProp: { name: 'firstName', type: 'string' },
-    sortingDirection: -1,
-    textSearch: '',
-  };
-  route;
 
-  tasksOrigin: any = [];
-
-  constructor(public service: FormioAuthService, public _route: Router) {
+  constructor(public service: FormioAuthService, public _route: Router,
+    public popoverCtrl: PopoverController, public translate: TranslateService) {
     super();
-    this.route = _route;
+  }
+  async languages(event) {
+    const popover = await this.popoverCtrl.create({
+      component: LanguageComponent,
+      event: event
+    });
+    return await popover.present();
   }
   ngOnInit() {
-    console.log(this.route.url);
 
   }
 }

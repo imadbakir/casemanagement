@@ -1,1 +1,15 @@
-<formio [src]="service.loginForm" (beforeSubmit)="beforeSubmit($event)"></formio>
+<!-- <formio [src]="service.loginForm" (beforeSubmit)="beforeSubmit($event)"></formio> -->
+<ion-item [hidden]="!loginError">
+  <ion-text color="danger">
+    {{'Username or password is incorrect.' | translate}}
+  </ion-text>
+</ion-item>
+<ion-item>
+  <ion-input required type="text" [(ngModel)]="user.username" [placeholder]="'Username' | translate"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input required type="password" [(ngModel)]="user.password" [placeholder]="'Password' | translate"></ion-input>
+</ion-item>
+
+<ion-button margin expand="block" color="success" size="medium" fill="solid" (click)="submit()">{{'Login' | translate}}</ion-button>
+

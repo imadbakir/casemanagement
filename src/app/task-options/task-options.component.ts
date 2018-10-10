@@ -9,7 +9,6 @@ import { PopoverController, NavParams } from '../../../node_modules/@ionic/angul
 export class TaskOptionsComponent implements OnInit {
   id = '';
   constructor(public popoverCtrl: PopoverController, public navParams: NavParams) {
-    console.log(this.navParams.data);
     this.id = this.navParams.data.id;
 
   }

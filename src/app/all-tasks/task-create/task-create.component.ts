@@ -59,8 +59,6 @@ export class TaskCreateComponent extends FormioResourceCreateComponent implement
     super.ngOnInit();
     this.route.queryParams.subscribe(data => {
       this.formKey = data.formKey;
-      console.log('-----------');
-      console.log(data);
     });
     // Wait for the parent event to be loaded.
     this.service.resources['task'].resourceLoaded.then((event) => {

@@ -10,23 +10,23 @@
         <p>{{task.description}}</p>
 
       </div>
-
-      <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
-        <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}
-      </ion-badge>
-      <ion-badge mat-raised-button (click)="follow_up.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
-        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.follow_up ? (task.follow_up
-        | date ): 'Follow Up'}}
-      </ion-badge>
-      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
-        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due ? (task.due
-        | date ): 'Due'}}
-      </ion-badge>
-      <input [matDatepicker]="myDatepicker" [(ngModel)]="task.due" hidden>
-      <mat-datepicker touchUi #myDatepicker></mat-datepicker>
-      <input [matDatepicker]="follow_up" [(ngModel)]="task.follow_up" hidden>
-      <mat-datepicker touchUi #follow_up></mat-datepicker>
-
+      <ng-container *ngIf="!task.deleteReason">
+        <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
+          <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}
+        </ion-badge>
+        <!-- <ion-badge mat-raised-button (click)="follow_up.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
+          <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.follow_up ? (task.follow_up
+          | date ): 'Follow Up'}}
+        </ion-badge> -->
+        <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
+          <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due ? (task.due
+          | date ): 'Due'  | translate}}
+        </ion-badge>
+        <input [matDatepicker]="myDatepicker" [(ngModel)]="task.due" hidden>
+        <mat-datepicker touchUi #myDatepicker></mat-datepicker>
+        <input [matDatepicker]="follow_up" [(ngModel)]="task.follow_up" hidden>
+        <mat-datepicker touchUi #follow_up></mat-datepicker>
+      </ng-container>
 
 
       <!-- <ion-buttons slot="end" class="hide-md hide-sm">
@@ -45,16 +45,16 @@
       <ion-button size="small" (click)="openAssignee($event)" matAutocompleteOrigin #origin="matAutocompleteOrigin"
         color="primary" [fill]="task.assignee ? 'solid' : 'clear'">
         <ion-icon name="person" slot="start"></ion-icon>
-        <span [hidden]="task.assignee">Claim</span>
+        <span [hidden]="task.assignee">{{'Claim' | translate}}</span>
         <span [hidden]="!task.assignee">{{task.assignee}}</span>
 
       </ion-button>
       <ion-button size="small" color="primary" fill="clear">
-        <ion-icon name="people" slot="start"></ion-icon>Add Team
+        <ion-icon name="people" slot="start"></ion-icon>{{'Add Group' | translate}}
       </ion-button>
-      <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == auth.getUser().username" [ngStyle]="{'float':'right'}"
-        fill="clear">
-        <ion-icon name="checkmark" slot="start"></ion-icon>Complete
+      <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == auth.getUser()?.username"
+        [ngStyle]="{'float':'right'}" fill="clear">
+        <ion-icon name="checkmark" slot="start"></ion-icon>{{'Complete' | translate}}
       </ion-button>
     </div>
   </ion-card>

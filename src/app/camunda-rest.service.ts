@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProcessDefinition } from './schemas/ProcessDefinition';
 import { Task } from './schemas/Task';
+import { AuthService } from './auth.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +15,10 @@ const httpOptions = {
 export class CamundaRestService {
   private engineRestUrl = 'http://34.207.137.198:8080/rest/';
   private engineApiUrl = 'http://34.207.137.198:8080/api/';
-
-  constructor(private http: HttpClient) {
+  httpOptions = {
+    headers: new HttpHeaders()
+  };
+  constructor(private http: HttpClient, auth: AuthService) {
 
   }
 
@@ -29,9 +30,9 @@ export class CamundaRestService {
     );
   }
 
-  getFilters(): Observable<any[]> {
-    const endpoint = `${this.engineRestUrl}filter`;
-    return this.http.get<any>(endpoint).pipe(
+  getFilters(userId): Observable<any[]> {
+    const endpoint = `${this.engineRestUrl}filter?owner=${userId}`;
+    return this.http.get<any>(endpoint, this.httpOptions).pipe(
       tap(form => this.log(`fetched filters`)),
       catchError(this.handleError('getFilters', []))
     );
@@ -44,15 +45,22 @@ export class CamundaRestService {
     );
   }
   createFilter(variables): Observable<any> {
-    const endpoint = `${this.engineRestUrl}filter`;
+    const endpoint = `${this.engineRestUrl}filter/create`;
     return this.http.post<any>(endpoint, variables).pipe(
       tap(form => this.log(`created filter`)),
       catchError(this.handleError('createFilter', []))
     );
   }
-  listFilter(id, variables): Observable<any> {
+  deleteFilter(filterId): Observable<any> {
+    const endpoint = `${this.engineRestUrl}filter/${filterId}`;
+    return this.http.delete<any>(endpoint).pipe(
+      tap(form => this.log(`deleted filter`)),
+      catchError(this.handleError('deleteFilter', []))
+    );
+  }
+  listFilter(id): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/list`;
-    return this.http.post<any>(endpoint, variables).pipe(
+    return this.http.post<any>(endpoint, this.httpOptions).pipe(
       tap(form => this.log(`fetched filter list ${id}`)),
       catchError(this.handleError('listFilter', []))
     );
@@ -64,8 +72,8 @@ export class CamundaRestService {
       catchError(this.handleError('listHistory', []))
     );
   }
-  listHistory() {
-    const endpoint = `${this.engineRestUrl}history/task?finished=true`;
+  listHistory(userId) {
+    const endpoint = `${this.engineRestUrl}history/task?finished=true&taskAssignee=${userId}`;
     return this.http.get<any>(endpoint).pipe(
       tap(form => this.log(`fetched history`)),
       catchError(this.handleError('listHistory', []))
@@ -78,9 +86,9 @@ export class CamundaRestService {
       catchError(this.handleError('listHistory', []))
     );
   }
-  getFilterCount(id, variables): Observable<any> {
+  getFilterCount(id): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/count`;
-    return this.http.post<any>(endpoint, variables).pipe(
+    return this.http.post<any>(endpoint, this.httpOptions).pipe(
       tap(form => this.log(`fetched filter ${id} count`)),
       catchError(this.handleError('getFilterCount', []))
     );
@@ -106,6 +114,13 @@ export class CamundaRestService {
     return this.http.get<any>(endpoint).pipe(
       tap(form => this.log(`fetched Task`)),
       catchError(this.handleError('getTask', []))
+    );
+  }
+  getHistoryTask(taskId: String): Observable<any> {
+    const endpoint = `${this.engineRestUrl}history/task?taskId=${taskId}`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched History Task`)),
+      catchError(this.handleError('getHistoryTask', []))
     );
   }
   getExecutionVariables(executionId: String): Observable<any> {
@@ -200,6 +215,21 @@ export class CamundaRestService {
 
     return this.http.post(endpoint, formData);
   }
+
+  processInstanceStartForm(processDefinitionId): Observable<any> {
+    const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/startForm`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(processDefinitions => this.log(`posted process instance`)),
+      catchError(this.handleError('postProcessInstance', []))
+    );
+  }
+  processDefinitionSubmitForm(processDefinitionId, variables): Observable<any> {
+    const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/submit-form`;
+    return this.http.post<any>(endpoint, variables).pipe(
+      tap(processDefinitions => this.log(`posted process instance`)),
+      catchError(this.handleError('postProcessInstance', []))
+    );
+  }
   getUserProfile(userId): Observable<any> {
     const endpoint = `${this.engineRestUrl}user/${userId}/profile`;
     return this.http.get<any>(endpoint).pipe(
@@ -230,12 +260,10 @@ export class CamundaRestService {
     );
     /*.map((response: Response) => {
       alert(response.status);
-      console.log(response.status);
       if (response.status === 401) {
         return Observable.throw('Unauthorized');
       } else {
         const runs = response.json();
-        console.log(runs);
         return runs;
       }
     });*/

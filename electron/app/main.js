@@ -3436,14 +3436,6 @@ var map = {
 	"./all-tasks/all-tasks.module": [
 		"./src/app/all-tasks/all-tasks.module.ts",
 		"all-tasks-all-tasks-module"
-	],
-	"./home/home.module": [
-		"./src/app/home/home.module.ts",
-		"home-home-module"
-	],
-	"./list/list.module": [
-		"./src/app/list/list.module.ts",
-		"list-list-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -3481,6 +3473,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _auth_auth_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth/auth.module */ "./src/app/auth/auth.module.ts");
+/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3490,21 +3483,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     {
         path: '',
         redirectTo: 'tasks',
         pathMatch: 'full'
     },
-    {
-        path: 'home',
-        loadChildren: './home/home.module#HomePageModule'
-    },
-    {
-        path: 'list',
-        loadChildren: './list/list.module#ListPageModule'
-    },
-    { path: 'tasks', loadChildren: './all-tasks/all-tasks.module#AllTasksPageModule' },
+    { path: 'tasks', loadChildren: './all-tasks/all-tasks.module#AllTasksPageModule', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]] },
     {
         path: 'auth',
         loadChildren: function () { return _auth_auth_module__WEBPACK_IMPORTED_MODULE_2__["AuthModule"]; }
@@ -3533,7 +3519,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-menu [hidden]=\"!auth.user\" menu-id=\"end\" side=\"end\">\n\n    <ion-content>\n      <ion-toolbar>\n        <ion-buttons slot=\"end\">\n          <ion-button color=\"dark\" clear class=\"toolbar-round\" (click)=\"presentPopover($event)\">\n            <ion-icon name=\"settings\"></ion-icon>\n          </ion-button>\n        </ion-buttons>\n      </ion-toolbar>\n      <ion-list>\n        <div class=\"profile-container\">\n          <div class=\"photo-container\"></div>\n          <h6 padding>{{auth.user?.data.name}}</h6>\n        </div>\n        <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n          <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n            <ion-icon slot=\"start\" color=\"secondary\" [name]=\"p.icon\"></ion-icon>\n            <ion-label>\n              {{p.title}}\n            </ion-label>\n          </ion-item>\n        </ion-menu-toggle>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet main></ion-router-outlet>\n</ion-app>\n"
+module.exports = "<ion-app>\n  <ion-menu [hidden]=\"!auth.user\" menu-id=\"end\" side=\"end\">\n\n    <ion-content>\n      <ion-toolbar>\n        <ion-buttons slot=\"end\">\n        </ion-buttons>\n      </ion-toolbar>\n      <ion-list>\n        <div class=\"profile-container\">\n          <div class=\"photo-container\"></div>\n          <h6 padding>{{auth.getUser()?.firstName}}</h6>\n        </div>\n        <!-- <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n          <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n            <ion-icon slot=\"start\" color=\"secondary\" [name]=\"p.icon\"></ion-icon>\n            <ion-label>\n              {{p.title}}\n            </ion-label>\n          </ion-item>\n        </ion-menu-toggle>-->\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet main></ion-router-outlet>\n</ion-app>\n"
 
 /***/ }),
 
@@ -3548,11 +3534,386 @@ module.exports = "<ion-app>\n  <ion-menu [hidden]=\"!auth.user\" menu-id=\"end\"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events.service */ "./src/app/events.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var angular_webstorage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angular-webstorage-service */ "./node_modules/angular-webstorage-service/bundles/angular-webstorage-service.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+
+var AppComponent = /** @class */ (function () {
+    function AppComponent(eventService, popoverCtrl, auth, router, translate, storage) {
+        var _this = this;
+        this.eventService = eventService;
+        this.popoverCtrl = popoverCtrl;
+        this.auth = auth;
+        this.router = router;
+        this.translate = translate;
+        this.storage = storage;
+        this.translate.setDefaultLang('en');
+        this.translate.use(this.storage.get('language') || 'en');
+        this.auth.onLogin.subscribe(function () {
+            _this.router.navigate(['/tasks']);
+            _this.eventService.announceRefresh('refresh');
+        });
+        this.auth.onLogout.subscribe(function () {
+            _this.router.navigate(['/auth/login']);
+            _this.eventService.announceRefresh('refresh');
+        });
+    }
+    AppComponent.prototype.fixDom = function (dir) {
+        var columns = document.getElementsByClassName('formio-component-columns');
+        var choices = document.getElementsByClassName('choices');
+        var headers = document.getElementsByClassName('header');
+        for (var i = 0; i < columns.length; i++) {
+            columns[i].setAttribute('dir', dir);
+        }
+        var _loop_1 = function (i) {
+            setTimeout(function () {
+                choices[i].setAttribute('dir', dir);
+            }, 500);
+        };
+        for (var i = 0; i < choices.length; i++) {
+            _loop_1(i);
+        }
+        for (var i = 0; i < headers.length; i++) {
+            headers[i].setAttribute('dir', dir);
+        }
+        document.documentElement.setAttribute('dir', dir);
+    };
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.translate.get('dir').subscribe(function (data) {
+            _this.fixDom(data);
+        });
+        this.translate.onLangChange.subscribe(function (data) {
+            _this.fixDom(data.translations.dir);
+        });
+    };
+    AppComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-root',
+            template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html")
+        }),
+        __param(5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(angular_webstorage_service__WEBPACK_IMPORTED_MODULE_6__["LOCAL_STORAGE"])),
+        __metadata("design:paramtypes", [_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__["TranslateService"], Object])
+    ], AppComponent);
+    return AppComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/app.module.ts":
+/*!*******************************!*\
+  !*** ./src/app/app.module.ts ***!
+  \*******************************/
+/*! exports provided: createTranslateLoader, AppModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTranslateLoader", function() { return createTranslateLoader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _task_options_task_options_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./task-options/task-options.component */ "./src/app/task-options/task-options.component.ts");
+/* harmony import */ var angular_formio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! angular-formio */ "./node_modules/angular-formio/index.js");
+/* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
+/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../config */ "./src/config.ts");
+/* harmony import */ var angular_formio_grid__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! angular-formio/grid */ "./node_modules/angular-formio/grid/index.js");
+/* harmony import */ var _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user-options/user-options.component */ "./src/app/user-options/user-options.component.ts");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./events.service */ "./src/app/events.service.ts");
+/* harmony import */ var angular_webstorage_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-webstorage-service */ "./node_modules/angular-webstorage-service/bundles/angular-webstorage-service.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _basic_auth_interceptor__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./basic-auth.interceptor */ "./src/app/basic-auth.interceptor.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/esm5/ngx-translate-http-loader.js");
+/* harmony import */ var _language_language_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./language/language.component */ "./src/app/language/language.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createTranslateLoader(http) {
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_23__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
+}
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _task_options_task_options_component__WEBPACK_IMPORTED_MODULE_8__["TaskOptionsComponent"], _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_14__["UserOptionsComponent"], _language_language_component__WEBPACK_IMPORTED_MODULE_24__["LanguageComponent"]],
+            entryComponents: [_task_options_task_options_component__WEBPACK_IMPORTED_MODULE_8__["TaskOptionsComponent"], _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_14__["UserOptionsComponent"], _language_language_component__WEBPACK_IMPORTED_MODULE_24__["LanguageComponent"]],
+            imports: [
+                angular_webstorage_service__WEBPACK_IMPORTED_MODULE_16__["StorageServiceModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_17__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_17__["MatNativeDateModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__["NoopAnimationsModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot({
+                    mode: 'md',
+                    backButtonText: '',
+                    menuType: 'overlay',
+                    backButtonIcon: 'ios-arrow-back'
+                }),
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
+                angular_formio__WEBPACK_IMPORTED_MODULE_9__["FormioModule"],
+                angular_formio_grid__WEBPACK_IMPORTED_MODULE_13__["FormioGrid"],
+                _ngx_translate_core__WEBPACK_IMPORTED_MODULE_22__["TranslateModule"].forRoot({
+                    loader: {
+                        provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_22__["TranslateLoader"],
+                        useFactory: (createTranslateLoader),
+                        deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]]
+                    }
+                })
+            ],
+            providers: [
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"], useClass: _basic_auth_interceptor__WEBPACK_IMPORTED_MODULE_21__["BasicAuthInterceptor"], multi: true },
+                _auth_service__WEBPACK_IMPORTED_MODULE_19__["AuthService"],
+                _auth_guard__WEBPACK_IMPORTED_MODULE_20__["AuthGuard"],
+                _events_service__WEBPACK_IMPORTED_MODULE_15__["EventsService"],
+                angular_formio_resource__WEBPACK_IMPORTED_MODULE_11__["FormioResources"],
+                angular_formio_auth__WEBPACK_IMPORTED_MODULE_10__["FormioAuthService"],
+                { provide: angular_formio_auth__WEBPACK_IMPORTED_MODULE_10__["FormioAuthConfig"], useValue: _config__WEBPACK_IMPORTED_MODULE_12__["AuthConfig"] },
+                { provide: angular_formio__WEBPACK_IMPORTED_MODULE_9__["FormioAppConfig"], useValue: _config__WEBPACK_IMPORTED_MODULE_12__["AppConfig"] },
+                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"],
+                _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"],
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicRouteStrategy"] }
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+        })
+    ], AppModule);
+    return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth.guard.ts":
+/*!*******************************!*\
+  !*** ./src/app/auth.guard.ts ***!
+  \*******************************/
+/*! exports provided: AuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(auth, myRoute) {
+        this.auth = auth;
+        this.myRoute = myRoute;
+    }
+    AuthGuard.prototype.canActivate = function (next, state) {
+        if (this.auth.isLoggednIn()) {
+            return true;
+        }
+        else {
+            this.myRoute.navigate(['auth/login']);
+            return false;
+        }
+    };
+    AuthGuard = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AuthGuard);
+    return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth.service.ts":
+/*!*********************************!*\
+  !*** ./src/app/auth.service.ts ***!
+  \*********************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var angular_webstorage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular-webstorage-service */ "./node_modules/angular-webstorage-service/bundles/angular-webstorage-service.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+var STORAGE_KEY = 'LoggedInUser';
+var AuthService = /** @class */ (function () {
+    function AuthService(myRoute, storage) {
+        this.myRoute = myRoute;
+        this.storage = storage;
+        this.onLogin = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onLogout = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    AuthService.prototype.setUser = function (object) {
+        object.token = btoa(object.username + ':' + object.password);
+        this.storage.set('LoggedInUser', object);
+        this.onLogin.emit(object);
+    };
+    AuthService.prototype.getUser = function () {
+        return this.storage.get('LoggedInUser');
+    };
+    AuthService.prototype.isLoggednIn = function () {
+        return this.getUser() !== null;
+    };
+    AuthService.prototype.logout = function () {
+        this.storage.remove('LoggedInUser');
+        this.onLogout.emit({});
+    };
+    AuthService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(angular_webstorage_service__WEBPACK_IMPORTED_MODULE_2__["LOCAL_STORAGE"])),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], Object])
+    ], AuthService);
+    return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/auth-index/auth-index.component.html":
+/*!***********************************************************!*\
+  !*** ./src/app/auth/auth-index/auth-index.component.html ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon name=\"egg\" size=\"large\" color=\"secondary\"></ion-icon>\n    </ion-buttons>\n    <ion-title color=\"primary\">SUPER APP</ion-title>\n    <ion-buttons slot=\"end\">\n      <!-- <ion-button color=\"dark\" (click)=\"setLanguage(translate.currentLang == 'ar' ? 'en' : 'ar')\">\n          {{translate.currentLang == 'ar' ? 'English' : 'Arabic' | translate}}\n        </ion-button> -->\n      <ion-button color=\"dark\" (click)=\"languages($event)\" round end-item slot=\"icon\">\n        <ion-badge color=\"primary\" slot=\"start\">{{translate.currentLang}}</ion-badge>\n        <ion-icon name=\"globe\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content padding>\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col>\n        <div [ngStyle]=\"{'width': '500px', 'margin':'50px auto'}\">\n          <router-outlet></router-outlet>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./src/app/auth/auth-index/auth-index.component.scss":
+/*!***********************************************************!*\
+  !*** ./src/app/auth/auth-index/auth-index.component.scss ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".toolbar-round {\n  padding: 10px;\n  border-radius: 20px; }\n\n.select-md {\n  width: 100%;\n  max-width: 100%;\n  float: right;\n  border: 1px solid #eee; }\n\n.searchbar-input {\n  box-shadow: none !important;\n  border: 1px solid #eee !important; }\n\n.filter {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\nh3 ion-badge {\n  float: right; }\n\n.header-md::after {\n  display: none; }\n\n.header-md {\n  border-bottom: 1px solid #eee; }\n\n.extra-pad {\n  padding: 13px; }\n\n.extra-pad .note {\n    font-size: 12px; }\n\n.more-details {\n  padding: 0px;\n  height: auto;\n  max-height: 18px;\n  overflow: hidden;\n  margin: 10px 0px;\n  transition: max-height 1s; }\n\n.more-details p {\n    white-space: nowrap;\n    text-overflow: ellipsis; }\n\n.item:hover .more-details {\n  max-height: 300px; }\n\n.item:hover .more-details p {\n    white-space: initial;\n    text-overflow: ellipsis; }\n\n.actions-toolbar .button-inner div {\n  font-size: 12px; }\n"
+
+/***/ }),
+
+/***/ "./src/app/auth/auth-index/auth-index.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/auth/auth-index/auth-index.component.ts ***!
+  \*********************************************************/
+/*! exports provided: AuthIndexComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthIndexComponent", function() { return AuthIndexComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user-options/user-options.component */ "./src/app/user-options/user-options.component.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./events.service */ "./src/app/events.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _language_language_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../language/language.component */ "./src/app/language/language.component.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3603,40 +3964,25 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-var AppComponent = /** @class */ (function () {
-    function AppComponent(eventService, popoverCtrl, auth, router) {
-        var _this = this;
-        this.eventService = eventService;
-        this.popoverCtrl = popoverCtrl;
-        this.auth = auth;
-        this.router = router;
-        this.appPages = [
-            { title: 'Tasks', url: '/all-tasks', icon: 'list' },
-        ];
-        this.auth.onLogin.subscribe(function () {
-            _this.router.navigate(['/customer']);
-            _this.eventService.announceRefresh('refresh');
-        });
-        this.auth.onLogout.subscribe(function () {
-            _this.router.navigate(['/auth/login']);
-            _this.eventService.announceRefresh('refresh');
-        });
-        this.auth.onRegister.subscribe(function () {
-            _this.router.navigate(['/customer']);
-            _this.eventService.announceRefresh('refresh');
-        });
+var AuthIndexComponent = /** @class */ (function (_super) {
+    __extends(AuthIndexComponent, _super);
+    function AuthIndexComponent(service, _route, popoverCtrl, translate) {
+        var _this = _super.call(this) || this;
+        _this.service = service;
+        _this._route = _route;
+        _this.popoverCtrl = popoverCtrl;
+        _this.translate = translate;
+        return _this;
     }
-    AppComponent.prototype.presentPopover = function (myEvent) {
+    AuthIndexComponent.prototype.languages = function (event) {
         return __awaiter(this, void 0, void 0, function () {
             var popover;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        myEvent.stopPropagation();
-                        return [4 /*yield*/, this.popoverCtrl.create({
-                                component: _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_3__["UserOptionsComponent"],
-                                event: myEvent
-                            })];
+                    case 0: return [4 /*yield*/, this.popoverCtrl.create({
+                            component: _language_language_component__WEBPACK_IMPORTED_MODULE_4__["LanguageComponent"],
+                            event: event
+                        })];
                     case 1:
                         popover = _a.sent();
                         return [4 /*yield*/, popover.present()];
@@ -3645,207 +3991,7 @@ var AppComponent = /** @class */ (function () {
             });
         });
     };
-    AppComponent.prototype.canActivate = function (route, state) {
-        if (this.auth.user) {
-            // logged in so return true
-            return true;
-        }
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
-        return false;
-    };
-    AppComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-root',
-            template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html")
-        }),
-        __metadata("design:paramtypes", [_events_service__WEBPACK_IMPORTED_MODULE_5__["EventsService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["PopoverController"], angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], AppComponent);
-    return AppComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/app.module.ts":
-/*!*******************************!*\
-  !*** ./src/app/app.module.ts ***!
-  \*******************************/
-/*! exports provided: AppModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _task_options_task_options_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./task-options/task-options.component */ "./src/app/task-options/task-options.component.ts");
-/* harmony import */ var angular_formio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! angular-formio */ "./node_modules/angular-formio/index.js");
-/* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
-/* harmony import */ var angular_formio_resource__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! angular-formio/resource */ "./node_modules/angular-formio/resource/index.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../config */ "./src/config.ts");
-/* harmony import */ var angular_formio_grid__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! angular-formio/grid */ "./node_modules/angular-formio/grid/index.js");
-/* harmony import */ var _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user-options/user-options.component */ "./src/app/user-options/user-options.component.ts");
-/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./events.service */ "./src/app/events.service.ts");
-/* harmony import */ var angular_webstorage_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-webstorage-service */ "./node_modules/angular-webstorage-service/bundles/angular-webstorage-service.es5.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var AppModule = /** @class */ (function () {
-    function AppModule() {
-    }
-    AppModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _task_options_task_options_component__WEBPACK_IMPORTED_MODULE_8__["TaskOptionsComponent"], _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_14__["UserOptionsComponent"]],
-            entryComponents: [_task_options_task_options_component__WEBPACK_IMPORTED_MODULE_8__["TaskOptionsComponent"], _user_options_user_options_component__WEBPACK_IMPORTED_MODULE_14__["UserOptionsComponent"]],
-            imports: [
-                angular_webstorage_service__WEBPACK_IMPORTED_MODULE_16__["StorageServiceModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_17__["MatDatepickerModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_17__["MatNativeDateModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__["NoopAnimationsModule"],
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot({
-                    mode: 'md',
-                    backButtonText: '',
-                    menuType: 'overlay',
-                    backButtonIcon: 'ios-arrow-back'
-                }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
-                angular_formio__WEBPACK_IMPORTED_MODULE_9__["FormioModule"],
-                angular_formio_grid__WEBPACK_IMPORTED_MODULE_13__["FormioGrid"]
-            ],
-            providers: [
-                _events_service__WEBPACK_IMPORTED_MODULE_15__["EventsService"],
-                angular_formio_resource__WEBPACK_IMPORTED_MODULE_11__["FormioResources"],
-                angular_formio_auth__WEBPACK_IMPORTED_MODULE_10__["FormioAuthService"],
-                { provide: angular_formio_auth__WEBPACK_IMPORTED_MODULE_10__["FormioAuthConfig"], useValue: _config__WEBPACK_IMPORTED_MODULE_12__["AuthConfig"] },
-                { provide: angular_formio__WEBPACK_IMPORTED_MODULE_9__["FormioAppConfig"], useValue: _config__WEBPACK_IMPORTED_MODULE_12__["AppConfig"] },
-                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"],
-                _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicRouteStrategy"] }
-            ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
-        })
-    ], AppModule);
-    return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/auth/auth-index/auth-index.component.html":
-/*!***********************************************************!*\
-  !*** ./src/app/auth/auth-index/auth-index.component.html ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>SUPER APP</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button color=\"secondary\" [hidden]=\"route.url == '/auth/login'\" solid round end-item icon-end class=\"toolbar-round\" routerLink=\"login\">Login\n        <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n      </ion-button>\n      <ion-button color=\"secondary\" [hidden]=\"route.url == '/auth/register'\" solid round end-item icon-end class=\"toolbar-round\" routerLink=\"register\">Register\n        <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content padding>\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col size-lg=\"8\" size-md=\"12\" offset-md=\"0\" offset-lg=\"2\">\n        <router-outlet></router-outlet>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n"
-
-/***/ }),
-
-/***/ "./src/app/auth/auth-index/auth-index.component.scss":
-/*!***********************************************************!*\
-  !*** ./src/app/auth/auth-index/auth-index.component.scss ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".toolbar-round {\n  padding: 10px;\n  border-radius: 20px; }\n\n.select-md {\n  width: 100%;\n  max-width: 100%;\n  float: right;\n  border: 1px solid #eee; }\n\n.searchbar-input {\n  box-shadow: none !important;\n  border: 1px solid #eee !important; }\n\n.filter {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\nh3 ion-badge {\n  float: right; }\n\n.header-md::after {\n  display: none; }\n\n.header-md {\n  border-bottom: 1px solid #eee; }\n\n.extra-pad {\n  padding: 13px; }\n\n.extra-pad .note {\n    font-size: 12px; }\n\n.more-details {\n  padding: 0px;\n  height: auto;\n  max-height: 18px;\n  overflow: hidden;\n  margin: 10px 0px;\n  transition: max-height 1s; }\n\n.more-details p {\n    white-space: nowrap;\n    text-overflow: ellipsis; }\n\n.item:hover .more-details {\n  max-height: 300px; }\n\n.item:hover .more-details p {\n    white-space: initial;\n    text-overflow: ellipsis; }\n\n.actions-toolbar .button-inner div {\n  font-size: 12px; }\n"
-
-/***/ }),
-
-/***/ "./src/app/auth/auth-index/auth-index.component.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/auth/auth-index/auth-index.component.ts ***!
-  \*********************************************************/
-/*! exports provided: AuthIndexComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthIndexComponent", function() { return AuthIndexComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var AuthIndexComponent = /** @class */ (function (_super) {
-    __extends(AuthIndexComponent, _super);
-    function AuthIndexComponent(service, _route) {
-        var _this = _super.call(this) || this;
-        _this.service = service;
-        _this._route = _route;
-        _this.tsks = [];
-        _this.filtered = [];
-        _this.properties = ['Name'];
-        _this.dataLoaded = false;
-        _this.filter = {
-            createdAt: '',
-            dueAt: '',
-            sortingProp: { name: 'firstName', type: 'string' },
-            sortingDirection: -1,
-            textSearch: '',
-        };
-        _this.tasksOrigin = [];
-        _this.route = _route;
-        return _this;
-    }
     AuthIndexComponent.prototype.ngOnInit = function () {
-        console.log(this.route.url);
     };
     AuthIndexComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -3853,7 +3999,8 @@ var AuthIndexComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./auth-index.component.html */ "./src/app/auth/auth-index/auth-index.component.html"),
             styles: [__webpack_require__(/*! ./auth-index.component.scss */ "./src/app/auth/auth-index/auth-index.component.scss")],
         }),
-        __metadata("design:paramtypes", [angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["PopoverController"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__["TranslateService"]])
     ], AuthIndexComponent);
     return AuthIndexComponent;
 }(angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthComponent"]));
@@ -3869,7 +4016,7 @@ var AuthIndexComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<formio [src]=\"service.loginForm\" (submit)=\"service.onLoginSubmit($event)\"></formio>"
+module.exports = "<!-- <formio [src]=\"service.loginForm\" (beforeSubmit)=\"beforeSubmit($event)\"></formio> -->\n<ion-item [hidden]=\"!loginError\">\n  <ion-text color=\"danger\">\n    {{'Username or password is incorrect.' | translate}}\n  </ion-text>\n</ion-item>\n<ion-item>\n  <ion-input required type=\"text\" [(ngModel)]=\"user.username\" [placeholder]=\"'Username' | translate\"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-input required type=\"password\" [(ngModel)]=\"user.password\" [placeholder]=\"'Password' | translate\"></ion-input>\n</ion-item>\n\n<ion-button margin expand=\"block\" color=\"success\" size=\"medium\" fill=\"solid\" (click)=\"submit()\">{{'Login' | translate}}</ion-button>\n\n"
 
 /***/ }),
 
@@ -3896,6 +4043,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthLoginComponent", function() { return AuthLoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
+/* harmony import */ var _camunda_rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../camunda-rest.service */ "./src/app/camunda-rest.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3917,32 +4067,63 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
+
 var AuthLoginComponent = /** @class */ (function (_super) {
     __extends(AuthLoginComponent, _super);
-    function AuthLoginComponent(service) {
+    function AuthLoginComponent(service, camundaService, authSerivce, translate) {
         var _this = _super.call(this, service) || this;
         _this.service = service;
-        _this.tsks = [];
-        _this.filtered = [];
-        _this.properties = ['Name'];
-        _this.dataLoaded = false;
-        _this.filter = {
-            createdAt: '',
-            dueAt: '',
-            sortingProp: { name: 'firstName', type: 'string' },
-            sortingDirection: -1,
-            textSearch: '',
-        };
-        _this.tasksOrigin = [];
+        _this.camundaService = camundaService;
+        _this.authSerivce = authSerivce;
+        _this.translate = translate;
+        _this.user = { username: '', password: '' };
+        _this.loginError = false;
         return _this;
     }
+    AuthLoginComponent.prototype.beforeSubmit = function (event) {
+        var _this = this;
+        var user = { username: event.data.username, password: event.data.password };
+        this.camundaService.postUserLogin(user).subscribe(function (authObj) {
+            if (authObj.status !== 401) {
+                _this.camundaService.getIdentity(user.username).subscribe(function (identity) {
+                    user['groups'] = identity.groups;
+                    _this.camundaService.getUserProfile(user.username).subscribe(function (profileData) {
+                        user['profile'] = profileData;
+                        _this.authSerivce.setUser(user);
+                    });
+                });
+            }
+        });
+        // this.service.onLoginSubmit(event);
+    };
+    AuthLoginComponent.prototype.submit = function () {
+        var _this = this;
+        this.camundaService.postUserLogin(this.user).subscribe(function (authObj) {
+            if (authObj.status !== 401) {
+                _this.loginError = false;
+                _this.camundaService.getIdentity(_this.user.username).subscribe(function (identity) {
+                    _this.user['groups'] = identity.groups;
+                    _this.camundaService.getUserProfile(_this.user.username).subscribe(function (profileData) {
+                        _this.user['profile'] = profileData;
+                        _this.authSerivce.setUser(_this.user);
+                    });
+                });
+            }
+            else {
+                _this.loginError = true;
+            }
+        });
+    };
     AuthLoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-auth-login',
             template: __webpack_require__(/*! ./auth-login.component.html */ "./src/app/auth/auth-login/auth-login.component.html"),
             styles: [__webpack_require__(/*! ./auth-login.component.scss */ "./src/app/auth/auth-login/auth-login.component.scss")],
         }),
-        __metadata("design:paramtypes", [angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthService"]])
+        __metadata("design:paramtypes", [angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthService"], _camunda_rest_service__WEBPACK_IMPORTED_MODULE_2__["CamundaRestService"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateService"]])
     ], AuthLoginComponent);
     return AuthLoginComponent;
 }(angular_formio_auth__WEBPACK_IMPORTED_MODULE_1__["FormioAuthLoginComponent"]));
@@ -3969,6 +4150,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _auth_index_auth_index_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth-index/auth-index.component */ "./src/app/auth/auth-index/auth-index.component.ts");
 /* harmony import */ var angular_formio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! angular-formio */ "./node_modules/angular-formio/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3983,7 +4166,17 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var routes = [{}];
+
+
+var routes = [
+    {
+        path: '',
+        component: _auth_index_auth_index_component__WEBPACK_IMPORTED_MODULE_6__["AuthIndexComponent"],
+        children: [
+            { path: 'login', component: _auth_login_auth_login_component__WEBPACK_IMPORTED_MODULE_4__["AuthLoginComponent"] }
+        ]
+    }
+];
 var AuthModule = /** @class */ (function () {
     function AuthModule() {
     }
@@ -3995,6 +4188,8 @@ var AuthModule = /** @class */ (function () {
                 angular_formio_auth__WEBPACK_IMPORTED_MODULE_3__["FormioAuth"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes),
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_9__["SharedModule"]
             ],
             declarations: [_auth_login_auth_login_component__WEBPACK_IMPORTED_MODULE_4__["AuthLoginComponent"], _auth_index_auth_index_component__WEBPACK_IMPORTED_MODULE_6__["AuthIndexComponent"]],
             providers: [
@@ -4003,6 +4198,312 @@ var AuthModule = /** @class */ (function () {
         })
     ], AuthModule);
     return AuthModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/basic-auth.interceptor.ts":
+/*!*******************************************!*\
+  !*** ./src/app/basic-auth.interceptor.ts ***!
+  \*******************************************/
+/*! exports provided: BasicAuthInterceptor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasicAuthInterceptor", function() { return BasicAuthInterceptor; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BasicAuthInterceptor = /** @class */ (function () {
+    function BasicAuthInterceptor(auth) {
+        this.auth = auth;
+        this.urls = ['34.207.137.198:8080/rest'];
+    }
+    BasicAuthInterceptor.prototype.intercept = function (request, next) {
+        // add authorization header with basic auth credentials if available
+        var currentUser = this.auth.getUser();
+        if (currentUser && currentUser.token && this.urlMatches(this.urls, request)) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: "Basic " + currentUser.token
+                }
+            });
+        }
+        return next.handle(request);
+    };
+    BasicAuthInterceptor.prototype.urlMatches = function (urls, req) {
+        for (var i = 0; i !== urls.length; i++) {
+            if (req.url.includes(urls[i])) {
+                return true;
+            }
+        }
+        return false;
+    };
+    BasicAuthInterceptor = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
+    ], BasicAuthInterceptor);
+    return BasicAuthInterceptor;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/camunda-rest.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/camunda-rest.service.ts ***!
+  \*****************************************/
+/*! exports provided: CamundaRestService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CamundaRestService", function() { return CamundaRestService; });
+/* harmony import */ var rxjs_observable_of__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/observable/of */ "./node_modules/rxjs-compat/_esm5/observable/of.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var CamundaRestService = /** @class */ (function () {
+    function CamundaRestService(http, auth) {
+        this.http = http;
+        this.engineRestUrl = 'http://34.207.137.198:8080/rest/';
+        this.engineApiUrl = 'http://34.207.137.198:8080/api/';
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
+        };
+    }
+    CamundaRestService.prototype.getTasks = function () {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task?sortBy=created&sortOrder=desc&maxResults=10";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched tasks"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTasks', [])));
+    };
+    CamundaRestService.prototype.getFilters = function (userId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "filter?owner=" + userId;
+        return this.http.get(endpoint, this.httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filters"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getFilters', [])));
+    };
+    CamundaRestService.prototype.getFilter = function (id) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "filter/" + id;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filter " + id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getFilter', [])));
+    };
+    CamundaRestService.prototype.createFilter = function (variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "filter/create";
+        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("created filter"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('createFilter', [])));
+    };
+    CamundaRestService.prototype.listFilter = function (id) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "filter/" + id + "/list";
+        return this.http.post(endpoint, this.httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filter list " + id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listFilter', [])));
+    };
+    CamundaRestService.prototype.getVariableInstanceByExecutionId = function (executionId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "history/variable-instance?executionIdIn=" + executionId;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched history"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listHistory', [])));
+    };
+    CamundaRestService.prototype.listHistory = function (userId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "history/task?finished=true&taskAssignee=" + userId;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched history"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listHistory', [])));
+    };
+    CamundaRestService.prototype.clearHistory = function () {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "history/task?finished=true";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched history"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('listHistory', [])));
+    };
+    CamundaRestService.prototype.getFilterCount = function (id) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "filter/" + id + "/count";
+        return this.http.post(endpoint, this.httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched filter " + id + " count"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getFilterCount', [])));
+    };
+    CamundaRestService.prototype.getTaskFormKey = function (taskId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId + "/form";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched taskform"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTaskFormKey', [])));
+    };
+    CamundaRestService.prototype.getTaskFormVariables = function (taskId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId + "/form-variables";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched task form variables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTaskFormVariables', [])));
+    };
+    CamundaRestService.prototype.getTask = function (taskId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched Task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getTask', [])));
+    };
+    CamundaRestService.prototype.getHistoryTask = function (taskId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "history/task?taskId=" + taskId;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched History Task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getHistoryTask', [])));
+    };
+    CamundaRestService.prototype.getExecutionVariables = function (executionId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getExecutionVariables', [])));
+    };
+    CamundaRestService.prototype.modifyExecutionVariables = function (executionId, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables";
+        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("posted ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('modifyExecutionVariables', [])));
+    };
+    CamundaRestService.prototype.updateExecutionVariables = function (executionId, variableName, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables/" + variableName;
+        return this.http.put(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("posted ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('modifyExecutionVariables', [])));
+    };
+    CamundaRestService.prototype.deleteExecutionVariables = function (executionId, variableName) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "execution/" + executionId + "/localVariables/" + variableName;
+        return this.http.delete(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("posted ExecutionVariables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('modifyExecutionVariables', [])));
+    };
+    CamundaRestService.prototype.getVariablesForTask = function (taskId, variableNames) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId + "/form-variables?variableNames=" + variableNames;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched variables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getVariablesForTask', [])));
+    };
+    CamundaRestService.prototype.postCompleteTask = function (taskId, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId + "/complete";
+        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (tasks) { return _this.log("posted complete task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postCompleteTask', [])));
+    };
+    CamundaRestService.prototype.putUpdateTask = function (taskId, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId + "/";
+        return this.http.put(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (tasks) { return _this.log("put task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('putUpdateTask', [])));
+    };
+    CamundaRestService.prototype.postAssignTask = function (taskId, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "task/" + taskId + "/assignee";
+        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (tasks) { return _this.log("posted assign task"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postAssignTask', [])));
+    };
+    CamundaRestService.prototype.getProcessDefinitionTaskKey = function (processDefinitionKey) {
+        var _this = this;
+        var url = this.engineRestUrl + "process-definition/key/" + processDefinitionKey + "/startForm";
+        return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (form) { return _this.log("fetched formkey"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getProcessDeifnitionFormKey', [])));
+    };
+    CamundaRestService.prototype.getProcessDefinitions = function () {
+        var _this = this;
+        return this.http.get(this.engineRestUrl + 'process-definition?latestVersion=true').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("fetched processDefinitions"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getProcessDefinitions', [])));
+    };
+    CamundaRestService.prototype.postProcessInstance = function (processDefinitionKey, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "process-definition/key/" + processDefinitionKey + "/start";
+        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postProcessInstance', [])));
+    };
+    CamundaRestService.prototype.deployProcess = function (fileToUpload) {
+        var endpoint = this.engineRestUrl + "deployment/create";
+        var formData = new FormData();
+        formData.append('fileKey', fileToUpload, fileToUpload.name);
+        return this.http.post(endpoint, formData);
+    };
+    CamundaRestService.prototype.processInstanceStartForm = function (processDefinitionId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "process-definition/" + processDefinitionId + "/startForm";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postProcessInstance', [])));
+    };
+    CamundaRestService.prototype.processDefinitionSubmitForm = function (processDefinitionId, variables) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "process-definition/" + processDefinitionId + "/submit-form";
+        return this.http.post(endpoint, variables).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postProcessInstance', [])));
+    };
+    CamundaRestService.prototype.getUserProfile = function (userId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "user/" + userId + "/profile";
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getUserProfile', [])));
+    };
+    /*
+      postUserLogin(variables): Observable<any> {
+        const endpoint = `${this.engineApiUrl}admin/auth/user/default/login/welcome`;
+        return this.http.post<any>(endpoint, variables).pipe(
+          tap(processDefinitions => this.log(`posted process instance`)),
+          catchError(this.handleError('postProcessInstance', []))
+        );
+      }
+      */
+    CamundaRestService.prototype.postUserLogin = function (variables) {
+        var endpoint = this.engineApiUrl + "admin/auth/user/default/login/welcome";
+        var formData = new URLSearchParams();
+        var options = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded')
+        };
+        formData.append('username', variables.username);
+        formData.append('password', variables.password);
+        return this.http.post(endpoint, formData.toString(), options).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (data) { return data; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('postUserLogin', [])));
+        /*.map((response: Response) => {
+          alert(response.status);
+          if (response.status === 401) {
+            return Observable.throw('Unauthorized');
+          } else {
+            const runs = response.json();
+            return runs;
+          }
+        });*/
+    };
+    CamundaRestService.prototype.getIdentity = function (userId) {
+        var _this = this;
+        var endpoint = this.engineRestUrl + "identity/groups?userId=" + userId;
+        return this.http.get(endpoint).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (processDefinitions) { return _this.log("posted process instance"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(this.handleError('getUserProfile', [])));
+    };
+    CamundaRestService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            result['status'] = error.status;
+            if (error.error.hasOwnProperty('message')) {
+                result['message'] = error.error.message;
+                result['type'] = error.error.type;
+            }
+            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_0__["of"])(result);
+        };
+    };
+    /** Log a HeroService message with the MessageService */
+    CamundaRestService.prototype.log = function (message) {
+        console.log(message);
+    };
+    CamundaRestService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+    ], CamundaRestService);
+    return CamundaRestService;
 }());
 
 
@@ -4034,6 +4535,7 @@ var EventsService = /** @class */ (function () {
         // Observable string sources
         this.resizeSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({});
         this.filterSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({});
+        this.refreshFiltersSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({});
         this.archiveSoruce = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({});
         this.refreshSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.itemSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({});
@@ -4041,6 +4543,7 @@ var EventsService = /** @class */ (function () {
         this.refreshAnnounced$ = this.refreshSource.asObservable();
         this.resizeAnnounced$ = this.resizeSource.asObservable();
         this.filterAnnounced$ = this.filterSource.asObservable();
+        this.refreshFiltersAnnounced$ = this.refreshFiltersSource.asObservable();
         this.archiveAnnounced$ = this.archiveSoruce.asObservable();
         this.itemChange$ = this.itemSource.asObservable();
     }
@@ -4048,9 +4551,11 @@ var EventsService = /** @class */ (function () {
     EventsService.prototype.announceRefresh = function (data) {
         this.refreshSource.next(data);
     };
+    EventsService.prototype.announceFiltersRefresh = function (data) {
+        this.refreshFiltersSource.next(data);
+    };
     EventsService.prototype.announceResize = function (item, itemComponent) {
         this.resizeSource.next(item);
-        console.log(itemComponent);
     };
     EventsService.prototype.announceFilter = function (filter) {
         this.filterSource.next(filter);
@@ -4065,6 +4570,128 @@ var EventsService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()
     ], EventsService);
     return EventsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/language/language.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/language/language.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-list no-padding no-margin>\n  <ion-item (click)=\"setLanguage(language.key)\" *ngFor=\"let language of languages\">{{language.lang}}</ion-item>\n</ion-list>"
+
+/***/ }),
+
+/***/ "./src/app/language/language.component.scss":
+/*!**************************************************!*\
+  !*** ./src/app/language/language.component.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/language/language.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/language/language.component.ts ***!
+  \************************************************/
+/*! exports provided: LanguageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LanguageComponent", function() { return LanguageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var angular_webstorage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular-webstorage-service */ "./node_modules/angular-webstorage-service/bundles/angular-webstorage-service.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+var LanguageComponent = /** @class */ (function () {
+    function LanguageComponent(translate, popover, storage) {
+        this.translate = translate;
+        this.popover = popover;
+        this.storage = storage;
+        this.languages = [
+            { key: 'ar', lang: 'عربي' },
+            { key: 'en', lang: 'English' }
+        ];
+    }
+    LanguageComponent.prototype.setLanguage = function (lang) {
+        this.translate.use(lang);
+        this.storage.set('language', lang);
+        this.popover.dismiss();
+    };
+    LanguageComponent.prototype.ngOnInit = function () {
+    };
+    LanguageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-language',
+            template: __webpack_require__(/*! ./language.component.html */ "./src/app/language/language.component.html"),
+            styles: [__webpack_require__(/*! ./language.component.scss */ "./src/app/language/language.component.scss")]
+        }),
+        __param(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(angular_webstorage_service__WEBPACK_IMPORTED_MODULE_3__["LOCAL_STORAGE"])),
+        __metadata("design:paramtypes", [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_1__["TranslateService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"], Object])
+    ], LanguageComponent);
+    return LanguageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/shared.module.ts":
+/*!*****************************************!*\
+  !*** ./src/app/shared/shared.module.ts ***!
+  \*****************************************/
+/*! exports provided: SharedModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SharedModule", function() { return SharedModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var SharedModule = /** @class */ (function () {
+    function SharedModule() {
+    }
+    SharedModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            exports: [
+                _ngx_translate_core__WEBPACK_IMPORTED_MODULE_1__["TranslateModule"],
+            ]
+        })
+    ], SharedModule);
+    return SharedModule;
 }());
 
 
@@ -4121,7 +4748,6 @@ var TaskOptionsComponent = /** @class */ (function () {
         this.popoverCtrl = popoverCtrl;
         this.navParams = navParams;
         this.id = '';
-        console.log(this.navParams.data);
         this.id = this.navParams.data.id;
     }
     TaskOptionsComponent.prototype.close = function () {
@@ -4151,7 +4777,7 @@ var TaskOptionsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-list no-padding no-margin>\n  <ion-item (click)=\"close()\">User Account</ion-item>\n  <ion-item (click)=\"logout()\" color=\"danger\" clear>Logout</ion-item>\n</ion-list>\n"
+module.exports = "<ion-list no-padding no-margin>\n  <ion-item (click)=\"close()\">{{'Account' | translate }}</ion-item>\n  <ion-item (click)=\"logout()\" color=\"danger\" clear>{{'Logout' | translate }}</ion-item>\n</ion-list>"
 
 /***/ }),
 
@@ -4178,8 +4804,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserOptionsComponent", function() { return UserOptionsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var angular_formio_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular-formio/auth */ "./node_modules/angular-formio/auth/index.js");
-/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../events.service */ "./src/app/events.service.ts");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../events.service */ "./src/app/events.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4200,7 +4826,6 @@ var UserOptionsComponent = /** @class */ (function () {
         this.popoverCtrl = popoverCtrl;
         this.navParams = navParams;
         this.id = '';
-        console.log(this.navParams.data);
         this.id = this.navParams.data.id;
     }
     UserOptionsComponent.prototype.close = function () {
@@ -4219,8 +4844,8 @@ var UserOptionsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./user-options.component.html */ "./src/app/user-options/user-options.component.html"),
             styles: [__webpack_require__(/*! ./user-options.component.scss */ "./src/app/user-options/user-options.component.scss")]
         }),
-        __metadata("design:paramtypes", [_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"],
-            angular_formio_auth__WEBPACK_IMPORTED_MODULE_2__["FormioAuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavParams"]])
+        __metadata("design:paramtypes", [_events_service__WEBPACK_IMPORTED_MODULE_2__["EventsService"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavParams"]])
     ], UserOptionsComponent);
     return UserOptionsComponent;
 }());
@@ -4241,7 +4866,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppConfig", function() { return AppConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthConfig", function() { return AuthConfig; });
 var AppConfig = {
-    appUrl: 'https://ykxbjkkflqdqicp.form.io',
+    appUrl: 'https://poigzzrvpuvpgcy.form.io',
     apiUrl: 'https://api.form.io',
     icons: 'fontawesome'
 };

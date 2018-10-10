@@ -9,6 +9,7 @@ export class EventsService {
   // Observable string sources
   private resizeSource = new BehaviorSubject<object>({});
   private filterSource = new BehaviorSubject<any>({});
+  private refreshFiltersSource = new BehaviorSubject<any>({});
   private archiveSoruce = new BehaviorSubject<any>({});
   private refreshSource = new Subject<string>();
   private itemSource = new BehaviorSubject<any>({});
@@ -16,6 +17,7 @@ export class EventsService {
   refreshAnnounced$ = this.refreshSource.asObservable();
   resizeAnnounced$ = this.resizeSource.asObservable();
   filterAnnounced$ = this.filterSource.asObservable();
+  refreshFiltersAnnounced$ = this.refreshFiltersSource.asObservable();
   archiveAnnounced$ = this.archiveSoruce.asObservable();
   itemChange$ = this.itemSource.asObservable();
 
@@ -23,9 +25,11 @@ export class EventsService {
   announceRefresh(data: string) {
     this.refreshSource.next(data);
   }
+  announceFiltersRefresh(data: string) {
+    this.refreshFiltersSource.next(data);
+  }
   announceResize(item, itemComponent) {
     this.resizeSource.next(item);
-    console.log(itemComponent);
   }
   announceFilter(filter) {
     this.filterSource.next(filter);

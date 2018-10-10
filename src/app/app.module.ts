@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -23,9 +23,18 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { BasicAuthInterceptor } from './basic-auth.interceptor';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LanguageComponent } from './language/language.component';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
-  declarations: [AppComponent, TaskOptionsComponent, UserOptionsComponent],
-  entryComponents: [TaskOptionsComponent, UserOptionsComponent],
+  declarations: [AppComponent, TaskOptionsComponent, UserOptionsComponent, LanguageComponent],
+  entryComponents: [TaskOptionsComponent, UserOptionsComponent, LanguageComponent],
   imports: [
     StorageServiceModule,
     HttpClientModule,
@@ -40,10 +49,18 @@ import { AuthGuard } from './auth.guard';
     }),
     AppRoutingModule,
     FormioModule,
-    FormioGrid
+    FormioGrid,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
 
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     AuthService,
     AuthGuard,
     EventsService,

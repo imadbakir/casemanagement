@@ -109,9 +109,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 this.formio.setUrl(this.src, this.formioOptions || {});
             }
             const currentLang = this.translate.currentLang;
-            console.log(this.submission);
             this.formio.submission = this.submission;
-            console.log(this.formio);
             this.translate.getTranslation(currentLang).subscribe(data => {
 
                 this.formio.i18next.options.resources[currentLang] = {
@@ -124,7 +122,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
                     translation: data.translations
                 };
                 this.formio.language = data.lang;
-                console.log(this.formio);
 
             });
             this.formio.nosubmit = true;
@@ -157,9 +154,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
                 // Create the form.
                 const currentLang = this.translate.currentLang;
-                console.log(this.submission);
                 this.formio.submission = this.submission;
-                console.log(this.formio);
                 this.translate.getTranslation(currentLang).subscribe(data => {
 
                     this.formio.i18next.options.resources[currentLang] = {
@@ -172,7 +167,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
                         translation: data.translations
                     };
                     this.formio.language = data.lang;
-                    console.log(this.formio);
 
                 });
                 // this._formioReadyResolve(this.formio);

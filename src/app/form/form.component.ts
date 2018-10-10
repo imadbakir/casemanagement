@@ -202,13 +202,11 @@ export class FormComponent implements OnInit, OnDestroy {
     throw error;
   }
   onSubmit(event) {
-    console.log(this.resource);
     this.save(this.resource).then((data) => {
       this.submit.emit(data);
     });
   }
   save(resource: any) {
-    console.log(resource);
     const formio = resource._id ? this.formio : this.formFormio;
     return formio
       .saveSubmission(resource)
@@ -229,7 +227,6 @@ export class FormComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    console.log('destroy', Formio);
     Formio.clearCache();
   }
 

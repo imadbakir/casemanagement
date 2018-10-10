@@ -11,6 +11,7 @@ export class AuthService {
   onLogout: EventEmitter<object> = new EventEmitter();
   constructor(private myRoute: Router, @Inject(LOCAL_STORAGE) private storage: StorageService) { }
   setUser(object) {
+    object.token = btoa(object.username + ':' + object.password);
     this.storage.set('LoggedInUser', object);
     this.onLogin.emit(object);
   }

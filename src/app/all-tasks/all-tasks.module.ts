@@ -14,12 +14,9 @@ import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { FormioModule } from 'angular-formio';
 import { MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RouteReuseStrategy } from '@angular/router';
 import {
   FormioResource,
-  FormioResourceRoutes,
   FormioResourceConfig,
   FormioResourceService,
 } from 'angular-formio/resource';
@@ -29,11 +26,13 @@ import { TaskViewComponent } from './task-view/task-view.component';
 import { TaskIndexComponent } from './task-index/task-index.component';
 import { IonicRouteStrategy } from '@ionic/angular';
 
-import { EventsService } from '../events.service';
 import { ResourceService } from '../resource.service';
-import { HttpClient } from '@angular/common/http';
 import { AppFormioComponent } from '../formio/formio.component';
 import { FormComponent } from '../form/form.component';
+import { FilterModalComponent } from '../filter-modal/filter-modal.component';
+import { ProcessListComponent } from '../process-list/process-list.component';
+import { SharedModule } from '../shared/shared.module';
+import { FilterOptionsComponent } from '../filter-options/filter-options.component';
 
 const routes: Routes = [
   {
@@ -44,9 +43,6 @@ const routes: Routes = [
     ]
   }
 ];
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @NgModule({
   imports: [
@@ -60,19 +56,14 @@ export function createTranslateLoader(http: HttpClient) {
     FormioModule,
     FormioResource,
     RouterModule.forChild(routes),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    })
-
+    SharedModule
   ],
-  entryComponents: [AppFormioComponent, FormComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
+  entryComponents: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
+    AppFormioComponent, FormComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
     TaskEditComponent,
     TaskCreateComponent, TaskViewComponent, TaskIndexComponent],
-  declarations: [AppFormioComponent, FormComponent, TaskEditComponent, TaskViewComponent,
+  declarations: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
+    AppFormioComponent, FormComponent, TaskEditComponent, TaskViewComponent,
     TaskCreateComponent, TaskIndexComponent, AllTasksPage, OnCreateDirective, GridComponent, TaskGridComponent,
     TaskItemComponent, TaskDetailsComponent],
   providers: [
@@ -91,7 +82,7 @@ export function createTranslateLoader(http: HttpClient) {
           }
         ]
       }
-    }
+    },
     ,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 

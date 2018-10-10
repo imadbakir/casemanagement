@@ -13,7 +13,6 @@ export class UserOptionsComponent implements OnInit {
   id = '';
   constructor(public eventService: EventsService,
     public auth: AuthService, public popoverCtrl: PopoverController, public navParams: NavParams) {
-    console.log(this.navParams.data);
     this.id = this.navParams.data.id;
 
   }

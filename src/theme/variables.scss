@@ -53,6 +53,18 @@ html[dir="rtl"] {
     right: 66.6666666667%;
     left:auto;
   }
+  .alert-radio-icon{
+    right:15px;
+    left: auto;
+  }
+   .form-check{
+    padding-left:0px;
+    padding-right:1.25rem;
+  }
+  .form-check-input {
+    margin-right: -1.25rem;
+    margin-left:0px;
+}
 }
 .col-sm-push-8{
   left: 66.6666666667%;

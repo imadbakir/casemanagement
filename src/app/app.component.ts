@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import { FormioAuthService } from 'angular-formio/auth';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
@@ -6,18 +6,27 @@ import { UserOptionsComponent } from './user-options/user-options.component';
 import { PopoverController } from '@ionic/angular';
 import { EventsService } from './events.service';
 import { AuthService } from './auth.service';
+import { TranslateService } from '@ngx-translate/core';
+import { StorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(public eventService: EventsService,
-    public popoverCtrl: PopoverController, public auth: AuthService, private router: Router) {
+    public popoverCtrl: PopoverController, public auth: AuthService,
+    private router: Router, public translate: TranslateService,
+    @Inject(LOCAL_STORAGE) private storage: StorageService) {
+    this.translate.setDefaultLang('en');
+    this.translate.use(this.storage.get('language') || 'en');
     this.auth.onLogin.subscribe(() => {
-      this.router.navigate(['/tasks']);
-      this.eventService.announceRefresh('refresh');
+       this.router.navigate(['/tasks']);
+      // this.eventService.announceFiltersRefresh('');
+      // this.eventService.announceRefresh('refresh');
+      location.reload();
+
     });
     this.auth.onLogout.subscribe(() => {
       this.router.navigate(['/auth/login']);
@@ -25,6 +34,32 @@ export class AppComponent {
     });
 
 
+  }
+  fixDom(dir) {
+    const columns = document.getElementsByClassName('formio-component-columns');
+    const choices = document.getElementsByClassName('choices');
+    const headers = document.getElementsByClassName('header');
+    for (let i = 0; i < columns.length; i++) {
+      columns[i].setAttribute('dir', dir);
+    }
+    for (let i = 0; i < choices.length; i++) {
+      setTimeout(() => {
+        choices[i].setAttribute('dir', dir);
+      }, 500);
+    }
+    for (let i = 0; i < headers.length; i++) {
+      headers[i].setAttribute('dir', dir);
+    }
+    document.documentElement.setAttribute('dir', dir);
+
+  }
+  ngOnInit() {
+    this.translate.get('dir').subscribe((data) => {
+      this.fixDom(data);
+    });
+    this.translate.onLangChange.subscribe((data) => {
+      this.fixDom(data.translations.dir);
+    });
   }
 }
 
