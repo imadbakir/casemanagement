@@ -122,9 +122,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
               // this.loadingController.dismiss();
               if (variables.length > 0) {
                 variables.forEach(element => {
-  
                 });
-  
               }
             });
           }*/

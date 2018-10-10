@@ -33,13 +33,15 @@ import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { ProcessListComponent } from '../process-list/process-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { FilterOptionsComponent } from '../filter-options/filter-options.component';
+import { ProcessFormComponent } from '../process-form/process-form.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AllTasksPage,
     children: [
-      { path: 'edit/:taskId', component: TaskEditComponent }
+      { path: 'edit/:taskId', component: TaskEditComponent },
+      { path: 'new/:processDefinitionId', component: ProcessFormComponent }
     ]
   }
 ];
@@ -58,11 +60,11 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  entryComponents: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
+  entryComponents: [ProcessFormComponent, FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
     AppFormioComponent, FormComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
     TaskEditComponent,
     TaskCreateComponent, TaskViewComponent, TaskIndexComponent],
-  declarations: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
+  declarations: [ProcessFormComponent, FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
     AppFormioComponent, FormComponent, TaskEditComponent, TaskViewComponent,
     TaskCreateComponent, TaskIndexComponent, AllTasksPage, OnCreateDirective, GridComponent, TaskGridComponent,
     TaskItemComponent, TaskDetailsComponent],

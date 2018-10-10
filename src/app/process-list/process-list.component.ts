@@ -18,13 +18,10 @@ export class ProcessListComponent implements OnInit {
     public popoverCtrl: PopoverController) { }
 
   startProcess(processDefinitionId) {
-    this.camundaService.processDefinitionSubmitForm(processDefinitionId, {}).subscribe(instance => {
-      // this.router.navigate([`/tasks/edit/${instance.id}`]);
-      alert('process started');
-      this.popoverCtrl.dismiss();
-      this.event.announceFiltersRefresh('');
+    this.router.navigate([`/tasks/new/${processDefinitionId}`]);
+    this.popoverCtrl.dismiss();
 
-    });
+    /*  */
   }
   ngOnInit() {
     this.camundaService.getProcessDefinitions().subscribe((processDefinitions) => {
