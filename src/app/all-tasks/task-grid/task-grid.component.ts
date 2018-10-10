@@ -33,7 +33,7 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
     textSearch: '',
   };
   tasksOrigin: any = [];
-
+  loading;
   items: Array<GridsterItem>;
   iterableDiffer;
   static itemChange(item, itemComponent) {
@@ -63,8 +63,11 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
     }
   }
   async presentLoading() {
-    const loading = await this.loadingController.create({});
-    return await loading.present();
+    this.loading = await this.loadingController.create({});
+    return await this.loading.present();
+  }
+  async dismissLoading() {
+    return await this.loading.dismiss();
   }
   clearSearch(event) {
     this.filter.textSearch = '';
@@ -127,13 +130,15 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
   }
   listArchive(event) {
     if (event.bool) {
-      this.presentLoading();
-      this.camundaService.listHistory(this.auth.getUser().username).subscribe(data => {
-        this.tsks = data;
-        this.tasksOrigin = data;
-        this.loadingController.dismiss();
+      this.presentLoading().then(() => {
+        this.camundaService.listHistory(this.auth.getUser().username).subscribe(data => {
+          this.tsks = data;
+          this.tasksOrigin = data;
+          this.dismissLoading();
 
+        });
       });
+
 
 
     } else {
@@ -147,11 +152,12 @@ export class TaskGridComponent implements OnInit, AfterViewChecked, DoCheck {
   }
   ListFilter(event) {
     if (event.bool) {
-      this.presentLoading();
-      this.camundaService.listFilter(event.item.id).subscribe(data => {
-        this.tasksOrigin = data;
-        this.tsks = this.tasksOrigin;
-        this.loadingController.dismiss();
+      this.presentLoading().then(() => {
+        this.camundaService.listFilter(event.item.id).subscribe(data => {
+          this.tasksOrigin = data;
+          this.tsks = this.tasksOrigin;
+          this.dismissLoading();
+        });
       });
 
 

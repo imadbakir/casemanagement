@@ -91,89 +91,91 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.presentLoading();
-    this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe((task) => {
-      this.task = task;
-      if (this.task.executionId && this.task.executionId !== 'undefined') {
-        this.camundaService.getTaskFormVariables(this.task.id).subscribe((formVariables) => {
-          this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
-            if (formVariables) {
-              this.objectKeys(formVariables).forEach(element => {
-                if (executionVariables[formVariables[element].value]) {
-                  formVariables[element].resourceId = executionVariables[formVariables[element].value].value;
-                } else {
-                  formVariables[element].resourceId = '';
-                }
-                if (this.task.formKey !== element) {
-                  formVariables[element].readOnly = true;
-                } else {
-                  formVariables[element].readOnly = false;
-                }
-              });
-              this.formVariables = formVariables;
-              this.loadingController.dismiss();
-            }
-          });
-        });
-
-        /* if (this.task.deleteReason === 'completed') {
-          this.task.disabled = true;
-          this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
-            // this.loadingController.dismiss();
-            if (variables.length > 0) {
-              variables.forEach(element => {
-
-              });
-
-            }
-          });
-        }*/
-        // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { });
-        /*
-          formkey = task1
-          execution
-            R1 : 5
-            approve: true
-            approveMng: false
-          form variables
-            task: servicerequest
-            task1: r1
-        */
-        // fill form variables
-
-      } else {
-        this.camundaService.getHistoryTask(this.route.snapshot.params.taskId).subscribe(tasks => {
-          if (tasks.length > 0) {
-            this.task = tasks[0];
-            this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
-              // this.loadingController.dismiss();
-              this.formVariables = {
-                task: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true },
-                task1: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true }
-              };
-              if (variables.length > 0) {
-                variables.forEach(element => {
-                  if (element.value) {
-                    this.formVariables['task'].resourceId = element.value;
-                    this.formVariables['task1'].resourceId = element.value;
+    this.presentLoading().then(() => {
+      this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe((task) => {
+        this.task = task;
+        if (this.task.executionId && this.task.executionId !== 'undefined') {
+          this.camundaService.getTaskFormVariables(this.task.id).subscribe((formVariables) => {
+            this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
+              if (formVariables) {
+                this.objectKeys(formVariables).forEach(element => {
+                  if (executionVariables[formVariables[element].value]) {
+                    formVariables[element].resourceId = executionVariables[formVariables[element].value].value;
+                  } else {
+                    formVariables[element].resourceId = '';
+                  }
+                  if (this.task.formKey !== element) {
+                    formVariables[element].readOnly = true;
+                  } else {
+                    formVariables[element].readOnly = false;
                   }
                 });
-
+                this.formVariables = formVariables;
+                this.loadingController.dismiss();
               }
+            });
+          });
+
+          /* if (this.task.deleteReason === 'completed') {
+            this.task.disabled = true;
+            this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
+              // this.loadingController.dismiss();
+              if (variables.length > 0) {
+                variables.forEach(element => {
+  
+                });
+  
+              }
+            });
+          }*/
+          // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { });
+          /*
+            formkey = task1
+            execution
+              R1 : 5
+              approve: true
+              approveMng: false
+            form variables
+              task: servicerequest
+              task1: r1
+          */
+          // fill form variables
+
+        } else {
+          this.camundaService.getHistoryTask(this.route.snapshot.params.taskId).subscribe(tasks => {
+            if (tasks.length > 0) {
+              this.task = tasks[0];
+              this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
+                // this.loadingController.dismiss();
+                this.formVariables = {
+                  task: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true },
+                  task1: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true }
+                };
+                if (variables.length > 0) {
+                  variables.forEach(element => {
+                    if (element.value) {
+                      this.formVariables['task'].resourceId = element.value;
+                      this.formVariables['task1'].resourceId = element.value;
+                    }
+                  });
+
+                }
+                this.loadingController.dismiss();
+
+              });
+            } else {
+              alert('this task does not exist!');
               this.loadingController.dismiss();
 
-            });
-          } else {
-            alert('this task does not exist!');
-            this.loadingController.dismiss();
+            }
+          });
+        }
+      },
+        (err) => {
 
-          }
         });
-      }
-    },
-      (err) => {
 
-      });
 
+    });
   }
 }
