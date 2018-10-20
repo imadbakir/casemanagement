@@ -87,7 +87,7 @@ export class TaskItemComponent implements OnInit {
         variables:
         {
           temporal: { value: true },
-          rejectedVicePre: { value: true },
+          rejectedMng: { value: false },
         }
       }
     ).subscribe(data => {
