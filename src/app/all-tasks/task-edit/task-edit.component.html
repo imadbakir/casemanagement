@@ -1,5 +1,5 @@
-<ng-container  *ngFor="let key of objectKeys(formVariables)">
-  <app-form *ngIf="key.includes('task')" [formKey]="key" [resourceName]="formVariables[key].value"
+<ng-container  *ngFor="let key of objKeys">
+  <app-form *ngIf="key.includes('form')" [formKey]="key" [resourceName]="formVariables[key].value"
     [resourceId]="formVariables[key].resourceId" [readOnly]="formVariables[key].readOnly" (submit)="onSubmit($event)"></app-form>
 </ng-container>
 

@@ -70,7 +70,7 @@ export class TaskItemComponent implements OnInit {
         this.task.assignee = this.auth.getUser().username;
       }
       this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(data => {
-        this.event.announceFiltersRefresh('');
+        // this.event.announceFiltersRefresh('');
       });
 
 
@@ -82,7 +82,15 @@ export class TaskItemComponent implements OnInit {
   }
   complete() {
     // this.task.complete = true;
-    this.camundaService.postCompleteTask(this.task.id, {}).subscribe(data => {
+    this.camundaService.postCompleteTask(this.task.id,
+      {
+        variables:
+        {
+          temporal: { value: true },
+          rejectedVicePre: { value: true },
+        }
+      }
+    ).subscribe(data => {
       this.task.complete = true;
       setTimeout(() => {
         this.destoy.emit();
@@ -133,6 +141,7 @@ export class TaskItemComponent implements OnInit {
     return value;
   }
   ngOnInit() {
+    // this.complete();
   }
 
 }

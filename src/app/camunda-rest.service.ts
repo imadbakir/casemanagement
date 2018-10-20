@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProcessDefinition } from './schemas/ProcessDefinition';
 import { Task } from './schemas/Task';
 import { AuthService } from './auth.service';
+import { filter } from 'rxjs-compat/operator/filter';
 
 
 
@@ -47,6 +48,13 @@ export class CamundaRestService {
   createFilter(variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/create`;
     return this.http.post<any>(endpoint, variables).pipe(
+      tap(form => this.log(`created filter`)),
+      catchError(this.handleError('createFilter', []))
+    );
+  }
+  updateFilter(filterId, variables): Observable<any> {
+    const endpoint = `${this.engineRestUrl}filter/${filterId}`;
+    return this.http.put<any>(endpoint, variables).pipe(
       tap(form => this.log(`created filter`)),
       catchError(this.handleError('createFilter', []))
     );

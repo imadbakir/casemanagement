@@ -1,2 +1,2 @@
-<app-form *ngIf="startForm.key" [formKey]="startForm.key" [resourceName]="servicerequest"
-    [resourceId]="" [readOnly]="false" (submit)="onSubmit($event)"></app-form>
+<app-form *ngIf="startForm[0]" [formKey]="startForm[0]" [resourceName]="startForm[1]" [resourceId]="" [readOnly]="false"
+    (submit)="onSubmit($event)"></app-form>

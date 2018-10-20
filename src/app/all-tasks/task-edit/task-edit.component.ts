@@ -32,6 +32,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   submission = {};
   onError = new EventEmitter();
   formVariables = {};
+  objKeys = [];
   objectKeys = Object.keys;
   constructor(
     public service: ResourceService,
@@ -54,14 +55,26 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(submission) {
-    this.camundaService.updateExecutionVariables(this.task.executionId, 'servicerequest',
+    console.log(submission);
+    this.camundaService.updateExecutionVariables(this.task.executionId, this.formVariables[this.task.formKey].value,
       { value: submission._id, type: 'String' }).subscribe(() => {
         if (submission.data.completed === true) {
-          this.camundaService.postCompleteTask(this.task.id, {}).subscribe((data1) => {
+          /* this.camundaService.postCompleteTask(this.task.id,
+            {
+              variables:
+              {
+                temporal: { value: true },
+                rejected: { value: true },
+              }
+            }
+          ).subscribe((data1) => {
             this.events.announceItem({ taskId: this.task.id, complete: true });
             this.events.announceFiltersRefresh('');
             this.router.navigate(['tasks']);
-          });
+          });*/
+          this.events.announceItem({ taskId: this.task.id, complete: true });
+          this.events.announceFiltersRefresh('');
+          this.router.navigate(['tasks']);
         } else {
           this.events.announceRefresh('tasks');
         }
@@ -98,19 +111,33 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           this.camundaService.getTaskFormVariables(this.task.id).subscribe((formVariables) => {
             this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
               if (formVariables) {
-                this.objectKeys(formVariables).forEach(element => {
-                  if (executionVariables[formVariables[element].value]) {
-                    formVariables[element].resourceId = executionVariables[formVariables[element].value].value;
-                  } else {
-                    formVariables[element].resourceId = '';
-                  }
-                  if (this.task.formKey !== element) {
-                    formVariables[element].readOnly = true;
-                  } else {
-                    formVariables[element].readOnly = false;
-                  }
+                this.objKeys = this.objectKeys(formVariables);
+                this.objKeys = this.objKeys.filter((s) => {
+                  // tslint:disable-next-line:no-bitwise
+                  return ~s.indexOf('form');
                 });
+                this.objKeys.sort((a, b) => {
+                  const aArray = formVariables[a].value.split(':');
+                  const bArray = formVariables[b].value.split(':');
+                  return (parseInt(aArray[1] ? aArray[1] : 100, 10)) - (parseInt(bArray[1] ? bArray[1] : 100, 10));
+                });
+                console.log(this.objKeys);
+
+                for (let i = 0; i < this.objKeys.length; i++) {
+                  formVariables[this.objKeys[i]].value = formVariables[this.objKeys[i]].value.split(':')[0];
+                  if (executionVariables[formVariables[this.objKeys[i]].value]) {
+                    formVariables[this.objKeys[i]].resourceId = executionVariables[formVariables[this.objKeys[i]].value].value;
+                  } else {
+                    formVariables[this.objKeys[i]].resourceId = '';
+                  }
+                  if (this.task.formKey !== this.objKeys[i]) {
+                    formVariables[this.objKeys[i]].readOnly = true;
+                  } else {
+                    formVariables[this.objKeys[i]].readOnly = false;
+                  }
+                }
                 this.formVariables = formVariables;
+
                 this.loadingController.dismiss();
               }
             });

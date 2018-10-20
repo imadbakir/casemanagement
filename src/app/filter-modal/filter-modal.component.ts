@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { CamundaRestService } from '../camunda-rest.service';
 import { EventsService } from '../events.service';
 import * as _moment from 'moment';
@@ -27,22 +27,48 @@ export class FilterModalComponent implements OnInit {
   ];
   criterias = [];
   orQueries = [];
+  taskGroup = 1;
   filter = {
     resourceType: 'Task',
     name: '',
     owner: '',
-    query: {},
+    query: {
+      orQueries: []
+    },
     properties: {
       color: '',
       description: '',
       priority: ''
     }
   };
-  constructor(public auth: AuthService, public modal: ModalController,
-    public camundaService: CamundaRestService, public event: EventsService) { }
+  constructor(public auth: AuthService, public modal: ModalController, public navParams: NavParams,
+    public camundaService: CamundaRestService, public event: EventsService) {
+
+  }
 
   ngOnInit() {
     this.filter.owner = this.auth.getUser().username;
+    if (this.navParams.data.filterId) {
+      this.camundaService.getFilter(this.navParams.data.filterId).subscribe(filter => {
+        this.filter = filter;
+        this.orQueries = this.filter.query.orQueries;
+        this.allCriterias.forEach(element => {
+          if (this.filter.query[element.key]) {
+            const temp = element;
+            temp['value'] = this.filter.query[element.key];
+            this.criterias.push(temp);
+          }
+        });
+        if (this.orQueries.length > 1) {
+          this.taskGroup = 3;
+        } else if (this.orQueries.hasOwnProperty('assignee')) {
+          this.taskGroup = 1;
+        } else {
+          this.taskGroup = 2;
+        }
+      });
+    }
+    console.log(this.filter);
   }
   updateType(event) {
     this.allCriterias.filter(item => {
@@ -80,19 +106,27 @@ export class FilterModalComponent implements OnInit {
         break;
     }
   }
-  createFilter() {
+  saveFilter() {
     this.criterias.forEach(element => {
       if (element.key.length > 0) {
         this.filter.query[element.key] =
-        element.type === 'date' ? _moment(element.value).format('YYYY-MM-DDTHH:mm:ss.SSSZZ') : element.value;
+          element.type === 'date' ? _moment(element.value).format('YYYY-MM-DDTHH:mm:ss.SSSZZ') : element.value;
       }
     });
     this.filter.query['orQueries'] = this.orQueries;
     console.log(this.filter);
-    this.camundaService.createFilter(this.filter).subscribe(() => {
-      this.event.announceFiltersRefresh('');
-      this.modal.dismiss();
-    });
+    if (this.filter.hasOwnProperty('id')) {
+      this.camundaService.updateFilter(this.filter['id'], this.filter).subscribe(() => {
+        this.event.announceFiltersRefresh('');
+        this.modal.dismiss();
+      });
+    } else {
+      this.camundaService.createFilter(this.filter).subscribe(() => {
+        this.event.announceFiltersRefresh('');
+        this.modal.dismiss();
+      });
+    }
+
 
   }
 }

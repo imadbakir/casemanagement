@@ -17,8 +17,9 @@ export class ProcessFormComponent implements OnInit {
     public event: EventsService
   ) { }
   onSubmit(submission) {
+    console.log(submission);
     this.camundaService.processDefinitionSubmitForm(this.route.snapshot.params['processDefinitionId'], {}).subscribe(instance => {
-      this.camundaService.updateExecutionVariables(instance.id, 'servicerequest',
+      this.camundaService.updateExecutionVariables(instance.id, this.startForm[1],
         { value: submission._id, type: 'String' }).subscribe(() => {
           this.event.announceFiltersRefresh('');
           this.router.navigate(['tasks']);
@@ -27,8 +28,8 @@ export class ProcessFormComponent implements OnInit {
   }
   ngOnInit() {
     this.camundaService.processInstanceStartForm(this.route.snapshot.params['processDefinitionId']).subscribe(startForm => {
-      startForm.key = 'startrequest';
-      this.startForm = startForm;
+      // startForm.key = 'startrequest:servicerequest';
+      this.startForm = startForm.key.split(':');
       // this.router.navigate([`/tasks/new/${processDefinitionId}`]);
     });
   }

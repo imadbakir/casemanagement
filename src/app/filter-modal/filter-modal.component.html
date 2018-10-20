@@ -1,7 +1,7 @@
 <ion-header override>
 
   <ion-toolbar>
-    <ion-title>{{'Add Filter' | translate}}</ion-title>
+    <ion-title>{{filter.name ? filter.name : 'Add Filter' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -32,7 +32,7 @@
       <ion-col>
         <ion-item>
           <ion-label position="stacked">{{'Tasks Collection' | translate }}</ion-label>
-          <ion-select (ionChange)="updateQuery($event)" cancel-text="Cancel">
+          <ion-select (ionChange)="updateQuery($event)" [(ngModel)]="taskGroup" cancel-text="Cancel">
             <ion-select-option value="1">{{'My Tasks' | translate}}</ion-select-option>
             <ion-select-option value="2">{{'Group Tasks' | translate}}</ion-select-option>
             <ion-select-option value="3">{{'My & Group Tasks' | translate}} </ion-select-option>
@@ -106,7 +106,7 @@
         <ion-button fill="outline" expand="block" color="primary" (click)="modal.dismiss()">{{'Cancel' | translate}}</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button fill="solid" expand="block" (click)="createFilter()" color="success">{{'Create' | translate}}</ion-button>
+        <ion-button fill="solid" expand="block" (click)="saveFilter()" color="success">{{'Save' | translate}}</ion-button>
       </ion-col>
 
     </ion-row>
