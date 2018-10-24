@@ -55,8 +55,8 @@ gridster {
   overflow: hidden;
   display: block;
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100%; 
+  height: calc(100% - 60px);
 }
 
 gridster.mobile {
@@ -68,6 +68,9 @@ gridster.mobile {
   }
   .details-col-visible{
     top:calc(0% + 55px);
+    &.fullscreen{
+      position: fixed !important;
+    }
   }
 
   gridster-item {

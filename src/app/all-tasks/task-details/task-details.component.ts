@@ -26,6 +26,7 @@ export class TaskDetailsComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         if (event.url.includes('new')) {
           this.panels.details.fullscreen = true;
+          this.panels.details.open = true;
         } else {
           this.panels.details.fullscreen = false;
 

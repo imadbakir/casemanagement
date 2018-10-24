@@ -100,7 +100,15 @@ export class AllTasksPage implements OnInit, OnDestroy {
       this.camundaService.getFilters(this.auth.getUser().username).subscribe(filters => {
         this.filters = filters;
         if (this.filters.length > 0) {
-          this.toggleFilter(this.filters[0], true);
+          if (this.openFilter.length > 0  && this.openFilter !== 'history') {
+            this.toggleFilter(this.openFilter, true);
+
+          } else if (this.openFilter === 'history') {
+            this.toggleHistory();
+          } else {
+            this.toggleFilter(this.filters[0], true);
+
+          }
         }
       });
     });

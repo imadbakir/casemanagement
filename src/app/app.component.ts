@@ -22,10 +22,10 @@ export class AppComponent implements OnInit {
     this.translate.setDefaultLang('en');
     this.translate.use(this.storage.get('language') || 'en');
     this.auth.onLogin.subscribe(() => {
-       this.router.navigate(['/tasks']);
+      // this.router.navigate(['/tasks']);
       // this.eventService.announceFiltersRefresh('');
       // this.eventService.announceRefresh('refresh');
-      location.reload();
+      window.location.href = '/tasks';
 
     });
     this.auth.onLogout.subscribe(() => {
