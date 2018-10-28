@@ -1,6 +1,7 @@
-<ng-container  *ngFor="let key of objKeys">
-  <app-form *ngIf="key.includes('form')" [formKey]="key" [resourceName]="formVariables[key].value"
-    [resourceId]="formVariables[key].resourceId" [readOnly]="formVariables[key].readOnly" (submit)="onSubmit($event)"></app-form>
+<ng-container *ngFor="let key of objKeys">
+  <app-form *ngIf="key.substring(0, 4) == 'form'" [formKey]="key + (formVariables[key].version ? '/v/'+formVariables[key].version:'')"
+    [resourceName]="formVariables[key].value" [resourceId]="formVariables[key].resourceId" [readOnly]="formVariables[key].readOnly"
+    (submit)="onSubmit($event)"></app-form>
 </ng-container>
 
 

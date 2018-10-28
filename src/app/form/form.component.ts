@@ -213,6 +213,7 @@ export class FormComponent implements OnInit, OnDestroy {
       .then(
         (saved: any) => {
           this.resource = saved;
+          saved._fvid = this.form._vid;
           return saved;
         },
         (err: any) => this.onError(err)

@@ -80,6 +80,13 @@ export class CamundaRestService {
       catchError(this.handleError('listHistory', []))
     );
   }
+  getProcessDefinitionXML(processDefinitionId) {
+    const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/xml`;
+    return this.http.get<any>(endpoint).pipe(
+      tap(form => this.log(`fetched history`)),
+      catchError(this.handleError('listHistory', []))
+    );
+  }
   listHistory(userId) {
     const endpoint = `${this.engineRestUrl}history/task?finished=true&taskAssignee=${userId}`;
     return this.http.get<any>(endpoint).pipe(
