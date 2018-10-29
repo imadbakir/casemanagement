@@ -10,10 +10,10 @@ const routes: Routes = [
     redirectTo: 'tasks',
     pathMatch: 'full'
   },
-  { path: 'tasks', loadChildren: () => AllTasksPageModule, canActivate: [AuthGuard] },
+  { path: 'tasks', loadChildren: './all-tasks/all-tasks.module#AllTasksPageModule', canActivate: [AuthGuard] },
   {
     path: 'auth',
-    loadChildren: () => AuthModule
+    loadChildren: './auth/auth.module#AuthModule'
   },
 ];
 
