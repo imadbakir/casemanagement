@@ -85,7 +85,6 @@ const routes: Routes = [
         ]
       }
     },
-    ,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 
   ]

@@ -32,13 +32,13 @@
         <!-- your content here  <app-task-grid [filterItem]="item.propName"></app-task-grid>
         
  -->
-        <app-task-grid [filterEvent]="filterEvent" [formKey]="formKey" [filterItems]="filters"></app-task-grid>
+        <app-task-grid [filterEvent]="filterEvent"  [filterItems]="filters"></app-task-grid>
 
 
       </gridster-item>
       <gridster-item ion-card [ngClass]="{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}"
         [item]="panels.details">
-        <app-task-details [panels]="panels" [formKey]="formKey"></app-task-details>
+        <app-task-details [panels]="panels"></app-task-details>
       </gridster-item>
     </gridster>
   </div>
