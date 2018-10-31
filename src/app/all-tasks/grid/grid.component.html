@@ -25,7 +25,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content [ngStyle]="{height: '100vh'}">
   <div [ngClass]="'padding'">
     <gridster [options]="options" dir="ltr">
       <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="panels.tasks">
