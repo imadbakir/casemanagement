@@ -32,7 +32,7 @@
     "@ionic/schematics-angular": "^1.0.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
-    "angular-formio": "^3.0.0",
+    "angular-formio": "^3.5.0",
     "angular-gridster2": "^6.0.5",
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.1.3",
