@@ -140,35 +140,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.formioReadyResolve(this.formio);
             return this.formio;
         });
-        /*
-        if (this.formio) {
-            return;
-        } else {
-            this.formio = super.setForm(form).then(formio => {
-                const this = this;
-                // Only initialize a single formio instance.
-
-                // Create the form.
-                const currentLang = this.translate.currentLang;
-                this.formio.submission = this.submission;
-                this.translate.getTranslation(currentLang).subscribe(data => {
-
-                    this.formio.i18next.options.resources[currentLang] = {
-                        translation: data
-                    };
-                    this.formio.language = currentLang;
-                });
-                this.translate.onLangChange.subscribe(data => {
-                    this.formio.i18next.options.resources[data.lang] = {
-                        translation: data.translations
-                    };
-                    this.formio.language = data.lang;
-
-                });
-                // this._formioReadyResolve(this.formio);
-                return this.formio;
-            });
-        } */
     }
 
     initialize() {

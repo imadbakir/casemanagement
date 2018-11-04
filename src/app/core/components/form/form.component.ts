@@ -174,18 +174,7 @@ export class FormComponent implements OnInit, OnDestroy {
       .catch((err) => this.onFormError(err));
     return this.formLoading;
   }
-  /* loadResource() {
-     const route = new ActivatedRoute;
-     route.snapshot = new ActivatedRouteSnapshot;
-     route.snapshot.params = { id: this.resourceId, formKey: this.formKey, resourceName: this.resourceName };
-     return this.service.loadResource(route);
-   }
-   setContext(id = '') {
-     const route = new ActivatedRoute;
-     route.snapshot = new ActivatedRouteSnapshot;
-     route.snapshot.params = { id: this.resourceId, formKey: this.formKey, resourceName: this.resourceName };
-     this.service.setContext(route);
-   } */
+
   onFormError(err) {
     this.formReject(err);
     this.onError(err);

@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 import { AuthService } from './core/services/auth.service';
@@ -13,16 +12,16 @@ import { EventsService } from './core/services/events.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public eventService: EventsService,
-    public popoverCtrl: PopoverController, public auth: AuthService,
-    private router: Router, public translate: TranslateService,
+  constructor(
+    public eventService: EventsService,
+    public auth: AuthService,
+    private router: Router,
+    public translate: TranslateService,
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
+
     this.translate.setDefaultLang('en');
     this.translate.use(this.storage.get('language') || 'en');
     this.auth.onLogin.subscribe(() => {
-      // this.router.navigate(['/tasks']);
-      // this.eventService.announceFiltersRefresh('');
-      // this.eventService.announceRefresh('refresh');
       window.location.href = '/tasks';
 
     });
@@ -30,9 +29,8 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/auth/login']);
       this.eventService.announceRefresh('refresh');
     });
-
-
   }
+
   fixDom(dir) {
     const columns = document.getElementsByClassName('formio-component-columns');
     const choices = document.getElementsByClassName('choices');
@@ -51,6 +49,7 @@ export class AppComponent implements OnInit {
     document.documentElement.setAttribute('dir', dir);
 
   }
+
   ngOnInit() {
     this.translate.get('dir').subscribe((data) => {
       this.fixDom(data);
@@ -59,6 +58,7 @@ export class AppComponent implements OnInit {
       this.fixDom(data.translations.dir);
     });
   }
+
 }
 
 

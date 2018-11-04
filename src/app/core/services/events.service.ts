@@ -13,6 +13,7 @@ export class EventsService {
   private archiveSoruce = new BehaviorSubject<any>({});
   private refreshSource = new Subject<string>();
   private itemSource = new BehaviorSubject<any>({});
+  private sortingSource = new BehaviorSubject<any>({});
   // Observable string streams
   refreshAnnounced$ = this.refreshSource.asObservable();
   resizeAnnounced$ = this.resizeSource.asObservable();
@@ -20,6 +21,7 @@ export class EventsService {
   refreshFiltersAnnounced$ = this.refreshFiltersSource.asObservable();
   archiveAnnounced$ = this.archiveSoruce.asObservable();
   itemChange$ = this.itemSource.asObservable();
+  sortingAnnounced$ = this.sortingSource.asObservable();
 
   // Service message commands
   announceRefresh(data: string) {
@@ -39,5 +41,8 @@ export class EventsService {
   }
   announceItem(item) {
     this.itemSource.next(item);
+  }
+  announceSorting(sorting) {
+    this.sortingSource.next(sorting);
   }
 }

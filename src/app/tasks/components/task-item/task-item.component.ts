@@ -12,55 +12,27 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task;
-  @Input() formKey;
   @Output() destoy = new EventEmitter();
   @ViewChild('trigger') input;
+
   users: any = [
     { name: 'ahmad', username: 'ahmad' },
     { name: 'eihab', username: 'eihab' },
     { name: 'imad', username: 'imad' }
   ];
 
-  constructor(private loadingController: LoadingController, private router: Router, public auth: AuthService,
-    private camundaService: CamundaRestService, private event: EventsService) { }
+  constructor(
+    private loadingController: LoadingController,
+    private router: Router,
+    public auth: AuthService,
+    private camundaService: CamundaRestService,
+    private event: EventsService) { }
 
   async presentLoading() {
     const loading = await this.loadingController.create({});
     return await loading.present();
   }
-  getTaskExecutionVariable(task) {
 
-  }
-  openTask(task) {
-    this.presentLoading();
-    this.camundaService.getTask(task.id).subscribe(data => {
-
-      if (data.executionId != null) {
-        this.router.navigate(['/tasks/edit'], {
-          queryParams: { formKey: task.formKey, executionId: task.executionId }
-        });
-        /* return this.camundaService.getExecutionVariables(data.executionId).subscribe(variables => {
-           this.loadingController.dismiss();
-           const resources = variables.resources;
-           if (resources) {
-             if (task.deleteReason === 'completed') {
-               this.router.navigateByUrl(`/tasks/${resources.task}/view`, {
-                 queryParams: { formKey: task.formKey, executionId: task.executionId }
-               });
-             } else {
-               this.router.navigateByUrl(`/tasks/${resources.task}/edit`, {
-                 queryParams: { formKey: task.formKey, executionId: task.executionId }
-               });
-             }
-           } else {
-             this.router.navigate([`/tasks/new`], { queryParams: { formKey: task.formKey, executionId: task.executionId } });
-           }
-         }); */
-      }
-    });
-
-
-  }
   openAssignee() {
     setTimeout(() => {
       if (this.task.assignee) {
@@ -133,9 +105,6 @@ export class TaskItemComponent implements OnInit {
       case priority < 25:
         value = 'Low';
         break;
-
-
-
 
     }
     return value;

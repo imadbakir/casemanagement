@@ -21,6 +21,7 @@ import { TaskEditComponent } from './components/task-edit/task-edit.component';
 import { TaskGridComponent } from './components/task-grid/task-grid.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { TasksComponent } from './tasks.component';
+import { SortOptionsComponent } from './components/sort-options/sort-options.component';
 
 
 
@@ -50,12 +51,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  entryComponents: [ProcessFormComponent, FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
-    AppFormioComponent, FormComponent, TaskGridComponent, TaskItemComponent, TaskDetailsComponent,
-    TaskEditComponent],
+  entryComponents: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent, SortOptionsComponent],
   declarations: [ProcessFormComponent, FilterOptionsComponent, ProcessListComponent, FilterModalComponent,
     AppFormioComponent, FormComponent, TaskEditComponent, TasksComponent, OnCreateDirective, GridComponent, TaskGridComponent,
-    TaskItemComponent, TaskDetailsComponent],
+    TaskItemComponent, TaskDetailsComponent, SortOptionsComponent],
   providers: [
     {
       provide: FormioResourceConfig,

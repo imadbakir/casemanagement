@@ -3,13 +3,9 @@
   <ion-menu menu-id="start">
 
     <ion-toolbar>
-
       <ion-buttons slot="start">
-        <!--<ion-button color="dark" clear class="toolbar-round" [hidden]="!panesToggle.toggleHack" (click)="toggleMenu('start')">
-          <ion-icon slot="icon-only" name="menu"></ion-icon>
-        </ion-button>-->
-        <ion-button color="secondary" solid round end-item icon-end (click)="presentFilter()" class="toolbar-round">{{"Add
-          Filter" | translate}}
+        <ion-button color="secondary" solid round end-item icon-end (click)="presentFilter()" class="toolbar-round">
+          {{"Add Filter" | translate}}
           <ion-icon slot="start" name="add-circle"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -31,10 +27,6 @@
       <ion-list lines="full">
         <ion-item *ngFor="let filter of filters" [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}" [ngClass]="{'selected-green': openFilter === filter.id}"
           (click)="toggleFilter(filter,true)">
-          <!-- <ion-avatar slot="start">
-                    <img [src]="task.pic">
-                  </ion-avatar>
-                -->
           <ion-label text-wrap>
             <ion-text>
               <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
@@ -70,41 +62,3 @@
   <!-- the main content -->
   <app-grid main></app-grid>
 </ion-split-pane>
-
-<!--<ion-row>
-      <ion-col *ngFor="let task of filtered" col-6 col-md-4 col-lg-4>
-        <ion-card [ngClass]="{'danger':task.priority > 50}">
-          <ion-item>
-            <ion-avatar item-start>
-              <img src="http://flatable.phoenixcoded.net/default/assets/images/user.png">
-            </ion-avatar>
-            <h2>To: {{task.assignee}}</h2>
-            <p>{{task.created | date}}</p>
-          </ion-item>
-
-
-
-          <ion-card-content>
-            <p>{{task.name}}</p>
-          </ion-card-content>
-
-          <ion-row hidden>
-            <ion-col>
-              <button ion-button icon-start clear small>
-                <div>Details</div>
-              </button>
-            </ion-col>
-            <ion-col>
-              <button ion-button icon-start clear small>
-                <div>Other Acion</div>
-              </button>
-            </ion-col>
-            <ion-col center text-center>
-              <ion-note>
-
-              </ion-note>
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </ion-col>
-    </ion-row> -->

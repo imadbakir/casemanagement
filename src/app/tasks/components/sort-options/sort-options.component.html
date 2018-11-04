@@ -1,0 +1,21 @@
+<ion-list no-padding no-margin>
+    <ion-radio-group name="sorting" [(ngModel)]="sorting">
+        <ion-list-header padding>{{'Sort By' | translate }}</ion-list-header>
+        <ion-item *ngFor="let sorting of sortings; let i =index">
+            <ion-label>{{sorting.name}}</ion-label>
+            <ion-radio [value]="i"></ion-radio>
+        </ion-item>
+    </ion-radio-group>
+    <ion-row>
+        <ion-col>
+            <ion-button (click)="setSorting(1)" fill="solid" size="medium" expand="block" color="secondary">
+                <ion-icon size="medium" slot="end" name="arrow-down"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button (click)="setSorting(-1)" fill="solid" size="medium" expand="block" color="primary">
+                <ion-icon size="medium" slot="end" name="arrow-up"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-list>

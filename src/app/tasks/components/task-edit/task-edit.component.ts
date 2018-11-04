@@ -19,7 +19,6 @@ declare global {
 export class TaskEditComponent implements OnInit, OnDestroy {
   task: any = {};
   submission = {};
-  onError = new EventEmitter();
   formVariables = {};
   objKeys = [];
   objectKeys = Object.keys;
@@ -136,29 +135,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
             });
           });
 
-          /* if (this.task.deleteReason === 'completed') {
-            this.task.disabled = true;
-            this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(variables => {
-              // this.loadingController.dismiss();
-              if (variables.length > 0) {
-                variables.forEach(element => {
-                });
-              }
-            });
-          }*/
-          // TODO: this.camundaService.postUserLogin({ username: 'imad', password: 'imad' }).subscribe(data => { });
-          /*
-            formkey = task1
-            execution
-              R1 : 5
-              approve: true
-              approveMng: false
-            form variables
-              task: servicerequest
-              task1: r1
-          */
-          // fill form variables
-
         } else {
           this.camundaService.getHistoryTask(this.route.snapshot.params.taskId).subscribe(tasks => {
             if (tasks.length > 0) {
@@ -209,19 +185,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
                     }
                   });
                 });
-                /* this.formVariables = {
-                   task: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true },
-                   task1: { type: 'String', value: 'servicerequest', valueInfo: {}, resourceId: '', readOnly: true }
-                 };
-                 if (variables.length > 0) {
-                   variables.forEach(element => {
-                     if (element.value) {
-                       this.formVariables['task'].resourceId = element.value;
-                       this.formVariables['task1'].resourceId = element.value;
-                     }
-                   });
-
-              }*/
                 this.loadingController.dismiss();
 
               });

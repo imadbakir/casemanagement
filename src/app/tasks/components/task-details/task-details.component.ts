@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { EventsService } from '../../../core/services/events.service';
-import { CamundaRestService } from '../../../core/services/camunda-rest.service';
-import { EventEmitter } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
@@ -10,11 +8,13 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class TaskDetailsComponent implements OnInit {
   @Input() panels;
-  @Input() formKey;
+
   refreshForm = new EventEmitter();
   // tslint:disable-next-line:max-line-length
   task;
-  constructor(public event: EventsService, private camundaService: CamundaRestService, public router: Router) { }
+  constructor(
+    public event: EventsService,
+     public router: Router) { }
   toggleFullScreen() {
     this.panels.details.fullscreen = !this.panels.details.fullscreen;
   }
@@ -34,23 +34,6 @@ export class TaskDetailsComponent implements OnInit {
     this.event.itemChange$.subscribe(data => {
       this.task = data;
     });
-  }
-  completeTask() {
-    // for test
-    this.event.announceItem({ taskId: '521b38f1-beaf-11e8-b81f-0eac374867d4', complete: true });
-  }
-  readOnly() {
-    return this.task.deleteReason === 'completed' ? true : false;
-
-  }
-  onSubmit(event) {
-    if (event.data.complete !== true) {
-      this.camundaService.putUpdateTask(this.task.id, event.data).subscribe(data => {
-      });
-    } else {
-      this.task = null;
-    }
-
   }
 
 }

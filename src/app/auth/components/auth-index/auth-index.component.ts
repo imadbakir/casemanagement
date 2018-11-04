@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormioAuthComponent, FormioAuthService } from 'angular-formio/auth';
-import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { LanguageComponent } from '../../../shared/components/language/language.component';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageComponent } from '../../../shared/components/language/language.component';
 
 @Component({
   selector: 'app-index-login',
   templateUrl: './auth-index.component.html',
   styleUrls: ['./auth-index.component.scss'],
 })
-export class AuthIndexComponent extends FormioAuthComponent implements OnInit {
+export class AuthIndexComponent  implements OnInit {
 
-  constructor(public service: FormioAuthService, public _route: Router,
-    public popoverCtrl: PopoverController, public translate: TranslateService) {
-    super();
+  constructor(
+    public popoverCtrl: PopoverController,
+     public translate: TranslateService) {
   }
   async languages(event) {
     const popover = await this.popoverCtrl.create({

@@ -1,34 +1,33 @@
 import { Component } from '@angular/core';
-import { FormioAuthLoginComponent, FormioAuthService } from 'angular-formio/auth';
-import { CamundaRestService } from '../../../core/services/camunda-rest.service';
-import { AuthService } from '../../../core/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../../core/services/auth.service';
+import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 @Component({
     selector: 'app-auth-login',
     templateUrl: './auth-login.component.html',
     styleUrls: ['./auth-login.component.scss'],
 })
-export class AuthLoginComponent extends FormioAuthLoginComponent {
+export class AuthLoginComponent {
     user = { username: '', password: '' };
     loginError = false;
-    constructor(public service: FormioAuthService, public camundaService: CamundaRestService,
-        public authSerivce: AuthService, public translate: TranslateService) {
-        super(service);
+    constructor(
+        public camundaService: CamundaRestService,
+        public authSerivce: AuthService,
+        public translate: TranslateService) {
     }
     beforeSubmit(event) {
-        const user = { username: event.data.username, password: event.data.password };
-        this.camundaService.postUserLogin(user).subscribe((authObj) => {
-            if (authObj.status !== 401) {
-                this.camundaService.getIdentity(user.username).subscribe((identity) => {
-                    user['groups'] = identity.groups;
-                    this.camundaService.getUserProfile(user.username).subscribe((profileData) => {
-                        user['profile'] = profileData;
-                        this.authSerivce.setUser(user);
-
+        /* const user = { username: event.data.username, password: event.data.password };
+            this.camundaService.postUserLogin(user).subscribe((authObj) => {
+                if (authObj.status !== 401) {
+                    this.camundaService.getIdentity(user.username).subscribe((identity) => {
+                        user['groups'] = identity.groups;
+                        this.camundaService.getUserProfile(user.username).subscribe((profileData) => {
+                            user['profile'] = profileData;
+                            this.authSerivce.setUser(user);
+                        });
                     });
-                });
-            }
-        });
+                }
+            }); */
         // this.service.onLoginSubmit(event);
     }
     submit() {

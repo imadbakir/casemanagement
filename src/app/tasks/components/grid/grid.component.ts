@@ -3,7 +3,6 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType } from 'angular-gridster2';
-import { Subject } from 'rxjs';
 import { EventsService } from '../../../core/services/events.service';
 import { FilterService } from '../../../core/services/filter.service';
 import { LanguageComponent } from '../../../shared/components/language/language.component';
@@ -15,16 +14,14 @@ import { ProcessListComponent } from '../../components/process-list/process-list
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-  filterEvent: Subject<any> = new Subject();
   options: GridsterConfig;
-  dashboard: Array<GridsterItem>;
-
   panels = {
     tasks: { x: 0, y: 0, cols: 2, rows: 4, filters: [] },
     details: { x: 2, y: 0, cols: 4, rows: 4, fullscreen: false, open: false },
   };
   filters = [];
   previousItem = null;
+
   static itemChange(item, itemComponent) {
   }
   onResize(item, itemComponent) {
@@ -61,38 +58,6 @@ export class GridComponent implements OnInit {
     }
   }
 
-  removeItem(filterItem) {
-    const temp = this.filters.filter(function (item) {
-      return item.id === filterItem.id;
-    })[0];
-    this.filters.splice(this.filters.indexOf(temp), 1);
-    this.filterEvent.next({ item: filterItem, bool: false });
-    this.filters = [].concat(this.filters);
-    // this.filterStorage.deleteFromLocalStorage(filterItem);
-    this.panels.tasks.filters = this.filters;
-    this.filterStorage.updateAllStorage(this.panels);
-
-  }
-
-  addItem(filterItem) {
-    this.filters = [];
-    this.filters.push(filterItem);
-    // this.filterStorage.storeOnLocalStorage(item);
-    /* this.panels.tasks = { x: this.panels.tasks.x, y: this.panels.tasks.y,
-      cols: this.panels.tasks.cols, rows: this.panels.tasks.rows, filters: this.panels.tasks.filters };
-      */
-    this.filters = [].concat(this.filters);
-    this.filterEvent.next({ item: filterItem, bool: true });
-    this.panels.tasks.filters = this.filters;
-
-    this.filterStorage.updateAllStorage(this.panels);
-
-  }
-  restoreItems() {
-    this.filters = this.panels.tasks.filters;
-    this.filters.forEach(item => this.filterEvent.next({ item: item, bool: true }));
-
-  }
   fixPanelsDirection(dir) {
     if (dir === 'rtl') {
       this.panels.tasks.x = this.panels.details.cols;
@@ -125,15 +90,7 @@ export class GridComponent implements OnInit {
         }
       }
     });
-    /*this.event.filterAnnounced$.subscribe(data => {
-      if (data.hasOwnProperty('bool')) {
-        if (data.bool) {
-          this.addItem(data.item);
-        } else {
-          this.removeItem(data.item);
-        }
-      }
-    });*/
+
     this.options = {
       itemResizeCallback: this.onResize,
       gridType: GridType.Fit,

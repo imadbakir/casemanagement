@@ -7,9 +7,6 @@
     <ion-title>{{'Tasks' | translate}}</ion-title>
 
     <ion-buttons slot="end">
-      <!-- <ion-button color="dark" (click)="setLanguage(translate.currentLang == 'ar' ? 'en' : 'ar')">
-        {{translate.currentLang == 'ar' ? 'English' : 'Arabic' | translate}}
-      </ion-button> -->
       <ion-button color="dark" (click)="languages($event)" round end-item slot="icon">
         <ion-badge color="primary" slot="start">{{translate.currentLang}}</ion-badge>
         <ion-icon name="globe"></ion-icon>
@@ -32,7 +29,7 @@
         <!-- your content here  <app-task-grid [filterItem]="item.propName"></app-task-grid>
         
  -->
-        <app-task-grid [filterEvent]="filterEvent" [filterItems]="filters"></app-task-grid>
+        <app-task-grid></app-task-grid>
 
 
       </gridster-item>

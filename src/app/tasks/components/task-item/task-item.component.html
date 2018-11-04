@@ -1,23 +1,18 @@
 <div class="flex-item">
   <ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete}" [routerLink]="['/tasks/edit/',task.id]"
     routerLinkActive="router-link-active">
-
-
     <ion-card-content>
-      <h2 data-ph="Task name..">{{task.name}} <div class="photo-container mini-avatar" [ngStyle]="{'background-image': 'url(assets/img/'+task?.assignee+'.jpg)'}"></div>
+      <h2 data-ph="Task name..">
+        {{task.name}}
+        <div class="photo-container mini-avatar" [ngStyle]="{'background-image': 'url(assets/img/'+task?.assignee+'.jpg)'}"></div>
       </h2>
       <div class="more-details">
         <p>{{task.description}}</p>
-
       </div>
       <ng-container *ngIf="!task.deleteReason">
         <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
           <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}
         </ion-badge>
-        <!-- <ion-badge mat-raised-button (click)="follow_up.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
-          <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.follow_up ? (task.follow_up
-          | date ): 'Follow Up'}}
-        </ion-badge> -->
         <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
           <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due ? (task.due
           | date ): 'Due' | translate}}
@@ -27,13 +22,6 @@
         <input [matDatepicker]="follow_up" [(ngModel)]="task.follow_up" hidden>
         <mat-datepicker touchUi #follow_up></mat-datepicker>
       </ng-container>
-
-
-      <!-- <ion-buttons slot="end" class="hide-md hide-sm">
-                <ion-button clear color="dark" slot="icon-only" (click)="presentPopover($event)">
-                  <ion-icon name="md-more"></ion-icon>
-                </ion-button>
-              </ion-buttons> -->
 
     </ion-card-content>
     <div class="more-details task-options" *ngIf="!task.deleteReason">
@@ -47,16 +35,15 @@
         <ion-icon name="person" slot="start"></ion-icon>
         <span [hidden]="task.assignee">{{'Claim' | translate}}</span>
         <span [hidden]="!task.assignee">{{task.assignee}}</span>
-
       </ion-button>
       <ion-button size="small" color="primary" fill="clear">
         <ion-icon name="people" slot="start"></ion-icon>{{'Add Group' | translate}}
       </ion-button>
-             
-        <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == auth.getUser()?.username"
+
+      <!-- <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == auth.getUser()?.username"
         [ngStyle]="{'float':'right'}" fill="clear">
         <ion-icon name="checkmark" slot="start"></ion-icon>{{'Complete' | translate}}
-      </ion-button> 
+      </ion-button> -->
 
     </div>
   </ion-card>

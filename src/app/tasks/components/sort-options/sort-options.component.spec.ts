@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskOptionsComponent } from './task-options.component';
+import { SortOptionsComponent } from './sort-options.component';
 
-describe('TaskOptionsComponent', () => {
-  let component: TaskOptionsComponent;
-  let fixture: ComponentFixture<TaskOptionsComponent>;
+describe('SortOptionsComponent', () => {
+  let component: SortOptionsComponent;
+  let fixture: ComponentFixture<SortOptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskOptionsComponent ]
+      declarations: [SortOptionsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskOptionsComponent);
+    fixture = TestBed.createComponent(SortOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
