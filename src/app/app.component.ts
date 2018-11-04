@@ -1,13 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-
-import { FormioAuthService } from 'angular-formio/auth';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
-import { UserOptionsComponent } from './user-options/user-options.component';
+import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { EventsService } from './events.service';
-import { AuthService } from './auth.service';
 import { TranslateService } from '@ngx-translate/core';
-import { StorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
+import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
+import { AuthService } from './core/services/auth.service';
+import { EventsService } from './core/services/events.service';
+
 
 @Component({
   selector: 'app-root',

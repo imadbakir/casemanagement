@@ -5,9 +5,9 @@ import { FormioAuth } from 'angular-formio/auth';
 import {
   FormioResourceRoutes
 } from 'angular-formio/resource';
-import { AuthLoginComponent } from './auth-login/auth-login.component';
+import { AuthLoginComponent } from './components/auth-login/auth-login.component';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { AuthIndexComponent } from './auth-index/auth-index.component';
+import { AuthIndexComponent } from './components/auth-index/auth-index.component';
 import { FormioModule } from 'angular-formio';
 
 
