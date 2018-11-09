@@ -26,7 +26,11 @@ export class GridComponent implements OnInit {
   }
   onResize(item, itemComponent) {
   }
-
+  onInit(girdster) {
+    window.setTimeout(function () {
+      girdster.options.api.resize();
+    }, 2000);
+  }
 
   constructor(public event: EventsService,
     public filterStorage: FilterService,
@@ -79,6 +83,7 @@ export class GridComponent implements OnInit {
     this.event.refreshAnnounced$.subscribe(data => {
       // this.restoreItems();
     });
+    // this.event.menuChangeAnnounced$.subscribe(() => this.options.api.resize());
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -92,6 +97,7 @@ export class GridComponent implements OnInit {
     });
 
     this.options = {
+      initCallback: this.onInit,
       itemResizeCallback: this.onResize,
       gridType: GridType.Fit,
       compactType: CompactType.CompactUpAndLeft,
@@ -130,13 +136,7 @@ export class GridComponent implements OnInit {
       disableWarnings: false,
       scrollToNewItems: false
     };
-    setTimeout(() => {
-      // tslint:disable-next-line:max-line-length
-      this.filterStorage.getFromLocalStorage() ? this.panels = this.filterStorage.getFromLocalStorage() : this.filterStorage.updateAllStorage(this.panels);
-      // this.restoreItems();
-      this.panels.details.open = false;
-      this.options.api.resize();
-    }, 1200);
+    this.panels.details.open = false;
   }
 
 }

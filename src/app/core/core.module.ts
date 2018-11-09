@@ -15,6 +15,7 @@ import { AppRoutingModule } from './core-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { EventsService } from './services/events.service';
+import { EnvServiceProvider, formioAuthConfigProvider, FormioAppConfigProvider } from './services/env.service.provider';
 
 
 
@@ -46,14 +47,15 @@ export function createTranslateLoader(http: HttpClient) {
 
   ],
   providers: [
+    EnvServiceProvider,
     AuthService,
     AuthGuard,
     EventsService,
     FormioResources,
     FormioAuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: FormioAuthConfig, useValue: AuthConfig },
-    { provide: FormioAppConfig, useValue: AppConfig },
+    formioAuthConfigProvider,
+    FormioAppConfigProvider,
   ],
   exports: [
     IonicModule,

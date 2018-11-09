@@ -1,7 +1,9 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FormioAlerts, FormioAppConfig, FormioError, FormioForm, FormioLoader, FormioOptions,
-    FormioRefreshValue, FormioService } from 'angular-formio';
+import {
+    FormioAlerts, FormioAppConfig, FormioError, FormioForm, FormioLoader, FormioOptions,
+    FormioRefreshValue, FormioService
+} from 'angular-formio';
 import { Formio } from 'formiojs';
 import { assign, each, get, isEmpty } from 'lodash';
 
@@ -22,8 +24,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
     @Input() options?: FormioOptions;
     @Input() formioOptions?: any;
     @Input() renderOptions?: any;
-    @Input() readOnly ?= false;
-    @Input() viewOnly ?= false;
+    @Input() readOnly?= false;
+    @Input() viewOnly?= false;
     @Input() hideComponents?: string[];
     @Input() refresh?: EventEmitter<FormioRefreshValue>;
     @Input() error?: EventEmitter<any>;
@@ -105,7 +107,9 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 this.formio.setUrl(this.src, this.formioOptions || {});
             }
             const currentLang = this.translate.currentLang;
+
             this.formio.submission = this.submission;
+
             this.translate.getTranslation(currentLang).subscribe(data => {
 
                 this.formio.i18next.options.resources[currentLang] = {
@@ -233,14 +237,17 @@ export class AppFormioComponent implements OnInit, OnChanges {
             if (refresh.form) {
                 this.formio.setForm(refresh.form).then(() => {
                     if (refresh.submission) {
+                        refresh = this.checkForNestedForms(refresh, 'submission');
                         this.formio.setSubmission(refresh.submission);
                     }
                 });
             } else if (refresh.submission) {
+                refresh = this.checkForNestedForms(refresh, 'submission');
                 this.formio.setSubmission(refresh.submission);
             } else {
                 switch (refresh.property) {
                     case 'submission':
+                        refresh = this.checkForNestedForms(refresh, 'value');
                         this.formio.submission = refresh.value;
                         break;
                     case 'form':
@@ -249,6 +256,16 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 }
             }
         });
+    }
+    checkForNestedForms(object, key) {
+        Object.keys(this.formio.submission.data).filter((k) => {
+            if (k.indexOf('form') > -1) {
+                const data = object[key].data;
+                data[k] = { data: data };
+                object[key].data = data;
+            }
+        });
+        return object;
     }
     ngOnChanges(changes: any) {
         this.initialize();

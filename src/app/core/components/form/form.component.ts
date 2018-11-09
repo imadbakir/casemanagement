@@ -156,7 +156,9 @@ export class FormComponent implements OnInit, OnDestroy {
         });
         return resource;
       }, (err) => { })
-      .catch((err) => { });
+      .catch((err) => {
+        console.log(err);
+      });
     return this.resourceLoading;
   }
   loadForm() {

@@ -84,7 +84,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user = this.auth.getUser();
     this.event.refreshFiltersAnnounced$.subscribe(() => {
-      this.camundaService.getFilters(this.auth.getUser().username).subscribe(filters => {
+      this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe(filters => {
         this.filters = filters;
         if (this.filters.length > 0) {
           if (this.openFilter.length > 0 && this.openFilter !== 'history') {
@@ -100,7 +100,7 @@ export class TasksComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.camundaService.getFilters(this.auth.getUser().username).subscribe(filters => {
+    this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe(filters => {
       this.filters = filters;
       if (filters.length === 0) {
         const filter = {
@@ -128,12 +128,15 @@ export class TasksComponent implements OnInit, OnDestroy {
     });
 
   }
+  emitMenuChangeEvent() {
+    this.eventService.announceMenuChange('refresh');
 
-  announceRefresh() {
-    this.eventService.announceRefresh('refresh');
   }
-  ngOnDestroy(): void {
-    this.announceRefresh();
-  }
+announceRefresh() {
+  this.eventService.announceRefresh('refresh');
+}
+ngOnDestroy(): void {
+  this.announceRefresh();
+}
 
 }

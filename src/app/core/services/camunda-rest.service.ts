@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, tap } from 'rxjs/operators';
 import { ProcessDefinition } from '../schemas/ProcessDefinition';
 import { Task } from '../schemas/Task';
+import { EnvService } from './env.service';
 
 
 
@@ -12,12 +13,16 @@ import { Task } from '../schemas/Task';
   providedIn: 'root'
 })
 export class CamundaRestService {
-  private engineRestUrl = 'http://34.207.137.198:8080/rest/';
-  private engineApiUrl = 'http://34.207.137.198:8080/api/';
+  private engineRestUrl = this.env.engineRestUrl;
+  private engineApiUrl = this.env.engineApiUrl;
+  private endpoints = {
+    tasks: 'task',
+    filter: 'filter',
+  };
   httpOptions = {
     headers: new HttpHeaders()
   };
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private env: EnvService) {
 
   }
 
@@ -29,15 +34,15 @@ export class CamundaRestService {
     );
   }
 
-  getFilters(userId): Observable<any[]> {
-    const endpoint = `${this.engineRestUrl}filter?owner=${userId}`;
-    return this.http.get<any>(endpoint, this.httpOptions).pipe(
+  getFilters(params): Observable<any[]> {
+    const endpoint = `${this.engineRestUrl}${this.endpoints.filter}`;
+    return this.http.get<any>(endpoint, { params: params }).pipe(
       tap(form => this.log(`fetched filters`)),
       catchError(this.handleError('getFilters', []))
     );
   }
   getFilter(id): Observable<any> {
-    const endpoint = `${this.engineRestUrl}filter/${id}`;
+    const endpoint = `${this.engineRestUrl}${this.endpoints.filter}/${id}`;
     return this.http.get<any>(endpoint).pipe(
       tap(form => this.log(`fetched filter ${id}`)),
       catchError(this.handleError('getFilter', []))
