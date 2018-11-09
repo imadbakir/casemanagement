@@ -6,16 +6,14 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FormioAppConfig } from 'angular-formio';
-import { FormioAuthConfig, FormioAuthService } from 'angular-formio/auth';
+import { FormioAuthService } from 'angular-formio/auth';
 import { FormioResources } from 'angular-formio/resource';
 import { StorageServiceModule } from 'angular-webstorage-service';
-import { AppConfig, AuthConfig } from './config';
 import { AppRoutingModule } from './core-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { EnvServiceProvider, FormioAppConfigProvider, formioAuthConfigProvider } from './services/env.service.provider';
 import { EventsService } from './services/events.service';
-import { EnvServiceProvider, formioAuthConfigProvider, FormioAppConfigProvider } from './services/env.service.provider';
 
 
 
