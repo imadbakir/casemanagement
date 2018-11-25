@@ -1,10 +1,7 @@
-<ng-container *ngFor="let key of objKeys">
-  <app-form *ngIf="key.substring(0, 4) == 'form'" [formKey]="key + (formVariables[key].version ? '/v/'+formVariables[key].version:'')"
-    [resourceName]="formVariables[key].value" [resourceId]="formVariables[key].resourceId" [readOnly]="formVariables[key].readOnly"
-    (submit)="onSubmit($event)"></app-form>
-</ng-container>
+<app-form *ngIf="form.formKey" [formKey]="form.formKey" [resourceName]="form.resourceName" [resourceId]="form.resourceId"
+  [readOnly]="form.readOnly" (submit)="onSubmit($event)"></app-form>
 
-<div text-center padding *ngIf="!formVariables">
+<div text-center padding *ngIf="!task">
   <ion-text>
     <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
     <h6 padding [ngStyle]="{ 'opacity': 0.5}">Please Choose a Task</h6>

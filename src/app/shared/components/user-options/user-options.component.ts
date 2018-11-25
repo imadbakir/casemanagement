@@ -22,7 +22,6 @@ export class UserOptionsComponent implements OnInit {
   logout() {
     this.auth.logout();
     this.popoverCtrl.dismiss();
-    this.eventService.announceRefresh('refresh');
   }
   ngOnInit() {
   }

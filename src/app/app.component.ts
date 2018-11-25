@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
     });
     this.auth.onLogout.subscribe(() => {
       this.router.navigate(['/auth/login']);
-      this.eventService.announceRefresh('refresh');
     });
   }
 

@@ -1,42 +1,15 @@
 <ion-header fixed>
-  <ion-toolbar [ngClass]="''">
-    <ion-buttons slot="start">
-      <ion-menu-button menu="start"></ion-menu-button>
-    </ion-buttons>
-
-    <ion-title>{{'Tasks' | translate}}</ion-title>
-
+  <ion-toolbar>
+    <app-header [title]="'Tasks'"></app-header>
     <ion-buttons slot="end">
-      <ion-button color="dark" (click)="languages($event)" round end-item slot="icon">
-        <ion-badge color="primary" slot="start">{{translate.currentLang}}</ion-badge>
-        <ion-icon name="globe"></ion-icon>
-      </ion-button>
-      <ion-button color="dark" round end-item slot="icon">
-        <ion-badge color="danger" class="notifications" slot="start">11</ion-badge>
-        <ion-icon name="notifications-outline"></ion-icon>
-      </ion-button>
-      <ion-button color="secondary" solid round end-item icon-end (click)="process($event)" class="toolbar-round">{{'Add
-        Request' | translate}}
-        <ion-icon slot="start" name="add-circle"></ion-icon>
-      </ion-button>
+      <app-language-switch></app-language-switch>
+      <app-notifications-button></app-notifications-button>
+      <app-add-request-button></app-add-request-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content [ngStyle]="{height: '100vh'}">
   <div [ngClass]="'padding'">
-    <gridster [options]="options" dir="ltr">
-      <gridster-item ion-card [ngClass]="{'grid-col': true}" [item]="panels.tasks">
-        <!-- your content here  <app-task-grid [filterItem]="item.propName"></app-task-grid>
-        
- -->
-        <app-task-grid></app-task-grid>
-
-
-      </gridster-item>
-      <gridster-item ion-card [ngClass]="{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}"
-        [item]="panels.details">
-        <app-task-details [panels]="panels"></app-task-details>
-      </gridster-item>
-    </gridster>
+    <app-gridster></app-gridster>
   </div>
 </ion-content>

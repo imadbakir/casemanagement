@@ -1,8 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicRouteStrategy } from '@ionic/angular';
 import { FormioModule } from 'angular-formio';
 import { FormioAuth } from 'angular-formio/auth';
 import { SharedModule } from '../shared/shared.module';
@@ -23,11 +21,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     FormioModule,
-    CommonModule,
     FormioAuth,
     RouterModule.forChild(routes),
-    IonicModule,
-    FormsModule,
     SharedModule
   ],
   declarations: [AuthLoginComponent, AuthIndexComponent],

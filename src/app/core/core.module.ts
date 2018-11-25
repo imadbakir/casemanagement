@@ -6,13 +6,11 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FormioAuthService } from 'angular-formio/auth';
-import { FormioResources } from 'angular-formio/resource';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { AppRoutingModule } from './core-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
-import { EnvServiceProvider, FormioAppConfigProvider, formioAuthConfigProvider } from './services/env.service.provider';
+import { EnvServiceProvider } from './services/env.service.provider';
 import { EventsService } from './services/events.service';
 
 
@@ -49,11 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     AuthGuard,
     EventsService,
-    FormioResources,
-    FormioAuthService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    formioAuthConfigProvider,
-    FormioAppConfigProvider,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [
     IonicModule,

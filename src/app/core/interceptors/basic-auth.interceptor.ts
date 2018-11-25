@@ -2,18 +2,19 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { EnvService } from '../services/env.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BasicAuthInterceptor implements HttpInterceptor {
-    urls = ['34.207.137.198:8080/rest'];
-    constructor(public auth: AuthService) { }
+    urls = [this.env.engineApiUrl, this.env.engineRestUrl];
+    constructor(public auth: AuthService, private env: EnvService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with basic auth credentials if available
         const currentUser = this.auth.getUser();
-                if (currentUser && currentUser.token && this.urlMatches(this.urls, request)) {
+        if (currentUser && currentUser.token && this.urlMatches(this.urls, request)) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Basic ${currentUser.token}`

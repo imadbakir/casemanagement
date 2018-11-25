@@ -1,9 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {
-    FormioAlerts, FormioAppConfig, FormioError, FormioForm, FormioLoader, FormioOptions,
-    FormioRefreshValue, FormioService
-} from 'angular-formio';
+import { FormioAlerts, FormioAppConfig, FormioError, FormioForm,
+     FormioLoader, FormioOptions, FormioRefreshValue, FormioService } from 'angular-formio';
 import { Formio } from 'formiojs';
 import { assign, each, get, isEmpty } from 'lodash';
 
@@ -49,6 +47,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
     public formio: any;
     public initialized: boolean;
     public alerts: FormioAlerts;
+    interval;
     constructor(
         private loader: FormioLoader,
         @Optional() private config: FormioAppConfig,
@@ -80,7 +79,51 @@ export class AppFormioComponent implements OnInit, OnChanges {
         this.ready = new EventEmitter();
         this.initialized = false;
         this.alerts.alerts = [];
+
     }
+   /* arrangeDom(node) {
+        $(node).find('input[type!=\'checkbox\'][type!=\'hidden\']').each(function () {
+            const val = $(this).val();
+            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
+            $(this).remove();
+        });
+        $(node).find('input[type=\'checkbox\']').each(function () {
+            const val = $(this).val() === 1 ? 'Yes' : 'No';
+            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
+            $(this).remove();
+        });
+        $(node).find('.choices').each(function () {
+            $(this).find('.choices__list--single').find('button').remove();
+            const val = $(this).find('.choices__list--single').find('.choices__item').text();
+            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
+            $(this).remove();
+        });
+        $(node).find('textarea').each(function () {
+            const val = $(this).val();
+            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
+            $(this).remove();
+        });
+    }
+    observeReadOnlyForms() {
+        const nodes = document.querySelectorAll('.readOnly');
+        if (nodes) {
+            nodes.forEach((form) => {
+                let timer;
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach(mutation => {
+                        clearTimeout(timer);
+                        timer = setTimeout(() => {
+                            this.arrangeDom(form);
+                            observer.disconnect();
+                        }, 100);
+                    });
+                });
+                observer.observe(form, {
+                    childList: true
+                });
+            });
+        }
+    }*/
     setForm(form: FormioForm) {
         this.form = form;
         // Only initialize a single formio instance.
@@ -109,7 +152,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
             const currentLang = this.translate.currentLang;
 
             this.formio.submission = this.submission;
-
             this.translate.getTranslation(currentLang).subscribe(data => {
 
                 this.formio.i18next.options.resources[currentLang] = {
@@ -169,9 +211,142 @@ export class AppFormioComponent implements OnInit, OnChanges {
         this.initialized = true;
     }
 
+
+    setNestedFormsSubmission(formio, submission) {
+        formio.components.forEach(component => {
+            if (component.type === 'form') {
+                component.subFormReady.then(() => {
+                    clearTimeout(this.interval);
+                    this.interval = setTimeout(() => {
+                        submission.data = this.ferchComponents(this.formio, submission);
+                        this.formio.setSubmission(submission);
+                        console.log(this.formio);
+                    }, 300);
+                    this.setNestedFormsSubmission(component.subForm, submission);
+                });
+            }
+        });
+    }
+
+    ferchComponents(componentsComponent, dataObject) {
+        let data = {};
+        componentsComponent.components.forEach(component => {
+            if (dataObject.data.hasOwnProperty(component.key) && component.type !== 'form') {
+                data[component.key] = dataObject.data[component.key];
+            } else if (component.type === 'form') {
+                data[component.key] = { data: this.ferchComponents(component.subForm, dataObject) };
+            } else if (component.hasOwnProperty('components') && component.components !== null) {
+
+                data = { ...data, ...this.ferchComponents(component, dataObject) };
+            }
+        });
+        return data;
+    }
+
+    onRefresh(refresh: FormioRefreshValue) {
+        this.formioReady.then(() => {
+            if (refresh.form) {
+                this.formio.setForm(refresh.form).then(() => {
+                    if (refresh.submission) {
+                        this.setNestedFormsSubmission(this.formio, refresh.submission);
+                    }
+                });
+            } else if (refresh.submission) {
+                this.setNestedFormsSubmission(this.formio, refresh.submission);
+            } else {
+                switch (refresh.property) {
+                    case 'submission':
+                        this.setNestedFormsSubmission(this.formio, refresh.value);
+                        break;
+                    case 'form':
+                        this.formio.form = refresh.value;
+                        break;
+                }
+            }
+        });
+    }
+
+    onPrevPage(data: any) {
+        this.alerts.setAlerts([]);
+        this.prevPage.emit(data);
+    }
+    onNextPage(data: any) {
+        this.alerts.setAlerts([]);
+        this.nextPage.emit(data);
+    }
+    onSubmit(submission: any, saved: boolean) {
+        this.submitting = false;
+        if (saved) {
+            this.formio.emit('submitDone', submission);
+        }
+        this.submit.emit(submission);
+        if (!this.success) {
+            this.alerts.setAlert({
+                type: 'success',
+                message: get(this.options, 'alerts.submitMessage')
+            });
+        }
+    }
+    onError(err: any) {
+        this.loader.loading = false;
+        this.alerts.setAlerts([]);
+        this.submitting = false;
+        if (!err) {
+            return;
+        }
+
+        // Make sure it is an array.
+        err = err instanceof Array ? err : [err];
+
+        // Emit these errors again.
+        this.errorChange.emit(err);
+
+        // Iterate through each one and set the alerts array.
+        each(err, (error: any) => {
+            this.alerts.addAlert({
+                type: 'danger',
+                message: error.message || error.toString()
+            });
+        });
+    }
+    submitExecute(submission: object) {
+        if (this.service && !this.url) {
+            this.service
+                .saveSubmission(submission)
+                .subscribe(
+                    (sub: {}) => this.onSubmit(sub, true),
+                    err => this.onError(err)
+                );
+        } else {
+            this.onSubmit(submission, false);
+        }
+    }
+
+    submitForm(submission: any) {
+        // Keep double submits from occurring...
+        if (this.submitting) {
+            return;
+        }
+        this.submitting = true;
+        this.beforeSubmit.emit(submission);
+
+        // if they provide a beforeSubmit hook, then allow them to alter the submission asynchronously
+        // or even provide a custom Error method.
+        const beforeSubmit = get(this.options, 'hooks.beforeSubmit');
+        if (beforeSubmit) {
+            beforeSubmit(submission, (err: FormioError, sub: object) => {
+                if (err) {
+                    this.onError(err);
+                    return;
+                }
+                this.submitExecute(sub);
+            });
+        } else {
+            this.submitExecute(submission);
+        }
+    }
     ngOnInit() {
         this.initialize();
-
         if (this.language) {
             this.language.subscribe((lang: string) => {
                 this.formio.language = lang;
@@ -232,41 +407,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.service = new FormioService(this.url);
         }
     }
-    onRefresh(refresh: FormioRefreshValue) {
-        this.formioReady.then(() => {
-            if (refresh.form) {
-                this.formio.setForm(refresh.form).then(() => {
-                    if (refresh.submission) {
-                        refresh = this.checkForNestedForms(refresh, 'submission');
-                        this.formio.setSubmission(refresh.submission);
-                    }
-                });
-            } else if (refresh.submission) {
-                refresh = this.checkForNestedForms(refresh, 'submission');
-                this.formio.setSubmission(refresh.submission);
-            } else {
-                switch (refresh.property) {
-                    case 'submission':
-                        refresh = this.checkForNestedForms(refresh, 'value');
-                        this.formio.submission = refresh.value;
-                        break;
-                    case 'form':
-                        this.formio.form = refresh.value;
-                        break;
-                }
-            }
-        });
-    }
-    checkForNestedForms(object, key) {
-        Object.keys(this.formio.submission.data).filter((k) => {
-            if (k.indexOf('form') > -1) {
-                const data = object[key].data;
-                data[k] = { data: data };
-                object[key].data = data;
-            }
-        });
-        return object;
-    }
     ngOnChanges(changes: any) {
         this.initialize();
 
@@ -275,91 +415,14 @@ export class AppFormioComponent implements OnInit, OnChanges {
         }
 
         this.formioReady.then(() => {
+
             if (changes.submission && changes.submission.currentValue) {
-                this.formio.submission = changes.submission.currentValue;
+                this.setNestedFormsSubmission(this.formio, changes.submission.currentValue);
             }
 
             if (changes.hideComponents) {
                 this.formio.hideComponents(changes.hideComponents.currentValue);
             }
         });
-    }
-    onPrevPage(data: any) {
-        this.alerts.setAlerts([]);
-        this.prevPage.emit(data);
-    }
-    onNextPage(data: any) {
-        this.alerts.setAlerts([]);
-        this.nextPage.emit(data);
-    }
-    onSubmit(submission: any, saved: boolean) {
-        this.submitting = false;
-        if (saved) {
-            this.formio.emit('submitDone', submission);
-        }
-        this.submit.emit(submission);
-        if (!this.success) {
-            this.alerts.setAlert({
-                type: 'success',
-                message: get(this.options, 'alerts.submitMessage')
-            });
-        }
-    }
-    onError(err: any) {
-        this.loader.loading = false;
-        this.alerts.setAlerts([]);
-        this.submitting = false;
-        if (!err) {
-            return;
-        }
-
-        // Make sure it is an array.
-        err = err instanceof Array ? err : [err];
-
-        // Emit these errors again.
-        this.errorChange.emit(err);
-
-        // Iterate through each one and set the alerts array.
-        each(err, (error: any) => {
-            this.alerts.addAlert({
-                type: 'danger',
-                message: error.message || error.toString()
-            });
-        });
-    }
-    submitExecute(submission: object) {
-        if (this.service && !this.url) {
-            this.service
-                .saveSubmission(submission)
-                .subscribe(
-                    (sub: {}) => this.onSubmit(sub, true),
-                    err => this.onError(err)
-                );
-        } else {
-            this.onSubmit(submission, false);
-        }
-    }
-    submitForm(submission: any) {
-        // Keep double submits from occurring...
-        if (this.submitting) {
-            return;
-        }
-        this.submitting = true;
-        this.beforeSubmit.emit(submission);
-
-        // if they provide a beforeSubmit hook, then allow them to alter the submission asynchronously
-        // or even provide a custom Error method.
-        const beforeSubmit = get(this.options, 'hooks.beforeSubmit');
-        if (beforeSubmit) {
-            beforeSubmit(submission, (err: FormioError, sub: object) => {
-                if (err) {
-                    this.onError(err);
-                    return;
-                }
-                this.submitExecute(sub);
-            });
-        } else {
-            this.submitExecute(submission);
-        }
     }
 }
