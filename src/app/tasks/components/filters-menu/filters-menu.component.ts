@@ -68,26 +68,24 @@ export class FiltersMenuComponent implements OnInit {
       filter.count = data.count;
     });
   }
-  toggleFilter(item, bool) {
+  toggleFilter(item) {
     this.openFilter = item.id;
-    this.event.announceFilter({ item: item, bool: bool });
+    this.event.announceFilter({ item: item });
   }
-  toggleHistory() {
-    this.openFilter = 'history';
-    this.event.announceArchive({ archive: true, item: '', bool: true });
-  }
+
   ngOnInit() {
     this.event.refreshFiltersAnnounced$.subscribe(() => {
-      this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe(filters => {
+      this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
         this.filters = filters;
         if (this.filters.length > 0) {
-          if (this.openFilter.length > 0 && this.openFilter !== 'history') {
-            this.toggleFilter(this.filters.filter((item) => item.id === this.openFilter)[0], true);
+          const openFilters = this.filters.filter((item) => item.id === this.openFilter);
+          if (openFilters.length > 0) {
+            this.toggleFilter(openFilters[0]);
 
           } else if (this.openFilter === 'history') {
-            this.toggleHistory();
+            this.toggleFilter({ id: 'history' });
           } else {
-            this.toggleFilter(this.filters[0], true);
+            this.toggleFilter(this.filters[0]);
 
           }
         }

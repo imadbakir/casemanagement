@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController, PopoverController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LoadingController, ModalController, PopoverController, InfiniteScroll } from '@ionic/angular';
 import { GridsterItem } from 'angular-gridster2';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
@@ -20,7 +20,10 @@ export class TaskGridComponent implements OnInit {
 
   tasksOrigin: any = [];
   loading;
+  filterId = '';
+  pageSize = 7;
   items: Array<GridsterItem>;
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
 
   static itemChange(item, itemComponent) {
   }
@@ -54,7 +57,7 @@ export class TaskGridComponent implements OnInit {
     return await this.loading.present();
   }
   async dismissLoading() {
-    return await this.loading.dismiss();
+    this.loading.dismiss();
   }
 
   clearSearch(event) {
@@ -113,37 +116,46 @@ export class TaskGridComponent implements OnInit {
     this.items.splice(this.items.indexOf(item), 1);
   }
 
-  listArchive(event) {
-    if (event.bool) {
-      this.presentLoading().then(() => {
-        this.camundaService.listHistory(this.auth.getUser().username).subscribe(data => {
-          this.tasks = data;
-          this.tasksOrigin = data;
-          this.dismissLoading();
+  setFilter(filterId) {
+    this.filter = filterId;
+  }
+  fetchTasks(isNew = false) {
+    if (isNew) {
+      this.tasks = this.tasksOrigin = [];
+    }
+    if (this.filter === 'history') {
+      return this.presentLoading().then(() => {
+        this.camundaService.listHistory({
+          firstResult: this.tasks.length,
+          maxResults: this.tasks.length + this.pageSize
+        }, {
+          finished: true,
+          taskAssignee: this.auth.getUser().username,
+          }).subscribe(data => {
+            this.tasksOrigin = [...this.tasks, ...data];
+            this.tasks = this.tasksOrigin;
+            this.dismissLoading();
+          });
 
-        });
       });
     } else {
-      this.camundaService.listHistory(this.auth.getUser().username).subscribe(data => {
-        data.forEach(entry => this.tasksOrigin.splice(this.tasksOrigin.indexOf(entry), 1));
-        this.tasks = this.tasksOrigin;
+      return this.presentLoading().then(() => {
+        this.camundaService.listFilter(this.filter,
+          { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }).subscribe(data => {
+            this.tasksOrigin = [...this.tasks, ...data];
+            this.tasks = this.tasksOrigin;
+            this.dismissLoading();
+          });
       });
 
     }
+
   }
-
-  ListFilter(event) {
-    if (event.bool) {
-      this.presentLoading().then(() => {
-        this.camundaService.listFilter(event.item.id).subscribe(data => {
-          this.tasksOrigin = data;
-          this.tasks = this.tasksOrigin;
-          this.dismissLoading();
-        });
-      });
-
-
-    }
+  DoInfinite(infiniteScroll) {
+    this.fetchTasks().then((data) => {
+      console.log(data);
+      infiniteScroll.target.complete();
+    });
   }
 
   ngOnInit() {
@@ -164,16 +176,12 @@ export class TaskGridComponent implements OnInit {
         });
       }
     });
-    this.event.filterAnnounced$.subscribe(data => {
-      if (data.hasOwnProperty('bool')) {
-        if (data.bool) {
-          this.ListFilter(data);
-        }
+    this.event.filterAnnounced$.subscribe((data) => {
+      if (data.item) {
+        console.log(data);
+        this.setFilter(data.item.id);
+        this.fetchTasks(true);
       }
-    });
-    this.event.archiveAnnounced$.subscribe(event => {
-      this.listArchive(event);
-
     });
   }
 }

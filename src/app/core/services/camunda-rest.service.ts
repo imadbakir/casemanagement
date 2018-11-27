@@ -19,9 +19,7 @@ export class CamundaRestService {
     tasks: 'task',
     filter: 'filter',
   };
-  httpOptions = {
-    headers: new HttpHeaders()
-  };
+
   constructor(private http: HttpClient, private env: EnvService) {
 
   }
@@ -69,9 +67,9 @@ export class CamundaRestService {
       catchError(this.handleError('deleteFilter', []))
     );
   }
-  listFilter(id): Observable<any> {
-    const endpoint = `${this.engineRestUrl}filter/${id}/list`;
-    return this.http.post<any>(endpoint, this.httpOptions).pipe(
+  listFilter(id, queryParams): Observable<any> {
+    const endpoint = `${this.engineRestUrl}filter/${id}/list?maxResults=${queryParams.maxResults}&firstResult=${queryParams.firstResult}`;
+    return this.http.post<any>(endpoint, {}).pipe(
       tap(form => this.log(`fetched filter list ${id}`)),
       catchError(this.handleError('listFilter', []))
     );
@@ -90,9 +88,10 @@ export class CamundaRestService {
       catchError(this.handleError('listHistory', []))
     );
   }
-  listHistory(userId) {
-    const endpoint = `${this.engineRestUrl}history/task?finished=true&taskAssignee=${userId}`;
-    return this.http.get<any>(endpoint).pipe(
+  listHistory(queryParams, variables) {
+    // tslint:disable-next-line:max-line-length
+    const endpoint = `${this.engineRestUrl}history/task?finished=${queryParams.finished}&maxResults=${queryParams.maxResults}&firstResult=${queryParams.firstResult}`;
+    return this.http.post<any>(endpoint, variables).pipe(
       tap(form => this.log(`fetched history`)),
       catchError(this.handleError('listHistory', []))
     );
@@ -104,9 +103,9 @@ export class CamundaRestService {
       catchError(this.handleError('listHistory', []))
     );
   }
-  getFilterCount(id): Observable<any> {
+  getFilterCount(id, variables = {}): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/count`;
-    return this.http.post<any>(endpoint, this.httpOptions).pipe(
+    return this.http.post<any>(endpoint, variables).pipe(
       tap(form => this.log(`fetched filter ${id} count`)),
       catchError(this.handleError('getFilterCount', []))
     );
