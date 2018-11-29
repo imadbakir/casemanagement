@@ -5,6 +5,8 @@ import { FormioResourceConfig, FormioResources } from 'angular-formio/resource';
 import { Formio, Utils } from 'formiojs';
 import _ from 'lodash';
 import { EventsService } from '../../../core/services/events.service';
+import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -24,6 +26,7 @@ export class FormComponent implements OnInit, OnDestroy {
   public formFormio: any;
   public formio: any;
   public refresh: EventEmitter<FormioRefreshValue> = new EventEmitter();
+  public language: BehaviorSubject<String> = new BehaviorSubject('');
 
   public resourceLoading?: Promise<any>;
   public resourceLoaded?: Promise<any>;
@@ -44,9 +47,10 @@ export class FormComponent implements OnInit, OnDestroy {
     public events: EventsService,
     public route: ActivatedRoute,
     public config: FormioResourceConfig,
+    public translate: TranslateService,
     private loader: FormioLoader,
     private appConfig: FormioAppConfig,
-    private resourcesService: FormioResources
+    private resourcesService: FormioResources,
   ) {
     this.formLoaded = new Promise(() => { });
     if (this.appConfig && this.appConfig.appUrl) {
@@ -211,6 +215,10 @@ export class FormComponent implements OnInit, OnDestroy {
     this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
     this.loadForm().then(() => {
       this.loadResource();
+    });
+    this.language.next(this.translate.currentLang);
+    this.translate.onLangChange.subscribe(data => {
+      this.language.next(data.lang);
     });
   }
   ngOnDestroy() {

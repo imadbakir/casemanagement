@@ -1,9 +1,12 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FormioAlerts, FormioAppConfig, FormioError, FormioForm,
-     FormioLoader, FormioOptions, FormioRefreshValue, FormioService } from 'angular-formio';
+import {
+    FormioAlerts, FormioAppConfig, FormioError, FormioForm,
+    FormioLoader, FormioOptions, FormioRefreshValue, FormioService
+} from 'angular-formio';
 import { Formio } from 'formiojs';
 import { assign, each, get, isEmpty } from 'lodash';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-formio',
@@ -28,7 +31,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
     @Input() refresh?: EventEmitter<FormioRefreshValue>;
     @Input() error?: EventEmitter<any>;
     @Input() success?: EventEmitter<object>;
-    @Input() language?: EventEmitter<string>;
+    @Input() language?: BehaviorSubject<string>;
     @Input() hooks?: any = {};
     @Output() render: EventEmitter<object>;
     @Output() customEvent: EventEmitter<object>;
@@ -81,49 +84,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
         this.alerts.alerts = [];
 
     }
-   /* arrangeDom(node) {
-        $(node).find('input[type!=\'checkbox\'][type!=\'hidden\']').each(function () {
-            const val = $(this).val();
-            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
-            $(this).remove();
-        });
-        $(node).find('input[type=\'checkbox\']').each(function () {
-            const val = $(this).val() === 1 ? 'Yes' : 'No';
-            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
-            $(this).remove();
-        });
-        $(node).find('.choices').each(function () {
-            $(this).find('.choices__list--single').find('button').remove();
-            const val = $(this).find('.choices__list--single').find('.choices__item').text();
-            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
-            $(this).remove();
-        });
-        $(node).find('textarea').each(function () {
-            const val = $(this).val();
-            $(this).parent().append(`<p>${val.length > 0 ? val : '-'}</p>`);
-            $(this).remove();
-        });
-    }
-    observeReadOnlyForms() {
-        const nodes = document.querySelectorAll('.readOnly');
-        if (nodes) {
-            nodes.forEach((form) => {
-                let timer;
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach(mutation => {
-                        clearTimeout(timer);
-                        timer = setTimeout(() => {
-                            this.arrangeDom(form);
-                            observer.disconnect();
-                        }, 100);
-                    });
-                });
-                observer.observe(form, {
-                    childList: true
-                });
-            });
-        }
-    }*/
+
     setForm(form: FormioForm) {
         this.form = form;
         // Only initialize a single formio instance.
@@ -149,23 +110,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
             if (this.src) {
                 this.formio.setUrl(this.src, this.formioOptions || {});
             }
-            const currentLang = this.translate.currentLang;
-
             this.formio.submission = this.submission;
-            this.translate.getTranslation(currentLang).subscribe(data => {
 
-                this.formio.i18next.options.resources[currentLang] = {
-                    translation: data
-                };
-                this.formio.language = currentLang;
-            });
-            this.translate.onLangChange.subscribe(data => {
-                this.formio.i18next.options.resources[data.lang] = {
-                    translation: data.translations
-                };
-                this.formio.language = data.lang;
-
-            });
             this.formio.nosubmit = true;
             this.formio.on('prevPage', (data: any) => this.onPrevPage(data));
             this.formio.on('nextPage', (data: any) => this.onNextPage(data));
@@ -218,7 +164,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 component.subFormReady.then(() => {
                     clearTimeout(this.interval);
                     this.interval = setTimeout(() => {
-                        submission.data = this.ferchComponents(this.formio, submission);
+                        submission.data = this.fetchComponents(this.formio, submission);
                         this.formio.setSubmission(submission);
                         console.log(this.formio);
                     }, 300);
@@ -228,16 +174,16 @@ export class AppFormioComponent implements OnInit, OnChanges {
         });
     }
 
-    ferchComponents(componentsComponent, dataObject) {
+    fetchComponents(componentsComponent, dataObject) {
         let data = {};
         componentsComponent.components.forEach(component => {
             if (dataObject.data.hasOwnProperty(component.key) && component.type !== 'form') {
                 data[component.key] = dataObject.data[component.key];
             } else if (component.type === 'form') {
-                data[component.key] = { data: this.ferchComponents(component.subForm, dataObject) };
+                data[component.key] = { data: this.fetchComponents(component.subForm, dataObject) };
             } else if (component.hasOwnProperty('components') && component.components !== null) {
 
-                data = { ...data, ...this.ferchComponents(component, dataObject) };
+                data = { ...data, ...this.fetchComponents(component, dataObject) };
             }
         });
         return data;
@@ -349,7 +295,16 @@ export class AppFormioComponent implements OnInit, OnChanges {
         this.initialize();
         if (this.language) {
             this.language.subscribe((lang: string) => {
-                this.formio.language = lang;
+                this.formioReady.then(() => {
+                    if (!this.formio.i18next.options.resources[lang]) {
+                        this.translate.getTranslation(lang).subscribe(translation => {
+                            this.formio.i18next.options.resources[lang] = { translation: translation };
+                            this.formio.language = lang;
+                        });
+                    } else {
+                        this.formio.language = lang;
+                    }
+                });
             });
         }
 
