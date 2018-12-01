@@ -152,6 +152,7 @@ export class FormComponent implements OnInit, OnDestroy {
       .loadSubmission(null, { ignoreCache: true })
       .then((resource) => {
         this.resource = resource;
+        console.log(JSON.stringify(this.resource));
         this.resourceResolve(resource);
         this.loader.loading = false;
         this.refresh.emit({

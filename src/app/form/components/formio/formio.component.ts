@@ -4,8 +4,8 @@ import {
     FormioAlerts, FormioAppConfig, FormioError, FormioForm,
     FormioLoader, FormioOptions, FormioRefreshValue, FormioService
 } from 'angular-formio';
-import { Formio } from 'formiojs';
-import { assign, each, get, isEmpty } from 'lodash';
+import { Formio, Utils } from 'formiojs';
+import { assign, each, get, isEmpty, set } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -158,20 +158,21 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
 
-    setNestedFormsSubmission(formio, submission) {
-        formio.components.forEach(component => {
+    setNestedFormsSubmission(formio, submission, parentPath = '') {
+        let formsCount = 0;
+        Utils.eachComponent(formio.components, (component, path) => {
             if (component.type === 'form') {
-                component.subFormReady.then(() => {
-                    clearTimeout(this.interval);
-                    this.interval = setTimeout(() => {
-                        submission.data = this.fetchComponents(this.formio, submission);
-                        this.formio.setSubmission(submission);
-                        console.log(this.formio);
-                    }, 300);
-                    this.setNestedFormsSubmission(component.subForm, submission);
+                formsCount++;
+                component.subFormReady.then((form) => {
+                    this.setNestedFormsSubmission(form, submission, `${parentPath ? parentPath + '.' : ''}${component.key}.data`);
                 });
+            } else if (submission.data.hasOwnProperty(component.key)) {
+                set(submission.data, path, submission.data[component.key]);
             }
-        });
+        }, false, parentPath);
+        if (formsCount === 0) {
+            this.formio.setSubmission(submission);
+        }
     }
 
     fetchComponents(componentsComponent, dataObject) {
@@ -293,6 +294,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
     ngOnInit() {
         this.initialize();
+
         if (this.language) {
             this.language.subscribe((lang: string) => {
                 this.formioReady.then(() => {
@@ -376,7 +378,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
             }
 
             if (changes.hideComponents) {
-                this.formio.hideComponents(changes.hideComponents.currentValue);
+                // this.formio.hideComponents(changes.hideComponents.currentValue);
             }
         });
     }
