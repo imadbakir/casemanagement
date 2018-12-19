@@ -7,6 +7,9 @@ import _ from 'lodash';
 import { EventsService } from '../../../core/services/events.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
+import { ExternalService } from '../../../core/services/external.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-form',
@@ -19,6 +22,7 @@ export class FormComponent implements OnInit, OnDestroy {
   @Input() resourceId;
   @Input() readOnly;
   @Output() submit: EventEmitter<object> = new EventEmitter();
+  @Output() customEvent: EventEmitter<object> = new EventEmitter();
   public form: any;
   public resource: any;
   public resourceUrl?: string;
@@ -27,7 +31,7 @@ export class FormComponent implements OnInit, OnDestroy {
   public formio: any;
   public refresh: EventEmitter<FormioRefreshValue> = new EventEmitter();
   public language: BehaviorSubject<String> = new BehaviorSubject('');
-
+  public loading;
   public resourceLoading?: Promise<any>;
   public resourceLoaded?: Promise<any>;
   public resourceResolve: any;
@@ -45,12 +49,16 @@ export class FormComponent implements OnInit, OnDestroy {
 
   constructor(
     public events: EventsService,
+    public externalService: ExternalService,
     public route: ActivatedRoute,
     public config: FormioResourceConfig,
+    public auth: AuthService,
     public translate: TranslateService,
+    public loadingController: LoadingController,
     private loader: FormioLoader,
     private appConfig: FormioAppConfig,
     private resourcesService: FormioResources,
+
   ) {
     this.formLoaded = new Promise(() => { });
     if (this.appConfig && this.appConfig.appUrl) {
@@ -131,6 +139,14 @@ export class FormComponent implements OnInit, OnDestroy {
       });
     });
   }
+  async presentLoading() {
+    this.loading = await this.loadingController.create({});
+    return await this.loading.present();
+  }
+  async dismissLoading() {
+    return await this.loading.dismiss();
+  }
+
 
   onSubmissionError(err: any) {
     this.resourceReject(err);
@@ -154,16 +170,85 @@ export class FormComponent implements OnInit, OnDestroy {
         this.resource = resource;
         this.resourceResolve(resource);
         this.loader.loading = false;
-        this.refresh.emit({
+        /* this.refresh.emit({
           property: 'submission',
           value: this.resource
-        });
+        }); */
         return resource;
       }, (err) => { })
       .catch((err) => {
         console.log(err);
       });
     return this.resourceLoading;
+  }
+  parseVariables(string) {
+    const vars = string.match(/\[(.*?)\]/g);
+    if (vars) {
+      vars.forEach(variable => {
+        const value = _.get(this.resource, variable.replace(/\[|\]/g, '').replace('submission.', ''));
+        string = string.replace(variable, value);
+      });
+    }
+
+    return string;
+  }
+  onCustomEvent(event) {
+    try {
+      if (event.hasOwnProperty('type')) {
+        switch (event.type) {
+          case 'complete':
+            this.onSubmit(event);
+            break;
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    this.customEvent.emit(event);
+  }
+  onFormLoad(event) {
+    _.set(this.resource, 'extras.currentUser', this.auth.getUser().username);
+    if (event.hasOwnProperty('properties') && event.properties.onFormLoad) {
+      try {
+        const calls = JSON.parse(event.properties.onFormLoad);
+        calls.forEach(call => {
+          if (call.url && call.method) {
+            this.externalService.apiCall(call.method, this.parseVariables(call.url)).subscribe(response => {
+              if (response['bank_account_status']) {
+                this.resource = Utils.evaluate(call.success, { submission: this.resource, response: response }, 'submission');
+                this.refresh.emit({
+                  property: 'submission',
+                  value: this.resource
+                });
+              } else {
+                this.externalService.apiCall('get',
+                  this.parseVariables(`https://demo1386417.mockable.io/branches/${response['branch_id']}/1`)).subscribe(response2 => {
+                    this.externalService.apiCall('get',
+                      this.parseVariables(`https://demo1386417.mockable.io/users/${response2}`)).subscribe(response3 => {
+                        response = { ...response, ...{ bank_name: response3['bank_name'], iban: response3['iban'] } };
+                        this.resource = Utils.evaluate(call.success, { submission: this.resource, response: response }, 'submission');
+
+                        this.refresh.emit({
+                          property: 'submission',
+                          value: this.resource
+                        });
+                      });
+                  });
+              }
+
+            });
+          }
+        });
+      } catch (e) {
+        this.refresh.emit({
+          property: 'submission',
+          value: this.resource
+        });
+        console.warn(e);
+        return false;
+      }
+    }
+
   }
   loadForm() {
     this.formFormio = new Formio(this.formUrl);
@@ -191,10 +276,34 @@ export class FormComponent implements OnInit, OnDestroy {
     }
     throw error;
   }
-  onSubmit(event) {
-    this.save(this.resource).then((data) => {
-      this.submit.emit(data);
+  makeRequest() {
+    this.externalService.apiCall('post', 'http://demo1386417.mockable.io/save-request', {
+      'request_id': this.resource._id,
+      'requester_id': this.resource.data['user_id'],
+      'requester_name': this.resource.data['orphan_name'],
+      'status': this.resource.data['payment_status'],
+      'created_on': new Date(),
+      'payment_status_id': this.resource.data['payment_status'],
+      'due_date': this.resource.data['dueDate'],
+      'amount': this.resource.data['amount'],
+      'child_id': this.resource.data['child'].id,
+      'iban': this.resource.data['iban']
+    }).subscribe(response => {
+      console.log(response);
     });
+  }
+  onSubmit(event) {
+    this.presentLoading().then(() => {
+      this.save(this.resource).then((data) => {
+        this.submit.emit(data);
+        this.dismissLoading();
+        if (this.formKey === 'orphanmanagement') {
+          this.makeRequest();
+        }
+
+      });
+    });
+
   }
   save(resource: any) {
     const formio = resource._id ? this.formio : this.formFormio;
@@ -213,10 +322,40 @@ export class FormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formUrl = this.appConfig.appUrl + '/' + this.formKey;
     this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
-    this.loadForm().then(() => {
-      this.loadResource();
+    /*
+      if form = 'A'
+        data.path.currentUser = 'ahmad'
+        data.currentUser = this.auth.getUser().username);
+
+      if form = 'B'
+        data.path.currentPath = '/etc/camunda'
+        call method
+      if form = 'C'
+        data.path.currentDate = '2018/12/06'
+
+  */
+    this.presentLoading().then(() => {
+      this.loadForm().then((form) => {
+
+        if (this.resourceId) {
+          setTimeout(() => {
+            this.loadResource().then(() => {
+              this.resourceLoaded.then(() => {
+                this.onFormLoad(form);
+                this.dismissLoading();
+              });
+            });
+          }, 0);
+        } else {
+          this.onFormLoad(form);
+          this.dismissLoading();
+        }
+
+      });
     });
+
     this.language.next(this.translate.currentLang);
+
     this.translate.onLangChange.subscribe(data => {
       this.language.next(data.lang);
     });

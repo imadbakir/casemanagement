@@ -15,10 +15,7 @@ import { EnvService } from './env.service';
 export class CamundaRestService {
   private engineRestUrl = this.env.engineRestUrl;
   private engineApiUrl = this.env.engineApiUrl;
-  private endpoints = {
-    tasks: 'task',
-    filter: 'filter',
-  };
+
 
   constructor(private http: HttpClient, private env: EnvService) {
 
@@ -33,14 +30,14 @@ export class CamundaRestService {
   }
 
   getFilters(params): Observable<any[]> {
-    const endpoint = `${this.engineRestUrl}${this.endpoints.filter}`;
+    const endpoint = `${this.engineRestUrl}filter`;
     return this.http.get<any>(endpoint, { params: params }).pipe(
       tap(form => this.log(`fetched filters`)),
       catchError(this.handleError('getFilters', []))
     );
   }
   getFilter(id): Observable<any> {
-    const endpoint = `${this.engineRestUrl}${this.endpoints.filter}/${id}`;
+    const endpoint = `${this.engineRestUrl}filter/${id}`;
     return this.http.get<any>(endpoint).pipe(
       tap(form => this.log(`fetched filter ${id}`)),
       catchError(this.handleError('getFilter', []))
@@ -275,15 +272,6 @@ export class CamundaRestService {
       tap(data => data),
       catchError(this.handleError('postUserLogin', []))
     );
-    /*.map((response: Response) => {
-      alert(response.status);
-      if (response.status === 401) {
-        return Observable.throw('Unauthorized');
-      } else {
-        const runs = response.json();
-        return runs;
-      }
-    });*/
   }
   getIdentity(userId) {
     const endpoint = `${this.engineRestUrl}identity/groups?userId=${userId}`;

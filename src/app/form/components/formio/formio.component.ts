@@ -4,9 +4,10 @@ import {
     FormioAlerts, FormioAppConfig, FormioError, FormioForm,
     FormioLoader, FormioOptions, FormioRefreshValue, FormioService
 } from 'angular-formio';
-import { Formio } from 'formiojs';
-import { assign, each, get, isEmpty } from 'lodash';
+import { Formio, Utils } from 'formiojs';
+import { assign, each, get, isEmpty, set } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
+import { ExternalService } from '../../../core/services/external.service';
 
 @Component({
     selector: 'app-formio',
@@ -52,6 +53,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
     public alerts: FormioAlerts;
     interval;
     constructor(
+        public externalService: ExternalService,
         private loader: FormioLoader,
         @Optional() private config: FormioAppConfig,
         public translate: TranslateService
@@ -113,6 +115,17 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.formio.submission = this.submission;
 
             this.formio.nosubmit = true;
+            this.formio.on('languageChanged', () => {
+                setTimeout(() => {
+                    this.assignFormOptions(this.formio);
+                    // this.assignLang(this.formio, this.translate.currentLang);
+                }, 100);
+
+                const choices = this.formio.element.querySelectorAll('.choices') || [];
+                choices.forEach((el) => {
+                    el.setAttribute('dir', this.formio.i18next.dir());
+                });
+            });
             this.formio.on('prevPage', (data: any) => this.onPrevPage(data));
             this.formio.on('nextPage', (data: any) => this.onNextPage(data));
             this.formio.on('change', (value: any) => this.change.emit(value));
@@ -123,11 +136,15 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 this.submitForm(submission)
             );
             this.formio.on('error', (err: any) => this.onError(err));
-            this.formio.on('render', () => this.render.emit());
-            this.formio.on('formLoad', (loadedForm: any) =>
-                this.formLoad.emit(loadedForm)
+            this.formio.on('render', () => {
+                this.render.emit();
+            });
+            this.formio.on('formLoad', (loadedForm: any) => {
+                this.formLoad.emit(loadedForm);
+            }
             );
             this.loader.loading = false;
+
             this.ready.emit(this);
             this.formioReadyResolve(this.formio);
             return this.formio;
@@ -138,9 +155,10 @@ export class AppFormioComponent implements OnInit, OnChanges {
         if (this.initialized) {
             return;
         }
-
         this.options = Object.assign(
             {
+                language: this.translate.currentLang,
+                i18n: {},
                 errors: {
                     message: 'Please fix the following errors before submitting.'
                 },
@@ -154,39 +172,45 @@ export class AppFormioComponent implements OnInit, OnChanges {
             },
             this.options
         );
+        /*  this.translate.getTranslation(this.translate.currentLang).subscribe(translation => {
+              this.options.i18n[this.translate.currentLang] = translation;
+          });
+   */
         this.initialized = true;
     }
 
 
-    setNestedFormsSubmission(formio, submission) {
-        formio.components.forEach(component => {
+    setNestedFormsSubmission(formio, submission, parentPath = '', externalId = null) {
+        let formsCount = 0;
+        if (!externalId) {
+            externalId = (this.formio._form.hasOwnProperty('properties') && this.formio._form.properties.hasOwnProperty('objName')
+                && this.formio._form.properties['external'] === 'true') ? this.formio._form.properties['objName'] : null;
+        }
+        Utils.eachComponent(formio.components, (component, path) => {
+            const componentExternalId = (component.component.hasOwnProperty('properties') &&
+                component.component.properties.hasOwnProperty('objName')
+                && component.component.properties['external'] === 'true') ? component.component.properties['objName'] : null;
+
+
             if (component.type === 'form') {
-                component.subFormReady.then(() => {
-                    clearTimeout(this.interval);
-                    this.interval = setTimeout(() => {
-                        submission.data = this.fetchComponents(this.formio, submission);
-                        this.formio.setSubmission(submission);
-                        console.log(this.formio);
-                    }, 300);
-                    this.setNestedFormsSubmission(component.subForm, submission);
+                formsCount++;
+                component.subFormReady.then((form) => {
+                    this.setNestedFormsSubmission(form, submission, `${parentPath ? parentPath + '.' : ''}${component.key}.data`,
+                        componentExternalId);
                 });
+            } else if (submission.data.hasOwnProperty(component.key)) {
+                set(submission.data, path, submission.data[component.key]);
             }
-        });
-    }
+            if (externalId || componentExternalId) {
+                const objName = (componentExternalId)
+                    ? componentExternalId : externalId;
+                if (objName && submission.hasOwnProperty('metadata') && submission.metadata.hasOwnProperty(objName)) {
+                    set(submission.data, path, submission.metadata[objName][component.key]);
 
-    fetchComponents(componentsComponent, dataObject) {
-        let data = {};
-        componentsComponent.components.forEach(component => {
-            if (dataObject.data.hasOwnProperty(component.key) && component.type !== 'form') {
-                data[component.key] = dataObject.data[component.key];
-            } else if (component.type === 'form') {
-                data[component.key] = { data: this.fetchComponents(component.subForm, dataObject) };
-            } else if (component.hasOwnProperty('components') && component.components !== null) {
-
-                data = { ...data, ...this.fetchComponents(component, dataObject) };
+                }
             }
-        });
-        return data;
+        }, false, parentPath);
+        return submission;
     }
 
     onRefresh(refresh: FormioRefreshValue) {
@@ -194,15 +218,18 @@ export class AppFormioComponent implements OnInit, OnChanges {
             if (refresh.form) {
                 this.formio.setForm(refresh.form).then(() => {
                     if (refresh.submission) {
-                        this.setNestedFormsSubmission(this.formio, refresh.submission);
+                        this.formio.setSubmission(refresh.submission);
                     }
                 });
             } else if (refresh.submission) {
-                this.setNestedFormsSubmission(this.formio, refresh.submission);
+                this.formio.setSubmission(refresh.submission);
+
             } else {
                 switch (refresh.property) {
                     case 'submission':
-                        this.setNestedFormsSubmission(this.formio, refresh.value);
+
+                        this.formio.setSubmission(refresh.value);
+
                         break;
                     case 'form':
                         this.formio.form = refresh.value;
@@ -291,19 +318,60 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.submitExecute(submission);
         }
     }
+    assignFormOptions(formio) {
+        Utils.eachComponent(formio.components, (component) => {
+            if (component.type === 'form') {
+                component.subFormReady.then((form) => {
+                    component.subForm.options = assign({}, {
+                        icons: get(this.config, 'icons', 'fontawesome'),
+                        noAlerts: get(this.options, 'noAlerts', true),
+                        readOnly: component.component.properties.readOnly === 'true',
+                        viewAsHtml: component.component.properties.readOnly === 'true',
+                        i18n: get(this.options, 'i18n', null),
+                        fileService: get(this.options, 'fileService', null),
+                    });
+                    form.formReady.then(() => {
+                        form.language = this.translate.currentLang;
+                        this.assignFormOptions(form);
+                    });
+                });
+
+            }
+        }, false);
+    }
+    /*assignLang(formio, lang) {
+        Utils.eachComponent(formio.components, (component) => {
+            if (component.type === 'form') {
+                component.subFormReady.then((form) => {
+                    component.subForm.options = assign({}, {
+                        icons: get(this.config, 'icons', 'fontawesome'),
+                        noAlerts: get(this.options, 'noAlerts', true),
+                        readOnly: component.component.properties.readOnly === 'true',
+                        viewAsHtml: component.component.properties.readOnly === 'true',
+                        i18n: get(this.options, 'i18n', null),
+                        fileService: get(this.options, 'fileService', null),
+                        hooks: this.hooks
+                    });
+                    form.formReady.then(() => {
+                        form.language = lang;
+                        this.assignLang(form, lang);
+                    });
+
+                });
+
+            }
+        }, false);
+    } */
     ngOnInit() {
         this.initialize();
+
         if (this.language) {
             this.language.subscribe((lang: string) => {
                 this.formioReady.then(() => {
-                    if (!this.formio.i18next.options.resources[lang]) {
-                        this.translate.getTranslation(lang).subscribe(translation => {
-                            this.formio.i18next.options.resources[lang] = { translation: translation };
-                            this.formio.language = lang;
-                        });
-                    } else {
+                    this.translate.getTranslation(lang).subscribe(translation => {
+                        this.formio.addLanguage(lang, translation);
                         this.formio.language = lang;
-                    }
+                    });
                 });
             });
         }
@@ -363,7 +431,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
         }
     }
     ngOnChanges(changes: any) {
-        this.initialize();
 
         if (changes.form && changes.form.currentValue) {
             this.setForm(changes.form.currentValue);
@@ -372,7 +439,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
         this.formioReady.then(() => {
 
             if (changes.submission && changes.submission.currentValue) {
-                this.setNestedFormsSubmission(this.formio, changes.submission.currentValue);
+                this.formio.submission = changes.submission.currentValue;
             }
 
             if (changes.hideComponents) {

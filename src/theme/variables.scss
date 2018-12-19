@@ -63,8 +63,11 @@ html[dir="rtl"] {
   }
   .form-check-input {
     margin-right: -1.25rem;
-    margin-left:0px;
-}
+    margin-left:0px;  
+  }
+  #formio dd{
+    margin-right: 0;
+  }
 }
 .col-sm-push-8{
   left: 66.6666666667%;
