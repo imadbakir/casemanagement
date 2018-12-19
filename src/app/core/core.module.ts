@@ -12,6 +12,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { EnvServiceProvider } from './services/env.service.provider';
 import { EventsService } from './services/events.service';
+import { CamundaRestService } from './services/camunda-rest.service';
+import { ExternalService } from './services/external.service';
 
 
 
@@ -47,6 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     AuthGuard,
     EventsService,
+    CamundaRestService,
+    ExternalService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [

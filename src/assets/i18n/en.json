@@ -121,6 +121,21 @@
   "Save": "Save",
   "Submit": "Submit",
   "Send Back": "Send Back",
-  "Sort By": "Sort By"
-
+  "Sort By": "Sort By",
+  "New Borns Gift": "New Borns Gift",
+  "Branch": "Branch",
+  "Type of help required": "Type of help required",
+  "Amount": "Amount",
+  "Payment Status": "Payment Status",
+  "Due Date": "Due Date",
+  "Child": "Child",
+  "Bank Information": "Bank Information",
+  "Bank Name": "Bank Name",
+  "IBAN": "IBAN",
+  "I, the undersigned, have acknowledged the accuracy of the data in question, and I pledge that if it appears otherwise, the charity has the right to give the deduction of the amount I have received in an irregular manner.": "I, the undersigned, have acknowledged the accuracy of the data in question, and I pledge that if it appears otherwise, the charity has the right to give the deduction of the amount I have received in an irregular manner.",
+  "Supervisor Review": "Supervisor Review",
+  "Child Services Specialist Review": "Child Services Specialist Review",
+  "Branch Manager Review": "Branch Manager Review",
+  "Director of Children's Department": "Director of Children's Department",
+  "Born Gift": "Born Gift"
 }

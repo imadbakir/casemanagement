@@ -127,9 +127,9 @@ export class TaskGridComponent implements OnInit {
       return this.presentLoading().then(() => {
         this.camundaService.listHistory({
           firstResult: this.tasks.length,
-          maxResults: this.tasks.length + this.pageSize
+          maxResults: this.tasks.length + this.pageSize,
+          finished: true
         }, {
-          finished: true,
           taskAssignee: this.auth.getUser().username,
           }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];

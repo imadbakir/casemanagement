@@ -1,3 +1,3 @@
 <ion-list no-padding no-margin>
-  <ion-item (click)="startProcess(processDefinition.id)" *ngFor="let processDefinition of processDefinitions">{{processDefinition.name}}</ion-item>
+  <ion-item (click)="startProcess(processDefinition.id)" *ngFor="let processDefinition of processDefinitions">{{processDefinition.name | translate}}</ion-item>
 </ion-list>
