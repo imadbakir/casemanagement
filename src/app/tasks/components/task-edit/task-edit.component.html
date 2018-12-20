@@ -1,5 +1,5 @@
 <app-form *ngIf="form.formKey" [formKey]="form.formKey" [resourceName]="form.resourceName" [resourceId]="form.resourceId"
-  [readOnly]="form.readOnly" (customEvent)="onCustomEvent($event)" (submit)="onSubmit($event)"></app-form>
+[readOnly]="form.readOnly" [version]="form.version" (customEvent)="onCustomEvent($event)" (submit)="onSubmit($event)"></app-form>
 
 <div text-center padding *ngIf="!task">
   <ion-text>

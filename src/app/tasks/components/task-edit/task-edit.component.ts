@@ -1,15 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+
+import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
-import { AuthService } from '../../../core/services/auth.service';
 
-
-declare global {
-  interface Window { setLanguage: any; }
-}
 
 @Component({
   selector: 'app-task-edit',
@@ -17,14 +14,15 @@ declare global {
   styleUrls: ['./task-edit.component.scss'],
 
 })
-export class TaskEditComponent implements OnInit, OnDestroy {
+export class TaskEditComponent implements OnInit {
   task: any = {};
   loading: any;
   form = {
     resourceName: '',
     resourceId: '',
     formKey: '',
-    readOnly: false
+    readOnly: false,
+    version: []
   };
   objectKeys = Object.keys;
   constructor(
@@ -73,9 +71,11 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     }
   }
   onSubmit(submission) {
+    this.camundaService.updateExecutionVariables(this.task.executionId, 'v_' + this.task.formKey,
+      { value: submission._fvid, type: 'String' }).subscribe(() => {
+      });
   }
-  ngOnDestroy(): void {
-  }
+
   async presentLoading() {
     this.loading = await this.loadingController.create({});
     return await this.loading.present();
@@ -97,6 +97,13 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           this.form.formKey = keyResourceArray[0];
           this.form.resourceName = keyResourceArray[1];
           this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
+
+            Object.keys(executionVariables).forEach((key) => {
+              if (key.indexOf('v_') > -1) {
+                this.form.version[key.replace('v_', '')] = executionVariables[key].value;
+              }
+            });
+
             this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
             this.dismissLoading();
             console.log(this.form);
@@ -108,7 +115,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
               this.task = tasks[0];
 
               this.camundaService.getProcessDefinitionXML(this.task.processDefinitionId).subscribe(xml => {
-                // this.loadingController.dismiss();
                 const parseString = require('xml2js').parseString;
                 parseString(xml.bpmn20Xml, (err, result) => {
                   const taskDefinition = result['bpmn:definitions']['bpmn:process'][0]['bpmn:userTask'].filter(item => {
@@ -121,6 +127,11 @@ export class TaskEditComponent implements OnInit, OnDestroy {
                   this.form.resourceName = keyResourceArray[1];
                   this.form.readOnly = true;
                   this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(executionVariables => {
+                    this.form.version = executionVariables.forEach((variable) => {
+                      if (variable.name.indexOf('v_') > -1) {
+                        this.form.version[variable.name.replace('v_', '')] = variable.value;
+                      }
+                    });
                     const resource = executionVariables.filter((variable) => {
                       return variable.name === this.form.resourceName;
                     });

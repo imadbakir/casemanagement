@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { FormioAppConfig, FormioLoader, FormioRefreshValue } from 'angular-formio';
-import { FormioResourceConfig, FormioResources } from 'angular-formio/resource';
+import { FormioResources } from 'angular-formio/resource';
 import { Formio, Utils } from 'formiojs';
 import _ from 'lodash';
-import { EventsService } from '../../../core/services/events.service';
-import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
-import { ExternalService } from '../../../core/services/external.service';
 import { AuthService } from '../../../core/services/auth.service';
-import { LoadingController } from '@ionic/angular';
+import { EventsService } from '../../../core/services/events.service';
+import { ExternalService } from '../../../core/services/external.service';
 
 @Component({
   selector: 'app-form',
@@ -21,6 +21,7 @@ export class FormComponent implements OnInit, OnDestroy {
   @Input() resourceName;
   @Input() resourceId;
   @Input() readOnly;
+  @Input() version;
   @Output() submit: EventEmitter<object> = new EventEmitter();
   @Output() customEvent: EventEmitter<object> = new EventEmitter();
   public form: any;
@@ -43,15 +44,12 @@ export class FormComponent implements OnInit, OnDestroy {
   public formResolve: any;
   public formReject: any;
 
-  public parentsLoaded?: Promise<any>;
-  public parentsResolve: any;
-  public parentsReject: any;
+
 
   constructor(
     public events: EventsService,
     public externalService: ExternalService,
     public route: ActivatedRoute,
-    public config: FormioResourceConfig,
     public auth: AuthService,
     public translate: TranslateService,
     public loadingController: LoadingController,
@@ -78,67 +76,8 @@ export class FormComponent implements OnInit, OnDestroy {
       this.formResolve = resolve;
       this.formReject = reject;
     });
-    this.parentsLoaded = new Promise((resolve, reject) => {
-      this.parentsResolve = resolve;
-      this.parentsReject = reject;
-    });
-    // Add this resource service to the list of all resources in context.
-    if (this.resourcesService) {
-      this.resources = this.resourcesService.resources;
-      this.resources[this.config.name] = this;
-    }
-
   }
-  setParents() {
-    if (!this.config.parents || !this.config.parents.length || !this.form) {
-      return;
-    }
 
-    if (!this.resourcesService) {
-      console.warn(
-        'You must provide the FormioResources within your application to use nested resources.'
-      );
-      return;
-    }
-
-    // Iterate through the list of parents.
-    const _parentsLoaded: Array<Promise<any>> = [];
-    this.config.parents.forEach((parent: any) => {
-      const resourceName = parent.resource || parent;
-      const resourceField = parent.field || parent;
-      const filterResource = parent.hasOwnProperty('filter') ? parent.filter : true;
-      if (this.resources.hasOwnProperty(resourceName)) {
-        _parentsLoaded.push(
-          this.resources[resourceName].resourceLoaded.then((resource: any) => {
-            let parentPath = '';
-            Utils.eachComponent(this.form.components, (component, path) => {
-              if (component.key === resourceField) {
-                component.hidden = true;
-                component.clearOnHide = false;
-                _.set(this.resource.data, path, resource);
-                parentPath = path;
-                return true;
-              }
-            });
-            return {
-              name: parentPath,
-              filter: filterResource,
-              resource
-            };
-          })
-        );
-      }
-    });
-
-    // When all the parents have loaded, emit that to the onParents emitter.
-    Promise.all(_parentsLoaded).then((parents: any) => {
-      this.parentsResolve(parents);
-      this.refresh.emit({
-        form: this.form,
-        submission: this.resource
-      });
-    });
-  }
   async presentLoading() {
     this.loading = await this.loadingController.create({});
     return await this.loading.present();
@@ -155,11 +94,14 @@ export class FormComponent implements OnInit, OnDestroy {
   setContext() {
     this.resource = { data: {} };
     this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
+    this.formUrl = this.appConfig.appUrl + '/' + this.formKey;
     if (this.resourceId) {
       this.resourceUrl += '/submission/' + this.resourceId;
     }
+    if (this.version && this.version[this.formKey]) {
+      this.formUrl += '/v/' + this.version[this.formKey];
+    }
     this.formio = new Formio(this.resourceUrl);
-    this.setParents();
   }
   loadResource() {
     this.setContext();
@@ -170,10 +112,6 @@ export class FormComponent implements OnInit, OnDestroy {
         this.resource = resource;
         this.resourceResolve(resource);
         this.loader.loading = false;
-        /* this.refresh.emit({
-          property: 'submission',
-          value: this.resource
-        }); */
         return resource;
       }, (err) => { })
       .catch((err) => {
@@ -257,9 +195,9 @@ export class FormComponent implements OnInit, OnDestroy {
       .loadForm()
       .then((form) => {
         this.form = form;
+        console.log(form);
         this.formResolve(form);
         this.loader.loading = false;
-        this.setParents();
         return form;
       }, (err) => this.onFormError(err))
       .catch((err) => this.onFormError(err));
@@ -320,8 +258,7 @@ export class FormComponent implements OnInit, OnDestroy {
       .catch((err: any) => this.onError(err));
   }
   ngOnInit() {
-    this.formUrl = this.appConfig.appUrl + '/' + this.formKey;
-    this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
+    this.setContext();
     /*
       if form = 'A'
         data.path.currentUser = 'ahmad'

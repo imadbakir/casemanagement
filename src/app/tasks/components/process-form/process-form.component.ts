@@ -23,7 +23,7 @@ export class ProcessFormComponent implements OnInit {
         { value: submission._id, type: 'String' }).subscribe(() => {
           this.event.announceFiltersRefresh('');
           this.camundaService.updateExecutionVariables(instance.id, 'v_' + this.startForm[0],
-            { value: submission._id + ':' + submission._fvid, type: 'String' }).subscribe(() => {
+            { value: submission._fvid, type: 'String' }).subscribe(() => {
               this.router.navigate(['tasks']);
             });
         });

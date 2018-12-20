@@ -1,12 +1,18 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {
-    FormioAlerts, FormioAppConfig, FormioError, FormioForm,
-    FormioLoader, FormioOptions, FormioRefreshValue, FormioService
+    FormioAlerts,
+    FormioAppConfig,
+    FormioError,
+    FormioForm,
+    FormioLoader,
+    FormioOptions,
+    FormioRefreshValue
 } from 'angular-formio';
 import { Formio, Utils } from 'formiojs';
-import { assign, each, get, isEmpty, set } from 'lodash';
+import { assign, each, get } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
+
 import { ExternalService } from '../../../core/services/external.service';
 
 @Component({
@@ -22,7 +28,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
     @Input() submission?: any = {};
     @Input() src?: string;
     @Input() url?: string;
-    @Input() service?: FormioService;
     @Input() options?: FormioOptions;
     @Input() formioOptions?: any;
     @Input() renderOptions?: any;
@@ -34,6 +39,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
     @Input() success?: EventEmitter<object>;
     @Input() language?: BehaviorSubject<string>;
     @Input() hooks?: any = {};
+    @Input() version?: any = [];
     @Output() render: EventEmitter<object>;
     @Output() customEvent: EventEmitter<object>;
     @Output() submit: EventEmitter<object>;
@@ -106,6 +112,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
             hooks: this.hooks
         }, this.renderOptions || {})).then((formio) => {
             this.formio = formio;
+            this.assignVersions(this.formio);
             if (this.url) {
                 this.formio.setUrl(this.url, this.formioOptions || {});
             }
@@ -113,7 +120,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 this.formio.setUrl(this.src, this.formioOptions || {});
             }
             this.formio.submission = this.submission;
-
+            console.log(formio);
             this.formio.nosubmit = true;
             this.formio.on('languageChanged', () => {
                 setTimeout(() => {
@@ -172,46 +179,10 @@ export class AppFormioComponent implements OnInit, OnChanges {
             },
             this.options
         );
-        /*  this.translate.getTranslation(this.translate.currentLang).subscribe(translation => {
-              this.options.i18n[this.translate.currentLang] = translation;
-          });
-   */
         this.initialized = true;
     }
 
 
-    setNestedFormsSubmission(formio, submission, parentPath = '', externalId = null) {
-        let formsCount = 0;
-        if (!externalId) {
-            externalId = (this.formio._form.hasOwnProperty('properties') && this.formio._form.properties.hasOwnProperty('objName')
-                && this.formio._form.properties['external'] === 'true') ? this.formio._form.properties['objName'] : null;
-        }
-        Utils.eachComponent(formio.components, (component, path) => {
-            const componentExternalId = (component.component.hasOwnProperty('properties') &&
-                component.component.properties.hasOwnProperty('objName')
-                && component.component.properties['external'] === 'true') ? component.component.properties['objName'] : null;
-
-
-            if (component.type === 'form') {
-                formsCount++;
-                component.subFormReady.then((form) => {
-                    this.setNestedFormsSubmission(form, submission, `${parentPath ? parentPath + '.' : ''}${component.key}.data`,
-                        componentExternalId);
-                });
-            } else if (submission.data.hasOwnProperty(component.key)) {
-                set(submission.data, path, submission.data[component.key]);
-            }
-            if (externalId || componentExternalId) {
-                const objName = (componentExternalId)
-                    ? componentExternalId : externalId;
-                if (objName && submission.hasOwnProperty('metadata') && submission.metadata.hasOwnProperty(objName)) {
-                    set(submission.data, path, submission.metadata[objName][component.key]);
-
-                }
-            }
-        }, false, parentPath);
-        return submission;
-    }
 
     onRefresh(refresh: FormioRefreshValue) {
         this.formioReady.then(() => {
@@ -283,16 +254,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
         });
     }
     submitExecute(submission: object) {
-        if (this.service && !this.url) {
-            this.service
-                .saveSubmission(submission)
-                .subscribe(
-                    (sub: {}) => this.onSubmit(sub, true),
-                    err => this.onError(err)
-                );
-        } else {
-            this.onSubmit(submission, false);
-        }
+        this.onSubmit(submission, false);
     }
 
     submitForm(submission: any) {
@@ -318,6 +280,21 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.submitExecute(submission);
         }
     }
+    assignVersions(formio) {
+        Utils.eachComponent(formio.components, (component) => {
+            if (component.type === 'form') {
+                if (this.version && this.version[component.component.key.toLowerCase()]) {
+                    component.component.form = component.component.form + '/v/' + this.version[component.component.key.toLowerCase()];
+                }
+                component.subFormReady.then((form) => {
+                    form.formReady.then(() => {
+                        this.assignVersions(form);
+                    });
+                });
+
+            }
+        }, false);
+    }
     assignFormOptions(formio) {
         Utils.eachComponent(formio.components, (component) => {
             if (component.type === 'form') {
@@ -339,29 +316,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
             }
         }, false);
     }
-    /*assignLang(formio, lang) {
-        Utils.eachComponent(formio.components, (component) => {
-            if (component.type === 'form') {
-                component.subFormReady.then((form) => {
-                    component.subForm.options = assign({}, {
-                        icons: get(this.config, 'icons', 'fontawesome'),
-                        noAlerts: get(this.options, 'noAlerts', true),
-                        readOnly: component.component.properties.readOnly === 'true',
-                        viewAsHtml: component.component.properties.readOnly === 'true',
-                        i18n: get(this.options, 'i18n', null),
-                        fileService: get(this.options, 'fileService', null),
-                        hooks: this.hooks
-                    });
-                    form.formReady.then(() => {
-                        form.language = lang;
-                        this.assignLang(form, lang);
-                    });
 
-                });
-
-            }
-        }, false);
-    } */
     ngOnInit() {
         this.initialize();
 
@@ -393,41 +348,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
                     message: message || get(this.options, 'alerts.submitMessage')
                 });
             });
-        }
-
-        if (this.src) {
-            if (!this.service) {
-                this.service = new FormioService(this.src);
-            }
-            this.loader.loading = true;
-            this.service.loadForm({ params: { live: 1 } }).subscribe(
-                (form: FormioForm) => {
-                    if (form && form.components) {
-                        this.setForm(form);
-                    }
-
-                    // if a submission is also provided.
-                    if (
-                        isEmpty(this.submission) &&
-                        this.service &&
-                        this.service.formio.submissionId
-                    ) {
-                        this.service.loadSubmission().subscribe(
-                            (submission: any) => {
-                                if (this.readOnly) {
-                                    this.formio.options.readOnly = true;
-                                }
-                                this.submission = this.formio.submission = submission;
-                            },
-                            err => this.onError(err)
-                        );
-                    }
-                },
-                err => this.onError(err)
-            );
-        }
-        if (this.url && !this.service) {
-            this.service = new FormioService(this.url);
         }
     }
     ngOnChanges(changes: any) {
