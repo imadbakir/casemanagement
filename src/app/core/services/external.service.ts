@@ -18,10 +18,13 @@ export class ExternalService {
 
   }
   /**
-   * @param method Request Method
-   * @param url Request URL
-   * @param params Query Params if GET and Body if Other.
-   * Returns Observable
+   * Returns Observable of http request
+   * @param method
+   *  Request Method
+   * @param url
+   *  Request URL
+   * @param params
+   *  Query Params if GET and Body if Other.
    */
   apiCall(method, url, params = {}) {
     return this.http.request(method, url, { responseType: 'json', body: params });

@@ -15,11 +15,10 @@ export class AuthGuard implements CanActivate {
   }
 
   /**
-   *
+  * return true if user is loggged in and false if not
+   * redirect to login page.
    * @param next
    * @param state
-   * return true if user is loggged in and false if not
-   * redirect to login page.
    */
   canActivate(
     next: ActivatedRouteSnapshot,

@@ -111,9 +111,9 @@ export class FilterModalComponent implements OnInit {
   }
 
   /**
-   *
-   * @param event ionChange Event
    * On Task Collection Dropdown value change update orQueries
+   * @param event
+   *  ionChange Event
    */
   updateQuery(event) {
     switch (event.detail.value) {

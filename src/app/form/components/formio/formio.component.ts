@@ -97,9 +97,9 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
     /**
-     *
-     * @param form formio Form Object
      * Creates form and assigns events
+     * @param form
+     *  formio Form Object
      */
 
     setForm(form: FormioForm) {
@@ -196,10 +196,10 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
 
     /**
-     *
-     * @param refresh Refresh object
      * Executed when a refresh event is emitted.
      * Either or both form and submission are assigned.
+     * @param refresh
+     *  Refresh object
      */
     onRefresh(refresh: FormioRefreshValue) {
         this.formioReady.then(() => {
@@ -238,8 +238,10 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
     /**
      * Save submission if not saved and emit submit event
-     * @param submission submission object
-     * @param saved is data already saved
+     * @param submission
+     *  submission object
+     * @param saved
+     *  is data already saved
      */
     onSubmit(submission: any, saved: boolean) {
         this.submitting = false;
@@ -257,7 +259,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
     /**
      * on Form Error callback
-     * @param err error object.
+     * @param err
+     *  error object.
      */
     onError(err: any) {
         this.loader.loading = false;
@@ -283,9 +286,9 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
     /**
-     *
-     * @param submission Submission Oject
      * Execute submission
+     * @param submission
+     *  Submission Oject
      */
     submitExecute(submission: object) {
         this.onSubmit(submission, false);
@@ -293,7 +296,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
     /**
      * Formio SubmitForm event Callback
-     * @param submission Submission Object
+     * @param submission
+     *  Submission Object
      */
     submitForm(submission: any) {
         // Keep double submits from occurring...
@@ -321,7 +325,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
     /**
      * Search deeply for form components and assigns Form Version to them.
-     * @param formio Formio Webform object
+     * @param formio
+     *  Formio Webform object
      */
     assignVersions(formio) {
         Utils.eachComponent(formio.components, (component) => {
@@ -342,7 +347,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
     /**
      * Search deeply for form components and assigns Options and Langage to them
      * Assign readOnly and ViewAsHtml properties from API properties.
-     * @param formio Formio Webform object
+     * @param formio
+     *  Formio Webform object
      */
     assignFormOptions(formio) {
         Utils.eachComponent(formio.components, (component) => {

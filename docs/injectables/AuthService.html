@@ -326,6 +326,9 @@ Emit onLogout Event</p>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Save user Object to localStorage
+Emit onLogin Event</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -347,9 +350,7 @@ Emit onLogout Event</p>
                                                     
 
                                                         <td>
-                                                                <code><p>user Object
-Save user Object to localStorage
-Emit onLogin Event</p>
+                                                                <code><p>user Object</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -474,10 +475,10 @@ export class AuthService {
   onLogout: EventEmitter&lt;object&gt; &#x3D; new EventEmitter();
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
   /**
-   *
-   * @param object user Object
    * Save user Object to localStorage
    * Emit onLogin Event
+   * @param object user Object
+
    */
   setUser(object) {
     object.token &#x3D; btoa(object.username + &#x27;:&#x27; + object.password);

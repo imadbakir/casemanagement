@@ -55,9 +55,8 @@ export class TaskItemComponent {
   }
 
   /**
-   *
-   * @param priority
    * get Priority Class by priority Value
+   * @param priority
    */
   getPriority(priority) {
     let value = '';
@@ -81,9 +80,8 @@ export class TaskItemComponent {
     return value;
   }
   /**
-   *
-   * @param priority
    * Get Status as string By priority Value
+   * @param priority
    */
   getStatus(priority) {
     let value = '';

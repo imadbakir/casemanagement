@@ -37,9 +37,9 @@ export class FiltersMenuComponent implements OnInit {
 
 
   /**
-   *
-   * @param event Click Even
    * Open User Options Popover.
+   * @param event
+   * Click Even
    */
   async userOptions(event) {
     event.stopPropagation();
@@ -51,9 +51,11 @@ export class FiltersMenuComponent implements OnInit {
   }
 
   /**
-   * @param event Click Event
-   * @param filterId Filter Id
    * Open Filter Options Popover.
+   * @param event
+   *  Click Event
+   * @param filterId
+   *  Filter Id
    */
   async filterOptions(event, filterId) {
     event.stopPropagation();
@@ -79,9 +81,9 @@ export class FiltersMenuComponent implements OnInit {
   }
 
   /**
-   *
-   * @param filter Filter Object
    * Get Filter Task Count
+   * @param filter
+   *  Filter Object
    */
   getFilterCount(filter) {
     this.camundaService.getFilterCount(filter.id).subscribe(data => {
@@ -90,9 +92,9 @@ export class FiltersMenuComponent implements OnInit {
   }
 
   /**
-   *
-   * @param item Filter Item
    * Announce Open Filter Event
+   * @param item
+   *  Filter Item
    */
   toggleFilter(item) {
     this.openFilter = item.id;

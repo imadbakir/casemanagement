@@ -23,10 +23,10 @@ export class LanguageComponent {
     @Inject(LOCAL_STORAGE) private storage: StorageService) { }
 
   /**
-   *
-   * @param lang Language Code
    * Set Choosen Language and save it to LocalStorage
    * close popover
+   * @param lang
+   *  Language Code
    */
   setLanguage(lang) {
     this.translate.use(lang);

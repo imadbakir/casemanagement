@@ -24,9 +24,8 @@ export class ProcessListComponent implements OnInit {
     public popoverCtrl: PopoverController) { }
 
   /**
-   *
-   * @param processDefinitionId
    * Navigate to New Process URL
+   * @param processDefinitionId
    */
   startProcess(processDefinitionId) {
     this.router.navigate([`/tasks/new/${processDefinitionId}`]);

@@ -134,11 +134,10 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
-   * @param string
    * Gets a string as param, searchs for variables :eg[submission.data.user_id] and
    * deep searchs for it inside resource object.
    * Returns a string with the variable replaced with its value, undefined if not found.
+   * @param string
    */
 
   parseVariables(string) {
@@ -153,9 +152,9 @@ export class FormComponent implements OnInit, OnDestroy {
     return string;
   }
   /**
-   *
-   * @param event Formio CustomEvent
    * Formio Custom Event Callback
+   * @param event
+   *  Formio CustomEvent
    */
   onCustomEvent(event) {
     try {
@@ -173,9 +172,9 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
-   * @param event contains formio form object
    * Searchs form object properties for OnFormLoad Actions and executes them if any.
+   * @param event
+   *  contains formio form object
    */
   onFormLoad(event) {
     _.set(this.resource, 'extras.currentUser', this.auth.getUser().username);
@@ -241,9 +240,8 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
-   * @param err
    * FormLoad Error Callback
+   * @param err
    */
   onFormError(err) {
     this.formReject(err);
@@ -251,9 +249,8 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
-   * @param error
    * On Resource load / save Error
+   * @param error
    */
   onError(error) {
     if (this.resourcesService) {
@@ -283,9 +280,9 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
-   * @param event contains Form Submission object
    * On Form Submit Callback
+   * @param event
+   *  contains Form Submission object
    */
   onSubmit(event) {
     this.presentLoading().then(() => {
@@ -302,9 +299,8 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
-   * @param resource
    * Save Formio Resource
+   * @param resource
    */
   save(resource: any) {
     const formio = resource._id ? this.formio : this.formFormio;
@@ -361,7 +357,7 @@ export class FormComponent implements OnInit, OnDestroy {
       this.language.next(data.lang);
     });
   }
-  
+
   /**
    * Clear Formio Cache on Component Destroy
    */

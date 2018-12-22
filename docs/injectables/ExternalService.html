@@ -181,13 +181,15 @@ to Create a generic Api Call Service for any kind of request - Get, Post, Put, D
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/core/services/external.service.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/core/services/external.service.ts:29</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Returns Observable of http request</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -251,8 +253,7 @@ to Create a generic Api Call Service for any kind of request - Get, Post, Put, D
                                                         </td>
 
                                                         <td>
-                                                                <code><p>Query Params if GET and Body if Other.
-Returns Observable</p>
+                                                                <code><p>Query Params if GET and Body if Other.</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -296,7 +297,7 @@ Returns Observable</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/services/external.service.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/core/services/external.service.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -393,7 +394,7 @@ Returns Observable</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/core/services/external.service.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/core/services/external.service.ts:56</a></div>
                             </td>
                         </tr>
 
@@ -469,10 +470,13 @@ export class ExternalService {
 
   }
   /**
-   * @param method Request Method
-   * @param url Request URL
-   * @param params Query Params if GET and Body if Other.
-   * Returns Observable
+   * Returns Observable of http request
+   * @param method
+   *  Request Method
+   * @param url
+   *  Request URL
+   * @param params
+   *  Query Params if GET and Body if Other.
    */
   apiCall(method, url, params &#x3D; {}) {
     return this.http.request(method, url, { responseType: &#x27;json&#x27;, body: params });

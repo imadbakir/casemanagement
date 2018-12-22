@@ -41,9 +41,9 @@ export class TaskEditComponent implements OnInit {
   }
 
   /**
-   *
-   * @param event CustomEvent
    * on formio CustomEvent (eg:Complete) callback
+   * @param event
+   *  CustomEvent
    */
   onCustomEvent(event) {
     try {
@@ -77,10 +77,10 @@ export class TaskEditComponent implements OnInit {
     }
   }
   /**
-   *
-   * @param submission Submission Object
    * On Form Submit Event Callback
    * update execution Variables Set Form Version
+   *  @param submission
+   *  Submission Object
    */
   onSubmit(submission) {
     this.camundaService.updateExecutionVariables(this.task.executionId, 'v_' + this.task.formKey,

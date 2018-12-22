@@ -283,6 +283,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Open Process Definitions popover menu.</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -304,8 +306,7 @@
                                                     
 
                                                         <td>
-                                                                <code><p>Click Event
-Open Process Definitions popover menu.</p>
+                                                                <code><p>Click Event</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -464,9 +465,9 @@ export class GridComponent {
 
   }
   /**
-   *
-   * @param event Click Event
    * Open Process Definitions popover menu.
+   * @param event
+   *  Click Event
    */
   async process(event) {
     const popover &#x3D; await this.popoverCtrl.create({

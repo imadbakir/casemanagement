@@ -24,12 +24,12 @@ export class ProcessFormComponent implements OnInit {
   ) { }
 
   /**
-   *
-   * @param submission Submission Object
    * On Form Submit start new process instance
    * update execution variables
    * set form version
    * set submissionId
+   * @param submission
+   *  Submission Object
    */
 
   onSubmit(submission) {

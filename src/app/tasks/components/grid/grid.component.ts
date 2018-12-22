@@ -19,9 +19,9 @@ export class GridComponent {
 
   }
   /**
-   *
-   * @param event Click Event
    * Open Process Definitions popover menu.
+   * @param event
+   *  Click Event
    */
   async process(event) {
     const popover = await this.popoverCtrl.create({

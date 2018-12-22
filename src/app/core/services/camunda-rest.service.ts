@@ -23,9 +23,8 @@ export class CamundaRestService {
 
   }
   /**
-   *
-   * @param queryParams
    * GET Tasks With Query Params
+   * @param queryParams
    */
   getTasks(queryParams): Observable<Task[]> {
     const endpoint = `${this.engineRestUrl}task`;
@@ -36,9 +35,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param queryParams query Params
    * Get Filters List
+   * @param queryParams query Params
    */
   getFilters(queryParams = {}): Observable<any[]> {
     const endpoint = `${this.engineRestUrl}filter`;
@@ -48,9 +46,8 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param id Filter Id
    * Get Filter by Filter Id
+   * @param id Filter Id
    */
   getFilter(id): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}`;
@@ -60,9 +57,8 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param variables Post Variables
    * Create new Filter
+   * @param variables Post Variables
    */
   createFilter(variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/create`;
@@ -72,10 +68,9 @@ export class CamundaRestService {
     );
   }
   /**
-   *
+   * Update Filter By FilterId
    * @param filterId Filter Id
    * @param variables Post Variables
-   * Update Filter By FilterId
    */
   updateFilter(filterId, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${filterId}`;
@@ -85,9 +80,9 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param filterId Filter Id
    * Delete Filter
+   * @param filterId
+   * Filter Id
    */
   deleteFilter(filterId): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${filterId}`;
@@ -98,8 +93,10 @@ export class CamundaRestService {
   }
   /**
    *
-   * @param id Filter Id
-   * @param queryParams maxResults, firstResult
+   * @param id
+   * Filter Id
+   * @param queryParams
+   * maxResults, firstResult
    */
   listFilter(id, queryParams = {}): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/list`;
@@ -109,9 +106,8 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param queryParams
    * Get History Execution Variables
+   * @param queryParams
    */
   getVariableInstanceByExecutionId(queryParams = {}) {
     const endpoint = `${this.engineRestUrl}history/variable-instance`;
@@ -122,9 +118,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param processDefinitionId
    * Get Process Definition XML
+   * @param processDefinitionId
    */
   getProcessDefinitionXML(processDefinitionId) {
     const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/xml`;
@@ -136,7 +131,8 @@ export class CamundaRestService {
 
   /**
    *
-   * @param queryParams maxResults, firstResult, finished
+   * @param queryParams
+   * maxResults, firstResult, finished
    * @param variables
    */
   listHistory(queryParams = {}, variables) {
@@ -159,9 +155,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param taskId
    * Get Task Form Key
+   * @param taskId
    */
   getTaskFormKey(taskId: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/form`;
@@ -171,9 +166,8 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param taskId
    * Get Task Form Variables
+   * @param taskId
    */
   getTaskFormVariables(taskId: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/form-variables`;
@@ -184,9 +178,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param taskId
    * Get Task
+   * @param taskId
    */
   getTask(taskId: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}`;
@@ -197,9 +190,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param queryParams
    * Get History Task
+   * @param queryParams
    */
   getHistoryTask(queryParams = {}): Observable<any> {
     const endpoint = `${this.engineRestUrl}history/task`;
@@ -209,9 +201,8 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param executionId
    * Get Execution Variables By Execution Id
+   * @param executionId
    */
   getExecutionVariables(executionId: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables`;
@@ -221,10 +212,9 @@ export class CamundaRestService {
     );
   }
   /**
-   *
+   * Modify Execution Variables
    * @param executionId
    * @param variables
-   * Modify Execution Variables
    */
   modifyExecutionVariables(executionId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables`;
@@ -234,11 +224,10 @@ export class CamundaRestService {
     );
   }
   /**
-   *
+   * Update Execution Variable by VariableName
    * @param executionId
    * @param variableName
    * @param variables
-   * Update Execution Variable by VariableName
    */
   updateExecutionVariables(executionId: String, variableName: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}`;
@@ -248,10 +237,9 @@ export class CamundaRestService {
     );
   }
   /**
-   *
+   * Delete Execution Variable by Variable Name
    * @param executionId
    * @param variableName
-   * Delete Execution Variable by Variable Name
    */
   deleteExecutionVariables(executionId: String, variableName: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}`;
@@ -262,10 +250,9 @@ export class CamundaRestService {
   }
 
   /**
-   *
+   * Post Complete Task
    * @param taskId
    * @param variables
-   * Post Complete Task
    */
   postCompleteTask(taskId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/complete`;
@@ -276,10 +263,9 @@ export class CamundaRestService {
   }
 
   /**
-   *
+   * Update Task
    * @param taskId
    * @param variables
-   * Update Task
    */
   putUpdateTask(taskId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/`;
@@ -290,10 +276,9 @@ export class CamundaRestService {
   }
 
   /**
-   *
+   * Assign a task to user or Group
    * @param taskId
    * @param variables
-   * Assign a task to user or Group
    */
   postAssignTask(taskId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/assignee`;
@@ -304,9 +289,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param processDefinitionKey
    * Get Process Definition Start Form By Process Definition Key
+   * @param processDefinitionKey
    */
   getProcessDefinitionTaskKey(processDefinitionKey): Observable<any> {
     const url = `${this.engineRestUrl}process-definition/key/${processDefinitionKey}/startForm`;
@@ -327,10 +311,9 @@ export class CamundaRestService {
   }
 
   /**
-   *
+   * Post Process instance Start
    * @param processDefinitionKey
    * @param variables
-   * Post Process instance Start
    */
   postProcessInstance(processDefinitionKey, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}process-definition/key/${processDefinitionKey}/start`;
@@ -342,9 +325,8 @@ export class CamundaRestService {
 
 
   /**
-     *
-     * @param processDefinitionId
      * Get Process Definition Start Form By Process Definition Id
+     * @param processDefinitionId
      */
   processInstanceStartForm(processDefinitionId): Observable<any> {
     const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/startForm`;
@@ -355,10 +337,9 @@ export class CamundaRestService {
   }
 
   /**
-     *
+     * Post Process instance Start
      * @param processDefinitionId
      * @param variables
-     * Post Process instance Start
      */
   processDefinitionSubmitForm(processDefinitionId, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/submit-form`;
@@ -368,9 +349,8 @@ export class CamundaRestService {
     );
   }
   /**
-   *
-   * @param userId
    * get User Profile
+   * @param userId
    */
   getUserProfile(userId): Observable<any> {
     const endpoint = `${this.engineRestUrl}user/${userId}/profile`;
@@ -381,9 +361,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param variables
    * User Login - FormData Post
+   * @param variables
    */
   postUserLogin(variables): Observable<any> {
     const endpoint = `${this.engineApiUrl}admin/auth/user/default/login/welcome`;
@@ -400,9 +379,8 @@ export class CamundaRestService {
   }
 
   /**
-   *
-   * @param queryParams
    * get user Groups
+   * @param queryParams
    */
   getIdentity(queryParams = {}) {
     const endpoint = `${this.engineRestUrl}identity/groups`;
@@ -413,10 +391,9 @@ export class CamundaRestService {
   }
 
   /**
-   *
+   * Error Handler
    * @param operation
    * @param result
-   * Error Handler
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

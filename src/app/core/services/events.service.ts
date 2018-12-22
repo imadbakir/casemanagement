@@ -23,33 +23,32 @@ export class EventsService {
   // Service message commands
 
   /**
-   * @param data
    * Announce a filters Refresh Event
+   * @param data
    */
   announceFiltersRefresh(data: string) {
     this.refreshFiltersSource.next(data);
   }
 
   /**
-   * @param filter
    * Announce Filter Event
+   * @param filter
    */
   announceFilter(filter) {
     this.filterSource.next(filter);
   }
 
   /**
-   *
-   * @param item
    * Announce Task Item Action
+   * @param item
    */
   announceItem(item) {
     this.itemSource.next(item);
   }
 
   /**
-   * @param sorting
    * Announce Task Sorting Change
+   * @param sorting
    */
   announceSorting(sorting) {
     this.sortingSource.next(sorting);

@@ -188,13 +188,16 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/core/guards/auth.guard.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/guards/auth.guard.ts:23</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>return true if user is loggged in and false if not
+ redirect to login page.</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -204,7 +207,6 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -219,8 +221,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>state</td>
@@ -233,11 +233,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                                <code><p>return true if user is loggged in and false if not
-redirect to login page.</p>
-</code>
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -278,11 +273,10 @@ export class AuthGuard implements CanActivate {
   }
 
   /**
-   *
+  * return true if user is loggged in and false if not
+   * redirect to login page.
    * @param next
    * @param state
-   * return true if user is loggged in and false if not
-   * redirect to login page.
    */
   canActivate(
     next: ActivatedRouteSnapshot,

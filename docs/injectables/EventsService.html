@@ -179,6 +179,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Announce Filter Event</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -187,7 +189,6 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -199,10 +200,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                                <code><p>Announce Filter Event</p>
-</code>
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -249,6 +246,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Announce a filters Refresh Event</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -258,7 +257,6 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -273,10 +271,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                                <code><p>Announce a filters Refresh Event</p>
-</code>
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -316,13 +310,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/core/services/events.service.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/core/services/events.service.ts:45</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Announce Task Item Action</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -331,7 +327,6 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -343,10 +338,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                                <code><p>Announce Task Item Action</p>
-</code>
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -386,13 +377,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/core/services/events.service.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/core/services/events.service.ts:53</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Announce Task Sorting Change</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -401,7 +394,6 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -413,10 +405,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                                <code><p>Announce Task Sorting Change</p>
-</code>
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -740,33 +728,32 @@ export class EventsService {
   // Service message commands
 
   /**
-   * @param data
    * Announce a filters Refresh Event
+   * @param data
    */
   announceFiltersRefresh(data: string) {
     this.refreshFiltersSource.next(data);
   }
 
   /**
-   * @param filter
    * Announce Filter Event
+   * @param filter
    */
   announceFilter(filter) {
     this.filterSource.next(filter);
   }
 
   /**
-   *
-   * @param item
    * Announce Task Item Action
+   * @param item
    */
   announceItem(item) {
     this.itemSource.next(item);
   }
 
   /**
-   * @param sorting
    * Announce Task Sorting Change
+   * @param sorting
    */
   announceSorting(sorting) {
     this.sortingSource.next(sorting);

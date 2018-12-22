@@ -279,6 +279,9 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Set Choosen Language and save it to LocalStorage
+close popover</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -300,9 +303,7 @@
                                                     
 
                                                         <td>
-                                                                <code><p>Language Code
-Set Choosen Language and save it to LocalStorage
-close popover</p>
+                                                                <code><p>Language Code</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -478,10 +479,10 @@ export class LanguageComponent {
     @Inject(LOCAL_STORAGE) private storage: StorageService) { }
 
   /**
-   *
-   * @param lang Language Code
    * Set Choosen Language and save it to LocalStorage
    * close popover
+   * @param lang
+   *  Language Code
    */
   setLanguage(lang) {
     this.translate.use(lang);

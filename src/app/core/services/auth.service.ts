@@ -12,10 +12,10 @@ export class AuthService {
   onLogout: EventEmitter<object> = new EventEmitter();
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
   /**
-   *
-   * @param object user Object
    * Save user Object to localStorage
    * Emit onLogin Event
+   * @param object user Object
+
    */
   setUser(object) {
     object.token = btoa(object.username + ':' + object.password);

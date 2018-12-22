@@ -19,9 +19,9 @@ export class LanguageSwitchComponent {
 
   }
   /**
-   *
-   * @param event Click Event
    * Open Lnaguages Popover Menu
+   * @param event
+   *  Click Event
    */
   async languages(event) {
     const popover = await this.popoverCtrl.create({

@@ -33,9 +33,8 @@ export class SortOptionsComponent {
 
   }
   /**
-   *
-   * @param dir
    * Set Sorting Direction
+   * @param dir
    */
   setSorting(dir) {
     const sorting = this.sortings[this.sorting];

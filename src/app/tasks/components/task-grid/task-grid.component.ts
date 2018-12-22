@@ -54,18 +54,16 @@ export class TaskGridComponent implements OnInit {
   }
 
   /**
-   *
-   * @param event
    * Search Event Callback
+   * @param event
    */
   search(event) {
     this.performSearch(this.filter.textSearch);
   }
 
   /**
-   *
-   * @param event
    * Present Sort Options Popover Menu.
+   * @param event
    */
   async sortOptions(event) {
     const popover = await this.popoverCtrl.create({
@@ -84,9 +82,8 @@ export class TaskGridComponent implements OnInit {
   }
 
   /**
-   *
-   * @param event
    * Clear Search Event Callback
+   * @param event
    */
   clearSearch(event) {
     this.filter.textSearch = '';
@@ -94,9 +91,8 @@ export class TaskGridComponent implements OnInit {
   }
 
   /**
-   *
-   * @param value
    * Perform Text Search on TaskOrigin array and reassign displayed Tasks
+   * @param value
    */
   performSearch(value) {
     this.tasks = this.tasksOrigin.filter(function (item) {
@@ -108,9 +104,8 @@ export class TaskGridComponent implements OnInit {
   }
 
   /**
-   *
-   * @param sorting
    * Sort Tasks Array
+   * @param sorting
    */
   sortArray(sorting) {
     switch (sorting.type) {
@@ -147,20 +142,18 @@ export class TaskGridComponent implements OnInit {
   }
 
   /**
-   *
-   * @param filterId
    * Set chosen Filter Id
+   * @param filterId
    */
   setFilter(filterId) {
     this.filter = filterId;
   }
 
   /**
-   *
-   * @param isNew
    * Fetch Tasks from Camunda API
    * Reset Tasks array if filter is new.
    * Get the Next page if not
+   *  @param isNew
    */
   fetchTasks(isNew = false) {
     if (isNew) {
@@ -196,10 +189,9 @@ export class TaskGridComponent implements OnInit {
   }
 
   /**
-   *
-   * @param infiniteScroll
    * Ion Infinite Scroll Callback
    * Fetch more tasks then stop spinner.
+   * @param infiniteScroll
    */
   DoInfinite(infiniteScroll) {
     this.fetchTasks().then((data) => {

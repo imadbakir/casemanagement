@@ -32,9 +32,8 @@ export class AppComponent implements OnInit {
     });
   }
   /**
-   *
-   * @param dir
    * Fix Dom Direction - localization
+   * @param dir
    */
   fixDom(dir) {
     const columns = document.getElementsByClassName('formio-component-columns');

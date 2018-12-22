@@ -301,7 +301,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -341,13 +341,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:30</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Navigate to New Process URL</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -356,7 +358,6 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -368,10 +369,6 @@
                                                     </td>
                                                     
 
-                                                        <td>
-                                                                <code><p>Navigate to New Process URL</p>
-</code>
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -607,9 +604,8 @@ export class ProcessListComponent implements OnInit {
     public popoverCtrl: PopoverController) { }
 
   /**
-   *
-   * @param processDefinitionId
    * Navigate to New Process URL
+   * @param processDefinitionId
    */
   startProcess(processDefinitionId) {
     this.router.navigate([&#x60;/tasks/new/${processDefinitionId}&#x60;]);

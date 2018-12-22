@@ -446,6 +446,8 @@ get execution variables and fill form versions array and resourceId</p>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>on formio CustomEvent (eg:Complete) callback</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -467,8 +469,7 @@ get execution variables and fill form versions array and resourceId</p>
                                                     
 
                                                         <td>
-                                                                <code><p>CustomEvent
-on formio CustomEvent (eg:Complete) callback</p>
+                                                                <code><p>CustomEvent</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -517,6 +518,9 @@ on formio CustomEvent (eg:Complete) callback</p>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>On Form Submit Event Callback
+update execution Variables Set Form Version</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -538,9 +542,7 @@ on formio CustomEvent (eg:Complete) callback</p>
                                                     
 
                                                         <td>
-                                                                <code><p>Submission Object
-On Form Submit Event Callback
-update execution Variables Set Form Version</p>
+                                                                <code><p>Submission Object</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -947,9 +949,9 @@ export class TaskEditComponent implements OnInit {
   }
 
   /**
-   *
-   * @param event CustomEvent
    * on formio CustomEvent (eg:Complete) callback
+   * @param event
+   *  CustomEvent
    */
   onCustomEvent(event) {
     try {
@@ -983,10 +985,10 @@ export class TaskEditComponent implements OnInit {
     }
   }
   /**
-   *
-   * @param submission Submission Object
    * On Form Submit Event Callback
    * update execution Variables Set Form Version
+   *  @param submission
+   *  Submission Object
    */
   onSubmit(submission) {
     this.camundaService.updateExecutionVariables(this.task.executionId, &#x27;v_&#x27; + this.task.formKey,
