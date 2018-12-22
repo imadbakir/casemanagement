@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverController, NavParams, ModalController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { ModalController, NavParams, PopoverController } from '@ionic/angular';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
+
+/**
+ * Filter Options Menu
+ */
 
 @Component({
   selector: 'app-filter-options',
   templateUrl: './filter-options.component.html',
   styleUrls: ['./filter-options.component.scss']
 })
-export class FilterOptionsComponent implements OnInit {
+export class FilterOptionsComponent {
   id = '';
   constructor(public popoverCtrl: PopoverController,
     public navParams: NavParams,
@@ -19,15 +23,25 @@ export class FilterOptionsComponent implements OnInit {
     this.id = this.navParams.data.id;
 
   }
+  /**
+   * Close Popover
+   */
   close() {
     this.popoverCtrl.dismiss();
   }
+
+  /**
+   * Delete Filter
+   */
   delete() {
     this.camundaService.deleteFilter(this.id).subscribe(() => {
       this.event.announceFiltersRefresh('');
     });
     this.close();
   }
+  /**
+   * Open Filter Modal
+   */
   async edit() {
     const modal = await this.modalController.create({
       component: FilterModalComponent,
@@ -38,8 +52,6 @@ export class FilterOptionsComponent implements OnInit {
     });
     this.close();
     return await modal.present();
-  }
-  ngOnInit() {
   }
 
 }

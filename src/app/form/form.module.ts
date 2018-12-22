@@ -6,6 +6,10 @@ import { FormioAppConfigProvider, formioAuthConfigProvider } from '../core/servi
 import { SharedModule } from '../shared/shared.module';
 import { FormComponent } from './components/form/form.component';
 import { AppFormioComponent } from './components/formio/formio.component';
+/**
+ * FormioModule imported where needed
+ * AppFormioComponent & FormComponent are exported
+ */
 @NgModule({
   imports: [SharedModule, FormioModule, FormioResource],
   declarations: [AppFormioComponent, FormComponent],

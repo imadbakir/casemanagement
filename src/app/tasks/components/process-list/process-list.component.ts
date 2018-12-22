@@ -5,26 +5,40 @@ import { ProcessDefinition } from '../../../core/schemas/ProcessDefinition';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 
+/**
+ * Process Definitions List Popover Menu
+ */
 @Component({
   selector: 'app-process-list',
   templateUrl: './process-list.component.html',
   styleUrls: ['./process-list.component.scss']
 })
+
 export class ProcessListComponent implements OnInit {
+
   processDefinitions: ProcessDefinition[] = [];
+
   constructor(public camundaService: CamundaRestService,
     public router: Router,
     public event: EventsService,
     public popoverCtrl: PopoverController) { }
 
+  /**
+   *
+   * @param processDefinitionId
+   * Navigate to New Process URL
+   */
   startProcess(processDefinitionId) {
     this.router.navigate([`/tasks/new/${processDefinitionId}`]);
     this.popoverCtrl.dismiss();
 
-    /*  */
   }
+
+  /**
+   * ngOnInit: Get Process Definitions
+   */
   ngOnInit() {
-    this.camundaService.getProcessDefinitions().subscribe((processDefinitions) => {
+    this.camundaService.getProcessDefinitions({ latestVersion: true }).subscribe((processDefinitions) => {
       this.processDefinitions = processDefinitions;
     });
   }

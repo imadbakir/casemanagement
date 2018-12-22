@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { catchError, tap } from 'rxjs/operators';
 
 
-
+/**
+ * External API Service Integration - utilizes Angular HttpClient Request Function
+ * to Create a generic Api Call Service for any kind of request - Get, Post, Put, Delete etc..
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +17,12 @@ export class ExternalService {
   constructor(private http: HttpClient) {
 
   }
-
+  /**
+   * @param method Request Method
+   * @param url Request URL
+   * @param params Query Params if GET and Body if Other.
+   * Returns Observable
+   */
   apiCall(method, url, params = {}) {
     return this.http.request(method, url, { responseType: 'json', body: params });
 

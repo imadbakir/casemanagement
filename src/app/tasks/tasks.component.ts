@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-
+/**
+ * Tasks Dashlet Main Component
+ */
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',

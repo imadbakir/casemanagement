@@ -2,6 +2,9 @@ import { EnvService } from './env.service';
 import { FormioAppConfig } from 'angular-formio';
 import { FormioAuthConfig } from 'angular-formio/auth';
 
+/**
+ * Enviroment Service Factory - Read Window Env Variables and assign them to EnvService
+ */
 export const EnvServiceFactory = () => {
     // Create env
     const env = new EnvService();
@@ -21,6 +24,10 @@ export const EnvServiceFactory = () => {
 
     return env;
 };
+
+/**
+ * formioAuthConfigFactory Factory - Read Window Env Variables and assign them to formioAuthConfig
+ */
 export const formioAuthConfigFactory = () => {
     // Create env
     const authConfig = new FormioAuthConfig();
@@ -40,6 +47,10 @@ export const formioAuthConfigFactory = () => {
 
     return authConfig;
 };
+
+/**
+ * FormioAppConfigFactory Factory - Read Window Env Variables and assign them to FormioAppConfig
+ */
 export const FormioAppConfigFactory = () => {
     // Create env
     const appConfig = new FormioAppConfig();

@@ -1,0 +1,1888 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>casemanagement documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">casemanagement documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TaskGridComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/tasks/components/task-grid/task-grid.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Task List Component</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-task-grid</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./task-grid.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./task-grid.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#filterId">filterId</a>
+                            </li>
+                            <li>
+                                <a href="#infiniteScroll">infiniteScroll</a>
+                            </li>
+                            <li>
+                                <a href="#loading">loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#loadingController">loadingController</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalController">modalController</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize">pageSize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#popoverCtrl">popoverCtrl</a>
+                            </li>
+                            <li>
+                                <a href="#tasks">tasks</a>
+                            </li>
+                            <li>
+                                <a href="#tasksOrigin">tasksOrigin</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearSearch">clearSearch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#dismissLoading">dismissLoading</a>
+                            </li>
+                            <li>
+                                <a href="#DoInfinite">DoInfinite</a>
+                            </li>
+                            <li>
+                                <a href="#fetchTasks">fetchTasks</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#performSearch">performSearch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentLoading">presentLoading</a>
+                            </li>
+                            <li>
+                                <a href="#search">search</a>
+                            </li>
+                            <li>
+                                <a href="#setFilter">setFilter</a>
+                            </li>
+                            <li>
+                                <a href="#sortArray">sortArray</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#sortOptions">sortOptions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(event: <a href="../injectables/EventsService.html">EventsService</a>, camundaService: <a href="../injectables/CamundaRestService.html">CamundaRestService</a>, popoverCtrl: PopoverController, modalController: ModalController, auth: <a href="../injectables/AuthService.html">AuthService</a>, loadingController: LoadingController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>event</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/EventsService.html" target="_self" >EventsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>camundaService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/CamundaRestService.html" target="_self" >CamundaRestService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>popoverCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>PopoverController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loadingController</td>
+                                                  
+                                                        <td>
+                                                                    <code>LoadingController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clearSearch"></a>
+                        <span class="name">
+                            <b>
+                            clearSearch
+                            </b>
+                            <a href="#clearSearch"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>clearSearch(event)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:91</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>event</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Clear Search Event Callback</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dismissLoading"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            dismissLoading
+                            </b>
+                            <a href="#dismissLoading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>dismissLoading()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:82</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DoInfinite"></a>
+                        <span class="name">
+                            <b>
+                            DoInfinite
+                            </b>
+                            <a href="#DoInfinite"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>DoInfinite(infiniteScroll)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:204</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>infiniteScroll</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Ion Infinite Scroll Callback
+Fetch more tasks then stop spinner.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fetchTasks"></a>
+                        <span class="name">
+                            <b>
+                            fetchTasks
+                            </b>
+                            <a href="#fetchTasks"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>fetchTasks(isNew)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:165</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>isNew</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>false</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Fetch Tasks from Camunda API
+Reset Tasks array if filter is new.
+Get the Next page if not</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:217</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>ngOnInit:
+subscribe to sorting events
+Subscribe Item Change Events
+Subscribe to Filter Change Events</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="performSearch"></a>
+                        <span class="name">
+                            <b>
+                            performSearch
+                            </b>
+                            <a href="#performSearch"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>performSearch(value)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:101</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>value</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Perform Text Search on TaskOrigin array and reassign displayed Tasks</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="presentLoading"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            presentLoading
+                            </b>
+                            <a href="#presentLoading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>presentLoading()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:78</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="search"></a>
+                        <span class="name">
+                            <b>
+                            search
+                            </b>
+                            <a href="#search"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>search(event)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>event</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Search Event Callback</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setFilter"></a>
+                        <span class="name">
+                            <b>
+                            setFilter
+                            </b>
+                            <a href="#setFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setFilter(filterId)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:154</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filterId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Set chosen Filter Id</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sortArray"></a>
+                        <span class="name">
+                            <b>
+                            sortArray
+                            </b>
+                            <a href="#sortArray"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>sortArray(sorting)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:115</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>sorting</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Sort Tasks Array</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sortOptions"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            sortOptions
+                            </b>
+                            <a href="#sortOptions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>sortOptions(event)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:70</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>event</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Present Sort Options Popover Menu.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filter"></a>
+                        <span class="name">
+                            <b>
+                            filter
+                            </b>
+                            <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>filter:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    textSearch: &#x27;&#x27;,
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Filter object</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filterId"></a>
+                        <span class="name">
+                            <b>
+                            filterId
+                            </b>
+                            <a href="#filterId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>filterId:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Chosen FilterId</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="infiniteScroll"></a>
+                        <span class="name">
+                            <b>
+                            infiniteScroll
+                            </b>
+                            <a href="#infiniteScroll"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>infiniteScroll:     <code>InfiniteScroll</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>InfiniteScroll</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(InfiniteScroll)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Infine Scroll View Child</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loading"></a>
+                        <span class="name">
+                            <b>
+                            loading
+                            </b>
+                            <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>loading:     <code></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loadingController"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            loadingController
+                            </b>
+                            <a href="#loadingController"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>loadingController:     <code>LoadingController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>LoadingController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:52</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalController"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalController
+                            </b>
+                            <a href="#modalController"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modalController:     <code>ModalController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ModalController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:50</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageSize"></a>
+                        <span class="name">
+                            <b>
+                            pageSize
+                            </b>
+                            <a href="#pageSize"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>pageSize:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>7</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popoverCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            popoverCtrl
+                            </b>
+                            <a href="#popoverCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>popoverCtrl:     <code>PopoverController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>PopoverController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tasks"></a>
+                        <span class="name">
+                            <b>
+                            tasks
+                            </b>
+                            <a href="#tasks"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>tasks:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Filtered Displayed Tasks Array</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tasksOrigin"></a>
+                        <span class="name">
+                            <b>
+                            tasksOrigin
+                            </b>
+                            <a href="#tasksOrigin"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>tasksOrigin:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/tasks/components/task-grid/task-grid.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Original Tasks Array</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { LoadingController, ModalController, PopoverController, InfiniteScroll } from &#x27;@ionic/angular&#x27;;
+import { AuthService } from &#x27;../../../core/services/auth.service&#x27;;
+import { CamundaRestService } from &#x27;../../../core/services/camunda-rest.service&#x27;;
+import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
+import { SortOptionsComponent } from &#x27;../sort-options/sort-options.component&#x27;;
+
+/**
+ * Task List Component
+ */
+@Component({
+  selector: &#x27;app-task-grid&#x27;,
+  templateUrl: &#x27;./task-grid.component.html&#x27;,
+  styleUrls: [&#x27;./task-grid.component.scss&#x27;]
+})
+export class TaskGridComponent implements OnInit {
+  /**
+   * Filtered Displayed Tasks Array
+   */
+  tasks: any &#x3D; [];
+
+  /**
+   * Filter object
+   */
+  filter: any &#x3D; {
+    textSearch: &#x27;&#x27;,
+  };
+
+  /**
+   * Original Tasks Array
+   */
+  tasksOrigin: any &#x3D; [];
+
+  loading;
+  /**
+   * Chosen FilterId
+   */
+  filterId &#x3D; &#x27;&#x27;;
+  pageSize &#x3D; 7;
+  /**
+   * Infine Scroll View Child
+   */
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
+
+
+  constructor(
+    private event: EventsService,
+    private camundaService: CamundaRestService,
+    public popoverCtrl: PopoverController,
+    public modalController: ModalController,
+    private auth: AuthService,
+    public loadingController: LoadingController) {
+
+  }
+
+  /**
+   *
+   * @param event
+   * Search Event Callback
+   */
+  search(event) {
+    this.performSearch(this.filter.textSearch);
+  }
+
+  /**
+   *
+   * @param event
+   * Present Sort Options Popover Menu.
+   */
+  async sortOptions(event) {
+    const popover &#x3D; await this.popoverCtrl.create({
+      component: SortOptionsComponent,
+      event: event
+    });
+    return await popover.present();
+  }
+
+  async presentLoading() {
+    this.loading &#x3D; await this.loadingController.create({});
+    return await this.loading.present();
+  }
+  async dismissLoading() {
+    this.loading.dismiss();
+  }
+
+  /**
+   *
+   * @param event
+   * Clear Search Event Callback
+   */
+  clearSearch(event) {
+    this.filter.textSearch &#x3D; &#x27;&#x27;;
+    this.performSearch(&#x27;&#x27;);
+  }
+
+  /**
+   *
+   * @param value
+   * Perform Text Search on TaskOrigin array and reassign displayed Tasks
+   */
+  performSearch(value) {
+    this.tasks &#x3D; this.tasksOrigin.filter(function (item) {
+      return (item[&#x27;name&#x27;] ? item[&#x27;name&#x27;].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
+        (item[&#x27;assignee&#x27;] ? item[&#x27;assignee&#x27;].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
+        (item[&#x27;description&#x27;] ? item[&#x27;description&#x27;].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
+        (item[&#x27;due&#x27;] ? item[&#x27;due&#x27;].toString().toLowerCase().includes(value.toLowerCase()) : false);
+    });
+  }
+
+  /**
+   *
+   * @param sorting
+   * Sort Tasks Array
+   */
+  sortArray(sorting) {
+    switch (sorting.type) {
+      case &#x27;datetime&#x27;:
+        this.tasks.sort(function (a, b) {
+          const dateA &#x3D; new Date(a[sorting.name]), dateB &#x3D; new Date(b[sorting.name]);
+          const left &#x3D; sorting.direction &#x3D;&#x3D;&#x3D; 1 ? dateA : dateB;
+          const right &#x3D; sorting.direction &#x3D;&#x3D;&#x3D; 1 ? dateB : dateA;
+          return left.getTime() - right.getTime();
+        });
+        break;
+
+      case &#x27;number&#x27;:
+        this.tasks.sort(function (a, b) {
+          const left &#x3D; sorting.direction &#x3D;&#x3D;&#x3D; 1 ? a : b;
+          const right &#x3D; sorting.direction &#x3D;&#x3D;&#x3D; 1 ? b : a;
+          // tslint:disable-next-line:radix
+          return parseInt(left[sorting.name]) - parseInt(right[sorting.name]);
+        });
+        break;
+      default:
+        this.tasks.sort(function (a, b) {
+          const valueA &#x3D; a[sorting.name].toLowerCase(), valueB &#x3D; b[sorting.name].toLowerCase();
+          if (valueA &lt; valueB) {
+            return -1 * sorting.direction;
+          }
+          if (valueA &gt; valueB) {
+            return 1 * sorting.direction;
+          }
+          return 0;
+        });
+    }
+
+  }
+
+  /**
+   *
+   * @param filterId
+   * Set chosen Filter Id
+   */
+  setFilter(filterId) {
+    this.filter &#x3D; filterId;
+  }
+
+  /**
+   *
+   * @param isNew
+   * Fetch Tasks from Camunda API
+   * Reset Tasks array if filter is new.
+   * Get the Next page if not
+   */
+  fetchTasks(isNew &#x3D; false) {
+    if (isNew) {
+      this.tasks &#x3D; this.tasksOrigin &#x3D; [];
+    }
+    if (this.filter &#x3D;&#x3D;&#x3D; &#x27;history&#x27;) {
+      return this.presentLoading().then(() &#x3D;&gt; {
+        this.camundaService.listHistory({
+          firstResult: this.tasks.length,
+          maxResults: this.tasks.length + this.pageSize,
+          finished: true
+        }, {
+            taskAssignee: this.auth.getUser().username,
+          }).subscribe(data &#x3D;&gt; {
+            this.tasksOrigin &#x3D; [...this.tasks, ...data];
+            this.tasks &#x3D; this.tasksOrigin;
+            this.dismissLoading();
+          });
+
+      });
+    } else {
+      return this.presentLoading().then(() &#x3D;&gt; {
+        this.camundaService.listFilter(this.filter,
+          { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }).subscribe(data &#x3D;&gt; {
+            this.tasksOrigin &#x3D; [...this.tasks, ...data];
+            this.tasks &#x3D; this.tasksOrigin;
+            this.dismissLoading();
+          });
+      });
+
+    }
+
+  }
+
+  /**
+   *
+   * @param infiniteScroll
+   * Ion Infinite Scroll Callback
+   * Fetch more tasks then stop spinner.
+   */
+  DoInfinite(infiniteScroll) {
+    this.fetchTasks().then((data) &#x3D;&gt; {
+      console.log(data);
+      infiniteScroll.target.complete();
+    });
+  }
+
+  /**
+   * ngOnInit:
+   * subscribe to sorting events
+   * Subscribe Item Change Events
+   * Subscribe to Filter Change Events
+   */
+  ngOnInit() {
+    this.event.sortingAnnounced$.subscribe(sorting &#x3D;&gt; {
+      this.sortArray(sorting);
+    });
+    this.event.itemChange$.subscribe(data &#x3D;&gt; {
+      if (data.complete) {
+        this.tasksOrigin.filter(item &#x3D;&gt; {
+          if (data.taskId &#x3D;&#x3D;&#x3D; item.id) {
+            item.complete &#x3D; true;
+            this.tasks &#x3D; this.tasksOrigin;
+            setTimeout(() &#x3D;&gt; {
+              this.tasksOrigin.splice(this.tasksOrigin.indexOf(item), 1);
+              this.tasks &#x3D; this.tasksOrigin;
+            }, 400);
+          }
+        });
+      }
+    });
+    this.event.filterAnnounced$.subscribe((data) &#x3D;&gt; {
+      if (data.item) {
+        console.log(data);
+        this.setFilter(data.item.id);
+        this.fetchTasks(true);
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header override&gt;
+
+  &lt;ion-toolbar&gt;
+    &lt;ion-searchbar mode&#x3D;&quot;ios&quot; [placeholder]&#x3D;&quot;&#x27;Search&#x27; | translate&quot; slot&#x3D;&quot;start&quot; [(ngModel)]&#x3D;&quot;filter.textSearch&quot;
+      [showCancelButton]&#x3D;&quot;true&quot; (ionInput)&#x3D;&quot;search($event)&quot; (ionClear)&#x3D;&quot;clearSearch($event)&quot; (ionCancel)&#x3D;&quot;search($event)&quot;&gt;&lt;/ion-searchbar&gt;
+    &lt;ion-buttons slot&#x3D;&quot;end&quot;&gt;
+      &lt;ion-button small (click)&#x3D;&quot;sortOptions($event)&quot;&gt;
+        &lt;ion-icon size&#x3D;&quot;small&quot; slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;funnel&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-button&gt;
+      &lt;ion-button small [ngClass]&#x3D;&quot;&#x27;move-handle hide-xs&#x27;&quot;&gt;
+        &lt;ion-icon size&#x3D;&quot;small&quot; slot&#x3D;&quot;start&quot; name&#x3D;&quot;move&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-title&gt;&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+&lt;ion-content&gt;
+  &lt;ion-grid no-padding&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col&gt;
+        &lt;div text-center padding [hidden]&#x3D;&quot;tasks.length &gt; 0&quot;&gt;
+          &lt;ion-text&gt;
+            &lt;ion-icon name&#x3D;&quot;egg&quot; [ngStyle]&#x3D;&quot;{&#x27;font-size&#x27;: &#x27;50px&#x27;,&#x27;margin-top&#x27;: &#x27;150px&#x27;}&quot; color&#x3D;&quot;secondary&quot;&gt;&lt;/ion-icon&gt;
+            &lt;h6 padding [ngStyle]&#x3D;&quot;{ &#x27;opacity&#x27;: 0.5}&quot;&gt;{{&quot;No Tasks.&quot; | translate}}&lt;/h6&gt;
+          &lt;/ion-text&gt;
+        &lt;/div&gt;
+        &lt;ion-list&gt;
+          &lt;app-task-item *ngFor&#x3D;&quot;let task of tasks&quot; [task]&#x3D;&quot;task&quot;&gt;&lt;/app-task-item&gt;
+        &lt;/ion-list&gt;
+        &lt;ion-infinite-scroll threshold&#x3D;&quot;10px&quot; (ionInfinite)&#x3D;&quot;DoInfinite($event)&quot;&gt;
+          &lt;ion-infinite-scroll-content loadingSpinner&#x3D;&quot;bubbles&quot; loadingText&#x3D;&quot;Loading more Tasks...&quot;&gt;
+          &lt;/ion-infinite-scroll-content&gt;
+        &lt;/ion-infinite-scroll&gt;
+
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+  &lt;/ion-grid&gt;
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./task-grid.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host:hover,:host:focus-within {
+  ion-header {
+    ion-toolbar {
+      --opacity: 1;
+    }
+
+    opacity: 1;
+  }
+}
+
+
+
+ion-header {
+  opacity: 0.5;
+  transition: 0.3s;
+  ion-searchbar{
+    height:45px;
+  }
+  ion-toolbar {
+    --opacity: 0;
+    --min-height: 0px;
+
+    ion-button {
+      --height: 20px;
+    }
+
+    ion-title {
+      padding: 0 0px;
+      font-size: 16px;
+    }
+  }
+}
+
+ion-spinner{
+  margin: 20% auto;
+  width: 100px;
+  display: block;
+  zoom: 2;
+}
+ion-content{
+  height: calc(100% - 50px);
+}
+.toolbar-container {}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header override>  <ion-toolbar>    <ion-searchbar mode="ios" [placeholder]="\'Search\' | translate" slot="start" [(ngModel)]="filter.textSearch"      [showCancelButton]="true" (ionInput)="search($event)" (ionClear)="clearSearch($event)" (ionCancel)="search($event)"></ion-searchbar>    <ion-buttons slot="end">      <ion-button small (click)="sortOptions($event)">        <ion-icon size="small" slot="icon-only" name="funnel"></ion-icon>      </ion-button>      <ion-button small [ngClass]="\'move-handle hide-xs\'">        <ion-icon size="small" slot="start" name="move"></ion-icon>      </ion-button>    </ion-buttons>    <ion-title></ion-title>  </ion-toolbar></ion-header><ion-content>  <ion-grid no-padding>    <ion-row>      <ion-col>        <div text-center padding [hidden]="tasks.length > 0">          <ion-text>            <ion-icon name="egg" [ngStyle]="{\'font-size\': \'50px\',\'margin-top\': \'150px\'}" color="secondary"></ion-icon>            <h6 padding [ngStyle]="{ \'opacity\': 0.5}">{{"No Tasks." | translate}}</h6>          </ion-text>        </div>        <ion-list>          <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>        </ion-list>        <ion-infinite-scroll threshold="10px" (ionInfinite)="DoInfinite($event)">          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more Tasks...">          </ion-infinite-scroll-content>        </ion-infinite-scroll>      </ion-col>    </ion-row>  </ion-grid></ion-content></div>'
+    var COMPONENTS = [{'name': 'AddRequestButtonComponent', 'selector': 'app-add-request-button'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppFormioComponent', 'selector': 'app-formio'},{'name': 'AuthIndexComponent', 'selector': 'app-index-login'},{'name': 'AuthLoginComponent', 'selector': 'app-auth-login'},{'name': 'FilterModalComponent', 'selector': 'app-filter-modal'},{'name': 'FilterOptionsComponent', 'selector': 'app-filter-options'},{'name': 'FiltersMenuComponent', 'selector': 'app-filters-menu'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'GridComponent', 'selector': 'app-grid'},{'name': 'GridsterComponent', 'selector': 'app-gridster'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LanguageComponent', 'selector': 'app-language'},{'name': 'LanguageSwitchComponent', 'selector': 'app-language-switch'},{'name': 'NotificationsButtonComponent', 'selector': 'app-notifications-button'},{'name': 'ProcessFormComponent', 'selector': 'app-process-form'},{'name': 'ProcessListComponent', 'selector': 'app-process-list'},{'name': 'SortOptionsComponent', 'selector': 'app-sort-options'},{'name': 'TaskDetailsComponent', 'selector': 'app-task-details'},{'name': 'TaskEditComponent', 'selector': 'app-task-edit'},{'name': 'TaskGridComponent', 'selector': 'app-task-grid'},{'name': 'TaskItemComponent', 'selector': 'app-task-item'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'UserOptionsComponent', 'selector': 'app-user-options'}];
+    var DIRECTIVES = [{'name': 'OnCreateDirective', 'selector': '[appOnCreate]'}];
+    var ACTUAL_COMPONENT = {'name': 'TaskGridComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TaskGridComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

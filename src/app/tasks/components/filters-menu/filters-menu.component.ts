@@ -8,6 +8,9 @@ import { UserOptionsComponent } from '../../../shared/components/user-options/us
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { FilterOptionsComponent } from '../filter-options/filter-options.component';
 
+/**
+ * Filters Sidebar Menu Component
+ */
 @Component({
   selector: 'app-filters-menu',
   templateUrl: './filters-menu.component.html',
@@ -33,7 +36,11 @@ export class FiltersMenuComponent implements OnInit {
 
 
 
-
+  /**
+   *
+   * @param event Click Even
+   * Open User Options Popover.
+   */
   async userOptions(event) {
     event.stopPropagation();
     const popover = await this.popoverCtrl.create({
@@ -43,6 +50,11 @@ export class FiltersMenuComponent implements OnInit {
     return await popover.present();
   }
 
+  /**
+   * @param event Click Event
+   * @param filterId Filter Id
+   * Open Filter Options Popover.
+   */
   async filterOptions(event, filterId) {
     event.stopPropagation();
     const popover = await this.popoverCtrl.create({
@@ -53,7 +65,9 @@ export class FiltersMenuComponent implements OnInit {
     return await popover.present();
   }
 
-
+  /**
+   * Open New Filters Modal
+   */
   async presentFilter() {
     const modal = await this.modalController.create({
       component: FilterModalComponent,
@@ -63,16 +77,33 @@ export class FiltersMenuComponent implements OnInit {
     });
     return await modal.present();
   }
+
+  /**
+   *
+   * @param filter Filter Object
+   * Get Filter Task Count
+   */
   getFilterCount(filter) {
     this.camundaService.getFilterCount(filter.id).subscribe(data => {
       filter.count = data.count;
     });
   }
+
+  /**
+   *
+   * @param item Filter Item
+   * Announce Open Filter Event
+   */
   toggleFilter(item) {
     this.openFilter = item.id;
     this.event.announceFilter({ item: item });
   }
 
+  /**
+   * NgOnIntit: Subscribe to refresh filters event
+   * Get All Filters.
+   * Create Default filter if no filters exist.
+   */
   ngOnInit() {
     this.event.refreshFiltersAnnounced$.subscribe(() => {
       this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {

@@ -3,6 +3,9 @@ import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ProcessListComponent } from '../process-list/process-list.component';
 
+/**
+ * Add Request Button
+ */
 @Component({
     selector: 'app-add-request-button',
     templateUrl: './add-request-button.component.html',

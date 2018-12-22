@@ -33,7 +33,9 @@ const routes: Routes = [
     ]
   }
 ];
-
+/**
+ * Tasks Dashlet Module
+ */
 @NgModule({
   imports: [
     GridsterModule,

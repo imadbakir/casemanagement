@@ -1,35 +1,48 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController, ModalController, PopoverController, InfiniteScroll } from '@ionic/angular';
-import { GridsterItem } from 'angular-gridster2';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 import { SortOptionsComponent } from '../sort-options/sort-options.component';
 
+/**
+ * Task List Component
+ */
 @Component({
   selector: 'app-task-grid',
   templateUrl: './task-grid.component.html',
   styleUrls: ['./task-grid.component.scss']
 })
 export class TaskGridComponent implements OnInit {
+  /**
+   * Filtered Displayed Tasks Array
+   */
   tasks: any = [];
 
+  /**
+   * Filter object
+   */
   filter: any = {
     textSearch: '',
   };
 
+  /**
+   * Original Tasks Array
+   */
   tasksOrigin: any = [];
+
   loading;
+  /**
+   * Chosen FilterId
+   */
   filterId = '';
   pageSize = 7;
-  items: Array<GridsterItem>;
+  /**
+   * Infine Scroll View Child
+   */
   @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
 
-  static itemChange(item, itemComponent) {
-  }
 
-  static itemResize(item, itemComponent) {
-  }
   constructor(
     private event: EventsService,
     private camundaService: CamundaRestService,
@@ -40,11 +53,20 @@ export class TaskGridComponent implements OnInit {
 
   }
 
-
+  /**
+   *
+   * @param event
+   * Search Event Callback
+   */
   search(event) {
     this.performSearch(this.filter.textSearch);
   }
 
+  /**
+   *
+   * @param event
+   * Present Sort Options Popover Menu.
+   */
   async sortOptions(event) {
     const popover = await this.popoverCtrl.create({
       component: SortOptionsComponent,
@@ -52,6 +74,7 @@ export class TaskGridComponent implements OnInit {
     });
     return await popover.present();
   }
+
   async presentLoading() {
     this.loading = await this.loadingController.create({});
     return await this.loading.present();
@@ -60,11 +83,21 @@ export class TaskGridComponent implements OnInit {
     this.loading.dismiss();
   }
 
+  /**
+   *
+   * @param event
+   * Clear Search Event Callback
+   */
   clearSearch(event) {
     this.filter.textSearch = '';
     this.performSearch('');
   }
 
+  /**
+   *
+   * @param value
+   * Perform Text Search on TaskOrigin array and reassign displayed Tasks
+   */
   performSearch(value) {
     this.tasks = this.tasksOrigin.filter(function (item) {
       return (item['name'] ? item['name'].toString().toLowerCase().includes(value.toLowerCase()) : false) ||
@@ -74,6 +107,11 @@ export class TaskGridComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param sorting
+   * Sort Tasks Array
+   */
   sortArray(sorting) {
     switch (sorting.type) {
       case 'datetime':
@@ -108,17 +146,22 @@ export class TaskGridComponent implements OnInit {
 
   }
 
-  showDetails(task) {
-    task.showDetails ? task.showDetails = false : task.showDetails = true;
-  }
-
-  removeItem(item) {
-    this.items.splice(this.items.indexOf(item), 1);
-  }
-
+  /**
+   *
+   * @param filterId
+   * Set chosen Filter Id
+   */
   setFilter(filterId) {
     this.filter = filterId;
   }
+
+  /**
+   *
+   * @param isNew
+   * Fetch Tasks from Camunda API
+   * Reset Tasks array if filter is new.
+   * Get the Next page if not
+   */
   fetchTasks(isNew = false) {
     if (isNew) {
       this.tasks = this.tasksOrigin = [];
@@ -130,7 +173,7 @@ export class TaskGridComponent implements OnInit {
           maxResults: this.tasks.length + this.pageSize,
           finished: true
         }, {
-          taskAssignee: this.auth.getUser().username,
+            taskAssignee: this.auth.getUser().username,
           }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];
             this.tasks = this.tasksOrigin;
@@ -151,6 +194,13 @@ export class TaskGridComponent implements OnInit {
     }
 
   }
+
+  /**
+   *
+   * @param infiniteScroll
+   * Ion Infinite Scroll Callback
+   * Fetch more tasks then stop spinner.
+   */
   DoInfinite(infiniteScroll) {
     this.fetchTasks().then((data) => {
       console.log(data);
@@ -158,6 +208,12 @@ export class TaskGridComponent implements OnInit {
     });
   }
 
+  /**
+   * ngOnInit:
+   * subscribe to sorting events
+   * Subscribe Item Change Events
+   * Subscribe to Filter Change Events
+   */
   ngOnInit() {
     this.event.sortingAnnounced$.subscribe(sorting => {
       this.sortArray(sorting);

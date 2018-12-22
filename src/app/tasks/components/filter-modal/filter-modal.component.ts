@@ -4,13 +4,18 @@ import * as _moment from 'moment';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
-
+/**
+ * Filter Modal - add - edit Filter
+ */
 @Component({
   selector: 'app-filter-modal',
   templateUrl: './filter-modal.component.html',
   styleUrls: ['./filter-modal.component.scss']
 })
 export class FilterModalComponent implements OnInit {
+  /**
+   * All criterias to fill dropdown
+   */
   allCriterias = [
     { key: 'active', name: 'Active', type: 'boolean' },
     { key: 'name', name: 'Name', type: 'string' },
@@ -25,9 +30,26 @@ export class FilterModalComponent implements OnInit {
     { key: 'dueBefore', name: 'Due Before', type: 'date' },
     { key: 'dueAfter', name: 'Due After', type: 'date' },
   ];
+  /**
+   * Currently edited criterias array
+   */
   criterias = [];
+  /**
+   * Filter orQueries Array
+   */
   orQueries = [];
+
+  /**
+   *Task Collection Enum
+   * 1: My Tasks
+   * 2: Group Tasks
+   * 3: My & Group Tasks
+   */
   taskGroup = 1;
+
+  /**
+   * Filter Object
+   */
   filter = {
     resourceType: 'Task',
     name: '',
@@ -45,6 +67,10 @@ export class FilterModalComponent implements OnInit {
     public camundaService: CamundaRestService, public event: EventsService) {
 
   }
+
+  /**
+   * ngOnInit: Fill filter objects, orQueries & Criterias array if filterId was provided
+   */
 
   ngOnInit() {
     this.filter.owner = this.auth.getUser().username;
@@ -68,8 +94,8 @@ export class FilterModalComponent implements OnInit {
         }
       });
     }
-    console.log(this.filter);
   }
+
   updateType(event) {
     this.allCriterias.filter(item => {
       if (item.key === event.detail.value) {
@@ -83,6 +109,12 @@ export class FilterModalComponent implements OnInit {
     });
 
   }
+
+  /**
+   *
+   * @param event ionChange Event
+   * On Task Collection Dropdown value change update orQueries
+   */
   updateQuery(event) {
     switch (event.detail.value) {
       case '1':
@@ -106,6 +138,11 @@ export class FilterModalComponent implements OnInit {
         break;
     }
   }
+
+  /**
+   * Correct Date Type value format to fit with java format and then Create New or update Filter.
+   */
+
   saveFilter() {
     this.criterias.forEach(element => {
       if (element.key.length > 0) {

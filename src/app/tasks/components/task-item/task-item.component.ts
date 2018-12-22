@@ -1,29 +1,30 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
+
+import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
-import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
-import { AuthService } from '../../../core/services/auth.service';
 
+/**
+ * Task List Item Component
+ */
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.scss']
 })
-export class TaskItemComponent implements OnInit {
+export class TaskItemComponent {
+  /**
+   * Camunda Task Object
+   */
   @Input() task;
-  @Output() destoy = new EventEmitter();
+
   @ViewChild('trigger') input;
 
-  users: any = [
-    { name: 'ahmad', username: 'ahmad' },
-    { name: 'eihab', username: 'eihab' },
-    { name: 'imad', username: 'imad' }
-  ];
+  users: any = [];
 
   constructor(
     private loadingController: LoadingController,
-    private router: Router,
     public auth: AuthService,
     private camundaService: CamundaRestService,
     private event: EventsService) { }
@@ -52,23 +53,12 @@ export class TaskItemComponent implements OnInit {
   chooseItem(item) {
     this.event.announceItem(item);
   }
-  complete() {
-    // this.task.complete = true;
-    this.camundaService.postCompleteTask(this.task.id,
-      {
-        variables:
-        {
-          temporal: { value: true },
-          rejectedMng: { value: false },
-        }
-      }
-    ).subscribe(data => {
-      this.task.complete = true;
-      setTimeout(() => {
-        this.destoy.emit();
-      }, 200);
-    });
-  }
+
+  /**
+   *
+   * @param priority
+   * get Priority Class by priority Value
+   */
   getPriority(priority) {
     let value = '';
     switch (true) {
@@ -90,6 +80,11 @@ export class TaskItemComponent implements OnInit {
     }
     return value;
   }
+  /**
+   *
+   * @param priority
+   * Get Status as string By priority Value
+   */
   getStatus(priority) {
     let value = '';
     switch (true) {
@@ -108,9 +103,6 @@ export class TaskItemComponent implements OnInit {
 
     }
     return value;
-  }
-  ngOnInit() {
-    // this.complete();
   }
 
 }

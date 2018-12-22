@@ -3,19 +3,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 
+/**
+ * New Process Instance Form - Start Form
+ */
 @Component({
   selector: 'app-process-form',
   templateUrl: './process-form.component.html',
   styleUrls: ['./process-form.component.scss']
 })
+
 export class ProcessFormComponent implements OnInit {
+
   startForm = {};
+
   constructor(
     public route: ActivatedRoute,
     public router: Router,
     public camundaService: CamundaRestService,
     public event: EventsService
   ) { }
+
+  /**
+   *
+   * @param submission Submission Object
+   * On Form Submit start new process instance
+   * update execution variables
+   * set form version
+   * set submissionId
+   */
+
   onSubmit(submission) {
     console.log(submission);
     this.camundaService.processDefinitionSubmitForm(this.route.snapshot.params['processDefinitionId'], {}).subscribe(instance => {
@@ -29,11 +45,13 @@ export class ProcessFormComponent implements OnInit {
         });
     });
   }
+
+  /**
+   * ngOnInit: get process start form key & resource name by processDefinitionId
+   */
   ngOnInit() {
     this.camundaService.processInstanceStartForm(this.route.snapshot.params['processDefinitionId']).subscribe(startForm => {
-      // startForm.key = 'startrequest:servicerequest';
       this.startForm = startForm.key.split(':');
-      // this.router.navigate([`/tasks/new/${processDefinitionId}`]);
     });
   }
 

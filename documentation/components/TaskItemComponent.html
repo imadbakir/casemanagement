@@ -1,0 +1,1087 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>casemanagement documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">casemanagement documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TaskItemComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/tasks/components/task-item/task-item.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Task List Item Component</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-task-item</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./task-item.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./task-item.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#auth">auth</a>
+                            </li>
+                            <li>
+                                <a href="#input">input</a>
+                            </li>
+                            <li>
+                                <a href="#users">users</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#chooseItem">chooseItem</a>
+                            </li>
+                            <li>
+                                <a href="#getPriority">getPriority</a>
+                            </li>
+                            <li>
+                                <a href="#getStatus">getStatus</a>
+                            </li>
+                            <li>
+                                <a href="#openAssignee">openAssignee</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentLoading">presentLoading</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#task">task</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(loadingController: LoadingController, auth: <a href="../injectables/AuthService.html">AuthService</a>, camundaService: <a href="../injectables/CamundaRestService.html">CamundaRestService</a>, event: <a href="../injectables/EventsService.html">EventsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>loadingController</td>
+                                                  
+                                                        <td>
+                                                                    <code>LoadingController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>camundaService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/CamundaRestService.html" target="_self" >CamundaRestService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>event</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/EventsService.html" target="_self" >EventsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="task"></a>
+                        <code>task</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Camunda Task Object</p>
+</div>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="chooseItem"></a>
+                        <span class="name">
+                            <b>
+                            chooseItem
+                            </b>
+                            <a href="#chooseItem"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>chooseItem(item)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>item</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPriority"></a>
+                        <span class="name">
+                            <b>
+                            getPriority
+                            </b>
+                            <a href="#getPriority"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getPriority(priority)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>priority</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>get Priority Class by priority Value</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getStatus"></a>
+                        <span class="name">
+                            <b>
+                            getStatus
+                            </b>
+                            <a href="#getStatus"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getStatus(priority)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:88</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>priority</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Status as string By priority Value</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openAssignee"></a>
+                        <span class="name">
+                            <b>
+                            openAssignee
+                            </b>
+                            <a href="#openAssignee"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openAssignee()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="presentLoading"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            presentLoading
+                            </b>
+                            <a href="#presentLoading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>presentLoading()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="auth"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            auth
+                            </b>
+                            <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>auth:     <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="input"></a>
+                        <span class="name">
+                            <b>
+                            input
+                            </b>
+                            <a href="#input"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>input:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;trigger&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="users"></a>
+                        <span class="name">
+                            <b>
+                            users
+                            </b>
+                            <a href="#users"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>users:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, ViewChild } from &#x27;@angular/core&#x27;;
+import { LoadingController } from &#x27;@ionic/angular&#x27;;
+
+import { AuthService } from &#x27;../../../core/services/auth.service&#x27;;
+import { CamundaRestService } from &#x27;../../../core/services/camunda-rest.service&#x27;;
+import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
+
+/**
+ * Task List Item Component
+ */
+@Component({
+  selector: &#x27;app-task-item&#x27;,
+  templateUrl: &#x27;./task-item.component.html&#x27;,
+  styleUrls: [&#x27;./task-item.component.scss&#x27;]
+})
+export class TaskItemComponent {
+  /**
+   * Camunda Task Object
+   */
+  @Input() task;
+
+  @ViewChild(&#x27;trigger&#x27;) input;
+
+  users: any &#x3D; [];
+
+  constructor(
+    private loadingController: LoadingController,
+    public auth: AuthService,
+    private camundaService: CamundaRestService,
+    private event: EventsService) { }
+
+  async presentLoading() {
+    const loading &#x3D; await this.loadingController.create({});
+    return await loading.present();
+  }
+
+  openAssignee() {
+    setTimeout(() &#x3D;&gt; {
+      if (this.task.assignee) {
+        this.input.nativeElement.focus();
+        this.task.assignee &#x3D; null;
+      } else {
+        this.task.assignee &#x3D; this.auth.getUser().username;
+      }
+      this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(data &#x3D;&gt; {
+        // this.event.announceFiltersRefresh(&#x27;&#x27;);
+      });
+
+
+    }, 100);
+
+  }
+  chooseItem(item) {
+    this.event.announceItem(item);
+  }
+
+  /**
+   *
+   * @param priority
+   * get Priority Class by priority Value
+   */
+  getPriority(priority) {
+    let value &#x3D; &#x27;&#x27;;
+    switch (true) {
+      case priority &gt;&#x3D; 75:
+        value &#x3D; &#x27;app-bg-danger&#x27;;
+        break;
+      case priority &gt;&#x3D; 50:
+        value &#x3D; &#x27;app-bg-warning&#x27;;
+        break;
+      case priority &gt;&#x3D; 25:
+        value &#x3D; &#x27;app-bg-primary&#x27;;
+        break;
+      case priority &lt; 25:
+        value &#x3D; &#x27;&#x27;;
+        break;
+
+
+
+    }
+    return value;
+  }
+  /**
+   *
+   * @param priority
+   * Get Status as string By priority Value
+   */
+  getStatus(priority) {
+    let value &#x3D; &#x27;&#x27;;
+    switch (true) {
+      case priority &gt;&#x3D; 75:
+        value &#x3D; &#x27;Critical&#x27;;
+        break;
+      case priority &gt;&#x3D; 50:
+        value &#x3D; &#x27;Important&#x27;;
+        break;
+      case priority &gt;&#x3D; 25:
+        value &#x3D; &#x27;Normal&#x27;;
+        break;
+      case priority &lt; 25:
+        value &#x3D; &#x27;Low&#x27;;
+        break;
+
+    }
+    return value;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">  &lt;ion-card class&#x3D;&quot;card {{getPriority(task.priority)}}&quot; [ngClass]&#x3D;&quot;{&#x27;complete&#x27; : task.complete}&quot; [routerLink]&#x3D;&quot;[&#x27;/tasks/edit/&#x27;,task.id]&quot;
+    routerLinkActive&#x3D;&quot;router-link-active&quot;&gt;
+    &lt;ion-card-content&gt;
+      &lt;h2 data-ph&#x3D;&quot;Task name..&quot;&gt;
+        {{task.name}}
+        &lt;div class&#x3D;&quot;photo-container mini-avatar&quot; [ngStyle]&#x3D;&quot;{&#x27;background-image&#x27;: &#x27;url(assets/img/&#x27;+task?.assignee+&#x27;.jpg)&#x27;}&quot;&gt;&lt;/div&gt;
+      &lt;/h2&gt;
+      &lt;div class&#x3D;&quot;more-details&quot;&gt;
+        &lt;p&gt;{{task.description}}&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;!task.deleteReason&quot;&gt;
+        &lt;ion-badge color&#x3D;&quot;light&quot; size&#x3D;&quot;medium&quot; slot&#x3D;&quot;end&quot; [hidden]&#x3D;&quot;!task.created&quot; [ngClass]&#x3D;&quot;{&#x27;date-picker-badge&#x27;:true }&quot;&gt;
+          &lt;ion-icon color&#x3D;&quot;dark&quot; size&#x3D;&quot;medium&quot; name&#x3D;&quot;create&quot;&gt;&lt;/ion-icon&gt;{{task.created | date}}
+        &lt;/ion-badge&gt;
+        &lt;ion-badge mat-raised-button (click)&#x3D;&quot;myDatepicker.open()&quot; color&#x3D;&quot;light&quot; slot&#x3D;&quot;end&quot; [ngClass]&#x3D;&quot;{&#x27;date-picker-badge&#x27;:true ,&#x27;due&#x27;:true}&quot;&gt;
+          &lt;ion-icon color&#x3D;&quot;warning&quot; size&#x3D;&quot;medium&quot; name&#x3D;&quot;calendar&quot;&gt;&lt;/ion-icon&gt;{{task.due ? (task.due
+          | date ): &#x27;Due&#x27; | translate}}
+        &lt;/ion-badge&gt;
+        &lt;input [matDatepicker]&#x3D;&quot;myDatepicker&quot; [(ngModel)]&#x3D;&quot;task.due&quot; hidden&gt;
+        &lt;mat-datepicker touchUi #myDatepicker&gt;&lt;/mat-datepicker&gt;
+        &lt;input [matDatepicker]&#x3D;&quot;follow_up&quot; [(ngModel)]&#x3D;&quot;task.follow_up&quot; hidden&gt;
+        &lt;mat-datepicker touchUi #follow_up&gt;&lt;/mat-datepicker&gt;
+      &lt;/ng-container&gt;
+
+    &lt;/ion-card-content&gt;
+    &lt;div class&#x3D;&quot;more-details task-options&quot; *ngIf&#x3D;&quot;!task.deleteReason&quot;&gt;
+      &lt;input matInput #trigger [id]&#x3D;&quot;task.id+&#x27;-assignee&#x27;&quot; [ngStyle]&#x3D;&quot;{&#x27;opacity&#x27;:0,&#x27;width&#x27;:0,&#x27;height&#x27;:0}&quot; [(ngModel)]&#x3D;&quot;task.assignee&quot;
+        [matAutocomplete]&#x3D;&quot;auto&quot; [matAutocompleteConnectedTo]&#x3D;&quot;origin&quot; /&gt;
+      &lt;mat-autocomplete #auto&#x3D;&quot;matAutocomplete&quot;&gt;
+        &lt;mat-option *ngFor&#x3D;&quot;let user of users&quot; [value]&#x3D;&quot;user.username&quot;&gt;{{user.name}}&lt;/mat-option&gt;
+      &lt;/mat-autocomplete&gt;
+      &lt;ion-button size&#x3D;&quot;small&quot; (click)&#x3D;&quot;openAssignee($event)&quot; matAutocompleteOrigin #origin&#x3D;&quot;matAutocompleteOrigin&quot;
+        color&#x3D;&quot;primary&quot; [fill]&#x3D;&quot;task.assignee ? &#x27;solid&#x27; : &#x27;clear&#x27;&quot;&gt;
+        &lt;ion-icon name&#x3D;&quot;person&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
+        &lt;span [hidden]&#x3D;&quot;task.assignee&quot;&gt;{{&#x27;Claim&#x27; | translate}}&lt;/span&gt;
+        &lt;span [hidden]&#x3D;&quot;!task.assignee&quot;&gt;{{task.assignee}}&lt;/span&gt;
+      &lt;/ion-button&gt;
+      &lt;ion-button size&#x3D;&quot;small&quot; color&#x3D;&quot;primary&quot; fill&#x3D;&quot;clear&quot;&gt;
+        &lt;ion-icon name&#x3D;&quot;people&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;{{&#x27;Add Group&#x27; | translate}}
+      &lt;/ion-button&gt;
+
+      &lt;!-- &lt;ion-button size&#x3D;&quot;small&quot; color&#x3D;&quot;success&quot; (click)&#x3D;&quot;complete()&quot; *ngIf&#x3D;&quot;task.assignee &#x3D;&#x3D; auth.getUser()?.username&quot;
+        [ngStyle]&#x3D;&quot;{&#x27;float&#x27;:&#x27;right&#x27;}&quot; fill&#x3D;&quot;clear&quot;&gt;
+        &lt;ion-icon name&#x3D;&quot;checkmark&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;{{&#x27;Complete&#x27; | translate}}
+      &lt;/ion-button&gt; --&gt;
+
+    &lt;/div&gt;
+  &lt;/ion-card&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./task-item.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+
+ion-card.card {
+  margin: 5px;
+  border-radius: 2px;
+  width: calc(100% - 10px);
+  box-shadow: 0px 1px 0px 0px #eee;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 1px #dcdcdc solid !important;
+  transition: 0.4s;
+  max-height: 550px;
+
+  &amp;.complete {
+    max-height: 0px;
+    background-color: rgba(var(--ion-color-success-rgb), 0.50);
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+  }
+
+  p {
+    padding: 10px 0px;
+    opacity: 0.8;
+  }
+}
+
+.date-picker-badge {
+  font-weight: 100;
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 12px;
+  background: #f8f8f8;
+  border: 1px solid #eee;
+
+  &amp;.due {
+    float: right;
+  }
+
+  ion-icon {
+    font-size: 17px;
+    vertical-align: top;
+    margin: -3px 3px;
+  }
+}
+
+[contentEditable&#x3D;true]:empty:not(:focus):before {
+  content: attr(data-ph);
+  color: grey;
+  font-style: italic;
+}
+
+.more-details {
+  white-space: initial;
+  padding: 0px;
+  height: auto;
+  max-height: 34px;
+
+  &amp;.task-options {
+    max-height: 0px;
+    padding: 0px;
+  }
+
+  overflow: hidden;
+  margin: 10px 0px;
+  -webkit-transition: max-height 1.2s;
+  -moz-transition: max-height 1.2s;
+  -ms-transition: max-height 1.2s;
+  -o-transition: max-height 1.2s;
+  transition: max-height 1.2s;
+  -webkit-transition: padding 0.2s;
+  -moz-transition:padding 0.2s;
+  -ms-transition: padding 0.2s;
+  -o-transition: padding 0.2s;
+  transition: padding 0.2s;
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+  }
+}
+
+ion-card:hover .more-details,
+ion-card:focus-within .more-details {
+  p {
+    white-space: normal;
+    text-overflow: initial;
+  }
+
+  max-height: 300px;
+
+  &amp;.task-options {
+    padding: 10px;
+  }
+}
+.router-link-active {
+  background: rgba(var(--ion-color-primary-rgb),0.15);
+}
+ion-card:focus {
+  outline: 0px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div>  <ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{\'complete\' : task.complete}" [routerLink]="[\'/tasks/edit/\',task.id]"    routerLinkActive="router-link-active">    <ion-card-content>      <h2 data-ph="Task name..">        {{task.name}}        <div class="photo-container mini-avatar" [ngStyle]="{\'background-image\': \'url(assets/img/\'+task?.assignee+\'.jpg)\'}"></div>      </h2>      <div class="more-details">        <p>{{task.description}}</p>      </div>      <ng-container *ngIf="!task.deleteReason">        <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{\'date-picker-badge\':true }">          <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}        </ion-badge>        <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [ngClass]="{\'date-picker-badge\':true ,\'due\':true}">          <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due ? (task.due          | date ): \'Due\' | translate}}        </ion-badge>        <input [matDatepicker]="myDatepicker" [(ngModel)]="task.due" hidden>        <mat-datepicker touchUi #myDatepicker></mat-datepicker>        <input [matDatepicker]="follow_up" [(ngModel)]="task.follow_up" hidden>        <mat-datepicker touchUi #follow_up></mat-datepicker>      </ng-container>    </ion-card-content>    <div class="more-details task-options" *ngIf="!task.deleteReason">      <input matInput #trigger [id]="task.id+\'-assignee\'" [ngStyle]="{\'opacity\':0,\'width\':0,\'height\':0}" [(ngModel)]="task.assignee"        [matAutocomplete]="auto" [matAutocompleteConnectedTo]="origin" />      <mat-autocomplete #auto="matAutocomplete">        <mat-option *ngFor="let user of users" [value]="user.username">{{user.name}}</mat-option>      </mat-autocomplete>      <ion-button size="small" (click)="openAssignee($event)" matAutocompleteOrigin #origin="matAutocompleteOrigin"        color="primary" [fill]="task.assignee ? \'solid\' : \'clear\'">        <ion-icon name="person" slot="start"></ion-icon>        <span [hidden]="task.assignee">{{\'Claim\' | translate}}</span>        <span [hidden]="!task.assignee">{{task.assignee}}</span>      </ion-button>      <ion-button size="small" color="primary" fill="clear">        <ion-icon name="people" slot="start"></ion-icon>{{\'Add Group\' | translate}}      </ion-button>      <!-- <ion-button size="small" color="success" (click)="complete()" *ngIf="task.assignee == auth.getUser()?.username"        [ngStyle]="{\'float\':\'right\'}" fill="clear">        <ion-icon name="checkmark" slot="start"></ion-icon>{{\'Complete\' | translate}}      </ion-button> -->    </div>  </ion-card></div>'
+    var COMPONENTS = [{'name': 'AddRequestButtonComponent', 'selector': 'app-add-request-button'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppFormioComponent', 'selector': 'app-formio'},{'name': 'AuthIndexComponent', 'selector': 'app-index-login'},{'name': 'AuthLoginComponent', 'selector': 'app-auth-login'},{'name': 'FilterModalComponent', 'selector': 'app-filter-modal'},{'name': 'FilterOptionsComponent', 'selector': 'app-filter-options'},{'name': 'FiltersMenuComponent', 'selector': 'app-filters-menu'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'GridComponent', 'selector': 'app-grid'},{'name': 'GridsterComponent', 'selector': 'app-gridster'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LanguageComponent', 'selector': 'app-language'},{'name': 'LanguageSwitchComponent', 'selector': 'app-language-switch'},{'name': 'NotificationsButtonComponent', 'selector': 'app-notifications-button'},{'name': 'ProcessFormComponent', 'selector': 'app-process-form'},{'name': 'ProcessListComponent', 'selector': 'app-process-list'},{'name': 'SortOptionsComponent', 'selector': 'app-sort-options'},{'name': 'TaskDetailsComponent', 'selector': 'app-task-details'},{'name': 'TaskEditComponent', 'selector': 'app-task-edit'},{'name': 'TaskGridComponent', 'selector': 'app-task-grid'},{'name': 'TaskItemComponent', 'selector': 'app-task-item'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'UserOptionsComponent', 'selector': 'app-user-options'}];
+    var DIRECTIVES = [{'name': 'OnCreateDirective', 'selector': '[appOnCreate]'}];
+    var ACTUAL_COMPONENT = {'name': 'TaskItemComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TaskItemComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

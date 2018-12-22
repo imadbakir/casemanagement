@@ -1,0 +1,3427 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>casemanagement documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">casemanagement documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>CamundaRestService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/core/services/camunda-rest.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Camunda Rest API Integration</p>
+
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#engineApiUrl">engineApiUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#engineRestUrl">engineRestUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createFilter">createFilter</a>
+                            </li>
+                            <li>
+                                <a href="#deleteExecutionVariables">deleteExecutionVariables</a>
+                            </li>
+                            <li>
+                                <a href="#deleteFilter">deleteFilter</a>
+                            </li>
+                            <li>
+                                <a href="#getExecutionVariables">getExecutionVariables</a>
+                            </li>
+                            <li>
+                                <a href="#getFilter">getFilter</a>
+                            </li>
+                            <li>
+                                <a href="#getFilterCount">getFilterCount</a>
+                            </li>
+                            <li>
+                                <a href="#getFilters">getFilters</a>
+                            </li>
+                            <li>
+                                <a href="#getHistoryTask">getHistoryTask</a>
+                            </li>
+                            <li>
+                                <a href="#getIdentity">getIdentity</a>
+                            </li>
+                            <li>
+                                <a href="#getProcessDefinitions">getProcessDefinitions</a>
+                            </li>
+                            <li>
+                                <a href="#getProcessDefinitionTaskKey">getProcessDefinitionTaskKey</a>
+                            </li>
+                            <li>
+                                <a href="#getProcessDefinitionXML">getProcessDefinitionXML</a>
+                            </li>
+                            <li>
+                                <a href="#getTask">getTask</a>
+                            </li>
+                            <li>
+                                <a href="#getTaskFormKey">getTaskFormKey</a>
+                            </li>
+                            <li>
+                                <a href="#getTaskFormVariables">getTaskFormVariables</a>
+                            </li>
+                            <li>
+                                <a href="#getTasks">getTasks</a>
+                            </li>
+                            <li>
+                                <a href="#getUserProfile">getUserProfile</a>
+                            </li>
+                            <li>
+                                <a href="#getVariableInstanceByExecutionId">getVariableInstanceByExecutionId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleError">handleError</a>
+                            </li>
+                            <li>
+                                <a href="#listFilter">listFilter</a>
+                            </li>
+                            <li>
+                                <a href="#listHistory">listHistory</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#log">log</a>
+                            </li>
+                            <li>
+                                <a href="#modifyExecutionVariables">modifyExecutionVariables</a>
+                            </li>
+                            <li>
+                                <a href="#postAssignTask">postAssignTask</a>
+                            </li>
+                            <li>
+                                <a href="#postCompleteTask">postCompleteTask</a>
+                            </li>
+                            <li>
+                                <a href="#postProcessInstance">postProcessInstance</a>
+                            </li>
+                            <li>
+                                <a href="#postUserLogin">postUserLogin</a>
+                            </li>
+                            <li>
+                                <a href="#processDefinitionSubmitForm">processDefinitionSubmitForm</a>
+                            </li>
+                            <li>
+                                <a href="#processInstanceStartForm">processInstanceStartForm</a>
+                            </li>
+                            <li>
+                                <a href="#putUpdateTask">putUpdateTask</a>
+                            </li>
+                            <li>
+                                <a href="#updateExecutionVariables">updateExecutionVariables</a>
+                            </li>
+                            <li>
+                                <a href="#updateFilter">updateFilter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, env: <a href="../classes/EnvService.html">EnvService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>env</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../classes/EnvService.html" target="_self" >EnvService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createFilter"></a>
+                        <span class="name">
+                            <b>
+                            createFilter
+                            </b>
+                            <a href="#createFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>createFilter(variables)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>variables</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Post Variables
+Create new Filter</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deleteExecutionVariables"></a>
+                        <span class="name">
+                            <b>
+                            deleteExecutionVariables
+                            </b>
+                            <a href="#deleteExecutionVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>deleteExecutionVariables(executionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variableName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:256</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>executionId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variableName</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Delete Execution Variable by Variable Name</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deleteFilter"></a>
+                        <span class="name">
+                            <b>
+                            deleteFilter
+                            </b>
+                            <a href="#deleteFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>deleteFilter(filterId)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:92</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filterId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Filter Id
+Delete Filter</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getExecutionVariables"></a>
+                        <span class="name">
+                            <b>
+                            getExecutionVariables
+                            </b>
+                            <a href="#getExecutionVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getExecutionVariables(executionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:216</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>executionId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Execution Variables By Execution Id</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getFilter"></a>
+                        <span class="name">
+                            <b>
+                            getFilter
+                            </b>
+                            <a href="#getFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getFilter(id)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:55</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Filter Id
+Get Filter by Filter Id</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getFilterCount"></a>
+                        <span class="name">
+                            <b>
+                            getFilterCount
+                            </b>
+                            <a href="#getFilterCount"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getFilterCount(id, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:153</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get Filter Task Count</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getFilters"></a>
+                        <span class="name">
+                            <b>
+                            getFilters
+                            </b>
+                            <a href="#getFilters"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getFilters(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>query Params
+Get Filters List</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getHistoryTask"></a>
+                        <span class="name">
+                            <b>
+                            getHistoryTask
+                            </b>
+                            <a href="#getHistoryTask"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getHistoryTask(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:204</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Get History Task</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getIdentity"></a>
+                        <span class="name">
+                            <b>
+                            getIdentity
+                            </b>
+                            <a href="#getIdentity"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getIdentity(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="407" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:407</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>get user Groups</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getProcessDefinitions"></a>
+                        <span class="name">
+                            <b>
+                            getProcessDefinitions
+                            </b>
+                            <a href="#getProcessDefinitions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getProcessDefinitions(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="322" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:322</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get Process Definitions list</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/ProcessDefinition.html" target="_self" >Observable&lt;ProcessDefinition[]&gt;</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getProcessDefinitionTaskKey"></a>
+                        <span class="name">
+                            <b>
+                            getProcessDefinitionTaskKey
+                            </b>
+                            <a href="#getProcessDefinitionTaskKey"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getProcessDefinitionTaskKey(processDefinitionKey)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="311" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:311</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>processDefinitionKey</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Process Definition Start Form By Process Definition Key</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getProcessDefinitionXML"></a>
+                        <span class="name">
+                            <b>
+                            getProcessDefinitionXML
+                            </b>
+                            <a href="#getProcessDefinitionXML"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getProcessDefinitionXML(processDefinitionId)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:129</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>processDefinitionId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Process Definition XML</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getTask"></a>
+                        <span class="name">
+                            <b>
+                            getTask
+                            </b>
+                            <a href="#getTask"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getTask(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:191</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>taskId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Task</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getTaskFormKey"></a>
+                        <span class="name">
+                            <b>
+                            getTaskFormKey
+                            </b>
+                            <a href="#getTaskFormKey"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getTaskFormKey(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:166</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>taskId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Task Form Key</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getTaskFormVariables"></a>
+                        <span class="name">
+                            <b>
+                            getTaskFormVariables
+                            </b>
+                            <a href="#getTaskFormVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getTaskFormVariables(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:178</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>taskId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Task Form Variables</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getTasks"></a>
+                        <span class="name">
+                            <b>
+                            getTasks
+                            </b>
+                            <a href="#getTasks"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getTasks(queryParams)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>GET Tasks With Query Params</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/Task.html" target="_self" >Observable&lt;Task[]&gt;</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getUserProfile"></a>
+                        <span class="name">
+                            <b>
+                            getUserProfile
+                            </b>
+                            <a href="#getUserProfile"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getUserProfile(userId)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="375" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:375</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>get User Profile</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getVariableInstanceByExecutionId"></a>
+                        <span class="name">
+                            <b>
+                            getVariableInstanceByExecutionId
+                            </b>
+                            <a href="#getVariableInstanceByExecutionId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getVariableInstanceByExecutionId(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:116</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Get History Execution Variables</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="handleError"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            handleError
+                            </b>
+                            <a href="#handleError"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>handleError(operation: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, result?: T)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="421" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:421</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>operation</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>&#x27;operation&#x27;</code>
+                                                        </td>
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>result</td>
+                                                        <td>
+                                                                    <code>T</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Error Handler</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>(error: any) &#x3D;&gt; any</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listFilter"></a>
+                        <span class="name">
+                            <b>
+                            listFilter
+                            </b>
+                            <a href="#listFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>listFilter(id, queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:104</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Filter Id</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>maxResults, firstResult</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listHistory"></a>
+                        <span class="name">
+                            <b>
+                            listHistory
+                            </b>
+                            <a href="#listHistory"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>listHistory(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>, variables)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:142</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>maxResults, firstResult, finished</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="log"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            log
+                            </b>
+                            <a href="#log"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>log(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="443" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:443</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Log a HeroService message with the MessageService </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>message</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modifyExecutionVariables"></a>
+                        <span class="name">
+                            <b>
+                            modifyExecutionVariables
+                            </b>
+                            <a href="#modifyExecutionVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>modifyExecutionVariables(executionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:229</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>executionId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Modify Execution Variables</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postAssignTask"></a>
+                        <span class="name">
+                            <b>
+                            postAssignTask
+                            </b>
+                            <a href="#postAssignTask"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>postAssignTask(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:298</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>taskId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Assign a task to user or Group</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postCompleteTask"></a>
+                        <span class="name">
+                            <b>
+                            postCompleteTask
+                            </b>
+                            <a href="#postCompleteTask"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>postCompleteTask(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:270</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>taskId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Post Complete Task</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postProcessInstance"></a>
+                        <span class="name">
+                            <b>
+                            postProcessInstance
+                            </b>
+                            <a href="#postProcessInstance"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>postProcessInstance(processDefinitionKey, variables)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="335" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:335</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>processDefinitionKey</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Post Process instance Start</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postUserLogin"></a>
+                        <span class="name">
+                            <b>
+                            postUserLogin
+                            </b>
+                            <a href="#postUserLogin"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>postUserLogin(variables)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:388</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>variables</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>User Login - FormData Post</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="processDefinitionSubmitForm"></a>
+                        <span class="name">
+                            <b>
+                            processDefinitionSubmitForm
+                            </b>
+                            <a href="#processDefinitionSubmitForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>processDefinitionSubmitForm(processDefinitionId, variables)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="363" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:363</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>processDefinitionId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Post Process instance Start</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="processInstanceStartForm"></a>
+                        <span class="name">
+                            <b>
+                            processInstanceStartForm
+                            </b>
+                            <a href="#processInstanceStartForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>processInstanceStartForm(processDefinitionId)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="349" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:349</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>processDefinitionId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Get Process Definition Start Form By Process Definition Id</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="putUpdateTask"></a>
+                        <span class="name">
+                            <b>
+                            putUpdateTask
+                            </b>
+                            <a href="#putUpdateTask"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>putUpdateTask(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:284</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>taskId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Update Task</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateExecutionVariables"></a>
+                        <span class="name">
+                            <b>
+                            updateExecutionVariables
+                            </b>
+                            <a href="#updateExecutionVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>updateExecutionVariables(executionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variableName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:243</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>executionId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variableName</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Update Execution Variable by VariableName</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateFilter"></a>
+                        <span class="name">
+                            <b>
+                            updateFilter
+                            </b>
+                            <a href="#updateFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>updateFilter(filterId, variables)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:80</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filterId</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Filter Id</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Post Variables
+Update Filter By FilterId</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="engineApiUrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            engineApiUrl
+                            </b>
+                            <a href="#engineApiUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>engineApiUrl:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.env.engineApiUrl</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="engineRestUrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            engineRestUrl
+                            </b>
+                            <a href="#engineRestUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>engineRestUrl:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.env.engineRestUrl</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { of } from &#x27;rxjs/observable/of&#x27;;
+import { catchError, tap } from &#x27;rxjs/operators&#x27;;
+import { ProcessDefinition } from &#x27;../schemas/ProcessDefinition&#x27;;
+import { Task } from &#x27;../schemas/Task&#x27;;
+import { EnvService } from &#x27;./env.service&#x27;;
+
+
+/**
+ * Camunda Rest API Integration
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class CamundaRestService {
+  private engineRestUrl &#x3D; this.env.engineRestUrl;
+  private engineApiUrl &#x3D; this.env.engineApiUrl;
+
+
+  constructor(private http: HttpClient, private env: EnvService) {
+
+  }
+  /**
+   *
+   * @param queryParams
+   * GET Tasks With Query Params
+   */
+  getTasks(queryParams): Observable&lt;Task[]&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched tasks&#x60;)),
+      catchError(this.handleError(&#x27;getTasks&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param queryParams query Params
+   * Get Filters List
+   */
+  getFilters(queryParams &#x3D; {}): Observable&lt;any[]&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched filters&#x60;)),
+      catchError(this.handleError(&#x27;getFilters&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param id Filter Id
+   * Get Filter by Filter Id
+   */
+  getFilter(id): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched filter ${id}&#x60;)),
+      catchError(this.handleError(&#x27;getFilter&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param variables Post Variables
+   * Create new Filter
+   */
+  createFilter(variables): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/create&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;created filter&#x60;)),
+      catchError(this.handleError(&#x27;createFilter&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param filterId Filter Id
+   * @param variables Post Variables
+   * Update Filter By FilterId
+   */
+  updateFilter(filterId, variables): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${filterId}&#x60;;
+    return this.http.put&lt;any&gt;(endpoint, variables).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;created filter&#x60;)),
+      catchError(this.handleError(&#x27;createFilter&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param filterId Filter Id
+   * Delete Filter
+   */
+  deleteFilter(filterId): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${filterId}&#x60;;
+    return this.http.delete&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;deleted filter&#x60;)),
+      catchError(this.handleError(&#x27;deleteFilter&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param id Filter Id
+   * @param queryParams maxResults, firstResult
+   */
+  listFilter(id, queryParams &#x3D; {}): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}/list&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, {}, { params: queryParams }).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched filter list ${id}&#x60;)),
+      catchError(this.handleError(&#x27;listFilter&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param queryParams
+   * Get History Execution Variables
+   */
+  getVariableInstanceByExecutionId(queryParams &#x3D; {}) {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/variable-instance&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched history&#x60;)),
+      catchError(this.handleError(&#x27;listHistory&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param processDefinitionId
+   * Get Process Definition XML
+   */
+  getProcessDefinitionXML(processDefinitionId) {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/${processDefinitionId}/xml&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched history&#x60;)),
+      catchError(this.handleError(&#x27;listHistory&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param queryParams maxResults, firstResult, finished
+   * @param variables
+   */
+  listHistory(queryParams &#x3D; {}, variables) {
+    // tslint:disable-next-line:max-line-length
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables, { params: queryParams }).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched history&#x60;)),
+      catchError(this.handleError(&#x27;listHistory&#x27;, []))
+    );
+  }
+  /**
+   * Get Filter Task Count
+   */
+  getFilterCount(id, variables &#x3D; {}): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}/count&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched filter ${id} count&#x60;)),
+      catchError(this.handleError(&#x27;getFilterCount&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param taskId
+   * Get Task Form Key
+   */
+  getTaskFormKey(taskId: String): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/form&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched taskform&#x60;)),
+      catchError(this.handleError(&#x27;getTaskFormKey&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param taskId
+   * Get Task Form Variables
+   */
+  getTaskFormVariables(taskId: String): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/form-variables&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched task form variables&#x60;)),
+      catchError(this.handleError(&#x27;getTaskFormVariables&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param taskId
+   * Get Task
+   */
+  getTask(taskId: String): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched Task&#x60;)),
+      catchError(this.handleError(&#x27;getTask&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param queryParams
+   * Get History Task
+   */
+  getHistoryTask(queryParams &#x3D; {}): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched History Task&#x60;)),
+      catchError(this.handleError(&#x27;getHistoryTask&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param executionId
+   * Get Execution Variables By Execution Id
+   */
+  getExecutionVariables(executionId: String): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched ExecutionVariables&#x60;)),
+      catchError(this.handleError(&#x27;getExecutionVariables&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param executionId
+   * @param variables
+   * Modify Execution Variables
+   */
+  modifyExecutionVariables(executionId: String, variables: Object): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;posted ExecutionVariables&#x60;)),
+      catchError(this.handleError(&#x27;modifyExecutionVariables&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param executionId
+   * @param variableName
+   * @param variables
+   * Update Execution Variable by VariableName
+   */
+  updateExecutionVariables(executionId: String, variableName: String, variables: Object): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}&#x60;;
+    return this.http.put&lt;any&gt;(endpoint, variables).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;posted ExecutionVariables&#x60;)),
+      catchError(this.handleError(&#x27;modifyExecutionVariables&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param executionId
+   * @param variableName
+   * Delete Execution Variable by Variable Name
+   */
+  deleteExecutionVariables(executionId: String, variableName: String): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}&#x60;;
+    return this.http.delete&lt;any&gt;(endpoint).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;posted ExecutionVariables&#x60;)),
+      catchError(this.handleError(&#x27;modifyExecutionVariables&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param taskId
+   * @param variables
+   * Post Complete Task
+   */
+  postCompleteTask(taskId: String, variables: Object): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/complete&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(tasks &#x3D;&gt; this.log(&#x60;posted complete task&#x60;)),
+      catchError(this.handleError(&#x27;postCompleteTask&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param taskId
+   * @param variables
+   * Update Task
+   */
+  putUpdateTask(taskId: String, variables: Object): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/&#x60;;
+    return this.http.put&lt;any&gt;(endpoint, variables).pipe(
+      tap(tasks &#x3D;&gt; this.log(&#x60;put task&#x60;)),
+      catchError(this.handleError(&#x27;putUpdateTask&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param taskId
+   * @param variables
+   * Assign a task to user or Group
+   */
+  postAssignTask(taskId: String, variables: Object): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/assignee&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(tasks &#x3D;&gt; this.log(&#x60;posted assign task&#x60;)),
+      catchError(this.handleError(&#x27;postAssignTask&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param processDefinitionKey
+   * Get Process Definition Start Form By Process Definition Key
+   */
+  getProcessDefinitionTaskKey(processDefinitionKey): Observable&lt;any&gt; {
+    const url &#x3D; &#x60;${this.engineRestUrl}process-definition/key/${processDefinitionKey}/startForm&#x60;;
+    return this.http.get&lt;any&gt;(url).pipe(
+      tap(form &#x3D;&gt; this.log(&#x60;fetched formkey&#x60;)),
+      catchError(this.handleError(&#x27;getProcessDeifnitionFormKey&#x27;, []))
+    );
+  }
+  /**
+   * Get Process Definitions list
+   * @param queryParams
+   */
+  getProcessDefinitions(queryParams &#x3D; {}): Observable&lt;ProcessDefinition[]&gt; {
+    return this.http.get&lt;ProcessDefinition[]&gt;(this.engineRestUrl + &#x27;process-definition&#x27;).pipe(
+      tap(processDefinitions &#x3D;&gt; this.log(&#x60;fetched processDefinitions&#x60;)),
+      catchError(this.handleError(&#x27;getProcessDefinitions&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param processDefinitionKey
+   * @param variables
+   * Post Process instance Start
+   */
+  postProcessInstance(processDefinitionKey, variables): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/key/${processDefinitionKey}/start&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
+      catchError(this.handleError(&#x27;postProcessInstance&#x27;, []))
+    );
+  }
+
+
+  /**
+     *
+     * @param processDefinitionId
+     * Get Process Definition Start Form By Process Definition Id
+     */
+  processInstanceStartForm(processDefinitionId): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/${processDefinitionId}/startForm&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
+      catchError(this.handleError(&#x27;postProcessInstance&#x27;, []))
+    );
+  }
+
+  /**
+     *
+     * @param processDefinitionId
+     * @param variables
+     * Post Process instance Start
+     */
+  processDefinitionSubmitForm(processDefinitionId, variables): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/${processDefinitionId}/submit-form&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+      tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
+      catchError(this.handleError(&#x27;postProcessInstance&#x27;, []))
+    );
+  }
+  /**
+   *
+   * @param userId
+   * get User Profile
+   */
+  getUserProfile(userId): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}user/${userId}/profile&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
+      catchError(this.handleError(&#x27;getUserProfile&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param variables
+   * User Login - FormData Post
+   */
+  postUserLogin(variables): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineApiUrl}admin/auth/user/default/login/welcome&#x60;;
+    const formData &#x3D; new URLSearchParams();
+    const options &#x3D; {
+      headers: new HttpHeaders().set(&#x27;Content-Type&#x27;, &#x27;application/x-www-form-urlencoded&#x27;)
+    };
+    formData.append(&#x27;username&#x27;, variables.username);
+    formData.append(&#x27;password&#x27;, variables.password);
+    return this.http.post(endpoint, formData.toString(), options).pipe(
+      tap(data &#x3D;&gt; data),
+      catchError(this.handleError(&#x27;postUserLogin&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param queryParams
+   * get user Groups
+   */
+  getIdentity(queryParams &#x3D; {}) {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}identity/groups&#x60;;
+    return this.http.get&lt;any&gt;(endpoint).pipe(
+      tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
+      catchError(this.handleError(&#x27;getUserProfile&#x27;, []))
+    );
+  }
+
+  /**
+   *
+   * @param operation
+   * @param result
+   * Error Handler
+   */
+  private handleError&lt;T&gt;(operation &#x3D; &#x27;operation&#x27;, result?: T) {
+    return (error: any): Observable&lt;T&gt; &#x3D;&gt; {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(&#x60;${operation} failed: ${error.message}&#x60;);
+
+      // Let the app keep running by returning an empty result.
+      result[&#x27;status&#x27;] &#x3D; error.status;
+      if (error.error.hasOwnProperty(&#x27;message&#x27;)) {
+        result[&#x27;message&#x27;] &#x3D; error.error.message;
+        result[&#x27;type&#x27;] &#x3D; error.error.type;
+
+      }
+
+      return of(result as T);
+    };
+  }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    console.log(message);
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'CamundaRestService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

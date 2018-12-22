@@ -7,7 +7,9 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 
-
+/**
+ * Main Task Component
+ */
 @Component({
   selector: 'app-task-edit',
   templateUrl: './task-edit.component.html',
@@ -38,7 +40,11 @@ export class TaskEditComponent implements OnInit {
 
   }
 
-
+  /**
+   *
+   * @param event CustomEvent
+   * on formio CustomEvent (eg:Complete) callback
+   */
   onCustomEvent(event) {
     try {
       if (event.hasOwnProperty('type')) {
@@ -70,6 +76,12 @@ export class TaskEditComponent implements OnInit {
       console.log(err);
     }
   }
+  /**
+   *
+   * @param submission Submission Object
+   * On Form Submit Event Callback
+   * update execution Variables Set Form Version
+   */
   onSubmit(submission) {
     this.camundaService.updateExecutionVariables(this.task.executionId, 'v_' + this.task.formKey,
       { value: submission._fvid, type: 'String' }).subscribe(() => {
@@ -85,7 +97,12 @@ export class TaskEditComponent implements OnInit {
   }
 
 
-
+  /**
+   * ngOnInit: on init get Task Details if false get History Task Details
+   * get formKey and Resource name
+   * get execution variables and fill form versions array and resourceId
+   *
+   */
   ngOnInit() {
     this.presentLoading().then(() => {
       this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe((task) => {
@@ -110,7 +127,7 @@ export class TaskEditComponent implements OnInit {
           });
 
         } else {
-          this.camundaService.getHistoryTask(this.route.snapshot.params.taskId).subscribe(tasks => {
+          this.camundaService.getHistoryTask({ taskId: this.route.snapshot.params.taskId }).subscribe(tasks => {
             if (tasks.length > 0) {
               this.task = tasks[0];
 
@@ -126,22 +143,23 @@ export class TaskEditComponent implements OnInit {
                   this.form.formKey = keyResourceArray[0];
                   this.form.resourceName = keyResourceArray[1];
                   this.form.readOnly = true;
-                  this.camundaService.getVariableInstanceByExecutionId(this.task.executionId).subscribe(executionVariables => {
-                    this.form.version = executionVariables.forEach((variable) => {
-                      if (variable.name.indexOf('v_') > -1) {
-                        this.form.version[variable.name.replace('v_', '')] = variable.value;
-                      }
-                    });
-                    const resource = executionVariables.filter((variable) => {
-                      return variable.name === this.form.resourceName;
-                    });
-                    this.form.resourceId = (resource && resource.length > 0) ?
-                      resource[0].value : '';
-                    console.log(resource);
-                    console.log(this.form.resourceName);
-                    this.dismissLoading();
+                  this.camundaService.
+                    getVariableInstanceByExecutionId({ executionIdIn: this.task.executionId }).subscribe(executionVariables => {
+                      this.form.version = executionVariables.forEach((variable) => {
+                        if (variable.name.indexOf('v_') > -1) {
+                          this.form.version[variable.name.replace('v_', '')] = variable.value;
+                        }
+                      });
+                      const resource = executionVariables.filter((variable) => {
+                        return variable.name === this.form.resourceName;
+                      });
+                      this.form.resourceId = (resource && resource.length > 0) ?
+                        resource[0].value : '';
+                      console.log(resource);
+                      console.log(this.form.resourceName);
+                      this.dismissLoading();
 
-                  });
+                    });
                 });
               });
 

@@ -21,6 +21,9 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+/**
+ * App Core Module - Essential Modules, Providers and services
+ */
 @NgModule({
   imports: [
     StorageServiceModule,

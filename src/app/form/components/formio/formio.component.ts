@@ -14,7 +14,10 @@ import { assign, each, get } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 
 import { ExternalService } from '../../../core/services/external.service';
-
+/**
+ * Formio Component
+ * Initilizes the form & assigns data and options
+ */
 @Component({
     selector: 'app-formio',
     templateUrl: './formio.component.html',
@@ -93,6 +96,12 @@ export class AppFormioComponent implements OnInit, OnChanges {
 
     }
 
+    /**
+     *
+     * @param form formio Form Object
+     * Creates form and assigns events
+     */
+
     setForm(form: FormioForm) {
         this.form = form;
         // Only initialize a single formio instance.
@@ -158,6 +167,9 @@ export class AppFormioComponent implements OnInit, OnChanges {
         });
     }
 
+    /**
+     * init options object
+     */
     initialize() {
         if (this.initialized) {
             return;
@@ -183,7 +195,12 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
 
-
+    /**
+     *
+     * @param refresh Refresh object
+     * Executed when a refresh event is emitted.
+     * Either or both form and submission are assigned.
+     */
     onRefresh(refresh: FormioRefreshValue) {
         this.formioReady.then(() => {
             if (refresh.form) {
@@ -218,6 +235,12 @@ export class AppFormioComponent implements OnInit, OnChanges {
         this.alerts.setAlerts([]);
         this.nextPage.emit(data);
     }
+
+    /**
+     * Save submission if not saved and emit submit event
+     * @param submission submission object
+     * @param saved is data already saved
+     */
     onSubmit(submission: any, saved: boolean) {
         this.submitting = false;
         if (saved) {
@@ -231,6 +254,11 @@ export class AppFormioComponent implements OnInit, OnChanges {
             });
         }
     }
+
+    /**
+     * on Form Error callback
+     * @param err error object.
+     */
     onError(err: any) {
         this.loader.loading = false;
         this.alerts.setAlerts([]);
@@ -253,10 +281,20 @@ export class AppFormioComponent implements OnInit, OnChanges {
             });
         });
     }
+
+    /**
+     *
+     * @param submission Submission Oject
+     * Execute submission
+     */
     submitExecute(submission: object) {
         this.onSubmit(submission, false);
     }
 
+    /**
+     * Formio SubmitForm event Callback
+     * @param submission Submission Object
+     */
     submitForm(submission: any) {
         // Keep double submits from occurring...
         if (this.submitting) {
@@ -280,6 +318,11 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.submitExecute(submission);
         }
     }
+
+    /**
+     * Search deeply for form components and assigns Form Version to them.
+     * @param formio Formio Webform object
+     */
     assignVersions(formio) {
         Utils.eachComponent(formio.components, (component) => {
             if (component.type === 'form') {
@@ -295,6 +338,12 @@ export class AppFormioComponent implements OnInit, OnChanges {
             }
         }, false);
     }
+
+    /**
+     * Search deeply for form components and assigns Options and Langage to them
+     * Assign readOnly and ViewAsHtml properties from API properties.
+     * @param formio Formio Webform object
+     */
     assignFormOptions(formio) {
         Utils.eachComponent(formio.components, (component) => {
             if (component.type === 'form') {
@@ -317,6 +366,10 @@ export class AppFormioComponent implements OnInit, OnChanges {
         }, false);
     }
 
+    /**
+     * On Component Init
+     * Subscribe to events and assign callbacks
+     */
     ngOnInit() {
         this.initialize();
 
@@ -350,6 +403,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
             });
         }
     }
+
     ngOnChanges(changes: any) {
 
         if (changes.form && changes.form.currentValue) {

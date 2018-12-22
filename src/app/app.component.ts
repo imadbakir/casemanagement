@@ -5,7 +5,9 @@ import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 import { AuthService } from './core/services/auth.service';
 import { EventsService } from './core/services/events.service';
 
-
+/**
+ * Main App Component
+ */
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -29,7 +31,11 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/auth/login']);
     });
   }
-
+  /**
+   *
+   * @param dir
+   * Fix Dom Direction - localization
+   */
   fixDom(dir) {
     const columns = document.getElementsByClassName('formio-component-columns');
     const choices = document.getElementsByClassName('choices');
@@ -48,7 +54,10 @@ export class AppComponent implements OnInit {
     document.documentElement.setAttribute('dir', dir);
 
   }
-
+  /**
+   * ngOnInit:
+   * Subscribe to Language Change event and Fix The Dom Dir Attribute
+   */
   ngOnInit() {
     this.translate.get('dir').subscribe((data) => {
       this.fixDom(data);

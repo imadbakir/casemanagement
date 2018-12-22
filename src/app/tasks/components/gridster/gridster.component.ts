@@ -6,6 +6,9 @@ import { CompactType, DisplayGrid, GridsterConfig, GridType } from 'angular-grid
 import { EventsService } from '../../../core/services/events.service';
 import { FilterService } from '../../../core/services/filter.service';
 
+/**
+ * Gridster Grid
+ */
 @Component({
   selector: 'app-gridster',
   templateUrl: './gridster.component.html',

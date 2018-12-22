@@ -8,7 +8,10 @@ import { LanguageSwitchComponent } from './components/language-switch/language-s
 import { LanguageComponent } from './components/language/language.component';
 import { NotificationsButtonComponent } from './components/notifications-button/notifications-button.component';
 import { FormsModule } from '@angular/forms';
-
+/**
+ * Shared Module
+ * imports and exports Shared Modules and declared components
+ */
 @NgModule({
   imports: [TranslateModule, IonicModule, CommonModule],
   entryComponents: [LanguageComponent, UserOptionsComponent],

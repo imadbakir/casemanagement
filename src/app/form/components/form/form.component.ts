@@ -11,6 +11,10 @@ import { AuthService } from '../../../core/services/auth.service';
 import { EventsService } from '../../../core/services/events.service';
 import { ExternalService } from '../../../core/services/external.service';
 
+/**
+ * FormComponent
+ * Handles forms and submissions
+ */
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -91,6 +95,11 @@ export class FormComponent implements OnInit, OnDestroy {
     this.resourceReject(err);
     this.onError(err);
   }
+
+  /**
+   * Sets Resource and Form URL and initilizes Resource Object
+   * Sets initial Form's Version.
+   */
   setContext() {
     this.resource = { data: {} };
     this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
@@ -103,6 +112,10 @@ export class FormComponent implements OnInit, OnDestroy {
     }
     this.formio = new Formio(this.resourceUrl);
   }
+
+  /**
+   * Loads Formio Resource
+   */
   loadResource() {
     this.setContext();
     this.loader.loading = true;
@@ -119,6 +132,15 @@ export class FormComponent implements OnInit, OnDestroy {
       });
     return this.resourceLoading;
   }
+
+  /**
+   *
+   * @param string
+   * Gets a string as param, searchs for variables :eg[submission.data.user_id] and
+   * deep searchs for it inside resource object.
+   * Returns a string with the variable replaced with its value, undefined if not found.
+   */
+
   parseVariables(string) {
     const vars = string.match(/\[(.*?)\]/g);
     if (vars) {
@@ -130,6 +152,11 @@ export class FormComponent implements OnInit, OnDestroy {
 
     return string;
   }
+  /**
+   *
+   * @param event Formio CustomEvent
+   * Formio Custom Event Callback
+   */
   onCustomEvent(event) {
     try {
       if (event.hasOwnProperty('type')) {
@@ -144,6 +171,12 @@ export class FormComponent implements OnInit, OnDestroy {
     }
     this.customEvent.emit(event);
   }
+
+  /**
+   *
+   * @param event contains formio form object
+   * Searchs form object properties for OnFormLoad Actions and executes them if any.
+   */
   onFormLoad(event) {
     _.set(this.resource, 'extras.currentUser', this.auth.getUser().username);
     if (event.hasOwnProperty('properties') && event.properties.onFormLoad) {
@@ -188,6 +221,9 @@ export class FormComponent implements OnInit, OnDestroy {
     }
 
   }
+  /**
+   * Loads Formio Form Object.
+   */
   loadForm() {
     this.formFormio = new Formio(this.formUrl);
     this.loader.loading = true;
@@ -204,16 +240,31 @@ export class FormComponent implements OnInit, OnDestroy {
     return this.formLoading;
   }
 
+  /**
+   *
+   * @param err
+   * FormLoad Error Callback
+   */
   onFormError(err) {
     this.formReject(err);
     this.onError(err);
   }
+
+  /**
+   *
+   * @param error
+   * On Resource load / save Error
+   */
   onError(error) {
     if (this.resourcesService) {
       this.resourcesService.error.emit(error);
     }
     throw error;
   }
+
+  /**
+   * Temp Function to save data to mock.
+   */
   makeRequest() {
     this.externalService.apiCall('post', 'http://demo1386417.mockable.io/save-request', {
       'request_id': this.resource._id,
@@ -230,6 +281,12 @@ export class FormComponent implements OnInit, OnDestroy {
       console.log(response);
     });
   }
+
+  /**
+   *
+   * @param event contains Form Submission object
+   * On Form Submit Callback
+   */
   onSubmit(event) {
     this.presentLoading().then(() => {
       this.save(this.resource).then((data) => {
@@ -243,6 +300,12 @@ export class FormComponent implements OnInit, OnDestroy {
     });
 
   }
+
+  /**
+   *
+   * @param resource
+   * Save Formio Resource
+   */
   save(resource: any) {
     const formio = resource._id ? this.formio : this.formFormio;
     return formio
@@ -257,6 +320,7 @@ export class FormComponent implements OnInit, OnDestroy {
       )
       .catch((err: any) => this.onError(err));
   }
+
   ngOnInit() {
     this.setContext();
     /*
@@ -297,6 +361,10 @@ export class FormComponent implements OnInit, OnDestroy {
       this.language.next(data.lang);
     });
   }
+  
+  /**
+   * Clear Formio Cache on Component Destroy
+   */
   ngOnDestroy() {
     Formio.clearCache();
   }

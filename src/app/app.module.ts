@@ -5,7 +5,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-
+/**
+ * Main Bootsrapping Module
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [
