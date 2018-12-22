@@ -189,6 +189,14 @@
         </p>
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>FormioModule imported where needed
+AppFormioComponent &amp; FormComponent are exported</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -238,13 +246,17 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { FormioResource, FormioResourceConfig, FormioResources } from &#x27;angular-formio/resource&#x27;;
+import { FormioModule } from &#x27;angular-formio&#x27;;
+import { FormioAuthService } from &#x27;angular-formio/auth&#x27;;
+import { FormioResource, FormioResources } from &#x27;angular-formio/resource&#x27;;
+import { FormioAppConfigProvider, formioAuthConfigProvider } from &#x27;../core/services/env.service.provider&#x27;;
+import { SharedModule } from &#x27;../shared/shared.module&#x27;;
 import { FormComponent } from &#x27;./components/form/form.component&#x27;;
 import { AppFormioComponent } from &#x27;./components/formio/formio.component&#x27;;
-import { FormioAuthService } from &#x27;angular-formio/auth&#x27;;
-import { FormioModule } from &#x27;angular-formio&#x27;;
-import { formioAuthConfigProvider, FormioAppConfigProvider } from &#x27;../core/services/env.service.provider&#x27;;
-import { SharedModule } from &#x27;../shared/shared.module&#x27;;
+/**
+ * FormioModule imported where needed
+ * AppFormioComponent &amp; FormComponent are exported
+ */
 @NgModule({
   imports: [SharedModule, FormioModule, FormioResource],
   declarations: [AppFormioComponent, FormComponent],
@@ -257,21 +269,7 @@ import { SharedModule } from &#x27;../shared/shared.module&#x27;;
     FormioResources,
     FormioAuthService,
     formioAuthConfigProvider,
-    FormioAppConfigProvider,
-    {
-      provide: FormioResourceConfig,
-      useValue: {
-        name: &#x27;servicerequest&#x27;,
-        form: &#x27;task&#x27;,
-        parents: [
-          {
-            field: &#x27;user&#x27;,
-            resource: &#x27;currentUser&#x27;,
-            filter: false
-          }
-        ]
-      }
-    }
+    FormioAppConfigProvider
   ]
 })
 

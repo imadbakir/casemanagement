@@ -64,6 +64,13 @@
     <code>src/app/tasks/components/process-list/process-list.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Process Definitions List Popover Menu</p>
+
+    </p>
 
 
     <p class="comment">
@@ -189,7 +196,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -294,13 +301,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:40</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>ngOnInit: Get Process Definitions</p>
+</div>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -332,7 +341,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -347,6 +356,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -358,6 +368,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Navigate to New Process URL</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -410,7 +424,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -445,7 +459,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -480,7 +494,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -519,7 +533,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -554,7 +568,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/tasks/components/process-list/process-list.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -574,26 +588,40 @@ import { ProcessDefinition } from &#x27;../../../core/schemas/ProcessDefinition&
 import { CamundaRestService } from &#x27;../../../core/services/camunda-rest.service&#x27;;
 import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
 
+/**
+ * Process Definitions List Popover Menu
+ */
 @Component({
   selector: &#x27;app-process-list&#x27;,
   templateUrl: &#x27;./process-list.component.html&#x27;,
   styleUrls: [&#x27;./process-list.component.scss&#x27;]
 })
+
 export class ProcessListComponent implements OnInit {
+
   processDefinitions: ProcessDefinition[] &#x3D; [];
+
   constructor(public camundaService: CamundaRestService,
     public router: Router,
     public event: EventsService,
     public popoverCtrl: PopoverController) { }
 
+  /**
+   *
+   * @param processDefinitionId
+   * Navigate to New Process URL
+   */
   startProcess(processDefinitionId) {
     this.router.navigate([&#x60;/tasks/new/${processDefinitionId}&#x60;]);
     this.popoverCtrl.dismiss();
 
-    /*  */
   }
+
+  /**
+   * ngOnInit: Get Process Definitions
+   */
   ngOnInit() {
-    this.camundaService.getProcessDefinitions().subscribe((processDefinitions) &#x3D;&gt; {
+    this.camundaService.getProcessDefinitions({ latestVersion: true }).subscribe((processDefinitions) &#x3D;&gt; {
       this.processDefinitions &#x3D; processDefinitions;
     });
   }

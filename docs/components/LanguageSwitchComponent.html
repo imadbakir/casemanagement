@@ -64,6 +64,13 @@
     <code>src/app/shared/components/language-switch/language-switch.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Language Button</p>
+
+    </p>
 
 
 
@@ -170,7 +177,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -253,7 +260,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -268,6 +275,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -279,6 +287,11 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Click Event
+Open Lnaguages Popover Menu</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -331,7 +344,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -366,7 +379,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/language-switch/language-switch.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -384,18 +397,26 @@ import { PopoverController } from &#x27;@ionic/angular&#x27;;
 import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import { LanguageComponent } from &#x27;../language/language.component&#x27;;
 
+/**
+ * Language Button
+ */
 @Component({
   selector: &#x27;app-language-switch&#x27;,
   templateUrl: &#x27;./language-switch.component.html&#x27;,
   styleUrls: [&#x27;./language-switch.component.scss&#x27;]
 })
-export class LanguageSwitchComponent  {
+export class LanguageSwitchComponent {
   constructor(
     public translate: TranslateService,
     public popoverCtrl: PopoverController
   ) {
 
   }
+  /**
+   *
+   * @param event Click Event
+   * Open Lnaguages Popover Menu
+   */
   async languages(event) {
     const popover &#x3D; await this.popoverCtrl.create({
       component: LanguageComponent,

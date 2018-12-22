@@ -64,14 +64,15 @@
     <code>src/app/tasks/components/grid/grid.component.ts</code>
 </p>
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>Tasks Dashlet Grid</p>
+
     </p>
+
+
 
 
 <section>
@@ -154,9 +155,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ngOnInit">ngOnInit</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#process">process</a>
                             </li>
@@ -183,7 +181,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -258,44 +256,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="ngOnInit"></a>
-                        <span class="name">
-                            <b>
-                            ngOnInit
-                            </b>
-                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>ngOnInit()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:26</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="process"></a>
                         <span class="name">
                             <b>
@@ -316,7 +276,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -331,6 +291,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -342,6 +303,11 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Click Event
+Open Process Definitions popover menu.</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -394,7 +360,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -429,7 +395,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -464,7 +430,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/tasks/components/grid/grid.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -477,32 +443,37 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { PopoverController } from &#x27;@ionic/angular&#x27;;
 import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
 import { ProcessListComponent } from &#x27;../../components/process-list/process-list.component&#x27;;
-
+/**
+ * Tasks Dashlet Grid
+ */
 @Component({
   selector: &#x27;app-grid&#x27;,
   templateUrl: &#x27;./grid.component.html&#x27;,
   styleUrls: [&#x27;./grid.component.scss&#x27;]
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
   constructor(public event: EventsService,
     public translate: TranslateService,
     public popoverCtrl: PopoverController
   ) {
 
   }
+  /**
+   *
+   * @param event Click Event
+   * Open Process Definitions popover menu.
+   */
   async process(event) {
     const popover &#x3D; await this.popoverCtrl.create({
       component: ProcessListComponent,
       event: event
     });
     return await popover.present();
-  }
-  ngOnInit() {
   }
 }
 </code></pre>

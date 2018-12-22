@@ -64,14 +64,15 @@
     <code>src/app/shared/components/language/language.component.ts</code>
 </p>
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>Language Popover Menu</p>
+
     </p>
+
+
 
 
 <section>
@@ -153,9 +154,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ngOnInit">ngOnInit</a>
-                            </li>
-                            <li>
                                 <a href="#setLanguage">setLanguage</a>
                             </li>
                         </ul>
@@ -181,7 +179,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/language/language.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/shared/components/language/language.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -256,44 +254,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="ngOnInit"></a>
-                        <span class="name">
-                            <b>
-                            ngOnInit
-                            </b>
-                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>ngOnInit()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/components/language/language.component.ts:25</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="setLanguage"></a>
                         <span class="name">
                             <b>
@@ -312,7 +272,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/shared/components/language/language.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/components/language/language.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -327,6 +287,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -338,6 +299,12 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Language Code
+Set Choosen Language and save it to LocalStorage
+close popover</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -397,10 +364,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/components/language/language.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/shared/components/language/language.component.ts:18</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Available Languages Array</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -432,7 +405,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/language/language.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/components/language/language.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -467,7 +440,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/language/language.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/components/language/language.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -480,17 +453,23 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Inject } from &#x27;@angular/core&#x27;;
-import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &#x27;@angular/core&#x27;;
 import { PopoverController } from &#x27;@ionic/angular&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import { LOCAL_STORAGE, StorageService } from &#x27;angular-webstorage-service&#x27;;
 
+/**
+ * Language Popover Menu
+ */
 @Component({
   selector: &#x27;app-language&#x27;,
   templateUrl: &#x27;./language.component.html&#x27;,
   styleUrls: [&#x27;./language.component.scss&#x27;]
 })
-export class LanguageComponent implements OnInit {
+export class LanguageComponent {
+  /**
+   * Available Languages Array
+   */
   languages &#x3D; [
     { key: &#x27;ar&#x27;, lang: &#x27;عربي&#x27; },
     { key: &#x27;en&#x27;, lang: &#x27;English&#x27; }
@@ -498,14 +477,16 @@ export class LanguageComponent implements OnInit {
   constructor(public translate: TranslateService, public popover: PopoverController,
     @Inject(LOCAL_STORAGE) private storage: StorageService) { }
 
+  /**
+   *
+   * @param lang Language Code
+   * Set Choosen Language and save it to LocalStorage
+   * close popover
+   */
   setLanguage(lang) {
     this.translate.use(lang);
     this.storage.set(&#x27;language&#x27;, lang);
     this.popover.dismiss();
-  }
-
-  ngOnInit() {
-
   }
 
 }

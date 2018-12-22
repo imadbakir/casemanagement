@@ -59,6 +59,13 @@
             <code>src/app/core/services/events.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Events Service - Distribute Events among App</p>
+
+            </p>
 
 
             <section>
@@ -74,13 +81,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#archiveAnnounced$">archiveAnnounced$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#archiveSoruce">archiveSoruce</a>
-                            </li>
-                            <li>
                                 <a href="#filterAnnounced$">filterAnnounced$</a>
                             </li>
                             <li>
@@ -95,25 +95,11 @@
                                 <a href="#itemSource">itemSource</a>
                             </li>
                             <li>
-                                <a href="#menuChangeAnnounced$">menuChangeAnnounced$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#menuSource">menuSource</a>
-                            </li>
-                            <li>
                                 <a href="#refreshFiltersAnnounced$">refreshFiltersAnnounced$</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#refreshFiltersSource">refreshFiltersSource</a>
-                            </li>
-                            <li>
-                                <a href="#resizeAnnounced$">resizeAnnounced$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#resizeSource">resizeSource</a>
                             </li>
                             <li>
                                 <a href="#sortingAnnounced$">sortingAnnounced$</a>
@@ -135,9 +121,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#announceArchive">announceArchive</a>
-                            </li>
-                            <li>
                                 <a href="#announceFilter">announceFilter</a>
                             </li>
                             <li>
@@ -145,12 +128,6 @@
                             </li>
                             <li>
                                 <a href="#announceItem">announceItem</a>
-                            </li>
-                            <li>
-                                <a href="#announceMenuChange">announceMenuChange</a>
-                            </li>
-                            <li>
-                                <a href="#announceResize">announceResize</a>
                             </li>
                             <li>
                                 <a href="#announceSorting">announceSorting</a>
@@ -177,18 +154,18 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="announceArchive"></a>
+                        <a name="announceFilter"></a>
                         <span class="name">
                             <b>
-                            announceArchive
+                            announceFilter
                             </b>
-                            <a href="#announceArchive"><span class="icon ion-ios-link"></span></a>
+                            <a href="#announceFilter"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>announceArchive(archive)</code>
+<code>announceFilter(filter)</code>
                     </td>
                 </tr>
 
@@ -210,71 +187,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>archive</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="announceFilter"></a>
-                        <span class="name">
-                            <b>
-                            announceFilter
-                            </b>
-                            <a href="#announceFilter"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>announceFilter(filter)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/core/services/events.service.ts:34</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -286,6 +199,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Announce Filter Event</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -325,7 +242,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/events.service.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/core/services/events.service.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -341,6 +258,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -355,6 +273,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Announce a filters Refresh Event</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -394,71 +316,6 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/core/services/events.service.ts:40</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>item</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="announceMenuChange"></a>
-                        <span class="name">
-                            <b>
-                            announceMenuChange
-                            </b>
-                            <a href="#announceMenuChange"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>announceMenuChange(change)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/core/services/events.service.ts:46</a></div>
                             </td>
                         </tr>
@@ -474,71 +331,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>change</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="announceResize"></a>
-                        <span class="name">
-                            <b>
-                            announceResize
-                            </b>
-                            <a href="#announceResize"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>announceResize(item, itemComponent)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/services/events.service.ts:31</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -550,15 +343,10 @@
                                                     </td>
                                                     
 
-                                                </tr>
-                                                <tr>
-                                                        <td>itemComponent</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
+                                                        <td>
+                                                                <code><p>Announce Task Item Action</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -598,7 +386,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/core/services/events.service.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/core/services/events.service.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -613,6 +401,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -624,6 +413,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Announce Task Sorting Change</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -652,73 +445,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="archiveAnnounced$"></a>
-                        <span class="name">
-                            <b>
-                            archiveAnnounced$
-                            </b>
-                            <a href="#archiveAnnounced$"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>archiveAnnounced$:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>this.archiveSoruce.asObservable()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/core/services/events.service.ts:21</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="archiveSoruce"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            archiveSoruce
-                            </b>
-                            <a href="#archiveSoruce"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span><code>archiveSoruce:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new BehaviorSubject&lt;any&gt;({})</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/events.service.ts:13</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="filterAnnounced$"></a>
                         <span class="name">
                             <b>
@@ -741,7 +467,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/events.service.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/events.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -775,7 +501,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/core/services/events.service.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/events.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -808,7 +534,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/core/services/events.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/core/services/events.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -842,74 +568,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/events.service.ts:14</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="menuChangeAnnounced$"></a>
-                        <span class="name">
-                            <b>
-                            menuChangeAnnounced$
-                            </b>
-                            <a href="#menuChangeAnnounced$"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>menuChangeAnnounced$:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>this.menuSource.asObservable()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/core/services/events.service.ts:24</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="menuSource"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            menuSource
-                            </b>
-                            <a href="#menuSource"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span><code>menuSource:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new BehaviorSubject&lt;any&gt;({})</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/events.service.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/core/services/events.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -942,7 +601,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/core/services/events.service.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/events.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -976,74 +635,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/services/events.service.ts:12</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="resizeAnnounced$"></a>
-                        <span class="name">
-                            <b>
-                            resizeAnnounced$
-                            </b>
-                            <a href="#resizeAnnounced$"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>resizeAnnounced$:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>this.resizeSource.asObservable()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/events.service.ts:18</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="resizeSource"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            resizeSource
-                            </b>
-                            <a href="#resizeSource"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span><code>resizeSource:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new BehaviorSubject&lt;object&gt;({})</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/services/events.service.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/events.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -1076,7 +668,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/events.service.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/core/services/events.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -1110,7 +702,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/core/services/events.service.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/events.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -1124,53 +716,62 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Subject, BehaviorSubject } from &#x27;rxjs&#x27;;
+import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
+/**
+ * Events Service - Distribute Events among App
+ */
 @Injectable()
 
 
 export class EventsService {
 
   // Observable string sources
-  private resizeSource &#x3D; new BehaviorSubject&lt;object&gt;({});
   private filterSource &#x3D; new BehaviorSubject&lt;any&gt;({});
   private refreshFiltersSource &#x3D; new BehaviorSubject&lt;any&gt;({});
-  private archiveSoruce &#x3D; new BehaviorSubject&lt;any&gt;({});
   private itemSource &#x3D; new BehaviorSubject&lt;any&gt;({});
   private sortingSource &#x3D; new BehaviorSubject&lt;any&gt;({});
-  private menuSource &#x3D; new BehaviorSubject&lt;any&gt;({});
-  // Observable string streams
-  resizeAnnounced$ &#x3D; this.resizeSource.asObservable();
+
   filterAnnounced$ &#x3D; this.filterSource.asObservable();
   refreshFiltersAnnounced$ &#x3D; this.refreshFiltersSource.asObservable();
-  archiveAnnounced$ &#x3D; this.archiveSoruce.asObservable();
   itemChange$ &#x3D; this.itemSource.asObservable();
   sortingAnnounced$ &#x3D; this.sortingSource.asObservable();
-  menuChangeAnnounced$ &#x3D; this.menuSource.asObservable();
 
   // Service message commands
 
+  /**
+   * @param data
+   * Announce a filters Refresh Event
+   */
   announceFiltersRefresh(data: string) {
     this.refreshFiltersSource.next(data);
   }
-  announceResize(item, itemComponent) {
-    this.resizeSource.next(item);
-  }
+
+  /**
+   * @param filter
+   * Announce Filter Event
+   */
   announceFilter(filter) {
     this.filterSource.next(filter);
   }
-  announceArchive(archive) {
-    this.archiveSoruce.next(archive);
-  }
+
+  /**
+   *
+   * @param item
+   * Announce Task Item Action
+   */
   announceItem(item) {
     this.itemSource.next(item);
   }
+
+  /**
+   * @param sorting
+   * Announce Task Sorting Change
+   */
   announceSorting(sorting) {
     this.sortingSource.next(sorting);
   }
-  announceMenuChange(change) {
-    this.menuSource.next(change);
-  }
+
 }
 </code></pre>
     </div>

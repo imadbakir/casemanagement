@@ -64,6 +64,13 @@
     <code>src/app/tasks/components/sort-options/sort-options.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Sorting Options Popovermenu</p>
+
+    </p>
 
 
 
@@ -178,7 +185,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -259,13 +266,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:49</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Close Sorting Options popover Menu.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -297,7 +306,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -312,6 +321,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -323,6 +333,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Set Sorting Direction</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -375,7 +389,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -410,7 +424,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -449,10 +463,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:18</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Selected Sorting Option Key</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -495,10 +515,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/tasks/components/sort-options/sort-options.component.ts:22</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Sorting options array</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -512,6 +538,9 @@
 import { PopoverController } from &#x27;@ionic/angular&#x27;;
 import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
 
+/**
+ * Sorting Options Popovermenu
+ */
 @Component({
   selector: &#x27;app-sort-options&#x27;,
   templateUrl: &#x27;./sort-options.component.html&#x27;,
@@ -519,7 +548,13 @@ import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
 })
 
 export class SortOptionsComponent {
+  /**
+   * Selected Sorting Option Key
+   */
   sorting &#x3D; 0;
+  /**
+   * Sorting options array
+   */
   sortings &#x3D; [
     { name: &#x27;name&#x27;, type: &#x27;text&#x27;, direction: 1 },
     { name: &#x27;description&#x27;, type: &#x27;text&#x27;, direction: 1 },
@@ -528,15 +563,25 @@ export class SortOptionsComponent {
     { name: &#x27;due&#x27;, type: &#x27;datetime&#x27;, direction: 1 },
     { name: &#x27;priority&#x27;, type: &#x27;number&#x27;, direction: 1 }
   ];
+  // TODO: Translate Sorting Options
+
   constructor(public popoverCtrl: PopoverController, public eventsService: EventsService) {
 
   }
+  /**
+   *
+   * @param dir
+   * Set Sorting Direction
+   */
   setSorting(dir) {
     const sorting &#x3D; this.sortings[this.sorting];
     sorting.direction &#x3D; dir;
     this.eventsService.announceSorting(sorting);
     this.close();
   }
+  /**
+   * Close Sorting Options popover Menu.
+   */
   close() {
     this.popoverCtrl.dismiss();
   }

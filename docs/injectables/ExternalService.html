@@ -59,6 +59,14 @@
             <code>src/app/core/services/external.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>External API Service Integration - utilizes Angular HttpClient Request Function
+to Create a generic Api Call Service for any kind of request - Get, Post, Put, Delete etc..</p>
+
+            </p>
 
 
             <section>
@@ -108,7 +116,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/services/external.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/external.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -173,7 +181,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/external.service.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/core/services/external.service.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -190,6 +198,7 @@
                                                     <td>Type</td>
                                                 <td>Optional</td>
                                                     <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -205,6 +214,10 @@
                                                         <td>
                                                         </td>
 
+                                                        <td>
+                                                                <code><p>Request Method</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>url</td>
@@ -218,6 +231,10 @@
                                                         <td>
                                                         </td>
 
+                                                        <td>
+                                                                <code><p>Request URL</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>params</td>
@@ -233,6 +250,11 @@
                                                                 <code>{}</code>
                                                         </td>
 
+                                                        <td>
+                                                                <code><p>Query Params if GET and Body if Other.
+Returns Observable</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -274,7 +296,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/core/services/external.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/services/external.service.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -371,7 +393,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/core/services/external.service.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/core/services/external.service.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -431,10 +453,12 @@
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { of } from &#x27;rxjs/observable/of&#x27;;
-import { catchError, tap } from &#x27;rxjs/operators&#x27;;
 
 
-
+/**
+ * External API Service Integration - utilizes Angular HttpClient Request Function
+ * to Create a generic Api Call Service for any kind of request - Get, Post, Put, Delete etc..
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -444,7 +468,12 @@ export class ExternalService {
   constructor(private http: HttpClient) {
 
   }
-
+  /**
+   * @param method Request Method
+   * @param url Request URL
+   * @param params Query Params if GET and Body if Other.
+   * Returns Observable
+   */
   apiCall(method, url, params &#x3D; {}) {
     return this.http.request(method, url, { responseType: &#x27;json&#x27;, body: params });
 

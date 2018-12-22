@@ -59,6 +59,13 @@
             <code>src/app/core/services/camunda-rest.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Camunda Rest API Integration</p>
+
+            </p>
 
 
             <section>
@@ -94,9 +101,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#clearHistory">clearHistory</a>
-                            </li>
-                            <li>
                                 <a href="#createFilter">createFilter</a>
                             </li>
                             <li>
@@ -104,9 +108,6 @@
                             </li>
                             <li>
                                 <a href="#deleteFilter">deleteFilter</a>
-                            </li>
-                            <li>
-                                <a href="#deployProcess">deployProcess</a>
                             </li>
                             <li>
                                 <a href="#getExecutionVariables">getExecutionVariables</a>
@@ -152,9 +153,6 @@
                             </li>
                             <li>
                                 <a href="#getVariableInstanceByExecutionId">getVariableInstanceByExecutionId</a>
-                            </li>
-                            <li>
-                                <a href="#getVariablesForTask">getVariablesForTask</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -223,7 +221,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -282,44 +280,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="clearHistory"></a>
-                        <span class="name">
-                            <b>
-                            clearHistory
-                            </b>
-                            <a href="#clearHistory"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>clearHistory()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:96</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="createFilter"></a>
                         <span class="name">
                             <b>
@@ -338,7 +298,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:67</a></div>
                             </td>
                         </tr>
 
@@ -353,6 +313,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -364,6 +325,11 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Post Variables
+Create new Filter</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -403,7 +369,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:162</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:256</a></div>
                             </td>
                         </tr>
 
@@ -419,6 +385,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -433,6 +400,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variableName</td>
@@ -445,6 +414,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Delete Execution Variable by Variable Name</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -484,7 +457,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -499,6 +472,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -510,75 +484,11 @@
                                                     </td>
                                                     
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="deployProcess"></a>
-                        <span class="name">
-                            <b>
-                            deployProcess
-                            </b>
-                            <a href="#deployProcess"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>deployProcess(fileToUpload: File)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:224</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>fileToUpload</td>
                                                         <td>
-                                                                    <code>File</code>
+                                                                <code><p>Filter Id
+Delete Filter</p>
+</code>
                                                         </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -618,7 +528,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:216</a></div>
                             </td>
                         </tr>
 
@@ -634,6 +544,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -648,6 +559,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Execution Variables By Execution Id</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -687,7 +602,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -702,6 +617,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -713,6 +629,11 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Filter Id
+Get Filter by Filter Id</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -752,13 +673,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:153</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Get Filter Task Count</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -831,14 +754,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getFilters(params)</code>
+<code>getFilters(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -852,18 +775,32 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
+                                                    <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>params</td>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
 
+                                                        <td>
+                                                                <code><p>query Params
+Get Filters List</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -896,14 +833,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getHistoryTask(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
+<code>getHistoryTask(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:204</a></div>
                             </td>
                         </tr>
 
@@ -919,20 +856,29 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>taskId</td>
+                                                        <td>queryParams</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
                                                         </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
 
+                                                        <td>
+                                                                <code><p>Get History Task</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -965,14 +911,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getIdentity(userId)</code>
+<code>getIdentity(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="276" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:276</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="407" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:407</a></div>
                             </td>
                         </tr>
 
@@ -986,18 +932,31 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
+                                                    <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>userId</td>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
 
+                                                        <td>
+                                                                <code><p>get user Groups</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1030,25 +989,62 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getProcessDefinitions()</code>
+<code>getProcessDefinitions(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:209</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="322" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:322</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Get Process Definitions list</p>
+</div>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="../classes/ProcessDefinition.html" target="_self" >Observable&lt;ProcessDefinition[]&gt;</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -1075,7 +1071,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="311" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:311</a></div>
                             </td>
                         </tr>
 
@@ -1090,6 +1086,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1101,6 +1098,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Process Definition Start Form By Process Definition Key</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1140,7 +1141,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:129</a></div>
                             </td>
                         </tr>
 
@@ -1155,6 +1156,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1166,6 +1168,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Process Definition XML</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1205,7 +1211,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:126</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:191</a></div>
                             </td>
                         </tr>
 
@@ -1221,6 +1227,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1235,6 +1242,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Task</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1274,7 +1285,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:111</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:166</a></div>
                             </td>
                         </tr>
 
@@ -1290,6 +1301,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1304,6 +1316,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Task Form Key</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1343,7 +1359,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:118</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:178</a></div>
                             </td>
                         </tr>
 
@@ -1359,6 +1375,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1373,6 +1390,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Task Form Variables</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1405,14 +1426,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getTasks()</code>
+<code>getTasks(queryParams)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -1421,9 +1442,41 @@
                     <td class="col-md-4">
 
                             <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>queryParams</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>GET Tasks With Query Params</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
                                 <b>Returns : </b>    <code><a href="../classes/Task.html" target="_self" >Observable&lt;Task[]&gt;</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -1450,7 +1503,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="247" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:247</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="375" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:375</a></div>
                             </td>
                         </tr>
 
@@ -1465,6 +1518,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1476,6 +1530,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>get User Profile</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1508,79 +1566,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getVariableInstanceByExecutionId(executionId)</code>
+<code>getVariableInstanceByExecutionId(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:74</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>executionId</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="getVariablesForTask"></a>
-                        <span class="name">
-                            <b>
-                            getVariablesForTask
-                            </b>
-                            <a href="#getVariablesForTask"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>getVariablesForTask(taskId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>, variableNames: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:116</a></div>
                             </td>
                         </tr>
 
@@ -1596,32 +1589,29 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>taskId</td>
+                                                        <td>queryParams</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
                                                         </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
-
-                                                </tr>
-                                                <tr>
-                                                        <td>variableNames</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                                                                <code>{}</code>
                                                         </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
 
+                                                        <td>
+                                                                <code><p>Get History Execution Variables</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1629,7 +1619,7 @@
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -1663,7 +1653,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:284</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="421" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:421</a></div>
                             </td>
                         </tr>
 
@@ -1688,6 +1678,7 @@
                                                     <td>Type</td>
                                                 <td>Optional</td>
                                                     <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1705,6 +1696,8 @@
                                                                 <code>&#x27;operation&#x27;</code>
                                                         </td>
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>result</td>
@@ -1719,6 +1712,10 @@
                                                         <td>
                                                         </td>
 
+                                                        <td>
+                                                                <code><p>Error Handler</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1751,14 +1748,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>listFilter(id, queryParams)</code>
+<code>listFilter(id, queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:104</a></div>
                             </td>
                         </tr>
 
@@ -1772,27 +1769,48 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
+                                                    <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
                                                         <td>id</td>
+                                                        <td>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
 
+                                                        <td>
+                                                                <code><p>Filter Id</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
 
+                                                        <td>
+                                                                <code><p>maxResults, firstResult</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1825,14 +1843,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>listHistory(queryParams, variables)</code>
+<code>listHistory(queryParams: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>, variables)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:142</a></div>
                             </td>
                         </tr>
 
@@ -1846,27 +1864,46 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
+                                                    <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
                                                         <td>queryParams</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
 
+                                                        <td>
+                                                                <code><p>maxResults, firstResult, finished</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
+                                                        <td>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -1908,7 +1945,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:306</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="443" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:443</a></div>
                             </td>
                         </tr>
 
@@ -1979,7 +2016,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:229</a></div>
                             </td>
                         </tr>
 
@@ -1995,6 +2032,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2009,6 +2047,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2021,6 +2061,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Modify Execution Variables</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2060,7 +2104,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:193</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:298</a></div>
                             </td>
                         </tr>
 
@@ -2076,6 +2120,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2090,6 +2135,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2102,6 +2149,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Assign a task to user or Group</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2141,7 +2192,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:178</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:270</a></div>
                             </td>
                         </tr>
 
@@ -2157,6 +2208,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2171,6 +2223,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2183,6 +2237,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Post Complete Task</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2222,7 +2280,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:216</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="335" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:335</a></div>
                             </td>
                         </tr>
 
@@ -2237,6 +2295,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2248,6 +2307,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2257,6 +2318,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Post Process instance Start</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2296,7 +2361,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:263</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="388" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:388</a></div>
                             </td>
                         </tr>
 
@@ -2311,6 +2376,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2322,6 +2388,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>User Login - FormData Post</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2361,7 +2431,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:240</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="363" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:363</a></div>
                             </td>
                         </tr>
 
@@ -2376,6 +2446,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2387,6 +2458,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2396,6 +2469,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Post Process instance Start</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2435,7 +2512,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="233" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:233</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="349" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:349</a></div>
                             </td>
                         </tr>
 
@@ -2450,6 +2527,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2461,6 +2539,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Process Definition Start Form By Process Definition Id</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2500,7 +2582,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:185</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:284</a></div>
                             </td>
                         </tr>
 
@@ -2516,6 +2598,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2530,6 +2613,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2542,6 +2627,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Update Task</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2581,7 +2670,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:155</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:243</a></div>
                             </td>
                         </tr>
 
@@ -2597,6 +2686,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2611,6 +2701,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variableName</td>
@@ -2623,6 +2715,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2635,6 +2729,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Update Execution Variable by VariableName</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2674,7 +2772,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:80</a></div>
                             </td>
                         </tr>
 
@@ -2689,6 +2787,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2700,6 +2799,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Filter Id</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>variables</td>
@@ -2709,6 +2812,11 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Post Variables
+Update Filter By FilterId</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -2760,7 +2868,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -2794,7 +2902,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/camunda-rest.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -2817,7 +2925,9 @@ import { Task } from &#x27;../schemas/Task&#x27;;
 import { EnvService } from &#x27;./env.service&#x27;;
 
 
-
+/**
+ * Camunda Rest API Integration
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -2829,22 +2939,36 @@ export class CamundaRestService {
   constructor(private http: HttpClient, private env: EnvService) {
 
   }
-
-  getTasks(): Observable&lt;Task[]&gt; {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}task?sortBy&#x3D;created&amp;sortOrder&#x3D;desc&amp;maxResults&#x3D;10&#x60;;
-    return this.http.get&lt;any&gt;(endpoint).pipe(
+  /**
+   *
+   * @param queryParams
+   * GET Tasks With Query Params
+   */
+  getTasks(queryParams): Observable&lt;Task[]&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}task&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
       tap(form &#x3D;&gt; this.log(&#x60;fetched tasks&#x60;)),
       catchError(this.handleError(&#x27;getTasks&#x27;, []))
     );
   }
 
-  getFilters(params): Observable&lt;any[]&gt; {
+  /**
+   *
+   * @param queryParams query Params
+   * Get Filters List
+   */
+  getFilters(queryParams &#x3D; {}): Observable&lt;any[]&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}filter&#x60;;
-    return this.http.get&lt;any&gt;(endpoint, { params: params }).pipe(
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
       tap(form &#x3D;&gt; this.log(&#x60;fetched filters&#x60;)),
       catchError(this.handleError(&#x27;getFilters&#x27;, []))
     );
   }
+  /**
+   *
+   * @param id Filter Id
+   * Get Filter by Filter Id
+   */
   getFilter(id): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -2852,6 +2976,11 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;getFilter&#x27;, []))
     );
   }
+  /**
+   *
+   * @param variables Post Variables
+   * Create new Filter
+   */
   createFilter(variables): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/create&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -2859,6 +2988,12 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;createFilter&#x27;, []))
     );
   }
+  /**
+   *
+   * @param filterId Filter Id
+   * @param variables Post Variables
+   * Update Filter By FilterId
+   */
   updateFilter(filterId, variables): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${filterId}&#x60;;
     return this.http.put&lt;any&gt;(endpoint, variables).pipe(
@@ -2866,6 +3001,11 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;createFilter&#x27;, []))
     );
   }
+  /**
+   *
+   * @param filterId Filter Id
+   * Delete Filter
+   */
   deleteFilter(filterId): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${filterId}&#x60;;
     return this.http.delete&lt;any&gt;(endpoint).pipe(
@@ -2873,20 +3013,36 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;deleteFilter&#x27;, []))
     );
   }
-  listFilter(id, queryParams): Observable&lt;any&gt; {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}/list?maxResults&#x3D;${queryParams.maxResults}&amp;firstResult&#x3D;${queryParams.firstResult}&#x60;;
-    return this.http.post&lt;any&gt;(endpoint, {}).pipe(
+  /**
+   *
+   * @param id Filter Id
+   * @param queryParams maxResults, firstResult
+   */
+  listFilter(id, queryParams &#x3D; {}): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}/list&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, {}, { params: queryParams }).pipe(
       tap(form &#x3D;&gt; this.log(&#x60;fetched filter list ${id}&#x60;)),
       catchError(this.handleError(&#x27;listFilter&#x27;, []))
     );
   }
-  getVariableInstanceByExecutionId(executionId) {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/variable-instance?executionIdIn&#x3D;${executionId}&#x60;;
-    return this.http.get&lt;any&gt;(endpoint).pipe(
+  /**
+   *
+   * @param queryParams
+   * Get History Execution Variables
+   */
+  getVariableInstanceByExecutionId(queryParams &#x3D; {}) {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/variable-instance&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
       tap(form &#x3D;&gt; this.log(&#x60;fetched history&#x60;)),
       catchError(this.handleError(&#x27;listHistory&#x27;, []))
     );
   }
+
+  /**
+   *
+   * @param processDefinitionId
+   * Get Process Definition XML
+   */
   getProcessDefinitionXML(processDefinitionId) {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/${processDefinitionId}/xml&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -2894,21 +3050,23 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;listHistory&#x27;, []))
     );
   }
-  listHistory(queryParams, variables) {
+
+  /**
+   *
+   * @param queryParams maxResults, firstResult, finished
+   * @param variables
+   */
+  listHistory(queryParams &#x3D; {}, variables) {
     // tslint:disable-next-line:max-line-length
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task?finished&#x3D;${queryParams.finished}&amp;maxResults&#x3D;${queryParams.maxResults}&amp;firstResult&#x3D;${queryParams.firstResult}&#x60;;
-    return this.http.post&lt;any&gt;(endpoint, variables).pipe(
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task&#x60;;
+    return this.http.post&lt;any&gt;(endpoint, variables, { params: queryParams }).pipe(
       tap(form &#x3D;&gt; this.log(&#x60;fetched history&#x60;)),
       catchError(this.handleError(&#x27;listHistory&#x27;, []))
     );
   }
-  clearHistory() {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task?finished&#x3D;true&#x60;;
-    return this.http.get&lt;any&gt;(endpoint).pipe(
-      tap(form &#x3D;&gt; this.log(&#x60;fetched history&#x60;)),
-      catchError(this.handleError(&#x27;listHistory&#x27;, []))
-    );
-  }
+  /**
+   * Get Filter Task Count
+   */
   getFilterCount(id, variables &#x3D; {}): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}filter/${id}/count&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -2917,6 +3075,11 @@ export class CamundaRestService {
     );
   }
 
+  /**
+   *
+   * @param taskId
+   * Get Task Form Key
+   */
   getTaskFormKey(taskId: String): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/form&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -2924,6 +3087,11 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;getTaskFormKey&#x27;, []))
     );
   }
+  /**
+   *
+   * @param taskId
+   * Get Task Form Variables
+   */
   getTaskFormVariables(taskId: String): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/form-variables&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -2932,6 +3100,11 @@ export class CamundaRestService {
     );
   }
 
+  /**
+   *
+   * @param taskId
+   * Get Task
+   */
   getTask(taskId: String): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -2939,13 +3112,24 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;getTask&#x27;, []))
     );
   }
-  getHistoryTask(taskId: String): Observable&lt;any&gt; {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task?taskId&#x3D;${taskId}&#x60;;
-    return this.http.get&lt;any&gt;(endpoint).pipe(
+
+  /**
+   *
+   * @param queryParams
+   * Get History Task
+   */
+  getHistoryTask(queryParams &#x3D; {}): Observable&lt;any&gt; {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}history/task&#x60;;
+    return this.http.get&lt;any&gt;(endpoint, { params: queryParams }).pipe(
       tap(form &#x3D;&gt; this.log(&#x60;fetched History Task&#x60;)),
       catchError(this.handleError(&#x27;getHistoryTask&#x27;, []))
     );
   }
+  /**
+   *
+   * @param executionId
+   * Get Execution Variables By Execution Id
+   */
   getExecutionVariables(executionId: String): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -2953,6 +3137,12 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;getExecutionVariables&#x27;, []))
     );
   }
+  /**
+   *
+   * @param executionId
+   * @param variables
+   * Modify Execution Variables
+   */
   modifyExecutionVariables(executionId: String, variables: Object): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -2960,7 +3150,13 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;modifyExecutionVariables&#x27;, []))
     );
   }
-
+  /**
+   *
+   * @param executionId
+   * @param variableName
+   * @param variables
+   * Update Execution Variable by VariableName
+   */
   updateExecutionVariables(executionId: String, variableName: String, variables: Object): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}&#x60;;
     return this.http.put&lt;any&gt;(endpoint, variables).pipe(
@@ -2968,6 +3164,12 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;modifyExecutionVariables&#x27;, []))
     );
   }
+  /**
+   *
+   * @param executionId
+   * @param variableName
+   * Delete Execution Variable by Variable Name
+   */
   deleteExecutionVariables(executionId: String, variableName: String): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}&#x60;;
     return this.http.delete&lt;any&gt;(endpoint).pipe(
@@ -2976,14 +3178,12 @@ export class CamundaRestService {
     );
   }
 
-  getVariablesForTask(taskId: String, variableNames: String): Observable&lt;any&gt; {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/form-variables?variableNames&#x3D;${variableNames}&#x60;;
-    return this.http.get&lt;any&gt;(endpoint).pipe(
-      tap(form &#x3D;&gt; this.log(&#x60;fetched variables&#x60;)),
-      catchError(this.handleError(&#x27;getVariablesForTask&#x27;, []))
-    );
-  }
-
+  /**
+   *
+   * @param taskId
+   * @param variables
+   * Post Complete Task
+   */
   postCompleteTask(taskId: String, variables: Object): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/complete&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -2991,6 +3191,13 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;postCompleteTask&#x27;, []))
     );
   }
+
+  /**
+   *
+   * @param taskId
+   * @param variables
+   * Update Task
+   */
   putUpdateTask(taskId: String, variables: Object): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/&#x60;;
     return this.http.put&lt;any&gt;(endpoint, variables).pipe(
@@ -2999,6 +3206,12 @@ export class CamundaRestService {
     );
   }
 
+  /**
+   *
+   * @param taskId
+   * @param variables
+   * Assign a task to user or Group
+   */
   postAssignTask(taskId: String, variables: Object): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}task/${taskId}/assignee&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -3007,6 +3220,11 @@ export class CamundaRestService {
     );
   }
 
+  /**
+   *
+   * @param processDefinitionKey
+   * Get Process Definition Start Form By Process Definition Key
+   */
   getProcessDefinitionTaskKey(processDefinitionKey): Observable&lt;any&gt; {
     const url &#x3D; &#x60;${this.engineRestUrl}process-definition/key/${processDefinitionKey}/startForm&#x60;;
     return this.http.get&lt;any&gt;(url).pipe(
@@ -3014,14 +3232,23 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;getProcessDeifnitionFormKey&#x27;, []))
     );
   }
-
-  getProcessDefinitions(): Observable&lt;ProcessDefinition[]&gt; {
-    return this.http.get&lt;ProcessDefinition[]&gt;(this.engineRestUrl + &#x27;process-definition?latestVersion&#x3D;true&#x27;).pipe(
+  /**
+   * Get Process Definitions list
+   * @param queryParams
+   */
+  getProcessDefinitions(queryParams &#x3D; {}): Observable&lt;ProcessDefinition[]&gt; {
+    return this.http.get&lt;ProcessDefinition[]&gt;(this.engineRestUrl + &#x27;process-definition&#x27;).pipe(
       tap(processDefinitions &#x3D;&gt; this.log(&#x60;fetched processDefinitions&#x60;)),
       catchError(this.handleError(&#x27;getProcessDefinitions&#x27;, []))
     );
   }
 
+  /**
+   *
+   * @param processDefinitionKey
+   * @param variables
+   * Post Process instance Start
+   */
   postProcessInstance(processDefinitionKey, variables): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/key/${processDefinitionKey}/start&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -3030,15 +3257,12 @@ export class CamundaRestService {
     );
   }
 
-  deployProcess(fileToUpload: File): Observable&lt;any&gt; {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}deployment/create&#x60;;
-    const formData &#x3D; new FormData();
 
-    formData.append(&#x27;fileKey&#x27;, fileToUpload, fileToUpload.name);
-
-    return this.http.post(endpoint, formData);
-  }
-
+  /**
+     *
+     * @param processDefinitionId
+     * Get Process Definition Start Form By Process Definition Id
+     */
   processInstanceStartForm(processDefinitionId): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/${processDefinitionId}/startForm&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -3046,6 +3270,13 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;postProcessInstance&#x27;, []))
     );
   }
+
+  /**
+     *
+     * @param processDefinitionId
+     * @param variables
+     * Post Process instance Start
+     */
   processDefinitionSubmitForm(processDefinitionId, variables): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}process-definition/${processDefinitionId}/submit-form&#x60;;
     return this.http.post&lt;any&gt;(endpoint, variables).pipe(
@@ -3053,6 +3284,11 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;postProcessInstance&#x27;, []))
     );
   }
+  /**
+   *
+   * @param userId
+   * get User Profile
+   */
   getUserProfile(userId): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineRestUrl}user/${userId}/profile&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
@@ -3060,15 +3296,12 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;getUserProfile&#x27;, []))
     );
   }
-  /*
-    postUserLogin(variables): Observable&lt;any&gt; {
-      const endpoint &#x3D; &#x60;${this.engineApiUrl}admin/auth/user/default/login/welcome&#x60;;
-      return this.http.post&lt;any&gt;(endpoint, variables).pipe(
-        tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
-        catchError(this.handleError(&#x27;postProcessInstance&#x27;, []))
-      );
-    }
-    */
+
+  /**
+   *
+   * @param variables
+   * User Login - FormData Post
+   */
   postUserLogin(variables): Observable&lt;any&gt; {
     const endpoint &#x3D; &#x60;${this.engineApiUrl}admin/auth/user/default/login/welcome&#x60;;
     const formData &#x3D; new URLSearchParams();
@@ -3082,14 +3315,26 @@ export class CamundaRestService {
       catchError(this.handleError(&#x27;postUserLogin&#x27;, []))
     );
   }
-  getIdentity(userId) {
-    const endpoint &#x3D; &#x60;${this.engineRestUrl}identity/groups?userId&#x3D;${userId}&#x60;;
+
+  /**
+   *
+   * @param queryParams
+   * get user Groups
+   */
+  getIdentity(queryParams &#x3D; {}) {
+    const endpoint &#x3D; &#x60;${this.engineRestUrl}identity/groups&#x60;;
     return this.http.get&lt;any&gt;(endpoint).pipe(
       tap(processDefinitions &#x3D;&gt; this.log(&#x60;posted process instance&#x60;)),
       catchError(this.handleError(&#x27;getUserProfile&#x27;, []))
     );
   }
 
+  /**
+   *
+   * @param operation
+   * @param result
+   * Error Handler
+   */
   private handleError&lt;T&gt;(operation &#x3D; &#x27;operation&#x27;, result?: T) {
     return (error: any): Observable&lt;T&gt; &#x3D;&gt; {
 

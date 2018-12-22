@@ -61,6 +61,13 @@
                 <code>src/app/core/guards/auth.guard.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Auth Guard</p>
+
+                </p>
 
 
 
@@ -104,7 +111,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/core/guards/auth.guard.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/guards/auth.guard.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -181,7 +188,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/guards/auth.guard.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/core/guards/auth.guard.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -197,6 +204,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -211,6 +219,8 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>state</td>
@@ -223,6 +233,11 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>return true if user is loggged in and false if not
+redirect to login page.</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -250,13 +265,25 @@
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from &#x27;@angular/router&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { AuthService } from &#x27;../services/auth.service&#x27;;
+/**
+ * Auth Guard
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
+
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService,
     private router: Router) {
   }
+
+  /**
+   *
+   * @param next
+   * @param state
+   * return true if user is loggged in and false if not
+   * redirect to login page.
+   */
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean {

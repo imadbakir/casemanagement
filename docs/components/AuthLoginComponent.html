@@ -154,9 +154,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#beforeSubmit">beforeSubmit</a>
-                            </li>
-                            <li>
                                 <a href="#submit">submit</a>
                             </li>
                         </ul>
@@ -257,71 +254,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="beforeSubmit"></a>
-                        <span class="name">
-                            <b>
-                            beforeSubmit
-                            </b>
-                            <a href="#beforeSubmit"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>beforeSubmit(event)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/auth/components/auth-login/auth-login.component.ts:18</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>event</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="submit"></a>
                         <span class="name">
                             <b>
@@ -340,7 +272,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/auth/components/auth-login/auth-login.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/auth/components/auth-login/auth-login.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -563,26 +495,12 @@ export class AuthLoginComponent {
         public authSerivce: AuthService,
         public translate: TranslateService) {
     }
-    beforeSubmit(event) {
-        /* const user &#x3D; { username: event.data.username, password: event.data.password };
-            this.camundaService.postUserLogin(user).subscribe((authObj) &#x3D;&gt; {
-                if (authObj.status !&#x3D;&#x3D; 401) {
-                    this.camundaService.getIdentity(user.username).subscribe((identity) &#x3D;&gt; {
-                        user[&#x27;groups&#x27;] &#x3D; identity.groups;
-                        this.camundaService.getUserProfile(user.username).subscribe((profileData) &#x3D;&gt; {
-                            user[&#x27;profile&#x27;] &#x3D; profileData;
-                            this.authSerivce.setUser(user);
-                        });
-                    });
-                }
-            }); */
-        // this.service.onLoginSubmit(event);
-    }
+
     submit() {
         this.camundaService.postUserLogin(this.user).subscribe((authObj) &#x3D;&gt; {
             if (authObj.status !&#x3D;&#x3D; 401) {
                 this.loginError &#x3D; false;
-                this.camundaService.getIdentity(this.user.username).subscribe((identity) &#x3D;&gt; {
+                this.camundaService.getIdentity({ userId: this.user.username }).subscribe((identity) &#x3D;&gt; {
                     this.user[&#x27;groups&#x27;] &#x3D; identity.groups;
                     this.camundaService.getUserProfile(this.user.username).subscribe((profileData) &#x3D;&gt; {
                         this.user[&#x27;profile&#x27;] &#x3D; profileData;

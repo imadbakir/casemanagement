@@ -64,14 +64,15 @@
     <code>src/app/tasks/components/task-item/task-item.component.ts</code>
 </p>
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>Task List Item Component</p>
+
     </p>
+
+
 
 
 <section>
@@ -155,16 +156,10 @@
                                 <a href="#chooseItem">chooseItem</a>
                             </li>
                             <li>
-                                <a href="#complete">complete</a>
-                            </li>
-                            <li>
                                 <a href="#getPriority">getPriority</a>
                             </li>
                             <li>
                                 <a href="#getStatus">getStatus</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
                                 <a href="#openAssignee">openAssignee</a>
@@ -192,20 +187,6 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Outputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#destoy">destoy</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -219,12 +200,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(loadingController: LoadingController, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, auth: <a href="../injectables/AuthService.html">AuthService</a>, camundaService: <a href="../injectables/CamundaRestService.html">CamundaRestService</a>, event: <a href="../injectables/EventsService.html">EventsService</a>)</code>
+<code>constructor(loadingController: LoadingController, auth: <a href="../injectables/AuthService.html">AuthService</a>, camundaService: <a href="../injectables/CamundaRestService.html">CamundaRestService</a>, event: <a href="../injectables/EventsService.html">EventsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -246,18 +227,6 @@
                                                   
                                                         <td>
                                                                     <code>LoadingController</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                    <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -320,38 +289,19 @@
                         <code>task</code>
                     </td>
                     <td class="col-md-10">
+                        <div><p>Camunda Task Object</p>
+</div>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:20</a></div>
                             </td>
                         </tr>
             </tbody>
         </table>
 </section>
-    <section>
-    <h3 id="outputs">Outputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <a name="destoy"></a>
-                        <code>destoy</code>
-                    </td>
-                    <td class="col-md-10">
-                        <em><code>$event</code> Type:</em>    <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:15</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-</section>
 
 
     <section>
@@ -381,7 +331,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -428,44 +378,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="complete"></a>
-                        <span class="name">
-                            <b>
-                            complete
-                            </b>
-                            <a href="#complete"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>complete()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:55</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="getPriority"></a>
                         <span class="name">
                             <b>
@@ -484,7 +396,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:72</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:62</a></div>
                             </td>
                         </tr>
 
@@ -499,6 +411,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -510,6 +423,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>get Priority Class by priority Value</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -549,7 +466,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -564,6 +481,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -575,6 +493,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Get Status as string By priority Value</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -588,44 +510,6 @@
                                 <div class="io-description">
                                     
                                 </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="ngOnInit"></a>
-                        <span class="name">
-                            <b>
-                            ngOnInit
-                            </b>
-                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>ngOnInit()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:112</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -652,7 +536,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -692,7 +576,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -743,7 +627,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -780,7 +664,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -814,16 +698,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>[
-    { name: &#x27;ahmad&#x27;, username: &#x27;ahmad&#x27; },
-    { name: &#x27;eihab&#x27;, username: &#x27;eihab&#x27; },
-    { name: &#x27;imad&#x27;, username: &#x27;imad&#x27; }
-  ]</code>
+                            <i>Default value : </i><code>[]</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tasks/components/task-item/task-item.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -836,32 +716,33 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, ViewChild } from &#x27;@angular/core&#x27;;
+import { LoadingController } from &#x27;@ionic/angular&#x27;;
+
+import { AuthService } from &#x27;../../../core/services/auth.service&#x27;;
 import { CamundaRestService } from &#x27;../../../core/services/camunda-rest.service&#x27;;
 import { EventsService } from &#x27;../../../core/services/events.service&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
-import { LoadingController } from &#x27;@ionic/angular&#x27;;
-import { AuthService } from &#x27;../../../core/services/auth.service&#x27;;
 
+/**
+ * Task List Item Component
+ */
 @Component({
   selector: &#x27;app-task-item&#x27;,
   templateUrl: &#x27;./task-item.component.html&#x27;,
   styleUrls: [&#x27;./task-item.component.scss&#x27;]
 })
-export class TaskItemComponent implements OnInit {
+export class TaskItemComponent {
+  /**
+   * Camunda Task Object
+   */
   @Input() task;
-  @Output() destoy &#x3D; new EventEmitter();
+
   @ViewChild(&#x27;trigger&#x27;) input;
 
-  users: any &#x3D; [
-    { name: &#x27;ahmad&#x27;, username: &#x27;ahmad&#x27; },
-    { name: &#x27;eihab&#x27;, username: &#x27;eihab&#x27; },
-    { name: &#x27;imad&#x27;, username: &#x27;imad&#x27; }
-  ];
+  users: any &#x3D; [];
 
   constructor(
     private loadingController: LoadingController,
-    private router: Router,
     public auth: AuthService,
     private camundaService: CamundaRestService,
     private event: EventsService) { }
@@ -890,23 +771,12 @@ export class TaskItemComponent implements OnInit {
   chooseItem(item) {
     this.event.announceItem(item);
   }
-  complete() {
-    // this.task.complete &#x3D; true;
-    this.camundaService.postCompleteTask(this.task.id,
-      {
-        variables:
-        {
-          temporal: { value: true },
-          rejectedMng: { value: false },
-        }
-      }
-    ).subscribe(data &#x3D;&gt; {
-      this.task.complete &#x3D; true;
-      setTimeout(() &#x3D;&gt; {
-        this.destoy.emit();
-      }, 200);
-    });
-  }
+
+  /**
+   *
+   * @param priority
+   * get Priority Class by priority Value
+   */
   getPriority(priority) {
     let value &#x3D; &#x27;&#x27;;
     switch (true) {
@@ -928,6 +798,11 @@ export class TaskItemComponent implements OnInit {
     }
     return value;
   }
+  /**
+   *
+   * @param priority
+   * Get Status as string By priority Value
+   */
   getStatus(priority) {
     let value &#x3D; &#x27;&#x27;;
     switch (true) {
@@ -946,9 +821,6 @@ export class TaskItemComponent implements OnInit {
 
     }
     return value;
-  }
-  ngOnInit() {
-    // this.complete();
   }
 
 }
