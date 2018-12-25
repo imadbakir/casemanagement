@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
@@ -24,7 +25,8 @@ export class TaskEditComponent implements OnInit {
     resourceId: '',
     formKey: '',
     readOnly: false,
-    version: []
+    version: [],
+    ready: false
   };
   objectKeys = Object.keys;
   constructor(
@@ -35,11 +37,22 @@ export class TaskEditComponent implements OnInit {
     private loadingController: LoadingController,
     private auth: AuthService,
     public translate: TranslateService,
+    public location: Location
   ) {
     //
 
   }
 
+  /**
+   * Go Back After Task is completed
+   */
+  goBack() {
+    if (window.history.length > 1) {
+      this.location.back();
+    } else {
+      this.router.navigate(['tasks']);
+    }
+  }
   /**
    * on formio CustomEvent (eg:Complete) callback
    * @param event
@@ -57,7 +70,7 @@ export class TaskEditComponent implements OnInit {
                   { variables: (JSON.parse(event.component.properties['variables']) || {}) }).subscribe(() => {
                     this.events.announceItem({ taskId: this.task.id, complete: true });
                     this.events.announceFiltersRefresh('');
-                    this.router.navigate(['tasks']);
+                    this.goBack();
                   });
               });
             } else {
@@ -65,7 +78,7 @@ export class TaskEditComponent implements OnInit {
                 { variables: (JSON.parse(event.component.properties['variables']) || {}) }).subscribe(() => {
                   this.events.announceItem({ taskId: this.task.id, complete: true });
                   this.events.announceFiltersRefresh('');
-                  this.router.navigate(['tasks']);
+                  this.goBack();
                 });
             }
 
@@ -109,7 +122,7 @@ export class TaskEditComponent implements OnInit {
 
 
         this.task = task;
-        if (this.task.executionId && this.task.executionId !== 'undefined') {
+        if (this.task.executionId !== 'undefined') {
           const keyResourceArray = this.task.formKey.split(':');
           this.form.formKey = keyResourceArray[0];
           this.form.resourceName = keyResourceArray[1];
@@ -122,54 +135,10 @@ export class TaskEditComponent implements OnInit {
             });
 
             this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
+            this.form.ready = true;
             this.dismissLoading();
-            console.log(this.form);
           });
 
-        } else {
-          this.camundaService.getHistoryTask({ taskId: this.route.snapshot.params.taskId }).subscribe(tasks => {
-            if (tasks.length > 0) {
-              this.task = tasks[0];
-
-              this.camundaService.getProcessDefinitionXML(this.task.processDefinitionId).subscribe(xml => {
-                const parseString = require('xml2js').parseString;
-                parseString(xml.bpmn20Xml, (err, result) => {
-                  const taskDefinition = result['bpmn:definitions']['bpmn:process'][0]['bpmn:userTask'].filter(item => {
-                    return item.$.id === this.task.taskDefinitionKey;
-                  });
-                  console.log(taskDefinition[0].$['camunda:formKey']);
-                  this.task.formKey = taskDefinition[0].$['camunda:formKey'];
-                  const keyResourceArray = this.task.formKey.split(':');
-                  this.form.formKey = keyResourceArray[0];
-                  this.form.resourceName = keyResourceArray[1];
-                  this.form.readOnly = true;
-                  this.camundaService.
-                    getVariableInstanceByExecutionId({ executionIdIn: this.task.executionId }).subscribe(executionVariables => {
-                      this.form.version = executionVariables.forEach((variable) => {
-                        if (variable.name.indexOf('v_') > -1) {
-                          this.form.version[variable.name.replace('v_', '')] = variable.value;
-                        }
-                      });
-                      const resource = executionVariables.filter((variable) => {
-                        return variable.name === this.form.resourceName;
-                      });
-                      this.form.resourceId = (resource && resource.length > 0) ?
-                        resource[0].value : '';
-                      console.log(resource);
-                      console.log(this.form.resourceName);
-                      this.dismissLoading();
-
-                    });
-                });
-              });
-
-
-
-            } else {
-              alert('this task does not exist!');
-              this.dismissLoading();
-            }
-          });
         }
       },
         (err) => {

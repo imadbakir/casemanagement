@@ -136,5 +136,15 @@
   "Child Services Specialist Review": "مراجعة أخصائي خدمات الأبناء في الفرع",
   "Branch Manager Review": "مراجعة مدير الفرع",
   "Director of Children's Department": "مراجعة مدير إدارة الأبناء",
-  "Born Gift": "هدية مولود"
+  "Born Gift": "هدية مولود",
+  "name": "الاسم",
+  "description": "الوصف",
+  "assignee": "المعين للعمل",
+  "created": "تاريخ الإنشاء",
+  "due": "تاريخ الوجوب",
+  "priority": "الأهمية",
+  "All Tasks": "جميع المهمات",
+  "Edit": "تعديل",
+  "Delete": "حذف",
+  "Loading more Tasks...":"يتم تحميل المزيد..."
 }

@@ -13,10 +13,9 @@ export class BasicAuthInterceptor implements HttpInterceptor {
     urls = [this.env.engineApiUrl, this.env.engineRestUrl];
     constructor(public auth: AuthService, private env: EnvService) { }
     /**
-     *
+     * Intercept HTTP Request and Add Auth Headers if URL Matches Camunda Engine URL
      * @param request
      * @param next
-     * Intercept HTTP Request and Add Auth Headers if URL Matches Camunda Engine URL
      */
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with basic auth credentials if available
@@ -33,10 +32,9 @@ export class BasicAuthInterceptor implements HttpInterceptor {
     }
 
     /**
-     *
+     * Return True if requested URL is in array urls
      * @param urls
      * @param req
-     * Return True if requested URL is in array urls
      */
     urlMatches(urls: string[], req: HttpRequest<any>): boolean {
         for (let i = 0; i !== urls.length; i++) {

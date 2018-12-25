@@ -1,9 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
+
 
 /**
  * Task List Item Component
@@ -13,21 +14,22 @@ import { EventsService } from '../../../core/services/events.service';
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.scss']
 })
-export class TaskItemComponent {
+export class TaskItemComponent implements OnInit {
   /**
    * Camunda Task Object
    */
   @Input() task;
-
+  route;
   @ViewChild('trigger') input;
 
   users: any = [];
 
   constructor(
-    private loadingController: LoadingController,
     public auth: AuthService,
+    private loadingController: LoadingController,
     private camundaService: CamundaRestService,
-    private event: EventsService) { }
+    private event: EventsService,
+    private router: Router) { }
 
   async presentLoading() {
     const loading = await this.loadingController.create({});
@@ -50,9 +52,17 @@ export class TaskItemComponent {
     }, 100);
 
   }
-  chooseItem(item) {
-    this.event.announceItem(item);
+  /**
+   * Get Edit or History Route
+   */
+  getRoute() {
+    if (this.task.deleteReason === 'completed') {
+      return ['view', this.task.id];
+    } else {
+      return ['edit', this.task.id];
+    }
   }
+
 
   /**
    * get Priority Class by priority Value
@@ -102,5 +112,7 @@ export class TaskItemComponent {
     }
     return value;
   }
-
+  ngOnInit() {
+    this.route = this.getRoute();
+  }
 }

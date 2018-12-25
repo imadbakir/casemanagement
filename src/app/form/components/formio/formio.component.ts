@@ -60,7 +60,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
     public formio: any;
     public initialized: boolean;
     public alerts: FormioAlerts;
-    interval;
+    hideForm = true;
     constructor(
         public externalService: ExternalService,
         private loader: FormioLoader,
@@ -129,12 +129,10 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 this.formio.setUrl(this.src, this.formioOptions || {});
             }
             this.formio.submission = this.submission;
-            console.log(formio);
             this.formio.nosubmit = true;
             this.formio.on('languageChanged', () => {
                 setTimeout(() => {
                     this.assignFormOptions(this.formio);
-                    // this.assignLang(this.formio, this.translate.currentLang);
                 }, 100);
 
                 const choices = this.formio.element.querySelectorAll('.choices') || [];
@@ -159,7 +157,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 this.formLoad.emit(loadedForm);
             }
             );
-            this.loader.loading = false;
 
             this.ready.emit(this);
             this.formioReadyResolve(this.formio);
@@ -263,7 +260,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
      *  error object.
      */
     onError(err: any) {
-        this.loader.loading = false;
         this.alerts.setAlerts([]);
         this.submitting = false;
         if (!err) {
@@ -330,6 +326,13 @@ export class AppFormioComponent implements OnInit, OnChanges {
      */
     assignVersions(formio) {
         Utils.eachComponent(formio.components, (component) => {
+            /*
+            if (component.component.hasOwnProperty('properties') &&
+                component.component.properties.hasOwnProperty('readOnly')) {
+                component.options.readOnly = true;
+                component.options.viewAsHtml = true;
+                console.log(component.key);
+            }*/
             if (component.type === 'form') {
                 if (this.version && this.version[component.component.key.toLowerCase()]) {
                     component.component.form = component.component.form + '/v/' + this.version[component.component.key.toLowerCase()];
@@ -345,14 +348,23 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
     /**
+     * Search deeply for form components and assigns Form Version to them.
+     * @param formio
+     *  Formio Webform object
+     */
+
+
+    /**
      * Search deeply for form components and assigns Options and Langage to them
      * Assign readOnly and ViewAsHtml properties from API properties.
      * @param formio
      *  Formio Webform object
      */
     assignFormOptions(formio) {
-        Utils.eachComponent(formio.components, (component) => {
-            if (component.type === 'form') {
+        const forms = Utils.findComponents(formio.components, { type: 'form' });
+        if (forms.length > 0) {
+            this.loader.loading = true;
+            forms.forEach(component => {
                 component.subFormReady.then((form) => {
                     component.subForm.options = assign({}, {
                         icons: get(this.config, 'icons', 'fontawesome'),
@@ -367,9 +379,20 @@ export class AppFormioComponent implements OnInit, OnChanges {
                         this.assignFormOptions(form);
                     });
                 });
+            });
+        } else {
+            formio.formReady.then(() => {
+                let once = true;
+                formio.on('render', () => {
+                    if (once) {
+                        this.loader.loading = false;
+                        this.hideForm = false;
+                        once = true;
+                    }
 
-            }
-        }, false);
+                });
+            });
+        }
     }
 
     /**
@@ -377,14 +400,16 @@ export class AppFormioComponent implements OnInit, OnChanges {
      * Subscribe to events and assign callbacks
      */
     ngOnInit() {
-        this.initialize();
+        this.loader.loading = true;
 
+        this.initialize();
         if (this.language) {
             this.language.subscribe((lang: string) => {
                 this.formioReady.then(() => {
                     this.translate.getTranslation(lang).subscribe(translation => {
                         this.formio.addLanguage(lang, translation);
                         this.formio.language = lang;
+
                     });
                 });
             });

@@ -12,8 +12,6 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [ngStyle]="{height: '100vh'}">
-  <div [ngClass]="'padding'">
-    <app-gridster></app-gridster>
-  </div>
+<ion-content padding [ngStyle]="{height: '100vh'}">
+    <router-outlet></router-outlet>
 </ion-content>

@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { FormioAppConfig, FormioLoader, FormioRefreshValue } from 'angular-formio';
+import { FormioAppConfig, FormioRefreshValue } from 'angular-formio';
 import { FormioResources } from 'angular-formio/resource';
 import { Formio, Utils } from 'formiojs';
 import _ from 'lodash';
@@ -36,7 +35,6 @@ export class FormComponent implements OnInit, OnDestroy {
   public formio: any;
   public refresh: EventEmitter<FormioRefreshValue> = new EventEmitter();
   public language: BehaviorSubject<String> = new BehaviorSubject('');
-  public loading;
   public resourceLoading?: Promise<any>;
   public resourceLoaded?: Promise<any>;
   public resourceResolve: any;
@@ -56,8 +54,7 @@ export class FormComponent implements OnInit, OnDestroy {
     public route: ActivatedRoute,
     public auth: AuthService,
     public translate: TranslateService,
-    public loadingController: LoadingController,
-    private loader: FormioLoader,
+
     private appConfig: FormioAppConfig,
     private resourcesService: FormioResources,
 
@@ -80,14 +77,6 @@ export class FormComponent implements OnInit, OnDestroy {
       this.formResolve = resolve;
       this.formReject = reject;
     });
-  }
-
-  async presentLoading() {
-    this.loading = await this.loadingController.create({});
-    return await this.loading.present();
-  }
-  async dismissLoading() {
-    return await this.loading.dismiss();
   }
 
 
@@ -118,13 +107,11 @@ export class FormComponent implements OnInit, OnDestroy {
    */
   loadResource() {
     this.setContext();
-    this.loader.loading = true;
     this.resourceLoading = this.formio
       .loadSubmission(null, { ignoreCache: true })
       .then((resource) => {
         this.resource = resource;
         this.resourceResolve(resource);
-        this.loader.loading = false;
         return resource;
       }, (err) => { })
       .catch((err) => {
@@ -225,14 +212,11 @@ export class FormComponent implements OnInit, OnDestroy {
    */
   loadForm() {
     this.formFormio = new Formio(this.formUrl);
-    this.loader.loading = true;
     this.formLoading = this.formFormio
       .loadForm()
       .then((form) => {
         this.form = form;
-        console.log(form);
         this.formResolve(form);
-        this.loader.loading = false;
         return form;
       }, (err) => this.onFormError(err))
       .catch((err) => this.onFormError(err));
@@ -285,15 +269,11 @@ export class FormComponent implements OnInit, OnDestroy {
    *  contains Form Submission object
    */
   onSubmit(event) {
-    this.presentLoading().then(() => {
-      this.save(this.resource).then((data) => {
-        this.submit.emit(data);
-        this.dismissLoading();
-        if (this.formKey === 'orphanmanagement') {
-          this.makeRequest();
-        }
-
-      });
+    this.save(this.resource).then((data) => {
+      this.submit.emit(data);
+      if (this.formKey === 'orphanmanagement') {
+        this.makeRequest();
+      }
     });
 
   }
@@ -331,26 +311,20 @@ export class FormComponent implements OnInit, OnDestroy {
         data.path.currentDate = '2018/12/06'
 
   */
-    this.presentLoading().then(() => {
-      this.loadForm().then((form) => {
+    this.loadForm();
+    console.log(this.formKey);
 
-        if (this.resourceId) {
-          setTimeout(() => {
-            this.loadResource().then(() => {
-              this.resourceLoaded.then(() => {
-                this.onFormLoad(form);
-                this.dismissLoading();
-              });
-            });
-          }, 0);
-        } else {
+    if (this.resourceId) {
+      this.loadResource().then(() => {
+        this.formLoaded.then((form) => {
           this.onFormLoad(form);
-          this.dismissLoading();
-        }
-
+        });
       });
-    });
-
+    } else {
+      this.formLoaded.then((form) => {
+        this.onFormLoad(form);
+      });
+    }
     this.language.next(this.translate.currentLang);
 
     this.translate.onLangChange.subscribe(data => {

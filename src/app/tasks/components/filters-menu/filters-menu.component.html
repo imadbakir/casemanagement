@@ -16,17 +16,17 @@
   <div class="profile-container">
     <div class="photo-container"></div>
     <h5 margin-top>{{auth.getUser()?.profile.firstName}} {{auth.getUser()?.profile.lastName}}</h5>
-    <span *ngFor="let group of auth.getUser()?.groups">{{group.name}} </span>
+    <span *ngFor="let group of auth.getUser()?.groups">{{group.name | translate}} </span>
   </div>
   <ion-searchbar [placeholder]="'Search' | translate" mode="ios"></ion-searchbar>
 
   <ion-list lines="full">
-    <ion-item *ngFor="let filter of filters" [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}" [ngClass]="{'selected-green': openFilter === filter.id}"
-      (click)="toggleFilter(filter)">
+    <ion-item *ngFor="let filter of filters" routerLinkActive="selected-green" [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}"
+      [routerLink]="[filter.id]">
       <ion-label text-wrap>
         <ion-text>
           <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
-            {{filter.name}}
+            {{filter.name | translate}}
             <ion-badge color="secondary" slot="end">{{filter.count}}</ion-badge>
           </h3>
         </ion-text>
@@ -40,7 +40,7 @@
       </ion-buttons>
 
     </ion-item>
-    <ion-item (click)="toggleFilter({id:'history'})" [ngClass]="{'selected-green': openFilter === 'history'}">
+    <ion-item [routerLink]="['history']" routerLinkActive="selected-green">
       <ion-label text-wrap>
         <ion-text>
           <h3 appOnCreate>

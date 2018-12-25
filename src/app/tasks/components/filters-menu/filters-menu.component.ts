@@ -7,6 +7,7 @@ import { EventsService } from '../../../core/services/events.service';
 import { UserOptionsComponent } from '../../../shared/components/user-options/user-options.component';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { FilterOptionsComponent } from '../filter-options/filter-options.component';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 /**
  * Filters Sidebar Menu Component
@@ -23,11 +24,12 @@ export class FiltersMenuComponent implements OnInit {
 
 
   filters = [];
-  openFilter = '';
 
   constructor(
     public popoverCtrl: PopoverController,
     public event: EventsService,
+    public router: Router,
+    public route: ActivatedRoute,
     private camundaService: CamundaRestService,
     public translate: TranslateService,
     public modalController: ModalController,
@@ -91,15 +93,6 @@ export class FiltersMenuComponent implements OnInit {
     });
   }
 
-  /**
-   * Announce Open Filter Event
-   * @param item
-   *  Filter Item
-   */
-  toggleFilter(item) {
-    this.openFilter = item.id;
-    this.event.announceFilter({ item: item });
-  }
 
   /**
    * NgOnIntit: Subscribe to refresh filters event
@@ -110,17 +103,8 @@ export class FiltersMenuComponent implements OnInit {
     this.event.refreshFiltersAnnounced$.subscribe(() => {
       this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
         this.filters = filters;
-        if (this.filters.length > 0) {
-          const openFilters = this.filters.filter((item) => item.id === this.openFilter);
-          if (openFilters.length > 0) {
-            this.toggleFilter(openFilters[0]);
-
-          } else if (this.openFilter === 'history') {
-            this.toggleFilter({ id: 'history' });
-          } else {
-            this.toggleFilter(this.filters[0]);
-
-          }
+        if (this.filters.length > 0 && Object.keys(this.route.firstChild.snapshot.params).length === 0) {
+          this.router.navigate([this.filters[0].id], { relativeTo: this.route });
         }
       });
     });

@@ -4,6 +4,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 import { SortOptionsComponent } from '../sort-options/sort-options.component';
+import { ActivatedRoute } from '@angular/router';
 
 /**
  * Task List Component
@@ -49,6 +50,7 @@ export class TaskGridComponent implements OnInit {
     public popoverCtrl: PopoverController,
     public modalController: ModalController,
     private auth: AuthService,
+    private route: ActivatedRoute,
     public loadingController: LoadingController) {
 
   }
@@ -163,10 +165,10 @@ export class TaskGridComponent implements OnInit {
       return this.presentLoading().then(() => {
         this.camundaService.listHistory({
           firstResult: this.tasks.length,
-          maxResults: this.tasks.length + this.pageSize,
-          finished: true
+          maxResults: this.tasks.length + this.pageSize
         }, {
             taskAssignee: this.auth.getUser().username,
+            finished: true
           }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];
             this.tasks = this.tasksOrigin;
@@ -207,6 +209,11 @@ export class TaskGridComponent implements OnInit {
    * Subscribe to Filter Change Events
    */
   ngOnInit() {
+    if (this.route.snapshot.params.filterId) {
+      this.setFilter(this.route.snapshot.params.filterId);
+      this.fetchTasks(true);
+    }
+
     this.event.sortingAnnounced$.subscribe(sorting => {
       this.sortArray(sorting);
     });

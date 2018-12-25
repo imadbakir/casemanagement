@@ -2,7 +2,7 @@
     <ion-radio-group name="sorting" [(ngModel)]="sorting">
         <ion-list-header padding>{{'Sort By' | translate }}</ion-list-header>
         <ion-item *ngFor="let sorting of sortings; let i =index">
-            <ion-label>{{sorting.name}}</ion-label>
+            <ion-label>{{sorting.name | translate}}</ion-label>
             <ion-radio [value]="i"></ion-radio>
         </ion-item>
     </ion-radio-group>

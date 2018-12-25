@@ -137,5 +137,15 @@
   "Child Services Specialist Review": "Child Services Specialist Review",
   "Branch Manager Review": "Branch Manager Review",
   "Director of Children's Department": "Director of Children's Department",
-  "Born Gift": "Born Gift"
+  "Born Gift": "Born Gift",
+  "name": "Name",
+  "description": "Description",
+  "assignee": "Assignee",
+  "created": "Created At",
+  "due": "Due At",
+  "priority": "Priority",
+  "All Tasks": "All Tasks",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "Loading more Tasks...": "Loading more Tasks..."
 }

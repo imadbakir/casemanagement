@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,7 @@ import { FilterService } from '../../../core/services/filter.service';
   templateUrl: './gridster.component.html',
   styleUrls: ['./gridster.component.scss'],
 })
-export class GridsterComponent implements OnInit {
+export class GridsterComponent implements OnInit, AfterViewInit {
   options: GridsterConfig;
   panels = {
     tasks: { x: 0, y: 0, cols: 2, rows: 4, filters: [] },
@@ -26,11 +26,24 @@ export class GridsterComponent implements OnInit {
   onResize(item, itemComponent) {
   }
   onInit(girdster) {
-    window.setTimeout(function () {
-      girdster.options.api.resize();
-    }, 2000);
-  }
 
+  }
+  ngAfterViewInit() {
+    window.setTimeout(() => {
+      if (this.options.api) {
+        this.options.api.resize();
+      }
+    }, 1000);
+  }
+  @HostListener('window:focus', ['$event'])
+  onFocus(event: any): void {
+    // Do something
+    window.setTimeout(() => {
+      if (this.options.api) {
+        this.options.api.resize();
+      }
+    }, 350);
+  }
   constructor(public event: EventsService,
     public filterStorage: FilterService,
     private router: Router,

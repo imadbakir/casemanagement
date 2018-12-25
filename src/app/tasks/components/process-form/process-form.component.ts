@@ -33,7 +33,6 @@ export class ProcessFormComponent implements OnInit {
    */
 
   onSubmit(submission) {
-    console.log(submission);
     this.camundaService.processDefinitionSubmitForm(this.route.snapshot.params['processDefinitionId'], {}).subscribe(instance => {
       this.camundaService.updateExecutionVariables(instance.id, this.startForm[1],
         { value: submission._id, type: 'String' }).subscribe(() => {

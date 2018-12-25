@@ -27,7 +27,6 @@ export class SortOptionsComponent {
     { name: 'due', type: 'datetime', direction: 1 },
     { name: 'priority', type: 'number', direction: 1 }
   ];
-  // TODO: Translate Sorting Options
 
   constructor(public popoverCtrl: PopoverController, public eventsService: EventsService) {
 
