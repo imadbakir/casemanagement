@@ -318,7 +318,7 @@ export class CamundaRestService {
   postProcessInstance(processDefinitionKey, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}process-definition/key/${processDefinitionKey}/start`;
     return this.http.post<any>(endpoint, variables).pipe(
-      tap(processDefinitions => this.log(`posted process instance`)),
+      tap(processDefinitions => this.log(`posted process instance Start`)),
       catchError(this.handleError('postProcessInstance', []))
     );
   }
@@ -331,7 +331,7 @@ export class CamundaRestService {
   processInstanceStartForm(processDefinitionId): Observable<any> {
     const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/startForm`;
     return this.http.get<any>(endpoint).pipe(
-      tap(processDefinitions => this.log(`posted process instance`)),
+      tap(processDefinitions => this.log(`posted process instance Start Form`)),
       catchError(this.handleError('postProcessInstance', []))
     );
   }
@@ -344,7 +344,7 @@ export class CamundaRestService {
   processDefinitionSubmitForm(processDefinitionId, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/submit-form`;
     return this.http.post<any>(endpoint, variables).pipe(
-      tap(processDefinitions => this.log(`posted process instance`)),
+      tap(processDefinitions => this.log(`Posted process instance Form`)),
       catchError(this.handleError('postProcessInstance', []))
     );
   }
@@ -355,7 +355,7 @@ export class CamundaRestService {
   getUserProfile(userId): Observable<any> {
     const endpoint = `${this.engineRestUrl}user/${userId}/profile`;
     return this.http.get<any>(endpoint).pipe(
-      tap(processDefinitions => this.log(`posted process instance`)),
+      tap(processDefinitions => this.log(`Get User Profile`)),
       catchError(this.handleError('getUserProfile', []))
     );
   }
@@ -384,8 +384,8 @@ export class CamundaRestService {
    */
   getIdentity(queryParams = {}) {
     const endpoint = `${this.engineRestUrl}identity/groups`;
-    return this.http.get<any>(endpoint).pipe(
-      tap(processDefinitions => this.log(`posted process instance`)),
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(processDefinitions => this.log(`Get Identity`)),
       catchError(this.handleError('getUserProfile', []))
     );
   }

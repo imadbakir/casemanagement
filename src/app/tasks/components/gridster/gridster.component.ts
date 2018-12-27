@@ -55,7 +55,7 @@ export class GridsterComponent implements OnInit, AfterViewInit {
   }
 
   changedOptions() {
-    if (this.options) {
+    if (this.options && this.options.api) {
       this.options.api.optionsChanged();
     }
   }

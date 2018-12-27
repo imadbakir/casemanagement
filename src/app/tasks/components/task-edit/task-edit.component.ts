@@ -26,7 +26,8 @@ export class TaskEditComponent implements OnInit {
     formKey: '',
     readOnly: false,
     version: [],
-    ready: false
+    ready: false,
+    executionVariables: []
   };
   objectKeys = Object.keys;
   constructor(
@@ -47,11 +48,9 @@ export class TaskEditComponent implements OnInit {
    * Go Back After Task is completed
    */
   goBack() {
-    if (window.history.length > 1) {
-      this.location.back();
-    } else {
-      this.router.navigate(['tasks']);
-    }
+    this.router.navigate(['tasks',
+      ...(this.route.parent.snapshot.params.filterId ? ['list', this.route.parent.snapshot.params.filterId] : [])]);
+
   }
   /**
    * on formio CustomEvent (eg:Complete) callback
@@ -70,7 +69,6 @@ export class TaskEditComponent implements OnInit {
                   { variables: (JSON.parse(event.component.properties['variables']) || {}) }).subscribe(() => {
                     this.events.announceItem({ taskId: this.task.id, complete: true });
                     this.events.announceFiltersRefresh('');
-                    this.goBack();
                   });
               });
             } else {
@@ -78,7 +76,6 @@ export class TaskEditComponent implements OnInit {
                 { variables: (JSON.parse(event.component.properties['variables']) || {}) }).subscribe(() => {
                   this.events.announceItem({ taskId: this.task.id, complete: true });
                   this.events.announceFiltersRefresh('');
-                  this.goBack();
                 });
             }
 
@@ -96,8 +93,10 @@ export class TaskEditComponent implements OnInit {
    *  Submission Object
    */
   onSubmit(submission) {
-    this.camundaService.updateExecutionVariables(this.task.executionId, 'v_' + this.task.formKey,
-      { value: submission._fvid, type: 'String' }).subscribe(() => {
+    return this.camundaService.updateExecutionVariables(this.task.executionId, 'v_' + this.form.formKey,
+      { value: submission._fvid, type: 'String' }).subscribe((data) => {
+        this.goBack();
+
       });
   }
 
@@ -127,16 +126,22 @@ export class TaskEditComponent implements OnInit {
           this.form.formKey = keyResourceArray[0];
           this.form.resourceName = keyResourceArray[1];
           this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
-
             Object.keys(executionVariables).forEach((key) => {
               if (key.indexOf('v_') > -1) {
                 this.form.version[key.replace('v_', '')] = executionVariables[key].value;
               }
             });
-
             this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
-            this.form.ready = true;
-            this.dismissLoading();
+
+            this.camundaService.getVariableInstanceByExecutionId(
+              { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
+                historyExecutionVariables.forEach((variable) => {
+                  this.form.executionVariables[variable.name] = variable.value;
+                });
+                this.form.ready = true;
+                this.dismissLoading();
+              });
+
           });
 
         }

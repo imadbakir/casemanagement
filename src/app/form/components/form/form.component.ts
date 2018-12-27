@@ -25,6 +25,7 @@ export class FormComponent implements OnInit, OnDestroy {
   @Input() resourceId;
   @Input() readOnly;
   @Input() version;
+  @Input() executionVariables;
   @Output() submit: EventEmitter<object> = new EventEmitter();
   @Output() customEvent: EventEmitter<object> = new EventEmitter();
   public form: any;
@@ -96,7 +97,7 @@ export class FormComponent implements OnInit, OnDestroy {
     if (this.resourceId) {
       this.resourceUrl += '/submission/' + this.resourceId;
     }
-    if (this.version && this.version[this.formKey]) {
+    if (this.version && this.version[this.formKey.toLowerCase()]) {
       this.formUrl += '/v/' + this.version[this.formKey];
     }
     this.formio = new Formio(this.resourceUrl);
@@ -110,7 +111,9 @@ export class FormComponent implements OnInit, OnDestroy {
     this.resourceLoading = this.formio
       .loadSubmission(null, { ignoreCache: true })
       .then((resource) => {
+        resource.data = { executionVariables: this.executionVariables, ...resource.data };
         this.resource = resource;
+
         this.resourceResolve(resource);
         return resource;
       }, (err) => { })
@@ -138,6 +141,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
     return string;
   }
+
   /**
    * Formio Custom Event Callback
    * @param event
@@ -148,14 +152,17 @@ export class FormComponent implements OnInit, OnDestroy {
       if (event.hasOwnProperty('type')) {
         switch (event.type) {
           case 'complete':
-            this.onSubmit(event);
+            this.onSubmit().then(() => {
+              this.customEvent.emit(event);
+            });
             break;
+          default:
+            this.customEvent.emit(event);
         }
       }
     } catch (err) {
       console.log(err);
     }
-    this.customEvent.emit(event);
   }
 
   /**
@@ -266,10 +273,10 @@ export class FormComponent implements OnInit, OnDestroy {
   /**
    * On Form Submit Callback
    * @param event
-   *  contains Form Submission object
+   *  Form Submission Event
    */
-  onSubmit(event) {
-    this.save(this.resource).then((data) => {
+  onSubmit(event = {}) {
+    return this.save(this.resource).then((data) => {
       this.submit.emit(data);
       if (this.formKey === 'orphanmanagement') {
         this.makeRequest();
@@ -312,7 +319,6 @@ export class FormComponent implements OnInit, OnDestroy {
 
   */
     this.loadForm();
-    console.log(this.formKey);
 
     if (this.resourceId) {
       this.loadResource().then(() => {

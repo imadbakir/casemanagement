@@ -24,11 +24,12 @@ export class AppComponent implements OnInit {
     this.translate.setDefaultLang('en');
     this.translate.use(this.storage.get('language') || 'en');
     this.auth.onLogin.subscribe(() => {
+      // this.router.navigate(['tasks']);
       window.location.href = '/tasks';
 
     });
     this.auth.onLogout.subscribe(() => {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['auth', 'login']);
     });
   }
   /**

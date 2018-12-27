@@ -144,7 +144,7 @@ export class AppFormioComponent implements OnInit, OnChanges {
             this.formio.on('nextPage', (data: any) => this.onNextPage(data));
             this.formio.on('change', (value: any) => this.change.emit(value));
             this.formio.on('customEvent', (event: any) =>
-                this.customEvent.emit(event)
+                this.onCustomEvent(event)
             );
             this.formio.on('submit', (submission: any) =>
                 this.submitForm(submission)
@@ -212,8 +212,8 @@ export class AppFormioComponent implements OnInit, OnChanges {
             } else {
                 switch (refresh.property) {
                     case 'submission':
-
                         this.formio.setSubmission(refresh.value);
+
 
                         break;
                     case 'form':
@@ -333,9 +333,16 @@ export class AppFormioComponent implements OnInit, OnChanges {
                 component.options.viewAsHtml = true;
                 console.log(component.key);
             }*/
+            if (component.component.properties) {
+                component.component.options = assign({}, {
+                    readOnly: component.component.properties.readOnly === 'true',
+                    viewAsHtml: component.component.properties.readOnly === 'true'
+                });
+            }
             if (component.type === 'form') {
                 if (this.version && this.version[component.component.key.toLowerCase()]) {
                     component.component.form = component.component.form + '/v/' + this.version[component.component.key.toLowerCase()];
+
                 }
                 component.subFormReady.then((form) => {
                     form.formReady.then(() => {
@@ -396,6 +403,16 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
     /**
+   * Formio Custom Event Callback
+   * @param event
+   *  Formio CustomEvent
+   */
+
+    onCustomEvent(event) {
+        this.customEvent.emit(event);
+    }
+
+    /**
      * On Component Init
      * Subscribe to events and assign callbacks
      */
@@ -436,7 +453,6 @@ export class AppFormioComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: any) {
-
         if (changes.form && changes.form.currentValue) {
             this.setForm(changes.form.currentValue);
         }

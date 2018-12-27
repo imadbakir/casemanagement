@@ -70,7 +70,6 @@ export class HistoryTaskComponent implements OnInit {
               const taskDefinition = result['bpmn:definitions']['bpmn:process'][0]['bpmn:userTask'].filter(item => {
                 return item.$.id === this.task.taskDefinitionKey;
               });
-              console.log(taskDefinition[0].$['camunda:formKey']);
               this.task.formKey = taskDefinition[0].$['camunda:formKey'];
               const keyResourceArray = this.task.formKey.split(':');
               this.form.formKey = keyResourceArray[0];
@@ -78,7 +77,7 @@ export class HistoryTaskComponent implements OnInit {
               this.form.readOnly = true;
               this.camundaService.
                 getVariableInstanceByExecutionId({ executionIdIn: this.task.executionId }).subscribe(executionVariables => {
-                  this.form.version = executionVariables.forEach((variable) => {
+               executionVariables.forEach((variable) => {
                     if (variable.name.indexOf('v_') > -1) {
                       this.form.version[variable.name.replace('v_', '')] = variable.value;
                     }

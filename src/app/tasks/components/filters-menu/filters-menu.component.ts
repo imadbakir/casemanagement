@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
@@ -34,6 +34,13 @@ export class FiltersMenuComponent implements OnInit {
     public translate: TranslateService,
     public modalController: ModalController,
     public auth: AuthService) {
+    auth.onLogin.subscribe(() => {
+      this.ngOnInit();
+
+    });
+    auth.onLogout.subscribe(() => {
+      this.filters = [];
+    });
   }
 
 
@@ -92,6 +99,33 @@ export class FiltersMenuComponent implements OnInit {
       filter.count = data.count;
     });
   }
+  createDefaultFilter() {
+    const filter = {
+      resourceType: 'Task',
+      name: 'All Tasks',
+      owner: this.auth.getUser().username,
+      query: {
+        orQueries: [
+          {
+            assignee: this.auth.getUser().username,
+            candidateGroups: Array.prototype.map.call(this.auth.getUser().groups, function (item) { return item.id; })
+          }
+        ]
+      },
+      properties: {
+        color: '',
+        description: '',
+        priority: ''
+      }
+    };
+    this.camundaService.createFilter(filter).subscribe((data) => {
+      this.event.announceFiltersRefresh('');
+    });
+  }
+
+  openFilter() {
+    this.router.navigate(['tasks', 'list', this.filters[0].id]);
+  }
 
 
   /**
@@ -100,41 +134,19 @@ export class FiltersMenuComponent implements OnInit {
    * Create Default filter if no filters exist.
    */
   ngOnInit() {
+
     this.event.refreshFiltersAnnounced$.subscribe(() => {
       this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
         this.filters = filters;
         if (this.filters.length > 0 && Object.keys(this.route.firstChild.snapshot.params).length === 0) {
-          this.router.navigate([this.filters[0].id], { relativeTo: this.route });
+          this.openFilter();
+        }
+        if (filters.length === 0) {
+          this.createDefaultFilter();
         }
       });
     });
-
-    this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe(filters => {
-      this.filters = filters;
-      if (filters.length === 0) {
-        const filter = {
-          resourceType: 'Task',
-          name: 'All Tasks',
-          owner: this.auth.getUser().username,
-          query: {
-            orQueries: [
-              {
-                assignee: this.auth.getUser().username,
-                candidateGroups: Array.prototype.map.call(this.auth.getUser().groups, function (item) { return item.id; })
-              }
-            ]
-          },
-          properties: {
-            color: '',
-            description: '',
-            priority: ''
-          }
-        };
-        this.camundaService.createFilter(filter).subscribe((data) => {
-          this.event.announceFiltersRefresh('');
-        });
-      }
-    });
+    this.event.announceFiltersRefresh('');
 
   }
 }

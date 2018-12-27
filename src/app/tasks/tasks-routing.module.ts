@@ -11,14 +11,14 @@ import { GridsterComponent } from './components/gridster/gridster.component';
  */
 const routes: Routes = [
   {
-    path: '',
-    component: TasksComponent,
+    path: '', component: TasksComponent,
     children: [
       {
-        path: '', component: GridsterComponent
+        path: '', component: GridsterComponent,
+
       },
       {
-        path: ':filterId', component: GridsterComponent,
+        path: 'list/:filterId', component: GridsterComponent,
         children: [
           {
             path: 'edit/:taskId', component: TaskEditComponent,
@@ -28,10 +28,10 @@ const routes: Routes = [
           }
         ]
       },
-
       { path: 'new/:processDefinitionId', component: ProcessFormComponent }
     ]
-  }
+
+  },
 ];
 
 @NgModule({

@@ -151,7 +151,6 @@ export class FilterModalComponent implements OnInit {
       }
     });
     this.filter.query['orQueries'] = this.orQueries;
-    console.log(this.filter);
     if (this.filter.hasOwnProperty('id')) {
       this.camundaService.updateFilter(this.filter['id'], this.filter).subscribe(() => {
         this.event.announceFiltersRefresh('');

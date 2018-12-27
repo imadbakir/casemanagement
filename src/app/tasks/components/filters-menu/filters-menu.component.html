@@ -22,7 +22,7 @@
 
   <ion-list lines="full">
     <ion-item *ngFor="let filter of filters" routerLinkActive="selected-green" [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}"
-      [routerLink]="[filter.id]">
+      [routerLink]="['list',filter.id]">
       <ion-label text-wrap>
         <ion-text>
           <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
@@ -40,7 +40,7 @@
       </ion-buttons>
 
     </ion-item>
-    <ion-item [routerLink]="['history']" routerLinkActive="selected-green">
+    <ion-item [routerLink]="['list','history']" routerLinkActive="selected-green">
       <ion-label text-wrap>
         <ion-text>
           <h3 appOnCreate>

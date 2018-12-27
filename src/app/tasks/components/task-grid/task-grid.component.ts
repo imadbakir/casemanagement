@@ -197,7 +197,6 @@ export class TaskGridComponent implements OnInit {
    */
   DoInfinite(infiniteScroll) {
     this.fetchTasks().then((data) => {
-      console.log(data);
       infiniteScroll.target.complete();
     });
   }
@@ -233,7 +232,6 @@ export class TaskGridComponent implements OnInit {
     });
     this.event.filterAnnounced$.subscribe((data) => {
       if (data.item) {
-        console.log(data);
         this.setFilter(data.item.id);
         this.fetchTasks(true);
       }
