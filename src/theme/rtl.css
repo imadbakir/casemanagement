@@ -1,0 +1,56 @@
+[dir=rtl] .col-sm-push-8{
+    right: 66.6666666667%;
+    left:auto;
+  }
+[dir=rtl] .choices__input {
+  padding-right: 2px;
+  padding-left: 0
+}
+[dir=rtl] .alert-radio-icon{
+    right:15px;
+    left: auto;
+  }
+ [dir=rtl]  .form-check{
+    padding-left:0px;
+    padding-right:1.25rem;
+  }
+ [dir=rtl] .form-check-input {
+    margin-right: -1.25rem;
+    margin-left:0px;  
+  }
+ [dir=rtl] #formio dd{
+    margin-right: 0;
+  }
+.choices[data-type*=select-one][dir=rtl]:after {
+  left: 11.5px;
+  right: auto
+}
+.choices[data-type*=select-one][dir=rtl] .choices__button {
+  right: auto;
+  left: 0;
+  margin-left: 25px;
+  margin-right: 0
+}
+[dir=rtl] .choices__list--single {
+  padding-right: 4px;
+  padding-left: 16px
+}
+[dir=rtl] .choices__list--multiple .choices__item {
+  margin-right: 0;
+  margin-left: 3.75px
+}
+[dir=rtl] .choices__list--dropdown .choices__item {
+  text-align: right
+}
+@media (min-width:640px) {
+  [dir=rtl] .choices__list--dropdown .choices__item--selectable {
+    text-align: right;
+    padding-left: 100px;
+    padding-right: 10px
+  }
+
+  [dir=rtl] .choices__list--dropdown .choices__item--selectable:after {
+    right: auto;
+    left: 10px
+  }
+}

@@ -44,9 +44,7 @@ export class TaskItemComponent implements OnInit {
       } else {
         this.task.assignee = this.auth.getUser().username;
       }
-      this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(data => {
-        // this.event.announceFiltersRefresh('');
-      });
+      this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee });
 
 
     }, 100);

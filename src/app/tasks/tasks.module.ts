@@ -55,7 +55,6 @@ import { TasksComponent } from './tasks.component';
     TaskItemComponent,
     TaskDetailsComponent,
     SortOptionsComponent,
-    AddRequestButtonComponent],
-
+    AddRequestButtonComponent]
 })
 export class TasksModule { }

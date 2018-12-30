@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoadingController, ModalController, PopoverController, InfiniteScroll } from '@ionic/angular';
+import { LoadingController, ModalController, PopoverController, IonInfiniteScroll } from '@ionic/angular';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
@@ -41,7 +41,7 @@ export class TaskGridComponent implements OnInit {
   /**
    * Infine Scroll View Child
    */
-  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
 
   constructor(
@@ -208,10 +208,10 @@ export class TaskGridComponent implements OnInit {
    * Subscribe to Filter Change Events
    */
   ngOnInit() {
-    if (this.route.snapshot.params.filterId) {
-      this.setFilter(this.route.snapshot.params.filterId);
+    this.route.params.subscribe(params => {
+      this.setFilter(params.filterId);
       this.fetchTasks(true);
-    }
+    });
 
     this.event.sortingAnnounced$.subscribe(sorting => {
       this.sortArray(sorting);
@@ -228,12 +228,6 @@ export class TaskGridComponent implements OnInit {
             }, 400);
           }
         });
-      }
-    });
-    this.event.filterAnnounced$.subscribe((data) => {
-      if (data.item) {
-        this.setFilter(data.item.id);
-        this.fetchTasks(true);
       }
     });
   }

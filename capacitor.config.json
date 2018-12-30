@@ -1,6 +1,0 @@
-{
-  "appId": "com.tasker.app",
-  "appName": "electron Test",
-  "bundledWebRuntime": false,
-  "webDir": "www"
-}

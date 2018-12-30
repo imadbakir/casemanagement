@@ -13,12 +13,9 @@ const routes: Routes = [
   {
     path: '', component: TasksComponent,
     children: [
+      { path: 'new/:processDefinitionId', component: ProcessFormComponent },
       {
-        path: '', component: GridsterComponent,
-
-      },
-      {
-        path: 'list/:filterId', component: GridsterComponent,
+        path: ':filterId', component: GridsterComponent,
         children: [
           {
             path: 'edit/:taskId', component: TaskEditComponent,
@@ -27,8 +24,7 @@ const routes: Routes = [
             path: 'view/:taskId', component: HistoryTaskComponent,
           }
         ]
-      },
-      { path: 'new/:processDefinitionId', component: ProcessFormComponent }
+      }
     ]
 
   },

@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
+import { isObject } from 'util';
 
 /**
  * Main Task Component
@@ -29,6 +30,8 @@ export class TaskEditComponent implements OnInit {
     ready: false,
     executionVariables: []
   };
+  versionSubmittion = true;
+  completeSubmitted = true;
   objectKeys = Object.keys;
   constructor(
     public events: EventsService,
@@ -49,7 +52,7 @@ export class TaskEditComponent implements OnInit {
    */
   goBack() {
     this.router.navigate(['tasks',
-      ...(this.route.parent.snapshot.params.filterId ? ['list', this.route.parent.snapshot.params.filterId] : [])]);
+      ...(this.route.parent.snapshot.params.filterId ? [this.route.parent.snapshot.params.filterId] : [])]);
 
   }
   /**
@@ -62,21 +65,24 @@ export class TaskEditComponent implements OnInit {
       if (event.hasOwnProperty('type')) {
         switch (event.type) {
           case 'complete':
+            let variables = {};
+            if (event.component.properties && event.component.properties['variables']) {
+              variables = { variables: (JSON.parse(event.component.properties['variables']) || {}) };
+            }
             if (this.task.assignee !== this.auth.getUser().username) {
               this.task.assignee = this.auth.getUser().username;
               this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(() => {
                 this.camundaService.postCompleteTask(this.task.id,
-                  { variables: (JSON.parse(event.component.properties['variables']) || {}) }).subscribe(() => {
+                  variables).subscribe(() => {
                     this.events.announceItem({ taskId: this.task.id, complete: true });
-                    this.events.announceFiltersRefresh('');
+                    this.events.announceFiltersRefresh('refresh');
                   });
               });
             } else {
-              this.camundaService.postCompleteTask(this.task.id,
-                { variables: (JSON.parse(event.component.properties['variables']) || {}) }).subscribe(() => {
-                  this.events.announceItem({ taskId: this.task.id, complete: true });
-                  this.events.announceFiltersRefresh('');
-                });
+              this.camundaService.postCompleteTask(this.task.id, variables).subscribe(() => {
+                this.events.announceItem({ taskId: this.task.id, complete: true });
+                this.events.announceFiltersRefresh('refresh');
+              });
             }
 
             break;
@@ -93,11 +99,19 @@ export class TaskEditComponent implements OnInit {
    *  Submission Object
    */
   onSubmit(submission) {
-    return this.camundaService.updateExecutionVariables(this.task.executionId, 'v_' + this.form.formKey,
-      { value: submission._fvid, type: 'String' }).subscribe((data) => {
+    if (isObject(submission.version)) {
+      return this.camundaService.modifyExecutionVariables(this.task.executionId, {
+        modifications:
+        {
+          ...submission.version
+        }
+      }).subscribe((data) => {
         this.goBack();
-
       });
+    } else {
+      // this.goBack();
+    }
+
   }
 
   async presentLoading() {
@@ -116,41 +130,43 @@ export class TaskEditComponent implements OnInit {
    *
    */
   ngOnInit() {
-    this.presentLoading().then(() => {
-      this.camundaService.getTask(this.route.snapshot.params.taskId).subscribe((task) => {
-
-
-        this.task = task;
-        if (this.task.executionId !== 'undefined') {
-          const keyResourceArray = this.task.formKey.split(':');
-          this.form.formKey = keyResourceArray[0];
-          this.form.resourceName = keyResourceArray[1];
-          this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
-            Object.keys(executionVariables).forEach((key) => {
-              if (key.indexOf('v_') > -1) {
-                this.form.version[key.replace('v_', '')] = executionVariables[key].value;
-              }
-            });
-            this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
-
-            this.camundaService.getVariableInstanceByExecutionId(
-              { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
-                historyExecutionVariables.forEach((variable) => {
-                  this.form.executionVariables[variable.name] = variable.value;
-                });
-                this.form.ready = true;
-                this.dismissLoading();
+    this.route.params.subscribe(params => {
+      this.form.ready = false;
+      this.presentLoading().then(() => {
+        this.camundaService.getTask(params.taskId).subscribe((task) => {
+          this.task = task;
+          if (this.task.executionId !== 'undefined') {
+            const keyResourceArray = this.task.formKey.split(':');
+            this.form.formKey = keyResourceArray[0];
+            this.form.resourceName = keyResourceArray[1];
+            this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
+              Object.keys(executionVariables).forEach((key) => {
+                if (key.indexOf('v_') > -1) {
+                  this.form.version[key.replace('v_', '')] = executionVariables[key].value;
+                }
               });
+              this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
+
+              this.camundaService.getVariableInstanceByExecutionId(
+                { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
+                  historyExecutionVariables.forEach((variable) => {
+                    this.form.executionVariables[variable.name] = variable.value;
+                  });
+                  this.form.ready = true;
+                  this.dismissLoading();
+                });
+
+            });
+
+          }
+        },
+          (err) => {
 
           });
 
-        }
-      },
-        (err) => {
 
-        });
-
-
+      });
     });
+
   }
 }

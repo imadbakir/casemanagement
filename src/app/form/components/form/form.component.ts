@@ -5,7 +5,7 @@ import { FormioAppConfig, FormioRefreshValue } from 'angular-formio';
 import { FormioResources } from 'angular-formio/resource';
 import { Formio, Utils } from 'formiojs';
 import _ from 'lodash';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { EventsService } from '../../../core/services/events.service';
 import { ExternalService } from '../../../core/services/external.service';
@@ -35,7 +35,7 @@ export class FormComponent implements OnInit, OnDestroy {
   public formFormio: any;
   public formio: any;
   public refresh: EventEmitter<FormioRefreshValue> = new EventEmitter();
-  public language: BehaviorSubject<String> = new BehaviorSubject('');
+  public language: ReplaySubject<String> = new ReplaySubject(1);
   public resourceLoading?: Promise<any>;
   public resourceLoaded?: Promise<any>;
   public resourceResolve: any;
@@ -152,7 +152,10 @@ export class FormComponent implements OnInit, OnDestroy {
       if (event.hasOwnProperty('type')) {
         switch (event.type) {
           case 'complete':
-            this.onSubmit().then(() => {
+            this.onSubmit(event).then(() => {
+              if (event.component.properties && event.component.properties['variables']) {
+                event.component.properties['variables'] = this.parseVariables(event.component.properties['variables']);
+              }
               this.customEvent.emit(event);
             });
             break;
@@ -201,8 +204,21 @@ export class FormComponent implements OnInit, OnDestroy {
               }
 
             });
+          } else {
+            this.resource = Utils.evaluate(call.success, { submission: this.resource }, 'submission');
+            console.log(this.resource);
+            this.refresh.emit({
+              property: 'submission',
+              value: this.resource
+            });
           }
         });
+        if (!calls || calls.length === 0) {
+          this.refresh.emit({
+            property: 'submission',
+            value: this.resource
+          });
+        }
       } catch (e) {
         this.refresh.emit({
           property: 'submission',
@@ -275,9 +291,11 @@ export class FormComponent implements OnInit, OnDestroy {
    * @param event
    *  Form Submission Event
    */
-  onSubmit(event = {}) {
+  onSubmit(event) {
+    const submission = event.submission ? event.submission : event;
     return this.save(this.resource).then((data) => {
-      this.submit.emit(data);
+      submission._id = data._id;
+      this.submit.emit(submission);
       if (this.formKey === 'orphanmanagement') {
         this.makeRequest();
       }
@@ -310,13 +328,11 @@ export class FormComponent implements OnInit, OnDestroy {
       if form = 'A'
         data.path.currentUser = 'ahmad'
         data.currentUser = this.auth.getUser().username);
-
       if form = 'B'
         data.path.currentPath = '/etc/camunda'
         call method
       if form = 'C'
         data.path.currentDate = '2018/12/06'
-
   */
     this.loadForm();
 

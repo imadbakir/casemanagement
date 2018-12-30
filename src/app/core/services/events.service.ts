@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 /**
  * Events Service - Distribute Events among App
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 
 export class EventsService {
 
   // Observable string sources
-  private filterSource = new BehaviorSubject<any>({});
-  private refreshFiltersSource = new BehaviorSubject<any>({});
-  private itemSource = new BehaviorSubject<any>({});
-  private sortingSource = new BehaviorSubject<any>({});
+  private filterSource = new ReplaySubject<any>(1);
+  private refreshFiltersSource = new ReplaySubject<any>(1);
+  private itemSource = new ReplaySubject<any>(1);
+  private sortingSource = new ReplaySubject<any>(1);
 
   filterAnnounced$ = this.filterSource.asObservable();
   refreshFiltersAnnounced$ = this.refreshFiltersSource.asObservable();

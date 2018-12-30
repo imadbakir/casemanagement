@@ -26,26 +26,11 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   /**
-   * ngOnInit: check if task or start form and switch to
-   * fullscreen if startForm - workaround
+   * ngOnInit:
    * subscribe to ItemChange event to refresh content
    */
 
   ngOnInit() {
-
-    // TODO: Find a better way to do this.
-
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (event.url.includes('new')) {
-          this.panels.details.fullscreen = true;
-          this.panels.details.open = true;
-        } else {
-          this.panels.details.fullscreen = false;
-
-        }
-      }
-    });
     this.event.itemChange$.subscribe(data => {
       this.task = data;
     });

@@ -1,13 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 import { UserOptionsComponent } from '../../../shared/components/user-options/user-options.component';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { FilterOptionsComponent } from '../filter-options/filter-options.component';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 /**
  * Filters Sidebar Menu Component
@@ -20,10 +21,11 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 
 
-export class FiltersMenuComponent implements OnInit {
+export class FiltersMenuComponent implements OnInit, OnDestroy {
 
 
   filters = [];
+  private subscription: Subscription;
 
   constructor(
     public popoverCtrl: PopoverController,
@@ -34,13 +36,7 @@ export class FiltersMenuComponent implements OnInit {
     public translate: TranslateService,
     public modalController: ModalController,
     public auth: AuthService) {
-    auth.onLogin.subscribe(() => {
-      this.ngOnInit();
 
-    });
-    auth.onLogout.subscribe(() => {
-      this.filters = [];
-    });
   }
 
 
@@ -119,12 +115,12 @@ export class FiltersMenuComponent implements OnInit {
       }
     };
     this.camundaService.createFilter(filter).subscribe((data) => {
-      this.event.announceFiltersRefresh('');
+      this.event.announceFiltersRefresh('refresh');
     });
   }
 
   openFilter() {
-    this.router.navigate(['tasks', 'list', this.filters[0].id]);
+    this.router.navigate(['tasks', this.filters[0].id]);
   }
 
 
@@ -134,19 +130,23 @@ export class FiltersMenuComponent implements OnInit {
    * Create Default filter if no filters exist.
    */
   ngOnInit() {
-
-    this.event.refreshFiltersAnnounced$.subscribe(() => {
-      this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
-        this.filters = filters;
-        if (this.filters.length > 0 && Object.keys(this.route.firstChild.snapshot.params).length === 0) {
-          this.openFilter();
-        }
-        if (filters.length === 0) {
-          this.createDefaultFilter();
-        }
+    this.subscription = this.event.refreshFiltersAnnounced$
+      .subscribe((event) => {
+        this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
+          this.filters = filters;
+          if (filters.length === 0) {
+            this.createDefaultFilter();
+          }
+          if (this.route.children.length === 0 && this.filters.length > 0) {
+            this.openFilter();
+          }
+        });
       });
-    });
-    this.event.announceFiltersRefresh('');
+    this.event.announceFiltersRefresh('refresh');
+  }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
+

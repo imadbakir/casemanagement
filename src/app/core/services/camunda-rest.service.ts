@@ -75,8 +75,8 @@ export class CamundaRestService {
   updateFilter(filterId, variables): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${filterId}`;
     return this.http.put<any>(endpoint, variables).pipe(
-      tap(form => this.log(`created filter`)),
-      catchError(this.handleError('createFilter', []))
+      tap(form => this.log(`Updated filter`)),
+      catchError(this.handleError('updateFilter', []))
     );
   }
   /**
@@ -101,7 +101,7 @@ export class CamundaRestService {
   listFilter(id, queryParams = {}): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/list`;
     return this.http.post<any>(endpoint, {}, { params: queryParams }).pipe(
-      tap(form => this.log(`fetched filter list ${id}`)),
+      tap(form => this.log(`fetched filter task list ${id}`)),
       catchError(this.handleError('listFilter', []))
     );
   }
@@ -112,8 +112,8 @@ export class CamundaRestService {
   getVariableInstanceByExecutionId(queryParams = {}) {
     const endpoint = `${this.engineRestUrl}history/variable-instance`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
-      tap(form => this.log(`fetched history`)),
-      catchError(this.handleError('listHistory', []))
+      tap(form => this.log(`fetched history variable instances`)),
+      catchError(this.handleError('getVariableInstanceByExecutionId', []))
     );
   }
 
@@ -124,8 +124,8 @@ export class CamundaRestService {
   getProcessDefinitionXML(processDefinitionId) {
     const endpoint = `${this.engineRestUrl}process-definition/${processDefinitionId}/xml`;
     return this.http.get<any>(endpoint).pipe(
-      tap(form => this.log(`fetched history`)),
-      catchError(this.handleError('listHistory', []))
+      tap(form => this.log(`fetched process definition XML`)),
+      catchError(this.handleError('getProcessDefinitionXML', []))
     );
   }
 
@@ -219,7 +219,7 @@ export class CamundaRestService {
   modifyExecutionVariables(executionId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables`;
     return this.http.post<any>(endpoint, variables).pipe(
-      tap(form => this.log(`posted ExecutionVariables`)),
+      tap(form => this.log(`Modified ExecutionVariables`)),
       catchError(this.handleError('modifyExecutionVariables', []))
     );
   }
@@ -232,8 +232,8 @@ export class CamundaRestService {
   updateExecutionVariables(executionId: String, variableName: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}`;
     return this.http.put<any>(endpoint, variables).pipe(
-      tap(form => this.log(`posted ExecutionVariables`)),
-      catchError(this.handleError('modifyExecutionVariables', []))
+      tap(form => this.log(`Updated ExecutionVariable`)),
+      catchError(this.handleError('updateExecutionVariables', []))
     );
   }
   /**
@@ -244,8 +244,8 @@ export class CamundaRestService {
   deleteExecutionVariables(executionId: String, variableName: String): Observable<any> {
     const endpoint = `${this.engineRestUrl}execution/${executionId}/localVariables/${variableName}`;
     return this.http.delete<any>(endpoint).pipe(
-      tap(form => this.log(`posted ExecutionVariables`)),
-      catchError(this.handleError('modifyExecutionVariables', []))
+      tap(form => this.log(`Deleted ExecutionVariables`)),
+      catchError(this.handleError('deleteExecutionVariables', []))
     );
   }
 
@@ -257,7 +257,7 @@ export class CamundaRestService {
   postCompleteTask(taskId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/complete`;
     return this.http.post<any>(endpoint, variables).pipe(
-      tap(tasks => this.log(`posted complete task`)),
+      tap(tasks => this.log(`Completed task`)),
       catchError(this.handleError('postCompleteTask', []))
     );
   }
@@ -270,7 +270,7 @@ export class CamundaRestService {
   putUpdateTask(taskId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/`;
     return this.http.put<any>(endpoint, variables).pipe(
-      tap(tasks => this.log(`put task`)),
+      tap(tasks => this.log(`Put task`)),
       catchError(this.handleError('putUpdateTask', []))
     );
   }
@@ -283,7 +283,7 @@ export class CamundaRestService {
   postAssignTask(taskId: String, variables: Object): Observable<any> {
     const endpoint = `${this.engineRestUrl}task/${taskId}/assignee`;
     return this.http.post<any>(endpoint, variables).pipe(
-      tap(tasks => this.log(`posted assign task`)),
+      tap(tasks => this.log(`{Posted assign task`)),
       catchError(this.handleError('postAssignTask', []))
     );
   }
@@ -304,7 +304,7 @@ export class CamundaRestService {
    * @param queryParams
    */
   getProcessDefinitions(queryParams = {}): Observable<ProcessDefinition[]> {
-    return this.http.get<ProcessDefinition[]>(this.engineRestUrl + 'process-definition').pipe(
+    return this.http.get<ProcessDefinition[]>(this.engineRestUrl + 'process-definition', { params: queryParams }).pipe(
       tap(processDefinitions => this.log(`fetched processDefinitions`)),
       catchError(this.handleError('getProcessDefinitions', []))
     );

@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 import { AuthService } from './core/services/auth.service';
 import { EventsService } from './core/services/events.service';
+import { NavController } from '@ionic/angular';
 
 /**
  * Main App Component
@@ -18,18 +19,19 @@ export class AppComponent implements OnInit {
     public eventService: EventsService,
     public auth: AuthService,
     private router: Router,
+    private nav: NavController,
     public translate: TranslateService,
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
 
     this.translate.setDefaultLang('en');
     this.translate.use(this.storage.get('language') || 'en');
     this.auth.onLogin.subscribe(() => {
-      // this.router.navigate(['tasks']);
-      window.location.href = '/tasks';
+      this.router.navigate(['tasks']);
+      // window.location.href = '/tasks';
 
     });
     this.auth.onLogout.subscribe(() => {
-      this.router.navigate(['auth', 'login']);
+      this.router.navigate(['auth']);
     });
   }
   /**

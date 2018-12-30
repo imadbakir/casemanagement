@@ -36,7 +36,7 @@ export class FilterOptionsComponent {
   delete() {
   // TODO: Confirm Before Deletion
     this.camundaService.deleteFilter(this.id).subscribe(() => {
-      this.event.announceFiltersRefresh('');
+      this.event.announceFiltersRefresh('refresh');
     });
     this.close();
   }

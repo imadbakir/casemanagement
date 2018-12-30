@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
+import { isObject } from 'util';
 
 /**
  * New Process Instance Form - Start Form
@@ -33,15 +34,19 @@ export class ProcessFormComponent implements OnInit {
    */
 
   onSubmit(submission) {
+    let modifications = {};
+    if (isObject(submission.version)) {
+      modifications = {
+        ...submission.version
+      };
+    }
+    console.log(submission);
+    modifications[this.startForm[1]] = { value: submission._id, type: 'String' };
+
     this.camundaService.processDefinitionSubmitForm(this.route.snapshot.params['processDefinitionId'], {}).subscribe(instance => {
-      this.camundaService.updateExecutionVariables(instance.id, this.startForm[1],
-        { value: submission._id, type: 'String' }).subscribe(() => {
-          this.event.announceFiltersRefresh('');
-          this.camundaService.updateExecutionVariables(instance.id, 'v_' + this.startForm[0],
-            { value: submission._fvid, type: 'String' }).subscribe(() => {
-              this.router.navigate(['tasks']);
-            });
-        });
+      this.camundaService.modifyExecutionVariables(instance.id, { modifications: modifications }).subscribe(() => {
+        this.router.navigate(['tasks']);
+      });
     });
   }
 

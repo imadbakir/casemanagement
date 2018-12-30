@@ -2,17 +2,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RouteReuseStrategy, RouterModule } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { AppRoutingModule } from './core-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { CamundaRestService } from './services/camunda-rest.service';
 import { EnvServiceProvider } from './services/env.service.provider';
 import { EventsService } from './services/events.service';
-import { CamundaRestService } from './services/camunda-rest.service';
 import { ExternalService } from './services/external.service';
 
 
@@ -53,8 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthGuard,
     EventsService,
     CamundaRestService,
-    ExternalService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ExternalService
   ],
   exports: [
     IonicModule,

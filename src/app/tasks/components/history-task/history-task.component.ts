@@ -59,52 +59,55 @@ export class HistoryTaskComponent implements OnInit {
    *
    */
   ngOnInit() {
-    this.presentLoading().then(() => {
-      this.camundaService.getHistoryTask({ taskId: this.route.snapshot.params.taskId }).subscribe(tasks => {
-        if (tasks.length > 0) {
-          this.task = tasks[0];
+    this.route.params.subscribe(params => {
+      this.form.ready = false;
+      this.presentLoading().then(() => {
+        this.camundaService.getHistoryTask({ taskId: params.taskId }).subscribe(tasks => {
+          if (tasks.length > 0) {
+            this.task = tasks[0];
 
-          this.camundaService.getProcessDefinitionXML(this.task.processDefinitionId).subscribe(xml => {
-            const parseString = require('xml2js').parseString;
-            parseString(xml.bpmn20Xml, (err, result) => {
-              const taskDefinition = result['bpmn:definitions']['bpmn:process'][0]['bpmn:userTask'].filter(item => {
-                return item.$.id === this.task.taskDefinitionKey;
-              });
-              this.task.formKey = taskDefinition[0].$['camunda:formKey'];
-              const keyResourceArray = this.task.formKey.split(':');
-              this.form.formKey = keyResourceArray[0];
-              this.form.resourceName = keyResourceArray[1];
-              this.form.readOnly = true;
-              this.camundaService.
-                getVariableInstanceByExecutionId({ executionIdIn: this.task.executionId }).subscribe(executionVariables => {
-               executionVariables.forEach((variable) => {
-                    if (variable.name.indexOf('v_') > -1) {
-                      this.form.version[variable.name.replace('v_', '')] = variable.value;
-                    }
-                  });
-                  const resource = executionVariables.filter((variable) => {
-                    return variable.name === this.form.resourceName;
-                  });
-                  this.form.resourceId = (resource && resource.length > 0) ?
-                    resource[0].value : '';
-                  this.form.ready = true;
-                  this.dismissLoading();
-
+            this.camundaService.getProcessDefinitionXML(this.task.processDefinitionId).subscribe(xml => {
+              const parseString = require('xml2js').parseString;
+              parseString(xml.bpmn20Xml, (err, result) => {
+                const taskDefinition = result['bpmn:definitions']['bpmn:process'][0]['bpmn:userTask'].filter(item => {
+                  return item.$.id === this.task.taskDefinitionKey;
                 });
+                this.task.formKey = taskDefinition[0].$['camunda:formKey'];
+                const keyResourceArray = this.task.formKey.split(':');
+                this.form.formKey = keyResourceArray[0];
+                this.form.resourceName = keyResourceArray[1];
+                this.form.readOnly = true;
+                this.camundaService.
+                  getVariableInstanceByExecutionId({ executionIdIn: this.task.executionId }).subscribe(executionVariables => {
+                    executionVariables.forEach((variable) => {
+                      if (variable.name.indexOf('v_') > -1) {
+                        this.form.version[variable.name.replace('v_', '')] = variable.value;
+                      }
+                    });
+                    const resource = executionVariables.filter((variable) => {
+                      return variable.name === this.form.resourceName;
+                    });
+                    this.form.resourceId = (resource && resource.length > 0) ?
+                      resource[0].value : '';
+                    this.form.ready = true;
+                    this.dismissLoading();
+
+                  });
+              });
             });
-          });
 
 
 
-        } else {
-          alert('this task does not exist!');
-          this.dismissLoading();
-        }
-      });
+          } else {
+            alert('this task does not exist!');
+            this.dismissLoading();
+          }
+        });
 
-    },
-      (err) => {
+      },
+        (err) => {
 
-      });
+        });
+    });
   }
 }
