@@ -1,2 +1,2 @@
-<app-form *ngIf="startForm[0]" [formKey]="startForm[0]" [resourceName]="startForm[1]" [resourceId]="" [readOnly]="false"
+<app-form *ngIf="form.ready" [formKey]="form.formKey" [resourceName]="form.resourceName" [resourceId]="" [readOnly]="false"
     (submit)="onSubmit($event)"></app-form>

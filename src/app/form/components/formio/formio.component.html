@@ -1,5 +1,5 @@
 <div class="app-formio">
   <formio-alerts *ngIf="!this.options.disableAlerts" [alerts]="alerts"></formio-alerts>
   <formio-loader></formio-loader>
-  <div [hidden]="hideForm" #formio></div>
+  <div [hidden]="loader.loading" #formio></div>
 </div>

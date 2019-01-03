@@ -1,10 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Optional, Output, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FormioAlerts, FormioAppConfig, FormioError, FormioForm, FormioLoader, FormioOptions, FormioRefreshValue } from 'angular-formio';
-import { Formio, Utils } from 'formiojs';
-import { assign, each, get } from 'lodash';
+import { Form, Formio, Utils } from 'formiojs';
+import { assign, get } from 'lodash';
 import { ReplaySubject } from 'rxjs';
+import { EnvService } from '../../../core/services/env.service';
 import { ExternalService } from '../../../core/services/external.service';
+import { FormioAlerts } from '../alerts/formio.alerts';
+import { FormioLoader } from '../loader/formio.loader';
 
 /**
  * Formio Component
@@ -19,17 +21,17 @@ import { ExternalService } from '../../../core/services/external.service';
 export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
     private formioReady: Promise<Formio>;
     private formioReadyResolve: any;
-    @Input() form?: FormioForm;
+    @Input() form?: any;
     @Input() submission?: any = {};
     @Input() src?: string;
     @Input() url?: string;
-    @Input() options?: FormioOptions;
+    @Input() options?: any;
     @Input() formioOptions?: any;
     @Input() renderOptions?: any;
     @Input() readOnly?= false;
     @Input() viewOnly?= false;
     @Input() hideComponents?: string[];
-    @Input() refresh?: EventEmitter<FormioRefreshValue>;
+    @Input() refresh?: EventEmitter<any>;
     @Input() error?: EventEmitter<any>;
     @Input() success?: EventEmitter<object>;
     @Input() language?: ReplaySubject<string>;
@@ -51,19 +53,20 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
     private submitting: boolean;
     public formio: any;
     public initialized: boolean;
-    public alerts: FormioAlerts;
-    hideForm = true;
+    timeout;
+
     constructor(
-        public externalService: ExternalService,
+        private alerts: FormioAlerts,
         private loader: FormioLoader,
-        @Optional() private config: FormioAppConfig,
+        private env: EnvService,
+        public externalService: ExternalService,
         public translate: TranslateService
     ) {
-        if (this.config) {
-            Formio.setBaseUrl(this.config.apiUrl);
-            Formio.setProjectUrl(this.config.appUrl);
+        if (this.env) {
+            Formio.setBaseUrl(this.env.formioApiUrl);
+            Formio.setProjectUrl(this.env.formioApiUrl);
         } else {
-            console.warn('You must provide an AppConfig within your application!');
+            console.warn('You must provide formio Config');
         }
 
         this.formioReady = new Promise(ready => {
@@ -93,66 +96,64 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      * @param form
      *  formio Form Object
      */
-
-    setForm(form: FormioForm) {
+    setForm(form) {
         this.form = form;
-        // Only initialize a single formio instance.
         if (this.formio) {
-            // this.formio.form = this.form;
-            // return;
-            this.formio = {};
+            this.formio.destroy();
         }
-        // Create the form.
-        return Formio.createForm(this.formioElement ? this.formioElement.nativeElement : null, this.form, assign({}, {
-            icons: get(this.config, 'icons', 'fontawesome'),
-            noAlerts: get(this.options, 'noAlerts', true),
-            readOnly: this.readOnly,
-            viewAsHtml: this.viewOnly,
-            i18n: get(this.options, 'i18n', null),
-            fileService: get(this.options, 'fileService', null),
-            hooks: this.hooks
-        }, this.renderOptions || {})).then((formio) => {
-            this.formio = formio;
-            this.assignVersions(this.formio);
-            if (this.url) {
-                this.formio.setUrl(this.url, this.formioOptions || {});
-            }
-            if (this.src) {
-                this.formio.setUrl(this.src, this.formioOptions || {});
-            }
-            this.formio.submission = this.submission;
-            this.formio.nosubmit = true;
-            this.assignFormOptions(this.formio);
+        // Clear out the element to render the new form.
+        if (this.formioElement && this.formioElement.nativeElement) {
+            this.formioElement.nativeElement.innerHTML = '';
+        }
+        const Renderer = Form;
+        this.formio = (new Renderer(this.formioElement ? this.formioElement.nativeElement : null,
+            this.form,
+            assign({}, {
+                icons: get(this.env, 'icons', 'fontawesome'),
+                noAlerts: get(this.options, 'noAlerts', true),
+                readOnly: this.readOnly,
+                viewAsHtml: this.viewOnly,
+                i18n: get(this.options, 'i18n', null),
+                fileService: get(this.options, 'fileService', null),
+                hooks: this.hooks
+            }, this.renderOptions || {}))).create();
+        this.assignVersions(this.formio);
 
-            this.formio.on('languageChanged', () => {
-                setTimeout(() => {
-                    this.assignFormOptions(this.formio);
+        if (this.url) {
+            this.formio.setUrl(this.url, this.formioOptions || {});
+        }
+        if (this.src) {
+            this.formio.setUrl(this.src, this.formioOptions || {});
+        }
+        this.formio.nosubmit = true;
+        this.formio.on('languageChanged', () => {
+            setTimeout(() => {
+                this.assignFormOptions(this.formio);
+            }, 100);
 
-                }, 100);
-
-                const choices = this.formio.element.querySelectorAll('.choices') || [];
-                choices.forEach((el) => {
-                    el.setAttribute('dir', this.formio.i18next.dir());
-                });
+            const choices = this.formio.element.querySelectorAll('.choices') || [];
+            choices.forEach((el) => {
+                el.setAttribute('dir', this.formio.i18next.dir());
             });
-            this.formio.on('prevPage', (data: any) => this.onPrevPage(data));
-            this.formio.on('nextPage', (data: any) => this.onNextPage(data));
-            this.formio.on('change', (value: any) => this.change.emit(value));
-            this.formio.on('customEvent', (event: any) =>
-                this.onCustomEvent(event)
-            );
-            this.formio.on('submit', (submission: any) =>
-                this.submitForm(submission)
-            );
-            this.formio.on('error', (err: any) => this.onError(err));
-            this.formio.on('render', () => {
-                this.render.emit();
-            });
-            this.formio.on('formLoad', (loadedForm: any) => {
-                this.formLoad.emit(loadedForm);
-            }
-            );
+        });
+        this.formio.on('prevPage', (data: any) => this.onPrevPage(data));
+        this.formio.on('nextPage', (data: any) => this.onNextPage(data));
+        this.formio.on('change', (value: any) => this.change.emit(value));
+        this.formio.on('customEvent', (event: any) =>
+            this.onCustomEvent(event)
+        );
+        this.formio.on('submit', (submission: any) =>
+            this.submitForm(submission)
+        );
+        this.formio.on('error', (err: any) => this.onError(err));
+        this.formio.on('render', () => this.render.emit());
+        this.formio.on('formLoad', (loadedForm: any) =>
+            this.formLoad.emit(loadedForm)
+        );
 
+        this.formio.form = this.form;
+        return this.formio.ready.then(() => {
+            this.loader.loading = false;
             this.ready.emit(this);
             this.formioReadyResolve(this.formio);
             return this.formio;
@@ -166,10 +167,9 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         if (this.initialized) {
             return;
         }
+        this.loader.loading = true;
         this.options = Object.assign(
             {
-                language: this.translate.currentLang,
-                i18n: {},
                 errors: {
                     message: 'Please fix the following errors before submitting.'
                 },
@@ -193,23 +193,21 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      * @param refresh
      *  Refresh object
      */
-    onRefresh(refresh: FormioRefreshValue) {
+    onRefresh(refresh) {
         this.formioReady.then(() => {
             if (refresh.form) {
                 this.formio.setForm(refresh.form).then(() => {
+                    alert(1);
                     if (refresh.submission) {
                         this.formio.setSubmission(refresh.submission);
                     }
                 });
             } else if (refresh.submission) {
                 this.formio.setSubmission(refresh.submission);
-
             } else {
                 switch (refresh.property) {
                     case 'submission':
-                        this.formio.setSubmission(refresh.value);
-
-
+                        this.formio.submission = refresh.value;
                         break;
                     case 'form':
                         this.formio.form = refresh.value;
@@ -255,23 +253,50 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      *  error object.
      */
     onError(err: any) {
+        this.loader.loading = false;
         this.alerts.setAlerts([]);
         this.submitting = false;
+
         if (!err) {
             return;
         }
 
         // Make sure it is an array.
-        err = err instanceof Array ? err : [err];
+        const errors = Array.isArray(err) ? err : [err];
 
         // Emit these errors again.
-        this.errorChange.emit(err);
+        this.errorChange.emit(errors);
 
         // Iterate through each one and set the alerts array.
-        each(err, (error: any) => {
+        errors.forEach((error: any) => {
+            const {
+                message,
+                paths,
+            } = error
+                    ? error.details
+                        ? {
+                            message: error.details.map((detail) => detail.message).join(' '),
+                            paths: error.details.map((detail) => detail.path),
+                        }
+                        : {
+                            message: error.message || error.toString(),
+                            paths: error.path ? [error.path] : [],
+                        }
+                    : {
+                        message: '',
+                        paths: [],
+                    };
+
             this.alerts.addAlert({
                 type: 'danger',
-                message: error.message || error.toString()
+                message,
+            });
+
+            paths.forEach((path) => {
+                const component = this.formio.getComponent(path);
+                const components = Array.isArray(component) ? component : [component];
+
+                components.forEach((comp) => comp.setCustomValidity(message, true));
             });
         });
     }
@@ -302,7 +327,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         // or even provide a custom Error method.
         const beforeSubmit = get(this.options, 'hooks.beforeSubmit');
         if (beforeSubmit) {
-            beforeSubmit(submission, (err: FormioError, sub: object) => {
+            beforeSubmit(submission, (err, sub: object) => {
                 if (err) {
                     this.onError(err);
                     return;
@@ -313,6 +338,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
             this.submitExecute(submission);
         }
     }
+
 
     /**
      * Search deeply for form components and assigns Form Version to them.
@@ -331,13 +357,6 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         });
 
         Utils.eachComponent(formio.components, (component) => {
-            /*
-            if (component.component.hasOwnProperty('properties') &&
-                component.component.properties.hasOwnProperty('readOnly')) {
-                component.options.readOnly = true;
-                component.options.viewAsHtml = true;
-                console.log(component.key);
-            }*/
             if (component.component.properties) {
                 component.component.options = assign({}, {
                     readOnly: component.component.properties.readOnly === 'true',
@@ -359,12 +378,6 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         }, false);
     }
 
-    /**
-     * Search deeply for form components and assigns Form Version to them.
-     * @param formio
-     *  Formio Webform object
-     */
-
 
     /**
      * Search deeply for form components and assigns Options and Langage to them
@@ -375,12 +388,11 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
     assignFormOptions(formio) {
         const forms = Utils.findComponents(formio.components, { type: 'form' });
         if (forms.length > 0) {
-            this.loader.loading = true;
             forms.forEach(component => {
                 component.subFormReady.then((form) => {
                     component.subForm.options = assign({}, {
                         language: this.translate.currentLang,
-                        icons: get(this.config, 'icons', 'fontawesome'),
+                        icons: get(this.env, 'icons', 'fontawesome'),
                         noAlerts: get(this.options, 'noAlerts', true),
                         readOnly: component.component.properties.readOnly === 'true',
                         viewAsHtml: component.component.properties.readOnly === 'true',
@@ -394,14 +406,11 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                 });
             });
         } else {
-            let once = true;
+            clearTimeout(this.timeout);
             formio.on('render', () => {
-                if (once) {
+                this.timeout = setTimeout(() => {
                     this.loader.loading = false;
-                    this.hideForm = false;
-                    once = true;
-                }
-
+                }, 500);
             });
         }
     }
@@ -437,7 +446,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         }
 
         if (this.refresh) {
-            this.refresh.subscribe((refresh: FormioRefreshValue) =>
+            this.refresh.subscribe((refresh) =>
                 this.onRefresh(refresh)
             );
         }
@@ -456,15 +465,16 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         }
     }
     ngOnDestroy() {
-        this.language.unsubscribe();
+        // this.language.unsubscribe();
     }
     ngOnChanges(changes: any) {
+        this.initialize();
+
         if (changes.form && changes.form.currentValue) {
             this.setForm(changes.form.currentValue);
         }
 
         this.formioReady.then(() => {
-
             if (changes.submission && changes.submission.currentValue) {
                 // this.formio.submission = changes.submission.currentValue;
             }

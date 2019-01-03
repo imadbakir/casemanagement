@@ -39,20 +39,14 @@ export class AppComponent implements OnInit {
    * @param dir
    */
   fixDom(dir) {
-    const columns = document.getElementsByClassName('formio-component-columns');
-    const choices = document.getElementsByClassName('choices');
+   /* const columns = document.getElementsByClassName('formio-component-columns');
     const headers = document.getElementsByClassName('header');
     for (let i = 0; i < columns.length; i++) {
       columns[i].setAttribute('dir', dir);
     }
-    for (let i = 0; i < choices.length; i++) {
-      setTimeout(() => {
-        choices[i].setAttribute('dir', dir);
-      }, 500);
-    }
     for (let i = 0; i < headers.length; i++) {
       headers[i].setAttribute('dir', dir);
-    }
+    } */
     document.documentElement.setAttribute('dir', dir);
 
   }

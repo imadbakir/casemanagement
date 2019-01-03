@@ -10,9 +10,10 @@ export class EnvService {
     public engineRestUrl = '';
     public engineApiUrl = '';
     public formioAppUrl = '';
+    public formioApiUrl = '';
+    public formioIcons = '';
+    public languages = [];
+    public tasksPageSize = 10;
 
-
-    constructor() {
-    }
 
 }

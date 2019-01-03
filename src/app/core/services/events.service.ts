@@ -12,12 +12,10 @@ import { ReplaySubject } from 'rxjs';
 export class EventsService {
 
   // Observable string sources
-  private filterSource = new ReplaySubject<any>(1);
   private refreshFiltersSource = new ReplaySubject<any>(1);
   private itemSource = new ReplaySubject<any>(1);
   private sortingSource = new ReplaySubject<any>(1);
 
-  filterAnnounced$ = this.filterSource.asObservable();
   refreshFiltersAnnounced$ = this.refreshFiltersSource.asObservable();
   itemChange$ = this.itemSource.asObservable();
   sortingAnnounced$ = this.sortingSource.asObservable();
@@ -30,14 +28,6 @@ export class EventsService {
    */
   announceFiltersRefresh(data: string) {
     this.refreshFiltersSource.next(data);
-  }
-
-  /**
-   * Announce Filter Event
-   * @param filter
-   */
-  announceFilter(filter) {
-    this.filterSource.next(filter);
   }
 
   /**

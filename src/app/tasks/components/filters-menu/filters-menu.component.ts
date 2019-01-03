@@ -63,6 +63,7 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
    *  Filter Id
    */
   async filterOptions(event, filterId) {
+    event.preventDefault();
     event.stopPropagation();
     const popover = await this.popoverCtrl.create({
       component: FilterOptionsComponent,

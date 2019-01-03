@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
-import { FormioModule } from 'angular-formio';
-import { FormioAuthService } from 'angular-formio/auth';
-import { FormioResource, FormioResources } from 'angular-formio/resource';
-import { FormioAppConfigProvider, formioAuthConfigProvider } from '../core/services/env.service.provider';
 import { SharedModule } from '../shared/shared.module';
 import { FormComponent } from './components/form/form.component';
 import { AppFormioComponent } from './components/formio/formio.component';
+import { FormioAlerts } from './components/alerts/formio.alerts';
+import { FormioAlertsComponent } from './components/alerts/formio.alerts.component';
+import { FormioLoader } from './components/loader/formio.loader';
+import { FormioLoaderComponent } from './components/loader/formio.loader.component';
 /**
  * FormioModule imported where needed
  * AppFormioComponent & FormComponent are exported
  */
 @NgModule({
-  imports: [SharedModule, FormioModule, FormioResource],
-  declarations: [AppFormioComponent, FormComponent],
-
-  exports: [
-     AppFormioComponent, FormComponent
-  ],
+  imports: [SharedModule],
+  declarations: [AppFormioComponent, FormComponent, FormioAlertsComponent, FormioLoaderComponent],
   providers: [
-
-    FormioResources,
-    FormioAuthService,
-    formioAuthConfigProvider,
-    FormioAppConfigProvider
+    FormioLoader,
+    FormioAlerts
+  ],
+  entryComponents: [
+    FormComponent,
+  ],
+  exports: [
+    AppFormioComponent, FormComponent
   ]
 })
 

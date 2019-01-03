@@ -2,9 +2,9 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button menu="start"></ion-menu-button>
-  </ion-buttons>
-  
-  <ion-title>{{'Tasks' | translate}}</ion-title>
+    </ion-buttons>
+
+    <ion-title>{{'Tasks' | translate}}</ion-title>
     <ion-buttons slot="end">
       <app-language-switch></app-language-switch>
       <!--  <app-notifications-button></app-notifications-button> -->
@@ -12,6 +12,6 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding [ngStyle]="{height: '100vh'}">
-    <router-outlet></router-outlet>
-  </ion-content>
+<ion-content padding [ngStyle]="{height: 'calc(100vh - 57px)'}">
+  <router-outlet></router-outlet>
+</ion-content>

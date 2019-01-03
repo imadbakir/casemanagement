@@ -5,6 +5,7 @@ import { CamundaRestService } from '../../../core/services/camunda-rest.service'
 import { EventsService } from '../../../core/services/events.service';
 import { SortOptionsComponent } from '../sort-options/sort-options.component';
 import { ActivatedRoute } from '@angular/router';
+import { EnvService } from '../../../core/services/env.service';
 
 /**
  * Task List Component
@@ -37,7 +38,7 @@ export class TaskGridComponent implements OnInit {
    * Chosen FilterId
    */
   filterId = '';
-  pageSize = 7;
+  pageSize = this.env.tasksPageSize;
   /**
    * Infine Scroll View Child
    */
@@ -47,11 +48,13 @@ export class TaskGridComponent implements OnInit {
   constructor(
     private event: EventsService,
     private camundaService: CamundaRestService,
-    public popoverCtrl: PopoverController,
-    public modalController: ModalController,
     private auth: AuthService,
     private route: ActivatedRoute,
-    public loadingController: LoadingController) {
+    private env: EnvService,
+    public loadingController: LoadingController,
+    public popoverCtrl: PopoverController,
+    public modalController: ModalController
+  ) {
 
   }
 
@@ -172,6 +175,7 @@ export class TaskGridComponent implements OnInit {
           }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];
             this.tasks = this.tasksOrigin;
+            this.infiniteScrollSettings(data);
             this.dismissLoading();
           });
 
@@ -182,6 +186,7 @@ export class TaskGridComponent implements OnInit {
           { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];
             this.tasks = this.tasksOrigin;
+            this.infiniteScrollSettings(data);
             this.dismissLoading();
           });
       });
@@ -195,10 +200,21 @@ export class TaskGridComponent implements OnInit {
    * Fetch more tasks then stop spinner.
    * @param infiniteScroll
    */
-  DoInfinite(infiniteScroll) {
-    this.fetchTasks().then((data) => {
+  doInfinite(infiniteScroll) {
+    this.fetchTasks().then(() => {
       infiniteScroll.target.complete();
     });
+  }
+
+  /**
+ * Ion Infinite Scroll disable if no more data.
+ */
+  infiniteScrollSettings(data) {
+    if (data.length < this.pageSize) {
+      this.infiniteScroll.disabled = true;
+    } else {
+      this.infiniteScroll.disabled = false;
+    }
   }
 
   /**

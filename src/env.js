@@ -4,14 +4,17 @@
     // API url
     window.__env.engineRestUrl = 'http://34.207.137.198:8081/rest/';
     window.__env.engineApiUrl = 'http://34.207.137.198:8081/api/';
-    window.__env.appUrl = 'https://aivzyhfdenlzxep.form.io';
-    window.__env.apiUrl = 'https://api.form.io';
-    window.__env.icons = 'fontawesome';
-    window.__env.login = {
-        form: 'user/login'
-    };
-    window.__env.register = {
-        form: 'user/register'
-    };
+    window.__env.formioAppUrl = 'https://aivzyhfdenlzxep.form.io';
+    window.__env.formioApiUrl = 'https://api.form.io';
+
+
+    //Available Languages
+    window.__env.languages = [
+        { key: 'ar', lang: 'عربي' },
+        { key: 'en', lang: 'English' },
+    ];
+
+    //Tasks - infiniteLoad PageSize
+    window.__env.tasksPageSize = 10;
 
 }(this));

@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
+import { EnvService } from '../../../core/services/env.service';
 
 /**
  * Language Popover Menu
@@ -15,12 +16,9 @@ export class LanguageComponent {
   /**
    * Available Languages Array
    */
-  languages = [
-    { key: 'ar', lang: 'عربي' },
-    { key: 'en', lang: 'English' }
-  ];
+  languages = this.env.languages;
   constructor(public translate: TranslateService, public popover: PopoverController,
-    @Inject(LOCAL_STORAGE) private storage: StorageService) { }
+    @Inject(LOCAL_STORAGE) private storage: StorageService, private env: EnvService) { }
 
   /**
    * Set Choosen Language and save it to LocalStorage

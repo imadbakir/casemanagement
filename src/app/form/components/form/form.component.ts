@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { FormioAppConfig, FormioRefreshValue } from 'angular-formio';
-import { FormioResources } from 'angular-formio/resource';
 import { Formio, Utils } from 'formiojs';
 import _ from 'lodash';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
+import { EnvService } from '../../../core/services/env.service';
 import { EventsService } from '../../../core/services/events.service';
 import { ExternalService } from '../../../core/services/external.service';
 
@@ -34,7 +33,7 @@ export class FormComponent implements OnInit, OnDestroy {
   public formUrl: string;
   public formFormio: any;
   public formio: any;
-  public refresh: EventEmitter<FormioRefreshValue> = new EventEmitter();
+  public refresh: EventEmitter<any> = new EventEmitter();
   public language: ReplaySubject<String> = new ReplaySubject(1);
   public resourceLoading?: Promise<any>;
   public resourceLoaded?: Promise<any>;
@@ -55,16 +54,13 @@ export class FormComponent implements OnInit, OnDestroy {
     public route: ActivatedRoute,
     public auth: AuthService,
     public translate: TranslateService,
-
-    private appConfig: FormioAppConfig,
-    private resourcesService: FormioResources,
+    private env: EnvService,
 
   ) {
     this.formLoaded = new Promise(() => { });
-    if (this.appConfig && this.appConfig.appUrl) {
-      Formio.setBaseUrl(this.appConfig.apiUrl);
-      Formio.setProjectUrl(this.appConfig.appUrl);
-      Formio.formOnly = this.appConfig.formOnly;
+    if (this.env && this.env.formioAppUrl) {
+      Formio.setBaseUrl(this.env.formioApiUrl);
+      Formio.setProjectUrl(this.env.formioAppUrl);
     } else {
       console.error('You must provide an AppConfig within your application!');
     }
@@ -92,8 +88,8 @@ export class FormComponent implements OnInit, OnDestroy {
    */
   setContext() {
     this.resource = { data: {} };
-    this.resourceUrl = this.appConfig.appUrl + '/' + this.resourceName;
-    this.formUrl = this.appConfig.appUrl + '/' + this.formKey;
+    this.resourceUrl = this.env.formioAppUrl + '/' + this.resourceName;
+    this.formUrl = this.env.formioAppUrl + '/' + this.formKey;
     if (this.resourceId) {
       this.resourceUrl += '/submission/' + this.resourceId;
     }
@@ -260,9 +256,6 @@ export class FormComponent implements OnInit, OnDestroy {
    * @param error
    */
   onError(error) {
-    if (this.resourcesService) {
-      this.resourcesService.error.emit(error);
-    }
     throw error;
   }
 
