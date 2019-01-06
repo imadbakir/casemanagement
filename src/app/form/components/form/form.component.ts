@@ -286,7 +286,7 @@ export class FormComponent implements OnInit, OnDestroy {
    */
   onSubmit(event) {
     const submission = event.submission ? event.submission : event;
-    return this.save(this.resource).then((data) => {
+    return this.save(submission).then((data) => {
       submission._id = data._id;
       this.submit.emit(submission);
       if (this.formKey === 'orphanmanagement') {

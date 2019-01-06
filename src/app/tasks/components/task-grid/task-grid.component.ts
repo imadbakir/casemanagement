@@ -25,6 +25,8 @@ export class TaskGridComponent implements OnInit {
    * Filter object
    */
   filter: any = {
+    sortBy: 'created',
+    sortOrder: 'desc',
     textSearch: '',
   };
 
@@ -107,51 +109,12 @@ export class TaskGridComponent implements OnInit {
         (item['due'] ? item['due'].toString().toLowerCase().includes(value.toLowerCase()) : false);
     });
   }
-
-  /**
-   * Sort Tasks Array
-   * @param sorting
-   */
-  sortArray(sorting) {
-    switch (sorting.type) {
-      case 'datetime':
-        this.tasks.sort(function (a, b) {
-          const dateA = new Date(a[sorting.name]), dateB = new Date(b[sorting.name]);
-          const left = sorting.direction === 1 ? dateA : dateB;
-          const right = sorting.direction === 1 ? dateB : dateA;
-          return left.getTime() - right.getTime();
-        });
-        break;
-
-      case 'number':
-        this.tasks.sort(function (a, b) {
-          const left = sorting.direction === 1 ? a : b;
-          const right = sorting.direction === 1 ? b : a;
-          // tslint:disable-next-line:radix
-          return parseInt(left[sorting.name]) - parseInt(right[sorting.name]);
-        });
-        break;
-      default:
-        this.tasks.sort(function (a, b) {
-          const valueA = a[sorting.name].toLowerCase(), valueB = b[sorting.name].toLowerCase();
-          if (valueA < valueB) {
-            return -1 * sorting.direction;
-          }
-          if (valueA > valueB) {
-            return 1 * sorting.direction;
-          }
-          return 0;
-        });
-    }
-
-  }
-
   /**
    * Set chosen Filter Id
    * @param filterId
    */
   setFilter(filterId) {
-    this.filter = filterId;
+    this.filterId = filterId;
   }
 
   /**
@@ -164,14 +127,20 @@ export class TaskGridComponent implements OnInit {
     if (isNew) {
       this.tasks = this.tasksOrigin = [];
     }
-    if (this.filter === 'history') {
+    if (this.filterId === 'history') {
       return this.presentLoading().then(() => {
         this.camundaService.listHistory({
           firstResult: this.tasks.length,
           maxResults: this.tasks.length + this.pageSize
         }, {
             taskAssignee: this.auth.getUser().username,
-            finished: true
+            finished: true,
+            sorting: [
+              {
+                'sortBy': 'endTime',
+                'sortOrder': this.filter.sortOrder
+              }
+            ]
           }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];
             this.tasks = this.tasksOrigin;
@@ -182,8 +151,11 @@ export class TaskGridComponent implements OnInit {
       });
     } else {
       return this.presentLoading().then(() => {
-        this.camundaService.listFilter(this.filter,
-          { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }).subscribe(data => {
+        this.camundaService.listFilter(this.filterId,
+          { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }, {
+            sortBy: this.filter.sortBy,
+            sortOrder: this.filter.sortOrder
+          }).subscribe(data => {
             this.tasksOrigin = [...this.tasks, ...data];
             this.tasks = this.tasksOrigin;
             this.infiniteScrollSettings(data);
@@ -230,7 +202,9 @@ export class TaskGridComponent implements OnInit {
     });
 
     this.event.sortingAnnounced$.subscribe(sorting => {
-      this.sortArray(sorting);
+      this.filter.sortBy = sorting.sortBy;
+      this.filter.sortOrder = sorting.sortOrder;
+      this.fetchTasks(true);
     });
     this.event.itemChange$.subscribe(data => {
       if (data.complete) {

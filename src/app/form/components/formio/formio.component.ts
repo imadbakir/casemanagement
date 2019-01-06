@@ -57,8 +57,8 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
 
     constructor(
         private alerts: FormioAlerts,
-        private loader: FormioLoader,
         private env: EnvService,
+        public loader: FormioLoader,
         public externalService: ExternalService,
         public translate: TranslateService
     ) {
@@ -96,7 +96,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      * @param form
      *  formio Form Object
      */
-    setForm(form) {
+    async setForm(form) {
         this.form = form;
         if (this.formio) {
             this.formio.destroy();
@@ -106,7 +106,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
             this.formioElement.nativeElement.innerHTML = '';
         }
         const Renderer = Form;
-        this.formio = (new Renderer(this.formioElement ? this.formioElement.nativeElement : null,
+        this.formio = await (new Renderer(this.formioElement ? this.formioElement.nativeElement : null,
             this.form,
             assign({}, {
                 icons: get(this.env, 'icons', 'fontawesome'),
@@ -117,7 +117,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                 fileService: get(this.options, 'fileService', null),
                 hooks: this.hooks
             }, this.renderOptions || {}))).create();
-        this.assignVersions(this.formio);
+
 
         if (this.url) {
             this.formio.setUrl(this.url, this.formioOptions || {});
@@ -127,10 +127,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         }
         this.formio.nosubmit = true;
         this.formio.on('languageChanged', () => {
-            setTimeout(() => {
-                this.assignFormOptions(this.formio);
-            }, 100);
-
+            this.assignFormOptions(this.formio);
             const choices = this.formio.element.querySelectorAll('.choices') || [];
             choices.forEach((el) => {
                 el.setAttribute('dir', this.formio.i18next.dir());
@@ -153,7 +150,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
 
         this.formio.form = this.form;
         return this.formio.ready.then(() => {
-            this.loader.loading = false;
+            this.assignVersions(this.formio);
             this.ready.emit(this);
             this.formioReadyResolve(this.formio);
             return this.formio;
@@ -197,7 +194,6 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         this.formioReady.then(() => {
             if (refresh.form) {
                 this.formio.setForm(refresh.form).then(() => {
-                    alert(1);
                     if (refresh.submission) {
                         this.formio.setSubmission(refresh.submission);
                     }
@@ -234,6 +230,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      *  is data already saved
      */
     onSubmit(submission: any, saved: boolean) {
+        console.log(submission);
         this.submitting = false;
         if (saved) {
             this.formio.emit('submitDone', submission);
@@ -346,7 +343,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      *  Formio Webform object
      */
     assignVersions(formio) {
-
+        const forms = Utils.findComponents(formio.components, { type: 'form' });
         formio.formReady.then(() => {
             if (!this.version || !this.version[formio.component.key.toLowerCase()]) {
                 if (!this.submission.version) {
@@ -355,16 +352,13 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                 this.submission.version['v_' + formio._form.path] = { value: formio._form._vid, type: 'string' };
             }
         });
+        if (forms.length > 0) {
+            clearTimeout(this.timeout);
+            this.loader.loading = true;
 
-        Utils.eachComponent(formio.components, (component) => {
-            if (component.component.properties) {
-                component.component.options = assign({}, {
-                    readOnly: component.component.properties.readOnly === 'true',
-                    viewAsHtml: component.component.properties.readOnly === 'true'
-                });
-            }
-            if (component.type === 'form') {
+            forms.forEach(component => {
                 if (this.version && this.version[component.component.key.toLowerCase()]) {
+                    this.loader.loading = true;
                     component.component.form = component.component.form + '/v/' + this.version[component.component.key.toLowerCase()];
 
                 }
@@ -373,9 +367,28 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                         this.assignVersions(form);
                     });
                 });
+            });
+        } else {
+            clearTimeout(this.timeout);
+            formio.ready.then(() => {
+                this.timeout = setTimeout(() => {
+                    this.loader.loading = false;
+                }, 100);
+            });
+        }
 
-            }
-        }, false);
+
+        /* Utils.eachComponent(formio.components, (component) => {
+             if (component.component.properties) {
+                 component.component.options = assign({}, {
+                     readOnly: component.component.properties.readOnly === 'true',
+                     viewAsHtml: component.component.properties.readOnly === 'true'
+                 });
+             }
+             if (component.type === 'form') {
+ 
+             }
+         }, false); */
     }
 
 
@@ -392,25 +405,14 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                 component.subFormReady.then((form) => {
                     component.subForm.options = assign({}, {
                         language: this.translate.currentLang,
-                        icons: get(this.env, 'icons', 'fontawesome'),
-                        noAlerts: get(this.options, 'noAlerts', true),
                         readOnly: component.component.properties.readOnly === 'true',
                         viewAsHtml: component.component.properties.readOnly === 'true',
-                        i18n: get(this.options, 'i18n', null),
-                        fileService: get(this.options, 'fileService', null),
                     });
                     form.formReady.then(() => {
                         form.language = this.translate.currentLang;
                         this.assignFormOptions(form);
                     });
                 });
-            });
-        } else {
-            clearTimeout(this.timeout);
-            formio.on('render', () => {
-                this.timeout = setTimeout(() => {
-                    this.loader.loading = false;
-                }, 500);
             });
         }
     }
@@ -422,8 +424,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
    */
 
     onCustomEvent(event) {
-        console.log(event);
-        // event.submission = this.submission;
+        event.submission = this.submission;
         this.customEvent.emit(event);
     }
 
@@ -475,10 +476,6 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         }
 
         this.formioReady.then(() => {
-            if (changes.submission && changes.submission.currentValue) {
-                // this.formio.submission = changes.submission.currentValue;
-            }
-
             if (changes.hideComponents) {
                 this.formio.hideComponents(changes.hideComponents.currentValue);
             }

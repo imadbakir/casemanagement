@@ -30,7 +30,9 @@
                 "input": "node_modules/formiojs/dist/icons",
                 "output": "icons"
               },
-              "src/env.js"
+              "src/env.js",
+              "src/.htaccess",
+              "src/manifest.json"
             ],
             "styles": [
               {
@@ -71,7 +73,8 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true
             },
             "ci": {
               "progress": false
@@ -117,7 +120,8 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
-              }
+              },
+              "src/manifest.json"
             ]
           },
           "configurations": {

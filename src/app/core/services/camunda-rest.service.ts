@@ -98,9 +98,9 @@ export class CamundaRestService {
    * @param queryParams
    * maxResults, firstResult
    */
-  listFilter(id, queryParams = {}): Observable<any> {
+  listFilter(id, queryParams = {}, variables = {}): Observable<any> {
     const endpoint = `${this.engineRestUrl}filter/${id}/list`;
-    return this.http.post<any>(endpoint, {}, { params: queryParams }).pipe(
+    return this.http.post<any>(endpoint, variables, { params: queryParams }).pipe(
       tap(form => this.log(`fetched filter task list ${id}`)),
       catchError(this.handleError('listFilter', []))
     );
@@ -135,7 +135,7 @@ export class CamundaRestService {
    * maxResults, firstResult, finished
    * @param variables
    */
-  listHistory(queryParams = {}, variables) {
+  listHistory(queryParams = {}, variables = {}) {
     // tslint:disable-next-line:max-line-length
     const endpoint = `${this.engineRestUrl}history/task`;
     return this.http.post<any>(endpoint, variables, { params: queryParams }).pipe(

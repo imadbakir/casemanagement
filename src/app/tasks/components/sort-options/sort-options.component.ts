@@ -15,17 +15,17 @@ export class SortOptionsComponent {
   /**
    * Selected Sorting Option Key
    */
-  sorting = 0;
+  sorting = 3;
   /**
    * Sorting options array
    */
   sortings = [
-    { name: 'name', type: 'text', direction: 1 },
-    { name: 'description', type: 'text', direction: 1 },
-    { name: 'assignee', type: 'text', direction: 1 },
-    { name: 'created', type: 'datetime', direction: 1 },
-    { name: 'due', type: 'datetime', direction: 1 },
-    { name: 'priority', type: 'number', direction: 1 }
+    { sortBy: 'name', sortOrder: 'asc' },
+    { name: 'description', sortOrder: 'asc' },
+    { name: 'assignee', sortOrder: 'asc' },
+    { name: 'created', sortOrder: 'asc' },
+    { name: 'dueDate', sortOrder: 'asc' },
+    { name: 'priority', sortOrder: 'asc' }
   ];
 
   constructor(public popoverCtrl: PopoverController, public eventsService: EventsService) {
@@ -37,7 +37,7 @@ export class SortOptionsComponent {
    */
   setSorting(dir) {
     const sorting = this.sortings[this.sorting];
-    sorting.direction = dir;
+    sorting.sortOrder = dir;
     this.eventsService.announceSorting(sorting);
     this.close();
   }

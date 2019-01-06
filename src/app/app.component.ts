@@ -4,7 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 import { AuthService } from './core/services/auth.service';
 import { EventsService } from './core/services/events.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { Observable, merge, fromEvent, of } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 /**
  * Main App Component
@@ -13,15 +15,24 @@ import { NavController } from '@ionic/angular';
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit {
 
+export class AppComponent implements OnInit {
+  online$: Observable<boolean>;
+  toast;
   constructor(
     public eventService: EventsService,
     public auth: AuthService,
+    public translate: TranslateService,
+    public toastController: ToastController,
     private router: Router,
     private nav: NavController,
-    public translate: TranslateService,
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
+    this.online$ = merge(
+      of(navigator.onLine),
+      fromEvent(window, 'online').pipe(mapTo(true)),
+      fromEvent(window, 'offline').pipe(mapTo(false))
+    );
+    this.networkStatus();
 
     this.translate.setDefaultLang('en');
     this.translate.use(this.storage.get('language') || 'en');
@@ -34,19 +45,42 @@ export class AppComponent implements OnInit {
       this.router.navigate(['auth']);
     });
   }
+  async presentNetworkChange(status) {
+
+    if (status) {
+      if (this.toast) {
+        this.toastController.dismiss();
+      }
+    } else {
+      this.toast = await this.toastController.create({
+        message: 'You Are Offline',
+        showCloseButton: false,
+        position: 'bottom',
+        color: 'danger'
+      });
+      this.toast.present();
+
+    }
+
+  }
+  async networkStatus() {
+    this.online$.subscribe(value => {
+      this.presentNetworkChange(value);
+    });
+  }
   /**
    * Fix Dom Direction - localization
    * @param dir
    */
   fixDom(dir) {
-   /* const columns = document.getElementsByClassName('formio-component-columns');
-    const headers = document.getElementsByClassName('header');
-    for (let i = 0; i < columns.length; i++) {
-      columns[i].setAttribute('dir', dir);
-    }
-    for (let i = 0; i < headers.length; i++) {
-      headers[i].setAttribute('dir', dir);
-    } */
+    /* const columns = document.getElementsByClassName('formio-component-columns');
+     const headers = document.getElementsByClassName('header');
+     for (let i = 0; i < columns.length; i++) {
+       columns[i].setAttribute('dir', dir);
+     }
+     for (let i = 0; i < headers.length; i++) {
+       headers[i].setAttribute('dir', dir);
+     } */
     document.documentElement.setAttribute('dir', dir);
 
   }

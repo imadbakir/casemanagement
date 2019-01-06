@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ModalController, NavParams, PopoverController } from '@ionic/angular';
+import { ModalController, NavParams, PopoverController, AlertController } from '@ionic/angular';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Filter Options Menu
@@ -15,7 +16,10 @@ import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 })
 export class FilterOptionsComponent {
   id = '';
-  constructor(public popoverCtrl: PopoverController,
+  constructor(
+    public translate: TranslateService,
+    public alertController: AlertController,
+    public popoverCtrl: PopoverController,
     public navParams: NavParams,
     public camundaService: CamundaRestService,
     public modalController: ModalController,
@@ -31,15 +35,40 @@ export class FilterOptionsComponent {
   }
 
   /**
-   * Delete Filter
-   */
-  delete() {
-  // TODO: Confirm Before Deletion
-    this.camundaService.deleteFilter(this.id).subscribe(() => {
-      this.event.announceFiltersRefresh('refresh');
+  * Confirm Delete Filter
+  */
+  async delete() {
+    const translations = await this.translate
+      .get(['Confirm', 'Are you sure?', 'Cancel', 'Yes'])
+      .toPromise().then(data => {
+        return data;
+      });
+    const alert = await this.alertController.create({
+      header: translations['Confirm'],
+      message: translations['Are you sure?'],
+      buttons: [
+        {
+          text: translations['Cancel'],
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.close();
+          }
+        }, {
+          text: translations['Yes'],
+          handler: () => {
+            this.camundaService.deleteFilter(this.id).subscribe(() => {
+              this.event.announceFiltersRefresh('refresh');
+            });
+            this.close();
+          }
+        }
+      ]
     });
-    this.close();
+
+    await alert.present();
   }
+
   /**
    * Open Filter Modal
    */
