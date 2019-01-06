@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalController, PopoverController } from '@ionic/angular';
+import { ModalController, PopoverController, MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
@@ -32,10 +32,12 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
     public event: EventsService,
     public router: Router,
     public route: ActivatedRoute,
-    private camundaService: CamundaRestService,
     public translate: TranslateService,
     public modalController: ModalController,
-    public auth: AuthService) {
+    public auth: AuthService,
+    private menuController: MenuController,
+    private camundaService: CamundaRestService,
+  ) {
 
   }
 
@@ -120,8 +122,9 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  openFilter() {
-    this.router.navigate(['tasks', this.filters[0].id]);
+  openFilter(filterId) {
+    this.router.navigate(['tasks', filterId]);
+    this.menuController.close();
   }
 
 
@@ -139,7 +142,7 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
             this.createDefaultFilter();
           }
           if (this.route.children.length === 0 && this.filters.length > 0) {
-            this.openFilter();
+            this.openFilter(this.filters[0].id);
           }
         });
       });

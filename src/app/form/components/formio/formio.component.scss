@@ -2,4 +2,14 @@
 @import "~bootswatch/dist/yeti/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/yeti/bootswatch";
+
+
+
+  
+}
+formio-loader{
+    .formio-loader {
+        border-top: 6px solid  var(--ion-color-secondary) !important;
+      }
+
 }

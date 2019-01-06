@@ -127,7 +127,10 @@ export class TaskEditComponent implements OnInit {
   }
 
   async presentLoading() {
-    this.loading = await this.loadingController.create({});
+    this.loading = await this.loadingController.create({
+      cssClass: 'loading',
+      translucent: true
+        });
     return await this.loading.present();
   }
   async dismissLoading() {

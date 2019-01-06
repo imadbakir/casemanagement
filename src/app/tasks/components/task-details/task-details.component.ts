@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { EventsService } from '../../../core/services/events.service';
 
 /**
@@ -13,10 +13,12 @@ import { EventsService } from '../../../core/services/events.service';
 export class TaskDetailsComponent implements OnInit {
   @Input() panels;
   // tslint:disable-next-line:max-line-length
-  task;
   constructor(
     public event: EventsService,
-    public router: Router) { }
+    public route: ActivatedRoute,
+    public router: Router) {
+
+  }
 
   /**
    * Toggle FUllscreen Mode
@@ -25,15 +27,14 @@ export class TaskDetailsComponent implements OnInit {
     this.panels.details.fullscreen = !this.panels.details.fullscreen;
   }
 
-  /**
-   * ngOnInit:
-   * subscribe to ItemChange event to refresh content
-   */
+  closeTask() {
+    this.router.navigate(['tasks', this.route.snapshot.params['filterId']]);
+  }
 
   ngOnInit() {
-    this.event.itemChange$.subscribe(data => {
-      this.task = data;
-    });
+    if (this.route.children.length > 0) {
+      this.panels.details.open = true;
+    }
   }
 
 }

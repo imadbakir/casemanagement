@@ -2,7 +2,7 @@
 
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button small (ionFocus)="panels.details.open" [routerLink]="['/tasks']"   [ngClass]="'move-handle visible-xs'">
+      <ion-button small (ionFocus)="panels.details.open" (click)="closeTask()"  [ngClass]="'move-handle visible-xs'">
         <ion-icon size="medium" slot="start" name="close"></ion-icon>
       </ion-button>
       <ion-button small [ngClass]="'move-handle hide-xs'">

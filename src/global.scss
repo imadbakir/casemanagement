@@ -76,7 +76,9 @@ $app-direction: multi;
     }
   }
 }
-
+.loading{
+  --spinner-color:var(--ion-color-secondary);
+}
 .profile-container {
   text-align: center;
   margin: 40px 0px;
