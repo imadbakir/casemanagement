@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { isObject } from 'util';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
+import { EventsService } from '../../../core/services/events.service';
 
 /**
  * New Process Instance Form - Start Form
@@ -24,7 +25,8 @@ export class ProcessFormComponent {
   constructor(
     public route: ActivatedRoute,
     public router: Router,
-    public camundaService: CamundaRestService
+    public camundaService: CamundaRestService,
+    public events: EventsService
   ) {
     route.params.subscribe(params => {
       this.form.ready = false;
@@ -57,7 +59,9 @@ export class ProcessFormComponent {
 
     this.camundaService.processDefinitionSubmitForm(this.route.snapshot.params['processDefinitionId'], {}).subscribe(instance => {
       this.camundaService.modifyExecutionVariables(instance.id, { modifications: modifications }).subscribe(() => {
-        this.router.navigate(['tasks']);
+        this.router.navigate(['tasks']).then(() => {
+          this.events.announceFiltersRefresh('refresh');
+        });
       });
     });
   }

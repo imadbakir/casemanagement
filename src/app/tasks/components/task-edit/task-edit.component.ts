@@ -30,9 +30,11 @@ export class TaskEditComponent implements OnInit {
     ready: false,
     executionVariables: []
   };
-  versionSubmittion = true;
-  completeSubmitted = true;
+
   objectKeys = Object.keys;
+  submitPromise: Promise<any>;
+  submitPromiseResolve: any;
+
   constructor(
     public events: EventsService,
     public route: ActivatedRoute,
@@ -48,10 +50,10 @@ export class TaskEditComponent implements OnInit {
   }
 
   /**
-   * Go Back After Task is completed
+   * Go Back After Task is completed and return navigation promise
    */
   goBack() {
-    this.router.navigate(['tasks',
+    return this.router.navigate(['tasks',
       ...(this.route.parent.snapshot.params.filterId ? [this.route.parent.snapshot.params.filterId] : [])]);
 
   }
@@ -62,32 +64,41 @@ export class TaskEditComponent implements OnInit {
    */
   onCustomEvent(event) {
     try {
-      if (event.hasOwnProperty('type')) {
-        switch (event.type) {
-          case 'complete':
-            let variables = {};
-            if (event.component.properties && event.component.properties['variables']) {
-              variables = { variables: (JSON.parse(event.component.properties['variables']) || {}) };
-            }
-            if (this.task.assignee !== this.auth.getUser().username) {
-              this.task.assignee = this.auth.getUser().username;
-              this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(() => {
-                this.camundaService.postCompleteTask(this.task.id,
-                  variables).subscribe(() => {
-                    this.events.announceItem({ taskId: this.task.id, complete: true });
-                    this.events.announceFiltersRefresh('refresh');
-                  });
-              });
-            } else {
-              this.camundaService.postCompleteTask(this.task.id, variables).subscribe(() => {
-                this.events.announceItem({ taskId: this.task.id, complete: true });
-                this.events.announceFiltersRefresh('refresh');
-              });
-            }
+      this.submitPromise.then(data => {
+        if (event.hasOwnProperty('type')) {
+          switch (event.type) {
+            case 'complete':
+              let variables = {};
+              if (event.component.properties && event.component.properties['variables']) {
+                variables = { variables: (JSON.parse(event.component.properties['variables']) || {}) };
+              }
+              if (this.task.assignee !== this.auth.getUser().username) {
+                this.task.assignee = this.auth.getUser().username;
+                this.camundaService.postAssignTask(this.task.id, { userId: this.task.assignee }).subscribe(() => {
+                  this.camundaService.postCompleteTask(this.task.id,
+                    variables).subscribe(() => {
+                      this.events.announceItem({ taskId: this.task.id, complete: true });
+                      this.goBack().then(() => {
+                        this.events.announceFiltersRefresh('refresh');
 
-            break;
+                      });
+                    });
+                });
+              } else {
+                this.camundaService.postCompleteTask(this.task.id, variables).subscribe(() => {
+                  this.events.announceItem({ taskId: this.task.id, complete: true });
+                  this.goBack().then(() => {
+                    this.events.announceFiltersRefresh('refresh');
+
+                  });
+                });
+              }
+
+              break;
+          }
         }
-      }
+      });
+
     } catch (err) {
       console.log(err);
     }
@@ -100,16 +111,17 @@ export class TaskEditComponent implements OnInit {
    */
   onSubmit(submission) {
     if (isObject(submission.version)) {
-      return this.camundaService.modifyExecutionVariables(this.task.executionId, {
+      this.submitPromise = this.camundaService.modifyExecutionVariables(this.task.executionId, {
         modifications:
         {
           ...submission.version
         }
-      }).subscribe((data) => {
-        this.goBack();
-      });
+      }).toPromise();
     } else {
-      // this.goBack();
+      this.submitPromise = new Promise(ready => {
+        this.submitPromiseResolve = ready;
+      });
+      this.submitPromiseResolve(true);
     }
 
   }

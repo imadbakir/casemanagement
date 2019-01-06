@@ -1,22 +1,19 @@
 
-@media (max-width:1550px) {
-    .padding {
-      padding: 20px !important;
-    }
+   .padding {
+     height:calc(100% - 56px);
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-start: 20px;
+    --padding-end: 20px;
   }
   
   @media (max-width:740px) {
     .padding {
-      padding: 0px !important;
+      --padding-top: 0px;
+      --padding-bottom: 0px;
+      --padding-start: 0px;
+      --padding-end: 0px;
     }
+    
   }
-  
-  .padding {
-    padding: 40px 100px 80px 100px;
-    overflow: hidden;
-    display: block;
-    position: relative;
-    width: 100%; 
-    height: calc(100% - 60px);
-  }
-  
+ 
