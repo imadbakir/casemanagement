@@ -21,11 +21,11 @@ export class SortOptionsComponent {
    */
   sortings = [
     { sortBy: 'name', sortOrder: 'asc' },
-    { name: 'description', sortOrder: 'asc' },
-    { name: 'assignee', sortOrder: 'asc' },
-    { name: 'created', sortOrder: 'asc' },
-    { name: 'dueDate', sortOrder: 'asc' },
-    { name: 'priority', sortOrder: 'asc' }
+    { sortBy: 'description', sortOrder: 'asc' },
+    { sortBy: 'assignee', sortOrder: 'asc' },
+    { sortBy: 'created', sortOrder: 'asc' },
+    { sortBy: 'dueDate', sortOrder: 'asc' },
+    { sortBy: 'priority', sortOrder: 'asc' }
   ];
 
   constructor(public popoverCtrl: PopoverController, public eventsService: EventsService) {
