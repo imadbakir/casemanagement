@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { ModalController, PopoverController, MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -25,6 +25,7 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
 
 
   filters = [];
+  active;
   private subscription: Subscription;
 
   constructor(
@@ -123,17 +124,29 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
   }
 
   openFilter(filterId) {
+    this.active = filterId;
     this.router.navigate(['tasks', filterId]);
     this.menuController.close();
   }
 
-
+  setActive() {
+    if (this.route.children.length > 0) {
+      this.active = this.route.firstChild.snapshot.params.filterId;
+    } else {
+      this.active = '';
+    }
+  }
   /**
    * NgOnIntit: Subscribe to refresh filters event
    * Get All Filters.
    * Create Default filter if no filters exist.
    */
   ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.setActive();
+      }
+    });
     this.subscription = this.event.refreshFiltersAnnounced$
       .subscribe((event) => {
         this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
@@ -147,6 +160,7 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
         });
       });
     this.event.announceFiltersRefresh('refresh');
+    this.setActive();
   }
 
   ngOnDestroy() {
