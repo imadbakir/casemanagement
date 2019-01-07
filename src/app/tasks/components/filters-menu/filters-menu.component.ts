@@ -124,8 +124,10 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
   }
 
   openFilter(filterId) {
-    this.active = filterId;
     this.router.navigate(['tasks', filterId]);
+  }
+
+  closeMenu() {
     this.menuController.close();
   }
 

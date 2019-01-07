@@ -47,12 +47,6 @@ ion-card.card {
   }
 }
 
-[contentEditable=true]:empty:not(:focus):before {
-  content: attr(data-ph);
-  color: grey;
-  font-style: italic;
-}
-
 .more-details {
   white-space: initial;
   padding: 0px;
@@ -99,9 +93,10 @@ ion-card:focus-within .more-details {
     padding: 10px;
   }
 }
-.router-link-active {
-  background: rgba(var(--ion-color-primary-rgb),0.15);
-}
+
 ion-card:focus {
   outline: 0px;
+}
+.active {
+  background: rgba(var(--ion-color-primary-rgb),0.15);
 }

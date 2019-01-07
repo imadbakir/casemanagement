@@ -21,8 +21,8 @@
   <ion-searchbar [placeholder]="'Search' | translate" mode="ios"></ion-searchbar>
 
   <ion-list lines="full">
-    <ion-item menuClose *ngFor="let filter of filters"   [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}"
-    (click)="openFilter(filter.id)"  [ngClass]="{'selected-green': active == filter.id}">
+    <ion-item  *ngFor="let filter of filters"   [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}"
+    [routerLink]="[filter.id]" (click)="closeMenu()" routerLinkActive="selected-green">
       <ion-label text-wrap>
         <ion-text>
           <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
@@ -40,7 +40,7 @@
       </ion-buttons>
 
     </ion-item>
-    <ion-item (click)="openFilter('history')"   [ngClass]="{'selected-green': active == 'history'}">
+    <ion-item [routerLink]="['history']" (click)="closeMenu()" routerLinkActive="selected-green">
       <ion-label text-wrap>
         <ion-text>
           <h3 >

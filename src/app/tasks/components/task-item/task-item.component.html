@@ -1,5 +1,4 @@
-<ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete}" [routerLink]="route"
-  routerLinkActive="router-link-active">
+<ion-card class="card {{getPriority(task.priority)}}" [ngClass]="{'complete' : task.complete , 'active' : active}">
   <ion-card-content>
     <h2>
       {{task.name | translate}}

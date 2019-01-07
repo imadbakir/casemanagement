@@ -130,7 +130,7 @@ export class TaskEditComponent implements OnInit {
     this.loading = await this.loadingController.create({
       cssClass: 'loading',
       translucent: true
-        });
+    });
     return await this.loading.present();
   }
   async dismissLoading() {
@@ -139,49 +139,52 @@ export class TaskEditComponent implements OnInit {
 
 
   /**
-   * ngOnInit: on init get Task Details if false get History Task Details
-   * get formKey and Resource name
+   * Get Task Details  formKey and Resource name
    * get execution variables and fill form versions array and resourceId
    *
    */
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.form.ready = false;
-      this.presentLoading().then(() => {
-        this.camundaService.getTask(params.taskId).subscribe((task) => {
-          this.task = task;
-          if (this.task.executionId !== 'undefined') {
-            const keyResourceArray = this.task.formKey.split(':');
-            this.form.formKey = keyResourceArray[0];
-            this.form.resourceName = keyResourceArray[1];
-            this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
-              Object.keys(executionVariables).forEach((key) => {
-                if (key.indexOf('v_') > -1) {
-                  this.form.version[key.replace('v_', '')] = executionVariables[key].value;
-                }
-              });
-              this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
 
-              this.camundaService.getVariableInstanceByExecutionId(
-                { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
-                  historyExecutionVariables.forEach((variable) => {
-                    this.form.executionVariables[variable.name] = variable.value;
-                  });
-                  this.form.ready = true;
-                  this.dismissLoading();
-                });
-
+  getTask(taskId) {
+    this.form.ready = false;
+    this.presentLoading().then(() => {
+      this.camundaService.getTask(taskId).subscribe((task) => {
+        this.task = task;
+        if (this.task.executionId !== 'undefined') {
+          const keyResourceArray = this.task.formKey.split(':');
+          this.form.formKey = keyResourceArray[0];
+          this.form.resourceName = keyResourceArray[1];
+          this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
+            Object.keys(executionVariables).forEach((key) => {
+              if (key.indexOf('v_') > -1) {
+                this.form.version[key.replace('v_', '')] = executionVariables[key].value;
+              }
             });
+            this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
 
-          }
-        },
-          (err) => {
+            this.camundaService.getVariableInstanceByExecutionId(
+              { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
+                historyExecutionVariables.forEach((variable) => {
+                  this.form.executionVariables[variable.name] = variable.value;
+                });
+                this.form.ready = true;
+                this.dismissLoading();
+              });
 
           });
 
-
+        }
       });
     });
 
+  }
+
+  /**
+ * ngOnInit: on init subscribe to route changes
+ */
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      // Get Tasks on Route Change
+      this.getTask(params.taskId);
+    });
   }
 }

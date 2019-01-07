@@ -4,7 +4,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
 import { SortOptionsComponent } from '../sort-options/sort-options.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EnvService } from '../../../core/services/env.service';
 
 /**
@@ -40,6 +40,7 @@ export class TaskGridComponent implements OnInit {
    * Chosen FilterId
    */
   filterId = '';
+  viewType;
   pageSize = this.env.tasksPageSize;
   /**
    * Infine Scroll View Child
@@ -52,6 +53,7 @@ export class TaskGridComponent implements OnInit {
     private camundaService: CamundaRestService,
     private auth: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
     private env: EnvService,
     public loadingController: LoadingController,
     public popoverCtrl: PopoverController,
@@ -125,6 +127,7 @@ export class TaskGridComponent implements OnInit {
    */
   fetchTasks(isNew = false) {
     if (isNew) {
+      this.viewType = this.filterId === 'history' ? 'view' : 'edit';
       this.tasks = this.tasksOrigin = [];
     }
     if (this.filterId === 'history') {
