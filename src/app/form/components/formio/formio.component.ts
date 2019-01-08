@@ -64,7 +64,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
     ) {
         if (this.env) {
             Formio.setBaseUrl(this.env.formioApiUrl);
-            Formio.setProjectUrl(this.env.formioApiUrl);
+            Formio.setProjectUrl(this.env.formioAppUrl);
         } else {
             console.warn('You must provide formio Config');
         }
@@ -203,7 +203,8 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
             } else {
                 switch (refresh.property) {
                     case 'submission':
-                        this.formio.submission = refresh.value;
+                        this.formio.setSubmission(refresh.value);
+                        this.assignFormOptions(this.formio);
                         break;
                     case 'form':
                         this.formio.form = refresh.value;

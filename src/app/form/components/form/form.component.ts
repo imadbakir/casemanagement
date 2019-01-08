@@ -223,6 +223,11 @@ export class FormComponent implements OnInit, OnDestroy {
         console.warn(e);
         return false;
       }
+    } else {
+      this.refresh.emit({
+        property: 'submission',
+        value: this.resource
+      });
     }
 
   }
@@ -347,11 +352,9 @@ export class FormComponent implements OnInit, OnDestroy {
     });
   }
 
-  /**
-   * Clear Formio Cache on Component Destroy
-   */
+
   ngOnDestroy() {
-    Formio.clearCache();
+    // Formio.clearCache();
   }
 
 }

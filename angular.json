@@ -31,7 +31,6 @@
                 "output": "icons"
               },
               "src/env.js",
-              "src/.htaccess",
               "src/manifest.json"
             ],
             "styles": [
