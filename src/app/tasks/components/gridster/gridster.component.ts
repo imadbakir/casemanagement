@@ -14,7 +14,7 @@ import { FilterService } from '../../../core/services/filter.service';
   templateUrl: './gridster.component.html',
   styleUrls: ['./gridster.component.scss'],
 })
-export class GridsterComponent implements OnInit {
+export class GridsterComponent implements OnInit, AfterViewInit {
   options: GridsterConfig;
   panels = {
     tasks: { x: 0, y: 0, cols: 2, rows: 4, filters: [] },
@@ -28,7 +28,13 @@ export class GridsterComponent implements OnInit {
   onInit(girdster) {
 
   }
-
+ngAfterViewInit(){
+  window.setTimeout(() => {
+    if (this.options.api) {
+      this.options.api.resize();
+    }
+  }, 1000);
+}
 
   @HostListener('window:focus', ['$event'])
   onFocus(event: any): void {

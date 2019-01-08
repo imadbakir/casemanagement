@@ -20,6 +20,7 @@ import { TaskGridComponent } from './components/task-grid/task-grid.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -36,7 +37,8 @@ import { TasksComponent } from './tasks.component';
     MatNativeDateModule,
     MatAutocompleteModule, MatInputModule,
     SharedModule,
-    FormModule
+    FormModule,
+    ScrollingModule
   ],
   entryComponents: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent, SortOptionsComponent],
   declarations: [

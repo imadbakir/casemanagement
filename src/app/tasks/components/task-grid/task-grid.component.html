@@ -18,17 +18,18 @@
   <ion-grid no-padding>
     <ion-row>
       <ion-col>
-        <div text-center padding [hidden]="tasks.length > 0">
+        <div text-center padding [hidden]="tasks.length > 0 || loader.loading">
           <ion-text>
             <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
             <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"No Tasks." | translate}}</h6>
           </ion-text>
         </div>
+        <formio-loader></formio-loader>
         <ion-list>
-          <app-task-item *ngFor="let task of tasks" [routerLink]="[viewType, task.id]" routerLinkActive #rla="routerLinkActive"
+          <app-task-item *ngFor="let task of tasks;trackBy: trackTask" [routerLink]="[viewType, task.id]" routerLinkActive #rla="routerLinkActive"
             [active]="rla.isActive" [task]="task"></app-task-item>
         </ion-list>
-        <ion-infinite-scroll threshold="10px" (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll threshold="90px" (ionInfinite)="fetchTasks()">
           <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Loading more Tasks...' | translate">
           </ion-infinite-scroll-content>
         </ion-infinite-scroll>

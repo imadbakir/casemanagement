@@ -6,6 +6,7 @@ import { EventsService } from '../../../core/services/events.service';
 import { SortOptionsComponent } from '../sort-options/sort-options.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnvService } from '../../../core/services/env.service';
+import { FormioLoader } from '../../../form/components/loader/formio.loader';
 
 /**
  * Task List Component
@@ -13,7 +14,8 @@ import { EnvService } from '../../../core/services/env.service';
 @Component({
   selector: 'app-task-grid',
   templateUrl: './task-grid.component.html',
-  styleUrls: ['./task-grid.component.scss']
+  styleUrls: ['./task-grid.component.scss'],
+  providers: [FormioLoader]
 })
 export class TaskGridComponent implements OnInit {
   /**
@@ -55,6 +57,7 @@ export class TaskGridComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private env: EnvService,
+    public loader: FormioLoader,
     public loadingController: LoadingController,
     public popoverCtrl: PopoverController,
     public modalController: ModalController
@@ -129,62 +132,54 @@ export class TaskGridComponent implements OnInit {
     if (isNew) {
       this.viewType = this.filterId === 'history' ? 'view' : 'edit';
       this.tasks = this.tasksOrigin = [];
+      this.loader.loading = true;
     }
     if (this.filterId === 'history') {
-      return this.presentLoading().then(() => {
-        this.camundaService.listHistory({
-          firstResult: this.tasks.length,
-          maxResults: this.tasks.length + this.pageSize
-        }, {
-            taskAssignee: this.auth.getUser().username,
-            finished: true,
-            sorting: [
-              {
-                'sortBy': 'endTime',
-                'sortOrder': this.filter.sortOrder
-              }
-            ]
-          }).subscribe(data => {
-            this.tasksOrigin = [...this.tasks, ...data];
-            this.tasks = this.tasksOrigin;
-            this.infiniteScrollSettings(data);
-            this.dismissLoading();
-          });
+      this.camundaService.listHistory({
+        firstResult: this.tasks.length,
+        maxResults: this.tasks.length + this.pageSize
+      }, {
+          taskAssignee: this.auth.getUser().username,
+          finished: true,
+          sorting: [
+            {
+              'sortBy': 'endTime',
+              'sortOrder': this.filter.sortOrder
+            }
+          ]
+        }).subscribe(data => {
+          this.tasksOrigin = [...this.tasks, ...data];
+          this.tasks = this.tasksOrigin;
+          this.loader.loading = false;
+          this.infiniteScrollSettings(data);
+        });
 
-      });
     } else {
-      return this.presentLoading().then(() => {
-        this.camundaService.listFilter(this.filterId,
-          { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }, {
-            sortBy: this.filter.sortBy,
-            sortOrder: this.filter.sortOrder
-          }).subscribe(data => {
-            this.tasksOrigin = [...this.tasks, ...data];
-            this.tasks = this.tasksOrigin;
-            this.infiniteScrollSettings(data);
-            this.dismissLoading();
-          });
-      });
+      this.camundaService.listFilter(this.filterId,
+        { firstResult: this.tasks.length, maxResults: this.tasks.length + this.pageSize }, {
+          sortBy: this.filter.sortBy,
+          sortOrder: this.filter.sortOrder
+        }).subscribe(data => {
+          this.tasksOrigin = [...this.tasks, ...data];
+          this.tasks = this.tasksOrigin;
+          this.loader.loading = false;
+          this.infiniteScrollSettings(data);
+        });
 
     }
 
+  }
+  trackTask(index, task) {
+    return task.id;
   }
 
   /**
    * Ion Infinite Scroll Callback
    * Fetch more tasks then stop spinner.
-   * @param infiniteScroll
-   */
-  doInfinite(infiniteScroll) {
-    this.fetchTasks().then(() => {
-      infiniteScroll.target.complete();
-    });
-  }
-
-  /**
  * Ion Infinite Scroll disable if no more data.
  */
   infiniteScrollSettings(data) {
+    this.infiniteScroll.complete();
     if (data.length < this.pageSize) {
       this.infiniteScroll.disabled = true;
     } else {

@@ -21,8 +21,7 @@ import { FormioLoaderComponent } from './components/loader/formio.loader.compone
     FormComponent,
   ],
   exports: [
-    AppFormioComponent, FormComponent
-  ]
+    AppFormioComponent, FormComponent, FormioLoaderComponent  ]
 })
 
 export class FormModule { }

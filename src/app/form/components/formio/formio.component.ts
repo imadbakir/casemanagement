@@ -171,7 +171,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                     message: 'Please fix the following errors before submitting.'
                 },
                 alerts: {
-                    submitMessage: 'Submission Complete.'
+                    submitMessage: 'Submission Com plete.'
                 },
                 disableAlerts: false,
                 hooks: {
