@@ -1,55 +1,42 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-button color="secondary" solid round end-item icon-end (click)="presentFilter()" class="toolbar-round">
-      {{"Add Filter" | translate}}
-      <ion-icon slot="start" name="add-circle"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-  <ion-buttons slot="end">
-    <ion-button color="dark" (click)="userOptions($event)" clear class="toolbar-round">
-      <ion-icon slot="icon-only" name="settings"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
+<ion-list lines="full">
+  <ion-item (click)="presentFilter()">
+    <ion-label text-wrap>
+      <ion-text>
+        <h3>
+          {{"Add Filter" | translate}}
+        </h3>
+      </ion-text>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button clear color="medium" slot="icon-only">
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-item *ngFor="let filter of filters" [ngStyle]="{'opacity': filter.count == 0 ? '0.5':''}" [routerLink]="[filter.id]"
+    (click)="closeMenu()" routerLinkActive="selected-green">
+    <ion-label text-wrap>
+      <ion-text>
+        <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
+          {{filter.name | translate}}
+          <ion-badge color="secondary">{{filter.count}}</ion-badge>
+        </h3>
+      </ion-text>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="filterOptions($event, filter.id)" clear color="medium" slot="icon-only">
+        <ion-icon name="md-more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-item [routerLink]="['history']" (click)="closeMenu()" routerLinkActive="selected-green">
+    <ion-label text-wrap>
+      <ion-text>
+        <h3>
+          {{'Completed Tasks' | translate}}
+        </h3>
+      </ion-text>
 
-<ion-content>
-  <div class="profile-container">
-    <div class="photo-container"></div>
-    <h5 margin-top>{{auth.getUser()?.profile.firstName}} {{auth.getUser()?.profile.lastName}}</h5>
-    <span *ngFor="let group of auth.getUser()?.groups">{{group.name | translate}} </span>
-  </div>
-  <ion-searchbar [placeholder]="'Search' | translate" mode="ios"></ion-searchbar>
-
-  <ion-list lines="full">
-    <ion-item  *ngFor="let filter of filters"   [ngStyle]="{'opacity': filter.count == 0 ? '0.5' : '1'}"
-    [routerLink]="[filter.id]" (click)="closeMenu()" routerLinkActive="selected-green">
-      <ion-label text-wrap>
-        <ion-text>
-          <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
-            {{filter.name | translate}}
-            <ion-badge color="secondary" slot="end">{{filter.count}}</ion-badge>
-          </h3>
-        </ion-text>
-
-      </ion-label>
-
-      <ion-buttons slot="end" class="hide-md hide-sm">
-        <ion-button (click)="filterOptions($event, filter.id)" clear color="dark" slot="icon-only">
-          <ion-icon name="md-more"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-
-    </ion-item>
-    <ion-item [routerLink]="['history']" (click)="closeMenu()" routerLinkActive="selected-green">
-      <ion-label text-wrap>
-        <ion-text>
-          <h3 >
-            {{'Completed Tasks' | translate}}
-          </h3>
-        </ion-text>
-
-      </ion-label>
-    </ion-item>
-
-  </ion-list>
-</ion-content>
+    </ion-label>
+  </ion-item>
+</ion-list>

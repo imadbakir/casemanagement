@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-
+import { isObject } from 'util';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
-import { isObject } from 'util';
+
 
 /**
  * Main Task Component
@@ -20,7 +18,6 @@ import { isObject } from 'util';
 })
 export class TaskEditComponent implements OnInit {
   task: any = {};
-  loading: any;
   form = {
     resourceName: '',
     resourceId: '',
@@ -40,10 +37,8 @@ export class TaskEditComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     private camundaService: CamundaRestService,
-    private loadingController: LoadingController,
     private auth: AuthService,
     public translate: TranslateService,
-    public location: Location
   ) {
     //
 
@@ -126,16 +121,6 @@ export class TaskEditComponent implements OnInit {
 
   }
 
-  async presentLoading() {
-    this.loading = await this.loadingController.create({
-      cssClass: 'loading',
-      translucent: true
-    });
-    return await this.loading.present();
-  }
-  async dismissLoading() {
-    return await this.loading.dismiss();
-  }
 
 
   /**
@@ -146,34 +131,31 @@ export class TaskEditComponent implements OnInit {
 
   getTask(taskId) {
     this.form.ready = false;
-    this.presentLoading().then(() => {
-      this.camundaService.getTask(taskId).subscribe((task) => {
-        this.task = task;
-        if (this.task.executionId !== 'undefined') {
-          const keyResourceArray = this.task.formKey.split(':');
-          this.form.formKey = keyResourceArray[0];
-          this.form.resourceName = keyResourceArray[1];
-          this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
-            Object.keys(executionVariables).forEach((key) => {
-              if (key.indexOf('v_') > -1) {
-                this.form.version[key.replace('v_', '')] = executionVariables[key].value;
-              }
-            });
-            this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
-
-            this.camundaService.getVariableInstanceByExecutionId(
-              { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
-                historyExecutionVariables.forEach((variable) => {
-                  this.form.executionVariables[variable.name] = variable.value;
-                });
-                this.form.ready = true;
-                this.dismissLoading();
-              });
-
+    this.camundaService.getTask(taskId).subscribe((task) => {
+      this.task = task;
+      if (this.task.executionId !== 'undefined') {
+        const keyResourceArray = this.task.formKey.split(':');
+        this.form.formKey = keyResourceArray[0];
+        this.form.resourceName = keyResourceArray[1];
+        this.camundaService.getExecutionVariables(this.task.executionId).subscribe(executionVariables => {
+          Object.keys(executionVariables).forEach((key) => {
+            if (key.indexOf('v_') > -1) {
+              this.form.version[key.replace('v_', '')] = executionVariables[key].value;
+            }
           });
+          this.form.resourceId = executionVariables[this.form.resourceName] ? executionVariables[this.form.resourceName].value : '';
 
-        }
-      });
+          this.camundaService.getVariableInstanceByExecutionId(
+            { executionIdIn: this.task.executionId }).subscribe(historyExecutionVariables => {
+              historyExecutionVariables.forEach((variable) => {
+                this.form.executionVariables[variable.name] = variable.value;
+              });
+              this.form.ready = true;
+            });
+
+        });
+
+      }
     });
 
   }

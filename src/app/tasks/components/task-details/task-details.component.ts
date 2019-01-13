@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { EventsService } from '../../../core/services/events.service';
 
 /**
@@ -27,14 +27,39 @@ export class TaskDetailsComponent implements OnInit {
     this.panels.details.fullscreen = !this.panels.details.fullscreen;
   }
 
+  /**
+   * Close Tsak - Mobile
+   * navigate back to filter.
+   */
   closeTask() {
     this.router.navigate(['tasks', this.route.snapshot.params['filterId']]);
   }
 
+  /**
+   * ngOnInit: subscribe to router events
+   * default details panel to open if some task is open.
+   */
   ngOnInit() {
     if (this.route.children.length > 0) {
-      this.panels.details.open = true;
+      if (this.route.firstChild && this.route.firstChild.snapshot.params['taskId']) {
+        this.panels.details.open = true;
+      } else {
+        this.panels.details.open = false;
+
+      }
     }
+
+    // On Navigation End Set Details panel to Open if URL param taskId exists - for mobile
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (this.route.firstChild && this.route.firstChild.snapshot.params['taskId']) {
+          this.panels.details.open = true;
+        } else {
+          this.panels.details.open = false;
+
+        }
+      }
+    });
   }
 
 }

@@ -1,8 +1,8 @@
-<ion-header override>
+<ion-header no-border>
 
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button small (ionFocus)="panels.details.open" (click)="closeTask()"  [ngClass]="'move-handle visible-xs'">
+      <ion-button small (ionFocus)="panels.details.open" (click)="closeTask()" [ngClass]="'move-handle visible-xs'">
         <ion-icon size="medium" slot="start" name="close"></ion-icon>
       </ion-button>
       <ion-button small [ngClass]="'move-handle hide-xs'">
@@ -13,15 +13,8 @@
         <ion-icon size="small" slot="icon-only" name="contract" [hidden]="!panels.details.fullscreen"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-            <router-outlet></router-outlet>
-          </ion-col>
-      </ion-row>
-    </ion-grid>
+<ion-content padding>
+  <router-outlet></router-outlet>
 </ion-content>

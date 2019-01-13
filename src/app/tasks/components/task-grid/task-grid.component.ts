@@ -85,14 +85,6 @@ export class TaskGridComponent implements OnInit {
     return await popover.present();
   }
 
-  async presentLoading() {
-    this.loading = await this.loadingController.create({});
-    return await this.loading.present();
-  }
-  async dismissLoading() {
-    this.loading.dismiss();
-  }
-
   /**
    * Clear Search Event Callback
    * @param event

@@ -1,10 +1,8 @@
-import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { CompactType, DisplayGrid, GridsterConfig, GridType } from 'angular-gridster2';
-import { EventsService } from '../../../core/services/events.service';
-import { FilterService } from '../../../core/services/filter.service';
 
 /**
  * Gridster Grid
@@ -20,33 +18,23 @@ export class GridsterComponent implements OnInit, AfterViewInit {
     tasks: { x: 0, y: 0, cols: 2, rows: 4, filters: [] },
     details: { x: 2, y: 0, cols: 4, rows: 4, fullscreen: false, open: false },
   };
-
-  static itemChange(item, itemComponent) {
-  }
-  onResize(item, itemComponent) {
-  }
-  onInit(girdster) {
-
-  }
-ngAfterViewInit(){
-  window.setTimeout(() => {
-    if (this.options.api) {
-      this.options.api.resize();
-    }
-  }, 1000);
-}
+  dir = 'ltr';
 
   @HostListener('window:focus', ['$event'])
+
+  /**
+   * on Window Focus event callback
+   * Notify gridster API to resize the grid.
+   */
   onFocus(event: any): void {
-    // Do something
     window.setTimeout(() => {
       if (this.options.api) {
         this.options.api.resize();
       }
     }, 350);
   }
-  constructor(public event: EventsService,
-    public filterStorage: FilterService,
+
+  constructor(
     private router: Router,
     private route: ActivatedRoute,
     public translate: TranslateService,
@@ -55,52 +43,70 @@ ngAfterViewInit(){
 
   }
 
+  /**
+   * Notify Gridster API of Options Change
+   */
   changedOptions() {
     if (this.options && this.options.api) {
       this.options.api.optionsChanged();
     }
   }
 
+  /**
+   * Swap Panels according to Direction
+   * @param dir
+   * Direction - rtl - ltr
+   */
   fixPanelsDirection(dir) {
     if (dir === 'rtl') {
+      this.dir = dir;
       this.panels.tasks.x = this.panels.details.cols;
       this.panels.details.x = 0;
     } else {
+      this.dir = 'ltr';
       this.panels.details.x = this.panels.tasks.cols;
       this.panels.tasks.x = 0;
     }
 
     this.changedOptions();
   }
+
+  /**
+   * On Gridster Item resize callback
+   * @param item
+   * Gridster Item
+   * @param itemComponent
+   * Gridster Item Component Interface
+   */
+  onItemResize(item, itemComponent) {
+
+  }
+
+  /**
+   * On Gridster init callback
+   * @param girdster
+   * Gridster Component
+   */
+  onInit(girdster) {
+
+  }
+  /**
+   * ngOnInit: on init assign gridster options
+   * subscribe to nav events
+   * subscribe to language changes
+   */
   ngOnInit() {
-    this.translate.get('dir').subscribe((data) => {
-      this.fixPanelsDirection(data);
-    });
-    this.translate.onLangChange.subscribe(lang => {
-      this.fixPanelsDirection(lang.translations.dir);
-    });
-
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (this.route.firstChild && this.route.firstChild.snapshot.params['taskId']) {
-          this.panels.details.open = true;
-        } else {
-          this.panels.details.open = false;
-
-        }
-      }
-    });
-
+    // gridster Config
     this.options = {
       initCallback: this.onInit,
-      itemResizeCallback: this.onResize,
+      itemResizeCallback: this.onItemResize,
       gridType: GridType.Fit,
       compactType: CompactType.CompactUpAndLeft,
       margin: 10,
-      outerMarginTop: 0,
-      outerMarginRight: 0,
-      outerMarginBottom: 0,
-      outerMarginLeft: 0,
+      outerMarginTop: 15,
+      outerMarginRight: 20,
+      outerMarginBottom: 15,
+      outerMarginLeft: 20,
       keepFixedHeightInMobile: false,
       keepFixedWidthInMobile: false,
       mobileBreakpoint: 740,
@@ -131,7 +137,25 @@ ngAfterViewInit(){
       disableWarnings: false,
       scrollToNewItems: false
     };
-    this.panels.details.open = false;
+
+    // fix direction for current language
+    this.translate.get('dir').subscribe((data) => {
+      this.fixPanelsDirection(data);
+    });
+    // fix direction on  language change
+    this.translate.onLangChange.subscribe(lang => {
+      this.fixPanelsDirection(lang.translations.dir);
+    });
   }
 
+  /**
+   * Afer View is init set timeout to resize gridster - Fix for Out of screen problem.
+   */
+  ngAfterViewInit() {
+    window.setTimeout(() => {
+      if (this.options.api) {
+        this.options.api.resize();
+      }
+    }, 1000);
+  }
 }

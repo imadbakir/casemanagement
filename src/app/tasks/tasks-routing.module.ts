@@ -5,6 +5,7 @@ import { TaskEditComponent } from './components/task-edit/task-edit.component';
 import { TasksComponent } from './tasks.component';
 import { HistoryTaskComponent } from './components/history-task/history-task.component';
 import { GridsterComponent } from './components/gridster/gridster.component';
+import { TaskEmptyComponent } from './components/task-empty/task-empty.component';
 
 /**
  * Tasks  Routing Module
@@ -22,6 +23,9 @@ const routes: Routes = [
           },
           {
             path: 'view/:taskId', component: HistoryTaskComponent,
+          },
+          {
+            path: '', component: TaskEmptyComponent,
           }
         ]
       }

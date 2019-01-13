@@ -8,10 +8,10 @@
       <p>{{task.description}}</p>
     </div>
     <ng-container *ngIf="!task.deleteReason">
-      <ion-badge color="light" size="medium" slot="end" [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
+      <ion-badge color="light" size="medium"   [hidden]="!task.created" [ngClass]="{'date-picker-badge':true }">
         <ion-icon color="dark" size="medium" name="create"></ion-icon>{{task.created | date}}
       </ion-badge>
-      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" slot="end" [ngClass]="{'date-picker-badge':true ,'due':true}">
+      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" [ngClass]="{'date-picker-badge':true ,'due':true}">
         <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{task.due ? (task.due
         | date ): 'Due' | translate}}
       </ion-badge>

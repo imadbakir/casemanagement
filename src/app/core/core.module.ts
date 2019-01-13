@@ -34,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     IonicModule.forRoot({
       mode: 'md',
       backButtonText: '',
-      menuType: 'overlay',
+      menuType: 'push',
       backButtonIcon: 'ios-arrow-back'
     }),
     AppRoutingModule,

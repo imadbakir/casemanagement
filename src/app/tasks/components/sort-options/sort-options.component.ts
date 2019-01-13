@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { EventsService } from '../../../core/services/events.service';
 

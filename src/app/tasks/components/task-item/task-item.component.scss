@@ -1,4 +1,6 @@
-
+:host:focus {
+  outline: 0px;
+}
 
 ion-card.card {
   cursor: pointer;
@@ -98,5 +100,5 @@ ion-card:focus {
   outline: 0px;
 }
 .active {
-  background: rgba(var(--ion-color-primary-rgb),0.15);
+  background: rgba(var(--ion-color-primary-rgb),0.18);
 }

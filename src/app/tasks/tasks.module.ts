@@ -21,6 +21,7 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { TaskEmptyComponent } from './components/task-empty/task-empty.component';
 
 
 
@@ -48,6 +49,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ProcessListComponent,
     FilterModalComponent,
     TaskEditComponent,
+    TaskEmptyComponent,
     TasksComponent,
     OnCreateDirective,
     GridsterComponent,

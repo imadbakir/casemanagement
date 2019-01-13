@@ -1,18 +1,18 @@
 <ion-header>
-    <ion-toolbar>
-      <app-header [title]="'CASE MANAGEMENT'"></app-header>
-      <ion-buttons slot="end">
-        <app-language-switch></app-language-switch>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <app-header [title]="'CASE MANAGEMENT'"></app-header>
+    <ion-buttons slot="end">
+      <app-language-switch></app-language-switch>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding>
   <ion-grid fixed>
     <ion-row>
       <ion-col>
         <div class="form-container">
-            <router-outlet></router-outlet>
-          </div>
+          <router-outlet></router-outlet>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,11 +1,3 @@
 <app-form *ngIf="form.ready" [formKey]="form.formKey" [resourceName]="form.resourceName" [resourceId]="form.resourceId"
-[readOnly]="form.readOnly" [version]="form.version" [executionVariables]="form.executionVariables" (customEvent)="onCustomEvent($event)" (submit)="onSubmit($event)"></app-form>
-
-<div text-center padding *ngIf="!task">
-  <ion-text>
-    <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
-    <h6 padding [ngStyle]="{ 'opacity': 0.5}">Please Choose a Task</h6>
-
-  </ion-text>
-
-</div>
+  [readOnly]="form.readOnly" [version]="form.version" [executionVariables]="form.executionVariables" (customEvent)="onCustomEvent($event)"
+  (submit)="onSubmit($event)"></app-form>

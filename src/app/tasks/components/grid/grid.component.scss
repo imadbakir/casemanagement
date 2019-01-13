@@ -1,31 +1,4 @@
-
-   .padding {
-     --overflow:overlay;
-     height:calc(100% - 56px);
-    --padding-top: 20px;
-    --padding-bottom: 20px;
-    --padding-start: 20px;
-    --padding-end: 20px;
-  }
-  
-  @media (max-width:740px) {
-    .padding {
-      height:calc(100%);
-      --padding-top: 0px;
-      --padding-bottom: 0px;
-      --padding-start: 0px;
-      --padding-end: 0px;
-    }
-    
-  }
-  @media (min-width:1550px) {
-    .padding[fixed] {
-      height:calc(100% - 56px);
-      --padding-top: 20px;
-      --padding-bottom: 20px;
-      --padding-start: 100px;
-      --padding-end: 100px;
-    }
-    
-  }
- 
+ion-content{
+  --background:var(--ion-color-light);
+  height:calc(100% - 49px);
+}

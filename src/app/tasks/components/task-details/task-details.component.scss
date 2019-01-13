@@ -1,47 +1,8 @@
-:host:hover,:host:focus-within {
-    ion-header {
-      ion-toolbar {
-        --opacity: 1;
-      }
-  
-      opacity: 1;
-    }
-  }
-  
-  
-  
-  ion-header {
-    opacity: 0.5;
-    transition: 0.3s;
-    ion-searchbar{
-      height:45px;
-    }
-    ion-toolbar {
-      --opacity: 0;
-      --min-height: 53px;
-  
-      ion-button {
-        --height: 23px;
-      }
-  
-      ion-title {
-        padding: 0 0px;
-        font-size: 16px;
-      }
-    }
-  }
-  
-  ion-spinner{
-    margin: 20% auto;
-    width: 100px;
-    display: block;
-    zoom: 2;
-  }
   ion-content{
-    height: calc(100% - 50px);
+    height: calc(100% - 49px);
   }
-  .notifications {
-    min-width: 22px;
-}
-  .toolbar-container {}
+  ion-toolbar{
+    --background:var(--ion-color-light);
+  }
+ 
   

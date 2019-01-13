@@ -17,6 +17,10 @@
 @import "~@ionic/angular/css/ionic.bundle.css";
 @import "~@ionic/angular/css/utils.bundle.css";
 
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Cairo:400,700&subset=arabic');
+
 $app-direction: multi;
 
 .popover {
@@ -46,27 +50,41 @@ $app-direction: multi;
   border-left: 5px solid rgba(var(--ion-color-warning-rgb), 0.8);
 }
 
-.toolbar-round {
-  padding: 0px;
-  border-radius: 20px;
-}
 
 .split-pane-ios.split-pane-visible>.split-pane-side {
-  max-width: 275px !important;
+  max-width: 235px !important;
+  min-width: 235px !important;
   border-right: 1px solid var(--list-ios-border-color);
 }
 
 .split-pane-md.split-pane-visible>.split-pane-side {
-  max-width: 275px !important;
+  max-width: 235px !important;
+  min-width: 235px !important;
   border-right: 1px solid var(--list-ios-border-color);
   transition: 0.5s;
 }
 
 .split-pane-wp.split-pane-visible>.split-pane-side {
-  max-width: 275px !important;
+  max-width: 235px !important;
   border-right: 1px solid var(--list-ios-border-color);
 }
+.scroll-y::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(var(--ion-color-secondary-rgb),0.3);
+    background-color: #F5F5F5;
+}
 
+.scroll-y::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.scroll-y::-webkit-scrollbar-thumb
+{
+    background-color:rgba(var(--ion-color-primary-rgb),1);
+    border: 2px solid #555555;
+}
 @media (min-width: 1550px) {
   ion-header[fixed] {
     ion-toolbar {
@@ -76,13 +94,7 @@ $app-direction: multi;
     }
   }
 }
-.loading{
-  --spinner-color:var(--ion-color-secondary);
-}
-.profile-container {
-  text-align: center;
-  margin: 40px 0px;
-}
+
 
 .photo-container {
   overflow: hidden;
@@ -91,7 +103,7 @@ $app-direction: multi;
   border-radius: 100%;
   height: 170px;
   text-align: center;
-  background: url('assets/img/userplaceholder.jpg');
+  background: url('assets/img/userplaceholder.png');
   background-size: cover;
   background-position: center center;
   &.mini-avatar{
@@ -109,18 +121,6 @@ $app-direction: multi;
   float: none;
 }
 
-.menu-item {
-  text-transform: uppercase;
-}
-
-.notifications {
-  padding: 4px;
-  border-radius: 100%;
-}
-
-.note-md {
-  color: #777777;
-}
 .visible-xs{
   display:none;
 }
@@ -131,4 +131,97 @@ $app-direction: multi;
   .visible-xs{
     display: block;
   }
+}
+ion-toolbar{
+  --min-height:49px;
+}
+ion-item{
+  cursor: pointer;
+}
+ion-item:hover{
+  opacity: 0.8;
+}
+
+html[dir="rtl"] {
+  --font-family-md-base: 'Cairo', sans-serif;
+  --font-family-ios-base: 'Cairo', sans-serif;
+  --font-family-wp-base: 'Cairo', sans-serif;
+  --ion-font-family: 'Cairo', sans-serif !important;
+
+  body {
+    text-align: right;
+  }
+
+  h3 ion-badge {
+    float: left !important;
+  }
+
+  .photo-container.mini-avatar {
+    float: left;
+  }
+
+  .selected-green {
+    transition: 0.5s;
+    border-right: 0px solid rgba(var(--ion-color-success-rgb), 1);
+    border-left: 0px !important;
+    border-width: 15px;
+  }
+
+  .app-bg-danger {
+    border-right: 5px solid rgba(var(--ion-color-danger-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .app-bg-primary {
+    border-right: 5px solid rgba(var(--ion-color-primary-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .app-bg-secondary {
+    border-right: 5px solid rgba(var(--ion-color-secondary-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .app-bg-warning {
+    border-right: 5px solid rgba(var(--ion-color-warning-rgb), 0.8) !important;
+    border-left: 0px !important;
+  }
+
+  .formio-form {
+    direction: rtl !important;
+  }
+  .col-sm-push-8{
+    right: 66.6666666667%;
+    left:auto;
+  }
+  .alert-radio-icon{
+    right:15px;
+    left: auto;
+  }
+   .form-check{
+    padding-left:0px;
+    padding-right:1.25rem;
+  }
+  .form-check-input {
+    margin-right: -1.25rem;
+    margin-left:0px;  
+  }
+  #formio dd{
+    margin-right: 0;
+  }
+[slot=end]{
+    margin-left:0px;
+    margin-right: 32px;
+  }
+ion-icon[slot=start] {
+    margin: 0 -.3em 0 .3em;
+}
+.date-picker-badge {
+  &.due {
+    float: left;
+  }
+}
+}
+.col-sm-push-8{
+  left: 66.6666666667%;
 }

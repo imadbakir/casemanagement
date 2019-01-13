@@ -1,9 +1,31 @@
-<ion-split-pane when="(min-width: 1300px)">
-  <!--  our side menu  -->
-  <ion-menu menu-id="start">
-    <app-filters-menu></app-filters-menu>
-  </ion-menu>
+<ion-app>
+  <ion-split-pane when="(min-width: 1300px)" contentId="menu-content">
+    <!--  side menu  -->
+    <ion-menu contentId="menu-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>CASE MANAGEMENT</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <app-filters-menu></app-filters-menu>
+      </ion-content>
+      <ion-footer>
+        <ion-item color="primary" (click)="userOptions($event)">
+          <ion-label no-margin>
+            <h2>{{auth.getUser()?.profile.firstName}} {{auth.getUser()?.profile.lastName}}</h2>
+            <p>
+              <span *ngFor="let group of auth.getUser()?.groups">{{group.name | translate}} </span>
+            </p>
+          </ion-label>
+          <ion-avatar slot="end">
+            <img src="/assets/img/userplaceholder.png">
+          </ion-avatar>
+        </ion-item>
+      </ion-footer>
+    </ion-menu>
 
-  <!-- the main content -->
-  <app-grid main></app-grid>
-</ion-split-pane>
+    <!-- the main content -->
+    <app-grid id="menu-content"></app-grid>
+  </ion-split-pane>
+</ion-app>

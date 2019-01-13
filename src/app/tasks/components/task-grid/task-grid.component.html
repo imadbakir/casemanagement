@@ -1,8 +1,9 @@
-<ion-header override>
+<ion-header no-border>
 
   <ion-toolbar>
     <ion-searchbar mode="ios" [placeholder]="'Search' | translate" slot="start" [(ngModel)]="filter.textSearch"
       [showCancelButton]="true" (ionInput)="search($event)" (ionClear)="clearSearch($event)" (ionCancel)="search($event)"></ion-searchbar>
+
     <ion-buttons slot="end">
       <ion-button small (click)="sortOptions($event)">
         <ion-icon size="small" slot="icon-only" name="funnel"></ion-icon>
@@ -11,10 +12,11 @@
         <ion-icon size="small" slot="start" name="move"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title></ion-title>
+
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <formio-loader></formio-loader>
   <ion-grid no-padding>
     <ion-row>
       <ion-col>
@@ -24,10 +26,9 @@
             <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"No Tasks." | translate}}</h6>
           </ion-text>
         </div>
-        <formio-loader></formio-loader>
         <ion-list>
-          <app-task-item *ngFor="let task of tasks;trackBy: trackTask" [routerLink]="[viewType, task.id]" routerLinkActive #rla="routerLinkActive"
-            [active]="rla.isActive" [task]="task"></app-task-item>
+          <app-task-item *ngFor="let task of tasks;trackBy: trackTask" [routerLink]="[viewType, task.id]"
+            routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" [task]="task"></app-task-item>
         </ion-list>
         <ion-infinite-scroll threshold="90px" (ionInfinite)="fetchTasks()">
           <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Loading more Tasks...' | translate">

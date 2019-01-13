@@ -45,20 +45,6 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
 
 
   /**
-   * Open User Options Popover.
-   * @param event
-   * Click Even
-   */
-  async userOptions(event) {
-    event.stopPropagation();
-    const popover = await this.popoverCtrl.create({
-      component: UserOptionsComponent,
-      event: event
-    });
-    return await popover.present();
-  }
-
-  /**
    * Open Filter Options Popover.
    * @param event
    *  Click Event

@@ -1,17 +1,15 @@
 <ion-header fixed>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="start"></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-
     <ion-title>{{'Tasks' | translate}}</ion-title>
     <ion-buttons slot="end">
       <app-language-switch></app-language-switch>
-      <!--  <app-notifications-button></app-notifications-button> -->
       <app-add-request-button></app-add-request-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [ngClass]="{'padding': true}" fixed>
+<ion-content>
   <router-outlet></router-outlet>
 </ion-content>

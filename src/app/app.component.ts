@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
+import { fromEvent, merge, Observable, of } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
 import { EventsService } from './core/services/events.service';
-import { NavController, ToastController } from '@ionic/angular';
-import { Observable, merge, fromEvent, of } from 'rxjs';
-import { mapTo } from 'rxjs/operators';
 
 /**
  * Main App Component
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
     public translate: TranslateService,
     public toastController: ToastController,
     private router: Router,
-    private nav: NavController,
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
     this.online$ = merge(
       of(navigator.onLine),
@@ -73,16 +72,7 @@ export class AppComponent implements OnInit {
    * @param dir
    */
   fixDom(dir) {
-    /* const columns = document.getElementsByClassName('formio-component-columns');
-     const headers = document.getElementsByClassName('header');
-     for (let i = 0; i < columns.length; i++) {
-       columns[i].setAttribute('dir', dir);
-     }
-     for (let i = 0; i < headers.length; i++) {
-       headers[i].setAttribute('dir', dir);
-     } */
     document.documentElement.setAttribute('dir', dir);
-
   }
   /**
    * ngOnInit:
