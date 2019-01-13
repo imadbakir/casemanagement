@@ -1,15 +1,15 @@
 <ion-header no-border>
 
   <ion-toolbar>
-    <ion-searchbar mode="ios" [placeholder]="'Search' | translate" slot="start" [(ngModel)]="filter.textSearch"
-      [showCancelButton]="true" (ionInput)="search($event)" (ionClear)="clearSearch($event)" (ionCancel)="search($event)"></ion-searchbar>
+    <ion-searchbar mode="ios" [placeholder]="'Search' | translate" [(ngModel)]="filter.textSearch" [showCancelButton]="false"
+      (ionInput)="search($event)" (ionClear)="clearSearch($event)" (ionCancel)="search($event)"></ion-searchbar>
 
     <ion-buttons slot="end">
-      <ion-button small (click)="sortOptions($event)">
-        <ion-icon size="small" slot="icon-only" name="funnel"></ion-icon>
+      <ion-button small (click)="sortOptions($event)" slot="icon-only">
+        <ion-icon size="small" name="funnel"></ion-icon>
       </ion-button>
-      <ion-button small [ngClass]="'move-handle hide-xs'">
-        <ion-icon size="small" slot="start" name="move"></ion-icon>
+      <ion-button small [ngClass]="'move-handle hide-xs'" slot="icon-only">
+        <ion-icon size="small" name="move"></ion-icon>
       </ion-button>
     </ion-buttons>
 
