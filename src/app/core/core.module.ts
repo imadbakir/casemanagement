@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { MenuComponent } from './components/menu/menu.component';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
 import { AppRoutingModule } from './core-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
@@ -25,6 +27,8 @@ export function createTranslateLoader(http: HttpClient) {
  * App Core Module - Essential Modules, Providers and services
  */
 @NgModule({
+  declarations: [MenuComponent, UserOptionsComponent],
+  entryComponents: [UserOptionsComponent],
   imports: [
     StorageServiceModule,
     HttpClientModule,
@@ -53,7 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthGuard,
     EventsService,
     CamundaRestService,
-    ExternalService
+    ExternalService,
   ],
   exports: [
     IonicModule,

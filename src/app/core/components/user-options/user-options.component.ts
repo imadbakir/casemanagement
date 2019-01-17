@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavParams, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from '../../../core/services/auth.service';
-import { EventsService } from '../../../core/services/events.service';
+import { AuthService } from '../../services/auth.service';
+import { EventsService } from '../../services/events.service';
 
 /**
  * User Options Popover Menu.

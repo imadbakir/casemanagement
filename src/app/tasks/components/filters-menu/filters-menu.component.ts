@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { CamundaRestService } from '../../../core/services/camunda-rest.service';
 import { EventsService } from '../../../core/services/events.service';
-import { UserOptionsComponent } from '../../../shared/components/user-options/user-options.component';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { FilterOptionsComponent } from '../filter-options/filter-options.component';
 
@@ -110,6 +109,8 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
   }
 
   openFilter(filterId) {
+    // this.router.navigate([{ outlets: { tasks: ['tasks', filterId] } }]);
+    // this.router.navigate(['tasks', filterId]);
     this.router.navigate(['tasks', filterId]);
   }
 

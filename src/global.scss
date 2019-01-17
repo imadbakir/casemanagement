@@ -28,10 +28,10 @@ $app-direction: multi;
   background: transparent;
 }
 
-.selected-green {
+.selected {
+  --background: rgba(var(--ion-color-primary-rgb),0.08);
   transition: 0.5s;
-  border-left: 0px solid rgba(var(--ion-color-success-rgb), 1);
-  border-width: 15px;
+
 }
 
 .app-bg-danger {
@@ -54,19 +54,19 @@ $app-direction: multi;
 .split-pane-ios.split-pane-visible>.split-pane-side {
   max-width: 235px !important;
   min-width: 235px !important;
-  border-right: 1px solid var(--list-ios-border-color);
+  border-right: 1px solid var(--ion-color-light-shade);
 }
 
 .split-pane-md.split-pane-visible>.split-pane-side {
   max-width: 235px !important;
   min-width: 235px !important;
-  border-right: 1px solid var(--list-ios-border-color);
+  border-right: 1px solid var(--ion-color-light-shade);
   transition: 0.5s;
 }
 
 .split-pane-wp.split-pane-visible>.split-pane-side {
   max-width: 235px !important;
-  border-right: 1px solid var(--list-ios-border-color);
+  border-right: 1px solid var(--ion-color-light-shade);
 }
 .scroll-y::-webkit-scrollbar-track
 {
@@ -160,30 +160,20 @@ html[dir="rtl"] {
     float: left;
   }
 
-  .selected-green {
-    transition: 0.5s;
-    border-right: 0px solid rgba(var(--ion-color-success-rgb), 1);
-    border-left: 0px !important;
-    border-width: 15px;
-  }
 
   .app-bg-danger {
-    border-right: 5px solid rgba(var(--ion-color-danger-rgb), 0.8) !important;
     border-left: 0px !important;
   }
 
   .app-bg-primary {
-    border-right: 5px solid rgba(var(--ion-color-primary-rgb), 0.8) !important;
     border-left: 0px !important;
   }
 
   .app-bg-secondary {
-    border-right: 5px solid rgba(var(--ion-color-secondary-rgb), 0.8) !important;
     border-left: 0px !important;
   }
 
   .app-bg-warning {
-    border-right: 5px solid rgba(var(--ion-color-warning-rgb), 0.8) !important;
     border-left: 0px !important;
   }
 
@@ -220,6 +210,17 @@ ion-icon[slot=start] {
   &.due {
     float: left;
   }
+}
+.split-pane-ios.split-pane-visible>.split-pane-side {
+  border-right:0px; 
+}
+
+.split-pane-md.split-pane-visible>.split-pane-side {
+  border-right:0px; 
+}
+
+.split-pane-wp.split-pane-visible>.split-pane-side {
+  border-right:0px; 
 }
 }
 .col-sm-push-8{

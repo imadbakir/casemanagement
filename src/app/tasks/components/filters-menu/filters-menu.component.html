@@ -1,4 +1,9 @@
 <ion-list lines="full">
+  <ion-list-header>
+    <ion-label color="secondary">
+      {{'Filters' | translate}}
+    </ion-label>
+  </ion-list-header>
   <ion-item (click)="presentFilter()">
     <ion-label text-wrap>
       <ion-text>
@@ -14,7 +19,7 @@
     </ion-buttons>
   </ion-item>
   <ion-item *ngFor="let filter of filters" [ngStyle]="{'opacity': filter.count == 0 ? '0.5':''}" [routerLink]="[filter.id]"
-    (click)="closeMenu()" routerLinkActive="selected-green">
+    (click)="closeMenu()" routerLinkActive="selected">
     <ion-label text-wrap>
       <ion-text>
         <h3 appOnCreate (OnCreateDirective)="getFilterCount(filter)">
@@ -29,7 +34,7 @@
       </ion-button>
     </ion-buttons>
   </ion-item>
-  <ion-item [routerLink]="['history']" (click)="closeMenu()" routerLinkActive="selected-green">
+  <ion-item [routerLink]="['history']" (click)="closeMenu()" routerLinkActive="selected">
     <ion-label text-wrap>
       <ion-text>
         <h3>

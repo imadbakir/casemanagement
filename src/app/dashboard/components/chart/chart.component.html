@@ -1,0 +1,10 @@
+<ion-card-header *ngIf="title" text-center>
+    <ion-card-subtitle>{{title | translate}}</ion-card-subtitle>
+</ion-card-header>
+<ion-card-content>
+    <div style="display: block">
+        <h4 ion-text class="count" [ngStyle]="{'color': data.datasets[0].backgroundColor[0]}" *ngIf="chartType === 'doughnut' && data.datasets.length === 1 && data.datasets[0].data.length === 1">{{data.datasets[0].data[0]}}</h4>
+        <canvas height="200" #chart>
+        </canvas>
+    </div>
+</ion-card-content>

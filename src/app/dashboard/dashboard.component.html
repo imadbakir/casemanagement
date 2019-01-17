@@ -1,0 +1,79 @@
+<ion-header fixed>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'Dashboard' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <app-language-switch></app-language-switch>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{'Daily' | translate}}</ion-card-title>
+          </ion-card-header>
+          <ion-row>
+            <ion-col *ngFor="let chart of charts.daily" size-xs="12" size-sm="6" size-md="4" size-lg="3" size-xl="3">
+              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+              </app-chart>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{'Weekly / Monthly' | translate}}</ion-card-title>
+          </ion-card-header>
+          <ion-row>
+            <ion-col *ngFor="let chart of charts.weeklyMonthly" size-xs="12" size-sm="6" size-md="6" size-lg="6"
+              size-xl="6">
+              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+              </app-chart>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{'Total' | translate}}</ion-card-title>
+          </ion-card-header>
+          <ion-row>
+            <ion-col *ngFor="let chart of charts.total" size-xs="12" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+              </app-chart>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{'Will be late soon' | translate}}</ion-card-title>
+          </ion-card-header>
+          <ion-row>
+            <ion-col *ngFor="let chart of charts.toBeLate" size="12">
+              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+              </app-chart>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -6,11 +6,18 @@ import { TasksComponent } from './tasks.component';
 import { HistoryTaskComponent } from './components/history-task/history-task.component';
 import { GridsterComponent } from './components/gridster/gridster.component';
 import { TaskEmptyComponent } from './components/task-empty/task-empty.component';
+import { FiltersMenuComponent } from './components/filters-menu/filters-menu.component';
 
 /**
  * Tasks  Routing Module
  */
 const routes: Routes = [
+  {
+    path: '', component: FiltersMenuComponent, outlet: 'side-menu'
+  },
+  {
+    path: ':filterId', component: FiltersMenuComponent, outlet: 'side-menu'
+  },
   {
     path: '', component: TasksComponent,
     children: [

@@ -1,0 +1,47 @@
+<ion-split-pane when="(min-width: 1300px)" contentId="main-outlet">
+    <!--  side menu  -->
+    <ion-menu contentId="main-outlet">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>{{'app_title' | translate}}</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+
+            <ion-list lines="none">
+                <ion-list-header>
+                    <ion-label color="primary"> {{'Main Menu' | translate}}</ion-label>
+                </ion-list-header>
+                <ion-item *ngFor="let item of menu" [routerLink]="[item.path]" (click)="closeMenu()" routerLinkActive="selected">
+                    <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                    <ion-label text-wrap>
+                        <ion-text uppercase>
+                            <h3>
+                                {{item.title | translate}}
+                            </h3>
+                        </ion-text>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+            <router-outlet name="side-menu"></router-outlet>
+        </ion-content>
+        <ion-footer>
+            <ion-item color="primary" (click)="userOptions($event)">
+                <ion-label no-margin>
+                    <h2>{{auth.getUser()?.profile.firstName}} {{auth.getUser()?.profile.lastName}}</h2>
+                    <p>
+                        <span *ngFor="let group of auth.getUser()?.groups">{{group.name | translate}} </span>
+                    </p>
+                </ion-label>
+                <ion-avatar slot="end">
+                    <img src="/assets/img/userplaceholder.png">
+                </ion-avatar>
+            </ion-item>
+        </ion-footer>
+    </ion-menu>
+
+    <!-- the main content -->
+    <div id="main-outlet">
+        <router-outlet></router-outlet>
+    </div>
+</ion-split-pane>

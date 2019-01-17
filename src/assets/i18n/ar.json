@@ -1,6 +1,8 @@
 {
   "dir": "rtl",
+  "app_title": "إدارة المهام",
   "Tasks": "المهمات",
+  "Dashboard": "الرئيسية",
   "SAVE": "حفظ",
   "Description": "الوصف",
   "Priority": "الأهمية",
@@ -148,6 +150,6 @@
   "All Tasks": "جميع المهمات",
   "Edit": "تعديل",
   "Delete": "حذف",
-  "Loading more Tasks...":"يتم تحميل المزيد...",
+  "Loading more Tasks...": "يتم تحميل المزيد...",
   "Please Choose a Task": "رجاءً قم باختيار مهمة"
 }

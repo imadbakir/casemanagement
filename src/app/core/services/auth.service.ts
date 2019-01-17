@@ -1,5 +1,6 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
+import { isArray } from 'util';
 const STORAGE_KEY = 'LoggedInUser';
 /**
  * Auth Service
@@ -28,10 +29,21 @@ export class AuthService {
   getUser() {
     return this.storage.get(STORAGE_KEY);
   }
+
+  /**
+   * Checks if a user has a role, returns boolean
+   */
+  hasRole(role) {
+    const hasRole = this.getUser().groups.some(function (group) {
+      return isArray(this.appHasRole) ?
+        this.appHasRole.includes(role.id) : group.id === this.appHasRole;
+    });
+    return hasRole;
+  }
   /**
    * Return true if user object is not null
    */
-  isLoggednIn() {
+  isLoggedIn() {
     return this.getUser() !== null;
   }
   /**

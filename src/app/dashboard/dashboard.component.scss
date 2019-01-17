@@ -1,7 +1,3 @@
-ion-content{
-  --background:var(--ion-color-light);
-  height:calc(100% - 49px);
-}
  app-grid {
     width: 100%;
   }
@@ -9,4 +5,10 @@ ion-content{
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1) !important;
     z-index: 999;
 }
- 
+ ion-content{
+   height: calc(100vh - 49px);
+  --background:var(--ion-color-light);
+ }
+ ion-card{
+   --background:#fff;
+ }
