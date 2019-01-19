@@ -18,7 +18,8 @@
       </ion-button>
     </ion-buttons>
   </ion-item>
-  <ion-item *ngFor="let filter of filters" [ngStyle]="{'opacity': filter.count == 0 ? '0.5':''}" [routerLink]="[filter.id]"
+  <ion-item *ngFor="let filter of filters" [ngStyle]="{'opacity': filter.count == 0 ? '0.5':''}" 
+  [routerLink]="['/tasks',{outlets:{primary:[filter.id],sidemenu:['filter',filter.id]}}]"
     (click)="closeMenu()" routerLinkActive="selected">
     <ion-label text-wrap>
       <ion-text>
@@ -34,7 +35,7 @@
       </ion-button>
     </ion-buttons>
   </ion-item>
-  <ion-item [routerLink]="['history']" (click)="closeMenu()" routerLinkActive="selected">
+  <ion-item [routerLink]="['/tasks',{outlets:{primary:['history'],sidemenu:['filter','history']}}]" routerLinkActive="selected">
     <ion-label text-wrap>
       <ion-text>
         <h3>

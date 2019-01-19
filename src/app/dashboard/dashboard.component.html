@@ -13,65 +13,57 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{'Daily' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-row>
-            <ion-col *ngFor="let chart of charts.daily" size-xs="12" size-sm="6" size-md="4" size-lg="3" size-xl="3">
-              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
-              </app-chart>
-            </ion-col>
-          </ion-row>
-        </ion-card>
+        <ion-card-header>
+          <ion-card-title>{{'Daily' | translate}}</ion-card-title>
+        </ion-card-header>
+        <ion-row>
+          <ion-col *ngFor="let chart of charts.daily" [attr.size-xs]="6" [attr.size-sm]="(12 / charts.daily.length < 4 ? 4 : 12 / charts.daily.length)"
+            [attr.size-lg]="(12 / charts.daily.length < 2.4 ? 2.4 : 12 / charts.daily.length)">
+            <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+            </app-chart>
+          </ion-col>
+        </ion-row>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{'Weekly / Monthly' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-row>
-            <ion-col *ngFor="let chart of charts.weeklyMonthly" size-xs="12" size-sm="6" size-md="6" size-lg="6"
-              size-xl="6">
-              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
-              </app-chart>
-            </ion-col>
-          </ion-row>
-        </ion-card>
+        <ion-card-header>
+          <ion-card-title>{{'Weekly / Monthly' | translate}}</ion-card-title>
+        </ion-card-header>
+        <ion-row>
+          <ion-col *ngFor="let chart of charts.weeklyMonthly" size-xs="12" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+            <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+            </app-chart>
+          </ion-col>
+        </ion-row>
 
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{'Total' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-row>
-            <ion-col *ngFor="let chart of charts.total" size-xs="12" size-sm="6" size-md="6" size-lg="6" size-xl="6">
-              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
-              </app-chart>
-            </ion-col>
-          </ion-row>
-        </ion-card>
+        <ion-card-header>
+          <ion-card-title>{{'Total' | translate}}</ion-card-title>
+        </ion-card-header>
+        <ion-row>
+          <ion-col *ngFor="let chart of charts.total" size-xs="12" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+            <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+            </app-chart>
+          </ion-col>
+        </ion-row>
 
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{'Will be late soon' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-row>
-            <ion-col *ngFor="let chart of charts.toBeLate" size="12">
-              <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
-              </app-chart>
-            </ion-col>
-          </ion-row>
-        </ion-card>
+        <ion-card-header>
+          <ion-card-title>{{'Will be late soon' | translate}}</ion-card-title>
+        </ion-card-header>
+        <ion-row>
+          <ion-col *ngFor="let chart of charts.toBeLate" size="12">
+            <app-chart [title]="chart.title" [data]="chart.data" [options]="chart.options" [chartType]="chart.type">
+            </app-chart>
+          </ion-col>
+        </ion-row>
 
       </ion-col>
     </ion-row>

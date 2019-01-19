@@ -28,7 +28,7 @@ const routes: Routes = [
         loadChildren:
           '../tasks/tasks.module#TasksModule',
         canActivate: [AuthGuard]
-      },
+      }
     ]
   },
 

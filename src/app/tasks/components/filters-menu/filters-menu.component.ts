@@ -109,11 +109,13 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
   }
 
   openFilter(filterId) {
-    // this.router.navigate([{ outlets: { tasks: ['tasks', filterId] } }]);
-    // this.router.navigate(['tasks', filterId]);
-    this.router.navigate(['tasks', filterId]);
+    this.router.navigate(['/tasks', { outlets: { primary: [filterId], sidemenu: ['filter', filterId] } }]);
   }
 
+
+  /**
+   * Closes Menu
+   */
   closeMenu() {
     this.menuController.close();
   }
@@ -140,12 +142,15 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
       .subscribe((event) => {
         this.camundaService.getFilters({ owner: this.auth.getUser().username }).subscribe((filters) => {
           this.filters = filters;
+          this.route.params.subscribe(params => {
+            if (params.filterId === 'default' && this.filters.length > 0) {
+              this.openFilter(this.filters[0].id);
+            }
+          }).unsubscribe();
           if (filters.length === 0) {
             this.createDefaultFilter();
           }
-          if (this.route.children.length === 0 && this.filters.length > 0) {
-            this.openFilter(this.filters[0].id);
-          }
+
         });
       });
     this.event.announceFiltersRefresh('refresh');

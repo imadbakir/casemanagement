@@ -203,8 +203,12 @@ html[dir="rtl"] {
     margin-left:0px;
     margin-right: 32px;
   }
-ion-icon[slot=start] {
+ion-button ion-icon[slot=start] {
     margin: 0 -.3em 0 .3em;
+}
+ion-list-header{
+  padding-left:0px;
+  padding-right: calc(var(--ion-safe-area-left, 0px) + 16px);
 }
 .date-picker-badge {
   &.due {

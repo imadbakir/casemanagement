@@ -147,6 +147,14 @@ export class DashboardComponent implements OnInit {
           title: 'New Requests',
           roles: [],
           options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
             legend: {
               display: true
             },
@@ -158,31 +166,39 @@ export class DashboardComponent implements OnInit {
             responsive: true,
 
           },
-          type: 'bar',
+          type: 'line',
           data: {
             labels: ['1/1/2019', '2/1/2019', '3/1/2019', '4/1/2019', '5/1/2019', '6/1/2019', '7/1/2019'],
             datasets: [{
               label: 'Al-dammam',
               borderWidth: 1,
               data: [15, 2, 25, 15, 6, 55, 9],
+              borderColor: this.colors[0],
               backgroundColor: this.colors[0],
+              fill: false,
             }, {
               label: 'Al-riyad',
               borderWidth: 1,
               data: [5, 12, 35, 5, 16, 45, 3],
+              borderColor: this.colors[1],
               backgroundColor: this.colors[1],
+              fill: false,
             },
             {
               label: 'Jeddah',
               borderWidth: 1,
               data: [9, 22, 15, 15, 26, 25, 43],
+              borderColor: this.colors[2],
               backgroundColor: this.colors[2],
+              fill: false
             },
             {
               label: 'Alshamal',
               borderWidth: 1,
               data: [4, 2, 35, 4, 26, 35, 13],
+              borderColor: this.colors[3],
               backgroundColor: this.colors[3],
+              fill: false
             }]
 
           }
@@ -191,6 +207,14 @@ export class DashboardComponent implements OnInit {
           title: 'New Tasks',
           roles: [],
           options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
             legend: {
               display: true
             },
@@ -202,7 +226,7 @@ export class DashboardComponent implements OnInit {
             responsive: true,
 
           },
-          type: 'bar',
+          type: 'line',
           data: {
             labels: ['1/1/2019', '2/1/2019', '3/1/2019', '4/1/2019', '5/1/2019', '6/1/2019', '7/1/2019'],
             datasets: [{
@@ -210,23 +234,31 @@ export class DashboardComponent implements OnInit {
               borderWidth: 1,
               data: [15, 2, 25, 15, 6, 55, 9],
               backgroundColor: this.colors[0],
+              borderColor: this.colors[0],
+              fill: false,
             }, {
               label: 'Al-riyad',
               borderWidth: 1,
               data: [5, 12, 35, 5, 16, 45, 3],
               backgroundColor: this.colors[1],
+              borderColor: this.colors[1],
+              fill: false,
             },
             {
               label: 'Jeddah',
               borderWidth: 1,
               data: [9, 22, 15, 15, 26, 25, 43],
               backgroundColor: this.colors[2],
+              borderColor: this.colors[2],
+              fill: false,
             },
             {
               label: 'Alshamal',
               borderWidth: 1,
               data: [4, 2, 35, 4, 26, 35, 13],
               backgroundColor: this.colors[3],
+              borderColor: this.colors[3],
+              fill: false,
             }]
 
           }
@@ -235,6 +267,14 @@ export class DashboardComponent implements OnInit {
           title: 'Requests Count',
           roles: [],
           options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
             legend: {
               display: true
             },
@@ -246,31 +286,39 @@ export class DashboardComponent implements OnInit {
             responsive: true,
 
           },
-          type: 'bar',
+          type: 'line',
           data: {
             labels: ['1/1/2019', '2/1/2019', '3/1/2019', '4/1/2019', '5/1/2019', '6/1/2019', '7/1/2019'],
             datasets: [{
               label: 'New',
               borderWidth: 1,
               data: [15, 2, 25, 15, 6, 55, 9],
+              borderColor: this.themeColors['warning'],
               backgroundColor: this.themeColors['warning'],
+              fill: false,
             }, {
               label: 'Late',
               borderWidth: 1,
               data: [5, 12, 35, 5, 16, 45, 3],
+              borderColor: this.themeColors['danger'],
               backgroundColor: this.themeColors['danger'],
+              fill: false,
             },
             {
               label: 'Completed',
               borderWidth: 1,
               data: [9, 22, 15, 15, 26, 25, 43],
+              borderColor: this.themeColors['success'],
               backgroundColor: this.themeColors['success'],
+              fill: false,
             },
             {
               label: 'In Progress',
               borderWidth: 1,
               data: [4, 2, 35, 4, 26, 35, 13],
+              borderColor: this.themeColors['primary'],
               backgroundColor: this.themeColors['primary'],
+              fill: false
             }]
 
           }
@@ -279,6 +327,14 @@ export class DashboardComponent implements OnInit {
           title: 'Tasks Count',
           roles: [],
           options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
             legend: {
               display: true
             },
@@ -290,26 +346,32 @@ export class DashboardComponent implements OnInit {
             responsive: true,
 
           },
-          type: 'bar',
+          type: 'line',
           data: {
             labels: ['1/1/2019', '2/1/2019', '3/1/2019', '4/1/2019', '5/1/2019', '6/1/2019', '7/1/2019'],
             datasets: [{
               label: 'Late',
               borderWidth: 1,
               data: [5, 12, 35, 5, 16, 45, 3],
+              borderColor: this.themeColors['danger'],
               backgroundColor: this.themeColors['danger'],
+              fill: false
             },
             {
               label: 'Completed',
               borderWidth: 1,
               data: [9, 22, 15, 15, 26, 25, 43],
+              borderColor: this.themeColors['success'],
               backgroundColor: this.themeColors['success'],
+              fill: false
             },
             {
               label: 'In Progress',
               borderWidth: 1,
               data: [4, 2, 35, 4, 26, 35, 13],
+              borderColor: this.themeColors['primary'],
               backgroundColor: this.themeColors['primary'],
+              fill: false
             }]
 
           }

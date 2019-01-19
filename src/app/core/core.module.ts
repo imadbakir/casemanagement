@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -34,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot({
       mode: 'md',
       backButtonText: '',
@@ -61,7 +61,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   exports: [
     IonicModule,
-    RouterModule
+    RouterModule,
+    MenuComponent
   ],
 })
 export class CoreModule { }

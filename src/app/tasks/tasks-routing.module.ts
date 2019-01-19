@@ -7,16 +7,25 @@ import { HistoryTaskComponent } from './components/history-task/history-task.com
 import { GridsterComponent } from './components/gridster/gridster.component';
 import { TaskEmptyComponent } from './components/task-empty/task-empty.component';
 import { FiltersMenuComponent } from './components/filters-menu/filters-menu.component';
+import { TasksMenuComponent } from './components/tasks-menu/tasks-menu.component';
 
 /**
  * Tasks  Routing Module
  */
 const routes: Routes = [
   {
-    path: '', component: FiltersMenuComponent, outlet: 'side-menu'
+    path: '', outlet: 'sidemenu', redirectTo: 'filter/default', pathMatch: 'full'
   },
   {
-    path: ':filterId', component: FiltersMenuComponent, outlet: 'side-menu'
+    path: 'filter', outlet: 'sidemenu', component: TasksMenuComponent,
+    children: [
+      {
+        path: ':filterId', component: FiltersMenuComponent
+      },
+      {
+        path: '', component: FiltersMenuComponent
+      }
+    ]
   },
   {
     path: '', component: TasksComponent,
