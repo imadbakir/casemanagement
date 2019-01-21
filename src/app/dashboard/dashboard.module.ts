@@ -9,7 +9,7 @@ import { ChartComponent } from './components/chart/chart.component';
 
 
 /**
- * Tasks Dashlet Module
+ * Dashboard Dashlet Module
  */
 @NgModule({
   imports: [
