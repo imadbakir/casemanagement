@@ -21,6 +21,7 @@ import { TasksComponent } from './tasks.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TaskEmptyComponent } from './components/task-empty/task-empty.component';
 import { TasksMenuComponent } from './components/tasks-menu/tasks-menu.component';
+import { ProcessModalComponent } from './components/process-modal/process-modal.component';
 
 
 
@@ -40,8 +41,9 @@ import { TasksMenuComponent } from './components/tasks-menu/tasks-menu.component
     FormModule,
     ScrollingModule
   ],
-  entryComponents: [FilterOptionsComponent, ProcessListComponent, FilterModalComponent, SortOptionsComponent],
+  entryComponents: [ProcessModalComponent, FilterOptionsComponent, ProcessListComponent, FilterModalComponent, SortOptionsComponent],
   declarations: [
+    ProcessModalComponent,
     TasksMenuComponent,
     HistoryTaskComponent,
     ProcessFormComponent,

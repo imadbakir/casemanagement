@@ -2,9 +2,9 @@
     window.__env = window.__env || {};
 
     // API url
-    window.__env.engineRestUrl = 'http://34.207.137.198:8081/rest/';
-    window.__env.engineApiUrl = 'http://34.207.137.198:8081/api/';
-    window.__env.formioAppUrl = 'https://aivzyhfdenlzxep.form.io';
+    window.__env.engineRestUrl = 'http://63.33.201.166:8080/rest/';
+    window.__env.engineApiUrl = 'http://63.33.201.166:8080/api/';
+    window.__env.formioAppUrl = 'https://rllslkfteqdgmpv.form.io';
     window.__env.formioApiUrl = 'https://api.form.io';
 
 

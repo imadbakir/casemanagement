@@ -16,6 +16,7 @@ import { CamundaRestService } from './services/camunda-rest.service';
 import { EnvServiceProvider } from './services/env.service.provider';
 import { EventsService } from './services/events.service';
 import { ExternalService } from './services/external.service';
+import { RestService } from './services/rest.service';
 
 
 
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     EventsService,
     CamundaRestService,
     ExternalService,
+    RestService
   ],
   exports: [
     IonicModule,

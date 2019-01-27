@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-toolbar>
-    <ion-title>{{filter.name ? filter.name : 'Add Filter' | translate}}</ion-title>
+    <ion-title>{{navParams.data?.name || translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
