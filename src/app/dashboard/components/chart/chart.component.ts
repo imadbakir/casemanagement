@@ -72,7 +72,7 @@ export class ChartComponent implements OnInit {
         if (this.chart) {
             this.chart.destroy();
         }
-        // Clear out the element to render the new form.
+        // Clear out the element to render the new Chart.
         if (this.chartElement && this.chartElement.nativeElement) {
             this.chartElement.nativeElement.innerHTML = '';
         }
