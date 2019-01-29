@@ -344,7 +344,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      *  Formio Webform object
      */
     assignVersions(formio) {
-        const forms = Utils.findComponents(formio.components, { type: 'form' });
+        const forms = Utils.searchComponents(formio.components, { type: 'form' });
         formio.formReady.then(() => {
             if (!this.version || !this.version[formio.component.key.toLowerCase()]) {
                 if (!this.submission.version) {
@@ -400,7 +400,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      *  Formio Webform object
      */
     assignFormOptions(formio) {
-        const forms = Utils.findComponents(formio.components, { type: 'form' });
+        const forms = Utils.searchComponents(formio.components, { type: 'form' });
         if (forms.length > 0) {
             forms.forEach(component => {
                 component.subFormReady.then((form) => {

@@ -1,0 +1,114 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>{{filter.name ? filter.name : 'Add Filter' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Filter Name' | translate}}</ion-label>
+          <ion-input required type="text" [(ngModel)]="filter.name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Priority' | translate}}</ion-label>
+          <ion-input required type="number" [(ngModel)]="filter.properties.priority"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Description' | translate }}</ion-label>
+          <ion-input required type="text" [(ngModel)]="filter.properties.description"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Tasks Collection' | translate }}</ion-label>
+          <ion-select (ionChange)="updateQuery($event)" [(ngModel)]="taskGroup" cancel-text="Cancel">
+            <ion-select-option value="1">{{'My Tasks' | translate}}</ion-select-option>
+            <ion-select-option value="2">{{'Group Tasks' | translate}}</ion-select-option>
+            <ion-select-option value="3">{{'My & Group Tasks' | translate}} </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-toolbar>
+          <ion-title>{{'Filter Criteria' | translate}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button size="small" fill="clear" (click)="criterias.push({ key: '', name: '', type: 'string', value:'' })"
+              color="secondary">
+              {{'Add Criterion' | translate}}
+              <ion-icon name="add-circle" slot="end" size="small"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-text margin color="medium" [ngStyle]="{'width': '100%'}" [hidden]="criterias.length > 0">
+                <p>{{'This section is aimed to set the parameters used to filter the tasks' | translate}}</p>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let item of criterias; let i = index">
+            <ion-col size="1">
+              <ion-button fill="outline" [ngStyle]="{'margin-top': '37px'}" expand="block" size="small" (click)="criterias.splice(i,1)"
+                color="danger">
+                <ion-icon slot="icon-only" size="small" name="close"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="5">
+              <ion-item>
+                <ion-label position="stacked">{{'Criterion' | translate}}</ion-label>
+                <ion-select [(ngModel)]="item.key" ok-text="Select" (ionChange)="updateType($event)" [placeholder]="'Please Choose' | translate"
+                  cancel-text="Cancel">
+                  <ion-select-option *ngFor="let criterion of allCriterias" [value]="criterion.key">{{criterion.name |
+                    translate}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="stacked">{{'Value' | translate}}</ion-label>
+                <ion-input *ngIf="item.type == 'string'" required type="text" [(ngModel)]="item.value"></ion-input>
+                <ion-input *ngIf="item.type == 'number'" required type="number" [(ngModel)]="item.value"></ion-input>
+                <ion-input *ngIf="item.type == 'date'" (click)="picker.open()" [(ngModel)]="item.value"></ion-input>
+                <ion-checkbox [ngStyle]="{'margin': '13px'}" *ngIf="item.type == 'boolean'" [(ngModel)]="item.value"></ion-checkbox>
+                <input *ngIf="item.type == 'date'" hidden [(ngModel)]="item.value" [matDatepicker]="picker" />
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </ion-item>
+            </ion-col>
+
+          </ion-row>
+
+
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-grid no-padding [ngStyle]="{'background': '#eaeaea'}">
+    <ion-row>
+      <ion-col>
+        <ion-button fill="outline" expand="block" color="primary" (click)="modal.dismiss()">{{'Cancel' | translate}}</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="solid" expand="block" (click)="saveFilter()" color="success">{{'Save' | translate}}</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>

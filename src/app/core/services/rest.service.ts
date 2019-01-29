@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { EnvService } from './env.service';
 import { tap, catchError } from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RestService {
-  private RestUrl = 'http://demo1386417.mockable.io/';
+  private RestUrl = 'http://34.207.137.198:8120/';
 
 
   constructor(private http: HttpClient, private env: EnvService) {
@@ -36,8 +36,19 @@ export class RestService {
   * GET User Role Requests
   * @param queryParams
   */
-  canInitRequest(queryParams): Observable<any[]> {
+  canInitRequest(queryParams): Observable<any> {
     const endpoint = `${this.RestUrl}caninit`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched tasks`)),
+      catchError(this.handleError('getTasks', []))
+    );
+  }
+  /**
+    * GET User Subordinates
+    * @param queryParams
+    */
+  getUserSubordinates(queryParams): Observable<any> {
+    const endpoint = `${this.RestUrl}orphans`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
       tap(form => this.log(`fetched tasks`)),
       catchError(this.handleError('getTasks', []))
