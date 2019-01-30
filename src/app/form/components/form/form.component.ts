@@ -22,6 +22,7 @@ export class FormComponent implements OnInit, OnDestroy {
   @Input() formKey;
   @Input() resourceName;
   @Input() resourceId;
+  @Input() extra;
   @Input() readOnly;
   @Input() version;
   @Input() executionVariables;
@@ -107,7 +108,7 @@ export class FormComponent implements OnInit, OnDestroy {
     this.resourceLoading = this.formio
       .loadSubmission(null, { ignoreCache: true })
       .then((resource) => {
-        resource.data = { executionVariables: this.executionVariables, ...resource.data };
+        resource.data = { executionVariables: this.executionVariables, extras: this.extra, ...resource.data };
         this.resource = resource;
 
         this.resourceResolve(resource);
@@ -170,7 +171,6 @@ export class FormComponent implements OnInit, OnDestroy {
    *  contains formio form object
    */
   onFormLoad(event) {
-    _.set(this.resource, 'extras.currentUser', this.auth.getUser().username);
     if (event.hasOwnProperty('properties') && event.properties.onFormLoad) {
       try {
         const calls = JSON.parse(event.properties.onFormLoad);
@@ -321,6 +321,7 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     this.setContext();
     /*
       if form = 'A'

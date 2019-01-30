@@ -25,7 +25,8 @@ export class ProcessModalComponent implements OnInit {
 
   doStartProcess() {
     this.modal.dismiss().then(() => {
-      this.router.navigate(['tasks', 'new', this.navParams.data.processDefinitionId]);
+      console.log(this.selection);
+      this.router.navigate(['tasks', 'new', this.navParams.data.processDefinitionId, { selection: this.selection }]);
     });
   }
   startProcess() {

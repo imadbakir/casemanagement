@@ -17,8 +17,8 @@
       <ion-col>
         <ion-item>
           <ion-label position="stacked">{{'Please Select' | translate }}</ion-label>
-          <ion-select [(ngModel)]="selection" cancel-text="Cancel">
-            <ion-select-option *ngFor="let option of options" value="option.value">{{option.name | translate}}</ion-select-option>
+          <ion-select [multiple]="navParams.data?.multiple" [(ngModel)]="selection" cancel-text="Cancel">
+            <ion-select-option *ngFor="let option of options" [value]="option.orphan_id">{{option.orphan_name | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
