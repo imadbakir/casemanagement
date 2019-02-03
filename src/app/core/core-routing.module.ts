@@ -28,6 +28,12 @@ const routes: Routes = [
         loadChildren:
           '../tasks/tasks.module#TasksModule',
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'permissions',
+        loadChildren:
+          '../permissions/permissions.module#PermissionsModule',
+        canActivate: [AuthGuard]
       }
     ]
   },

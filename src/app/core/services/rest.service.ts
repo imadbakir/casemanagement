@@ -24,11 +24,11 @@ export class RestService {
    * GET User Role Requests
    * @param queryParams
    */
-  getUserRequests(queryParams): Observable<any[]> {
+  getRequests(queryParams = {}): Observable<any[]> {
     const endpoint = `${this.RestUrl}requests`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
-      tap(form => this.log(`fetched tasks`)),
-      catchError(this.handleError('getTasks', []))
+      tap(form => this.log(`fetched requests`)),
+      catchError(this.handleError('getRequests', []))
     );
   }
 
@@ -50,8 +50,70 @@ export class RestService {
   getUserSubordinates(queryParams): Observable<any> {
     const endpoint = `${this.RestUrl}orphans`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
-      tap(form => this.log(`fetched tasks`)),
-      catchError(this.handleError('getTasks', []))
+      tap(form => this.log(`fetched ubordinates`)),
+      catchError(this.handleError('getUserSubordinates', []))
+    );
+  }
+
+  /**
+    * GET Positions
+    * @param queryParams
+    */
+  getPositions(queryParams = {}): Observable<any> {
+    const endpoint = `${this.RestUrl}positions`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched positions`)),
+      catchError(this.handleError('getPositions', []))
+    );
+  }
+
+  /**
+   * GET Permissions
+   * @param queryParams
+   */
+  getPermissions(queryParams = {}): Observable<any> {
+    const endpoint = `${this.RestUrl}permissions`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched permission`)),
+      catchError(this.handleError('getPermissions', []))
+    );
+  }
+
+  /**
+   * Create Permission
+   * @param variables
+   * @param queryParams
+   */
+  createPermission(variables, queryParams = {}): Observable<any> {
+    const endpoint = `${this.RestUrl}permission`;
+    return this.http.post<any>(endpoint, variables, { params: queryParams }).pipe(
+      tap(form => this.log(`created permission`)),
+      catchError(this.handleError('createPermission', []))
+    );
+  }
+
+  /**
+   * update Permission
+   * @param id
+   * @param variables
+   * @param queryParams
+   */
+  updatePermission(id, variables, queryParams = {}): Observable<any> {
+    const endpoint = `${this.RestUrl}permission/${id}`;
+    return this.http.put<any>(endpoint, variables, { params: queryParams }).pipe(
+      tap(form => this.log(`updated permission`)),
+      catchError(this.handleError('updatePermission', []))
+    );
+  }
+  /**
+   * delete Permission
+   * @param id
+   */
+  deletePermission(id): Observable<any> {
+    const endpoint = `${this.RestUrl}permission/${id}`;
+    return this.http.delete<any>(endpoint).pipe(
+      tap(form => this.log(`deleted permission`)),
+      catchError(this.handleError('deletePermission', []))
     );
   }
   /**

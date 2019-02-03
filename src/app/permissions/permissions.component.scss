@@ -1,0 +1,18 @@
+ app-grid {
+    width: 100%;
+  }
+  ion-menu.menu-pane-visible {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1) !important;
+    z-index: 999;
+}
+ ion-content{
+   height: calc(100vh - 49px);
+  --background:var(--ion-color-light);
+ }
+ 
+.width-100{
+  width:100%;
+}
+.footer{
+  text-align:center;
+}

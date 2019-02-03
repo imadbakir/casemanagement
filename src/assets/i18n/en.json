@@ -152,5 +152,10 @@
   "Edit": "Edit",
   "Delete": "Delete",
   "Loading more Tasks...": "Loading more Tasks...",
-  "Please Choose a Task": "Please Choose a Task"
+  "Please Choose a Task": "Please Choose a Task",
+  "Permissions": "Permissions",
+  "Request Name": "Request Name",
+  "Validity": "Validity",
+  "Permission": "Permission",
+  "No Permissions Registered": "No Permissions Registered"
 }

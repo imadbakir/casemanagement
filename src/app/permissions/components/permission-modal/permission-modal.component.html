@@ -1,0 +1,58 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Position' | translate }}</ion-label>
+          <ion-select [(ngModel)]="requestPermission.positionId" cancel-text="Cancel">
+            <ion-select-option *ngFor="let position of positions" [value]="position.id">{{position.name | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Request' | translate }}</ion-label>
+          <ion-select [(ngModel)]="requestPermission.requestId" cancel-text="Cancel">
+            <ion-select-option *ngFor="let request of requests" [value]="request.id">{{request.name | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Validity' | translate }}</ion-label>
+          <ion-select [(ngModel)]="requestPermission.validity" cancel-text="Cancel">
+            <ion-select-option *ngFor="let validity of validities" [value]="validity.id">{{validity.name | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">{{'Permission' | translate }}</ion-label>
+          <ion-select [(ngModel)]="requestPermission.permission" cancel-text="Cancel">
+            <ion-select-option *ngFor="let permission of permissions" [value]="permission.id">{{permission.name | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-grid no-padding [ngStyle]="{'background': '#eaeaea'}">
+    <ion-row>
+      <ion-col>
+        <ion-button fill="outline" expand="block" color="primary" (click)="modal.dismiss()">{{'Cancel' | translate}}</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="solid" expand="block" (click)="savePermission()" color="success">{{'Save' | translate}}</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -151,5 +151,10 @@
   "Edit": "تعديل",
   "Delete": "حذف",
   "Loading more Tasks...": "يتم تحميل المزيد...",
-  "Please Choose a Task": "رجاءً قم باختيار مهمة"
+  "Please Choose a Task": "رجاءً قم باختيار مهمة",
+  "Permissions": "الأذونات",
+  "Request Name": "اسم الطلب",
+  "Validity": "الصلاحية",
+  "Permission": "الإذن",
+  "No Permissions Registered": "لا يوجد أذونات"
 }

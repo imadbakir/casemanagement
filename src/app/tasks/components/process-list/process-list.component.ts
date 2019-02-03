@@ -30,7 +30,7 @@ export class ProcessListComponent {
     /* camundaService.getProcessDefinitions({ latestVersion: true }).subscribe((processDefinitions) => {
        this.processDefinitions = processDefinitions;
      }); */
-    this.restService.getUserRequests({ userId: this.auth.getUser().username }).subscribe(processes => {
+    this.restService.getRequests({ userId: this.auth.getUser().username }).subscribe(processes => {
       this.processDefinitions = processes;
     });
   }
