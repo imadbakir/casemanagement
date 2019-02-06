@@ -127,11 +127,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         }
         this.formio.nosubmit = true;
         this.formio.on('languageChanged', () => {
-            this.assignFormOptions(this.formio);
-            const choices = this.formio.element.querySelectorAll('.choices') || [];
-            choices.forEach((el) => {
-                el.setAttribute('dir', this.formio.i18next.dir());
-            });
+            this.disableForms(this.formio);
         });
         this.formio.on('prevPage', (data: any) => this.onPrevPage(data));
         this.formio.on('nextPage', (data: any) => this.onNextPage(data));
@@ -150,6 +146,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
 
         this.formio.form = this.form;
         return this.formio.ready.then(() => {
+            setTimeout(() => this.disableForms(this.formio) , 0);
             this.assignVersions(this.formio);
             this.ready.emit(this);
             this.formioReadyResolve(this.formio);
@@ -204,7 +201,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                 switch (refresh.property) {
                     case 'submission':
                         this.formio.setSubmission(refresh.value);
-                        this.assignFormOptions(this.formio);
+                        setTimeout(() => this.disableForms(this.formio) , 0);
                         break;
                     case 'form':
                         this.formio.form = refresh.value;
@@ -378,51 +375,33 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
             });
         }
 
-
-        /* Utils.eachComponent(formio.components, (component) => {
-             if (component.component.properties) {
-                 component.component.options = assign({}, {
-                     readOnly: component.component.properties.readOnly === 'true',
-                     viewAsHtml: component.component.properties.readOnly === 'true'
-                 });
-             }
-             if (component.type === 'form') {
- 
-             }
-         }, false); */
     }
 
 
     /**
-     * Search deeply for form components and assigns Options and Langage to them
+     * Search deeply for form components
      * Assign readOnly and ViewAsHtml properties from API properties.
      * @param formio
      *  Formio Webform object
      */
-    assignFormOptions(formio) {
+    disableForms(formio) {
+        // function needs to be called at the end of the stack // setTimeout 0
         const forms = Utils.searchComponents(formio.components, { type: 'form' });
-        if (forms.length > 0) {
-            forms.forEach(component => {
-                component.subFormReady.then((form) => {
-                    component.subForm.options = assign({}, {
-                        language: this.translate.currentLang,
-                        readOnly: component.component.properties.readOnly === 'true',
-                        viewAsHtml: component.component.properties.readOnly === 'true',
-                    });
-                    form.formReady.then(() => {
-                        form.language = this.translate.currentLang;
-                        this.assignFormOptions(form);
-                    });
-                });
+        forms.forEach(component => {
+            component.subFormReady.then((form) => {
+                form.options['readOnly'] = component.component.properties.readOnly === 'true';
+                form.options['viewAsHtml'] = component.component.properties.readOnly === 'true';
+                form.triggerRedraw();
+                this.disableForms(form);
             });
-        }
+        });
     }
 
     /**
-   * Formio Custom Event Callback
-   * @param event
-   *  Formio CustomEvent
-   */
+    * Formio Custom Event Callback
+    * @param event
+    *  Formio CustomEvent
+    */
 
     onCustomEvent(event) {
         event.submission = this.submission;
