@@ -1,47 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{'Permission' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">{{'Position' | translate }}</ion-label>
-          <ion-select [(ngModel)]="requestPermission.positionId" cancel-text="Cancel">
-            <ion-select-option *ngFor="let position of positions" [value]="position.id">{{position.name | translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">{{'Request' | translate }}</ion-label>
-          <ion-select [(ngModel)]="requestPermission.requestId" cancel-text="Cancel">
-            <ion-select-option *ngFor="let request of requests" [value]="request.id">{{request.name | translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">{{'Validity' | translate }}</ion-label>
-          <ion-select [(ngModel)]="requestPermission.validity" cancel-text="Cancel">
-            <ion-select-option *ngFor="let validity of validities" [value]="validity.id">{{validity.name | translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">{{'Permission' | translate }}</ion-label>
-          <ion-select [(ngModel)]="requestPermission.permission" cancel-text="Cancel">
-            <ion-select-option *ngFor="let permission of permissions" [value]="permission.id">{{permission.name | translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+  <form (ngSubmit)="savePermission()" #permissionForm="ngForm">
 
-  </ion-grid>
+    <ion-grid padding>
+      <ion-row>
+        <ion-col>
+          <app-select [required]="true" name="position" [(ngModel)]="requestPermission.positionId" [data]="positions"
+            [placeholder]="'Position'" [bindLabel]="'name'" [bindValue]="'id'" (select)="doSomething($event)"></app-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <app-select [required]="true"  name="request" [(ngModel)]="requestPermission.requestId" [data]="requests" [placeholder]="'Request'"
+            [bindLabel]="'name'" [bindValue]="'id'" (select)="doSomething($event)"></app-select>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-radio-group required name="permission" [(ngModel)]="requestPermission.permission">
+              <ion-list-header no-padding>
+                {{'Permission' | translate }}
+              </ion-list-header>
+              <ion-item *ngFor="let permission of permissions">
+                <ion-label>{{permission.name | translate}}</ion-label>
+                <ion-radio color="success" [value]="permission.id"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list-header no-padding>
+            {{'Validity' | translate }}
+          </ion-list-header>
+          <ion-row>
+            <ion-col *ngFor="let validity of validities">
+              <ion-item lines="none">
+                <ion-label>{{validity.name | translate}}</ion-label>
+                <ion-chip outline="true" [color]="validity.id === 'create' ? 'success' : 'secondary'" [ngClass]="{'inactive': !requestPermission[validity.id]}">
+                  <ion-icon [name]="validity.id === 'create'? 'add' : 'eye'"></ion-icon>
+                  <ion-toggle [name]="validity.id" [color]="validity.id === 'create'? 'success' : 'secondary'" [value]="true"
+                    [(ngModel)]="requestPermission[validity.id]"></ion-toggle>
+                </ion-chip>
+
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+  </form>
 </ion-content>
 <ion-footer>
   <ion-grid no-padding [ngStyle]="{'background': '#eaeaea'}">
@@ -50,7 +70,8 @@
         <ion-button fill="outline" expand="block" color="primary" (click)="modal.dismiss()">{{'Cancel' | translate}}</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button fill="solid" expand="block" (click)="savePermission()" color="success">{{'Save' | translate}}</ion-button>
+        <ion-button fill="solid" expand="block" type="submit" [disabled]="!permissionForm.form.valid || (!requestPermission['create'] && !requestPermission['read'])"
+          (click)="permissionForm.ngSubmit.emit()" color="success">{{'Save' | translate}}</ion-button>
       </ion-col>
 
     </ion-row>

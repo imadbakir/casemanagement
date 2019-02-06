@@ -1,0 +1,11 @@
+.inactive {
+  background: rgba(var(--ion-color-medium-rgb), 0.26);
+  border-color: rgba(var(--ion-color-medium-rgb), 0.26);
+  color: rgba(var(--ion-color-medium-rgb), 1);
+}
+
+ion-list-header {
+  color: var(--ion-color-dark);
+  font-size: inherit;
+  color: rgba(0,0,0,0.54);
+}

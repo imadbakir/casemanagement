@@ -157,5 +157,14 @@
   "Request Name": "Request Name",
   "Validity": "Validity",
   "Permission": "Permission",
-  "No Permissions Registered": "No Permissions Registered"
+  "No Permissions Registered": "No Permissions Registered",
+  "Request": "Request",
+  "ITEMS_PER_PAGE_LABEL": "Items Per Page ",
+  "NEXT_PAGE_LABEL": "Next",
+  "PREVIOUS_PAGE_LABEL": "Previous",
+  "FIRST_PAGE_LABEL": "First",
+  "LAST_PAGE_LABEL": "Last",
+  "RANGE_PAGE_LABEL_1": "0 of {{length}}",
+  "RANGE_PAGE_LABEL_2": "{{startIndex}} - {{endIndex}} of {{length}}",
+  "selectDataCount":"Loaded {{buffer}} of {{data}}"
 }

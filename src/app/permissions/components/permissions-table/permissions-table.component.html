@@ -1,0 +1,81 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-toolbar class="secondary-toolbar">
+        <ion-searchbar color="transparent" mode="ios" [placeholder]="'Search' | translate" [showCancelButton]="false"
+          (ionInput)="applyFilter($event.target.value)" (ionClear)="applyFilter('')" (ionCancel)="applyFilter($event.target.value)"></ion-searchbar>
+        <ion-buttons slot="primary">
+          <ion-fab-button size="small" color="primary" (click)="openPermission()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <mat-table [dataSource]="dataSource" matSort class="width-100">
+
+        <ng-container matColumnDef="positionId">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> {{'Position' | translate}} </mat-header-cell>
+          <mat-cell data-label="Position" *matCellDef="let element"> {{getPosition(element.positionId)?.name |
+            translate}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="requestId">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> {{'Request' | translate}} </mat-header-cell>
+          <mat-cell data-label="Request" *matCellDef="let element">{{getRequest(element.requestId)?.name | translate}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="validity">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> {{'Validity' | translate}} </mat-header-cell>
+          <mat-cell data-label="Validity" *matCellDef="let element">
+            <ion-chip *ngIf="element.read" outline="true" color="secondary">
+              <ion-icon name="eye"></ion-icon>
+            </ion-chip>
+            <ion-chip *ngIf="element.create" outline="true" color="success">
+              <ion-icon name="add"></ion-icon>
+            </ion-chip>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="permission">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> {{'Permission' | translate}} </mat-header-cell>
+          <mat-cell data-label="Permission" *matCellDef="let element"> {{getPermission(element.permission)?.name |
+            translate}}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="options">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell data-label="Options" style="text-align: right;" *matCellDef="let element">
+            <ion-button fill="clear" size="small" color="danger" (click)="delete($event,element)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+            <!--
+                          <ion-button fill="outline" size="small" (click)="openPermission(element)">
+                            <ion-icon slot="icon" name="create"></ion-icon>
+                            Edit
+                          </ion-button>
+            
+                        -->
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="footerMessage">
+          <mat-footer-cell *matFooterCellDef colspan="5" class="footer">
+            {{'No Permissions Registered' | translate}}
+          </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="openPermission(row)" class="mat-elevation-z3" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row [hidden]="dataSource.data && dataSource.data.length" *matFooterRowDef="['footerMessage']"></mat-footer-row>
+
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+
+    </ion-col>
+  </ion-row>
+
+</ion-grid>

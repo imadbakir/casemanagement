@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 import { EnvService } from './env.service';
 import { tap, catchError } from 'rxjs/operators';
+import { Permission } from '../schemas/permission';
+import { Position } from '../schemas/position';
 
 
 /**
@@ -59,7 +61,7 @@ export class RestService {
     * GET Positions
     * @param queryParams
     */
-  getPositions(queryParams = {}): Observable<any> {
+  getPositions(queryParams = {}): Observable<Position[]> {
     const endpoint = `${this.RestUrl}positions`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
       tap(form => this.log(`fetched positions`)),
@@ -71,7 +73,7 @@ export class RestService {
    * GET Permissions
    * @param queryParams
    */
-  getPermissions(queryParams = {}): Observable<any> {
+  getPermissions(queryParams = {}): Observable<Permission[]> {
     const endpoint = `${this.RestUrl}permissions`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
       tap(form => this.log(`fetched permission`)),

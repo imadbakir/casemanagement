@@ -1,10 +1,10 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatPaginatorIntl } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { MenuComponent } from './components/menu/menu.component';
@@ -17,6 +17,7 @@ import { EnvServiceProvider } from './services/env.service.provider';
 import { EventsService } from './services/events.service';
 import { ExternalService } from './services/external.service';
 import { RestService } from './services/rest.service';
+import { PaginatorI18n } from './paginator-i18n';
 
 
 
@@ -59,7 +60,11 @@ export function createTranslateLoader(http: HttpClient) {
     EventsService,
     CamundaRestService,
     ExternalService,
-    RestService
+    RestService,
+    {
+      provide: MatPaginatorIntl, deps: [TranslateService],
+      useFactory: (translateService: TranslateService) => new PaginatorI18n(translateService).getPaginatorIntl()
+    }
   ],
   exports: [
     IonicModule,

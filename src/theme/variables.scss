@@ -1,6 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 /** Ionic CSS Variables **/
+
 :root {
   /** primary **/
   --app-direction: multi;
@@ -75,6 +76,14 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  --ion-color-lesslight: #f1f1f1;
+  --ion-color-lesslight-rgb: 241, 241, 241;
+  --ion-color-lesslight-contrast: #000000;
+  --ion-color-lesslight-contrast-rgb:  0, 0, 0;
+  --ion-color-lesslight-shade:#d7d8da;
+  --ion-color-lesslight-tint: #f5f6f9;
+
+
   --font-family-md-base: "Ubuntu";
   --font-family-ios-base: "Ubuntu";
   --font-family-wp-base: "Ubuntu";
@@ -93,4 +102,12 @@
       }
     }
   }
+}
+.ion-color-lesslight{
+--ion-color-base:var(--ion-color-lesslight);
+  --ion-color-base-rgb:var(--ion-color-lesslight-rgb);
+  --ion-color-contrast:var(--ion-color-lesslight-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-lesslight-contrast-rgb);
+  --ion-color-shade:var(--ion-color-lesslight-shade);
+  --ion-color-tint:var(--ion-color-lesslight-tint);
 }

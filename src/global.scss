@@ -206,10 +206,7 @@ html[dir="rtl"] {
 ion-button ion-icon[slot=start] {
     margin: 0 -.3em 0 .3em;
 }
-ion-list-header{
-  padding-left:0px;
-  padding-right: calc(var(--ion-safe-area-left, 0px) + 16px);
-}
+
 .date-picker-badge {
   &.due {
     float: left;
@@ -226,7 +223,17 @@ ion-list-header{
 .split-pane-wp.split-pane-visible>.split-pane-side {
   border-right:0px; 
 }
+.side-modal .modal-wrapper{
+  right:auto;
+  left:0px;
+}
 }
 .col-sm-push-8{
   left: 66.6666666667%;
+}
+.side-modal .modal-wrapper{
+  right:0px;
+  top:0px;
+  position: absolute;
+  height: 100%;
 }

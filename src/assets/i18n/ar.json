@@ -156,5 +156,14 @@
   "Request Name": "اسم الطلب",
   "Validity": "الصلاحية",
   "Permission": "الإذن",
-  "No Permissions Registered": "لا يوجد أذونات"
+  "No Permissions Registered": "لا يوجد أذونات",
+  "Request": "الطلب",
+  "ITEMS_PER_PAGE_LABEL": "عدد العناصر في الصفحة",
+  "NEXT_PAGE_LABEL": "التالي",
+  "PREVIOUS_PAGE_LABEL": "السابق",
+  "FIRST_PAGE_LABEL": "الأولى",
+  "LAST_PAGE_LABEL": "الأخيرة",
+  "RANGE_PAGE_LABEL_1": "0 من {{length}}",
+  "RANGE_PAGE_LABEL_2": "{{startIndex}} - {{endIndex}} من {{length}}",
+  "selectDataCount": "{{buffer}} من {{data}}"
 }

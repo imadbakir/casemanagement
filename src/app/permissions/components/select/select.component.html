@@ -1,0 +1,10 @@
+<ng-select [(ngModel)]="selection" (change)="emitSelection($event)" [items]="buffer" [virtualScroll]="true" [loading]="loading"
+  [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder | translate" (scroll)="onScroll($event)"
+  (scrollToEnd)="onScrollToEnd()">
+  <ng-template ng-header-tmp>
+    <small class="form-text text-muted">{{'selectDataCount' | translate:{buffer: buffer.length, data: data.length} }}</small>
+  </ng-template>
+  <ng-template ng-option-tmp let-item="item" let-index="index">
+    {{item[bindLabel] | translate}}
+  </ng-template>
+</ng-select>

@@ -1,0 +1,118 @@
+
+ion-toolbar.secondary-toolbar {
+    --ion-toolbar-background: transparent;
+  }
+  ion-toolbar.secondary-light {
+    --ion-toolbar-background: var(--ion-color-lesslight);
+  }
+  
+  ion-chip {
+    ion-icon {
+      margin: 0px;
+    }
+  }
+  .width-100 {
+    width: 100%;
+  }
+  .footer {
+    text-align: center;
+  }
+  mat-header-row {
+    background: var(--ion-color-lesslight);
+    border-radius: 3px;
+  }
+  mat-table {
+    font-family: inherit;
+    background: transparent;
+  }
+  mat-row {
+    min-height: 70px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 10px auto;
+    mat-cell:last-child {
+      justify-content: flex-end;
+    }
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+  mat-paginator {
+    font-family: inherit;
+    background: transparent;
+  }
+  @media screen and (max-width: 960px) {
+    mat-row {
+      padding: 5px 10px;
+    }
+    .mat-table {
+      border: 0;
+      vertical-align: middle;
+    }
+  
+    .mat-table caption {
+      font-size: 1em;
+    }
+  
+    .mat-table .mat-header-cell:last-child {
+      border: 10px solid;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+  
+    .mat-table .mat-row {
+      display: block;
+      min-height: auto;
+    }
+    /*
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+    */
+    .mat-table .mat-header-cell {
+      padding-left: 10px;
+    }
+    .mat-table .mat-cell {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: 15px;
+      text-align: right;
+      min-height: auto;
+      height: 24px;
+      margin-bottom: 0%;
+      padding: 12px 0px 7px 0px;
+      box-sizing: content-box;
+      &:first-child {
+        padding-left: 0px;
+      }
+      &:last-child {
+        padding-right: 0px;
+      }
+      ion-chip {
+        margin-top: -7px;
+      }
+    }
+    .mat-table .mat-cell:before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: normal;
+  
+      font-size: 0.85em;
+    }
+    .mat-table .mat-cell:last-child {
+      border-bottom: 0;
+    }
+    .mat-table .mat-cell:first-child {
+      margin-top: 4%;
+    }
+  }
+  
