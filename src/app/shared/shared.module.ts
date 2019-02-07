@@ -11,15 +11,16 @@ import { LanguageComponent } from './components/language/language.component';
 import { NotificationsButtonComponent } from './components/notifications-button/notifications-button.component';
 import { HasRoleDirective } from './directives/has-role.directive';
 import { OnCreateDirective } from './directives/on-create.directive';
+import { SelectComponent } from './components/select/select.component';
 
 /**
  * Shared Module
  * imports and exports Shared Modules and declared components
  */
 @NgModule({
-  imports: [TranslateModule, IonicModule, CommonModule, RouterModule],
+  imports: [TranslateModule, IonicModule, CommonModule, RouterModule, FormsModule, NgSelectModule],
   entryComponents: [LanguageComponent],
-  declarations: [HeaderComponent,
+  declarations: [HeaderComponent, SelectComponent,
     LanguageSwitchComponent, LanguageComponent, NotificationsButtonComponent, HasRoleDirective, OnCreateDirective],
 
   exports: [
@@ -32,6 +33,7 @@ import { OnCreateDirective } from './directives/on-create.directive';
     LanguageSwitchComponent,
     LanguageComponent,
     NotificationsButtonComponent,
+    SelectComponent,
     HasRoleDirective,
     OnCreateDirective
   ]

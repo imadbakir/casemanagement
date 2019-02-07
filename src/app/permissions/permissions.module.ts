@@ -5,7 +5,6 @@ import { PermissionsComponent } from './permissions.component';
 import { MatFormFieldModule, MatTableModule, MatInputModule, MatSortModule, MatPaginatorModule } from '@angular/material';
 import { PermissionModalComponent } from './components/permission-modal/permission-modal.component';
 import { PermissionsTableComponent } from './components/permissions-table/permissions-table.component';
-import { SelectComponent } from './components/select/select.component';
 
 
 
@@ -27,13 +26,11 @@ import { SelectComponent } from './components/select/select.component';
     PermissionsComponent,
     PermissionModalComponent,
     PermissionsTableComponent,
-    SelectComponent
   ],
   declarations: [
     PermissionsComponent,
     PermissionModalComponent,
     PermissionsTableComponent,
-    SelectComponent
   ]
 })
 export class PermissionsModule { }

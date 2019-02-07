@@ -1,4 +1,4 @@
-<ng-select [(ngModel)]="selection" (change)="emitSelection($event)" [items]="buffer" [virtualScroll]="true" [loading]="loading"
+<ng-select [multiple]="multiple" [(ngModel)]="selection" (change)="emitSelection($event)" [items]="buffer" [virtualScroll]="true" [loading]="loading"
   [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder | translate" (scroll)="onScroll($event)"
   (scrollToEnd)="onScrollToEnd()">
   <ng-template ng-header-tmp>

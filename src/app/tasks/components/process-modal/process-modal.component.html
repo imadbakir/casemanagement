@@ -5,7 +5,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid>
+  <ion-grid padding>
     <ion-row [hidden]="!error">
       <ion-col padding>
         <ion-text color="danger">
@@ -15,12 +15,8 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label position="stacked">{{'Please Select' | translate }}</ion-label>
-          <ion-select [multiple]="navParams.data?.multiple" [(ngModel)]="selection" cancel-text="Cancel">
-            <ion-select-option *ngFor="let option of options" [value]="option.orphan_id">{{option.orphan_name | translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
+        <app-select [multiple]="navParams.data?.multiple" [required]="true" name="position" [(ngModel)]="selection"
+          [data]="options" [placeholder]="'Orphan'" [bindLabel]="'orphan_name'" [bindValue]="'orphan_id'"></app-select>
       </ion-col>
     </ion-row>
   </ion-grid>

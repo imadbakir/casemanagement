@@ -22,7 +22,6 @@ export class ProcessModalComponent implements OnInit {
     public camundaService: CamundaRestService, public event: EventsService, private restService: RestService, private router: Router) {
 
   }
-
   doStartProcess() {
     this.modal.dismiss().then(() => {
       console.log(this.selection);

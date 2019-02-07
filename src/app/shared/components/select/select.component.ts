@@ -18,6 +18,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   @Input() bindLabel;
   @Input() data;
   @Input() placeholder;
+  @Input() multiple;
   @Output() select: Subject<Object> = new Subject();
   selection;
   buffer = [];

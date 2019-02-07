@@ -4,10 +4,8 @@ import { RestService } from '../../../core/services/rest.service';
 import { ModalController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { PermissionModalComponent } from '../permission-modal/permission-modal.component';
-import { slideInRtl } from '../../../animations/slide-in.rtl';
-import { slideIn } from '../../../animations/slide-in';
-import { slideOut } from '../../../animations/slide-out';
-import { slideOutRtl } from '../../../animations/slide-out.rtl';
+import { slideIn, slideInRtl } from '../../../animations/slide-in';
+import { slideOut, slideOutRtl } from '../../../animations/slide-out';
 
 /**
  * Permission Table

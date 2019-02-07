@@ -1,0 +1,11 @@
+:host::ng-deep {
+  .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+    background-color: var(--ion-color-primary) !important;
+  }
+  &.ng-invalid.ng-dirty{
+    .ng-select .ng-select-container:after {
+      border-color: var(--ion-color-danger);
+    }
+  }
+}
+
