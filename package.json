@@ -38,7 +38,7 @@
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "formiojs": "^3.13.0",
+    "formiojs": "^3.14.0",
     "jquery": "^3.3.1",
     "rxjs": "^6.3.3",
     "stream": "0.0.2",

@@ -125,7 +125,13 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
         if (this.src) {
             this.formio.setUrl(this.src, this.formioOptions || {});
         }
-        this.formio.nosubmit = true;
+        if (this.form.action) {
+            this.formio.nosubmit = false;
+
+        } else {
+            this.formio.nosubmit = true;
+
+        }
         this.formio.on('languageChanged', () => {
             this.disableForms(this.formio);
         });
@@ -146,7 +152,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
 
         this.formio.form = this.form;
         return this.formio.ready.then(() => {
-            setTimeout(() => this.disableForms(this.formio) , 0);
+            setTimeout(() => this.disableForms(this.formio), 0);
             this.assignVersions(this.formio);
             this.ready.emit(this);
             this.formioReadyResolve(this.formio);
@@ -201,7 +207,7 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
                 switch (refresh.property) {
                     case 'submission':
                         this.formio.setSubmission(refresh.value);
-                        setTimeout(() => this.disableForms(this.formio) , 0);
+                        setTimeout(() => this.disableForms(this.formio), 0);
                         break;
                     case 'form':
                         this.formio.form = refresh.value;
@@ -228,12 +234,11 @@ export class AppFormioComponent implements OnInit, OnChanges, OnDestroy {
      *  is data already saved
      */
     onSubmit(submission: any, saved: boolean) {
-        console.log(submission);
         this.submitting = false;
         if (saved) {
             this.formio.emit('submitDone', submission);
         }
-        this.submit.emit(submission);
+        // this.submit.emit(submission);
         if (!this.success) {
             this.alerts.setAlert({
                 type: 'success',

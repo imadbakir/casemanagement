@@ -19,7 +19,7 @@ export class ProcessFormComponent {
   form = {
     resourceName: '',
     formKey: '',
-    extra: { currentUser: this.auth.getUser().username, selection: null },
+    extra: { processKey: null, currentUser: this.auth.getUser().username, selection: null },
     ready: false
   };
 
@@ -35,8 +35,9 @@ export class ProcessFormComponent {
       this.form.ready = false;
       if (params.selection) {
         this.form.extra.selection = params.selection.split(',');
+        this.form.extra.processKey = params.processDefinitionId;
       }
-      camundaService.processInstanceStartForm(params.processDefinitionId).subscribe(startForm => {
+      camundaService.getProcessDefinitionTaskKey(params.processDefinitionId).subscribe(startForm => {
         const formResourceArray = startForm.key.split(':');
         this.form.formKey = formResourceArray[0];
         this.form.resourceName = formResourceArray[1];

@@ -284,6 +284,18 @@ export class FormComponent implements OnInit, OnDestroy {
     });
   }
 
+  onBeforeSubmit = (submission, next) => {
+    console.log(this.extra);
+    submission = {
+      serviceId: this.extra.processKey,
+      requesterId: this.auth.getUser().id,
+      beneficiariesIds: this.extra.selection,
+      link: this.formKey,
+      data: submission.data
+    };
+    next();
+
+  }
   /**
    * On Form Submit Callback
    * @param event
@@ -307,6 +319,7 @@ export class FormComponent implements OnInit, OnDestroy {
    */
   save(resource: any) {
     const formio = resource._id ? this.formio : this.formFormio;
+    return;
     return formio
       .saveSubmission(resource)
       .then(
@@ -323,16 +336,6 @@ export class FormComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.setContext();
-    /*
-      if form = 'A'
-        data.path.currentUser = 'ahmad'
-        data.currentUser = this.auth.getUser().username);
-      if form = 'B'
-        data.path.currentPath = '/etc/camunda'
-        call method
-      if form = 'C'
-        data.path.currentDate = '2018/12/06'
-  */
     this.loadForm();
 
     if (this.resourceId) {
