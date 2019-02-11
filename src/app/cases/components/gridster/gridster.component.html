@@ -1,0 +1,9 @@
+<gridster [options]="options" dir="ltr">
+  <gridster-item [dir]="dir" ion-card [ngClass]="{'grid-col': true}" [item]="panels.tasks">
+    <app-case-grid></app-case-grid>
+  </gridster-item>
+  <gridster-item [dir]="dir" ion-card [ngClass]="{'details-col':true,'details-col-visible':panels.details.open,'grid-col': true, 'fullscreen': panels.details.fullscreen}"
+    [item]="panels.details">
+    <app-case-details [panels]="panels"></app-case-details>
+  </gridster-item>
+</gridster>

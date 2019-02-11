@@ -118,6 +118,101 @@ export class RestService {
       catchError(this.handleError('deletePermission', []))
     );
   }
+
+
+  /**
+   * GET cases
+   * @param queryParams
+   */
+  getCases(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}cases`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched cases`)),
+      catchError(this.handleError('getCases', []))
+    );
+  }
+
+  /**
+   * GET branches
+   * @param queryParams
+   */
+  getBranches(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}branches`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched branches`)),
+      catchError(this.handleError('getBranches', []))
+    );
+  }
+  /**
+   * GET departments
+   * @param queryParams
+   */
+  getDepartments(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}departments`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched departments`)),
+      catchError(this.handleError('getDepartments', []))
+    );
+  }
+
+  /**
+     * GET case Types
+     * @param queryParams
+     */
+  getCaseTypes(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}casetypes`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched casetypes`)),
+      catchError(this.handleError('getCaseTypes', []))
+    );
+  }
+
+  /**
+   * GET case Names
+   * @param queryParams
+   */
+  getCaseNames(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}casenames`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched casetypes`)),
+      catchError(this.handleError('getCaseNames', []))
+    );
+  }
+  /**
+   * GET case Types
+   * @param queryParams
+   */
+  getSegmentTypes(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}segmenttypes`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched segmenttypes`)),
+      catchError(this.handleError('getSegmentTypes', []))
+    );
+  }
+
+  /**
+   * GET case Names
+   * @param queryParams
+   */
+  getSegmentNames(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}segmentnames`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched segmentnames`)),
+      catchError(this.handleError('getSegmentNames', []))
+    );
+  }
+  /**
+   * GET beneficiaries
+   * @param queryParams
+   */
+  getBeneficiaries(queryParams = {}): Observable<any[]> {
+    const endpoint = `${this.RestUrl}beneficiaries`;
+    return this.http.get<any>(endpoint, { params: queryParams }).pipe(
+      tap(form => this.log(`fetched beneficiaries`)),
+      catchError(this.handleError('getBeneficiaries', []))
+    );
+  }
+
   /**
    * Error Handler
    * @param operation

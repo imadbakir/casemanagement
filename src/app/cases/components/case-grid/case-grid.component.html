@@ -1,0 +1,37 @@
+<ion-header no-border>
+
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button small (click)="sortOptions($event)" slot="icon-only">
+        <ion-icon size="small" name="funnel"></ion-icon>
+      </ion-button>
+      <ion-button small [ngClass]="'move-handle hide-xs'" slot="icon-only">
+        <ion-icon size="small" name="move"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col>
+        <div text-center padding [hidden]="cases.length > 0 || loader.loading">
+          <ion-text>
+            <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
+            <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"No Cases." | translate}}</h6>
+          </ion-text>
+        </div>
+        <ion-list>
+          <app-case-item *ngFor="let case of cases;trackBy: trackBy" [routerLink]="[viewType, case.id]"
+            routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" [case]="case"></app-case-item>
+        </ion-list>
+        <ion-infinite-scroll threshold="90px" (ionInfinite)="fetchCases()">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Loading more Cases...' | translate">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -18,7 +18,7 @@ export class HasRoleDirective implements OnInit {
      * 	-- the location where we need to render the templateRef
      * @param {TemplateRef<any>} templateRef
      *   -- the templateRef to be potentially rendered
-     * @param {RolesService} rolesService
+     * @param {AuthService} AuthService
      *   -- will give us access to the roles a user has
      */
     constructor(

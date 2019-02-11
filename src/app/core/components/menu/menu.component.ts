@@ -14,6 +14,7 @@ export class MenuComponent {
     public menu = [
         { title: 'Dashboard', path: '/dashboard', icon: 'home' },
         { title: 'Tasks', path: '/tasks', icon: 'list' },
+        { title: 'Cases', path: '/cases', icon: 'list' },
         { title: 'Permissions', path: '/permissions', icon: 'unlock' }
     ];
     constructor(

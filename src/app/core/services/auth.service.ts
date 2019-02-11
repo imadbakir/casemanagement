@@ -35,8 +35,8 @@ export class AuthService {
    */
   hasRole(role) {
     const hasRole = this.getUser().groups.some(function (group) {
-      return isArray(this.appHasRole) ?
-        this.appHasRole.includes(role.id) : group.id === this.appHasRole;
+      return isArray(role) ?
+        this.role.includes(group.id) : group.id === role;
     });
     return hasRole;
   }

@@ -1,0 +1,42 @@
+
+<ion-card class="card {{getPriority(case.priority)}}" [ngClass]="{'complete' : case.complete , 'active' : active}">
+  <ion-card-content>
+    <h2>
+      {{case.caseName | translate}}
+      <div class="photo-container mini-avatar"></div>
+    </h2>
+    <div class="more-details">
+      <p>{{case.description}}</p>
+    </div>
+    <ng-container *ngIf="!case.deleteReason">
+      <ion-badge color="light" size="medium"   [hidden]="!case.created" [ngClass]="{'date-picker-badge':true }">
+        <ion-icon color="dark" size="medium" name="create"></ion-icon>{{case.created | date}}
+      </ion-badge>
+      <ion-badge mat-raised-button (click)="myDatepicker.open()" color="light" [ngClass]="{'date-picker-badge':true ,'due':true}">
+        <ion-icon color="warning" size="medium" name="calendar"></ion-icon>{{case.due ? (case.due
+        | date ): 'Due' | translate}}
+      </ion-badge>
+      <input [matDatepicker]="myDatepicker" [(ngModel)]="case.due" hidden>
+      <mat-datepicker touchUi #myDatepicker></mat-datepicker>
+      <input [matDatepicker]="follow_up" [(ngModel)]="case.follow_up" hidden>
+      <mat-datepicker touchUi #follow_up></mat-datepicker>
+    </ng-container>
+
+  </ion-card-content>
+  <div class="more-details task-options" *ngIf="!case.deleteReason">
+    <input matInput #trigger [id]="case.id+'-assignee'" [ngStyle]="{'opacity':0,'width':0,'height':0}" [(ngModel)]="case.assignee"
+      [matAutocomplete]="auto" [matAutocompleteConnectedTo]="origin" />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let user of users" [value]="user.username">{{user.name}}</mat-option>
+    </mat-autocomplete>
+    <ion-button size="small" (click)="openAssignee($event)" matAutocompleteOrigin #origin="matAutocompleteOrigin" color="primary"
+      [fill]="case.assignee ? 'solid' : 'clear'">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <span [hidden]="case.assignee">{{'Claim' | translate}}</span>
+      <span [hidden]="!case.assignee">{{case.assignee}}</span>
+    </ion-button>
+    <ion-button size="small" color="primary" fill="clear">
+      <ion-icon name="people" slot="start"></ion-icon>{{'Add Group' | translate}}
+    </ion-button>
+  </div>
+</ion-card>

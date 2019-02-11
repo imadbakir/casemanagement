@@ -30,6 +30,12 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'cases',
+        loadChildren:
+          '../cases/cases.module#CasesModule',
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'permissions',
         loadChildren:
           '../permissions/permissions.module#PermissionsModule',

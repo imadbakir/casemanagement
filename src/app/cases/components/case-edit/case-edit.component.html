@@ -1,0 +1,3 @@
+<app-form *ngIf="form.ready" [formKey]="form.formKey" [resourceName]="form.resourceName" [resourceId]="form.resourceId"
+  [readOnly]="form.readOnly" [version]="form.version" [executionVariables]="form.executionVariables" (customEvent)="onCustomEvent($event)"
+  (submit)="onSubmit($event)"></app-form>

@@ -1,0 +1,21 @@
+<ion-header no-border>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button small (ionFocus)="panels.details.open" (click)="closeTask()" [ngClass]="'move-handle visible-xs'"
+        slot="icon-only">
+        <ion-icon size="medium" name="close"></ion-icon>
+      </ion-button>
+      <ion-button small [ngClass]="'move-handle hide-xs'" slot="icon-only">
+        <ion-icon size="small" name="move"></ion-icon>
+      </ion-button>
+      <ion-button [ngClass]="'hide-xs'" small (click)="toggleFullScreen()">
+        <ion-icon size="small" slot="icon-only" name="expand" [hidden]="panels.details.fullscreen"></ion-icon>
+        <ion-icon size="small" slot="icon-only" name="contract" [hidden]="!panels.details.fullscreen"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <router-outlet></router-outlet>
+</ion-content>

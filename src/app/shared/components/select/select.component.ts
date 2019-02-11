@@ -16,7 +16,8 @@ import { Subject } from 'rxjs';
 export class SelectComponent implements OnInit, ControlValueAccessor {
   @Input() bindValue;
   @Input() bindLabel;
-  @Input() data;
+  @Input() data = [];
+  @Input() hideLoaded = false;
   @Input() placeholder;
   @Input() multiple;
   @Output() select: Subject<Object> = new Subject();
@@ -52,12 +53,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   private fetchMore() {
     const len = this.buffer.length;
     const more = this.data.slice(len, this.bufferSize + len);
-    this.loading = true;
-    // using timeout here to simulate backend API delay
-    setTimeout(() => {
-      this.loading = false;
-      this.buffer = this.data.concat(more);
-    }, 200);
+    this.buffer = this.data.concat(more);
   }
   writeValue(value) {
     if (value) {

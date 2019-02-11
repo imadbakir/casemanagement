@@ -1,0 +1,12 @@
+ion-content{
+  --background:var(--ion-color-light);
+  height:calc(100% - 49px);
+}
+ app-grid {
+    width: 100%;
+  }
+  ion-menu.menu-pane-visible {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1) !important;
+    z-index: 999;
+}
+ 

@@ -150,7 +150,6 @@ export class FiltersMenuComponent implements OnInit, OnDestroy {
           if (filters.length === 0) {
             this.createDefaultFilter();
           }
-
         });
       });
     this.event.announceFiltersRefresh('refresh');

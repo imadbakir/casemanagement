@@ -1,0 +1,24 @@
+:host ::ng-deep {
+  .ng-select-container {
+    min-height: 25px;
+  }
+  .ng-placeholder {
+    font-size: 13px;
+    margin-top: -3px;
+  }
+  .ng-select.ng-select-opened .ng-placeholder {
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 0;
+  }
+  .ng-value-container {
+    padding-top: 0px;
+    border-width: 0px !important;
+  }
+  span.ng-value-label {
+    font-size: 13px;
+  }
+  .ng-select .ng-option {
+    font-size: 13px;
+  }
+}
