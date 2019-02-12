@@ -1,9 +1,9 @@
-import { Component, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 /**
- * Permission Modal - add - edit Permission
+ * App Select Component
  */
 @Component({
   selector: 'app-select',
@@ -13,13 +13,18 @@ import { Subject } from 'rxjs';
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true },
   ]
 })
-export class SelectComponent implements OnInit, ControlValueAccessor {
+export class SelectComponent implements OnInit, ControlValueAccessor, OnChanges {
   @Input() bindValue;
   @Input() bindLabel;
   @Input() data = [];
   @Input() hideLoaded = false;
   @Input() placeholder;
   @Input() multiple;
+  @Input() isAsync = false;
+  @Input() attachSource = false;
+  @Input() closeOnSelect = false;
+  @Input() source$: Observable<any>;
+
   @Output() select: Subject<Object> = new Subject();
   selection;
   buffer = [];
@@ -69,8 +74,23 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   validate(c: FormControl) {
     return this.validateFn(c);
   }
+  getFromSource() {
+    this.source$.subscribe(data => {
+      this.data = data;
+      this.buffer = this.data.slice(0, this.bufferSize);
+    });
+  }
+  ngOnChanges(changes): void {
+    if (changes.source$ && changes.source$.currentValue && changes.source$.previousValue && !this.attachSource) {
+      this.getFromSource();
+    }
+  }
   ngOnInit() {
-    this.buffer = this.data.slice(0, this.bufferSize);
+    if (this.isAsync && !this.attachSource) {
+      this.getFromSource();
+    } else {
+      this.buffer = this.data.slice(0, this.bufferSize);
+    }
   }
 
 }

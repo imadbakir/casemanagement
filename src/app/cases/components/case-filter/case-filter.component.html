@@ -3,13 +3,20 @@
         {{'Filters' | translate}}
     </ion-label>
 </ion-list-header>
-<ion-grid>
-    <ion-row>
-        <ion-col text-center>
-            <p>No Filters Applied</p>
-        </ion-col>
-    </ion-row>
-</ion-grid>
+<ion-item (click)="presentFilter()">
+    <ion-label text-wrap>
+        <ion-text>
+            <h3>
+                {{"Filter" | translate}}
+            </h3>
+        </ion-text>
+    </ion-label>
+    <ion-buttons slot="end">
+        <ion-button clear color="medium" slot="icon-only">
+            <ion-icon name="funnel"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</ion-item>
 <!-- <ion-grid padding>
     <ion-row *appHasRole [appHasRole]="'user'">
         <ion-col no-padding>

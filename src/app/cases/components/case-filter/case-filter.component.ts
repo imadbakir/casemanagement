@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../../core/services/rest.service';
+import { ModalController } from '@ionic/angular';
+import { FilterModalComponent } from '../filter-modal/filter-modal.component';
+import { TranslateService } from '@ngx-translate/core';
+import { slideIn, slideInRtl } from '../../../animations/slide-in';
+import { slideOut, slideOutRtl } from '../../../animations/slide-out';
 
 @Component({
     selector: 'app-case-filter',
@@ -15,30 +20,25 @@ export class CaseFilterComponent implements OnInit {
     public segmentNames = [];
     public beneficiaries = [];
 
-    constructor(private restService: RestService) {
+    constructor(private restService: RestService, private modalController: ModalController, public translate: TranslateService, ) {
 
     }
+    /**
+ * Open New Filters Modal
+ */
+    async presentFilter() {
+        const dir = await this.translate.get('dir').toPromise().then(direction => direction);
+        const modal = await this.modalController.create({
+            cssClass: 'left-side-modal slim',
+            enterAnimation: dir === 'rtl' ? slideIn : slideInRtl,
+            leaveAnimation: dir === 'rtl' ? slideOut : slideOutRtl,
+            component: FilterModalComponent,
+            showBackdrop: true,
+            backdropDismiss: true,
+            animated: true
+        });
+        return await modal.present();
+    }
     ngOnInit() {
-        this.restService.getBranches().subscribe(data => {
-            this.branches = data;
-        });
-        this.restService.getDepartments().subscribe(data => {
-            this.departments = data;
-        });
-        this.restService.getCaseTypes().subscribe(data => {
-            this.caseTypes = data;
-        });
-        this.restService.getCaseNames().subscribe(data => {
-            this.caseNames = data;
-        });
-        this.restService.getSegmentTypes().subscribe(data => {
-            this.segmentTypes = data;
-        });
-        this.restService.getSegmentNames().subscribe(data => {
-            this.segmentNames = data;
-        });
-        this.restService.getBeneficiaries().subscribe(data => {
-            this.beneficiaries = data;
-        });
     }
 }

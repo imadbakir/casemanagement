@@ -13,8 +13,8 @@ import { UserOptionsComponent } from '../user-options/user-options.component';
 export class MenuComponent {
     public menu = [
         { title: 'Dashboard', path: '/dashboard', icon: 'home' },
-        { title: 'Tasks', path: '/tasks', icon: 'list' },
-        { title: 'Cases', path: '/cases', icon: 'list' },
+        { title: 'Tasks', path: '/tasks', icon: 'clipboard' },
+        { title: 'Cases', path: '/cases', icon: 'filing' },
         { title: 'Permissions', path: '/permissions', icon: 'unlock' }
     ];
     constructor(

@@ -1,10 +1,12 @@
-<ng-select [multiple]="multiple" [(ngModel)]="selection" (change)="emitSelection($event)" [items]="buffer" [virtualScroll]="true" [loading]="loading"
-  [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder | translate" (scroll)="onScroll($event)"
-  (scrollToEnd)="onScrollToEnd()">
+<ng-select [closeOnSelect]="closeOnSelect" [multiple]="multiple" [(ngModel)]="selection" (change)="emitSelection($event)" [items]="isAsync && attachSource ? (source$ | async) : buffer"
+  [virtualScroll]="true" [loading]="loading" [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder | translate"
+  (scroll)="onScroll($event)" (scrollToEnd)="onScrollToEnd()">
   <ng-template ng-header-tmp *ngIf="!hideLoaded">
-    <small class="form-text text-muted">{{'selectDataCount' | translate:{buffer: buffer.length || 0, data: data.length || 0} }}</small>
+    <small class="form-text text-muted">{{'selectDataCount' | translate:{buffer: buffer.length || 0, data: data.length
+      || 0} }}</small>
   </ng-template>
-  <ng-template ng-option-tmp let-item="item" let-index="index">
+  <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+      <input id="item-{{index}}" type="checkbox" *ngIf="multiple" [ngModel]="item$.selected"/>
     {{item[bindLabel] | translate}}
   </ng-template>
 </ng-select>

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatAutocompleteModule, MatDatepickerModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { GridsterModule } from 'angular-gridster2';
 import { FormModule } from '../form/form.module';
 import { SharedModule } from '../shared/shared.module';
@@ -16,6 +15,7 @@ import { CasesComponent } from './cases.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CaseEmptyComponent } from './components/case-empty/case-empty.component';
 import { CaseFilterComponent } from './components/case-filter/case-filter.component';
+import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 
 
@@ -25,11 +25,12 @@ import { CaseFilterComponent } from './components/case-filter/case-filter.compon
  */
 @NgModule({
   imports: [
-    CasesRoutingModule,
-    GridsterModule,
     MatDatepickerModule,
+    MatFormFieldModule,
     MatNativeDateModule,
     MatAutocompleteModule, MatInputModule,
+    CasesRoutingModule,
+    GridsterModule,
     SharedModule,
     FormModule,
     ScrollingModule

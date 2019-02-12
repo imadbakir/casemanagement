@@ -174,7 +174,7 @@ export class RestService {
   getCaseNames(queryParams = {}): Observable<any[]> {
     const endpoint = `${this.RestUrl}casenames`;
     return this.http.get<any>(endpoint, { params: queryParams }).pipe(
-      tap(form => this.log(`fetched casetypes`)),
+      tap(form => this.log(`fetched caseNames`)),
       catchError(this.handleError('getCaseNames', []))
     );
   }

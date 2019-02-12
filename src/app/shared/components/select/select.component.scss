@@ -1,6 +1,6 @@
 :host::ng-deep {
   .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
-    background-color: var(--ion-color-primary) !important;
+    background-color: var(--ion-color-success) !important;
   }
   &.ng-invalid.ng-dirty{
     .ng-select .ng-select-container:after {

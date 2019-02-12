@@ -13,7 +13,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid no-padding>
+    <formio-loader></formio-loader>
+
+  <ion-grid no-padding [hidden]="loader.loading">
     <ion-row>
       <ion-col>
         <div text-center padding [hidden]="cases.length > 0 || loader.loading">
@@ -30,7 +32,6 @@
           <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Loading more Cases...' | translate">
           </ion-infinite-scroll-content>
         </ion-infinite-scroll>
-
       </ion-col>
     </ion-row>
   </ion-grid>

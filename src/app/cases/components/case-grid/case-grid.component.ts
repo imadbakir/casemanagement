@@ -138,46 +138,15 @@ export class CaseGridComponent implements OnInit {
   }
 
   /**
-   * ngOnInit:
-   * subscribe to sorting events
-   * Subscribe Item Change Events
-   * Subscribe to Filter Change Events
+   * Subscribe to param Change Events & load data accordingly
    */
   ngOnInit() {
-    this.cases = [
-      {
-        'id': 1,
-        'caseName': 'طلب صرف مكافأة نجاح',
-        'department': 'إدارة الأبناء',
-        'caseType': 'الخدمات التعليمية',
-        'caseDate': '10/02/2019',
-        'status': 'تحت المعالجة',
-        'beneficiary': 'عبد الله الحربي - من 15 الى 20 - عازب',
-        'description': 'مكافأة نجاح من الصف الثالث متوسط'
-      },
-      {
-        'id': 12,
-        'caseName': 'طلب إعانة علاجية ',
-        'department': 'إدارة التمكين',
-        'caseType': 'المساعدة المالية',
-        'caseDate': '24/01/2019',
-        'status': 'تحت المعالجة',
-        'beneficiary': 'ابراهيم العتيبي - من 21 الى 30 - عازب',
-        'description': 'دورة تأهيل في النجاره'
-      },
-      {
-        'id': 50,
-        'caseName': 'طلب إعانة تهيئة مبتعث',
-        'department': 'إدارة الأبناء',
-        'caseType': 'الخدمات التعليمية',
-        'caseDate': '01/01/2019',
-        'status': 'معلق',
-        'beneficiary': 'ابراهيم العتيبي - من 21 الى 30 - عازب',
-        'description': 'ابتعاث لاكمال الماجستير في جامعة لندن'
-      }
-    ];
     this.route.params.subscribe(params => {
-
+      this.loader.loading = true;
+      this.restService.getCases({ userId: this.auth.getUser().username, ...params }).subscribe(cases => {
+        this.cases = cases;
+        this.loader.loading = false;
+      });
     });
 
   }
