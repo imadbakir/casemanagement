@@ -13,9 +13,17 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <ion-card>
+            <app-cases-dashlet></app-cases-dashlet>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
         <ion-card-header>
           <ion-card-title>{{'Daily' | translate}}</ion-card-title>
         </ion-card-header>
+
         <ion-row>
           <ion-col *ngFor="let chart of charts.daily" [attr.size-xs]="6" [attr.size-sm]="(12 / charts.daily.length < 4 ? 4 : 12 / charts.daily.length)"
             [attr.size-lg]="(12 / charts.daily.length < 2.4 ? 2.4 : 12 / charts.daily.length)">
