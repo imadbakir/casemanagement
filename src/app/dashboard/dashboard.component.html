@@ -13,9 +13,16 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <app-cases-dashlet [title]="'الحالات العاجلة'" (fetch)="fetchDashletData($event)" [data]="casesDashletData"></app-cases-dashlet>
+      </ion-col>
+  
+    </ion-row>
+    <ion-row>
+      <ion-col>
         <ion-card-header>
           <ion-card-title>{{'Daily' | translate}}</ion-card-title>
         </ion-card-header>
+
         <ion-row>
           <ion-col *ngFor="let chart of charts.daily" [attr.size-xs]="6" [attr.size-sm]="(12 / charts.daily.length < 4 ? 4 : 12 / charts.daily.length)"
             [attr.size-lg]="(12 / charts.daily.length < 2.4 ? 2.4 : 12 / charts.daily.length)">
