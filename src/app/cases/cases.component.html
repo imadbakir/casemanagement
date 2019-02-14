@@ -1,15 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{'Cases' | translate}}</ion-title>
-    <ion-buttons slot="end">
-      <app-language-switch></app-language-switch>
-      <app-add-request-button></app-add-request-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <router-outlet></router-outlet>
-</ion-content>
+<ion-split-pane content-id="cases">
+  <ion-menu #filter content-id="cases">
+    <ion-content>
+      <app-filter-modal>
+      </app-filter-modal>
+    </ion-content>
+  </ion-menu>
+  <div id="cases">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="toggleFilter(filter)">
+            <ion-icon name="options"></ion-icon>
+          </ion-button>
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{'Cases' | translate}}</ion-title>
+        <ion-buttons slot="end">
+          <app-language-switch></app-language-switch>
+          <app-add-request-button></app-add-request-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <router-outlet></router-outlet>
+    </ion-content>
+  </div>
+</ion-split-pane>

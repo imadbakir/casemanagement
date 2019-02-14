@@ -36,7 +36,7 @@ export class FilterModalComponent implements OnInit {
     segmentNames: [],
     beneficiaries: []
   };
-  constructor(public auth: AuthService, public modal: ModalController, public navParams: NavParams,
+  constructor(public auth: AuthService, public modal: ModalController,
     public camundaService: CamundaRestService, public restService: RestService, public event: EventsService, private router: Router) {
 
   }

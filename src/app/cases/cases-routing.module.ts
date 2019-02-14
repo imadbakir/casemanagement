@@ -11,12 +11,6 @@ import { CaseFilterComponent } from './components/case-filter/case-filter.compon
  */
 const routes: Routes = [
   {
-    path: '', outlet: 'sidemenu', redirectTo: 'filter', pathMatch: 'full'
-  },
-  {
-    path: 'filter', outlet: 'sidemenu', component: CaseFilterComponent,
-  },
-  {
     path: '', component: CasesComponent,
     children: [
       {

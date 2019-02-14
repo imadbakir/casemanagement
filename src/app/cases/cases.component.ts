@@ -14,11 +14,13 @@ import { AuthService } from '../core/services/auth.service';
 
 
 export class CasesComponent {
-
   constructor(
     public translate: TranslateService,
     public auth: AuthService
   ) {
-  }
 
+  }
+  toggleFilter(element) {
+    element.el.classList.toggle('filter-open');
+  }
 }
