@@ -1,63 +1,46 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { IonInfiniteScroll, LoadingController, ModalController, PopoverController } from '@ionic/angular';
-import { AuthService } from '../../../core/services/auth.service';
-import { CamundaRestService } from '../../../core/services/camunda-rest.service';
-import { EnvService } from '../../../core/services/env.service';
-import { EventsService } from '../../../core/services/events.service';
-import { RestService } from '../../../core/services/rest.service';
+import { Subject } from 'rxjs';
 import { FormioLoader } from '../../../form/components/loader/formio.loader';
 import { SortOptionsComponent } from '../sort-options/sort-options.component';
+import { trigger, transition, style, animate, state } from '@angular/animations';
 
 /**
- * Permission Table
+ * Cases Dashlet
  */
 @Component({
   selector: 'app-cases-dashlet',
   templateUrl: './cases-dashlet.component.html',
-  styleUrls: ['./cases-dashlet.component.scss']
+  styleUrls: ['./cases-dashlet.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({ transform: 'translateX(0%)', opacity: 1 })),
+      state('out', style({ transform: 'translateX(110%)', opacity: 0 })),
+      transition('*=>in', animate('300ms')),
+      transition('*=>out', animate('200ms'))
+    ])]
 })
 export class CasesDashletComponent implements OnInit, OnChanges {
-  /**
-   * Filtered Displayed Tasks Array
-   */
-  cases: any = [];
 
-  /**
-   * Filter object
-   */
+  @Input() data: any = [];
+  @Input() pageSize = 10;
+  @Input() infinite = false;
+  @Input() title: any = '';
+  @Output() fetch: Subject<any> = new Subject();
+  items = [];
+  filterState = 'out';
+
   filter: any = {
     sortBy: 'created',
     sortOrder: 'desc',
     textSearch: '',
   };
 
-  /**
-   * Original Tasks Array
-   */
-  tasksOrigin: any = [];
 
-  loading;
-  /**
-   * Chosen FilterId
-   */
-  filterId = '';
-  viewType;
-  pageSize = this.env.tasksPageSize;
-  /**
-   * Infine Scroll View Child
-   */
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
 
   constructor(
-    private event: EventsService,
-    private camundaService: CamundaRestService,
-    private restService: RestService,
-    private auth: AuthService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private env: EnvService,
     public loader: FormioLoader,
     public loadingController: LoadingController,
     public popoverCtrl: PopoverController,
@@ -65,68 +48,43 @@ export class CasesDashletComponent implements OnInit, OnChanges {
   ) {
 
   }
+  async toggleFilter() {
+    this.filterState = this.filterState === 'in' ? 'out' : 'in';
+  }
+  fetchMore() {
+    if (this.infinite) {
+      this.fetch.next({ ...this.filter, start: this.items.length, total: this.pageSize });
+    } else {
+      this.fetch.next(this.filter);
 
-  /**
-   * Search Event Callback
-   * @param event
-   */
-  search(event) {
-    this.performSearch(this.filter.textSearch);
+    }
+  }
+  reset() {
+    this.fetchNew();
+    this.toggleFilter();
+  }
+  applyFilter() {
+    this.fetchNew();
+    this.toggleFilter();
+  }
+  fetchNew() {
+    this.loader.loading = true;
+    if (this.infinite) {
+      this.fetch.next({ ...this.filter, start: 0, total: this.pageSize });
+    } else {
+      this.fetch.next(this.filter);
+    }
   }
 
-  /**
-   * Present Sort Options Popover Menu.
-   * @param event
-   */
-  async sortOptions(event) {
-    const popover = await this.popoverCtrl.create({
-      component: SortOptionsComponent,
-      event: event
-    });
-    return await popover.present();
-  }
-
-  /**
-   * Clear Search Event Callback
-   * @param event
-   */
-  clearSearch(event) {
-    this.filter.textSearch = '';
-    this.performSearch('');
-  }
-
-  /**
-   * Perform Text Search on TaskOrigin array and reassign displayed Tasks
-   * @param value
-   */
-  performSearch(value) {
-
-  }
-  /**
-   * Set chosen Filter Id
-   * @param filterId
-   */
-  setFilter(filterId) {
-    this.filterId = filterId;
-  }
-
-  /**
-   * Fetch Tasks from Camunda API
-   * Reset Tasks array if filter is new.
-   * Get the Next page if not
-   *  @param isNew
-   */
-  fetchTasks(isNew = false) {
-  }
-  trackBy(index, case_) {
-    return case_.id;
+  trackBy(index, item) {
+    return item.id;
   }
 
   /**
    * Ion Infinite Scroll Callback
    * Fetch more tasks then stop spinner.
- * Ion Infinite Scroll disable if no more data.
- */
+  * Ion Infinite Scroll disable if no more data.
+  */
   infiniteScrollSettings(data) {
     this.infiniteScroll.complete();
     if (data.length < this.pageSize) {
@@ -135,18 +93,22 @@ export class CasesDashletComponent implements OnInit, OnChanges {
       this.infiniteScroll.disabled = false;
     }
   }
-
+  ngOnChanges(changes) {
+    if (changes.data.currentValue && changes.data.previousValue) {
+      if (this.infinite) {
+        console.log(changes);
+        this.items = this.items.concat(changes.data.currentValue);
+        this.infiniteScrollSettings(changes.data.currentValue);
+      } else {
+        this.items = changes.data.currentValue;
+      }
+      this.loader.loading = false;
+    }
+  }
   /**
-   * Subscribe to param Change Events & load data accordingly
+   * onInit send data fetch event
    */
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.loader.loading = true;
-      this.restService.getCases({ userId: this.auth.getUser().username, ...params }).subscribe(cases => {
-        this.cases = cases;
-        this.loader.loading = false;
-      });
-    });
-
+    this.fetchNew();
   }
 }

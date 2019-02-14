@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../core/services/rest.service';
 declare var palette: any;
 
 /**
@@ -27,13 +28,18 @@ export class DashboardComponent implements OnInit {
 
   };
   public charts;
-  constructor() {
+  public casesDashletData = [];
+  constructor(private restService: RestService) {
     this.colors = palette('rainbow', 12).map(function (hex) {
       return '#' + hex;
     });
   }
 
-
+  fetchDashletData(params) {
+    this.restService.getCases({ ...params }).subscribe(data => {
+    this.casesDashletData = data;
+    });
+  }
   ngOnInit() {
     this.charts = {
       daily: [

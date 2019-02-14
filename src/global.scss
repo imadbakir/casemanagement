@@ -116,6 +116,7 @@ $app-direction: multi;
 .visible-xs {
   display: none;
 }
+
 @media (max-width: 780px) {
   .hide-xs {
     display: none;
@@ -133,7 +134,25 @@ ion-item {
 ion-item:hover {
   opacity: 0.8;
 }
-
+h2 ion-badge[slot="end"] {
+  float: right;
+}
+.slotted {
+  width: 100%;
+  display: flow-root;
+  padding-top: 10px;
+  position: relative;
+  [slot="start"] {
+    float: left;
+    margin:0px;
+    margin-right:5px;
+  }
+  [slot="end"] {
+    float: right;
+    margin:0px;
+    margin-left:5px;
+  }
+}
 html[dir="rtl"] {
   --font-family-md-base: "Cairo", sans-serif;
   --font-family-ios-base: "Cairo", sans-serif;
@@ -143,11 +162,24 @@ html[dir="rtl"] {
   body {
     text-align: right;
   }
-
+  .slotted {
+    [slot="start"] {
+      float: right;
+      margin:0px;
+      margin-left:5px;
+    }
+    [slot="end"] {
+      float: left;
+      margin:0px;
+      margin-right:5px;
+    }
+  }
   h3 ion-badge {
     float: left !important;
   }
-
+  h2 ion-badge[slot="end"] {
+    float: left;
+  }
   .photo-container.mini-avatar {
     float: left;
   }
@@ -192,7 +224,7 @@ html[dir="rtl"] {
   }
   [slot="end"] {
     margin-left: 0px;
-    margin-right: 32px;
+    margin-right: 5px;
   }
   ion-button ion-icon[slot="start"] {
     margin: 0 -0.3em 0 0.3em;

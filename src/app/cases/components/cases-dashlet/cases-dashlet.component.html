@@ -1,47 +1,101 @@
 <ion-header no-border>
 
-    <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button small (click)="sortOptions($event)" slot="icon-only">
-          <ion-icon size="small" name="funnel"></ion-icon>
-        </ion-button>
-        <ion-button small [ngClass]="'move-handle hide-xs'" slot="icon-only">
-          <ion-icon size="small" name="move"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-  
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-      <formio-loader></formio-loader>
-  
-    <ion-grid no-padding [hidden]="loader.loading">
-      <ion-row>
-        <ion-col>
-          <div text-center padding [hidden]="cases.length > 0 || loader.loading">
-            <ion-text>
-              <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
-              <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"No Cases." | translate}}</h6>
-            </ion-text>
-          </div>
-          <ion-list>
-            <ion-item>
-              <ion-label text-wrap>
-                <ion-text color="primary">
-                  <h3>H3 Primary Title</h3>
-                </ion-text>
-                <p>Paragraph line 1</p>
-                <ion-text color="secondary">
-                  <p>Paragraph line 2 secondary</p>
-                </ion-text>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-          <ion-infinite-scroll threshold="90px" (ionInfinite)="fetchCases()">
-            <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Loading more Cases...' | translate">
-            </ion-infinite-scroll-content>
-          </ion-infinite-scroll>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+  <ion-toolbar>
+    <ion-title>
+      {{title | translate}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-chip (click)="toggleFilter($event)" color="medium" size="medium" slot="end">
+        <ion-icon [color]="filterState == 'in' ? 'danger':'tertiary'" [name]="filterState == 'in' ? 'close':'funnel'"></ion-icon>
+        <ion-label>
+          {{'Filter' | translate}}
+        </ion-label>
+      </ion-chip>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="filter mat-elevation-z3" [@slideInOut]="filterState">
+    <ion-content>
+      <ion-grid margin-top>
+        <ion-row>
+          <ion-col>
+            <mat-form-field>
+              <input matInput [matDatepicker]="fd" placeholder="From Date">
+              <mat-datepicker-toggle matSuffix [for]="fd"></mat-datepicker-toggle>
+              <mat-datepicker #fd></mat-datepicker>
+            </mat-form-field>
+          </ion-col>
+          <ion-col>
+            <mat-form-field>
+              <input matInput [matDatepicker]="td" placeholder="To Date">
+              <mat-datepicker-toggle matSuffix [for]="td"></mat-datepicker-toggle>
+              <mat-datepicker #td></mat-datepicker>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-select [placeholder]="'Status'"></app-select>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-select [placeholder]="'Depertment'"></app-select>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-select [placeholder]="'Case Type'"></app-select>
+          </ion-col>
+          <ion-col>
+            <app-select [placeholder]="'Case Name'"></app-select>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-select [placeholder]="'Segment Type'"></app-select>
+          </ion-col>
+          <ion-col>
+            <app-select [placeholder]="'Segment Name'"></app-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button fill="outline" expand="block" color="primary" (click)="reset()">{{'Reset' |
+              translate}}</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button fill="solid" expand="block" (click)="applyFilter()" color="success">{{'Apply' | translate}}</ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </div>
+  <formio-loader></formio-loader>
+
+  <ion-grid no-padding [hidden]="loader.loading || filterState == 'in'">
+    <ion-row>
+      <ion-col>
+        <div text-center padding [hidden]="items.length > 0 || loader.loading">
+          <ion-text>
+            <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
+            <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"No Cases." | translate}}</h6>
+          </ion-text>
+        </div>
+        <ion-list>
+          <app-cases-dashlet-item [@slideInOut] *ngFor="let case of items; trackBy: trackBy" [case]="case"></app-cases-dashlet-item>
+        </ion-list>
+        <ion-infinite-scroll *ngIf="infinite" threshold="90px" (ionInfinite)="fetchMore()">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Loading more Cases...' | translate">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

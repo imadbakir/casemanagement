@@ -21,6 +21,7 @@ import { CasesDashletComponent } from './components/cases-dashlet/cases-dashlet.
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
 import { GridsterComponent } from './components/gridster/gridster.component';
 import { SortOptionsComponent } from './components/sort-options/sort-options.component';
+import { CasesDashletItemComponent } from './components/cases-dashlet-item/cases-dashlet-item.component';
 
 
 
@@ -54,9 +55,11 @@ import { SortOptionsComponent } from './components/sort-options/sort-options.com
     SortOptionsComponent,
     CaseFilterComponent,
     AddRequestButtonComponent,
-    CasesDashletComponent
+    CasesDashletComponent,
+    CasesDashletItemComponent
   ],
   exports: [
+    CasesDashletItemComponent,
     CasesDashletComponent
   ]
 })

@@ -1,0 +1,36 @@
+<ion-card class="card mat-elevation-z3">
+  <ion-card-content>
+    <h2 class="slotted">
+      {{case.caseName | translate}}
+      <ion-badge color="secondary" size="medium" slot="end" mode="ios">
+        {{case.status}}
+      </ion-badge>
+      <ion-badge color="primary" size="medium" slot="end" mode="ios">
+        {{case.caseType | translate}}
+      </ion-badge>
+    </h2>
+    <div class="more-details">
+      <p>{{case.beneficiary}}</p>
+    </div>
+    <div class="more-details item-options">
+      <p>{{case.description}}</p>
+    </div>
+    <div class="slotted">
+      <ion-chip color="dark" slot="start">
+        <ion-icon color="dark" name="calendar"></ion-icon>
+        <ion-label>
+          {{case.caseDate}}
+        </ion-label>
+      </ion-chip>
+      <ion-chip color="tertiary" size="medium" slot="end">
+        <ion-icon color="tertiary" name="cube"></ion-icon>
+        <ion-label>
+          {{case.department ? case.department : '' }}
+          {{case.branch ? case.branch : ''}}
+        </ion-label>
+      </ion-chip>
+    </div>
+
+  </ion-card-content>
+
+</ion-card>
