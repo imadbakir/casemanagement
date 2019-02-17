@@ -10,7 +10,6 @@ import { FormModule } from '../form/form.module';
 import { SharedModule } from '../shared/shared.module';
 import { CasesRoutingModule } from './cases-routing.module';
 import { CasesComponent } from './cases.component';
-import { AddRequestButtonComponent } from './components/add-request-button/add-request-button.component';
 import { CaseDetailsComponent } from './components/case-details/case-details.component';
 import { CaseEditComponent } from './components/case-edit/case-edit.component';
 import { CaseEmptyComponent } from './components/case-empty/case-empty.component';
@@ -54,7 +53,6 @@ import { CasesDashletItemComponent } from './components/cases-dashlet-item/cases
     CaseDetailsComponent,
     SortOptionsComponent,
     CaseFilterComponent,
-    AddRequestButtonComponent,
     CasesDashletComponent,
     CasesDashletItemComponent
   ],

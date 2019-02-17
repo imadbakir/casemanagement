@@ -3,14 +3,12 @@ import { MatAutocompleteModule, MatDatepickerModule, MatInputModule, MatNativeDa
 import { GridsterModule } from 'angular-gridster2';
 import { FormModule } from '../form/form.module';
 import { SharedModule } from '../shared/shared.module';
-import { AddRequestButtonComponent } from './components/add-request-button/add-request-button.component';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
 import { FilterOptionsComponent } from './components/filter-options/filter-options.component';
 import { FiltersMenuComponent } from './components/filters-menu/filters-menu.component';
 import { GridsterComponent } from './components/gridster/gridster.component';
 import { HistoryTaskComponent } from './components/history-task/history-task.component';
 import { ProcessFormComponent } from './components/process-form/process-form.component';
-import { ProcessListComponent } from './components/process-list/process-list.component';
 import { SortOptionsComponent } from './components/sort-options/sort-options.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { TaskEditComponent } from './components/task-edit/task-edit.component';
@@ -21,7 +19,6 @@ import { TasksComponent } from './tasks.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TaskEmptyComponent } from './components/task-empty/task-empty.component';
 import { TasksMenuComponent } from './components/tasks-menu/tasks-menu.component';
-import { ProcessModalComponent } from './components/process-modal/process-modal.component';
 
 
 
@@ -41,14 +38,12 @@ import { ProcessModalComponent } from './components/process-modal/process-modal.
     FormModule,
     ScrollingModule
   ],
-  entryComponents: [ProcessModalComponent, FilterOptionsComponent, ProcessListComponent, FilterModalComponent, SortOptionsComponent],
+  entryComponents: [ FilterOptionsComponent, FilterModalComponent, SortOptionsComponent],
   declarations: [
-    ProcessModalComponent,
     TasksMenuComponent,
     HistoryTaskComponent,
     ProcessFormComponent,
     FilterOptionsComponent,
-    ProcessListComponent,
     FilterModalComponent,
     TaskEditComponent,
     TaskEmptyComponent,
@@ -59,6 +54,6 @@ import { ProcessModalComponent } from './components/process-modal/process-modal.
     TaskItemComponent,
     TaskDetailsComponent,
     SortOptionsComponent,
-    AddRequestButtonComponent]
+    ],
 })
 export class TasksModule { }

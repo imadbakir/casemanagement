@@ -102,3 +102,110 @@ ion-card:focus {
 .active {
   background: rgba(var(--ion-color-primary-rgb),0.18);
 }
+:host:focus {
+  outline: 0px;
+}
+
+ion-card.card {
+  background: #fff;
+  margin: 0px 5px 20px 5px;
+  width: calc(100% - 10px);
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 1px #dcdcdc solid !important;
+  transition: 0.4s;
+  max-height: 550px;
+
+  &.complete {
+    max-height: 0px;
+    background-color: rgba(var(--ion-color-success-rgb), 0.5);
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+  }
+
+  p {
+    padding: 10px 0px;
+    opacity: 0.8;
+  }
+}
+
+.date-picker-badge {
+  font-weight: 100;
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 12px;
+  background: #f8f8f8;
+  border: 1px solid #eee;
+
+  &.due {
+    float: right;
+  }
+
+  ion-icon {
+    font-size: 17px;
+    vertical-align: top;
+    margin: -3px 3px;
+  }
+}
+
+.more-details {
+  white-space: initial;
+  padding: 0px;
+  height: auto;
+  max-height: 34px;
+
+  &.item-options {
+    max-height: 0px;
+    margin-top: 0px;
+    p {
+      padding: 0px;
+    }
+  }
+
+  overflow: hidden;
+  margin-top: 10px;
+  -webkit-transition: max-height 1.2s;
+  -moz-transition: max-height 1.2s;
+  -ms-transition: max-height 1.2s;
+  -o-transition: max-height 1.2s;
+  transition: max-height 1.2s;
+  -webkit-transition: padding 0.2s;
+  -moz-transition: padding 0.2s;
+  -ms-transition: padding 0.2s;
+  -o-transition: padding 0.2s;
+  transition: padding 0.2s;
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+  }
+}
+
+ion-card:hover .more-details,
+ion-card:focus-within .more-details {
+  p {
+    white-space: normal;
+    text-overflow: initial;
+  }
+
+  max-height: 300px;
+
+  &.item-options {
+    margin-top: 0px;
+    padding: 2px 0px 10px 0px;
+  }
+}
+
+ion-card:focus {
+  outline: 0px;
+}
+.active {
+  background: rgba(var(--ion-color-primary-rgb), 0.18);
+}
+

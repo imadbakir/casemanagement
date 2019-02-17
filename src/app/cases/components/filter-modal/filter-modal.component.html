@@ -22,14 +22,20 @@
         </mat-form-field>
       </ion-col>
     </ion-row>
-    <ion-row>
+  <!--  <ion-row>
       <ion-col>
         <ion-item no-padding>
           <ion-label color="primary">{{'Status' | translate}}</ion-label>
           <ion-toggle value="true" color="success"></ion-toggle>
         </ion-item>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
+    <ion-row>
+        <ion-col>
+          <app-select   [placeholder]="'Status'"  
+              [hideLoaded]="true"></app-select>
+        </ion-col>
+      </ion-row>
     <ion-row>
       <ion-col>
         <app-select [multiple]="true" [(ngModel)]="filter.branches" [placeholder]="'Branch'" [data]="branches"
@@ -78,7 +84,7 @@
   <ion-grid no-padding [ngStyle]="{'background': '#eaeaea'}">
     <ion-row>
       <ion-col>
-        <ion-button fill="outline" expand="block" color="primary" (click)="modal.dismiss()">{{'Cancel' | translate}}</ion-button>
+        <ion-button fill="outline" expand="block" color="primary" (click)="modal.dismiss()">{{'Reset' | translate}}</ion-button>
       </ion-col>
       <ion-col>
         <ion-button fill="solid" expand="block" (click)="applyFilter()" color="success">{{'Apply' | translate}}</ion-button>

@@ -1,18 +1,14 @@
-
-
- 
-  ion-searchbar{
-    height:42px;
-  }
-  ion-list{
-  background:transparent;
-  --ion-item-background:#fff;
-  }
-  ion-content{
-    height: calc(100% - 49px);
-  }
-  ion-toolbar{
-    --background:var(--ion-color-light);
-  }
- 
-  
+ion-searchbar {
+  height: 42px;
+}
+ion-list {
+  background: transparent;
+  --ion-item-background: #fff;
+}
+ion-content {
+  height: calc(100% - 49px);
+  --background: transparent;
+}
+ion-toolbar {
+  --background: var(--ion-color-light);
+}

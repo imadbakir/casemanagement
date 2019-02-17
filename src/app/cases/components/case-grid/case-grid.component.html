@@ -13,18 +13,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-    <formio-loader></formio-loader>
+  <formio-loader></formio-loader>
 
   <ion-grid no-padding [hidden]="loader.loading">
     <ion-row>
-      <ion-col>
+      <ion-col no-padding>
         <div text-center padding [hidden]="cases.length > 0 || loader.loading">
           <ion-text>
             <ion-icon name="egg" [ngStyle]="{'font-size': '50px','margin-top': '150px'}" color="secondary"></ion-icon>
             <h6 padding [ngStyle]="{ 'opacity': 0.5}">{{"No Cases." | translate}}</h6>
           </ion-text>
         </div>
-        <ion-list>
+        <ion-list no-padding>
           <app-case-item *ngFor="let case of cases;trackBy: trackBy" [routerLink]="[viewType, case.id]"
             routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" [case]="case"></app-case-item>
         </ion-list>

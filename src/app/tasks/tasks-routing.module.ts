@@ -14,20 +14,6 @@ import { TasksMenuComponent } from './components/tasks-menu/tasks-menu.component
  */
 const routes: Routes = [
   {
-    path: '', outlet: 'sidemenu', redirectTo: 'filter/default', pathMatch: 'full'
-  },
-  {
-    path: 'filter', outlet: 'sidemenu', component: TasksMenuComponent,
-    children: [
-      {
-        path: ':filterId', component: FiltersMenuComponent
-      },
-      {
-        path: '', component: FiltersMenuComponent
-      }
-    ]
-  },
-  {
     path: '', component: TasksComponent,
     children: [
       { path: 'new/:processDefinitionId', component: ProcessFormComponent },
